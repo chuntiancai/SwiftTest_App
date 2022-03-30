@@ -426,5 +426,7 @@ extension TestImageView_VC: UICollectionViewDelegate {
         1、平铺是直接copy没有被保护的区域的像素，像铺砖一样平铺到拉伸的区域。
         2、拉伸是将没有保护的区域的像素，同比拉长放大延伸到拉伸的区域。
  
+    2、图片的类型可以根据图片的二进制流，的第一个字节的值来判断是jpg还是png这些。
+ 
  */
 

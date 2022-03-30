@@ -1,13 +1,13 @@
 //
-//  tempVC.swift
+//  TestNSCache_VC.swift
 //  SwiftTest_App
 //
-//  Created by mathew2 on 2021/3/23.
-//  Copyright © 2021 com.mathew. All rights reserved.
+//  Created by mathew on 2022/3/30.
+//  Copyright © 2022 com.mathew. All rights reserved.
 //
-//测试的VC
+// 测试功能NSCache_VC
 
-class tempVC: UIViewController {
+class TestNSCache_VC: UIViewController {
     
     //MARK: 对外属性
     public var collDataArr = ["0、","1、","2、","3、","4、","5、","6、","7、","8、","9、","10、","11、","12、"]
@@ -20,7 +20,7 @@ class tempVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 199/255.0, green: 204/255.0, blue: 237/255.0, alpha: 1.0)
-        self.title = "测试功能"
+        self.title = "测试功能NSCache_VC"
         
         setNavigationBarUI()
         setCollectionViewUI()
@@ -31,7 +31,7 @@ class tempVC: UIViewController {
 
 
 //MARK: - 遵循数据源协议,UICollectionViewDataSource
-extension tempVC: UICollectionViewDataSource {
+extension TestNSCache_VC: UICollectionViewDataSource {
     
     ///点击了cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -75,7 +75,7 @@ extension tempVC: UICollectionViewDataSource {
     
 }
 //MARK: - 测试的方法
-extension tempVC{
+extension TestNSCache_VC{
    
     //MARK: 0、
     func test0(){
@@ -86,7 +86,7 @@ extension tempVC{
 
 
 //MARK: - 设置测试的UI
-extension tempVC{
+extension TestNSCache_VC{
     
     /// 初始化你要测试的view
     func initTestViewUI(){
@@ -97,7 +97,7 @@ extension tempVC{
 
 
 //MARK: - 设计UI
-extension tempVC {
+extension TestNSCache_VC {
     
     /// 设置导航栏的UI
     private func setNavigationBarUI(){
@@ -136,7 +136,7 @@ extension tempVC {
 }
 
 //MARK: - 遵循委托协议,UICollectionViewDelegate
-extension tempVC: UICollectionViewDelegate {
+extension TestNSCache_VC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collDataArr.count

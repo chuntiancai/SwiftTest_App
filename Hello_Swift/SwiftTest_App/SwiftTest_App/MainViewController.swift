@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 
 class MainViewController: UIViewController {
@@ -25,7 +26,6 @@ class MainViewController: UIViewController {
         self.title = "测试App"
         setNavigationBarUI()
         setCollectionViewUI()
-        
     }
 
 

@@ -59,23 +59,120 @@ extension TestSDWebImage_VC: UICollectionViewDataSource {
                                  options: [.highPriority,.retryFailed], context: nil) { (receivedSize, expectedSize, targetURL) in
                 print("下载的大小进度：\(receivedSize)  --- 期待的大小：\(expectedSize)")
             } completed: { (image, error, cacheType, imageURL) in
+                
                 print("""
                         下载完成的图片：\(String(describing: image))
                             --error:\(String(describing: error))
                             --cacheType:\(cacheType.rawValue)
                             --imageURL:\(String(describing: imageURL))
                         """)
+                switch cacheType {
+                case .disk:
+                    print("从沙盒中拿到的缓存图片")
+                case .none:
+                    print("没有缓存图片")
+                case .memory:
+                    print("从内存中拿到的缓存图片")
+                case .all:
+                    print("从任何可以拿得到的地方 拿缓存图片")
+                @unknown default:
+                    break
+                }
+                
+            }
+            
+            //TODO: SDWebImage下载图片不设置缓存，只需要简单下载一张图片。SDWebImageManager
+            
+            let imgUrl1 = URL.init(string: """
+                        https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fupload-images.jianshu.io%2Fupload_images%2F3963502-7bf6ca26e87823eb.png&refer=http%3A%2F%2Fupload-images.jianshu.io&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651215542&t=b1d894482330331ffba8fb299ce46212
+                        """)
+            SDWebImageManager.shared.loadImage(with: imgUrl1, options: [.retryFailed], context: nil) {
+                (receivedSize, expectedSize, targetURL) in
+                print("下载的大小进度：\(receivedSize)  --- 期待的大小：\(expectedSize)")
+            } completed: {
+                [weak self] (image, data, error, cacheType, finished, imageURL) in
+                /// data是图片的二进制数据
+                print("""
+                        下载完成的图片：\(String(describing: image))
+                            --data:\(String(describing: data))
+                            --error:\(String(describing: error))
+                            --cacheType:\(cacheType.rawValue)
+                            --finished:\(finished)
+                            --imageURL:\(String(describing: imageURL))
+                        """)
+                /// 会切换到主线程
+                self?.imgView2.image = image
             }
 
+            //TODO: SDWebImage不做线程处理地下载图片,不做任何处理，SDWebImageDownloader
+            
+            print("     (@@ SDWebImage不做线程处理地下载图片")
+            let imgUr2 = URL.init(string: """
+                        https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.kokojia.com%2FPublic%2Fimages%2Fupload%2Farticle%2F2016-11%2F5835303b3ffae.jpg&refer=http%3A%2F%2Fwww.kokojia.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651216015&t=08a515a343d9dfd3761767344a1517c0
+                        """)
+            SDWebImageDownloader.shared.downloadImage(with: imgUr2, options: SDWebImageDownloaderOptions.init(rawValue: 0), context: nil) {
+                (receivedSize, expectedSize, targetURL) in
+                print("下载的大小进度：\(receivedSize)  --- 期待的大小：\(expectedSize)")
+            } completed: {
+                (image, data, error, finished) in
+                print("""
+                        下载完成的图片：\(String(describing: image))
+                            --data:\(String(describing: data))
+                            --error:\(String(describing: error))
+                            --finished:\(finished)
+                            --Thread:\(Thread.current)
+                        """)
+                
+                /// 不会切换到主线程（但是现在本来就在主线程）
+                self.imgView2.image = image
+            }
+            
+            //TODO:SDWebImage清除缓存
+            SDWebImageManager.shared.imageCache.clear(with: .all) {
+                print("SDWebImage 清理缓存完毕。")
+            }
         case 1:
-            //TODO: 1、
-            print("     (@@ ")
+            //TODO: 1、SDWebImage处理gif图片
+            print("     (@@  SDWebImage处理gif图片")
+            /**
+                ：其实内部是把一帧帧图片 转换为可动画的图片。
+            */
+            guard let imgPathStr = Bundle.main.path(forResource: "labigif0.gif", ofType: nil) else { print("路径不存在"); break }
+            do {
+                let imgData = try Data(contentsOf: URL(fileURLWithPath: imgPathStr))
+                imgView1.image = UIImage.sd_image(withGIFData: imgData)
+            } catch let err {
+                print("获取数据失败：\(err)")
+            }
+            
         case 2:
-            //TODO: 2、
-            print("     (@@ ")
+            //TODO: 2、SDWebImage的多线程下载管理
+            /**
+             一部分是GCD，一部分是Operation实现。
+             框架结构：
+             SDWebImageManager
+                --SDImageCahce
+                --SDWebImageDownloader
+                    - -- SDWebImageDownloaderOperation
+             */
+            print("     (@@  SDWebImage的多线程下载管理")
+            /// 清理SDWebImage管理的缓存
+            SDWebImageManager.shared.imageCache.clear(with: .all) {  print("清理所有缓存，默认七天过期") }
+            /// 取消SDWebImage的所有操作
+            SDWebImageManager.shared.cancelAll()
+            
+            
         case 3:
-            //TODO: 3、
-            print("     (@@ ")
+            //TODO: 3、SDWebImage判断图片的类型
+            print("     (@@ SDWebImage判断图片的类型")
+            guard let imgPathStr = Bundle.main.path(forResource: "labigif0.gif", ofType: nil) else { print("路径不存在"); break }
+            do {
+                let imgData = try Data(contentsOf: URL(fileURLWithPath: imgPathStr))
+                let typeStr = "\(NSData.sd_imageFormat(forImageData: imgData))"
+                print("获取到的图片类型是：\(typeStr)")
+            } catch let err {
+                print("获取数据失败：\(err)")
+            }
         case 4:
             print("     (@@")
         case 5:

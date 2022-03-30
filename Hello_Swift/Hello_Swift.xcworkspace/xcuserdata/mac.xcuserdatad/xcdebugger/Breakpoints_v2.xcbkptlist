@@ -404,14 +404,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "9533F269-803F-4B29-BB5A-7EE65CC1FCA2 - 8aff4704da895803"
+                  uuid = "9533F269-803F-4B29-BB5A-7EE65CC1FCA2 - 2a0bfda8f031a150"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "SwiftTest_App.JFZ_AVAssetResLoaderDelegateObject.resourceLoader(_: __C.AVAssetResourceLoader, shouldWaitForLoadingOfRequestedResource: __C.AVAssetResourceLoadingRequest) -&gt; Swift.Bool"
                   moduleName = "SwiftTest_App"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mac/Desktop/mathew/HelloWorkSpace/0718/Hello_Swift0706/SwiftTest_App/SwiftTest_App/%E9%9F%B3%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/TestModuel%E6%B5%8B%E8%AF%95%E6%A8%A1%E5%9D%97/%E4%B8%8E%E4%B8%8B%E8%BD%BDAVAsset%E7%9B%B8%E5%85%B3%E7%9A%84%E6%A8%A1%E5%9D%97/JFZ_AVAssetRes_LoaderDelegateObject.swift"
+                  urlString = "file:///Users/mac/Desktop/mathew/MyGitTest/SwiftTest_App_Git/SwiftTest_App/Hello_Swift/SwiftTest_App/SwiftTest_App/%E9%9F%B3%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/TestModuel%E6%B5%8B%E8%AF%95%E6%A8%A1%E5%9D%97/%E4%B8%8E%E4%B8%8B%E8%BD%BDAVAsset%E7%9B%B8%E5%85%B3%E7%9A%84%E6%A8%A1%E5%9D%97/JFZ_AVAssetRes_LoaderDelegateObject.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "50"
@@ -419,14 +419,14 @@
                   offsetFromSymbolStart = "1837">
                </Location>
                <Location
-                  uuid = "9533F269-803F-4B29-BB5A-7EE65CC1FCA2 - 825cf529011d9fa0"
+                  uuid = "9533F269-803F-4B29-BB5A-7EE65CC1FCA2 - 22a84f852ba56775"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in SwiftTest_App.JFZ_AVAssetResLoaderDelegateObject.resourceLoader(_: __C.AVAssetResourceLoader, shouldWaitForLoadingOfRequestedResource: __C.AVAssetResourceLoadingRequest) -&gt; Swift.Bool"
                   moduleName = "SwiftTest_App"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mac/Desktop/mathew/HelloWorkSpace/0718/Hello_Swift0706/SwiftTest_App/SwiftTest_App/%E9%9F%B3%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/TestModuel%E6%B5%8B%E8%AF%95%E6%A8%A1%E5%9D%97/%E4%B8%8E%E4%B8%8B%E8%BD%BDAVAsset%E7%9B%B8%E5%85%B3%E7%9A%84%E6%A8%A1%E5%9D%97/JFZ_AVAssetRes_LoaderDelegateObject.swift"
+                  urlString = "file:///Users/mac/Desktop/mathew/MyGitTest/SwiftTest_App_Git/SwiftTest_App/Hello_Swift/SwiftTest_App/SwiftTest_App/%E9%9F%B3%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/TestModuel%E6%B5%8B%E8%AF%95%E6%A8%A1%E5%9D%97/%E4%B8%8E%E4%B8%8B%E8%BD%BDAVAsset%E7%9B%B8%E5%85%B3%E7%9A%84%E6%A8%A1%E5%9D%97/JFZ_AVAssetRes_LoaderDelegateObject.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "51"
@@ -961,6 +961,22 @@
             startingLineNumber = "149"
             endingLineNumber = "149"
             landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "78C443D1-6915-4D0E-8FC6-F4AA53651815"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/&#x7b2c;&#x4e09;&#x65b9;&#x5e93;&#x5bf9;&#x6bd4;&#x6d4b;&#x8bd5;/&#x6d4b;&#x8bd5;&#x56fe;&#x7247;&#x4e0b;&#x8f7d;&#x5e93;SDWebImage/TestSDWebImage_VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
