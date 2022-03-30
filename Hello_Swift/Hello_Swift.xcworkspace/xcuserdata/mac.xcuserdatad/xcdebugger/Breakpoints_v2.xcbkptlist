@@ -1,0 +1,968 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "9A94816A-0D09-47AF-897F-6F332586128C"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "292405BF-6802-4CE0-9C52-20BD1D530860"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/&#x97f3;&#x89c6;&#x9891;&#x64ad;&#x653e;/Cache/JFZMediaCacher.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "startCache(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F2A609A0-E088-4688-B0FA-7D7B08F1CA90"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/&#x97f3;&#x89c6;&#x9891;&#x64ad;&#x653e;/Cache/JFZMediaCacher.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "makeCache(location:cacheImmediately:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "37647F0A-B80D-49A5-8F46-6A1C034D9904"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/&#x97f3;&#x89c6;&#x9891;&#x64ad;&#x653e;/Cache/Manger/JFZMediaCacheManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
+            landmarkName = "updateAsset()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DA698F40-E831-4FC1-8B61-D1B247BB79C1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/&#x97f3;&#x89c6;&#x9891;&#x64ad;&#x653e;/Cache/Manger/JFZMediaCacheManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "start()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DA698F40-E831-4FC1-8B61-D1B247BB79C1 - efba7f75226417ab"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftTest_App.JFZMediaCacheManager.start() -&gt; SwiftTest_App.JFZMediaCacheManager.CacheStatus"
+                  moduleName = "SwiftTest_App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/Hello_Swift0706/SwiftTest_App/SwiftTest_App/%E9%9F%B3%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/Cache/Manger/JFZMediaCacheManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
+                  offsetFromSymbolStart = "844">
+               </Location>
+               <Location
+                  uuid = "DA698F40-E831-4FC1-8B61-D1B247BB79C1 - f8926c797df5a048"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in SwiftTest_App.JFZMediaCacheManager.start() -&gt; SwiftTest_App.JFZMediaCacheManager.CacheStatus"
+                  moduleName = "SwiftTest_App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/Hello_Swift0706/SwiftTest_App/SwiftTest_App/%E9%9F%B3%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/Cache/Manger/JFZMediaCacheManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "155"
+                  endingLineNumber = "155"
+                  offsetFromSymbolStart = "160">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DF7C0F05-9159-49EE-AC38-901FD290C38C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/&#x97f3;&#x89c6;&#x9891;&#x64ad;&#x653e;/Cache/Manger/JFZMediaCacheManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "start()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DEA740F2-5F88-499B-AC6A-0BF379ADF4EA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/&#x97f3;&#x89c6;&#x9891;&#x64ad;&#x653e;/Manager/JFZAudiovisualCommonManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
+            landmarkName = "playVideo(item:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7CDA4408-FEE9-4DC0-97AC-D510C95EFA0E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/&#x97f3;&#x89c6;&#x9891;&#x64ad;&#x653e;/Manager/JFZAudiovisualCommonManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "338"
+            endingLineNumber = "338"
+            landmarkName = "getVideoFrame()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "936615E8-1040-4480-AFEA-A5A73D09B74B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/&#x97f3;&#x89c6;&#x9891;&#x64ad;&#x653e;/View/JFZPlayerCommonView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "400"
+            endingLineNumber = "400"
+            landmarkName = "dealForFullScreenPlayer(orientationChange:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F17CEF32-1A54-431A-90F9-23369BBBCDA4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/&#x97f3;&#x89c6;&#x9891;&#x64ad;&#x653e;/View/JFZPlayerCommonView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "453"
+            endingLineNumber = "453"
+            landmarkName = "dealForNormalScreenPlayer()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5B2E40DB-16BC-4AD4-9E92-7F5933171512"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/&#x97f3;&#x89c6;&#x9891;&#x64ad;&#x653e;/TestModuel/View/JFZVideoPlayerView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "initUI()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B5AC94A0-F668-4065-BD39-38E054FFE6D6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/&#x6d4b;&#x8bd5;&#x5c4f;&#x5e55;&#x65cb;&#x8f6c;/UITestScreenRotateVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "supportedInterfaceOrientations"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FD104DA4-3C80-4D53-AEEB-3C0C83DE99D2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/&#x6d4b;&#x8bd5;&#x5c4f;&#x5e55;&#x65cb;&#x8f6c;/UITestScreenRotateVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "preferredInterfaceOrientationForPresentation"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BC2E2916-4EA1-40DE-933E-CB6F29F244C0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/&#x6d4b;&#x8bd5;&#x5c4f;&#x5e55;&#x65cb;&#x8f6c;/UITestScreenRotateVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "shouldAutorotate"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "438E03AB-0F57-439A-9D76-0409527EA61D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/&#x6d4b;&#x8bd5;&#x5c4f;&#x5e55;&#x65cb;&#x8f6c;/UITestScreenRotateVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "attemptRotationToDeviceOrientation()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0E149AEA-7CF1-4376-9A0C-7376C3DA7AB1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/UI&#x7684;View&#x7684;&#x4e8b;&#x4ef6;&#x4f20;&#x9012;&#x6d4b;&#x8bd5;/View/TestTouchDeliverButton.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "touchesBegan(_:with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F1EE97DC-11D7-439A-BAB5-F41403F2CEF6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/&#x97f3;&#x89c6;&#x9891;&#x64ad;&#x653e;/TestModuel/Cache/JFZ_AVAsset.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "resourceLoader(_:shouldWaitForLoadingOfRequestedResource:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AA4A82D1-9DDD-4AD5-9318-177DC2970C43"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/iOS&#x7f51;&#x7edc;&#x6d4b;&#x8bd5;/&#x6d4b;&#x8bd5;URLSession/TestURLSession_MainVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "80502C82-E1FA-4BB4-AF76-9D4608876597"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/&#x97f3;&#x89c6;&#x9891;&#x64ad;&#x653e;/&#x81ea;&#x5df1;&#x5c01;&#x88c5;&#x7684;&#x64ad;&#x653e;&#x5668;&#x6a21;&#x5757;/CacheModule(&#x7f13;&#x5b58;&#x76f8;&#x5173;&#x6a21;&#x5757;)/JFZ_AVAsset.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "resourceLoader(_:shouldWaitForLoadingOfRequestedResource:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9AC0A73C-45D9-4D63-8E42-938D30C0078A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/&#x97f3;&#x89c6;&#x9891;&#x64ad;&#x653e;/TestModuel&#x6d4b;&#x8bd5;&#x6a21;&#x5757;/&#x4e0e;&#x4e0b;&#x8f7d;AVAsset&#x76f8;&#x5173;&#x7684;&#x6a21;&#x5757;/JFZ_AVAssetResLoaderDelegateObject.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "resourceLoader(_:shouldWaitForLoadingOfRequestedResource:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "80B7332A-066A-4581-A7CA-3EDD405062AA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/iOS&#x7f51;&#x7edc;&#x6d4b;&#x8bd5;/&#x6d4b;&#x8bd5;URLSession/URLSession&#x7684;&#x4ee3;&#x7406;/TestURLSessionDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "urlSession(_:dataTask:didReceive:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BE64FE22-9F94-4913-9EA2-2F841B05543E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/iOS&#x7f51;&#x7edc;&#x6d4b;&#x8bd5;/&#x6d4b;&#x8bd5;URLSession/URLSession&#x7684;&#x4ee3;&#x7406;/TestURLSessionDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "urlSession(_:dataTask:willCacheResponse:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D9C35DF2-7DC3-42C4-A711-DE97E0DBBAC7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/&#x97f3;&#x89c6;&#x9891;&#x64ad;&#x653e;/TestModuel&#x6d4b;&#x8bd5;&#x6a21;&#x5757;/&#x4e0e;&#x4e0b;&#x8f7d;AVAsset&#x76f8;&#x5173;&#x7684;&#x6a21;&#x5757;/JFZ_AVAssetLoader_UrlSessionDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "urlSession(_:dataTask:didReceive:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9533F269-803F-4B29-BB5A-7EE65CC1FCA2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/&#x97f3;&#x89c6;&#x9891;&#x64ad;&#x653e;/TestModuel&#x6d4b;&#x8bd5;&#x6a21;&#x5757;/&#x4e0e;&#x4e0b;&#x8f7d;AVAsset&#x76f8;&#x5173;&#x7684;&#x6a21;&#x5757;/JFZ_AVAssetRes_LoaderDelegateObject.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "resourceLoader(_:shouldWaitForLoadingOfRequestedResource:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9533F269-803F-4B29-BB5A-7EE65CC1FCA2 - 8aff4704da895803"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftTest_App.JFZ_AVAssetResLoaderDelegateObject.resourceLoader(_: __C.AVAssetResourceLoader, shouldWaitForLoadingOfRequestedResource: __C.AVAssetResourceLoadingRequest) -&gt; Swift.Bool"
+                  moduleName = "SwiftTest_App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/mathew/HelloWorkSpace/0718/Hello_Swift0706/SwiftTest_App/SwiftTest_App/%E9%9F%B3%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/TestModuel%E6%B5%8B%E8%AF%95%E6%A8%A1%E5%9D%97/%E4%B8%8E%E4%B8%8B%E8%BD%BDAVAsset%E7%9B%B8%E5%85%B3%E7%9A%84%E6%A8%A1%E5%9D%97/JFZ_AVAssetRes_LoaderDelegateObject.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "50"
+                  endingLineNumber = "50"
+                  offsetFromSymbolStart = "1837">
+               </Location>
+               <Location
+                  uuid = "9533F269-803F-4B29-BB5A-7EE65CC1FCA2 - 825cf529011d9fa0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in SwiftTest_App.JFZ_AVAssetResLoaderDelegateObject.resourceLoader(_: __C.AVAssetResourceLoader, shouldWaitForLoadingOfRequestedResource: __C.AVAssetResourceLoadingRequest) -&gt; Swift.Bool"
+                  moduleName = "SwiftTest_App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/mathew/HelloWorkSpace/0718/Hello_Swift0706/SwiftTest_App/SwiftTest_App/%E9%9F%B3%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/TestModuel%E6%B5%8B%E8%AF%95%E6%A8%A1%E5%9D%97/%E4%B8%8E%E4%B8%8B%E8%BD%BDAVAsset%E7%9B%B8%E5%85%B3%E7%9A%84%E6%A8%A1%E5%9D%97/JFZ_AVAssetRes_LoaderDelegateObject.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "164">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D3F82AD0-927F-48BB-996A-5A4468B46D32"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/&#x97f3;&#x89c6;&#x9891;&#x64ad;&#x653e;/TestModuel&#x6d4b;&#x8bd5;&#x6a21;&#x5757;/&#x4e0e;&#x4e0b;&#x8f7d;AVAsset&#x76f8;&#x5173;&#x7684;&#x6a21;&#x5757;/JFZ_AVAssetRes_LoaderDelegateObject.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "resourceLoader(_:shouldWaitForLoadingOfRequestedResource:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2AE76BB2-2644-4649-BE21-05ACF36F4F42"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/Button&#x7684;&#x6d4b;&#x8bd5;/UIButtonTest_MainVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "920F3C59-4C51-4AB2-81D4-A4CD838D8A9A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/&#x7b2c;&#x4e09;&#x65b9;&#x5e93;&#x5bf9;&#x6bd4;&#x6d4b;&#x8bd5;/&#x56fe;&#x8868;&#x7ed8;&#x5236;&#x7b2c;&#x4e09;&#x65b9;&#x5e93;/ThirdPartyLibraryTest_MainVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "39D2A04A-2E75-41DA-9D78-7E22A4DAE884"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/&#x65e5;&#x671f;&#x5904;&#x7406;&#x7684;&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/TestDate_VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "53E8AA22-DFA2-4EE5-AC15-37149EBA7C56"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/UILabel&#x7684;&#x6d4b;&#x8bd5;/&#x6d4b;&#x8bd5;&#x8981;&#x7528;&#x7684;view/&#x6d4b;&#x8bd5;&#x6587;&#x5b57;&#x7684;&#x6e10;&#x53d8;&#x8272;.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "name"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "01255BC3-5D78-4C5A-AC11-FB848BE1A0D3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/UITextField&#x7684;&#x6d4b;&#x8bd5;/View/TextField&#x7684;&#x70b9;&#x51fb;&#x6d4b;&#x8bd5;(&#x952e;&#x76d8;&#x5f39;&#x8d77;)_View.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "textFieldDidChangeSelection(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1FB0E64F-BA44-4277-91E3-F74737C60C59"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/TableView&#x7684;&#x6d4b;&#x8bd5;/View/&#x6d4b;&#x8bd5;cell&#x91cc;&#x9762;label&#x7684;&#x81ea;&#x9002;&#x5e94;&#x9ad8;&#x5ea6;_Cell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "initDefaultUI()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DB84D3ED-A20C-450D-9CA9-8762F15B9E7B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/Animation&#x52a8;&#x753b;&#x6d4b;&#x8bd5;/&#x5e27;&#x52a8;&#x753b;&#x6d4b;&#x8bd5;/&#x6d4b;&#x8bd5;&#x5e27;&#x52a8;&#x753b;&#x7684;&#x4e3b;VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "04A54FA6-AE88-404C-ACF1-2F4ACC9E9A8F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/Swift&#x8bed;&#x6cd5;&#x6d4b;&#x8bd5;/&#x6d4b;&#x8bd5;selector&#x7684;VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "testActionParam(_:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E380102C-2890-4534-9968-229EC573E566"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/&#x6587;&#x4ef6;&#x6d4b;&#x8bd5;/plist&#x6587;&#x4ef6;&#x6d4b;&#x8bd5;/plist&#x6587;&#x4ef6;&#x6d4b;&#x8bd5;_VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "24F684F5-BF5D-401C-8B4C-43B001BE913B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/&#x6587;&#x4ef6;&#x6d4b;&#x8bd5;/plist&#x6587;&#x4ef6;&#x6d4b;&#x8bd5;/plist&#x6587;&#x4ef6;&#x6d4b;&#x8bd5;_VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5B1E69B3-9024-4F3B-B12E-50345647414C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/&#x6587;&#x4ef6;&#x6d4b;&#x8bd5;/plist&#x6587;&#x4ef6;&#x6d4b;&#x8bd5;/plist&#x6587;&#x4ef6;&#x6d4b;&#x8bd5;_VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "69336610-6680-4EC1-94CC-F4EAC4E725BC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/xib&#x6d4b;&#x8bd5;/&#x6d4b;&#x8bd5;xib&#x7684;VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E081BD7C-6044-433A-81B3-3D7BB4FCAA3E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/UIScrollView&#x7684;&#x6d4b;&#x8bd5;/TestUIScrollView_VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E081BD7C-6044-433A-81B3-3D7BB4FCAA3E - e05d4a77da0b8841"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftTest_App.TestUIScrollView_VC.collectionView(_: __C.UICollectionView, didSelectItemAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "SwiftTest_App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/mathew/HelloWorkSpace/0718/Hello_Swift0706/SwiftTest_App/SwiftTest_App/UI%E7%9B%B8%E5%85%B3%E6%B5%8B%E8%AF%95/UIScrollView%E7%9A%84%E6%B5%8B%E8%AF%95/TestUIScrollView_VC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "1841">
+               </Location>
+               <Location
+                  uuid = "E081BD7C-6044-433A-81B3-3D7BB4FCAA3E - 6380c00e65d30c6c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SnapKit.ConstraintMaker) -&gt; () in SwiftTest_App.TestUIScrollView_VC.collectionView(_: __C.UICollectionView, didSelectItemAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "SwiftTest_App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/mathew/HelloWorkSpace/0718/Hello_Swift0706/SwiftTest_App/SwiftTest_App/UI%E7%9B%B8%E5%85%B3%E6%B5%8B%E8%AF%95/UIScrollView%E7%9A%84%E6%B5%8B%E8%AF%95/TestUIScrollView_VC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "22">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D97A14A4-13E0-4008-BDC2-525B82A5700E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/UIScrollView&#x7684;&#x6d4b;&#x8bd5;/TestScrollView_deleagate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "viewForZooming(in:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FBE6F457-4850-485F-98D5-5084E457E8EF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/UIScrollView&#x7684;&#x6d4b;&#x8bd5;/TestScrollView_deleagate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "scrollViewDidEndDragging(_:willDecelerate:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "72580239-72E0-4011-8D2E-45298046DB8C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/UIScrollView&#x7684;&#x6d4b;&#x8bd5;/TestUIScrollView_VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7C39CFC5-2205-4989-B60F-7B391BBDF8E4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/Storyboard&#x6d4b;&#x8bd5;/Controller/Story_FirstVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B42C6DF4-0C7E-435C-9E9A-48353AC56719"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/Storyboard&#x6d4b;&#x8bd5;/Controller/TestStory_VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D87EAD02-32AE-416A-B0CA-9C531187E8F9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/TableView&#x7684;&#x6d4b;&#x8bd5;/TableView&#x7684;contentInset&#x4e0e;&#x5237;&#x65b0;_VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9E501345-25D4-466F-A99C-24274FE8A989"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/CALayer&#x7684;&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/Quartz2D&#x7684;&#x6d4b;&#x8bd5;/&#x5728;draw&#x65b9;&#x6cd5;&#x91cc;&#x7ed8;&#x5236;&#x56fe;&#x5f62;_View.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "draw(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C9AABC51-7D5F-4B9C-899C-3F32FAACDF8E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/App&#x73af;&#x5883;(&#x751f;&#x547d;&#x5468;&#x671f;)&#x76f8;&#x5173;&#x7684;&#x77e5;&#x8bc6;/&#x6d4b;&#x8bd5;&#x83b7;&#x53d6;&#x624b;&#x673a;&#x7cfb;&#x7edf;&#x7684;&#x4fe1;&#x606f;/TestGetPhoneSystemInfo_VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9C86E54D-18B5-4AB0-9D20-5A1207624545"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/UIImageView(&#x56fe;&#x7247;)&#x7684;&#x6d4b;&#x8bd5;/TestImageView_VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B0FADA5B-FC85-43E2-86E1-BA4F5B87EDF5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/UIImageView(&#x56fe;&#x7247;)&#x7684;&#x6d4b;&#x8bd5;/TestImageView_VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
+            landmarkName = "panImgAction(sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1B0B86C3-F1A3-4D38-8821-21A4F9B4EF51"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/CALayer&#x7684;&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/Animation&#x52a8;&#x753b;&#x6d4b;&#x8bd5;/&#x7c92;&#x5b50;&#x6548;&#x679c;_View.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "grainMoveAction(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9A8FFA01-A676-448B-90A5-06439F8B9928"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/VC&#x76f8;&#x5173;&#x7684;&#x6d4b;&#x8bd5;/&#x5bfc;&#x822a;&#x680f;&#x7684;UI&#x5e03;&#x5c40;&#x6d4b;&#x8bd5;/TestNavibar_VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D886BA1A-FFD9-4896-8F15-AF9AF83D5627"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/App&#x73af;&#x5883;(&#x751f;&#x547d;&#x5468;&#x671f;)&#x76f8;&#x5173;&#x7684;&#x77e5;&#x8bc6;/&#x6d4b;&#x8bd5;&#x83b7;&#x53d6;&#x624b;&#x673a;&#x7cfb;&#x7edf;&#x7684;&#x4fe1;&#x606f;/TestGetPhoneSystemInfo_VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A9039691-58B2-4368-9972-136B8898BE42"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/Swift&#x8bed;&#x6cd5;&#x6d4b;&#x8bd5;/&#x6d4b;&#x8bd5;selector&#x7ed3;&#x6784;&#x4f53;/&#x6d4b;&#x8bd5;selector&#x7684;VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BF504E0B-8DB0-4370-9151-C9737C8B4FD6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/VC&#x76f8;&#x5173;&#x7684;&#x6d4b;&#x8bd5;/&#x6a21;&#x6001;VC&#x7684;&#x6d4b;&#x8bd5;/Modal_SubVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "201E1B61-0F07-4A24-BF64-FC0043019FF3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/VC&#x76f8;&#x5173;&#x7684;&#x6d4b;&#x8bd5;/&#x6a21;&#x6001;VC&#x7684;&#x6d4b;&#x8bd5;/TestModal_VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "52E3CBF9-523B-4900-9EB4-C6024EB39377"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/IOS&#x591a;&#x7ebf;&#x7a0b;&#x6d4b;&#x8bd5;/&#x5f02;&#x6b65;&#x4e0b;&#x8f7d;&#x56fe;&#x7247;&#x6d4b;&#x8bd5;/View/TestAsyncImage_TableView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

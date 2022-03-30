@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>item0</key>
+	<dict>
+		<key>name</key>
+		<string>ha0图片</string>
+		<key>icon</key>
+		<string>ha0.jpg</string>
+	</dict>
+	<key>item1</key>
+	<dict>
+		<key>name</key>
+		<string>ha1图片</string>
+		<key>icon</key>
+		<string>ha1.jpg</string>
+	</dict>
+	<key>item2</key>
+	<dict>
+		<key>name</key>
+		<string>ha2图片</string>
+		<key>icon</key>
+		<string>ha2.jpg</string>
+	</dict>
+	<key>item3</key>
+	<dict>
+		<key>name</key>
+		<string>ha3图片</string>
+		<key>icon</key>
+		<string>ha3.jpg</string>
+	</dict>
+	<key>item4</key>
+	<dict>
+		<key>name</key>
+		<string>ha4图片</string>
+		<key>icon</key>
+		<string>ha4.jpg</string>
+	</dict>
+	<key>item5</key>
+	<dict>
+		<key>name</key>
+		<string>ha5图片</string>
+		<key>icon</key>
+		<string>ha5.jpg</string>
+	</dict>
+	<key>item6</key>
+	<dict>
+		<key>name</key>
+		<string>ha6图片</string>
+		<key>icon</key>
+		<string>ha6.jpg</string>
+	</dict>
+</dict>
+</plist>

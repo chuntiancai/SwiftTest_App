@@ -1,0 +1,23 @@
+{
+  "name": "ctc_podspec",
+  "version": "0.1.0",
+  "summary": "测试自己创建的cocoapod的私有库",
+  "description": "TODO: Add long description of the pod here.\n测试自己创建的cocoapod的私有库",
+  "homepage": "https://github.com/chuntiancai/TestCocoapod",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "chuntiancai": "chuntiancai@jfz.com"
+  },
+  "source": {
+    "git": "https://github.com/chuntiancai/TestCocoapod.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "ctc_podspec/Classes/*.swift",
+  "vendored_frameworks": "ctc_podspec/Classes/Framework/*.framework"
+}

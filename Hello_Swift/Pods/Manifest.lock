@@ -1,0 +1,64 @@
+PODS:
+  - Bugly (2.5.90)
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
+  - ctc_podspec (0.1.0)
+  - FilesProvider (0.26.0)
+  - FLAnimatedImage (1.0.16)
+  - MJRefresh (3.7.2)
+  - Reachability (3.2)
+  - SDWebImage (5.11.1):
+    - SDWebImage/Core (= 5.11.1)
+  - SDWebImage/Core (5.11.1)
+  - SnapKit (4.2.0)
+  - SwiftyJSON (5.0.1)
+
+DEPENDENCIES:
+  - Bugly
+  - Charts (~> 3.6.0)
+  - ctc_podspec (from `https://github.com/chuntiancai/TestCocoapod.git`)
+  - FilesProvider
+  - FLAnimatedImage
+  - MJRefresh
+  - Reachability
+  - SDWebImage (~> 5.11.1)
+  - SnapKit
+  - SwiftyJSON
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Bugly
+    - Charts
+    - FilesProvider
+    - FLAnimatedImage
+    - MJRefresh
+    - Reachability
+    - SDWebImage
+    - SnapKit
+    - SwiftyJSON
+
+EXTERNAL SOURCES:
+  ctc_podspec:
+    :git: https://github.com/chuntiancai/TestCocoapod.git
+
+CHECKOUT OPTIONS:
+  ctc_podspec:
+    :commit: ccdce74a6ba00b83f12d34db7ea1e9226a61fa5e
+    :git: https://github.com/chuntiancai/TestCocoapod.git
+
+SPEC CHECKSUMS:
+  Bugly: 88bc32c0acc6fef7b74d610f0319ee7560d6b9fe
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
+  ctc_podspec: f6baf061bb4cc0b9dd1fcbab2a695aef1259bf10
+  FilesProvider: 2a8ae17d8b9c23a6feadb1308ee638fa31d21065
+  FLAnimatedImage: 8f3e854ebf9680b71f0b6e700939687fc4d82b4b
+  MJRefresh: 30997d30b347c8e9508a4db11e3a690da0c9b85a
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+
+PODFILE CHECKSUM: b2b1d2f7039040517a5e302856a96134437af52d
+
+COCOAPODS: 1.10.2

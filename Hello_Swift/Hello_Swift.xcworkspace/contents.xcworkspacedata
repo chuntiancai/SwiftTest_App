@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:OC_Test_App/OC_Test_App.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SwiftTest_App/SwiftTest_App.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SwiftNote_App/SwiftNote_App.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SwiftTool_App/SwiftTool_App.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:TestingSwift_CommandLine/SwiftTest_CommandLine.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Swift_Syntax_CommandLine/SwiftSyntax_CommandLine.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:OC_syntax_CmdLine/OC_syntax_CmdLine.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SwiftBluetooth_App/SwiftBluetooth_App.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:FrameworkMake_Test/FrameworkMake_Test.xcodeproj">
+   </FileRef>
+</Workspace>

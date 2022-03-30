@@ -1,0 +1,11 @@
+framework module CocoaPodFrameworkTest {
+  umbrella header "CocoaPodFrameworkTest.h"
+
+  export *
+  module * { export * }
+}
+
+module CocoaPodFrameworkTest.Swift {
+    header "CocoaPodFrameworkTest-Swift.h"
+    requires objc
+}
