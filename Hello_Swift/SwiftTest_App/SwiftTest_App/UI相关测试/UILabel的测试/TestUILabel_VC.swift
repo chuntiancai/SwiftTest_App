@@ -21,6 +21,8 @@ class TestUILabel_VC: UIViewController {
     var lineSpaceLabel = UILabel()  //测试行间距
     var lineSpaceNum:CGFloat = 20   //行间距的值。
     
+    var adaptLabel = TestAdaptSize_Label()  //测试label的文字自适应高度，宽度。
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 199/255.0, green: 204/255.0, blue: 237/255.0, alpha: 1.0)
@@ -43,12 +45,12 @@ extension TestUILabel_VC: UICollectionViewDataSource {
         print("点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            //TODO: 0、
+            //TODO: 0、测试文字的渐变色
             print("     (@@  测试文字的渐变颜色")
             gradientView.name = "测试渐变颜色"
             break
         case 1:
-            //TODO: 1、
+            //TODO: 1、测试label的行距
             lineSpaceNum += 1
             print("     (@@ 测试label的行间距+1:=\(lineSpaceNum)")
             lineSpaceLabel.setValue(lineSpaceNum, forKey: "lineSpacing")
@@ -60,12 +62,49 @@ extension TestUILabel_VC: UICollectionViewDataSource {
             lineSpaceLabel.setValue(lineSpaceNum, forKey: "lineSpacing")
             lineSpaceLabel.layoutIfNeeded()
         case 3:
-            //TODO: 3、
-            print("     (@@ ")
+            //TODO: 3、测试Label的自适应高度、宽度。
+            print("     (@@ 测试Label的自适应高度、宽度")
+            adaptLabel.text = "label的自适应尺寸"
+            adaptLabel.layer.borderWidth = 1.0
+            
+            adaptLabel.layer.borderColor = UIColor.red.cgColor
+            self.view.addSubview(adaptLabel)
+            adaptLabel.snp.makeConstraints { make in
+                make.center.equalToSuperview()
+                make.height.width.equalTo(200)
+            }
+        case 4:
+            //TODO: 4、测试Label的自适应intrinsicContentSize。
+            print("     (@@ 改变label的文字")
+            adaptLabel.font = .systemFont(ofSize: 20)
+            adaptLabel.numberOfLines = 0
+            adaptLabel.name = "自适应-自适应自适应自适应自适应自适应自适应自适应自适应自适应自适应自适应自适应自适应自适应自适应自适应自适应自适应自适应"
+            let btn = UIButton()
+            btn.titleLabel?.textColor = .black
+            btn.setTitle("自适应按钮", for: .normal)
+            print("btn 的 intrinsicContentSize :\(btn.intrinsicContentSize)")
+            btn.setTitle("自适应按钮-自适应按钮", for: .normal)
+            print("btn 的 intrinsicContentSize :\(btn.intrinsicContentSize)")
         case 5:
-            print("     (@@")
+            //TODO: 5、测试Label的sizeToFit()方法
+            print("     (@@ 测试Label的sizeToFit()方法")
+            let curView = UIView()
+            curView.layer.borderWidth = 1.0
+            curView.layer.borderColor = UIColor.red.cgColor
+            self.view.addSubview(curView)
+            curView.snp.makeConstraints { make in
+                make.center.equalToSuperview()
+                make.height.width.equalTo(250)
+            }
+            adaptLabel.text = "测试sizeToFit()方法-测试sizeToFit()方法-测试sizeToFit()方法"
+            adaptLabel.textColor = .black
+            curView.addSubview(adaptLabel)
+//            adaptLabel.name = "自适应-自适应自适应自适应自适应自适应自适应自适应自适应自适应自适应自适应自适应自适应自适应自适应自适应自适应自适应自适应"
+            
         case 6:
+            //TODO: 6、测试Label的sizeToFit()方法
             print("     (@@")
+            adaptLabel.sizeToFit()
         case 7:
             print("     (@@")
         case 8:
@@ -211,5 +250,6 @@ extension TestUILabel_VC: UICollectionViewDelegate {
 
 //MARK: - 笔记
 /**
-    1、
+    1、调用sizeToFit()方法，只针对特定的View起作用，例如label一开始你没有设置frame，然后你就添加到view上去了，然后你这时候调用label的sizeToFit()方法， 就可以计算出这个label的位置和尺寸了，这个方法只是为没有设置frame的view计算最适合的尺寸，然后放到位置上，没什么卵用。
+    2、
  */

@@ -99,6 +99,8 @@
 		042648E927F3FB6E0034FF51 /* SubThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042648E827F3FB6E0034FF51 /* SubThread.swift */; };
 		042648EB27F4422B0034FF51 /* labigif0.gif in Resources */ = {isa = PBXBuildFile; fileRef = 042648EA27F4422B0034FF51 /* labigif0.gif */; };
 		042648EF27F4462A0034FF51 /* TestNSCache_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042648EE27F4462A0034FF51 /* TestNSCache_VC.swift */; };
+		044CBA7127F587C100FA2CB8 /* TestSubVC_SubVC3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBA7027F587C100FA2CB8 /* TestSubVC_SubVC3.swift */; };
+		044CBA7727F5A82A00FA2CB8 /* 测试文字的自适应高度.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBA7627F5A82A00FA2CB8 /* 测试文字的自适应高度.swift */; };
 		044FB587276735BE00479442 /* TextField的点击测试(键盘弹起)_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FB586276735BE00479442 /* TextField的点击测试(键盘弹起)_View.swift */; };
 		0454A48E272FCA5600EFE31A /* 测试tableview的delegate顺序_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454A48D272FCA5600EFE31A /* 测试tableview的delegate顺序_VC.swift */; };
 		0454A4912731097E00EFE31A /* TestNavibar_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454A4902731097E00EFE31A /* TestNavibar_VC.swift */; };
@@ -371,6 +373,8 @@
 		042648E827F3FB6E0034FF51 /* SubThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubThread.swift; sourceTree = "<group>"; };
 		042648EA27F4422B0034FF51 /* labigif0.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = labigif0.gif; sourceTree = "<group>"; };
 		042648EE27F4462A0034FF51 /* TestNSCache_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNSCache_VC.swift; sourceTree = "<group>"; };
+		044CBA7027F587C100FA2CB8 /* TestSubVC_SubVC3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSubVC_SubVC3.swift; sourceTree = "<group>"; };
+		044CBA7627F5A82A00FA2CB8 /* 测试文字的自适应高度.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试文字的自适应高度.swift"; sourceTree = "<group>"; };
 		044FB586276735BE00479442 /* TextField的点击测试(键盘弹起)_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField的点击测试(键盘弹起)_View.swift"; sourceTree = "<group>"; };
 		0454A487272AA2FF00EFE31A /* Swift语法备忘录.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Swift语法备忘录.md"; sourceTree = "<group>"; };
 		0454A48D272FCA5600EFE31A /* 测试tableview的delegate顺序_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试tableview的delegate顺序_VC.swift"; sourceTree = "<group>"; };
@@ -715,6 +719,7 @@
 			children = (
 				042036BD2754B16E00424E05 /* 测试文字的渐变色.swift */,
 				0484806E27798FEB00698106 /* 自定义字体渐变色的label.swift */,
+				044CBA7627F5A82A00FA2CB8 /* 测试文字的自适应高度.swift */,
 			);
 			path = "测试要用的view";
 			sourceTree = "<group>";
@@ -918,7 +923,7 @@
 			isa = PBXGroup;
 			children = (
 				04587C8027B6010100824F69 /* 模态VC的测试 */,
-				04587C7527B508F300824F69 /* UITabBarController(工具栏VC)的测试 */,
+				04587C7527B508F300824F69 /* 工具栏VC(UITabBarController)的测试 */,
 				047C851427B3B50C0060D7CB /* UIAlertController的测试 */,
 				04C2DBFC26CE267600F9B3EE /* 子VC的测试 */,
 				0421E60F26AAE77C00C6A922 /* VC生命周期测试 */,
@@ -1070,7 +1075,7 @@
 			path = "归档(序列化对象)测试";
 			sourceTree = "<group>";
 		};
-		04587C7527B508F300824F69 /* UITabBarController(工具栏VC)的测试 */ = {
+		04587C7527B508F300824F69 /* 工具栏VC(UITabBarController)的测试 */ = {
 			isa = PBXGroup;
 			children = (
 				04587C7627B5092B00824F69 /* TestUITabBarController_VC.swift */,
@@ -1081,7 +1086,7 @@
 				04587C7E27B50BD500824F69 /* Tabar_SubVC4.swift */,
 				0474C25027D0981200B95D7C /* 自定义tabar_View.swift */,
 			);
-			path = "UITabBarController(工具栏VC)的测试";
+			path = "工具栏VC(UITabBarController)的测试";
 			sourceTree = "<group>";
 		};
 		04587C8027B6010100824F69 /* 模态VC的测试 */ = {
@@ -1660,6 +1665,7 @@
 				04C2DBFD26CE269700F9B3EE /* TestSubVC_MainVC.swift */,
 				04C2DBFF26CE26FB00F9B3EE /* TestSubVC_SubVC.swift */,
 				04C2DC0126CE28BA00F9B3EE /* TestSubVC_SubVC2.swift */,
+				044CBA7027F587C100FA2CB8 /* TestSubVC_SubVC3.swift */,
 				04C2DC0326CE304700F9B3EE /* SubVC1_View.swift */,
 			);
 			path = "子VC的测试";
@@ -2028,6 +2034,7 @@
 				04870E4326E9AD280030B1D2 /* AAMarker.swift in Sources */,
 				042648E327F312A60034FF51 /* TestSDWebImage_VC.swift in Sources */,
 				0421E5F526A9701600C6A922 /* JFZ_VideoPlayerView.swift in Sources */,
+				044CBA7727F5A82A00FA2CB8 /* 测试文字的自适应高度.swift in Sources */,
 				04A0CA4A26A0027800ECAE1B /* String+md5Extension.swift in Sources */,
 				049EAFE526B7D85000903DA8 /* TouchDeliver_SubView.swift in Sources */,
 				049EAFE126B404AD00903DA8 /* TestGCD_VC.swift in Sources */,
@@ -2069,6 +2076,7 @@
 				04870E3D26E9AD280030B1D2 /* AAExtension.swift in Sources */,
 				04870E4926E9AD280030B1D2 /* AAPane.swift in Sources */,
 				049EAFD926B3E1A700903DA8 /* TestThread_VC.swift in Sources */,
+				044CBA7127F587C100FA2CB8 /* TestSubVC_SubVC3.swift in Sources */,
 				0421E61626AEA31B00C6A922 /* TestModalVC.swift in Sources */,
 				048480832785372400698106 /* 主测试Soryboard_VC.swift in Sources */,
 				0414F97C27BA48C50037EE70 /* TableView的contentInset与刷新_VC.swift in Sources */,

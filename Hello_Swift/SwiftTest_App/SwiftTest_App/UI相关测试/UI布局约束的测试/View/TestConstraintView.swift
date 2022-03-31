@@ -45,7 +45,7 @@ class TestConstraintView: UIView {
     //MARK: 添加顺序：6、frame发生改变，UIKit才会调用该方法
     override func layoutSubviews() {
         super.layoutSubviews()
-        print(" TestConstraintView 的 layoutSubviews方法")
+        print(" TestConstraintView 的 \(#function) 方法")
         print(" TestConstraintView frame: \(self.frame)")
         for cons in self.constraints {
             print("TestConstraintView constraints : \(cons)")
@@ -61,7 +61,7 @@ class TestConstraintView: UIView {
     //MARK:
     override func removeFromSuperview(){
         super.removeFromSuperview()
-        print(" TestConstraintView removeFromSuperview")
+        print(" TestConstraintView \(#function) 方法～")
     }
     override func insertSubview(_ view: UIView, at index: Int) {
         super.insertSubview(view, at: index)
@@ -69,38 +69,38 @@ class TestConstraintView: UIView {
        
     override func exchangeSubview(at index1: Int, withSubviewAt index2: Int) {
         super.exchangeSubview(at: index1, withSubviewAt: index2)
-        print(" TestConstraintView exchangeSubview")
+        print(" TestConstraintView \(#function) 方法～")
     }
 
     override func addSubview(_ view: UIView) {
         super.addSubview(view)
-        print(" TestConstraintView addSubview")
+        print(" TestConstraintView \(#function) 方法～")
     }
     override func insertSubview(_ view: UIView, belowSubview siblingSubview: UIView) {
         super.insertSubview(view, belowSubview: siblingSubview)
-        print(" TestConstraintView insertSubview")
+        print(" TestConstraintView \(#function) ")
     }
     override func insertSubview(_ view: UIView, aboveSubview siblingSubview: UIView) {
         super.insertSubview(view, aboveSubview: siblingSubview)
-        print(" TestConstraintView insertSubview")
+        print(" TestConstraintView \(#function) 方法～")
     }
 
     override func bringSubviewToFront(_ view: UIView) {
         super.bringSubviewToFront(view)
-        print(" TestConstraintView bringSubviewToFront")
+        print(" TestConstraintView \(#function) 方法～")
     }
     override func sendSubviewToBack(_ view: UIView) {
         super.sendSubviewToBack(view)
-        print(" TestConstraintView sendSubviewToBack")
+        print(" TestConstraintView \(#function) 方法～")
     }
 
     override func didAddSubview(_ subview: UIView) {
         super.didAddSubview(subview)
-        print(" TestConstraintView didAddSubview")
+        print(" TestConstraintView \(#function) 方法～")
     }
     override func willRemoveSubview(_ subview: UIView) {
         super.willRemoveSubview(subview)
-        print(" TestConstraintView willRemoveSubview ")
+        print(" TestConstraintView \(#function)  方法～")
     }
 
     
@@ -119,23 +119,23 @@ class TestConstraintView: UIView {
     // Allows you to perform layout before the drawing cycle happens. -layoutIfNeeded forces layout early
     override func setNeedsLayout() {
         super.setNeedsLayout()
-        print(" TestConstraintView setNeedsLayout")
+        print(" TestConstraintView \(#function) 方法～")
     }
 
     override func layoutIfNeeded() {
         super.layoutIfNeeded()
-        print(" TestConstraintView layoutIfNeeded")
+        print(" TestConstraintView \(#function) 方法～")
     }
     
     
     override func layoutMarginsDidChange() {
         super.layoutMarginsDidChange()
-        print(" TestConstraintView layoutMarginsDidChange")
+        print(" TestConstraintView \(#function) 方法～")
     }
     
     override func safeAreaInsetsDidChange() {
         super.safeAreaInsetsDidChange()
-        print(" TestConstraintView safeAreaInsetsDidChange")
+        print(" TestConstraintView \(#function) 方法～")
     }
 }
 

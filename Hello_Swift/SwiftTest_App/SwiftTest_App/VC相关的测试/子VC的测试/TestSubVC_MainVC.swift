@@ -72,7 +72,11 @@ extension TestSubVC_MainVC: UICollectionViewDataSource {
                 make.left.equalToSuperview().offset(100)
             }
         case 2:
-            print("     (@@")
+            //TODO: 测试VC重写初始化方法
+            print("     (@@ 测试VC重写初始化方法")
+            let subVC3 = TestSubVC_SubVC3()
+            subVC3.view.backgroundColor = .brown
+            self.pushNext(viewController: subVC3)
         case 3:
             print("     (@@")
         case 4:
