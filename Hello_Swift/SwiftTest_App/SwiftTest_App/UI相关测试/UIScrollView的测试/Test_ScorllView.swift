@@ -33,14 +33,24 @@ extension Test_ScorllView{
     }
 }
 
-//MARK: -
-extension Test_ScorllView{
+//MARK: - 遵循UIScrollViewDelegate协议。
+extension Test_ScorllView:UIScrollViewDelegate {
+    
+    //正在滑动
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("Test_ScorllView 的 \(#function) 方法")
+    }
     
 }
 
-//MARK: -
-extension Test_ScorllView{
+//MARK: - 遵循UIGestureRecognizerDelegate协议，处理多手势冲突
+extension Test_ScorllView: UIGestureRecognizerDelegate{
     
+    /// 处理多手势冲突
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        print("Test_ScorllView 的 \(#function) 方法～")
+        return true
+    }
 }
 
 //MARK: -

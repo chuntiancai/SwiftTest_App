@@ -16,7 +16,7 @@ class MainViewController: UIViewController {
     
     
     //MARK: 内部属性
-    private var collDataArr = ["公共测试","公共测试2","数据处理","音视频播放","UI相关测试","多线程相关测试","VC相关测试","网络相关测试"]
+    private var collDataArr = ["公共测试","公共测试1","公共测试2","公共测试3","公共测试4","公共测试5","公共测试6","公共测试7"]
     
     ///UI组件
     private var baseCollView: UICollectionView!
@@ -41,13 +41,13 @@ extension MainViewController: UICollectionViewDataSource {
         print("MainViewController点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            pushNext(viewController: TestUILabel_VC())
+            pushNext(viewController: TestUIScrollView_VC())
         case 1:
             self.navigationItem.backBarButtonItem = nil
-            pushNext(viewController: TestThread_VC())
+            pushNext(viewController: TestImageView_VC())
             break
         case 2:
-            pushNext(viewController: TestUIView_VC())
+            pushNext(viewController: TestTableView_VC())
             break
         case 3:
             //TODO: 3、音视频相关测试

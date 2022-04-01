@@ -96,7 +96,7 @@ extension DragTouch_View{
         UITouch的属性：touch所在的window、view、tapCount(点击次数)、timestamp(产生时间或更新时间)
         UITouch的方法：location(in view: UIView?)当前触摸的点位置，previousLocation(in view: UIView?)上一个触摸的点的位置。
     
-    2、UITouch只关心触摸点的位置，并不关心所在view的位置，它与所在view时独立管理的各自的。
+    2、UITouch只关心触摸点的位置，并不关心所在view的位置，它与所在view是独立管理的各自的。
         因为UITouch对象的参考点位置是参考手机硬件的，只是UIKit提供了方法，可以把触摸点的位置转化为相关的view或者window中的坐标系。
 
  */

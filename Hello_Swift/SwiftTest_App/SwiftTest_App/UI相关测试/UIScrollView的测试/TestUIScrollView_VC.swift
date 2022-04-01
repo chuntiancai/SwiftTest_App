@@ -19,13 +19,16 @@ class TestUIScrollView_VC: UIViewController {
     var testScrollView = Test_ScorllView()
     var scrollDelegate = TestScrollView_deleagate()
     var imgView = UIImageView()
+    var btnScroView = MultiBtns_ScrollView()    //横向滑动按钮
+    var viewScroView = MultiViews_ScrollView()    //横向滑动View
+    var curTestIndex:Int = 0    //用于测试的暂时索引
     
     let pageIndicator = UIPageControl() // 显示页数小圆点
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 199/255.0, green: 204/255.0, blue: 237/255.0, alpha: 1.0)
-        self.title = "测试功能"
+        self.title = "测试UIScrollView的VC"
         
         setNavigationBarUI()
         setCollectionViewUI()
@@ -66,9 +69,17 @@ extension TestUIScrollView_VC: UICollectionViewDataSource {
             if testScrollView.contentSize.width != 300 * 6 {
                 imgView.removeFromSuperview()
                 ///设置scrollView的contentSize的height为0，则表示竖直方向不可以滚动，同理可得水平方向。
-                testScrollView.contentSize = CGSize(width: 300 * 6, height: 200)
+                testScrollView.contentSize = CGSize(width: 300 * 7, height: 0)
                 /// 这个会根据contentSize和scrollView的frame进行计算，分多少页，然后滑动起来就有分页的效果。
                 testScrollView.isPagingEnabled = true
+                
+                testScrollView.snp.remakeConstraints { make in
+                    make.top.equalTo(baseCollView.snp.bottom).offset(20)
+                    make.height.equalTo(400)
+                    make.width.equalTo(300)
+                    make.centerX.equalToSuperview()
+                }
+                
                 for index in 1 ... 6 {
                     let img = UIImage(named: "labi0\(index)")
                     let imgView = UIImageView(image: img)
@@ -76,6 +87,11 @@ extension TestUIScrollView_VC: UICollectionViewDataSource {
                     testScrollView.addSubview(imgView)
                     imgView.frame = CGRect.init(x: 300 * (index - 1), y: 0, width: 300, height: 200)
                 }
+                
+                let vc = TestTableView_VC()
+                self.addChild(vc)
+                testScrollView.addSubview(vc.view)
+                vc.view.frame = CGRect.init(x: 300 * 6, y: 0, width: 300, height: 800)
                 
                 /// 显示页数小圆点
                 pageIndicator.tag = 1010
@@ -104,12 +120,36 @@ extension TestUIScrollView_VC: UICollectionViewDataSource {
             testScrollView.contentOffset = CGPoint.init(x: 300 * pageIndicator.currentPage, y: 0)
             
         case 3:
-            //TODO: 3、
-            print("     (@@ ")
+            //TODO: 3、测试自定义的滑动按钮scrollView
+            print("     (@@ 测试自定义的滑动按钮scrollView")
+            hideOtherView(curView: btnScroView)
+            btnScroView.btnTitleArr = ["按钮标题","按钮标题题","按钮标题题题","按钮标题题题题","按钮标题题题题题","按钮标题","按钮标题","按钮标题题题题题题"]
+            
+        case 4:
+            //TODO: 4、测试增加按钮的标题
+            print("     (@@")
+            btnScroView.btnTitleArr = ["按钮","按钮标","按钮标题题题","按钮钮标题","按钮钮钮钮钮钮钮钮钮标题题题题题"]
         case 5:
-            print("     (@@")
+            //TODO: 5、 测试外部设置的滑动按钮的效果
+            print("     (@@ 测试外部设置的滑动按钮的效果")
+            if curTestIndex < btnScroView.btnTitleArr.count - 1 {
+                curTestIndex += 1
+            }else{
+                curTestIndex = 0
+            }
+            btnScroView.curBtnIndex = curTestIndex
         case 6:
-            print("     (@@")
+            //TODO: 6、测试只能横向滑动的含多个view的scrollView
+            print("     (@@ 测试只能横向滑动的含多个view的scrollView")
+            let vcArr = [TestTableView_VC(),TestImageView_VC(),TestGesture_VC(),TestModal_VC(),TestUIView_VC()]
+            var viewArr = [UIView]()
+            for vc in vcArr {
+                self.addChild(vc)
+                viewArr.append(vc.view)
+            }
+            hideOtherView(curView: viewScroView)
+            
+            viewScroView.viewsArr = viewArr
         case 7:
             print("     (@@")
         case 8:
@@ -131,10 +171,7 @@ extension TestUIScrollView_VC: UICollectionViewDataSource {
 //MARK: - 测试的方法
 extension TestUIScrollView_VC{
    
-    //MARK: 0、
-    func test0(){
-        
-    }
+   
     //MARK: 1、
     func test1(){
         
@@ -143,7 +180,14 @@ extension TestUIScrollView_VC{
     func test2(){
         
     }
-    
+    /// 隐藏其他的view
+    func hideOtherView(curView:UIView?){
+        for subV in self.view.subviews {
+            subV.isHidden = true
+        }
+        curView?.isHidden = false
+        baseCollView.isHidden = false
+    }
 }
 
 
@@ -165,6 +209,30 @@ extension TestUIScrollView_VC{
             make.top.equalTo(baseCollView.snp.bottom).offset(20)
             make.height.equalTo(200)
             make.width.equalTo(300)
+            make.centerX.equalToSuperview()
+        }
+        
+        /// 横向滑动按钮的scrollView
+        btnScroView.isHidden = true
+        btnScroView.layer.borderWidth = 1.0
+        btnScroView.layer.borderColor = UIColor.cyan.cgColor
+        self.view.addSubview(btnScroView)
+        btnScroView.snp.makeConstraints { make in
+            make.top.equalTo(baseCollView.snp.bottom).offset(20)
+            make.height.equalTo(80)
+            make.width.equalToSuperview().multipliedBy(0.8)
+            make.centerX.equalToSuperview()
+        }
+        
+        /// 横向滑动View的scrollView
+        viewScroView.isHidden = true
+        viewScroView.layer.borderWidth = 1.0
+        viewScroView.layer.borderColor = UIColor.cyan.cgColor
+        self.view.addSubview(viewScroView)
+        viewScroView.snp.makeConstraints { make in
+            make.top.equalTo(baseCollView.snp.bottom).offset(20)
+            make.height.equalTo(400)
+            make.width.equalToSuperview().multipliedBy(0.8)
             make.centerX.equalToSuperview()
         }
     }
@@ -243,6 +311,7 @@ extension TestUIScrollView_VC: UICollectionViewDelegate {
         
     }
 }
+
 
 // MARK: - 笔记
 /**

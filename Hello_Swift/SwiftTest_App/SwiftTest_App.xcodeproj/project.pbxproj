@@ -101,6 +101,9 @@
 		042648EF27F4462A0034FF51 /* TestNSCache_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042648EE27F4462A0034FF51 /* TestNSCache_VC.swift */; };
 		044CBA7127F587C100FA2CB8 /* TestSubVC_SubVC3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBA7027F587C100FA2CB8 /* TestSubVC_SubVC3.swift */; };
 		044CBA7727F5A82A00FA2CB8 /* 测试文字的自适应高度.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBA7627F5A82A00FA2CB8 /* 测试文字的自适应高度.swift */; };
+		044CBA7927F68EDC00FA2CB8 /* MultiBtns_ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBA7827F68EDC00FA2CB8 /* MultiBtns_ScrollView.swift */; };
+		044CBA7B27F6908200FA2CB8 /* TestScrollView.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 044CBA7A27F6908200FA2CB8 /* TestScrollView.xcassets */; };
+		044CBA7D27F6D6F000FA2CB8 /* MultiViews_ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBA7C27F6D6F000FA2CB8 /* MultiViews_ScrollView.swift */; };
 		044FB587276735BE00479442 /* TextField的点击测试(键盘弹起)_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FB586276735BE00479442 /* TextField的点击测试(键盘弹起)_View.swift */; };
 		0454A48E272FCA5600EFE31A /* 测试tableview的delegate顺序_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454A48D272FCA5600EFE31A /* 测试tableview的delegate顺序_VC.swift */; };
 		0454A4912731097E00EFE31A /* TestNavibar_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454A4902731097E00EFE31A /* TestNavibar_VC.swift */; };
@@ -375,6 +378,9 @@
 		042648EE27F4462A0034FF51 /* TestNSCache_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNSCache_VC.swift; sourceTree = "<group>"; };
 		044CBA7027F587C100FA2CB8 /* TestSubVC_SubVC3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSubVC_SubVC3.swift; sourceTree = "<group>"; };
 		044CBA7627F5A82A00FA2CB8 /* 测试文字的自适应高度.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试文字的自适应高度.swift"; sourceTree = "<group>"; };
+		044CBA7827F68EDC00FA2CB8 /* MultiBtns_ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiBtns_ScrollView.swift; sourceTree = "<group>"; };
+		044CBA7A27F6908200FA2CB8 /* TestScrollView.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestScrollView.xcassets; sourceTree = "<group>"; };
+		044CBA7C27F6D6F000FA2CB8 /* MultiViews_ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiViews_ScrollView.swift; sourceTree = "<group>"; };
 		044FB586276735BE00479442 /* TextField的点击测试(键盘弹起)_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField的点击测试(键盘弹起)_View.swift"; sourceTree = "<group>"; };
 		0454A487272AA2FF00EFE31A /* Swift语法备忘录.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Swift语法备忘录.md"; sourceTree = "<group>"; };
 		0454A48D272FCA5600EFE31A /* 测试tableview的delegate顺序_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试tableview的delegate顺序_VC.swift"; sourceTree = "<group>"; };
@@ -621,7 +627,10 @@
 				041A2E252794038F00F9CABF /* TestUIScrollView_VC.swift */,
 				041A2E272794041000F9CABF /* Test_ScorllView.swift */,
 				0492700727941D73000A61FC /* TestScrollView_deleagate.swift */,
+				044CBA7827F68EDC00FA2CB8 /* MultiBtns_ScrollView.swift */,
+				044CBA7C27F6D6F000FA2CB8 /* MultiViews_ScrollView.swift */,
 				041A2E29279405A500F9CABF /* TestScrollView.xib */,
+				044CBA7A27F6908200FA2CB8 /* TestScrollView.xcassets */,
 			);
 			path = "UIScrollView的测试";
 			sourceTree = "<group>";
@@ -1913,6 +1922,7 @@
 				041CBC452788272400AF9B05 /* labi.bundle in Resources */,
 				AF2C735925539C60000AD7A9 /* Assets.xcassets in Resources */,
 				041CBC412788206500AF9B05 /* labi006.jpg in Resources */,
+				044CBA7B27F6908200FA2CB8 /* TestScrollView.xcassets in Resources */,
 				AF2C735725539C54000AD7A9 /* Main.storyboard in Resources */,
 				049270102796CCC4000A61FC /* TestTableView.storyboard in Resources */,
 				041CBC53278D666800AF9B05 /* NamePlistFile.plist in Resources */,
@@ -2006,6 +2016,7 @@
 				0414F99127C33E570037EE70 /* TestBugly_VC.swift in Sources */,
 				04A0CA4726A0027800ECAE1B /* JFZAudioPlayView.swift in Sources */,
 				04870E3426E9AD280030B1D2 /* AAChartView.swift in Sources */,
+				044CBA7D27F6D6F000FA2CB8 /* MultiViews_ScrollView.swift in Sources */,
 				0414F98227BC940A0037EE70 /* Quartz_View.swift in Sources */,
 				049EAFF726C25E9700903DA8 /* JFZ_AVAsset.swift in Sources */,
 				0421E5F326A9701600C6A922 /* JFZVideoControlPanelView.swift in Sources */,
@@ -2107,6 +2118,7 @@
 				04CBB62E26CA497C00436C0E /* TestTableView_SubView.swift in Sources */,
 				04587C8727B643AF00824F69 /* TestDragTouch_VC.swift in Sources */,
 				04870E4726E9AD280030B1D2 /* AAScrollablePlotArea.swift in Sources */,
+				044CBA7927F68EDC00FA2CB8 /* MultiBtns_ScrollView.swift in Sources */,
 				04587C7427B4E5FE00824F69 /* Arch_Person.swift in Sources */,
 				04A0CA5126A0027800ECAE1B /* JFZMediaCryptor.swift in Sources */,
 				049EAFF226C0CE6900903DA8 /* TestNSOperation_VC.swift in Sources */,

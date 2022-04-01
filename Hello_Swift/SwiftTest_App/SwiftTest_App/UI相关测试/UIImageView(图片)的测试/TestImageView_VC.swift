@@ -116,6 +116,9 @@ extension TestImageView_VC: UICollectionViewDataSource {
             
         case 6:
             //TODO: 6、UIImageView只显示部分图片，测试图片重叠动画
+            /**
+             turnImgV2.layer.contentsRect
+             */
             print("     (@@ UIImageView只显示部分图片。图片重叠")
             imgView1.isHidden = true
             turnImgV.isHidden = false

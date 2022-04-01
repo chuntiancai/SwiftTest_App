@@ -654,8 +654,8 @@
             filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/UIScrollView&#x7684;&#x6d4b;&#x8bd5;/TestUIScrollView_VC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
             <Locations>
@@ -734,8 +734,8 @@
             filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/UIScrollView&#x7684;&#x6d4b;&#x8bd5;/TestUIScrollView_VC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -846,8 +846,8 @@
             filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/UIImageView(&#x56fe;&#x7247;)&#x7684;&#x6d4b;&#x8bd5;/TestImageView_VC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
             landmarkName = "panImgAction(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -993,6 +993,22 @@
             startingLineNumber = "45"
             endingLineNumber = "45"
             landmarkName = "layoutSubviews()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "96B1819E-A908-483E-83E6-D45C2F7C76C9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/UIScrollView&#x7684;&#x6d4b;&#x8bd5;/TestUIScrollView_VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
+            landmarkName = "hideOtherView(curView:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
