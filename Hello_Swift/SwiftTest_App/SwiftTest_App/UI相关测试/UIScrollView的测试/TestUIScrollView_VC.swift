@@ -141,17 +141,33 @@ extension TestUIScrollView_VC: UICollectionViewDataSource {
         case 6:
             //TODO: 6、测试只能横向滑动的含多个view的scrollView
             print("     (@@ 测试只能横向滑动的含多个view的scrollView")
-            let vcArr = [TestTableView_VC(),TestImageView_VC(),TestGesture_VC(),TestModal_VC(),TestUIView_VC()]
-            var viewArr = [UIView]()
-            for vc in vcArr {
-                self.addChild(vc)
-                viewArr.append(vc.view)
+            var viewArr = [UIView]();
+            
+//            let vcArr = [TestTableView_VC(),TestImageView_VC(),TestGesture_VC(),TestModal_VC(),TestUIView_VC()]
+//            for vc in vcArr {
+//                self.addChild(vc)
+//                viewArr.append(vc.view)
+//            }
+            
+            for index in 1 ... 6 {
+                let img = UIImage(named: "labi0\(index)")
+                let imgView = UIImageView(image: img)
+                imgView.frame = CGRect.init(x: 300 * (index - 1), y: 0, width: 300, height: 200)
+                viewArr.append(imgView)
             }
+            
             hideOtherView(curView: viewScroView)
             
             viewScroView.viewsArr = viewArr
         case 7:
-            print("     (@@")
+            //TODO: 7、测试外部设置滑动view的效果
+            print("     (@@ 测试外部设置滑动view的效果")
+            if curTestIndex < viewScroView.viewsArr.count - 1 {
+                curTestIndex += 1
+            }else{
+                curTestIndex = 0
+            }
+            viewScroView.curViewIndex = curTestIndex
         case 8:
             print("     (@@")
         case 9:

@@ -1006,10 +1006,26 @@
             filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/UIScrollView&#x7684;&#x6d4b;&#x8bd5;/TestUIScrollView_VC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
             landmarkName = "hideOtherView(curView:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "52FFF18C-B9B9-43AC-9881-47BD4F886C1F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/UIScrollView&#x7684;&#x6d4b;&#x8bd5;/MultiViews_ScrollView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "viewsArr"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

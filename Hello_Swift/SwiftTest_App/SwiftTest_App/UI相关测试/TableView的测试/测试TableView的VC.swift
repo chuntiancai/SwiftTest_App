@@ -268,6 +268,10 @@ extension TestTableView_VC {
         baseCollView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CollectionView_Cell_ID")
         
         self.view.addSubview(baseCollView)
+        baseCollView.snp.makeConstraints { make in
+            make.top.left.width.equalToSuperview()
+            make.height.equalTo(200)
+        }
         
     }
 }
