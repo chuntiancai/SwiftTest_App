@@ -265,6 +265,7 @@
 		AF2C735725539C54000AD7A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF2C735525539C54000AD7A9 /* Main.storyboard */; };
 		AF2C735925539C60000AD7A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF2C735825539C60000AD7A9 /* Assets.xcassets */; };
 		AF2C735C25539C60000AD7A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF2C735A25539C60000AD7A9 /* LaunchScreen.storyboard */; };
+		EB5C881427FC2EA200655119 /* 位移枚举.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C881327FC2EA200655119 /* 位移枚举.swift */; };
 		EB645E3F26A449AE00773A98 /* tempView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645E3E26A449AE00773A98 /* tempView.swift */; };
 /* End PBXBuildFile section */
 
@@ -549,6 +550,7 @@
 		AF2C735D25539C60000AD7A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB6AAD3455F9D2C8F661C07D /* Pods-SwiftTest_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTest_App.debug.xcconfig"; path = "Target Support Files/Pods-SwiftTest_App/Pods-SwiftTest_App.debug.xcconfig"; sourceTree = "<group>"; };
 		C4C06FA2172551275C4FCEE6 /* Pods_SwiftTest_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftTest_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB5C881327FC2EA200655119 /* 位移枚举.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "位移枚举.swift"; sourceTree = "<group>"; };
 		EB645E3E26A449AE00773A98 /* tempView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempView.swift; sourceTree = "<group>"; };
 		FFFA356333D985ADCDBF1FEB /* Pods-SwiftTest_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTest_App.release.xcconfig"; path = "Target Support Files/Pods-SwiftTest_App/Pods-SwiftTest_App.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1175,6 +1177,7 @@
 			isa = PBXGroup;
 			children = (
 				0474C25827D8535200B95D7C /* TestEnum_VC.swift */,
+				EB5C881327FC2EA200655119 /* 位移枚举.swift */,
 			);
 			path = "枚举的使用";
 			sourceTree = "<group>";
@@ -2088,6 +2091,7 @@
 				04870E4926E9AD280030B1D2 /* AAPane.swift in Sources */,
 				049EAFD926B3E1A700903DA8 /* TestThread_VC.swift in Sources */,
 				044CBA7127F587C100FA2CB8 /* TestSubVC_SubVC3.swift in Sources */,
+				EB5C881427FC2EA200655119 /* 位移枚举.swift in Sources */,
 				0421E61626AEA31B00C6A922 /* TestModalVC.swift in Sources */,
 				048480832785372400698106 /* 主测试Soryboard_VC.swift in Sources */,
 				0414F97C27BA48C50037EE70 /* TableView的contentInset与刷新_VC.swift in Sources */,

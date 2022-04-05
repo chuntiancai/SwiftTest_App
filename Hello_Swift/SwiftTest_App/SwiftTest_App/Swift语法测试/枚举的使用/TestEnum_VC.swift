@@ -38,9 +38,10 @@ extension TestEnum_VC: UICollectionViewDataSource {
         print("点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            //TODO: 0、
-            print("     (@@  ")
-            
+            //TODO: 0、测试位移枚举
+            print("     (@@  测试位移枚举 ")
+            let direction:directionType = [.left,.right]
+            print("方向：\(direction)")
             break
         case 1:
             //TODO: 1、
@@ -171,6 +172,7 @@ extension TestEnum_VC: UICollectionViewDelegate {
 
 // MARK: - 笔记
 /**
- 
+    1、位移枚举可以使用 与、或、非 这些逻辑运算符，关键是位移枚举的定义写法。
+    
  */
 

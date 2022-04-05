@@ -311,6 +311,7 @@ extension TestSDWebImage_VC: UICollectionViewDelegate {
 
 // MARK: - 笔记
 /**
-    1、SDWebImage是一个OC写的库，但是swift仍然可以使用，因为还有人在维护，它暴露了桥接头文件。首先引入库的头文件 import SDWebImage
+    1、SDWebImage是一个OC写的库，但是swift仍然可以使用，因为还有人在维护，它暴露了桥接头文件。首先引入库的头文件 import SDWebImage.
+    2、SDWebImage的缓存处理是，自己创建一个bundle文件，把下载的图片放在该文件里面。
  */
 

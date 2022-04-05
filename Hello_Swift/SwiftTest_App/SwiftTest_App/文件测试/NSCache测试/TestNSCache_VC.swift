@@ -16,6 +16,8 @@ class TestNSCache_VC: UIViewController {
     private var baseCollView: UICollectionView!
     
     //MARK: 测试组件
+    private var cache = NSCache<AnyObject, AnyObject>()  //测试缓存的类
+    private var imgView = UIImageView() //展示缓存图片的imgview
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,15 +40,42 @@ extension TestNSCache_VC: UICollectionViewDataSource {
         print("点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            //TODO: 0、
-            print("     (@@  ")
+            //TODO: 0、添加数据进缓存
+            print("     (@@  添加数据进缓存")
+            for i in 0...6 {
+                let img = UIImage(named: "labi0\(i)")
+                if let imgData = img?.jpegData(compressionQuality: 1) {
+                    cache.setObject(imgData as AnyObject, forKey: "labi00\(i)" as AnyObject)
+                    print("存数据--labi0\(i) --大小：\(MemoryLayout.size(ofValue: imgData))")
+                }
+            }
+            
             break
         case 1:
-            //TODO: 1、
-            print("     (@@ ")
+            //TODO: 1、检查缓存
+            print("     (@@ 检查缓存")
+            let opQue = OperationQueue()
+            opQue.maxConcurrentOperationCount = 1
+            opQue.addOperation {
+                [weak self] in
+                for i in 0...6 {
+                    if let imgData = self?.cache.object(forKey: "labi00\(i)" as AnyObject) as? Data {
+                        print("缓存BLock--:\(Thread.current)")
+                        let img = UIImage(data: imgData)
+                        OperationQueue.main.addOperation {
+                            self?.imgView.image = img
+                        }
+                        sleep(2)    //睡眠2秒
+                    }else {
+                        print("labi00\(i)资源不存在")
+                    }
+                }
+            }
+            
         case 2:
-            //TODO: 2、
-            print("     (@@ ")
+            //TODO: 2、清除缓存
+            print("     (@@ 清除缓存")
+            cache.removeAllObjects()
         case 3:
             //TODO: 3、
             print("     (@@ ")
@@ -74,14 +103,13 @@ extension TestNSCache_VC: UICollectionViewDataSource {
     }
     
 }
-//MARK: - 测试的方法
-extension TestNSCache_VC{
+//MARK: - 遵循NSCacheDelegate协议
+extension TestNSCache_VC:NSCacheDelegate{
    
-    //MARK: 0、
-    func test0(){
-        
+    //TODO: 即将回收对象时，会调用该方法
+    func cache(_ cache: NSCache<AnyObject, AnyObject>, willEvictObject obj: Any) {
+        print("将要回收的对象是：\(obj) --大小：\(MemoryLayout.size(ofValue: obj))")
     }
-    
 }
 
 
@@ -90,6 +118,21 @@ extension TestNSCache_VC{
     
     /// 初始化你要测试的view
     func initTestViewUI(){
+        
+        //TODO: 初始化NSCache类，设置属性。
+        cache.totalCostLimit = 5    //成本，内存不够，会删除掉之前的缓存对象，先进后出
+        cache.countLimit = 5    //存的对象个数。
+        cache.delegate = self   //代理
+        
+        self.view.addSubview(imgView)
+        imgView.layer.borderWidth = 1.0
+        imgView.layer.borderColor = UIColor.brown.cgColor
+        imgView.snp.makeConstraints { make in
+            make.top.equalTo(baseCollView.snp.bottom).offset(20)
+            make.width.equalTo(350)
+            make.height.equalTo(300)
+            make.centerX.equalToSuperview()
+        }
         
     }
     
@@ -169,5 +212,8 @@ extension TestNSCache_VC: UICollectionViewDelegate {
 
 // MARK: - 笔记
 /**
- 
+    1、NSCache是苹果提供的专门管理缓存的缓存类，当内存很低的时候，NSCache会自动释放，NSCache是线程安全的，NSCache的Key对Value对象是强引用，而而不是copy。所以Value对象只会被存一次，因为是保留了强引用。
+    2、NSCache的主要属性是：name:名字,delegate：代理,totalCostLimit：最大容量,countLimit：最大对象个数。
+    3、NSCache的使用和字典差不多，只是多了内存管理机制。
+    4、内存不够，会回收掉之前的缓存对象，先进后出
  */
