@@ -48,6 +48,7 @@
 		041CBC56278D850200AF9B05 /* 测试xib的VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CBC55278D850200AF9B05 /* 测试xib的VC.swift */; };
 		041CBC58278D858300AF9B05 /* TestXibFile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041CBC57278D858300AF9B05 /* TestXibFile.xib */; };
 		041CBC5B279000A700AF9B05 /* TestImageView_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CBC5A279000A700AF9B05 /* TestImageView_VC.swift */; };
+		041D5D4E27FD336C00446FDF /* TestSnapkit_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041D5D4D27FD336C00446FDF /* TestSnapkit_VC.swift */; };
 		042036A72742512F00424E05 /* TestUILabel_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042036A62742512F00424E05 /* TestUILabel_VC.swift */; };
 		042036AA2742550E00424E05 /* 测试cell里面label的自适应高度_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042036A92742550E00424E05 /* 测试cell里面label的自适应高度_Cell.swift */; };
 		042036AC27425A2C00424E05 /* TableSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042036AB27425A2C00424E05 /* TableSectionHeader.swift */; };
@@ -107,6 +108,7 @@
 		044FB587276735BE00479442 /* TextField的点击测试(键盘弹起)_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FB586276735BE00479442 /* TextField的点击测试(键盘弹起)_View.swift */; };
 		0454A48E272FCA5600EFE31A /* 测试tableview的delegate顺序_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454A48D272FCA5600EFE31A /* 测试tableview的delegate顺序_VC.swift */; };
 		0454A4912731097E00EFE31A /* TestNavibar_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454A4902731097E00EFE31A /* TestNavibar_VC.swift */; };
+		0455059D27FDA9D900785F02 /* 测试TableView的布局约束.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455059C27FDA9D900785F02 /* 测试TableView的布局约束.swift */; };
 		04587C6F27B4BBB300824F69 /* TestUserDefault_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04587C6E27B4BBB300824F69 /* TestUserDefault_VC.swift */; };
 		04587C7227B4E58700824F69 /* TestArchives_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04587C7127B4E58700824F69 /* TestArchives_VC.swift */; };
 		04587C7427B4E5FE00824F69 /* Arch_Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04587C7327B4E5FE00824F69 /* Arch_Person.swift */; };
@@ -326,6 +328,7 @@
 		041CBC55278D850200AF9B05 /* 测试xib的VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试xib的VC.swift"; sourceTree = "<group>"; };
 		041CBC57278D858300AF9B05 /* TestXibFile.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestXibFile.xib; sourceTree = "<group>"; };
 		041CBC5A279000A700AF9B05 /* TestImageView_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestImageView_VC.swift; sourceTree = "<group>"; };
+		041D5D4D27FD336C00446FDF /* TestSnapkit_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSnapkit_VC.swift; sourceTree = "<group>"; };
 		042036A62742512F00424E05 /* TestUILabel_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUILabel_VC.swift; sourceTree = "<group>"; };
 		042036A92742550E00424E05 /* 测试cell里面label的自适应高度_Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试cell里面label的自适应高度_Cell.swift"; sourceTree = "<group>"; };
 		042036AB27425A2C00424E05 /* TableSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSectionHeader.swift; sourceTree = "<group>"; };
@@ -386,6 +389,7 @@
 		0454A487272AA2FF00EFE31A /* Swift语法备忘录.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Swift语法备忘录.md"; sourceTree = "<group>"; };
 		0454A48D272FCA5600EFE31A /* 测试tableview的delegate顺序_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试tableview的delegate顺序_VC.swift"; sourceTree = "<group>"; };
 		0454A4902731097E00EFE31A /* TestNavibar_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNavibar_VC.swift; sourceTree = "<group>"; };
+		0455059C27FDA9D900785F02 /* 测试TableView的布局约束.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试TableView的布局约束.swift"; sourceTree = "<group>"; };
 		04587C6E27B4BBB300824F69 /* TestUserDefault_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserDefault_VC.swift; sourceTree = "<group>"; };
 		04587C7127B4E58700824F69 /* TestArchives_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestArchives_VC.swift; sourceTree = "<group>"; };
 		04587C7327B4E5FE00824F69 /* Arch_Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arch_Person.swift; sourceTree = "<group>"; };
@@ -888,6 +892,7 @@
 		0421E5FB26AAAEBF00C6A922 /* UI布局约束的测试 */ = {
 			isa = PBXGroup;
 			children = (
+				041D5D4D27FD336C00446FDF /* TestSnapkit_VC.swift */,
 				0421E60426AAB30100C6A922 /* UITestConstranitVC.swift */,
 				0492700B27956C9C000A61FC /* Test_UIConstraint.storyboard */,
 				0421E60826AAB4E100C6A922 /* View */,
@@ -1703,6 +1708,7 @@
 		04CBB62726CA477200436C0E /* TableView的测试 */ = {
 			isa = PBXGroup;
 			children = (
+				0455059C27FDA9D900785F02 /* 测试TableView的布局约束.swift */,
 				0414F97B27BA48C50037EE70 /* TableView的contentInset与刷新_VC.swift */,
 				0492700D2796C60D000A61FC /* 测试TableView的VC.swift */,
 				04CBB62826CA47AD00436C0E /* 测试TableView闭包循环引用_VC.swift */,
@@ -2099,6 +2105,7 @@
 				042036D0275862E000424E05 /* ColllectionView的Cell.swift in Sources */,
 				04A0CA4526A0027800ECAE1B /* JFZAccelerationTipsView.swift in Sources */,
 				651C71492609EB870066C13B /* FileTest_VC.swift in Sources */,
+				041D5D4E27FD336C00446FDF /* TestSnapkit_VC.swift in Sources */,
 				04587C7F27B50BD500824F69 /* Tabar_SubVC4.swift in Sources */,
 				04870E3526E9AD280030B1D2 /* AAChartModel.swift in Sources */,
 				04A0CA4026A0027800ECAE1B /* JFZEndPlayView.swift in Sources */,
@@ -2199,6 +2206,7 @@
 				0421E61A26AEA3DF00C6A922 /* VCTestModalFuncVC.swift in Sources */,
 				AF2C735425539C54000AD7A9 /* MainViewController.swift in Sources */,
 				04870E4526E9AD280030B1D2 /* AAPlotOptions.swift in Sources */,
+				0455059D27FDA9D900785F02 /* 测试TableView的布局约束.swift in Sources */,
 				04A0CA3B26A0027800ECAE1B /* JFZPlayerCommonConfig.swift in Sources */,
 				041A2E282794041000F9CABF /* Test_ScorllView.swift in Sources */,
 				651C71502609EDFF0066C13B /* DataTestVC.swift in Sources */,

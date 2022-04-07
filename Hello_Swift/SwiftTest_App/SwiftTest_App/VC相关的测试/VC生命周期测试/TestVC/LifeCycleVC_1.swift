@@ -10,6 +10,9 @@
 import UIKit
 
 class LifeCycleVC_1: UIViewController {
+    
+    //测试UI
+    let redBtn = UIButton()
 
     
     //MARK: 顺序0， 去寻找nib文件
@@ -46,7 +49,16 @@ class LifeCycleVC_1: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("顺序4，LifeCycleVC_1 的 \(#function)方法 -- \(self.view)")
-        self.title = "被测试生命周期的VC"
+        self.title = "LifeCycleVC_1"
+        self.view.backgroundColor = .brown
+        redBtn.addTarget(self, action: #selector(clickRedBtn(_:)), for: .touchUpInside)
+        redBtn.backgroundColor = .red
+        self.view.addSubview(redBtn)
+        redBtn.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.height.width.equalTo(60)
+        }
+        
     }
     
     //MARK: 顺序4，当作为别人儿子时，会调用该方法，询问是不是作为presentedViewController，还是作为儿子
@@ -169,6 +181,7 @@ class LifeCycleVC_1: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         print("LifeCycleVC_1 的 \(#function)方法")
         super.viewDidDisappear(animated)
+        print("LifeCycleVC_1 的 测滑手势：\(self.navigationController?.interactivePopGestureRecognizer?.state)")
     }
 
     override func didReceiveMemoryWarning(){
@@ -267,3 +280,16 @@ class LifeCycleVC_1: UIViewController {
     
 
 }
+
+@objc extension LifeCycleVC_1{
+    
+    func clickRedBtn(_ sender:UIButton){
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+}
+
+//MARK: - 笔记
+/**
+    1、如果vc是栈中间的VC，那么直接poptoroot时，栈中间的VC的viewDidDisappear这些方法不会被调用。被pop和push时，vc的这些viewDidDisappear方法会被调用，然后测滑手势也会调用这些方法。
+ */

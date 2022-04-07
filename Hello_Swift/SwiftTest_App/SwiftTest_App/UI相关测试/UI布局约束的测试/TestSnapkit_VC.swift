@@ -1,13 +1,13 @@
 //
-//  tempVC.swift
+//  TestSnapkit_VC.swift
 //  SwiftTest_App
 //
-//  Created by mathew2 on 2021/3/23.
-//  Copyright © 2021 com.mathew. All rights reserved.
+//  Created by mathew on 2022/4/6.
+//  Copyright © 2022 com.mathew. All rights reserved.
 //
-//测试的VC
+// 测试Snapkit的VC
 
-class tempVC: UIViewController {
+class TestSnapkit_VC: UIViewController {
     
     //MARK: 对外属性
     public var collDataArr = ["0、","1、","2、","3、","4、","5、","6、","7、","8、","9、","10、","11、","12、"]
@@ -16,11 +16,14 @@ class tempVC: UIViewController {
     private var baseCollView: UICollectionView!
     
     //MARK: 测试组件
-    
+    private let redView = UIView()
+    private let blueView = UIView()
+    private let brownView = UIView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 199/255.0, green: 204/255.0, blue: 237/255.0, alpha: 1.0)
-        self.title = "测试功能"
+        self.title = "测试Snapkit的VC"
         
         setNavigationBarUI()
         setCollectionViewUI()
@@ -33,19 +36,29 @@ class tempVC: UIViewController {
 
 
 //MARK: - 遵循数据源协议,UICollectionViewDataSource
-extension tempVC: UICollectionViewDataSource {
+extension TestSnapkit_VC: UICollectionViewDataSource {
     
     ///点击了cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            //TODO: 0、
-            print("     (@@  ")
+            //TODO: 0、测试Snpkit的约束
+            print("     (@@  隐藏redView")
+            redView.removeFromSuperview()
             break
         case 1:
             //TODO: 1、
-            print("     (@@ ")
+            print("     (@@ 添加redview")
+            self.view.addSubview(redView)
+            redView.snp.remakeConstraints { make in
+                make.top.equalTo(baseCollView.snp.bottom).offset(20)
+                make.left.equalToSuperview().offset(20)
+                make.width.equalTo(80)
+                make.height.equalTo(50)
+            }
+            self.view.updateConstraints()
+            self.blueView.updateConstraints()
         case 2:
             //TODO: 2、
             print("     (@@ ")
@@ -77,7 +90,7 @@ extension tempVC: UICollectionViewDataSource {
     
 }
 //MARK: - 测试的方法
-extension tempVC{
+extension TestSnapkit_VC{
    
     //MARK: 0、
     func test0(){
@@ -88,10 +101,40 @@ extension tempVC{
 
 
 //MARK: - 设置测试的UI
-extension tempVC{
+extension TestSnapkit_VC{
     
     /// 初始化你要测试的view
     func initTestViewUI(){
+        
+        redView.backgroundColor = .red
+        self.view.addSubview(redView)
+        redView.snp.makeConstraints { make in
+            make.top.equalTo(baseCollView.snp.bottom).offset(20)
+            make.left.equalToSuperview().offset(20)
+            make.width.equalTo(80)
+            make.height.equalTo(50)
+        }
+        
+        blueView.backgroundColor = .blue
+        self.view.addSubview(blueView)
+        blueView.snp.makeConstraints { make in
+            make.top.equalTo(baseCollView.snp.bottom).offset(20)
+            make.left.equalToSuperview().offset(20).priority(998)
+            make.left.equalTo(redView.snp.right).offset(20).priority(999)
+            make.width.equalTo(60)
+            make.height.equalTo(40)
+        }
+        
+        brownView.backgroundColor = .brown
+        self.view.addSubview(brownView)
+        brownView.snp.makeConstraints { make in
+            make.top.equalTo(baseCollView.snp.bottom).offset(20)
+            make.left.equalTo(blueView.snp.right).offset(20).priority(999)
+            make.left.equalTo(redView.snp.right).offset(20).priority(998)
+            make.left.equalToSuperview().offset(20).priority(997)
+            make.width.equalTo(60)
+            make.height.equalTo(40)
+        }
         
     }
     
@@ -99,7 +142,7 @@ extension tempVC{
 
 
 //MARK: - 设计UI
-extension tempVC {
+extension TestSnapkit_VC {
     
     /// 设置导航栏的UI
     private func setNavigationBarUI(){
@@ -138,7 +181,7 @@ extension tempVC {
 }
 
 //MARK: - 遵循委托协议,UICollectionViewDelegate
-extension tempVC: UICollectionViewDelegate {
+extension TestSnapkit_VC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collDataArr.count
@@ -173,3 +216,4 @@ extension tempVC: UICollectionViewDelegate {
 /**
  
  */
+

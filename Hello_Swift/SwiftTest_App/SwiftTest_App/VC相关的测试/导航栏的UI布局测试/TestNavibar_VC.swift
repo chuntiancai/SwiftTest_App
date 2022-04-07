@@ -65,12 +65,12 @@ extension TestNavibar_VC: UICollectionViewDataSource {
     //        self.additionalSafeAreaInsets = UIEdgeInsets.init(top: -viewInset.top, left: -viewInset.left, bottom: -viewInset.bottom, right: -viewInset.right)
             
             
-            //结合navigationBar.isTranslucent设置导航栏的背景图片，可以实现导航栏透明效果，但是这样会影响全局。
+            //结合navigationBar.isTranslucent = true设置导航栏的背景图片，可以实现导航栏透明效果，但是这样会影响全局。
     //        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "labi08"), for: .default)
             self.navigationController?.navigationBar.setBackgroundImage(getColorImg(alpha: 0.7), for: .default)
-            
+
             ///这样可以去掉导航栏的下划线
-    //        self.navigationController?.navigationBar.shadowImage = UIImage()
+//            self.navigationController?.navigationBar.shadowImage = UIImage()
     //        self.navigationController?.navigationBar.isHidden = false
             
             //设置子页面的navigation bar的返回按钮样式
@@ -112,7 +112,7 @@ extension TestNavibar_VC: UICollectionViewDataSource {
         
         //            self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
         case 3:
-            //TODO: 3、测试导航栏VC左滑返回手势。把 只能左边缘滑动 改为 整个区域左滑 都有效。
+            //TODO: 3、测试导航栏VC左滑返回手势。把 只能左边缘滑动 改为 整个区域左滑 都有效。测滑手势。
             print("     (@@ 测试导航栏VC左滑返回手势。")
             /**
                 1、系统自带的左滑返回是一个_UIParallaxTransitionPanGestureRecognizer手势识别器。

@@ -134,7 +134,8 @@ extension TestVCLifeCycle_VC: UICollectionViewDataSource {
             print("     (@@已经移除了View")
             break
         case 2:
-            print("     (@@ 重新设置snpkit")
+            print("     (@@ push一个VC")
+            self.pushNext(viewController: LifeCycleVC_1())
             
         case 3:
             print("     (@@旋转view")
@@ -245,6 +246,6 @@ extension TestVCLifeCycle_VC{
 
 //MARK: - 笔记
 /**
-    
+    1、
  
  */
