@@ -102,7 +102,7 @@ class CTCDateTool {
         let date = dateFormatter.date(from: String(Self.currentYear())+"-"+String(Self.currentMonth()))
         let calender = Calendar(identifier: Calendar.Identifier.gregorian)
         let comps = (calender as NSCalendar?)?.components(NSCalendar.Unit.weekday, from: date!)
-        var week = comps?.weekday
+        var week = comps?.weekday   // 1 是星期天
         if week == 1 {
             week = 8
         }

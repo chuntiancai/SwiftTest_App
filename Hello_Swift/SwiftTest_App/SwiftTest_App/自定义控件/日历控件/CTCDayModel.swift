@@ -63,16 +63,17 @@ public struct CTCDayModel {
     }
     
     //TODO: 获取（分页）日历数据
+    /// 是所有数据，二维数据，第一维是月，第二维是天。
     /// - Parameters:
     ///   - startYear: 开始年份
     ///   - endYear: 结束年份
     /// - Returns: 数据模型数组
     static func getDatePageList(startYear:Int? = nil,endYear:Int? = nil) -> [[CTCDayModel?]] {
         var monthArray: [[CTCDayModel?]] = []
-        var dayArray: [CTCDayModel?] = []
+        var dayArray: [CTCDayModel?] = []   //记录当前 日历页 的所有日期 的数组。
         
-        var curStartYear = startYear != nil ? startYear! : CTCDateTool.currentYear()
-        var curEndYear = endYear != nil ? endYear! : CTCDateTool.currentYear()
+        let curStartYear = startYear != nil ? startYear! : CTCDateTool.currentYear()
+        let curEndYear = endYear != nil ? endYear! : CTCDateTool.currentYear()
         
         var currentDate = CTCDateTool.dateStringToDate("\(curStartYear)-01-01")
         
