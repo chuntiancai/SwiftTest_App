@@ -109,6 +109,9 @@
 		0454A48E272FCA5600EFE31A /* 测试tableview的delegate顺序_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454A48D272FCA5600EFE31A /* 测试tableview的delegate顺序_VC.swift */; };
 		0454A4912731097E00EFE31A /* TestNavibar_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454A4902731097E00EFE31A /* TestNavibar_VC.swift */; };
 		0455059D27FDA9D900785F02 /* 测试TableView的布局约束.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455059C27FDA9D900785F02 /* 测试TableView的布局约束.swift */; };
+		045505A127FFD0C700785F02 /* TestCalendar_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045505A027FFD0C700785F02 /* TestCalendar_VC.swift */; };
+		045505A328000AF800785F02 /* CTCDayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045505A228000AF800785F02 /* CTCDayModel.swift */; };
+		045505A528000DE000785F02 /* CTCDateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045505A428000DE000785F02 /* CTCDateTool.swift */; };
 		04587C6F27B4BBB300824F69 /* TestUserDefault_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04587C6E27B4BBB300824F69 /* TestUserDefault_VC.swift */; };
 		04587C7227B4E58700824F69 /* TestArchives_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04587C7127B4E58700824F69 /* TestArchives_VC.swift */; };
 		04587C7427B4E5FE00824F69 /* Arch_Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04587C7327B4E5FE00824F69 /* Arch_Person.swift */; };
@@ -390,6 +393,9 @@
 		0454A48D272FCA5600EFE31A /* 测试tableview的delegate顺序_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试tableview的delegate顺序_VC.swift"; sourceTree = "<group>"; };
 		0454A4902731097E00EFE31A /* TestNavibar_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNavibar_VC.swift; sourceTree = "<group>"; };
 		0455059C27FDA9D900785F02 /* 测试TableView的布局约束.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试TableView的布局约束.swift"; sourceTree = "<group>"; };
+		045505A027FFD0C700785F02 /* TestCalendar_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCalendar_VC.swift; sourceTree = "<group>"; };
+		045505A228000AF800785F02 /* CTCDayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTCDayModel.swift; sourceTree = "<group>"; };
+		045505A428000DE000785F02 /* CTCDateTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTCDateTool.swift; sourceTree = "<group>"; };
 		04587C6E27B4BBB300824F69 /* TestUserDefault_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserDefault_VC.swift; sourceTree = "<group>"; };
 		04587C7127B4E58700824F69 /* TestArchives_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestArchives_VC.swift; sourceTree = "<group>"; };
 		04587C7327B4E5FE00824F69 /* Arch_Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arch_Person.swift; sourceTree = "<group>"; };
@@ -1072,6 +1078,24 @@
 				0454A4902731097E00EFE31A /* TestNavibar_VC.swift */,
 			);
 			path = "导航栏的UI布局测试";
+			sourceTree = "<group>";
+		};
+		0455059E27FFD09E00785F02 /* 自定义控件 */ = {
+			isa = PBXGroup;
+			children = (
+				0455059F27FFD0AB00785F02 /* 日历控件 */,
+			);
+			path = "自定义控件";
+			sourceTree = "<group>";
+		};
+		0455059F27FFD0AB00785F02 /* 日历控件 */ = {
+			isa = PBXGroup;
+			children = (
+				045505A027FFD0C700785F02 /* TestCalendar_VC.swift */,
+				045505A228000AF800785F02 /* CTCDayModel.swift */,
+				045505A428000DE000785F02 /* CTCDateTool.swift */,
+			);
+			path = "日历控件";
 			sourceTree = "<group>";
 		};
 		04587C6D27B4BB9700824F69 /* UserDefault测试 */ = {
@@ -1820,6 +1844,7 @@
 		AF2C734E25539C54000AD7A9 /* SwiftTest_App */ = {
 			isa = PBXGroup;
 			children = (
+				0455059E27FFD09E00785F02 /* 自定义控件 */,
 				048608AC27350E89000F816E /* App环境(生命周期)相关的知识 */,
 				048608A127325C45000F816E /* 日期处理的相关测试 */,
 				04600033271190F70074DFA2 /* Swift语法测试 */,
@@ -2141,6 +2166,7 @@
 				04CBB62926CA47AD00436C0E /* 测试TableView闭包循环引用_VC.swift in Sources */,
 				0474C25927D8535200B95D7C /* TestEnum_VC.swift in Sources */,
 				04870E9526EF1E630030B1D2 /* UIButtonTest_MainVC.swift in Sources */,
+				045505A528000DE000785F02 /* CTCDateTool.swift in Sources */,
 				04A0CA4226A0027800ECAE1B /* JFZFullScreenMaskView.swift in Sources */,
 				04A0CA5226A0027800ECAE1B /* JFZPlayerStorage.swift in Sources */,
 				0421E60326AAB2DD00C6A922 /* UITestLifeCycleVC.swift in Sources */,
@@ -2189,6 +2215,7 @@
 				0498537926F58B16009E4637 /* IOSChartView.swift in Sources */,
 				0421E5EE26A9701600C6A922 /* JFZPlayerVideoTableViewCell.swift in Sources */,
 				049EAFE326B7D53200903DA8 /* TouchDeliver_Btn.swift in Sources */,
+				045505A328000AF800785F02 /* CTCDayModel.swift in Sources */,
 				04587C7D27B50BCD00824F69 /* Tabar_SubVC3.swift in Sources */,
 				0474C25327D1F3B900B95D7C /* TabBar_MainVC.swift in Sources */,
 				04870E3F26E9AD280030B1D2 /* AAStates.swift in Sources */,
@@ -2199,6 +2226,7 @@
 				0421E5DC26A829A800C6A922 /* CommanTestVC.swift in Sources */,
 				04C2DC0426CE304700F9B3EE /* SubVC1_View.swift in Sources */,
 				041CBC5B279000A700AF9B05 /* TestImageView_VC.swift in Sources */,
+				045505A127FFD0C700785F02 /* TestCalendar_VC.swift in Sources */,
 				042648E027F2E65B0034FF51 /* AsyncImg_Model.swift in Sources */,
 				0421E5F226A9701600C6A922 /* JFZ_AudioPlayerView.swift in Sources */,
 				0414F98627BDF69C0037EE70 /* Quartz_Font_View.swift in Sources */,

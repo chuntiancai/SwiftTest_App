@@ -1,50 +1,47 @@
 //
-//  TestDate_VC.swift
+//  TestCalendar_VC.swift
 //  SwiftTest_App
 //
-//  Created by mathew on 2021/11/3.
-//  Copyright © 2021 com.mathew. All rights reserved.
+//  Created by mathew on 2022/4/8.
+//  Copyright © 2022 com.mathew. All rights reserved.
 //
-//测试日期的VC
+//测试日历的VC
 
-import UIKit
-
-class TestDate_VC: UIViewController {
+class TestCalendar_VC: UIViewController {
     
     //MARK: 对外属性
-    public var collDataArr = ["0、","1、","2、","3、","4、","5、","6、","7、","8、","9、","10、"]
+    public var collDataArr = ["0、","1、","2、","3、","4、","5、","6、","7、","8、","9、","10、","11、","12、"]
 
     ///UI组件
     private var baseCollView: UICollectionView!
     
+    //MARK: 测试组件
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 199/255.0, green: 204/255.0, blue: 237/255.0, alpha: 1.0)
-        self.title = "测试日期功能"
+        self.title = "测试日历的VC"
         
         setNavigationBarUI()
         setCollectionViewUI()
         initTestViewUI()
     }
-
-
+    
+    
+    
 }
 
 
 //MARK: - 遵循数据源协议,UICollectionViewDataSource
-extension TestDate_VC: UICollectionViewDataSource {
+extension TestCalendar_VC: UICollectionViewDataSource {
     
     ///点击了cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            //TODO: 0、获取今年第一天零点的时间戳
-            print("     (@@  获取今年第一天零点的时间戳")
-            let years = Calendar.current.dateComponents([.year], from: Date()).year!  //今年
-            let dateComponent = DateComponents.init(calendar: Calendar.current, year: years, month: 1, day: 1, hour: 0, minute: 0, second: 0)
-            let yearTime = dateComponent.date!.timeIntervalSince1970
-            print("当前的时间戳：\(String(describing: yearTime))")
+            //TODO: 0、
+            print("     (@@  ")
             break
         case 1:
             //TODO: 1、
@@ -55,6 +52,8 @@ extension TestDate_VC: UICollectionViewDataSource {
         case 3:
             //TODO: 3、
             print("     (@@ ")
+        case 4:
+            print("     (@@")
         case 5:
             print("     (@@")
         case 6:
@@ -78,21 +77,21 @@ extension TestDate_VC: UICollectionViewDataSource {
     
 }
 //MARK: - 测试的方法
-extension TestDate_VC{
+extension TestCalendar_VC{
    
     //MARK: 0、
     func test0(){
         
     }
+    
 }
 
 
 //MARK: - 设置测试的UI
-extension TestDate_VC{
+extension TestCalendar_VC{
     
     /// 初始化你要测试的view
     func initTestViewUI(){
-        
         
     }
     
@@ -100,7 +99,7 @@ extension TestDate_VC{
 
 
 //MARK: - 设计UI
-extension TestDate_VC {
+extension TestCalendar_VC {
     
     /// 设置导航栏的UI
     private func setNavigationBarUI(){
@@ -139,7 +138,7 @@ extension TestDate_VC {
 }
 
 //MARK: - 遵循委托协议,UICollectionViewDelegate
-extension TestDate_VC: UICollectionViewDelegate {
+extension TestCalendar_VC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collDataArr.count
@@ -167,7 +166,6 @@ extension TestDate_VC: UICollectionViewDelegate {
     private func pushNext(viewController: UIViewController) {
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
-        
     }
 }
 

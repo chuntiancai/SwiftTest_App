@@ -18,3 +18,16 @@ struct directionType:OptionSet {
     static let right = directionType.init(rawValue: 16)
 }
 
+//MARK: - 位移枚举第二种写法
+struct OptionEnum:OptionSet {
+    public let rawValue: Int
+    public init(rawValue: Int) {
+        self.rawValue = rawValue
+    }
+    public static var caseOne:OptionEnum{ return OptionEnum(rawValue: 0)}
+    public static var caseTwo:OptionEnum{ return OptionEnum(rawValue: 1)}
+    public static var caseThree:OptionEnum{ return OptionEnum(rawValue: 2)}
+    public static var caseFour:OptionEnum{ return OptionEnum(rawValue: 4)}
+    public static var caseFive:OptionEnum{ return OptionEnum(rawValue: 8)}
+}
+

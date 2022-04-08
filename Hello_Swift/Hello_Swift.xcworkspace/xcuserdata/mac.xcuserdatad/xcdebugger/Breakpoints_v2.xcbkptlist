@@ -487,22 +487,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "39D2A04A-2E75-41DA-9D78-7E22A4DAE884"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SwiftTest_App/SwiftTest_App/&#x65e5;&#x671f;&#x5904;&#x7406;&#x7684;&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/TestDate_VC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "collectionView(_:didSelectItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "53E8AA22-DFA2-4EE5-AC15-37149EBA7C56"
             shouldBeEnabled = "No"
             ignoreCount = "0"

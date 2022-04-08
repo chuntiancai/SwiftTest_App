@@ -302,7 +302,7 @@ inout参数只能传递能多次被赋值的
 
 ### self(小写)，X.self、X.Type、AnyClass的区别
 ####  X.self通过类的名称来调用，如：ClassName.Type
-#### X.self属于X.Type类型，代表 类X 的元类型(类信息)
+#### X.self属于X.Type类型，代表 类X 的元类型(类信息)。 ---X.self是具体类信息(元类型)，X.Type是类信息的声明。
 #### AnyClass是AnyObject.Type的别名
 #### AnyObject.Type代表所有类的元类型(可以理解为超类型，所以.Type是表示元类型的抽象类)
 
@@ -364,9 +364,9 @@ inout参数只能传递能多次被赋值的
     /// 从结果可以看得出来，Swift还有个隐藏的基类：Swift._SwiftObject
     /// 可以参考Swift源码：https://github.com/apple/swift/blob/master/stdlib/public/runtime/SwiftObject.h
 
-### Self(大写)，也是类的元类型，只是限制在类内部代码中使用
+### Self(大写)，也是类的元类型，只是限制在类内部代码中使用。
 #### 所以限定了返回值跟方法调用者必须是同一类型（也可以作为参数类型），常用于协议中
-
+        --- 大写Self表示此刻当前的类信息，不能用于父子的类型转换，只代表当前代码的当前类型信息。 小写self则可以是继承层级关系中，真实的实例主体，但是实例属于哪一个层级，暂时不可知。如果是.self则表示是当前层级的具体类信息。
 > Self代表当前类型
 
     class Person {
