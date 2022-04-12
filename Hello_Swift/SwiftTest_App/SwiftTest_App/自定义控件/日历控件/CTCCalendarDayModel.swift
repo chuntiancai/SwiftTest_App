@@ -1,5 +1,5 @@
 //
-//  CTCDayModel.swift
+//  CTCCalendarDayModel.swift
 //  SwiftTest_App
 //
 //  Created by mathew on 2022/4/8.
@@ -15,7 +15,7 @@ enum CTCDayType:Int {
 }
 
 // MARK: - 数据
-public struct CTCDayModel {
+public struct CTCCalendarDayModel {
     /// 公历
     var year: Int = 1970
     var month: Int = 1
@@ -34,14 +34,14 @@ public struct CTCDayModel {
     var dayType: CTCDayType = .current
     
     
-    //TODO: 根据日期获取CTCDayModel
+    //TODO: 根据日期获取CTCCalendarDayModel
     /// - Parameters:
     ///   - date: Date
     ///   - index: 天数索引
     ///   - dayType: 属于当月
-    /// - Returns: CTCDayModel
-    static func getDayModel(date: Date, index: Int, dayType: CTCDayType) -> CTCDayModel {
-        var model = CTCDayModel()
+    /// - Returns: CTCCalendarDayModel
+    static func getDayModel(date: Date, index: Int, dayType: CTCDayType) -> CTCCalendarDayModel {
+        var model = CTCCalendarDayModel()
         // 公历
         model.day = index + 1
         model.year = CTCDateTool.currentYear(date: date)
@@ -68,9 +68,9 @@ public struct CTCDayModel {
     ///   - startYear: 开始年份
     ///   - endYear: 结束年份
     /// - Returns: 数据模型数组
-    static func getDatePageList(startYear:Int? = nil,endYear:Int? = nil) -> [[CTCDayModel?]] {
-        var monthArray: [[CTCDayModel?]] = []
-        var dayArray: [CTCDayModel?] = []   //记录当前 日历页 的所有日期 的数组。
+    static func getDatePageList(startYear:Int? = nil,endYear:Int? = nil) -> [[CTCCalendarDayModel?]] {
+        var monthArray: [[CTCCalendarDayModel?]] = []
+        var dayArray: [CTCCalendarDayModel?] = []   //记录当前 日历页 的所有日期 的数组。
         
         let curStartYear = startYear != nil ? startYear! : CTCDateTool.currentYear()
         let curEndYear = endYear != nil ? endYear! : CTCDateTool.currentYear()

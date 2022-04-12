@@ -41,7 +41,7 @@ extension MainViewController: UICollectionViewDataSource {
         print("MainViewController点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            pushNext(viewController: TestCalendar_VC())
+            pushNext(viewController: TestFSCalendar_VC())
         case 1:
             self.navigationItem.backBarButtonItem = nil
             pushNext(viewController: TestImageView_VC())

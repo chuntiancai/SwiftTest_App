@@ -110,8 +110,12 @@
 		0454A4912731097E00EFE31A /* TestNavibar_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454A4902731097E00EFE31A /* TestNavibar_VC.swift */; };
 		0455059D27FDA9D900785F02 /* 测试TableView的布局约束.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455059C27FDA9D900785F02 /* 测试TableView的布局约束.swift */; };
 		045505A127FFD0C700785F02 /* TestCalendar_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045505A027FFD0C700785F02 /* TestCalendar_VC.swift */; };
-		045505A328000AF800785F02 /* CTCDayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045505A228000AF800785F02 /* CTCDayModel.swift */; };
+		045505A328000AF800785F02 /* CTCCalendarDayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045505A228000AF800785F02 /* CTCCalendarDayModel.swift */; };
 		045505A528000DE000785F02 /* CTCDateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045505A428000DE000785F02 /* CTCDateTool.swift */; };
+		045505A72803B9BF00785F02 /* CTCCalendarPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045505A62803B9BF00785F02 /* CTCCalendarPageView.swift */; };
+		045505A92803B9DD00785F02 /* CTCCalendarMonthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045505A82803B9DD00785F02 /* CTCCalendarMonthCell.swift */; };
+		045505AB2803BCFF00785F02 /* CTCCalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045505AA2803BCFF00785F02 /* CTCCalendarDayCell.swift */; };
+		045505AD2804062C00785F02 /* 测试日历库FSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045505AC2804062C00785F02 /* 测试日历库FSCalendar.swift */; };
 		04587C6F27B4BBB300824F69 /* TestUserDefault_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04587C6E27B4BBB300824F69 /* TestUserDefault_VC.swift */; };
 		04587C7227B4E58700824F69 /* TestArchives_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04587C7127B4E58700824F69 /* TestArchives_VC.swift */; };
 		04587C7427B4E5FE00824F69 /* Arch_Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04587C7327B4E5FE00824F69 /* Arch_Person.swift */; };
@@ -394,8 +398,12 @@
 		0454A4902731097E00EFE31A /* TestNavibar_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNavibar_VC.swift; sourceTree = "<group>"; };
 		0455059C27FDA9D900785F02 /* 测试TableView的布局约束.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试TableView的布局约束.swift"; sourceTree = "<group>"; };
 		045505A027FFD0C700785F02 /* TestCalendar_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCalendar_VC.swift; sourceTree = "<group>"; };
-		045505A228000AF800785F02 /* CTCDayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTCDayModel.swift; sourceTree = "<group>"; };
+		045505A228000AF800785F02 /* CTCCalendarDayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTCCalendarDayModel.swift; sourceTree = "<group>"; };
 		045505A428000DE000785F02 /* CTCDateTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTCDateTool.swift; sourceTree = "<group>"; };
+		045505A62803B9BF00785F02 /* CTCCalendarPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTCCalendarPageView.swift; sourceTree = "<group>"; };
+		045505A82803B9DD00785F02 /* CTCCalendarMonthCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTCCalendarMonthCell.swift; sourceTree = "<group>"; };
+		045505AA2803BCFF00785F02 /* CTCCalendarDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTCCalendarDayCell.swift; sourceTree = "<group>"; };
+		045505AC2804062C00785F02 /* 测试日历库FSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试日历库FSCalendar.swift"; sourceTree = "<group>"; };
 		04587C6E27B4BBB300824F69 /* TestUserDefault_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserDefault_VC.swift; sourceTree = "<group>"; };
 		04587C7127B4E58700824F69 /* TestArchives_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestArchives_VC.swift; sourceTree = "<group>"; };
 		04587C7327B4E5FE00824F69 /* Arch_Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arch_Person.swift; sourceTree = "<group>"; };
@@ -1092,10 +1100,21 @@
 			isa = PBXGroup;
 			children = (
 				045505A027FFD0C700785F02 /* TestCalendar_VC.swift */,
-				045505A228000AF800785F02 /* CTCDayModel.swift */,
+				045505A228000AF800785F02 /* CTCCalendarDayModel.swift */,
 				045505A428000DE000785F02 /* CTCDateTool.swift */,
+				045505A62803B9BF00785F02 /* CTCCalendarPageView.swift */,
+				045505A82803B9DD00785F02 /* CTCCalendarMonthCell.swift */,
+				045505AA2803BCFF00785F02 /* CTCCalendarDayCell.swift */,
 			);
 			path = "日历控件";
+			sourceTree = "<group>";
+		};
+		045505AE2804063300785F02 /* 测试日历库FSCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				045505AC2804062C00785F02 /* 测试日历库FSCalendar.swift */,
+			);
+			path = "测试日历库FSCalendar";
 			sourceTree = "<group>";
 		};
 		04587C6D27B4BB9700824F69 /* UserDefault测试 */ = {
@@ -1279,6 +1298,7 @@
 		04870E0C26E9AA880030B1D2 /* 第三方库对比测试 */ = {
 			isa = PBXGroup;
 			children = (
+				045505AE2804063300785F02 /* 测试日历库FSCalendar */,
 				042648E127F312830034FF51 /* 测试图片下载库SDWebImage */,
 				0414F99227C33ED80037EE70 /* 测试Bugly */,
 				04870E0D26E9AA970030B1D2 /* 图表绘制第三方库 */,
@@ -2059,6 +2079,7 @@
 				0421E61426AE494F00C6A922 /* LifeCycleVC_1.swift in Sources */,
 				04870E9726EF1EC40030B1D2 /* TestButton.swift in Sources */,
 				04587C6F27B4BBB300824F69 /* TestUserDefault_VC.swift in Sources */,
+				045505A92803B9DD00785F02 /* CTCCalendarMonthCell.swift in Sources */,
 				04870E3926E9AD280030B1D2 /* ProjectBundlePathLoader.swift in Sources */,
 				0421E5FD26AAAEF800C6A922 /* UITestMainVC.swift in Sources */,
 				04870E3826E9AD280030B1D2 /* AASeriesElement.swift in Sources */,
@@ -2093,6 +2114,7 @@
 				0421E62826B156DF00C6A922 /* TestTouchDeliver_VC.swift in Sources */,
 				04870E5226E9AD280030B1D2 /* AAXAxis.swift in Sources */,
 				048608A52733BA40000F816E /* 测试给cell设置阴影.swift in Sources */,
+				045505A72803B9BF00785F02 /* CTCCalendarPageView.swift in Sources */,
 				042648EF27F4462A0034FF51 /* TestNSCache_VC.swift in Sources */,
 				041A2E232793EB7400F9CABF /* KVO_Observer.swift in Sources */,
 				04C45C8B271D539100E1EA9B /* Selector和NSStringFromClass的自定义类.swift in Sources */,
@@ -2208,6 +2230,7 @@
 				04A0CA4F26A0027800ECAE1B /* JFZMediaCacherDelegate.swift in Sources */,
 				0414F99427C35F2F0037EE70 /* Bugly_Error.swift in Sources */,
 				04927016279EA6E2000A61FC /* 测试消息机制的VC.swift in Sources */,
+				045505AB2803BCFF00785F02 /* CTCCalendarDayCell.swift in Sources */,
 				041CBC1E2787DB7600AF9B05 /* 测试帧动画的主VC.swift in Sources */,
 				0421E5F426A9701600C6A922 /* JFZResponseExpandButtton.swift in Sources */,
 				04587C7227B4E58700824F69 /* TestArchives_VC.swift in Sources */,
@@ -2215,7 +2238,7 @@
 				0498537926F58B16009E4637 /* IOSChartView.swift in Sources */,
 				0421E5EE26A9701600C6A922 /* JFZPlayerVideoTableViewCell.swift in Sources */,
 				049EAFE326B7D53200903DA8 /* TouchDeliver_Btn.swift in Sources */,
-				045505A328000AF800785F02 /* CTCDayModel.swift in Sources */,
+				045505A328000AF800785F02 /* CTCCalendarDayModel.swift in Sources */,
 				04587C7D27B50BCD00824F69 /* Tabar_SubVC3.swift in Sources */,
 				0474C25327D1F3B900B95D7C /* TabBar_MainVC.swift in Sources */,
 				04870E3F26E9AD280030B1D2 /* AAStates.swift in Sources */,
@@ -2244,6 +2267,7 @@
 				04870E4F26E9AD280030B1D2 /* AATooltip.swift in Sources */,
 				04A0CA4C26A0027800ECAE1B /* JFZMediaCacher.swift in Sources */,
 				049EAFEF26BA9B8B00903DA8 /* TouchDeliver_BtnBgView.swift in Sources */,
+				045505AD2804062C00785F02 /* 测试日历库FSCalendar.swift in Sources */,
 				0474C24327CE08A300B95D7C /* TestImgInvert_View.swift in Sources */,
 				04870E8326EB2D690030B1D2 /* TestSectionTableView_VC.swift in Sources */,
 				042648DC27F2E0FB0034FF51 /* AsyncImg_Cell.swift in Sources */,

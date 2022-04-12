@@ -6,6 +6,7 @@ PODS:
   - ctc_podspec (0.1.0)
   - FilesProvider (0.26.0)
   - FLAnimatedImage (1.0.16)
+  - FSCalendar (2.8.2)
   - MJRefresh (3.7.2)
   - Reachability (3.2)
   - SDWebImage (5.11.1):
@@ -20,6 +21,7 @@ DEPENDENCIES:
   - ctc_podspec (from `https://github.com/chuntiancai/TestCocoapod.git`)
   - FilesProvider
   - FLAnimatedImage
+  - FSCalendar
   - MJRefresh
   - Reachability
   - SDWebImage (~> 5.11.1)
@@ -32,6 +34,7 @@ SPEC REPOS:
     - Charts
     - FilesProvider
     - FLAnimatedImage
+    - FSCalendar
     - MJRefresh
     - Reachability
     - SDWebImage
@@ -53,12 +56,13 @@ SPEC CHECKSUMS:
   ctc_podspec: f6baf061bb4cc0b9dd1fcbab2a695aef1259bf10
   FilesProvider: 2a8ae17d8b9c23a6feadb1308ee638fa31d21065
   FLAnimatedImage: 8f3e854ebf9680b71f0b6e700939687fc4d82b4b
+  FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
   MJRefresh: 30997d30b347c8e9508a4db11e3a690da0c9b85a
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: b2b1d2f7039040517a5e302856a96134437af52d
+PODFILE CHECKSUM: cb2d2bec34eb1b3d276dad5a05b0cdb0939adea6
 
 COCOAPODS: 1.10.2
