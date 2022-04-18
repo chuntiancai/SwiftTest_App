@@ -48,7 +48,7 @@ class TestConstraintView: UIView {
         print(" TestConstraintView 的 \(#function) 方法")
         print(" TestConstraintView frame: \(self.frame)")
         for cons in self.constraints {
-            print("TestConstraintView constraints : \(cons)")
+            print("TestConstraintView constraints 约束 : \(cons)")
 //            self.removeConstraint(cons)
         }
 //        self.snp.makeConstraints { make in

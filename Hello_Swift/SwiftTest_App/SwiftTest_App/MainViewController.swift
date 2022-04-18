@@ -44,14 +44,14 @@ extension MainViewController: UICollectionViewDataSource {
             pushNext(viewController: TestFSCalendar_VC())
         case 1:
             self.navigationItem.backBarButtonItem = nil
-            pushNext(viewController: TestImageView_VC())
+            pushNext(viewController: TestGestureInteract_VC())
             break
         case 2:
-            pushNext(viewController: TestTableView_VC())
+            pushNext(viewController: UITestConstranitVC())
             break
         case 3:
-            //TODO: 3、音视频相关测试
-            pushNext(viewController: JFZRecordAudioVedioController())
+            //TODO: 3、
+            pushNext(viewController: TestSnapkit_VC())
         case 4:
             //TODO: 4、UI相关测试
             pushNext(viewController: UIButtonTest_MainVC())

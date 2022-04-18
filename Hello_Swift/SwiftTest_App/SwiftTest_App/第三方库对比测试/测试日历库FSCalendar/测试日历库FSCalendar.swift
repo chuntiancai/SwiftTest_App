@@ -16,7 +16,7 @@ class TestFSCalendar_VC: UIViewController{
 
     ///UI组件
     private var baseCollView: UICollectionView!
-    var calendarView = FSCalendar.init()
+    private var calendarTestView = TestFSCalendar_View()
     
     //MARK: 测试组件
     
@@ -96,16 +96,14 @@ extension TestFSCalendar_VC{
     /// 初始化你要测试的view
     func initTestViewUI(){
         
-        calendarView.layer.borderWidth = 1.0
-        calendarView.dataSource = self
-        calendarView.delegate = self
-        calendarView.layer.borderColor = UIColor.brown.cgColor
-        self.view.addSubview(calendarView)
-        calendarView.snp.makeConstraints { make in
+        calendarTestView.layer.borderWidth = 1.0
+        calendarTestView.layer.borderColor = UIColor.brown.cgColor
+        self.view.addSubview(calendarTestView)
+        calendarTestView.snp.makeConstraints { make in
             make.top.equalTo(baseCollView.snp.bottom).offset(20)
-            make.width.equalToSuperview()
-            make.height.equalTo(300)
             make.centerX.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.equalTo(400)
         }
         
     }

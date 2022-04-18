@@ -72,6 +72,9 @@ extension TestGesture_View{
 
 //MARK: - 笔记
 /**
-
+    1、UIGestureRecognizer的触摸事件 会插入 在 UIview的touchesBegan(_:with:) 方法 和 touchesCancelled(_:with:) 方法 之间。
+ 
+    2、如果要实现UIScrollView这些内嵌的UIGestureRecognizerDelegate方法，那就要子类化UIScrollView，并实现UIGestureRecognizerDelegate方法，这样这些代理方法就会被调用。
+       因为UIScrollView在初始化时就指定自己为UIGestureRecognizerDelegate。
  */
 

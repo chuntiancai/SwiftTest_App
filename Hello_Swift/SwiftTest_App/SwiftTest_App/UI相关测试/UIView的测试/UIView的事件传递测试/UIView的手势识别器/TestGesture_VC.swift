@@ -261,41 +261,43 @@ extension TestGesture_VC: UICollectionViewDelegate {
 //MARK: - 遵循手势识别 UIGestureRecognizerDelegate 协议
 extension TestGesture_VC: UIGestureRecognizerDelegate {
     
-    
+    // 控制Gesture的开始
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         print("UIGestureRecognizerDelegate 的 \(#function) 方法")
         return true
     }
     
-    /// 是否支持多个手势识别器起作用。
+    /// 是否支持多个手势识别器起作用。控制Gesture是否可以同时识别
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool{
         print("UIGestureRecognizerDelegate 的 \(#function) 方法")
         return true
     }
     
-    
+    // 控制自身的Gesture和其他Gesture的失败
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool{
         print("UIGestureRecognizerDelegate 的 \(#function) 方法")
         return true
     }
     
+    // 控制自身的Gesture和其他Gesture的失败
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool{
         print("UIGestureRecognizerDelegate 的 \(#function) 方法")
         return true
     }
     
-    /// 是否允许手势识别器接收 触摸事件
+    /// 是否允许手势识别器接收 触摸事件。控制Gesture是否接受touch
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool{
         print("UIGestureRecognizerDelegate 的 \(#function) 方法")
         return true
     }
     
+    // 控制Gesture是否接受press
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive press: UIPress) -> Bool{
         print("UIGestureRecognizerDelegate 的 \(#function) 方法")
         return true
     }
     
-    
+    // 控制Gesture是否接受event
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive event: UIEvent) -> Bool{
         print("UIGestureRecognizerDelegate 的 \(#function) 方法")
         return true

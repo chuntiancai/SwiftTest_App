@@ -12,12 +12,12 @@ import UIKit
 class UITestConstranitVC: UIViewController {
     
     //MARK: 对外属性
-    public var collDataArr = ["0、添加一个View","1、移除一个view","2、","3、","4、","5、","6、","7、","8、","9、","10、"]
+    public var collDataArr = ["0、","1、","2、","3、","4、","5、","6、","7、","8、","9、","10、","11、","12、"]
 
     ///UI组件
     private var baseCollView: UICollectionView!
     private var testView1 = TestConstraintView()    //测试在VC中viewDidLayoutSubviews布局约束与在view的layoutSubviews，布局约束与snpkit的计算时机
-    private var redView = TestConstraintView()
+    private var redView = UIView()
     var widthConstraint:NSLayoutConstraint = NSLayoutConstraint()
     
     private var greenView = TestConstraintView()
@@ -210,9 +210,9 @@ extension UITestConstranitVC{
     //TODO: 测试在VC中viewDidLayoutSubviews布局约束与在view的layoutSubviews，布局约束与snpkit的计算时机
     func initTestViewUI(){
         testView1.tag = 1000
-//        testView1.translatesAutoresizingMaskIntoConstraints = false
+        testView1.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(testView1)
-        testView1.backgroundColor = .red
+        testView1.backgroundColor = .brown
         let leffCons = NSLayoutConstraint.init(item: testView1, attribute: .left, relatedBy: .equal, toItem: self.view, attribute: .left, multiplier: 1.0, constant: 50.0)
         let topCons = NSLayoutConstraint.init(item: testView1, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1.0, constant: 380)
         let widthCons = NSLayoutConstraint.init(item: testView1, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 60)
@@ -289,6 +289,10 @@ extension UITestConstranitVC {
         也就是viewB再设置参考viewC的约束，但是优先级要比参考viewA的约束低，这样viewA被删除后，viewB还是可以参考viewC的约束。
  
     6、实现约束的动画效果，必须是在UIView的动画方法里立即更新父view的布局约束，更新自身的没用。因为在使用约束添加动画的时候，有个原则就是动画要添加到当前视图的父视图上。
-       因为约束最终是放映在frame上，所以要在UIView的动画block里面调用父view的layoutIfNeeded()方法，这是不等下一个周期里面更新UI，也就是里面设置frame， 这和直接设置frame的效果是一样的，如果是调用setNeedsLayout()方法，则当前修改的约束还没应用到frame上，也就是frame的值还是之前的，要等到下一个UI周期才会应用到frame上， 所以在UIview的动画block里的frame值还是旧的值，所以就不会用动画效果，而是在下一个UI周期时，直接就修改了view的frame就直接渲染了，没有在动画效果。
+       因为约束最终是反映在frame上，所以要在UIView的动画block里面调用父view的layoutIfNeeded()方法，这是不等下一个周期里面更新UI，也就是里面设置frame， 这和直接设置frame的效果是一样的，如果是调用setNeedsLayout()方法，则当前修改的约束还没应用到frame上，也就是frame的值还是之前的，要等到下一个UI周期才会应用到frame上， 所以在UIview的动画block里的frame值还是旧的值，所以就不会用动画效果，而是在下一个UI周期时，直接就修改了view的frame就直接渲染了，没有在动画效果。
+ 
+    7、translatesAutoresizingMaskIntoConstraints 的本意是将 frame 布局 自动转化为 约束布局，转化的结果是为这个视图自动添加所有需要的约束， 如果我们这时给视图添加自己创建的约束就一定会约束冲突。为了避免上面说的约束冲突，我们在代码创建 约束布局 的控件时 直接指定这个视图不能用frame 布局 （即translatesAutoresizingMaskIntoConstraints=NO），可以放心的去使用约束了。
+
+
  
  */

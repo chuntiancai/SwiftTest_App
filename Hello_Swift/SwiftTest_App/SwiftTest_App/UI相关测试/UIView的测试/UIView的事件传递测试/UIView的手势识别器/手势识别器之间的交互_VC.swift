@@ -1,30 +1,29 @@
 //
-//  TestSnapkit_VC.swift
+//  手势识别器间的交互_VC.swift
 //  SwiftTest_App
 //
-//  Created by mathew on 2022/4/6.
+//  Created by mathew on 2022/4/18.
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
-// 测试Snapkit的VC
+//测试手势识别器的的VC
 
-class TestSnapkit_VC: UIViewController {
+class TestGestureInteract_VC: UIViewController {
     
     //MARK: 对外属性
     public var collDataArr = ["0、","1、","2、","3、","4、","5、","6、","7、","8、","9、","10、","11、","12、"]
 
     ///UI组件
     private var baseCollView: UICollectionView!
+    private var redScrollView = UIScrollView()  //红色的ScrollView，包含了绿色的ScrollView
+    private var blueScrollView = UIScrollView()
+
     
     //MARK: 测试组件
-    private let redView = UIView()
-    private let blueView = UIView()
-    private let brownView = UIView()
-    var widthConstraint:NSLayoutConstraint = NSLayoutConstraint()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 199/255.0, green: 204/255.0, blue: 237/255.0, alpha: 1.0)
-        self.title = "测试Snapkit的VC"
+        self.title = "测试手势识别器间的交互"
         
         setNavigationBarUI()
         setCollectionViewUI()
@@ -37,50 +36,22 @@ class TestSnapkit_VC: UIViewController {
 
 
 //MARK: - 遵循数据源协议,UICollectionViewDataSource
-extension TestSnapkit_VC: UICollectionViewDataSource {
+extension TestGestureInteract_VC: UICollectionViewDataSource {
     
     ///点击了cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            //TODO: 0、测试移除被参考的view后，Snpkit约束的变化。
-            /**
-                1、移除被参考的view之后，其他的view的位置大小会发生变化。
-             */
-            print("     (@@  隐藏redView")
-//            redView.removeFromSuperview()
-            widthConstraint = NSLayoutConstraint.init(item: redView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 0)
-            UIView.animate(withDuration: 2) {
-                [weak self] in
-                self?.widthConstraint.constant = 0
-                self?.widthConstraint.isActive = true
-                self?.view.layoutIfNeeded()
-            }
-            
+            //TODO: 0、
+            print("     (@@  ")
             break
         case 1:
-            //TODO: 1、重新添加被参考的view，参考该view的其他view的约束不会从新计算，因为之前的View已经被移除了。约束也消失了，只能所有的view都从新计算了。
-            print("     (@@ 添加redview")
-            self.view.addSubview(redView)
-            redView.snp.remakeConstraints { make in
-                make.top.equalTo(baseCollView.snp.bottom).offset(20)
-                make.left.equalToSuperview().offset(20)
-                make.width.equalTo(80)
-                make.height.equalTo(50)
-            }
-            self.view.updateConstraints()
-            self.blueView.updateConstraints()
-            self.view.layoutIfNeeded()
-        case 2:
-            //TODO: 2、测试动态修改约束，更新view的布局。
+            //TODO: 1、
             print("     (@@ ")
-            UIView.animate(withDuration: 2) {
-                [weak self] in
-                self?.widthConstraint.constant = 100
-                self?.view.layoutIfNeeded()
-            }
-            
+        case 2:
+            //TODO: 2、
+            print("     (@@ ")
         case 3:
             //TODO: 3、
             print("     (@@ ")
@@ -109,7 +80,7 @@ extension TestSnapkit_VC: UICollectionViewDataSource {
     
 }
 //MARK: - 测试的方法
-extension TestSnapkit_VC{
+extension TestGestureInteract_VC{
    
     //MARK: 0、
     func test0(){
@@ -120,48 +91,80 @@ extension TestSnapkit_VC{
 
 
 //MARK: - 设置测试的UI
-extension TestSnapkit_VC{
+extension TestGestureInteract_VC{
     
     /// 初始化你要测试的view
     func initTestViewUI(){
         
-        redView.backgroundColor = .red
-        self.view.addSubview(redView)
-        redView.snp.makeConstraints { make in
+        redScrollView.backgroundColor = .red
+        redScrollView.contentSize = CGSize.init(width: 350, height: 1200)
+        redScrollView.showsVerticalScrollIndicator = true
+        redScrollView.delegate = self
+        //TODO:添加redScrollView.panGestureRecognizer的依赖，GestureRecognizer的require(toFail:_)方法，是依赖于别的手势识别器状态为fail时， 才会去解释当前的GestureRecognizer的动作方法。
+        redScrollView.panGestureRecognizer.require(toFail: blueScrollView.panGestureRecognizer)
+        self.view.addSubview(redScrollView)
+        redScrollView.snp.makeConstraints { make in
             make.top.equalTo(baseCollView.snp.bottom).offset(20)
-            make.left.equalToSuperview().offset(20)
-            make.width.equalTo(80)
-            make.height.equalTo(50)
+            make.width.equalTo(350)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(400)
         }
         
-        blueView.backgroundColor = .blue
-        self.view.addSubview(blueView)
-        blueView.snp.makeConstraints { make in
-            make.top.equalTo(baseCollView.snp.bottom).offset(20)
-            make.left.equalToSuperview().offset(20).priority(998)
-            make.left.equalTo(redView.snp.right).offset(20).priority(999)
-            make.width.equalTo(60)
-            make.height.equalTo(40)
+        let rLabel = UILabel()
+        rLabel.textColor = .black
+        rLabel.text = "红色的底部"
+        rLabel.font = .systemFont(ofSize: 32)
+        redScrollView.addSubview(rLabel)
+        rLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(1150)
         }
         
-        brownView.backgroundColor = .brown
-        self.view.addSubview(brownView)
-        brownView.snp.makeConstraints { make in
-            make.top.equalTo(baseCollView.snp.bottom).offset(20)
-            make.left.equalTo(blueView.snp.right).offset(20).priority(999)
-            make.left.equalTo(redView.snp.right).offset(20).priority(998)
-            make.left.equalToSuperview().offset(20).priority(997)
-            make.width.equalTo(60)
-            make.height.equalTo(40)
+        blueScrollView.backgroundColor = .blue
+        //TODO:设置GestureRecognizer的bounces为false，那么当画到滑到顶部或者底部时，就会设置GestureRecognizer的状态为false
+        blueScrollView.bounces = false
+        blueScrollView.tag = 1234
+        blueScrollView.delegate = self
+        blueScrollView.contentSize = CGSize.init(width: 280, height: 800)
+        blueScrollView.showsVerticalScrollIndicator = true
+        redScrollView.addSubview(blueScrollView)
+        blueScrollView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(50)
+            make.width.equalTo(280)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(350)
+        }
+        
+        let bLabel = UILabel()
+        bLabel.textColor = .black
+        bLabel.text = "蓝色的底部"
+        bLabel.font = .systemFont(ofSize: 30)
+        blueScrollView.addSubview(bLabel)
+        bLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(750)
         }
         
     }
     
 }
 
+//MARK: - 遵循UIGestureRecognizerDelegate协议，手势识别。
+extension TestGestureInteract_VC:UIGestureRecognizerDelegate {
+    
+    /// 询问该方法，当前view是否要解释手势识别器
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        print("这是TestGestureInteract_VC的 \(#function) 方法")
+        print("这是gestureRecognizer绑定的View \(String(describing: gestureRecognizer.view))")
+        return true
+    }
+    
+}
+
+
 
 //MARK: - 设计UI
-extension TestSnapkit_VC {
+extension TestGestureInteract_VC {
     
     /// 设置导航栏的UI
     private func setNavigationBarUI(){
@@ -200,7 +203,7 @@ extension TestSnapkit_VC {
 }
 
 //MARK: - 遵循委托协议,UICollectionViewDelegate
-extension TestSnapkit_VC: UICollectionViewDelegate {
+extension TestGestureInteract_VC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collDataArr.count
@@ -233,10 +236,6 @@ extension TestSnapkit_VC: UICollectionViewDelegate {
 
 // MARK: - 笔记
 /**
-    1、移除被参考的view后，Snpkit约束会从新计算，然后参考该view的其他view，会从新调整位置和尺寸。
-    
-    2、可以通过手写约束的方式，来实现snpkit的动态修改布局，这样就不用直接修改frame的值。
-    
-    
+ 
  */
 

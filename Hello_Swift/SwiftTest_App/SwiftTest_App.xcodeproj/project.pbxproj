@@ -246,6 +246,8 @@
 		04A0CA5226A0027800ECAE1B /* JFZPlayerStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A0CA3326A0027800ECAE1B /* JFZPlayerStorage.swift */; };
 		04A0CA5326A0027800ECAE1B /* JFZDefaultVideoCacheLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A0CA3426A0027800ECAE1B /* JFZDefaultVideoCacheLocation.swift */; };
 		04A0CA5426A0027800ECAE1B /* JFZPlayerCommonViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A0CA3826A0027800ECAE1B /* JFZPlayerCommonViewDelegate.swift */; };
+		04B76903280D3A730080102F /* 手势识别器之间的交互_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B76902280D3A730080102F /* 手势识别器之间的交互_VC.swift */; };
+		04B76905280D64F20080102F /* TestFSCalendar_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B76904280D64F20080102F /* TestFSCalendar_View.swift */; };
 		04C2DBFE26CE269700F9B3EE /* TestSubVC_MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2DBFD26CE269700F9B3EE /* TestSubVC_MainVC.swift */; };
 		04C2DC0026CE26FB00F9B3EE /* TestSubVC_SubVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2DBFF26CE26FB00F9B3EE /* TestSubVC_SubVC.swift */; };
 		04C2DC0226CE28BA00F9B3EE /* TestSubVC_SubVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2DC0126CE28BA00F9B3EE /* TestSubVC_SubVC2.swift */; };
@@ -537,6 +539,8 @@
 		04A0CA3426A0027800ECAE1B /* JFZDefaultVideoCacheLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JFZDefaultVideoCacheLocation.swift; sourceTree = "<group>"; };
 		04A0CA3826A0027800ECAE1B /* JFZPlayerCommonViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JFZPlayerCommonViewDelegate.swift; sourceTree = "<group>"; };
 		04A0CA5526A0054A00ECAE1B /* SwiftTest_App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftTest_App-Bridging-Header.h"; sourceTree = "<group>"; };
+		04B76902280D3A730080102F /* 手势识别器之间的交互_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "手势识别器之间的交互_VC.swift"; sourceTree = "<group>"; };
+		04B76904280D64F20080102F /* TestFSCalendar_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFSCalendar_View.swift; sourceTree = "<group>"; };
 		04C2DBFD26CE269700F9B3EE /* TestSubVC_MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSubVC_MainVC.swift; sourceTree = "<group>"; };
 		04C2DBFF26CE26FB00F9B3EE /* TestSubVC_SubVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSubVC_SubVC.swift; sourceTree = "<group>"; };
 		04C2DC0126CE28BA00F9B3EE /* TestSubVC_SubVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSubVC_SubVC2.swift; sourceTree = "<group>"; };
@@ -1113,6 +1117,7 @@
 			isa = PBXGroup;
 			children = (
 				045505AC2804062C00785F02 /* 测试日历库FSCalendar.swift */,
+				04B76904280D64F20080102F /* TestFSCalendar_View.swift */,
 			);
 			path = "测试日历库FSCalendar";
 			sourceTree = "<group>";
@@ -1169,6 +1174,7 @@
 		04587C8A27B65ED200824F69 /* UIView的手势识别器 */ = {
 			isa = PBXGroup;
 			children = (
+				04B76902280D3A730080102F /* 手势识别器之间的交互_VC.swift */,
 				04587C8B27B6654500824F69 /* TestGesture_VC.swift */,
 				04587C8D27B6691F00824F69 /* TestGesture_View.swift */,
 			);
@@ -2192,6 +2198,7 @@
 				04A0CA4226A0027800ECAE1B /* JFZFullScreenMaskView.swift in Sources */,
 				04A0CA5226A0027800ECAE1B /* JFZPlayerStorage.swift in Sources */,
 				0421E60326AAB2DD00C6A922 /* UITestLifeCycleVC.swift in Sources */,
+				04B76903280D3A730080102F /* 手势识别器之间的交互_VC.swift in Sources */,
 				04870E4A26E9AD280030B1D2 /* AADataLabels.swift in Sources */,
 				049EAFF926C2630200903DA8 /* TestVideoFunc_VC.swift in Sources */,
 				048608A72733D25C000F816E /* 测试view的阴影.swift in Sources */,
@@ -2266,6 +2273,7 @@
 				041A2E1D27901D1300F9CABF /* 测试KVO的VC.swift in Sources */,
 				04870E4F26E9AD280030B1D2 /* AATooltip.swift in Sources */,
 				04A0CA4C26A0027800ECAE1B /* JFZMediaCacher.swift in Sources */,
+				04B76905280D64F20080102F /* TestFSCalendar_View.swift in Sources */,
 				049EAFEF26BA9B8B00903DA8 /* TouchDeliver_BtnBgView.swift in Sources */,
 				045505AD2804062C00785F02 /* 测试日历库FSCalendar.swift in Sources */,
 				0474C24327CE08A300B95D7C /* TestImgInvert_View.swift in Sources */,
