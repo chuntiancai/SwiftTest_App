@@ -109,6 +109,7 @@ extension IOSChartView{
         lineChartView.minOffset = 23    //设置图表的内边距，可以让x轴的标签完整显示出来
         lineChartView.delegate = self
         lineChartView.maxVisibleCount = 999999  //设置chart绘制时的可见点，少的话，会影响折线上设置的icon，所以要设置大一些
+        lineChartView.noDataText = "暂无数据"   //无数据时显示的文本
         
         //TODO: x横轴
         let xAxis =  lineChartView.xAxis

@@ -17,6 +17,8 @@ class TestGCD_VC: UIViewController {
     ///UI组件
     private var baseCollView: UICollectionView!
     
+    private var gcdTimer: DispatchSourceTimer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -314,7 +316,7 @@ extension TestGCD_VC: UICollectionViewDataSource {
             let semaphore = DispatchSemaphore.init(value: 1)    //初始化信号量为5，也就是资源数，资源为0时则等待
             let concurrentQ1 = DispatchQueue.init(label: "并行队列1", attributes: .concurrent)
             var testNum = 0
-            for num in 1...20 {
+            for _ in 1...20 {
                 concurrentQ1.async {
                     semaphore.wait()    //获取信号量 -1
                     testNum += 1
@@ -397,8 +399,23 @@ extension TestGCD_VC: UICollectionViewDataSource {
             }
             
         case 10:
-            //TODO: 10、
-            print("     (@@")
+            //TODO: 10、GCD的定时器,一般用来计时
+            print("     (@@ 测试GCD的定时器")
+            /// 注意如果gcd计时器是一个局部变量，那么局部代码执行完，它就会被释放，因而也就没有执行任务可言。
+            let gTimer:DispatchSourceTimer = DispatchSource.makeTimerSource(flags: .strict, queue: DispatchQueue.global())
+            gcdTimer = gTimer
+            /// 开始时间｜间隔时间｜时间精准度(绝对精准传零)。
+            gTimer.schedule(deadline: .now(), repeating: .seconds(2), leeway: .microseconds(100))
+            /// 设置定时器的执行任务。
+            gTimer.setEventHandler {
+                print("GCD计时器的事件执行闭包")
+            }
+            /// 启动定时器
+            gTimer.resume()
+        /**
+         gTimer.suspend()    //暂停计时
+         */
+        
         case 11:
             //TODO: 11、
             print("     (@@")
@@ -505,5 +522,6 @@ extension TestGCD_VC {
     8、死锁的原因：
         GCD死锁的原因主要是队列的特性和sync执行机制之间的逻辑冲突，队列要求任务先进先出，但是队列任务又可以嵌套，而sync又会阻塞当前线程，就导致了嵌套的任务与等待被前嵌套的任务互相等待，嵌套(加到队列末尾)等待被嵌(先入队列)，然后就走不到队列尾，所以就死锁。
  
+    9、GCD的定时器是绝对精准的。
  */
 

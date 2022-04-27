@@ -32,7 +32,7 @@ target 'SwiftTest_App' do
   pod 'SDWebImage','~>5.11.1'
   
   #测试日历显示的第三方库
-  pod 'FSCalendar'
+  pod 'FSCalendar','~>2.8.2'
   
   commonPods
   

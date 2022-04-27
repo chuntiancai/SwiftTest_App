@@ -41,13 +41,16 @@ extension MainViewController: UICollectionViewDataSource {
         print("MainViewController点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            pushNext(viewController: TestFSCalendar_VC())
+            pushNext(viewController: TestURLSession_VC())
         case 1:
-            self.navigationItem.backBarButtonItem = nil
-            pushNext(viewController: TestGestureInteract_VC())
+            pushNext(viewController: FileTest_VC())
             break
         case 2:
-            pushNext(viewController: UITestConstranitVC())
+            
+            self.navigationItem.backBarButtonItem = nil
+            let storyBoard = UIStoryboard.init(name: "FSCalendarTest", bundle: nil)
+            let mainStoryVC = storyBoard.instantiateViewController(withIdentifier: "FSCalendar_SB_VC_ID")
+            pushNext(viewController: mainStoryVC)
             break
         case 3:
             //TODO: 3、
@@ -63,7 +66,7 @@ extension MainViewController: UICollectionViewDataSource {
             pushNext(viewController: TestSubVC_MainVC())
         case 7:
             //TODO: 7、网络相关的测试
-            pushNext(viewController: TestURLSession_MainVC())
+            pushNext(viewController: TestURLSession_VC())
         default:
             break
         }

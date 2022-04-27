@@ -29,6 +29,10 @@ class TestNSCache_VC: UIViewController {
         initTestViewUI()
     }
     
+    override func didReceiveMemoryWarning() {
+        print("接收到内存警告时，建议释放缓存")
+        cache.removeAllObjects()
+    }
 }
 
 
@@ -215,5 +219,5 @@ extension TestNSCache_VC: UICollectionViewDelegate {
     1、NSCache是苹果提供的专门管理缓存的缓存类，当内存很低的时候，NSCache会自动释放，NSCache是线程安全的，NSCache的Key对Value对象是强引用，而而不是copy。所以Value对象只会被存一次，因为是保留了强引用。
     2、NSCache的主要属性是：name:名字,delegate：代理,totalCostLimit：最大容量,countLimit：最大对象个数。
     3、NSCache的使用和字典差不多，只是多了内存管理机制。
-    4、内存不够，会回收掉之前的缓存对象，先进后出
+    4、内存不够，会回收掉之前的缓存对象，先进后出。
  */

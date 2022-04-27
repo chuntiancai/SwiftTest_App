@@ -7,6 +7,8 @@
 //
 //测试文件的VC
 
+import MobileCoreServices
+
 class FileTest_VC: UIViewController {
     
     //MARK: 对外属性
@@ -16,11 +18,12 @@ class FileTest_VC: UIViewController {
     private var baseCollView: UICollectionView!
     
     //MARK: 测试组件
+    private var outStream:OutputStream? //文件输出流，记得关闭
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 199/255.0, green: 204/255.0, blue: 237/255.0, alpha: 1.0)
-        self.title = "测试文件功能VC"
+        self.title = "测试文件的VC"
         
         setNavigationBarUI()
         setCollectionViewUI()
@@ -39,15 +42,86 @@ extension FileTest_VC: UICollectionViewDataSource {
         print("点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            //TODO: 0、
-            print("     (@@  ")
-            break
+            //TODO: 0、测试文件的输出流，可以参考第三方框架的实现来找实现方法，例如AFNetWork
+            /**
+                特点:如果该输出流指向的地址没有文件,那么会自动创建一个空的文件
+             */
+            print("     (@@  测试文件的输出流")
+            let fileUrl = URL(fileURLWithPath: "/Users/mac/Desktop/OutputVedio.mp4")   //桌面文件
+            guard let url = URL.init(string: "http://vfx.mtime.cn/Video/2019/03/19/mp4/190319222227698228.mp4")else { return  }
+            
+            let urlSessionTask = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+                guard let curData = data else { print("data数据为空"); return }
+                ///第一个参数：输出的文件路径
+                ///第二个参数：是否追加写入
+                self?.outStream = OutputStream(toFileAtPath: fileUrl.path, append: false) ?? OutputStream()
+                
+                //打开输出流
+                self?.outStream?.open()
+                
+                //通过输出流写入到文件，Data转换为UnsafePointer<UInt8>
+                /**
+                
+                 /// 方法一，这样会另外开了一个数组，消耗很多内存。AFN的做法
+                 var buffer = [UInt8](repeating: 0, count: curData.count)
+                 curData.copyBytes(to: &buffer, count: curData.count)
+                 self?.outStream?.write(buffer, maxLength: curData.count)
+                 
+                 ///方法二，我也不是很懂
+                 let tempData:NSMutableData = NSMutableData()
+                 curData.withUnsafeBytes {
+                     tempData.replaceBytes(in: NSMakeRange(0, curData.count), withBytes: $0)
+                 }
+                 let p:UnsafePointer = tempData.bytes.assumingMemoryBound(to: UInt8.self)
+                 self?.outStream?.write(p, maxLength: curData.count)
+                
+                 
+                 */
+                ///方法三，直接转换为NSData使用
+                let point = (curData as NSData).bytes.bindMemory(to: UInt8.self, capacity: MemoryLayout<UInt8>.stride)
+                self?.outStream?.write(point, maxLength: curData.count)
+                
+                
+            }
+            urlSessionTask.resume()
         case 1:
-            //TODO: 1、
-            print("     (@@ ")
+            //TODO: 1、获取文件的MIMEType
+            /**
+             1、 MIMEType是IETF 组织协商，以 RFC 的形式作为建议的一种标准，一般用于网络传输中说明文件的类型，例如： Content-Type: image/png(MIMEType:大类型/小类型)
+             获取 MIME 类型的途径：
+             1、发送网络请求，响应体里面有字段说明文件的MIME类型。response.mimeType
+             2、百度MIME 参考手册。
+             3、C语言的api也有提供。
+             */
+            print("     (@@ 获取文件的MIMEType")
+            
+            //通过响应头的字段获取
+            let resp = URLResponse()
+            print("response中的mime类型：\(String(describing: resp.mimeType))")
+            
+            // C语言的api获取,首先引入c语言库，import MobileCoreServices
+            let fileUrl = URL(fileURLWithPath: "/Users/mac/Desktop/OutputVedio.mp4")   //桌面文件
+            let filePathExtension = (fileUrl.path  as NSString).pathExtension   //文件后缀名
+            var mimeType = ""
+            
+            if let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension,
+                                                               filePathExtension as NSString,
+                                                               nil)?.takeRetainedValue() {
+                if let mime = UTTypeCopyPreferredTagWithClass(uti, kUTTagClassMIMEType)?
+                    .takeRetainedValue() {
+                    mimeType = mime as String
+                    print("c语言获取到的mime类型：\(mime)")
+                }else{
+                    //未知文件资源类型，可传万能类型application/octet-stream，服务器会自动解析文件类型
+                    mimeType = "application/octet-stream"
+                    print("c语言获取到的mime类型：\(mimeType)")
+                }
+            }
+
+        
         case 2:
-            //TODO: 2、
-            print("     (@@ ")
+            //TODO: 2、 
+            print("     (@@  ")
         case 3:
             //TODO: 3、
             print("     (@@ ")
@@ -66,7 +140,10 @@ extension FileTest_VC: UICollectionViewDataSource {
         case 11:
             print("     (@@")
         case 12:
-            print("     (@@")
+            //TODO: 12、关闭输出流
+            print("     (@@ 关闭输出流")
+            outStream?.close()
+            outStream = nil
         default:
             break
         }
@@ -177,5 +254,5 @@ extension FileTest_VC: UICollectionViewDelegate {
 
 // MARK: - 笔记
 /**
- 
+    1、文件的压缩和解压缩，用第三方库SSZipArchive
  */

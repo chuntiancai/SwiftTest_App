@@ -96,14 +96,19 @@ extension TestFSCalendar_VC{
     /// 初始化你要测试的view
     func initTestViewUI(){
         
-        calendarTestView.layer.borderWidth = 1.0
-        calendarTestView.layer.borderColor = UIColor.brown.cgColor
         self.view.addSubview(calendarTestView)
         calendarTestView.snp.makeConstraints { make in
             make.top.equalTo(baseCollView.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalTo(400)
+        }
+        
+        calendarTestView.boundRectWillChangeBlock = {
+            [weak self] (preBound,curBound) -> Void in
+            self?.calendarTestView.snp.updateConstraints({ make in
+                make.height.equalTo(curBound.height)
+            })
         }
         
     }

@@ -115,7 +115,7 @@
 		045505A72803B9BF00785F02 /* CTCCalendarPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045505A62803B9BF00785F02 /* CTCCalendarPageView.swift */; };
 		045505A92803B9DD00785F02 /* CTCCalendarMonthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045505A82803B9DD00785F02 /* CTCCalendarMonthCell.swift */; };
 		045505AB2803BCFF00785F02 /* CTCCalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045505AA2803BCFF00785F02 /* CTCCalendarDayCell.swift */; };
-		045505AD2804062C00785F02 /* 测试日历库FSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045505AC2804062C00785F02 /* 测试日历库FSCalendar.swift */; };
+		045505AD2804062C00785F02 /* 测试日历库FSCalendar_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045505AC2804062C00785F02 /* 测试日历库FSCalendar_VC.swift */; };
 		04587C6F27B4BBB300824F69 /* TestUserDefault_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04587C6E27B4BBB300824F69 /* TestUserDefault_VC.swift */; };
 		04587C7227B4E58700824F69 /* TestArchives_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04587C7127B4E58700824F69 /* TestArchives_VC.swift */; };
 		04587C7427B4E5FE00824F69 /* Arch_Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04587C7327B4E5FE00824F69 /* Arch_Person.swift */; };
@@ -248,11 +248,19 @@
 		04A0CA5426A0027800ECAE1B /* JFZPlayerCommonViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A0CA3826A0027800ECAE1B /* JFZPlayerCommonViewDelegate.swift */; };
 		04B76903280D3A730080102F /* 手势识别器之间的交互_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B76902280D3A730080102F /* 手势识别器之间的交互_VC.swift */; };
 		04B76905280D64F20080102F /* TestFSCalendar_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B76904280D64F20080102F /* TestFSCalendar_View.swift */; };
+		04B76907280E4D580080102F /* FSCalendarTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B76906280E4D580080102F /* FSCalendarTest.storyboard */; };
+		04B76909280E4E010080102F /* FSCalendar_SB_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B76908280E4E010080102F /* FSCalendar_SB_VC.swift */; };
+		04B7690B280E8D760080102F /* TestFSCalendar_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B7690A280E8D760080102F /* TestFSCalendar_Cell.swift */; };
+		04B76922281154980080102F /* OC中枚举的写法.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B76921281154980080102F /* OC中枚举的写法.m */; };
+		04B769282814E2B20080102F /* TestHTTPS_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B769272814E2B20080102F /* TestHTTPS_VC.swift */; };
+		04B7692A281797790080102F /* xmlFile.xml in Resources */ = {isa = PBXBuildFile; fileRef = 04B76929281797790080102F /* xmlFile.xml */; };
+		04B7692D2817E0190080102F /* TestNetWorkDownload_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B7692C2817E0190080102F /* TestNetWorkDownload_VC.swift */; };
+		04B7692F2817E9F70080102F /* TestUrlDownload_delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B7692E2817E9F70080102F /* TestUrlDownload_delegate.swift */; };
 		04C2DBFE26CE269700F9B3EE /* TestSubVC_MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2DBFD26CE269700F9B3EE /* TestSubVC_MainVC.swift */; };
 		04C2DC0026CE26FB00F9B3EE /* TestSubVC_SubVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2DBFF26CE26FB00F9B3EE /* TestSubVC_SubVC.swift */; };
 		04C2DC0226CE28BA00F9B3EE /* TestSubVC_SubVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2DC0126CE28BA00F9B3EE /* TestSubVC_SubVC2.swift */; };
 		04C2DC0426CE304700F9B3EE /* SubVC1_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2DC0326CE304700F9B3EE /* SubVC1_View.swift */; };
-		04C2DC0726CE3F9500F9B3EE /* TestURLSession_MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2DC0626CE3F9500F9B3EE /* TestURLSession_MainVC.swift */; };
+		04C2DC0726CE3F9500F9B3EE /* TestURLSession_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2DC0626CE3F9500F9B3EE /* TestURLSession_VC.swift */; };
 		04C45C8B271D539100E1EA9B /* Selector和NSStringFromClass的自定义类.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C45C8A271D539100E1EA9B /* Selector和NSStringFromClass的自定义类.swift */; };
 		04C45C8D271D5BB100E1EA9B /* 测试selector的VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C45C8C271D5BB100E1EA9B /* 测试selector的VC.swift */; };
 		04CBB62626CA476E00436C0E /* TableView_DelegateLifeCycle_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBB62526CA476E00436C0E /* TableView_DelegateLifeCycle_Cell.swift */; };
@@ -276,7 +284,7 @@
 		AF2C735725539C54000AD7A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF2C735525539C54000AD7A9 /* Main.storyboard */; };
 		AF2C735925539C60000AD7A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF2C735825539C60000AD7A9 /* Assets.xcassets */; };
 		AF2C735C25539C60000AD7A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF2C735A25539C60000AD7A9 /* LaunchScreen.storyboard */; };
-		EB5C881427FC2EA200655119 /* 位移枚举.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C881327FC2EA200655119 /* 位移枚举.swift */; };
+		EB5C881427FC2EA200655119 /* 位移枚举的写法.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C881327FC2EA200655119 /* 位移枚举的写法.swift */; };
 		EB645E3F26A449AE00773A98 /* tempView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645E3E26A449AE00773A98 /* tempView.swift */; };
 /* End PBXBuildFile section */
 
@@ -405,7 +413,7 @@
 		045505A62803B9BF00785F02 /* CTCCalendarPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTCCalendarPageView.swift; sourceTree = "<group>"; };
 		045505A82803B9DD00785F02 /* CTCCalendarMonthCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTCCalendarMonthCell.swift; sourceTree = "<group>"; };
 		045505AA2803BCFF00785F02 /* CTCCalendarDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTCCalendarDayCell.swift; sourceTree = "<group>"; };
-		045505AC2804062C00785F02 /* 测试日历库FSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试日历库FSCalendar.swift"; sourceTree = "<group>"; };
+		045505AC2804062C00785F02 /* 测试日历库FSCalendar_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试日历库FSCalendar_VC.swift"; sourceTree = "<group>"; };
 		04587C6E27B4BBB300824F69 /* TestUserDefault_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserDefault_VC.swift; sourceTree = "<group>"; };
 		04587C7127B4E58700824F69 /* TestArchives_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestArchives_VC.swift; sourceTree = "<group>"; };
 		04587C7327B4E5FE00824F69 /* Arch_Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arch_Person.swift; sourceTree = "<group>"; };
@@ -541,11 +549,19 @@
 		04A0CA5526A0054A00ECAE1B /* SwiftTest_App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftTest_App-Bridging-Header.h"; sourceTree = "<group>"; };
 		04B76902280D3A730080102F /* 手势识别器之间的交互_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "手势识别器之间的交互_VC.swift"; sourceTree = "<group>"; };
 		04B76904280D64F20080102F /* TestFSCalendar_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFSCalendar_View.swift; sourceTree = "<group>"; };
+		04B76906280E4D580080102F /* FSCalendarTest.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FSCalendarTest.storyboard; sourceTree = "<group>"; };
+		04B76908280E4E010080102F /* FSCalendar_SB_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCalendar_SB_VC.swift; sourceTree = "<group>"; };
+		04B7690A280E8D760080102F /* TestFSCalendar_Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFSCalendar_Cell.swift; sourceTree = "<group>"; };
+		04B76921281154980080102F /* OC中枚举的写法.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "OC中枚举的写法.m"; sourceTree = "<group>"; };
+		04B769272814E2B20080102F /* TestHTTPS_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHTTPS_VC.swift; sourceTree = "<group>"; };
+		04B76929281797790080102F /* xmlFile.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = xmlFile.xml; sourceTree = "<group>"; };
+		04B7692C2817E0190080102F /* TestNetWorkDownload_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNetWorkDownload_VC.swift; sourceTree = "<group>"; };
+		04B7692E2817E9F70080102F /* TestUrlDownload_delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUrlDownload_delegate.swift; sourceTree = "<group>"; };
 		04C2DBFD26CE269700F9B3EE /* TestSubVC_MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSubVC_MainVC.swift; sourceTree = "<group>"; };
 		04C2DBFF26CE26FB00F9B3EE /* TestSubVC_SubVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSubVC_SubVC.swift; sourceTree = "<group>"; };
 		04C2DC0126CE28BA00F9B3EE /* TestSubVC_SubVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSubVC_SubVC2.swift; sourceTree = "<group>"; };
 		04C2DC0326CE304700F9B3EE /* SubVC1_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubVC1_View.swift; sourceTree = "<group>"; };
-		04C2DC0626CE3F9500F9B3EE /* TestURLSession_MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestURLSession_MainVC.swift; sourceTree = "<group>"; };
+		04C2DC0626CE3F9500F9B3EE /* TestURLSession_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestURLSession_VC.swift; sourceTree = "<group>"; };
 		04C45C8A271D539100E1EA9B /* Selector和NSStringFromClass的自定义类.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Selector和NSStringFromClass的自定义类.swift"; sourceTree = "<group>"; };
 		04C45C8C271D5BB100E1EA9B /* 测试selector的VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试selector的VC.swift"; sourceTree = "<group>"; };
 		04CBB62526CA476E00436C0E /* TableView_DelegateLifeCycle_Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView_DelegateLifeCycle_Cell.swift; sourceTree = "<group>"; };
@@ -572,7 +588,7 @@
 		AF2C735D25539C60000AD7A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB6AAD3455F9D2C8F661C07D /* Pods-SwiftTest_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTest_App.debug.xcconfig"; path = "Target Support Files/Pods-SwiftTest_App/Pods-SwiftTest_App.debug.xcconfig"; sourceTree = "<group>"; };
 		C4C06FA2172551275C4FCEE6 /* Pods_SwiftTest_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftTest_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB5C881327FC2EA200655119 /* 位移枚举.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "位移枚举.swift"; sourceTree = "<group>"; };
+		EB5C881327FC2EA200655119 /* 位移枚举的写法.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "位移枚举的写法.swift"; sourceTree = "<group>"; };
 		EB645E3E26A449AE00773A98 /* tempView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempView.swift; sourceTree = "<group>"; };
 		FFFA356333D985ADCDBF1FEB /* Pods-SwiftTest_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTest_App.release.xcconfig"; path = "Target Support Files/Pods-SwiftTest_App/Pods-SwiftTest_App.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1116,8 +1132,11 @@
 		045505AE2804063300785F02 /* 测试日历库FSCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				045505AC2804062C00785F02 /* 测试日历库FSCalendar.swift */,
+				045505AC2804062C00785F02 /* 测试日历库FSCalendar_VC.swift */,
 				04B76904280D64F20080102F /* TestFSCalendar_View.swift */,
+				04B7690A280E8D760080102F /* TestFSCalendar_Cell.swift */,
+				04B76906280E4D580080102F /* FSCalendarTest.storyboard */,
+				04B76908280E4E010080102F /* FSCalendar_SB_VC.swift */,
 			);
 			path = "测试日历库FSCalendar";
 			sourceTree = "<group>";
@@ -1231,7 +1250,8 @@
 			isa = PBXGroup;
 			children = (
 				0474C25827D8535200B95D7C /* TestEnum_VC.swift */,
-				EB5C881327FC2EA200655119 /* 位移枚举.swift */,
+				EB5C881327FC2EA200655119 /* 位移枚举的写法.swift */,
+				04B76921281154980080102F /* OC中枚举的写法.m */,
 			);
 			path = "枚举的使用";
 			sourceTree = "<group>";
@@ -1726,6 +1746,15 @@
 			path = ComponentDelegate;
 			sourceTree = "<group>";
 		};
+		04B7692B2817DFC90080102F /* 测试网络文件下载上传 */ = {
+			isa = PBXGroup;
+			children = (
+				04B7692C2817E0190080102F /* TestNetWorkDownload_VC.swift */,
+				04B7692E2817E9F70080102F /* TestUrlDownload_delegate.swift */,
+			);
+			path = "测试网络文件下载上传";
+			sourceTree = "<group>";
+		};
 		04C2DBFC26CE267600F9B3EE /* 子VC的测试 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1741,7 +1770,9 @@
 		04C2DC0526CE3F6900F9B3EE /* iOS网络测试 */ = {
 			isa = PBXGroup;
 			children = (
+				04B769272814E2B20080102F /* TestHTTPS_VC.swift */,
 				04CBB62F26CBA1F200436C0E /* 测试URLSession */,
+				04B7692B2817DFC90080102F /* 测试网络文件下载上传 */,
 			);
 			path = "iOS网络测试";
 			sourceTree = "<group>";
@@ -1791,8 +1822,9 @@
 		04CBB62F26CBA1F200436C0E /* 测试URLSession */ = {
 			isa = PBXGroup;
 			children = (
-				04C2DC0626CE3F9500F9B3EE /* TestURLSession_MainVC.swift */,
+				04C2DC0626CE3F9500F9B3EE /* TestURLSession_VC.swift */,
 				0465628C26D3386600D38F2D /* TestURLSessionDelegate.swift */,
+				04B76929281797790080102F /* xmlFile.xml */,
 			);
 			path = "测试URLSession";
 			sourceTree = "<group>";
@@ -1819,13 +1851,13 @@
 			isa = PBXGroup;
 			children = (
 				651C71482609EB870066C13B /* FileTest_VC.swift */,
+				651C713A2609E3CA0066C13B /* File的常见操作总结.swift */,
+				651C713B2609E3CA0066C13B /* File的理解.swift */,
+				651C713C2609E3CA0066C13B /* FileManager的使用.swift */,
 				042648ED27F445AB0034FF51 /* NSCache测试 */,
 				04587C7027B4E40500824F69 /* 归档(序列化对象)测试 */,
 				04587C6D27B4BB9700824F69 /* UserDefault测试 */,
 				041CBC4E278D2E7D00AF9B05 /* plist文件测试 */,
-				651C713A2609E3CA0066C13B /* File的常见操作总结.swift */,
-				651C713B2609E3CA0066C13B /* File的理解.swift */,
-				651C713C2609E3CA0066C13B /* FileManager的使用.swift */,
 			);
 			path = "文件测试";
 			sourceTree = "<group>";
@@ -1875,8 +1907,8 @@
 				048608A127325C45000F816E /* 日期处理的相关测试 */,
 				04600033271190F70074DFA2 /* Swift语法测试 */,
 				04D9B4FD26D76DD100289824 /* Framework测试 */,
-				04C2DC0526CE3F6900F9B3EE /* iOS网络测试 */,
 				049EAFD726B3E18000903DA8 /* IOS多线程测试 */,
+				04C2DC0526CE3F6900F9B3EE /* iOS网络测试 */,
 				0421E60C26AAE6F600C6A922 /* VC相关的测试 */,
 				0421E5FA26AAAEA600C6A922 /* UI相关测试 */,
 				0414F97D27BBB0A10037EE70 /* CALayer的相关测试 */,
@@ -1979,7 +2011,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF2C735C25539C60000AD7A9 /* LaunchScreen.storyboard in Resources */,
+				04B76907280E4D580080102F /* FSCalendarTest.storyboard in Resources */,
 				041CBC452788272400AF9B05 /* labi.bundle in Resources */,
+				04B7692A281797790080102F /* xmlFile.xml in Resources */,
 				AF2C735925539C60000AD7A9 /* Assets.xcassets in Resources */,
 				041CBC412788206500AF9B05 /* labi006.jpg in Resources */,
 				044CBA7B27F6908200FA2CB8 /* TestScrollView.xcassets in Resources */,
@@ -2072,6 +2106,7 @@
 				04A0CA4B26A0027800ECAE1B /* JFZMediaCacheManager.swift in Sources */,
 				0474C25127D0981200B95D7C /* 自定义tabar_View.swift in Sources */,
 				0421E62226B0F69600C6A922 /* UITestScreenRotateVC.swift in Sources */,
+				04B7690B280E8D760080102F /* TestFSCalendar_Cell.swift in Sources */,
 				04587C8C27B6654500824F69 /* TestGesture_VC.swift in Sources */,
 				0414F99127C33E570037EE70 /* TestBugly_VC.swift in Sources */,
 				04A0CA4726A0027800ECAE1B /* JFZAudioPlayView.swift in Sources */,
@@ -2102,6 +2137,7 @@
 				04A0CA4326A0027800ECAE1B /* JFZPlayerControlPanelView.swift in Sources */,
 				04927018279EA762000A61FC /* 测试Notification的VC.swift in Sources */,
 				04D9B4FF26D76DF400289824 /* FrameworkTest_MainVC.swift in Sources */,
+				04B7692F2817E9F70080102F /* TestUrlDownload_delegate.swift in Sources */,
 				042036BE2754B16F00424E05 /* 测试文字的渐变色.swift in Sources */,
 				04870E4326E9AD280030B1D2 /* AAMarker.swift in Sources */,
 				042648E327F312A60034FF51 /* TestSDWebImage_VC.swift in Sources */,
@@ -2140,7 +2176,7 @@
 				047C851627B3B53E0060D7CB /* TestUIAlertController_VC.swift in Sources */,
 				651C713E2609E3CA0066C13B /* File的理解.swift in Sources */,
 				0414F98827BE24730037EE70 /* Quartz_Img_View.swift in Sources */,
-				04C2DC0726CE3F9500F9B3EE /* TestURLSession_MainVC.swift in Sources */,
+				04C2DC0726CE3F9500F9B3EE /* TestURLSession_VC.swift in Sources */,
 				0414F98F27BF951C0037EE70 /* TestCALayer_VC.swift in Sources */,
 				0492700827941D73000A61FC /* TestScrollView_deleagate.swift in Sources */,
 				0414F98D27BF7F9A0037EE70 /* Quartz_Draw_VC.swift in Sources */,
@@ -2150,7 +2186,7 @@
 				04870E4926E9AD280030B1D2 /* AAPane.swift in Sources */,
 				049EAFD926B3E1A700903DA8 /* TestThread_VC.swift in Sources */,
 				044CBA7127F587C100FA2CB8 /* TestSubVC_SubVC3.swift in Sources */,
-				EB5C881427FC2EA200655119 /* 位移枚举.swift in Sources */,
+				EB5C881427FC2EA200655119 /* 位移枚举的写法.swift in Sources */,
 				0421E61626AEA31B00C6A922 /* TestModalVC.swift in Sources */,
 				048480832785372400698106 /* 主测试Soryboard_VC.swift in Sources */,
 				0414F97C27BA48C50037EE70 /* TableView的contentInset与刷新_VC.swift in Sources */,
@@ -2203,6 +2239,7 @@
 				049EAFF926C2630200903DA8 /* TestVideoFunc_VC.swift in Sources */,
 				048608A72733D25C000F816E /* 测试view的阴影.swift in Sources */,
 				0474C24927CE0E8500B95D7C /* TestCALayer_Layer.swift in Sources */,
+				04B76909280E4E010080102F /* FSCalendar_SB_VC.swift in Sources */,
 				04870E8526EB339D0030B1D2 /* SectionTableView_SectionHeader.swift in Sources */,
 				04A0CA4E26A0027800ECAE1B /* JFZMediaCacheLocationDelegate.swift in Sources */,
 				0474C24727CE0D3A00B95D7C /* TestCALayer_View.swift in Sources */,
@@ -2211,6 +2248,7 @@
 				04A0CA5426A0027800ECAE1B /* JFZPlayerCommonViewDelegate.swift in Sources */,
 				04587C7927B50B9E00824F69 /* Tabar_SubVC1.swift in Sources */,
 				04A0CA3F26A0027800ECAE1B /* JFZWithoutNetView.swift in Sources */,
+				04B76922281154980080102F /* OC中枚举的写法.m in Sources */,
 				04927013279E8FBB000A61FC /* 测试UIView的VC.swift in Sources */,
 				044FB587276735BE00479442 /* TextField的点击测试(键盘弹起)_View.swift in Sources */,
 				0484806F27798FEB00698106 /* 自定义字体渐变色的label.swift in Sources */,
@@ -2229,6 +2267,7 @@
 				042648E927F3FB6E0034FF51 /* SubThread.swift in Sources */,
 				041CBC4B278D26D400AF9B05 /* HaveMutipleButtonView.swift in Sources */,
 				0474C24127C4837F00B95D7C /* TestCoreAnimation_VC.swift in Sources */,
+				04B7692D2817E0190080102F /* TestNetWorkDownload_VC.swift in Sources */,
 				0474C24527CE0A5F00B95D7C /* LifeCycleVC_View.swift in Sources */,
 				04C2DC0026CE26FB00F9B3EE /* TestSubVC_SubVC.swift in Sources */,
 				049EAFED26B9478C00903DA8 /* TestAsyncImage_TableView.swift in Sources */,
@@ -2275,7 +2314,7 @@
 				04A0CA4C26A0027800ECAE1B /* JFZMediaCacher.swift in Sources */,
 				04B76905280D64F20080102F /* TestFSCalendar_View.swift in Sources */,
 				049EAFEF26BA9B8B00903DA8 /* TouchDeliver_BtnBgView.swift in Sources */,
-				045505AD2804062C00785F02 /* 测试日历库FSCalendar.swift in Sources */,
+				045505AD2804062C00785F02 /* 测试日历库FSCalendar_VC.swift in Sources */,
 				0474C24327CE08A300B95D7C /* TestImgInvert_View.swift in Sources */,
 				04870E8326EB2D690030B1D2 /* TestSectionTableView_VC.swift in Sources */,
 				042648DC27F2E0FB0034FF51 /* AsyncImg_Cell.swift in Sources */,
@@ -2291,6 +2330,7 @@
 				040BFF4527B277080010C999 /* Story_FirstVC.swift in Sources */,
 				0454A4912731097E00EFE31A /* TestNavibar_VC.swift in Sources */,
 				0421E60B26AAB5B200C6A922 /* TestLifeCycleView.swift in Sources */,
+				04B769282814E2B20080102F /* TestHTTPS_VC.swift in Sources */,
 				049EAFEA26B9437D00903DA8 /* TestAsyncDownloadImage_VC.swift in Sources */,
 				04A0CA3926A0027800ECAE1B /* JFZAudiovisualCommonEnum.swift in Sources */,
 				04870E4626E9AD280030B1D2 /* AAPlotLinesElement.swift in Sources */,

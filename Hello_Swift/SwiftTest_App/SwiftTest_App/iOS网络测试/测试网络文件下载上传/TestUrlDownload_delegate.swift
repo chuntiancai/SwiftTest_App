@@ -1,14 +1,14 @@
 //
-//  TestURLSessionDelegate.swift
+//  TestUrlDownload_delegate.swift
 //  SwiftTest_App
 //
-//  Created by mathew on 2021/8/23.
-//  Copyright © 2021 com.mathew. All rights reserved.
+//  Created by mathew on 2022/4/26.
+//  Copyright © 2022 com.mathew. All rights reserved.
 //
-// 测试URLSession的代理方法
+// 测试URLSession网络下载时的代理方法
 
-
-class TestURLSessionDelegate:NSObject,URLSessionDelegate {
+//MARK: - 遵循URLSessionDelegate协议
+class TestUrlDownload_delegate:NSObject,URLSessionDelegate {
     
     //MARK: 内部属性
     private var respMimeType:String?//响应类型
@@ -23,20 +23,20 @@ class TestURLSessionDelegate:NSObject,URLSessionDelegate {
         print(" ©URLSessionDelegate© 的 \(#function) 方法")
     }
 
-    //MARK: ##didReceive challenge方法，系统告诉代理，我需要SSL证书之类的认证，你在completionHandler闭包中回传给我：
+    //TODO: ##didReceive challenge方法，系统告诉代理，我需要SSL证书之类的认证，你在completionHandler闭包中回传给我：
     func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void){
         print("©URLSessionDelegate© 的 \(#function) 方法")
         completionHandler(.useCredential,.none)
     }
   
     func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession){
-        print("©TestURLSessionDelegate© 的 \(#function) 方法")
+        print("©TestUrlDownload_delegate© 的 \(#function) 方法")
     }
     
 }
 
 //MARK: 遵循URLSessionTaskDelegate协议,会话的任务管理
-extension TestURLSessionDelegate : URLSessionTaskDelegate{
+extension TestUrlDownload_delegate : URLSessionTaskDelegate{
     
     func urlSession(_ session: URLSession, task: URLSessionTask, willBeginDelayedRequest request: URLRequest, completionHandler: @escaping (URLSession.DelayedRequestDisposition, URLRequest?) -> Void){
         print("©task© 这是URLSessionTaskDelegate的 \(#function) 方法")
@@ -85,10 +85,10 @@ extension TestURLSessionDelegate : URLSessionTaskDelegate{
 }
 
 //MARK: - 遵循URLSessionDataDelegate协议，处理传输的数据
-extension TestURLSessionDelegate: URLSessionDataDelegate {
+extension TestUrlDownload_delegate: URLSessionDataDelegate {
     
     // MARK: ## didReceive response方法，告诉delegate已经接受到服务器的初始应答(响应头), 准备接下来的数据任务的操作，:
-    // MARK: ## completionHandler参数 必须赋值，用于告诉系统下一步该做什么。默认是取消任务。
+    // MARK: ## completionHandler参数 必须赋值，用于告诉系统下一步该做什么。
     func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive response: URLResponse, completionHandler: @escaping (URLSession.ResponseDisposition) -> Void){
         /**
          completionHandler: 方法，接收到服务器的响应被自动调用，一次请求只响应一次， 它默认会取消该请求，所以你要在completionHandler的闭包中，让系统不要取消。
@@ -183,12 +183,12 @@ extension TestURLSessionDelegate: URLSessionDataDelegate {
 
 
 //MARK: - 遵循URLSessionDownloadDelegate协议，处理下载任务
-extension TestURLSessionDelegate: URLSessionDownloadDelegate {
+extension TestUrlDownload_delegate: URLSessionDownloadDelegate {
     
     // MARK: ## didFinishDownloadingTo方法，告诉代理者，网络数据已经下载完成了。
     /// 下载成功以后会在闭包中返回一个存在 temp 文件夹的文件URL，由于这个文件夹下的文件随时可能被清空，所以需要把文件移动到另一个文件夹下
     /// - Parameters:
-    ///   - location: 临时 存放下载完的文件的 路径URL
+    ///   - location: 临时存放下载完的文件的路径URL
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL){
         print("©down© 这是 URLSessionDownloadDelegate 的 \(#function)  方法")
         print("     当前线程：\(Thread.current)")
@@ -216,22 +216,13 @@ extension TestURLSessionDelegate: URLSessionDownloadDelegate {
         
     }
     
-    // MARK: ## didWriteData bytesWritten 方法，下载(写)数据
-    /**
-     *  @param session                   会话对象
-     *  @param downloadTask              下载任务
-     *  @param bytesWritten              本次写入的数据大小
-     *  @param totalBytesWritten         下载的数据总大小
-     *  @param totalBytesExpectedToWrite  文件的总大小
-     */
+    // MARK: ## didWriteData bytesWritten 方法，
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64){
         print("©down© 这是 URLSessionDownloadDelegate 的 \(#function) 方法")
         
     }
     
-    // MARK: ## didResumeAtOffset fileOffset方法，当恢复下载的时候调用该方法
-    ///   - fileOffset: 从什么地方下载
-    ///   - expectedTotalBytes: 文件的总大小
+    // MARK: ## didResumeAtOffset fileOffset方法，
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64){
         print("©down© 这是 URLSessionDownloadDelegate 的 \(#function)  方法")
         
@@ -240,7 +231,7 @@ extension TestURLSessionDelegate: URLSessionDownloadDelegate {
 }
 
 //MARK: - 遵循URLSessionStreamDelegate协议，处理流下载
-extension TestURLSessionDelegate: URLSessionStreamDelegate {
+extension TestUrlDownload_delegate: URLSessionStreamDelegate {
     func urlSession(_ session: URLSession, readClosedFor streamTask: URLSessionStreamTask){
         print("©stream© 这是 URLSessionStreamDelegate 的 \(#function) 方法")
         
@@ -269,6 +260,7 @@ extension TestURLSessionDelegate: URLSessionStreamDelegate {
 
 //MARK: - 笔记
 /**
-    1、如果是downloadTask，直接不经过didReceive response代理方法，而是直接走URLSessionDownloadDelegate 的 didWriteData bytesWritten 方法。
- 
+    1、
+        
  */
+

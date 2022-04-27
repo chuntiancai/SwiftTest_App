@@ -39,7 +39,7 @@ extension TestPlistFile_VC: UICollectionViewDataSource {
         print("点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            //TODO: 0、
+            //TODO: 0、写入文件到App中
             /// 这会是写入到编译打包后的app中，而不是还未编译的xcode的目录下
             print("     (@@  写入到xcode目录下")
             let bundlePath = Bundle.main.bundlePath //主bundle
