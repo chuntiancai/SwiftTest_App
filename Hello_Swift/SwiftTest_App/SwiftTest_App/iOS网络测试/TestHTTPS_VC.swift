@@ -18,6 +18,7 @@ class TestHTTPS_VC: UIViewController {
     
     //MARK: 测试组件
     private var currentElement:String = ""
+    private var httpsSession:URLSession?    //测试https的会话
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -275,7 +276,30 @@ extension TestHTTPS_VC: UICollectionViewDataSource {
             }
             urlSessionTask.resume()
         case 7:
-            print("     (@@")
+            //TODO: 7、测试HTTPS的加密传输
+            /**
+                1、在应用层和TCP层之间，会加入一个SSL头，就相当于多了一层，用于描述加密解密信息。
+                2、核心仍然是，"公钥"加密，"私钥"解密。"私钥"加密，"公钥"解密。    CA证书就相当于公钥，公钥既可以加密也可以解密，一角二用。
+             */
+            print("     (@@ 测试HTTPS的加密传输")
+            guard let url = URL.init(string: "https://www.12306.cn/index/view/infos/service_number.html")else { return  }
+            
+            httpsSession = URLSession.init(configuration: .default, delegate: self, delegateQueue: OperationQueue())
+            
+            let urlSessionTask = httpsSession!.dataTask(with: url) { data, response, error in
+                guard let curData = data else { print("data数据为空"); return }
+                
+                print("\n返回的response:  \(String(describing: response))\n")
+                print("\n返回的error:  \(String(describing: error))\n")
+                
+                let resStr = String(data: curData, encoding: .utf8)
+                print("返回的字符串：\(String(describing: resStr))")
+                
+                
+            }
+            /// 启动网络会话的任务
+            urlSessionTask.resume()
+        
         case 8:
             print("     (@@")
         case 9:
@@ -320,6 +344,64 @@ extension TestHTTPS_VC:NSURLConnectionDataDelegate{
     //4.请求结束的时候调用
     func connectionDidFinishLoading(_ connection: NSURLConnection) {
         print("TestHTTPS_VC的 \(#function) 方法～")
+    }
+    
+}
+//MARK: - 遵循URLSessionDataDelegate代理协议，用于测试访问证书。
+extension TestHTTPS_VC:URLSessionDataDelegate{
+    
+    // MARK: 访问是否下载证书。
+    ///http请求不会回调该方法。
+    ///challenge:质询的意思,信息都在保护空间里challenge.protectionSpace
+    ///URLSession.AuthChallengeDisposition: 如何处理证书
+    ///URLCredential: 授权信息
+    func urlSession(_ session: URLSession, task: URLSessionTask, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        print("©URLSessionDataDelegate©  的 \(#function) 方法")
+        
+        print("认证空间：\(challenge.protectionSpace)")
+        print("认证方式：\(challenge.protectionSpace.authenticationMethod)")
+        
+        /*
+         public enum AuthChallengeDisposition : Int {
+             case useCredential = 0     //使用该证书 安装该证书
+             case performDefaultHandling = 1    //默认采用的方式,该证书被忽略
+             case cancelAuthenticationChallenge = 2 //取消请求,证书忽略
+             case rejectProtectionSpace = 3 //拒绝
+         }
+         */
+        guard let trust =  challenge.protectionSpace.serverTrust else {
+            print("证书不是官方的，是私人的")
+            return
+        }
+        let credential = URLCredential.init(trust: trust)   //通过服务器的证书来验证(信任)，也就是所谓的通过证书加密数据来进行传输。
+        completionHandler(.useCredential,credential)
+        
+        //URLCredential 授权信息
+    }
+    
+    // MARK: 已经接受到服务器的初始应答(响应头), 准备接下来的数据任务的操作，:
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive response: URLResponse, completionHandler: @escaping (URLSession.ResponseDisposition) -> Void){
+        print("©URLSessionDataDelegate©  的 \(#function) 方法")
+        print("""
+                响应头：--MimeType(mime类型):\(String(describing: response.mimeType)),
+                --suggestedFilename(建议文件名):\(String(describing: response.suggestedFilename)),
+                --expectedContentLength(本次请求总大小):\(response.expectedContentLength)
+                """)
+        completionHandler(.allow)   //允许访问
+        
+    }
+    
+    // MARK: 已经接收到部分数据:
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data){
+        print("©URLSessionDataDelegate©  的 \(#function) 方法")
+        
+    }
+    
+    // MARK: 是否下载证书。
+    
+    // MARK: 请求结束或者是失败的时候调用
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        print("©URLSessionDataDelegate©  的 \(#function) 方法")
     }
     
 }

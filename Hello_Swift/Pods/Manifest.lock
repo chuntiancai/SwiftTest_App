@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (4.9.1)
   - Bugly (2.5.90)
   - Charts (3.6.0):
     - Charts/Core (= 3.6.0)
@@ -16,12 +17,13 @@ PODS:
   - SwiftyJSON (5.0.1)
 
 DEPENDENCIES:
+  - Alamofire
   - Bugly
   - Charts (~> 3.6.0)
   - ctc_podspec (from `https://github.com/chuntiancai/TestCocoapod.git`)
   - FilesProvider
   - FLAnimatedImage
-  - FSCalendar
+  - FSCalendar (~> 2.8.2)
   - MJRefresh
   - Reachability
   - SDWebImage (~> 5.11.1)
@@ -30,6 +32,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - Alamofire
     - Bugly
     - Charts
     - FilesProvider
@@ -51,6 +54,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/chuntiancai/TestCocoapod.git
 
 SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Bugly: 88bc32c0acc6fef7b74d610f0319ee7560d6b9fe
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   ctc_podspec: f6baf061bb4cc0b9dd1fcbab2a695aef1259bf10
@@ -63,6 +67,6 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: cb2d2bec34eb1b3d276dad5a05b0cdb0939adea6
+PODFILE CHECKSUM: e1605ae38f31267dff7aecac1f6f69ffeec0aa72
 
 COCOAPODS: 1.10.2

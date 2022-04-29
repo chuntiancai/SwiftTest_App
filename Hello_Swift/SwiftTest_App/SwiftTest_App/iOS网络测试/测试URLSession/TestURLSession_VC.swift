@@ -17,7 +17,7 @@ class TestURLSession_VC: UIViewController {
     ///UI组件
     private var baseCollView: UICollectionView!
    
-    //MARK: 测试缓存
+    //TODO: 测试缓存
     private lazy var urlReq:URLRequest? = {
         /**
          测试视频网址：http://vfx.mtime.cn/Video/2019/02/04/mp4/190204084208765161.mp4
@@ -41,11 +41,22 @@ class TestURLSession_VC: UIViewController {
         return config
     }()
     
+    //TODO: 测试断点下载
+    private var fileCurSize:Int = 0     //已下载文件当前大小
+    private var fileTotalSize:Int = 0       //文件总大小
+    private var downSession:URLSession?         //下载的会话
+    private var downTask:URLSessionDataTask?    //下载的任务
+    private let downFileUrl:URL = URL(fileURLWithPath: "/Users/mac/Desktop/downTaskVideo2.mp4")  //下载文件的地址
+    private var fileHandler:FileHandle?     //文件句柄
+    
+    //TODO: 测试文件上传
+    private var upSession:URLSession?         //上传的会话
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = UIColor(red: 199/255.0, green: 204/255.0, blue: 237/255.0, alpha: 1.0)
         self.title = "测试URLSession的VC"
         
         setNavigationBarUI()
@@ -54,6 +65,11 @@ class TestURLSession_VC: UIViewController {
         initCacheTest()
     }
 
+    deinit {
+        print("TestURLSession_VC析构函数～\(#function)")
+        //清理网络会话,session设置了代理的时候，是强引用，不会释放。
+        downSession?.finishTasksAndInvalidate()
+    }
 
 }
 
@@ -217,13 +233,102 @@ extension TestURLSession_VC: UICollectionViewDataSource {
             
             
         case 6:
-            print("     (@@")
+            //TODO: 6、测试断点下载，设置请求头
+            print("     (@@ 测试断点下载，设置请求头")
+            //1.确定请求路径
+            let reqUrl = URL.init(string:  "http://vfx.mtime.cn/Video/2019/03/19/mp4/190319222227698228.mp4")
+            
+            /// 计算已存在的文件的大小,然后计算文件总大小
+            if let fileDict = try? FileManager.default.attributesOfItem(atPath: downFileUrl.path) {
+                let fileCount:Int = fileDict[FileAttributeKey.size] as? Int ?? 0
+                fileCurSize = fileCount
+            }
+            
+            //2.创建请求对象
+            var request = URLRequest.init(url: reqUrl!)
+            request.setValue("bytes=\(fileCurSize)-", forHTTPHeaderField: "Range")  //设置请求范围
+            
+            //3.发送请求
+            if downSession == nil {
+                downSession = URLSession.init(configuration: .default, delegate: self, delegateQueue: OperationQueue())
+            }
+            downTask = downSession!.dataTask(with: request)
+            downTask!.resume()   //开启任务
+            
+        
         case 7:
-            print("     (@@")
+            //TODO: 7、暂停，恢复，取消下载任务。
+            print("     (@@ 暂停，恢复，取消下载任务。")
+            
+            downTask?.suspend()  //暂停，是可以恢复
+            ///downTask?.cancel()   //cancel:取消是不能恢复;
         case 8:
-            print("     (@@")
+            //TODO: 8、恢复下载
+            print("     (@@恢复下载")
+            downTask?.resume()   //恢复下载
         case 9:
-            print("     (@@")
+            //TODO: 9、测试urlsession文件上传,手工拼凑参数
+            print("     (@@ 测试urlsession文件上传")
+            //1.确定请求路径
+            let url = URL(string: "http://vfx.mtime.cn/Video/2019/02/04/mp4")
+            
+            //2.创建可变的请求对象，设置请求头信息
+            var request = URLRequest(url: url!)
+            request.httpMethod = "POST";
+            /// Content-Type:multipart/form-data; boundary=----WebKitFormBoundaryjv0UfA04ED44AhWx
+            let Kboundary = "----WebKitFormBoundaryhahahahahahahaha"    //分隔符
+            request.setValue("multipart/form-data; boundary=\(Kboundary)", forHTTPHeaderField: "Content-Type")
+            
+            /// 拼接请求体数据
+            var fileData = Data()
+            let dataStr = "--\(Kboundary)"
+            fileData.append(dataStr.data(using: .utf8)!)
+            let KNewLineData = "\r\n".data(using: .utf8)!   //回车换行符
+            fileData.append(KNewLineData)
+            
+            //name:file 服务器规定的参数
+            //filename:Snip20160225_341.png 文件保存到服务器上面的名称
+            //Content-Type:文件的类型
+            fileData.append("Content-Disposition: form-data; name=\"file\"; filename=\"Snip20160225_341.png\"".data(using: .utf8)!)
+            fileData.append(KNewLineData)
+            fileData.append("Content-Type: image/png".data(using: .utf8)!)
+            fileData.append(KNewLineData)
+            fileData.append(KNewLineData)
+            let image = UIImage(named: "labi07")
+            fileData.append(image!.pngData()!)
+            fileData.append(KNewLineData)
+            
+            
+            /// 非文件参数
+            /*
+             (分隔符可以随便写，但是四个地方的分隔符要保持一致)
+             --分隔符
+             Content-Disposition: form-data; name="username"
+             空行
+             123456
+             */
+            fileData.append("--\(Kboundary)".data(using: .utf8)!)
+            fileData.append(KNewLineData)
+            fileData.append("Content-Disposition: form-data; name=\"username\"".data(using: .utf8)!)
+            fileData.append(KNewLineData)
+            fileData.append(KNewLineData)
+            fileData.append("123456".data(using: .utf8)!)
+            fileData.append(KNewLineData)
+            
+            //5.3 结尾标识
+            fileData.append("--\(Kboundary)--".data(using: .utf8)!)
+            
+            
+            //3.设置会话对象，唯一不同的是，请求体数据现在不放在请求头，而是放在upTask的创建方法里，由方法来拼接进去请求头对象。
+            let config = URLSessionConfiguration.default
+            config.allowsCellularAccess = true  //允许蜂窝网络访问
+            config.timeoutIntervalForRequest = 15   //请求超时时间
+            upSession = URLSession.init(configuration: config, delegate: self, delegateQueue: OperationQueue())
+            let upTask = upSession!.uploadTask(with: request, from: fileData) { data, resp, err in
+                print("上传文件结果：data：\(String(describing: data)),\n resp：\(String(describing: resp)),\n err：\(String(describing: err))")
+            }
+            upTask.resume()
+            
         case 10:
             print("     (@@")
         case 11:
@@ -238,8 +343,108 @@ extension TestURLSession_VC: UICollectionViewDataSource {
     
 }
 
-//MARK: - 工具方法
-extension TestURLSession_VC{
+//MARK: - 遵循URLSessionDataDelegate协议，测试断点下载
+extension TestURLSession_VC: URLSessionDataDelegate{
+    
+    // MARK: 已经接受到服务器的初始应答(响应头), 准备接下来的数据任务的操作，:
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive response: URLResponse, completionHandler: @escaping (URLSession.ResponseDisposition) -> Void){
+        /**
+         1、completionHandler: 方法，接收到服务器的响应被自动调用，一次请求只响应一次， 它默认会取消该请求，所以你要在completionHandler的闭包中，让系统不要取消。
+         */
+        print("©URLSessionDataDelegate©  的 \(#function) 方法")
+        print("""
+                响应头：--MimeType(mime类型):\(String(describing: response.mimeType)),
+                --suggestedFilename(建议文件名):\(String(describing: response.suggestedFilename)),
+                --expectedContentLength(本次请求总大小):\(response.expectedContentLength)
+                """)
+        /// 首次进入请求的是文件的总大小。
+        if fileTotalSize == 0 {
+            /// 文件不存在时
+            if !FileManager.default.fileExists(atPath: downFileUrl.path) {
+                FileManager.default.createFile(atPath: downFileUrl.path, contents: nil, attributes: nil)
+                fileTotalSize = Int(response.expectedContentLength)
+            }else{
+                /// 计算已存在的文件的大小,然后计算文件总大小
+                if let fileDict = try? FileManager.default.attributesOfItem(atPath: downFileUrl.path) {
+                    let fileCount:Int = fileDict[FileAttributeKey.size] as? Int ?? 0
+                    fileCurSize = fileCount
+                    fileTotalSize = fileCount + Int(response.expectedContentLength)
+                }
+            }
+           
+        }
+        if fileHandler == nil {  //创建文件句柄,首次进入，或者是退出后又进去的时候。
+            fileHandler = FileHandle(forWritingAtPath: downFileUrl.path)
+        }else{
+            fileHandler!.seekToEndOfFile()  //文件句柄移动到文件末尾。
+        }
+        
+        completionHandler(.allow)   //允许访问
+        
+    }
+    
+    // MARK: 已经转变成downloadTask:
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didBecome downloadTask: URLSessionDownloadTask){
+        print("©URLSessionDataDelegate©  的 \(#function)  方法")
+        
+    }
+    
+    
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didBecome streamTask: URLSessionStreamTask){
+        print("©URLSessionDataDelegate©  的 \(#function) 方法")
+        
+    }
+    
+    // MARK: 已经接收到部分数据:
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data){
+        print("©URLSessionDataDelegate©  的 \(#function) 方法")
+        /// 写入数据到文件。
+        fileHandler?.write(data)
+        fileCurSize += data.count   //计算已经写入的文件大小
+        print("文件下载进度：\(String(format: "%.2f", Double(fileCurSize)/Double(fileTotalSize)))")
+        
+    }
+    
+    // MARK: 当session任务完成后，会回调该方法，告诉代理者要不要缓存数据。然后才去回调didFinishCollecting方法
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, willCacheResponse proposedResponse: CachedURLResponse, completionHandler: @escaping (CachedURLResponse?) -> Void){
+        ///1、uploads、 data tasks的session才会调用该方法，background 、ephemeral的session不会回调该方法。还与 前面的response的Headers有允许缓存的"Cache-Control"字段才会回调该方法。
+        ///2、completionHandler参数我也不知道是怎么用，是不是要返回给系统的？是的，和didReceive response方法一样。把CachedURLResponse存进config的urlcache属性中。
+        ///3、目前，苹果只缓存HTTP和HTTPS响应。对于FTP和文件url，缓存策略的唯一作用是确定是否允许请求访问原始源。
+        ///4、一般你给出的completionHandler的参数都是基于proposedResponse修改而来。
+        ///5、cache的策略优先从url request中取，如果没有，则从configuration中取。
+        ///6、URLCache内含CachedURLResponse对象。
+        ///7、如果request请求是下载文件，则不会调用该代理方法。由URLSessionConfiguration决定。
+        /// The default session configuration uses a persistent disk-based cache (except when the result is downloaded to a file) and stores credentials in the user’s keychain.
+        print("©URLSessionDataDelegate©  的 \(#function) 方法")
+        if proposedResponse.response.url?.scheme == "https" {
+            let updatedResponse = CachedURLResponse(response: proposedResponse.response,
+                                                    data: proposedResponse.data,
+                                                    userInfo: proposedResponse.userInfo,
+                                                    storagePolicy: .allowedInMemoryOnly)
+            completionHandler(updatedResponse)
+        } else {
+            completionHandler(proposedResponse)
+        }
+    }
+    
+    // MARK: 请求结束或者是失败的时候调用
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        print("©URLSessionDataDelegate©  的 \(#function) 方法")
+        /// 关闭文件句柄
+        fileHandler?.closeFile()
+        fileHandler = nil
+    }
+    
+    // MARK: 上传文件的进度
+    func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
+        print("©URLSessionDataDelegate©  的 \(#function) 方法")
+        print("上传进度：--bytesSent:\(bytesSent),\n --totalBytesSent:\(totalBytesSent),\n --totalBytesExpectedToSend:\(totalBytesExpectedToSend)")
+    }
+}
+
+
+//MARK: - 设计UI
+extension TestURLSession_VC {
     
     /// 初始化你要测试的view
     func initTestViewUI(){
@@ -252,12 +457,6 @@ extension TestURLSession_VC{
         ///默认的会话配置就好
         cacheUrlSession = URLSession.init(configuration: sessConfig, delegate: urlsessionDelegate, delegateQueue: opQueue)
     }
-    
-}
-
-
-//MARK: - 设计UI
-extension TestURLSession_VC {
     
     /// 设置导航栏的UI
     private func setNavigationBarUI(){
@@ -280,10 +479,12 @@ extension TestURLSession_VC {
         baseCollView = UICollectionView.init(frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width,height:200),
                                              collectionViewLayout: layout)
         
-        baseCollView.backgroundColor = UIColor.cyan
+        baseCollView.backgroundColor = UIColor.cyan.withAlphaComponent(0.8)
         baseCollView.contentSize = CGSize.init(width: UIScreen.main.bounds.size.width * 2, height: UIScreen.main.bounds.size.height)
         baseCollView.showsVerticalScrollIndicator = true
         baseCollView.alwaysBounceVertical = true
+        baseCollView.layer.borderWidth = 1.0
+        baseCollView.layer.borderColor = UIColor.gray.cgColor
         baseCollView.delegate = self
         baseCollView.dataSource = self
         baseCollView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CollectionView_Cell_ID")
@@ -365,7 +566,7 @@ extension TestURLSession_VC: UICollectionViewDelegate {
         downTask.resume()   //恢复下载
         downTask.suspend()  //暂停，是可以恢复
         downTask.cancel()   //cancel:取消是不能恢复;
- 
+  
         downTask.cancel(byProducingResumeData: (ResumeData?) -> Void)     //是可以恢复的，但是如果是程序闪退，则ResumeData保存到沙盒里也很难操作。因为还没封装好。
             // cancelByProducingResumeData:是可以恢复; 恢复下载的数据!=已下载文件数据，而是封装了的数据。
             // 对应的恢复方法是：URLSession.shared.downloadTask(withResumeData: ResumeData)

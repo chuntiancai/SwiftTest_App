@@ -41,7 +41,7 @@ extension MainViewController: UICollectionViewDataSource {
         print("MainViewController点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            pushNext(viewController: TestURLSession_VC())
+            pushNext(viewController: TestHTTPS_VC())
         case 1:
             pushNext(viewController: FileTest_VC())
             break
