@@ -6,3 +6,9 @@
 ## 指定info.plist文件的加载路径
     1、在工程配置-->Targets-->building setting --> 搜索info.plist ,然后你就知道是在packaging中修改info.plist 文件的路径了。 
 
+## projext.pbxproj文件： 
+    1、projext.pbxproj文件 是xcode文件目录结构的配置文件，记录了xcode的文件结构状态。
+
+## 配置SVN或者Git
+    Source Control --> commit
+    Xcode --> preferences --> Accounts --> + --> Xcode Sever    (Xcode10之后就不再自带svn了)

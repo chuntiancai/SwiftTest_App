@@ -24,6 +24,9 @@
     
 ## Scheme文件：
     1、其实就是App的二进制执行方案，你可以edit scheme（切换发布和debug运行环境），也可以切换scheme，也就是选择一个工作空间内的不同app来执行。
+    
+## projext.pbxproj文件： 
+    1、projext.pbxproj文件 是xcode文件目录结构的配置文件，记录了xcode的文件结构状态。
 
 
 ## __OBJC__ 宏：

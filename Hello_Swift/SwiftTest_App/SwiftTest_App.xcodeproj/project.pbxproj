@@ -328,7 +328,7 @@
 		041A2E252794038F00F9CABF /* TestUIScrollView_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUIScrollView_VC.swift; sourceTree = "<group>"; };
 		041A2E272794041000F9CABF /* Test_ScorllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_ScorllView.swift; sourceTree = "<group>"; };
 		041A2E29279405A500F9CABF /* TestScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestScrollView.xib; sourceTree = "<group>"; };
-		041BCA3627EC153B00E3BEB8 /* 在Xcode配置App.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "在Xcode配置App.md"; sourceTree = "<group>"; };
+		041BCA3627EC153B00E3BEB8 /* Xcode的配置.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Xcode的配置.md"; sourceTree = "<group>"; };
 		041CBC1D2787DB7600AF9B05 /* 测试帧动画的主VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试帧动画的主VC.swift"; sourceTree = "<group>"; };
 		041CBC212787DC6100AF9B05 /* 测试图片存放的VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试图片存放的VC.swift"; sourceTree = "<group>"; };
 		041CBC342788206500AF9B05 /* labi002.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = labi002.jpg; sourceTree = "<group>"; };
@@ -453,7 +453,7 @@
 		048608A227325C67000F816E /* TestDate_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDate_VC.swift; sourceTree = "<group>"; };
 		048608A42733BA40000F816E /* 测试给cell设置阴影.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试给cell设置阴影.swift"; sourceTree = "<group>"; };
 		048608A62733D25C000F816E /* 测试view的阴影.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试view的阴影.swift"; sourceTree = "<group>"; };
-		048608AD27350EC5000F816E /* App配置环境的知识.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "App配置环境的知识.md"; sourceTree = "<group>"; };
+		048608AD27350EC5000F816E /* App环境配置的知识.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "App环境配置的知识.md"; sourceTree = "<group>"; };
 		048608AE2735212B000F816E /* App的生命周期.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "App的生命周期.md"; sourceTree = "<group>"; };
 		048608B0273527CA000F816E /* Animal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animal.swift; sourceTree = "<group>"; };
 		04870E0F26E9AD280030B1D2 /* PackageBundlePathLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageBundlePathLoader.swift; sourceTree = "<group>"; };
@@ -498,7 +498,7 @@
 		04870E9426EF1E630030B1D2 /* UIButtonTest_MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonTest_MainVC.swift; sourceTree = "<group>"; };
 		04870E9626EF1EC40030B1D2 /* TestButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestButton.swift; sourceTree = "<group>"; };
 		048DFE96281BC9BB00F210E8 /* 加密算法笔记.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "加密算法笔记.md"; sourceTree = "<group>"; };
-		048DFE98281BEC8D00F210E8 /* 源代码管理.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "源代码管理.md"; sourceTree = "<group>"; };
+		048DFE98281BEC8D00F210E8 /* 源代码管理_Git_SVN.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "源代码管理_Git_SVN.md"; sourceTree = "<group>"; };
 		0492700727941D73000A61FC /* TestScrollView_deleagate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScrollView_deleagate.swift; sourceTree = "<group>"; };
 		0492700B27956C9C000A61FC /* Test_UIConstraint.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Test_UIConstraint.storyboard; sourceTree = "<group>"; };
 		0492700D2796C60D000A61FC /* 测试TableView的VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试TableView的VC.swift"; sourceTree = "<group>"; };
@@ -1327,9 +1327,9 @@
 			isa = PBXGroup;
 			children = (
 				042036D427604F8B00424E05 /* 测试获取手机系统的信息 */,
-				048608AD27350EC5000F816E /* App配置环境的知识.md */,
+				048608AD27350EC5000F816E /* App环境配置的知识.md */,
+				041BCA3627EC153B00E3BEB8 /* Xcode的配置.md */,
 				048608AE2735212B000F816E /* App的生命周期.md */,
-				041BCA3627EC153B00E3BEB8 /* 在Xcode配置App.md */,
 			);
 			path = "App环境(生命周期)相关的知识";
 			sourceTree = "<group>";
@@ -1460,7 +1460,7 @@
 		048DFE94281BC76000F210E8 /* 编程拓展知识 */ = {
 			isa = PBXGroup;
 			children = (
-				048DFE98281BEC8D00F210E8 /* 源代码管理.md */,
+				048DFE98281BEC8D00F210E8 /* 源代码管理_Git_SVN.md */,
 				048DFE96281BC9BB00F210E8 /* 加密算法笔记.md */,
 			);
 			path = "编程拓展知识";
@@ -1862,12 +1862,12 @@
 			path = "测试URLSession";
 			sourceTree = "<group>";
 		};
-		04D9B4FD26D76DD100289824 /* Framework测试 */ = {
+		04D9B4FD26D76DD100289824 /* Framework第三方库测试 */ = {
 			isa = PBXGroup;
 			children = (
 				04D9B4FE26D76DF400289824 /* FrameworkTest_MainVC.swift */,
 			);
-			path = "Framework测试";
+			path = "Framework第三方库测试";
 			sourceTree = "<group>";
 		};
 		2D5BB9A349F695B6403FA174 /* Pods */ = {
@@ -1940,7 +1940,7 @@
 				048608AC27350E89000F816E /* App环境(生命周期)相关的知识 */,
 				048608A127325C45000F816E /* 日期处理的相关测试 */,
 				04600033271190F70074DFA2 /* Swift语法测试 */,
-				04D9B4FD26D76DD100289824 /* Framework测试 */,
+				04D9B4FD26D76DD100289824 /* Framework第三方库测试 */,
 				049EAFD726B3E18000903DA8 /* IOS多线程测试 */,
 				04C2DC0526CE3F6900F9B3EE /* iOS网络测试 */,
 				0421E60C26AAE6F600C6A922 /* VC相关的测试 */,
