@@ -108,6 +108,12 @@ GIT
     $ git checkout -b bugfix1.0     # 从签出状态创建v1.0bugfix分支
     $ git branch -r     # 查看远程分支
     $ git branch -r -d origin/bugfix1.0      # 删除远程分支
+    
+    查看分支：git branch
+    创建分支：git branch <name>
+    切换分支：git checkout <name>或者git switch <name>
+    创建+切换分支：git checkout -b <name>或者git switch -c <name>
+    合并某分支到当前分支：git merge <name>
 
 #### 07、共享版本库、版本备份
     ⼆.共享版本库
