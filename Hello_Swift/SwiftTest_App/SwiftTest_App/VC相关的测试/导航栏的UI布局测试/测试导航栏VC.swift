@@ -58,19 +58,28 @@ extension TestNavibar_VC: UICollectionViewDataSource {
         switch indexPath.row {
         case 0:
             //TODO: 0、设置导航栏透明
+            /**
+                1、extendedLayoutIncludesOpaqueBars、vc.edgesForExtendedLayout、isTranslucent属性：
+                    
+             */
             print("测试设置导航栏的UI")
+            self.edgesForExtendedLayout = .all
+            self.navigationController?.navigationBar.isTranslucent = true
+//            self.view.setNeedsLayout()
+            
+            
             ///布局从导航栏下方开始,extendedLayoutIncludesOpaqueBars
             //TODO: 测试edgesForExtendedLayout属性、automaticallyAdjustsScrollViewInsets属性
             
 //            self.edgesForExtendedLayout = .all//布局从上、下方开始，navigationBar.isTranslucent是true时才有效
 //            self.navigationController?.navigationBar.isTranslucent = true
             
-            self.additionalSafeAreaInsets = UIEdgeInsets.init(top: -vg_navigationFullHeight(), left: 0, bottom: 0, right: 0)
+//            self.additionalSafeAreaInsets = UIEdgeInsets.init(top: -vg_navigationFullHeight(), left: 0, bottom: 0, right: 0)
             
             
             //结合navigationBar.isTranslucent = true设置导航栏的背景图片，可以实现导航栏透明效果，但是这样会影响全局。
     //        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "labi08"), for: .default)
-            self.navigationController?.navigationBar.setBackgroundImage(getColorImg(alpha: 0.7), for: .default)
+//            self.navigationController?.navigationBar.setBackgroundImage(getColorImg(alpha: 0.7), for: .default)
 
             ///这样可以去掉导航栏的下划线
 //            self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -189,7 +198,9 @@ extension TestNavibar_VC: UICollectionViewDataSource {
             print("     (@@退出当前VC")
             self.navigationController?.popViewController(animated: true)
         case 11:
-            print("     (@@")
+            //TODO: 11、还原导航栏透明的属性
+            print("     (@@ 还原导航栏透明的属性")
+            
         case 12:
             //TODO: 12、测试状态栏、导航栏、window安全边距
             print("     (@@ 测试状态栏、导航栏、工具栏、window安全边距")

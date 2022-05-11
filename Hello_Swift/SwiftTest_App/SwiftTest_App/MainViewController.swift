@@ -43,7 +43,7 @@ extension MainViewController: UICollectionViewDataSource {
         case 0:
             pushNext(viewController: TestSafeInset_VC())
         case 1:
-            pushNext(viewController: TestUIView_VC())
+            pushNext(viewController: TestNavibar_VC())
         case 2:
             self.navigationItem.backBarButtonItem = nil
             let storyBoard = UIStoryboard.init(name: "FSCalendarTest", bundle: nil)
