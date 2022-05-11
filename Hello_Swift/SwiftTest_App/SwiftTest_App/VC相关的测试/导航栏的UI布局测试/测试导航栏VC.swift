@@ -12,7 +12,7 @@ import UIKit
 class TestNavibar_VC: UIViewController {
     
     //MARK: 对外属性
-    public var collDataArr = ["0、","1、","2、","3、","4、","5、","6、","7、","8、","9、","10、"]
+    public var collDataArr = ["0、","1、","2、","3、","4、","5、","6、","7、","8、","9、","10、","11、","12、"]
 
     ///UI组件
     private var baseCollView: UICollectionView!
@@ -28,6 +28,10 @@ class TestNavibar_VC: UIViewController {
     }
     
 
+    override func viewDidAppear(_ animated: Bool) {
+        self.additionalSafeAreaInsets = UIEdgeInsets.init(top: -vg_navigationFullHeight(), left: 0, bottom: 0, right: 0)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.isHidden = false
@@ -53,16 +57,15 @@ extension TestNavibar_VC: UICollectionViewDataSource {
         print("点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            //TODO: 0、测试设置导航栏的UI
+            //TODO: 0、设置导航栏透明
             print("测试设置导航栏的UI")
-            ///布局从导航栏下方开始
+            ///布局从导航栏下方开始,extendedLayoutIncludesOpaqueBars
             //TODO: 测试edgesForExtendedLayout属性、automaticallyAdjustsScrollViewInsets属性
             
-            self.edgesForExtendedLayout = .bottom//布局从上、下方开始，navigationBar.isTranslucent是true才有效
-            self.navigationController?.navigationBar.isTranslucent = true
+//            self.edgesForExtendedLayout = .all//布局从上、下方开始，navigationBar.isTranslucent是true时才有效
+//            self.navigationController?.navigationBar.isTranslucent = true
             
-    //        let viewInset = self.view.safeAreaInsets
-    //        self.additionalSafeAreaInsets = UIEdgeInsets.init(top: -viewInset.top, left: -viewInset.left, bottom: -viewInset.bottom, right: -viewInset.right)
+            self.additionalSafeAreaInsets = UIEdgeInsets.init(top: -vg_navigationFullHeight(), left: 0, bottom: 0, right: 0)
             
             
             //结合navigationBar.isTranslucent = true设置导航栏的背景图片，可以实现导航栏透明效果，但是这样会影响全局。
@@ -83,6 +86,9 @@ extension TestNavibar_VC: UICollectionViewDataSource {
             break
         case 1:
             //TODO: 1、测试添加view之后的布局，查看内边距
+            /**
+                1、有导航栏时
+             */
             print("     (@@  测试设置导航栏后添加view之后的布局，查看内边距")
             let inset = self.view.safeAreaInsets
             let view = UIView()
@@ -113,7 +119,7 @@ extension TestNavibar_VC: UICollectionViewDataSource {
         //            self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
         case 3:
             //TODO: 3、测试导航栏VC左滑返回手势。把 只能左边缘滑动 改为 整个区域左滑 都有效。测滑手势。
-            print("     (@@ 测试导航栏VC左滑返回手势。")
+            print("     (@@ 测试导航栏VC测滑返回手势。")
             /**
                 1、系统自带的左滑返回是一个_UIParallaxTransitionPanGestureRecognizer手势识别器。
                 <_UIParallaxTransitionPanGestureRecognizer: 0x7f9b82e08180; state = Possible; delaysTouchesBegan = YES; view = <UILayoutContainerView 0x7f9b82e0bba0>; target= <(action=handleNavigationTransition:, target=<_UINavigationInteractiveTransition 0x7f9b82e10330>)>
@@ -185,7 +191,13 @@ extension TestNavibar_VC: UICollectionViewDataSource {
         case 11:
             print("     (@@")
         case 12:
-            print("     (@@")
+            //TODO: 12、测试状态栏、导航栏、window安全边距
+            print("     (@@ 测试状态栏、导航栏、工具栏、window安全边距")
+            print("状态栏安全高度：   \(vg_statusBarSafeHeight())")
+            print("导航栏高度：   \(vg_navigationBarHeight())")
+            print("状态栏安全高度 + 导航栏高度：   \(vg_navigationFullHeight())")
+            print("顶部安全区高度：   \(vg_navigationFullHeight())")
+            print("window安全边距:  \(String(describing: UIApplication.shared.windows.first?.safeAreaInsets))")
         default:
             break
         }
@@ -194,18 +206,67 @@ extension TestNavibar_VC: UICollectionViewDataSource {
 }
 //MARK: - 测试的方法
 extension TestNavibar_VC{
-   
-    //MARK: 0、
-    func test0(){
-        
+    
+    //TODO: 顶部安全区高度
+    func vg_safeDistanceTop() -> CGFloat {
+        if #available(iOS 13.0, *) {
+            let scene = UIApplication.shared.connectedScenes.first
+            guard let windowScene = scene as? UIWindowScene else { return 0 }
+            guard let window = windowScene.windows.first else { return 0 }
+            return window.safeAreaInsets.top
+        } else if #available(iOS 11.0, *) {
+            guard let window = UIApplication.shared.windows.first else { return 0 }
+            return window.safeAreaInsets.top
+        }
+        return 0;
     }
-    //MARK: 1、
-    func test1(){
-        
+    
+    //TODO: 底部安全区高度
+    func vg_safeDistanceBottom() -> CGFloat {
+        if #available(iOS 13.0, *) {
+            let scene = UIApplication.shared.connectedScenes.first
+            guard let windowScene = scene as? UIWindowScene else { return 0 }
+            guard let window = windowScene.windows.first else { return 0 }
+            return window.safeAreaInsets.bottom
+        } else if #available(iOS 11.0, *) {
+            guard let window = UIApplication.shared.windows.first else { return 0 }
+            return window.safeAreaInsets.bottom
+        }
+        return 0;
     }
-    //MARK: 2、
-    func test2(){
-        
+    
+    //TODO: 顶部状态栏高度（包括安全区）
+    func vg_statusBarSafeHeight() -> CGFloat {
+        var statusBarHeight: CGFloat = 0
+        if #available(iOS 13.0, *) {
+            let scene = UIApplication.shared.connectedScenes.first
+            guard let windowScene = scene as? UIWindowScene else { return 0 }
+            guard let statusBarManager = windowScene.statusBarManager else { return 0 }
+            statusBarHeight = statusBarManager.statusBarFrame.height
+        } else {
+            statusBarHeight = UIApplication.shared.statusBarFrame.height
+        }
+        return statusBarHeight
+    }
+    
+    //TODO: 导航栏高度
+    func vg_navigationBarHeight() -> CGFloat {
+        return 44.0
+    }
+    
+    //TODO: 状态栏+导航栏的高度
+    func vg_navigationFullHeight() -> CGFloat {
+        return vg_statusBarSafeHeight() + vg_navigationBarHeight()
+    }
+    
+    //TODO: 底部导航栏高度
+    func vg_tabBarHeight() -> CGFloat {
+        return 49.0
+    }
+    
+    //TODO:底部导航栏高度（包括安全区）
+    func vg_tabBarFullHeight() -> CGFloat {
+        return vg_tabBarHeight() + vg_safeDistanceBottom()
     }
     
     /// 点击了自定义的返回方法
@@ -230,7 +291,7 @@ extension TestNavibar_VC {
     
     /// 根据颜色来生成图片，颜色图片
     func getColorImg(alpha:CGFloat) -> UIImage {
-        let alphaColor = UIColor.red.withAlphaComponent(alpha).cgColor
+        let alphaColor = UIColor.orange.withAlphaComponent(alpha).cgColor
         /// 描述图片的矩形
         let rect = CGRect.init(x: 0, y: 0, width: 1.0, height: 1.0)
         /// 开启位图的上下文

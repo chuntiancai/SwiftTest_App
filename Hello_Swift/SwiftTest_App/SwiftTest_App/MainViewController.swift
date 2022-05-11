@@ -41,12 +41,10 @@ extension MainViewController: UICollectionViewDataSource {
         print("MainViewController点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            pushNext(viewController: TestHTTPS_VC())
+            pushNext(viewController: TestSafeInset_VC())
         case 1:
-            pushNext(viewController: FileTest_VC())
-            break
+            pushNext(viewController: TestUIView_VC())
         case 2:
-            
             self.navigationItem.backBarButtonItem = nil
             let storyBoard = UIStoryboard.init(name: "FSCalendarTest", bundle: nil)
             let mainStoryVC = storyBoard.instantiateViewController(withIdentifier: "FSCalendar_SB_VC_ID")

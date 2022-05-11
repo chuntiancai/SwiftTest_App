@@ -40,6 +40,9 @@ extension TestUIView_VC: UICollectionViewDataSource {
         switch indexPath.row {
         case 0:
             //TODO: 0、测试UIView的appearance协议(方法)。
+            /**
+                1、UIAppearance协议主要是用来返回类型本身，也就是相当于获取UIView的元类型，是一种影响元类型的全局设置。
+             */
             print("     (@@  ")
             let curLabel = UILabel.appearance(for: UITraitCollection(layoutDirection: .leftToRight),
                                               whenContainedInInstancesOf: [type(of: UIView()),type(of: UIButton())])
@@ -48,14 +51,31 @@ extension TestUIView_VC: UICollectionViewDataSource {
             
             break
         case 1:
-            //TODO: 1、
-            print("     (@@ ")
+            //TODO: 1、测试UIView的内边距，也就是安全区域，安全边距
+            /**
+                1、safeAreaLayoutGuide用于获取自动布局约束的布局对象，内边距对象是UIView的safeAreaInsets属性，UIView的子view的布局是参考内边距对象的。
+                   layoutGuide作为UI对象，只有添加到view中，即owningView不为nil，才能参与auto layout生成constraint。
+                   layoutGuide作为UI对象与其它UI对象(layoutGuide或view)生成constraint时，在search closest common ancestor过程中，layoutGuide 参考view为其owningView。
+                   layoutMarginsGuide是view自身固有layoutGuide，layoutMarginsGuide.layoutFrame与view.frame各边缘距离依赖view.layoutMargins。
+             
+                2、常规下，子view的布局都是参考父view的内边距开始布局的，但是受到导航栏，导航控制器，VC，tableview，scorllview一些隐含属性影响，也就变得不那么常规了，这些控件的属性会影响到内边距的布局是否有有效，是否修改了内边距等等。
+                
+                3、内边距只有当View已经添加到视图层的时候才是准确有效的，如果还没添加到视图层，则是不准确的。所以可以再view将要appear的时候再调整safeAreaInsets。VC的内边距是痛过additionalSafeAreaInsets属性来调整的，从而影响到VC的view的safeAreaInsets。
+                
+                
+                
+             */
+            print("     (@@ 测试UIView的安全内边距")
+            let layoutGuide = self.view.safeAreaLayoutGuide
+            print("vc 的 view 是：  \(view!)")
+            print("vc 的 view 的safeAreaLayoutGuide是：  \(layoutGuide)")
+            print("vc 的 view 的safeAreaInsets是：  \(view.safeAreaInsets)")
         case 2:
-            //TODO: 2、
-            print("     (@@ ")
+            //TODO: 2、修改view的安全内边距
+            print("     (@@ 修改view的安全内边距")
         case 3:
-            //TODO: 3、
-            print("     (@@ ")
+            //TODO: 3、修改vc的安全内边距
+            print("     (@@ 修改vc的安全内边距")
         case 5:
             print("     (@@")
         case 6:
