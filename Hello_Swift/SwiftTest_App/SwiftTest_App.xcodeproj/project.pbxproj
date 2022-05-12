@@ -147,6 +147,7 @@
 		0474C25927D8535200B95D7C /* TestEnum_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0474C25827D8535200B95D7C /* TestEnum_VC.swift */; };
 		0477B8ED282B8BC500D6EB3A /* 测试安全内边距VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0477B8EC282B8BC500D6EB3A /* 测试安全内边距VC.swift */; };
 		0477B8EF282B8E7F00D6EB3A /* TestSafeInset_SubVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0477B8EE282B8E7F00D6EB3A /* TestSafeInset_SubVC.swift */; };
+		0477B8F1282CE4E700D6EB3A /* ScrollView导航栏内边距_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0477B8F0282CE4E700D6EB3A /* ScrollView导航栏内边距_VC.swift */; };
 		047C851627B3B53E0060D7CB /* TestUIAlertController_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047C851527B3B53E0060D7CB /* TestUIAlertController_VC.swift */; };
 		0484806F27798FEB00698106 /* 自定义字体渐变色的label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0484806E27798FEB00698106 /* 自定义字体渐变色的label.swift */; };
 		048480832785372400698106 /* 主测试Soryboard_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048480822785372300698106 /* 主测试Soryboard_VC.swift */; };
@@ -449,6 +450,7 @@
 		0474C25827D8535200B95D7C /* TestEnum_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEnum_VC.swift; sourceTree = "<group>"; };
 		0477B8EC282B8BC500D6EB3A /* 测试安全内边距VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试安全内边距VC.swift"; sourceTree = "<group>"; };
 		0477B8EE282B8E7F00D6EB3A /* TestSafeInset_SubVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSafeInset_SubVC.swift; sourceTree = "<group>"; };
+		0477B8F0282CE4E700D6EB3A /* ScrollView导航栏内边距_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView导航栏内边距_VC.swift"; sourceTree = "<group>"; };
 		047C851527B3B53E0060D7CB /* TestUIAlertController_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUIAlertController_VC.swift; sourceTree = "<group>"; };
 		0484806E27798FEB00698106 /* 自定义字体渐变色的label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "自定义字体渐变色的label.swift"; sourceTree = "<group>"; };
 		048480822785372300698106 /* 主测试Soryboard_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "主测试Soryboard_VC.swift"; sourceTree = "<group>"; };
@@ -1289,6 +1291,7 @@
 			children = (
 				0477B8EC282B8BC500D6EB3A /* 测试安全内边距VC.swift */,
 				0477B8EE282B8E7F00D6EB3A /* TestSafeInset_SubVC.swift */,
+				0477B8F0282CE4E700D6EB3A /* ScrollView导航栏内边距_VC.swift */,
 			);
 			path = "安全区域与内边距测试";
 			sourceTree = "<group>";
@@ -2299,6 +2302,7 @@
 				04B76922281154980080102F /* OC中枚举的写法.m in Sources */,
 				04927013279E8FBB000A61FC /* 测试UIView的VC.swift in Sources */,
 				044FB587276735BE00479442 /* TextField的点击测试(键盘弹起)_View.swift in Sources */,
+				0477B8F1282CE4E700D6EB3A /* ScrollView导航栏内边距_VC.swift in Sources */,
 				0484806F27798FEB00698106 /* 自定义字体渐变色的label.swift in Sources */,
 				04870E5126E9AD280030B1D2 /* AASeries.swift in Sources */,
 				041CBC56278D850200AF9B05 /* 测试xib的VC.swift in Sources */,

@@ -17,6 +17,7 @@ class TestSafeInset_VC: UIViewController {
     
     //MARK: 测试组件
     let subVC = TestSafeInset_SubVC()   //子VC，测试内边距
+    let myLabel = UILabel()     //测试页边距的label
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,11 +58,33 @@ extension TestSafeInset_VC: UICollectionViewDataSource {
             print("     (@@ 修改常规VC的内边距对布局的影响")
             subVC.additionalSafeAreaInsets = UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 0)
         case 2:
-            //TODO: 2、
-            print("     (@@ ")
+            //TODO: 2、测试导航栏VC下，VC的安全内边距对ScrollView的影响。TestSafeInset_SubVC2
+            print("     (@@ 测试导航栏VC下，VC的安全内边距对ScrollView的影响。")
+            let subVC2 = TestSafeInset_SubVC2()
+            self.pushNext(viewController: subVC2)
         case 3:
-            //TODO: 3、
-            print("     (@@ ")
+            //TODO: 3、测试页边距，添加label
+            /**
+                1、修改页边距并不会影响什么，但是会毁掉VC的layoutMarginsDidChange()方法，从而影响了参考directionalLayoutMargins的约束，从而更新UI。
+                    但是如果你的约束本来就没有参考到directionalLayoutMargins，那么就没什么变化，其实和safeAreaInsets的作用差不多咯。
+                    View自身带有默认的directionalLayoutMargins，vc的view默认是(top:0,leading:16,bottom:34,trailing:16,),其他的view默认四边都是8pt。
+                    directionalLayoutMargins的默认值会受到全屏和preservesSuperviewLayoutMargins的影响。
+             */
+            print("     (@@ 测试页边距，添加label")
+            myLabel.layer.borderColor = UIColor.brown.cgColor
+            myLabel.layer.borderWidth = 1.0
+            myLabel.textAlignment = .center
+            myLabel.numberOfLines = 0
+            myLabel.text = "这是测试页边距的label,这是测试页边距的label,这是测试页边距的label,这是测试页边距的label。"
+            myLabel.font = .systemFont(ofSize: 20)
+            myLabel.textColor = .black
+            myLabel.directionalLayoutMargins = NSDirectionalEdgeInsets.init(top: 10, leading: 15, bottom: 20, trailing: 15)
+            self.view.addSubview(myLabel)
+            myLabel.snp.makeConstraints { make in
+                make.width.equalTo(240)
+                make.center.equalToSuperview()
+            }
+            
         case 4:
             print("     (@@")
         case 5:
@@ -286,14 +309,14 @@ extension TestSafeInset_VC: UICollectionViewDelegate {
 // MARK: - 笔记
 /**
     1、UIView的safeAreaInsets只是一个存储属性，用于给其他控件或者属性作为参考，它本身只是一个标识器的作用，并不改变布局。
-      设置VC的additionalSafeAreaInsets属性，会同步修改VC层次中所有层次的View的safeAreaInsets属性，safeAreaInsets修改之后，会影响到View的safeAreaLayoutGuide属性。
-      safeAreaLayoutGuide属性常用于自动布局约束，safeAreaLayoutGuide 用于描述插入边距后，view的剩余可布局空间， 例如内边距是(top:20,letf:20,bottom:0,right:0)， 那么safeAreaLayoutGuide就是一个矩形(x:20,y:20,width:剩余宽度，height:剩余高度), 如果内边距大于View本身的bounds，那么safeAreaLayoutGuide的宽度不会是负数， 而是（20 - 超出的宽度），也就是边缘对齐。
+      设置VC的additionalSafeAreaInsets属性，会同步修改VC层次中所有层次的View的safeAreaInsets属性(ScrollView除外)，safeAreaInsets修改之后， 会影响到View的safeAreaLayoutGuide属性。
+      safeAreaLayoutGuide属性: 常用于自动布局约束，safeAreaLayoutGuide 用于描述插入边距后，view的剩余可布局空间。 例如内边距是(top:20,letf:20,bottom:0,right:0)， 那么safeAreaLayoutGuide就是一个矩形(x:20,y:20,width:剩余宽度，height:剩余高度), 如果内边距大于View本身的bounds，那么safeAreaLayoutGuide的宽度不会是负数， 而是（20 - 超出的宽度），也就是边缘对齐。
  
        影响链：vc.additionalSafeAreaInsets --> viewSafeAreaInsetsDidChange() --> view.safeAreaLayoutGuide --> view.safeAreaLayoutGuide
     
     2、内边距的生命周期：viewWillAppear --> viewSafeAreaInsetsDidChange() --> viewWillLayoutSubviews() --> viewDidLayoutSubviews() --> viewDidAppear()。
       
-       所以，每一次修改了vc的additionalSafeAreaInsets属性之后，都会回调viewSafeAreaInsetsDidChange() --> viewWillLayoutSubviews() --> viewDidLayoutSubviews() 系列方法，因为Scrollview的contentInset又是参考safeAreaInsets属性的，所以修改了additionalSafeAreaInsets后影响到了safeAreaInsets属性，从而影响到了Scrollview的 contentInset属性，所以影响到了scrollView的内容布局。
+       所以，每一次修改了vc的additionalSafeAreaInsets属性之后，都会回调viewSafeAreaInsetsDidChange() --> viewWillLayoutSubviews() --> viewDidLayoutSubviews()系列方法，因为Scrollview的contentInset又是参考safeAreaInsets属性的，所以修改了additionalSafeAreaInsets后 影响到了safeAreaInsets属性， 从而影响到了Scrollview的 contentInset属性，所以影响到了scrollView的内容布局。
        
        所以，修改UIView的safeAreaInsets单纯来讲只是修改了一个属性值而已，并不会影响当前View的布局，只是一些系统的控件(例如ScrollView)参考了这个safeAreaInsets属性，才会 产生影响而已，而且这影响我猜测是系统在viewSafeAreaInsetsDidChange()方法回调的时候做了某些操作。
     

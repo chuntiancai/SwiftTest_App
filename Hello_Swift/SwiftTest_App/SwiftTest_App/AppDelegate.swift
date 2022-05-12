@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         self.window = UIWindow.init(frame: UIScreen.main.bounds)
-        self.window?.backgroundColor = UIColor.init(red: 246/255.0, green: 237/255.0, blue: 237/255.0, alpha: 1.0)
+        self.window?.backgroundColor = .blue
         let mainVC = MainViewController()
         self.window?.rootViewController = UINavigationController.init(rootViewController: mainVC)
 //        self.window?.makeKeyAndVisible() //如果info.plist中有指定，则可以不调用这个方法，系统默认替你调用

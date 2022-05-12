@@ -1198,8 +1198,8 @@
             filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/UI&#x5e03;&#x5c40;&#x7ea6;&#x675f;&#x7684;&#x6d4b;&#x8bd5;/&#x5b89;&#x5168;&#x533a;&#x57df;&#x4e0e;&#x5185;&#x8fb9;&#x8ddd;&#x6d4b;&#x8bd5;/&#x6d4b;&#x8bd5;&#x5b89;&#x5168;&#x5185;&#x8fb9;&#x8ddd;VC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1214,8 +1214,56 @@
             filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/UI&#x5e03;&#x5c40;&#x7ea6;&#x675f;&#x7684;&#x6d4b;&#x8bd5;/&#x5b89;&#x5168;&#x533a;&#x57df;&#x4e0e;&#x5185;&#x8fb9;&#x8ddd;&#x6d4b;&#x8bd5;/&#x6d4b;&#x8bd5;&#x5b89;&#x5168;&#x5185;&#x8fb9;&#x8ddd;VC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "768A4553-77A3-4325-9E7B-3B19C8264B26"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/VC&#x76f8;&#x5173;&#x7684;&#x6d4b;&#x8bd5;/&#x5bfc;&#x822a;&#x680f;&#x7684;UI&#x5e03;&#x5c40;&#x6d4b;&#x8bd5;/&#x6d4b;&#x8bd5;&#x5bfc;&#x822a;&#x680f;VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D4E200EE-4241-4781-855D-713CDA31F64B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/VC&#x76f8;&#x5173;&#x7684;&#x6d4b;&#x8bd5;/&#x5bfc;&#x822a;&#x680f;&#x7684;UI&#x5e03;&#x5c40;&#x6d4b;&#x8bd5;/&#x6d4b;&#x8bd5;&#x5bfc;&#x822a;&#x680f;VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "88FC9DD5-9259-4DF8-8A49-D2082DF52D53"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/UI&#x76f8;&#x5173;&#x6d4b;&#x8bd5;/UI&#x5e03;&#x5c40;&#x7ea6;&#x675f;&#x7684;&#x6d4b;&#x8bd5;/&#x5b89;&#x5168;&#x533a;&#x57df;&#x4e0e;&#x5185;&#x8fb9;&#x8ddd;&#x6d4b;&#x8bd5;/ScrollView&#x5bfc;&#x822a;&#x680f;&#x5185;&#x8fb9;&#x8ddd;_VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
          </BreakpointContent>

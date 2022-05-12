@@ -5,8 +5,8 @@
 //  Created by mathew on 2022/5/11.
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
-// 测试安全内边距的子VC
 
+/// 测试安全内边距的子VC
 class TestSafeInset_SubVC: UIViewController {
     
     //MARK: 对外属性
