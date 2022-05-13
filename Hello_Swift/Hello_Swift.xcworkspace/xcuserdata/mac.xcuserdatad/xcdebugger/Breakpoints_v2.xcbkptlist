@@ -1230,24 +1230,8 @@
             filePath = "SwiftTest_App/SwiftTest_App/VC&#x76f8;&#x5173;&#x7684;&#x6d4b;&#x8bd5;/&#x5bfc;&#x822a;&#x680f;&#x7684;UI&#x5e03;&#x5c40;&#x6d4b;&#x8bd5;/&#x6d4b;&#x8bd5;&#x5bfc;&#x822a;&#x680f;VC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
-            landmarkName = "collectionView(_:didSelectItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D4E200EE-4241-4781-855D-713CDA31F64B"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SwiftTest_App/SwiftTest_App/VC&#x76f8;&#x5173;&#x7684;&#x6d4b;&#x8bd5;/&#x5bfc;&#x822a;&#x680f;&#x7684;UI&#x5e03;&#x5c40;&#x6d4b;&#x8bd5;/&#x6d4b;&#x8bd5;&#x5bfc;&#x822a;&#x680f;VC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "257"
+            endingLineNumber = "257"
             landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1264,6 +1248,54 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "138"
             endingLineNumber = "138"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "79033E15-CFB4-4615-A833-822478E57CA7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/VC&#x76f8;&#x5173;&#x7684;&#x6d4b;&#x8bd5;/&#x5bfc;&#x822a;&#x680f;&#x7684;UI&#x5e03;&#x5c40;&#x6d4b;&#x8bd5;/&#x6d4b;&#x8bd5;&#x5bfc;&#x822a;&#x680f;VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FD3DD2DD-B93D-4563-BBE1-E820D658E1C7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/VC&#x76f8;&#x5173;&#x7684;&#x6d4b;&#x8bd5;/&#x5bfc;&#x822a;&#x680f;&#x7684;UI&#x5e03;&#x5c40;&#x6d4b;&#x8bd5;/&#x6d4b;&#x8bd5;&#x5bfc;&#x822a;&#x680f;VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "531665DB-1D65-451E-93F6-28EADE2D2C52"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTest_App/SwiftTest_App/VC&#x76f8;&#x5173;&#x7684;&#x6d4b;&#x8bd5;/&#x5bfc;&#x822a;&#x680f;&#x7684;UI&#x5e03;&#x5c40;&#x6d4b;&#x8bd5;/&#x6d4b;&#x8bd5;&#x5bfc;&#x822a;&#x680f;VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
          </BreakpointContent>

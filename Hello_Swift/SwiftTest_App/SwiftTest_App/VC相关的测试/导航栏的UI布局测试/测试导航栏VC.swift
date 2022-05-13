@@ -93,7 +93,7 @@ extension TestNavibar_VC: UICollectionViewDataSource {
             self.navigationController?.navigationBar.isTranslucent = true
             self.extendedLayoutIncludesOpaqueBars = true
             self.edgesForExtendedLayout = [.all]
-            self.navigationController?.navigationBar.setBackgroundImage(getColorImg(alpha: 0.3), for: .default)
+            self.navigationController?.navigationBar.setBackgroundImage(getColorImg(alpha: 0.2,UIColor.cyan), for: .default)
             
             /**
              ///这样可以去掉导航栏的下划线
@@ -125,6 +125,12 @@ extension TestNavibar_VC: UICollectionViewDataSource {
              2、UINavigationBarAppearance的backgroundEffect、backgroundImage、backgroundColor三个属性，都是为磨砂效果服务的。
                 backgroundColor的层次在backgroundImage之下，backgroundImage只有在isTranslucent为true时，才显示。
              
+                UINavigationBarAppearance的backgroundImage和backgroundColor属性的优先级高于navigationBar.setBackgroundImage。而且appearence.backgroundImage和appearence.backgroundColor是合成展示的，如果appearence.backgroundImage不透明，因为backgroundImage的优先级更高， 所以就直接显示backgroundImage，但是如果backgroundImage是有透明度的，那么就是合成backgroundImage和backgroundColor为一张图片，然后展示合成的图片。
+             
+                优先级：appearence.backgroundImage > appearence.backgroundColor > navigationBar.setBackgroundImage
+             
+             3、赋值新对象给navigationBar.standardAppearance是在下一个页面跳转时才会生效，所以要直接修改navigationBar.standardAppearance的属性。
+                第一次赋值新对象是马上生效，第二次之后都是下一个跳转页面才生效了。
              */
             print("     (@@ 测试导航栏的standardAppearance属性")
             
@@ -132,15 +138,17 @@ extension TestNavibar_VC: UICollectionViewDataSource {
             
             if #available(iOS 13.0, *) {
                 let appearence = UINavigationBarAppearance()
-                appearence.configureWithOpaqueBackground()  //在设置appearence的属性值前，必须先调用配置方法。
+                appearence.configureWithTransparentBackground()  //在设置appearence的属性值前，必须先调用配置方法。
                 appearence.backgroundEffect = nil       //基于 backgroundColor 或 backgroundImage 的磨砂效果
-//                appearence.backgroundImage = getColorImg(alpha: 1.0)    //只是为磨砂效果提供素材而已。
-                appearence.backgroundColor = UIColor.yellow.withAlphaComponent(0.3) //设置bar透明或者有backgroundImage时无效，因为在backgroundImage视图层次之下。
-                
+                appearence.backgroundImage = UIImage(named: "labi01")   //只是为磨砂效果提供素材而已。
+                appearence.backgroundColor = UIColor.yellow.withAlphaComponent(0.5) //设置bar透明或者有backgroundImage时无效，因为在backgroundImage视图层次之下。
+
                 appearence.shadowImage = nil    //设置为nil，则UIKit会默认提供一个shadow，但是如果shadowColor也是nil，则不再显示shadow。
                 appearence.shadowColor = nil
-                
+
                 navigationController?.navigationBar.standardAppearance = appearence
+                
+                self.navigationController?.navigationBar.setBackgroundImage(getColorImg(alpha: 0.9,UIColor.black), for: .default)
                 
             } else {
                 // Fallback on earlier versions
@@ -148,7 +156,32 @@ extension TestNavibar_VC: UICollectionViewDataSource {
             }
             
         case 2:
-            //TODO: 2、获取全局导航栏的信息
+            //TODO: 2、测试UINavigationBarAppearance不会马上更新背景的问题
+            print("     (@@ 测试UINavigationBarAppearance不会马上更新背景的问题")
+            /**
+                1、赋值新对象给navigationBar.standardAppearance是在下一个页面跳转时才会生效，所以要直接修改navigationBar.standardAppearance的属性。
+                    第一次赋值新对象是马上生效，第二次之后都是下一个跳转页面才生效了。
+             */
+            if #available(iOS 13.0, *) {
+//                let appearence = UINavigationBarAppearance()
+                let appearence = navigationController!.navigationBar.standardAppearance
+                appearence.configureWithTransparentBackground()  //在设置appearence的属性值前，必须先调用配置方法。
+                appearence.backgroundImage = getColorImg(alpha: 0.5,UIColor.green)    //只是为磨砂效果提供素材而已。
+                appearence.backgroundColor = UIColor.brown.withAlphaComponent(0.3)
+                
+            } else {
+                // Fallback on earlier versions
+                print("iOS13之前还是直接用isTranslucent和shadowImage组合")
+            }
+        case 3:
+            print("     (@@")
+        case 4:
+            print("     (@@")
+        case 5:
+            print("     (@@")
+        case 6:
+            
+            //TODO: 6、设置导航栏bar里面的item
             print("     (@@ 设置导航栏bar里面的item")
             let titleView = UILabel()
             titleView.layer.cornerRadius = 10
@@ -162,10 +195,10 @@ extension TestNavibar_VC: UICollectionViewDataSource {
          /// 隐藏导航栏返回按钮的标题，把默认的返回按钮的标题向上偏移。不知道为什么无效。
          self.navigationController?.navigationItem.backBarButtonItem?.setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -100), for: .default)
          */
-        
         //            self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
-        case 3:
-            //TODO: 3、测试导航栏VC左滑返回手势。把 只能左边缘滑动 改为 整个区域左滑 都有效。测滑手势。
+        
+        case 7:
+            //TODO: 7、测试导航栏VC左滑返回手势。把 只能左边缘滑动 改为 整个区域左滑 都有效。测滑手势。
             print("     (@@ 测试导航栏VC测滑返回手势。")
             /**
                 1、系统自带的左滑返回是一个_UIParallaxTransitionPanGestureRecognizer手势识别器。
@@ -220,13 +253,6 @@ extension TestNavibar_VC: UICollectionViewDataSource {
             一个更简单获取target对象的方法：
             let target = self.navigationController!.interactivePopGestureRecognizer!.delegate
             */
-        
-        case 5:
-            print("     (@@")
-        case 6:
-            print("     (@@")
-        case 7:
-            print("     (@@")
         case 8:
             print("     (@@")
         case 9:
@@ -248,12 +274,15 @@ extension TestNavibar_VC: UICollectionViewDataSource {
             }
             print("内边距：\(inset)")
         case 10:
+            //TODO: 10、退出当前VC
             print("     (@@退出当前VC")
             self.navigationController?.popViewController(animated: true)
         case 11:
             //TODO: 11、还原导航栏透明的属性
             print("     (@@ 还原导航栏透明的属性")
-            
+            self.navigationController?.navigationBar.isTranslucent = true
+            self.extendedLayoutIncludesOpaqueBars = true
+            self.navigationController?.navigationBar.setBackgroundImage(getColorImg(alpha: 0.0) , for: .default)
         case 12:
             //TODO: 12、测试状态栏、导航栏、window安全边距
             print("     (@@ 测试状态栏、导航栏、工具栏、window安全边距")
