@@ -22,6 +22,7 @@
 		0414F98F27BF951C0037EE70 /* TestCALayer_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0414F98E27BF951C0037EE70 /* TestCALayer_VC.swift */; };
 		0414F99127C33E570037EE70 /* TestBugly_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0414F99027C33E570037EE70 /* TestBugly_VC.swift */; };
 		0414F99427C35F2F0037EE70 /* Bugly_Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0414F99327C35F2F0037EE70 /* Bugly_Error.swift */; };
+		0415582B2834F5CB007FC2E8 /* TestTimer_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0415582A2834F5CB007FC2E8 /* TestTimer_VC.swift */; };
 		041A2E1B27901D0400F9CABF /* 测试KVC的VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041A2E1A27901D0400F9CABF /* 测试KVC的VC.swift */; };
 		041A2E1D27901D1300F9CABF /* 测试KVO的VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041A2E1C27901D1300F9CABF /* 测试KVO的VC.swift */; };
 		041A2E1F27901E5400F9CABF /* KVC_Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041A2E1E27901E5400F9CABF /* KVC_Person.swift */; };
@@ -323,6 +324,7 @@
 		0414F98E27BF951C0037EE70 /* TestCALayer_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCALayer_VC.swift; sourceTree = "<group>"; };
 		0414F99027C33E570037EE70 /* TestBugly_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBugly_VC.swift; sourceTree = "<group>"; };
 		0414F99327C35F2F0037EE70 /* Bugly_Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bugly_Error.swift; sourceTree = "<group>"; };
+		0415582A2834F5CB007FC2E8 /* TestTimer_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTimer_VC.swift; sourceTree = "<group>"; };
 		041A2E1A27901D0400F9CABF /* 测试KVC的VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试KVC的VC.swift"; sourceTree = "<group>"; };
 		041A2E1C27901D1300F9CABF /* 测试KVO的VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试KVO的VC.swift"; sourceTree = "<group>"; };
 		041A2E1E27901E5400F9CABF /* KVC_Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVC_Person.swift; sourceTree = "<group>"; };
@@ -675,6 +677,14 @@
 				0414F99327C35F2F0037EE70 /* Bugly_Error.swift */,
 			);
 			path = "测试Bugly";
+			sourceTree = "<group>";
+		};
+		041558292834F513007FC2E8 /* 测试定时器 */ = {
+			isa = PBXGroup;
+			children = (
+				0415582A2834F5CB007FC2E8 /* TestTimer_VC.swift */,
+			);
+			path = "测试定时器";
 			sourceTree = "<group>";
 		};
 		041A2E1927901CD400F9CABF /* 测试KVC和KVO */ = {
@@ -1529,6 +1539,7 @@
 				049EAFF026C0CDAC00903DA8 /* 测试NSOperation */,
 				049EAFDA26B3E1D700903DA8 /* Runloop测试 */,
 				049EAFE826B93D7200903DA8 /* 异步下载图片测试 */,
+				041558292834F513007FC2E8 /* 测试定时器 */,
 			);
 			path = "IOS多线程测试";
 			sourceTree = "<group>";
@@ -2346,6 +2357,7 @@
 				0477B8EF282B8E7F00D6EB3A /* TestSafeInset_SubVC.swift in Sources */,
 				042036C4275641F600424E05 /* 测试UICollectionView流布局_VC.swift in Sources */,
 				04A0CA3A26A0027800ECAE1B /* JFZPlayerConstant.swift in Sources */,
+				0415582B2834F5CB007FC2E8 /* TestTimer_VC.swift in Sources */,
 				0421E5DC26A829A800C6A922 /* CommanTestVC.swift in Sources */,
 				04C2DC0426CE304700F9B3EE /* SubVC1_View.swift in Sources */,
 				041CBC5B279000A700AF9B05 /* TestImageView_VC.swift in Sources */,
