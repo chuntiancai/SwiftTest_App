@@ -61,7 +61,7 @@ extension TestNavibar_VC: UICollectionViewDataSource {
             /**
                 1、navigationBar.isTranslucent、vc.extendedLayoutIncludesOpaqueBars、vc.edgesForExtendedLayout属性：
                     
-                   优先级：navigationBar.isTranslucent --> vc.extendedLayoutIncludesOpaqueBars --> c.edgesForExtendedLayout
+                   优先级：navigationBar.isTranslucent --> vc.extendedLayoutIncludesOpaqueBars --> vc.edgesForExtendedLayout
              
                    isTranslucent属性：默认是true。
                                      没有手动设置它的值时，当你设置bar的背景图片透明通道是非透明时，自动变成false。

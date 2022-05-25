@@ -52,7 +52,6 @@ extension TestQuartz2D_VC: UICollectionViewDataSource {
             drawView.isHidden = false
             var shapeEnumRawValue:Int = drawView.drawShape.rawValue
             shapeEnumRawValue += 1
-//            var shapeEnum:Quartz_View.PaintShape = drawView.drawShape
             if shapeEnumRawValue > Quartz_View.PaintShape.Arc.rawValue {
                 shapeEnumRawValue = 0
             }
@@ -321,7 +320,7 @@ extension TestQuartz2D_VC{
         
         // 在view的draw方法内绘制图形
         drawView.backgroundColor = .lightGray
-        drawView.isHidden = true
+//        drawView.isHidden = true
         self.view.addSubview(drawView)
         drawView.snp.makeConstraints { make in
             make.top.equalTo(baseCollView.snp.bottom).offset(20)

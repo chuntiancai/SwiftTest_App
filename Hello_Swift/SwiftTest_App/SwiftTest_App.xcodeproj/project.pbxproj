@@ -23,6 +23,8 @@
 		0414F99127C33E570037EE70 /* TestBugly_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0414F99027C33E570037EE70 /* TestBugly_VC.swift */; };
 		0414F99427C35F2F0037EE70 /* Bugly_Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0414F99327C35F2F0037EE70 /* Bugly_Error.swift */; };
 		0415582B2834F5CB007FC2E8 /* TestTimer_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0415582A2834F5CB007FC2E8 /* TestTimer_VC.swift */; };
+		0415582F283DC4A1007FC2E8 /* 测试数组排序_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0415582E283DC4A1007FC2E8 /* 测试数组排序_VC.swift */; };
+		04155831283DC569007FC2E8 /* Sort_People.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04155830283DC569007FC2E8 /* Sort_People.swift */; };
 		041A2E1B27901D0400F9CABF /* 测试KVC的VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041A2E1A27901D0400F9CABF /* 测试KVC的VC.swift */; };
 		041A2E1D27901D1300F9CABF /* 测试KVO的VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041A2E1C27901D1300F9CABF /* 测试KVO的VC.swift */; };
 		041A2E1F27901E5400F9CABF /* KVC_Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041A2E1E27901E5400F9CABF /* KVC_Person.swift */; };
@@ -325,6 +327,8 @@
 		0414F99027C33E570037EE70 /* TestBugly_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBugly_VC.swift; sourceTree = "<group>"; };
 		0414F99327C35F2F0037EE70 /* Bugly_Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bugly_Error.swift; sourceTree = "<group>"; };
 		0415582A2834F5CB007FC2E8 /* TestTimer_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTimer_VC.swift; sourceTree = "<group>"; };
+		0415582E283DC4A1007FC2E8 /* 测试数组排序_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试数组排序_VC.swift"; sourceTree = "<group>"; };
+		04155830283DC569007FC2E8 /* Sort_People.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sort_People.swift; sourceTree = "<group>"; };
 		041A2E1A27901D0400F9CABF /* 测试KVC的VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试KVC的VC.swift"; sourceTree = "<group>"; };
 		041A2E1C27901D1300F9CABF /* 测试KVO的VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试KVO的VC.swift"; sourceTree = "<group>"; };
 		041A2E1E27901E5400F9CABF /* KVC_Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVC_Person.swift; sourceTree = "<group>"; };
@@ -685,6 +689,15 @@
 				0415582A2834F5CB007FC2E8 /* TestTimer_VC.swift */,
 			);
 			path = "测试定时器";
+			sourceTree = "<group>";
+		};
+		04155832283DC5A1007FC2E8 /* 测试数组排序 */ = {
+			isa = PBXGroup;
+			children = (
+				0415582E283DC4A1007FC2E8 /* 测试数组排序_VC.swift */,
+				04155830283DC569007FC2E8 /* Sort_People.swift */,
+			);
+			path = "测试数组排序";
 			sourceTree = "<group>";
 		};
 		041A2E1927901CD400F9CABF /* 测试KVC和KVO */ = {
@@ -1243,6 +1256,7 @@
 		04600033271190F70074DFA2 /* Swift语法测试 */ = {
 			isa = PBXGroup;
 			children = (
+				04155832283DC5A1007FC2E8 /* 测试数组排序 */,
 				042648D627F2A9D40034FF51 /* 测试单例 */,
 				0474C25727D8533E00B95D7C /* 枚举的使用 */,
 				0474C25427D5F23800B95D7C /* 测试指针 */,
@@ -1455,13 +1469,6 @@
 				04870E3226E9AD280030B1D2 /* AACrosshair.swift */,
 			);
 			path = AAOptionsModel;
-			sourceTree = "<group>";
-		};
-		04870E8826EB4EF10030B1D2 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		04870E9326EF1E440030B1D2 /* Button的测试 */ = {
@@ -1858,7 +1865,6 @@
 				04870E8226EB2D690030B1D2 /* TestSectionTableView_VC.swift */,
 				0492700F2796CCC4000A61FC /* TestTableView.storyboard */,
 				04CBB62A26CA48E600436C0E /* View */,
-				04870E8826EB4EF10030B1D2 /* Cell */,
 				04870E9126EEF8EE0030B1D2 /* tableView测试的图标.xcassets */,
 			);
 			path = "TableView的测试";
@@ -2179,6 +2185,7 @@
 				0421E5F326A9701600C6A922 /* JFZVideoControlPanelView.swift in Sources */,
 				042036CC27574C9400424E05 /* CollectionView的delegate.swift in Sources */,
 				0421E60526AAB30100C6A922 /* UITestConstranitVC.swift in Sources */,
+				0415582F283DC4A1007FC2E8 /* 测试数组排序_VC.swift in Sources */,
 				0421E61426AE494F00C6A922 /* LifeCycleVC_1.swift in Sources */,
 				04870E9726EF1EC40030B1D2 /* TestButton.swift in Sources */,
 				04587C6F27B4BBB300824F69 /* TestUserDefault_VC.swift in Sources */,
@@ -2295,6 +2302,7 @@
 				045505A528000DE000785F02 /* CTCDateTool.swift in Sources */,
 				04A0CA4226A0027800ECAE1B /* JFZFullScreenMaskView.swift in Sources */,
 				04A0CA5226A0027800ECAE1B /* JFZPlayerStorage.swift in Sources */,
+				04155831283DC569007FC2E8 /* Sort_People.swift in Sources */,
 				0421E60326AAB2DD00C6A922 /* UITestLifeCycleVC.swift in Sources */,
 				04B76903280D3A730080102F /* 手势识别器之间的交互_VC.swift in Sources */,
 				04870E4A26E9AD280030B1D2 /* AADataLabels.swift in Sources */,

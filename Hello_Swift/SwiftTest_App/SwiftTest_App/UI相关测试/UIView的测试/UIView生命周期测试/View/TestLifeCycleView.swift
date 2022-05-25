@@ -37,10 +37,16 @@ class TestLifeCycleView: UIView {
     }
     
     //MARK: 添加顺序：5 或 6，它与layoutSubviews是异步的，在不同的情况下被调用。draw是绘制内容，layoutSubviews是计算布局尺寸。
-    /// 有时候你内容没变，但是位置变了，就只调用layoutSubviews。有时候你内容变了，尺寸没变，就调用draw。
+    /**
+        1、有时候你内容没变，但是位置变了，就只调用layoutSubviews。有时候你内容变了，尺寸没变，就调用draw。
+        2、手动调用setNeedsDisplay()方法，会调用draw方法。rect为零时，draw方法不被调用。
+        3、初始化时，先调用layoutSubviews再调用draw，因为有尺寸之后，才知道在哪里绘制内容。
+        4、若使用 UIView 绘图，只能在 drawRect：方法中获取相应的 contextRef 并绘图。如果在其他方法中获取将获取到一个 invalidate 的 ref 并且不能用于画图。
+     */
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         print(" TestLifeCycleView draw rect: \(rect)")
+        
     }
     
     //MARK: 添加顺序：6，子View的布局多次发生变化，这里就会多次被调用。这里已经计算完布局约束了。

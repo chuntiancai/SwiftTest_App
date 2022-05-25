@@ -45,6 +45,7 @@ class Quartz_View: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     /// 该方法专门用来绘制图形，在图形将要显示的时候，被系统调用。
     /// - Parameter rect: 当前view的bounds
     override func draw(_ rect: CGRect) {

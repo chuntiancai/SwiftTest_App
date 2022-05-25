@@ -30,8 +30,6 @@ class TestTableView_Cell: UITableViewCell {
         return lab
     }()
     
-    
-    
 
     //MARK: - 复写方法
     required init?(coder aDecoder: NSCoder) {
@@ -43,6 +41,31 @@ class TestTableView_Cell: UITableViewCell {
         selectionStyle = .none
         clipsToBounds = true
         createUI()
+    }
+    
+    override func draw(_ rect: CGRect) {
+        print("TestTableView_Cell 的 \(#function)方法")
+        /**
+            1、设置cell的backgroundColor是无效的，只能通过contentView来操作。
+         */
+        self.contentView.backgroundColor = .yellow
+        
+        /// 1.2、绘制路径。
+        let  bPath = UIBezierPath()
+        
+        // 画曲线
+        ///用贝塞尔的N次函数来绘制曲线。
+        bPath.move(to: CGPoint(x: 20, y: 60))
+        bPath.addQuadCurve(to: CGPoint(x: 100, y:60), controlPoint: CGPoint(x: 60, y: 120))    //添加一个贝塞尔控制点
+        bPath.addQuadCurve(to: CGPoint(x: 200, y:60), controlPoint: CGPoint(x: 150, y: 10))    //再添加一个贝塞尔控制点
+        bPath.addLine(to: CGPoint(x: rect.maxX, y: 60))
+        
+        let layer = CAShapeLayer()
+        layer.path = bPath.cgPath
+        layer.strokeColor = UIColor.red.cgColor
+        layer.fillColor = UIColor.cyan.cgColor
+        self.contentView.layer.addSublayer(layer)
+        
     }
     
     override func removeFromSuperview() {

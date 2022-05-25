@@ -1,69 +1,99 @@
 //
-//  TestDate_VC.swift
+//  测试数组排序.swift
 //  SwiftTest_App
 //
-//  Created by mathew on 2021/11/3.
-//  Copyright © 2021 com.mathew. All rights reserved.
+//  Created by mathew on 2022/5/25.
+//  Copyright © 2022 com.mathew. All rights reserved.
 //
-//测试日期的VC
+// 测试数组排序的语法
 
-import UIKit
-
-class TestDate_VC: UIViewController {
+class TestArraySort_VC: UIViewController {
     
     //MARK: 对外属性
-    public var collDataArr = ["0、","1、","2、","3、","4、","5、","6、","7、","8、","9、","10、"]
+    public var collDataArr = ["0、","1、","2、","3、","4、","5、","6、","7、","8、","9、","10、","11、","12、"]
 
     ///UI组件
     private var baseCollView: UICollectionView!
     
+    //MARK: 测试组件
+    lazy var peopleArr:[Sort_People] = {
+        var arr = [Sort_People(PName: "张", PAge: 12),Sort_People(PName: "李四", PAge: 15),Sort_People(PName: "赵", PAge: 7),Sort_People(PName: "孙", PAge: 16),
+                   Sort_People(PName: "王", PAge: 28),Sort_People(PName: "钱", PAge: 5),Sort_People(PName: "陈", PAge: 42),Sort_People(PName: "朱", PAge: 15)]
+        return arr
+        
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 199/255.0, green: 204/255.0, blue: 237/255.0, alpha: 1.0)
-        self.title = "测试日期功能"
+        self.title = "测试数组排序VC"
         
         setNavigationBarUI()
         setCollectionViewUI()
         initTestViewUI()
     }
-
-
+    
+    
+    
 }
 
 
 //MARK: - 遵循数据源协议,UICollectionViewDataSource
-extension TestDate_VC: UICollectionViewDataSource {
+extension TestArraySort_VC: UICollectionViewDataSource {
     
     ///点击了cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            //TODO: 0、获取今年第一天零点的时间戳
-            print("     (@@  获取今年第一天零点的时间戳")
-            let years = Calendar.current.dateComponents([.year], from: Date()).year!  //今年
-            let dateComponent = DateComponents.init(calendar: Calendar.current, year: years, month: 1, day: 1, hour: 0, minute: 0, second: 0)
-            let yearTime = dateComponent.date!.timeIntervalSince1970
-            print("当前的时间戳：\(String(describing: yearTime))")
-            break
-        case 1:
-            //TODO: 1、计算日期的加减
-            print("     (@@ ")
-            let calendar = Calendar.current
-            var components = DateComponents()
-            components.month = 0
-            components.day = -31
-            let startDate = calendar.date(byAdding: components, to: Date())
+            //TODO: 0、测试sort函数
+            print("     (@@  测试sort函数")
+            //1. 使用sort方法和闭包对数组进行排序
             
-            components.day = 31
-            let endDate = calendar.date(byAdding: components, to: Date())
-            print("开始日期：\(String(describing: startDate)) ------- 结束日期:\(String(describing: endDate))")
+            /// sort函数的理解是，是否按s1在前，s2在后的顺序排序。true就是按照，false就是反过来。
+            peopleArr.sort(by: {(s1: Sort_People, s2: Sort_People) -> Bool in return s1.age > s2.age })
+            print("排序后\(peopleArr)")
+            
+            /// 升序是指小的在前，大的在后
+            peopleArr.sort(by: {(s1: Sort_People, s2: Sort_People) -> Bool in return s1.age < s2.age })
+            print("升序排序后\(peopleArr)")
+
+        /**
+         //2. 可以不用指定参数类型，编译器会帮我们判断
+         peopleArr.sort(by: {(s1, s2) in
+         return s1.name > s2.name
+         })
+         
+         //3. 可以省略参数名，直接根据数字来引用参数
+         peopleArr.sort(by: {
+         return $0.name > $1.name
+         })
+         
+         //4. 如果闭包只有一行代码，可以省略return
+         peopleArr.sort(by: {
+         $0.name > $1.name
+         })
+         
+         //5. 如果闭包是函数调用的最后一个参数，可以将闭包放到括号外面，提高代码的可读性
+         peopleArr.sort(){
+         $0.name > $1.name
+         }
+         
+         //6. 换行也是可选的，代码可以继续简洁
+         peopleArr.sort(){$0.name > $1.name}
+         */
+            
+        case 1:
+            //TODO: 1、
+            print("     (@@ ")
         case 2:
             //TODO: 2、
             print("     (@@ ")
         case 3:
             //TODO: 3、
             print("     (@@ ")
+        case 4:
+            print("     (@@")
         case 5:
             print("     (@@")
         case 6:
@@ -87,21 +117,21 @@ extension TestDate_VC: UICollectionViewDataSource {
     
 }
 //MARK: - 测试的方法
-extension TestDate_VC{
+extension TestArraySort_VC{
    
     //MARK: 0、
     func test0(){
         
     }
+    
 }
 
 
 //MARK: - 设置测试的UI
-extension TestDate_VC{
+extension TestArraySort_VC{
     
     /// 初始化你要测试的view
     func initTestViewUI(){
-        
         
     }
     
@@ -109,13 +139,10 @@ extension TestDate_VC{
 
 
 //MARK: - 设计UI
-extension TestDate_VC {
+extension TestArraySort_VC {
     
     /// 设置导航栏的UI
     private func setNavigationBarUI(){
-        
-        ///布局从导航栏下方开始
-        self.edgesForExtendedLayout = .bottom
         
         //设置子页面的navigation bar的返回按钮样式
         let backItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
@@ -148,7 +175,7 @@ extension TestDate_VC {
 }
 
 //MARK: - 遵循委托协议,UICollectionViewDelegate
-extension TestDate_VC: UICollectionViewDelegate {
+extension TestArraySort_VC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collDataArr.count
@@ -176,12 +203,11 @@ extension TestDate_VC: UICollectionViewDelegate {
     private func pushNext(viewController: UIViewController) {
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
-        
     }
 }
 
 // MARK: - 笔记
 /**
+    1、
  
  */
-
