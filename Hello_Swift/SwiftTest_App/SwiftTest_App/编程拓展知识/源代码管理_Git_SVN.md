@@ -10,7 +10,8 @@ GIT
 ####  01. 创建代码库 & 配置个人信息
     1>  创建代码仓库
     $ git init
-    $ git init --bare   # 建立空白代码库(专门用于团队开发)
+    $ git init --bare   # 建立空白代码库(专门用于团队开发) 
+        在初始化远程仓库时最好使用 git –bare init   而不要使用：git init。这样在使用hooks的时候，会有用处。
     
     2>  配置用户名和邮箱
     $ git config user.name manager
@@ -35,8 +36,8 @@ GIT
     2>  将代码添加到代码库
     
     $ git status    # 查看当前代码库状态
-    $ git add main.c    # 将文件添加到代码库，xocde会自动帮你执行git add命令。
-    $ git commit -m "添加了main.c"   # 将修改提交到代码库
+    $ git add main.c    # 将文件添加到代码库，xocde会自动帮你执行git add命令。提交到暂存区。
+    $ git commit -m "添加了main.c"   # 将修改提交到代码库，把暂存区的所有内容提交到当前分支，并清空暂存区。
     
     提示：
     *   在此一定要使用 -m 参数指定修改的备注信息
