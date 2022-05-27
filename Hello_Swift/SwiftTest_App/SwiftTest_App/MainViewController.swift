@@ -6,17 +6,13 @@
 //  Copyright © 2020 com.fendaTeamIOS. All rights reserved.
 //
 
-import UIKit
-
 let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 
 class MainViewController: UIViewController {
 
-    //MARK: 对外属性
-    
-    
     //MARK: 内部属性
     private var collDataArr = ["公共测试","公共测试1","公共测试2","公共测试3","公共测试4","公共测试5","公共测试6","公共测试7"]
+    private let ocTestViewVC = OCTestViewController()
     
     ///UI组件
     private var baseCollView: UICollectionView!
@@ -41,7 +37,7 @@ extension MainViewController: UICollectionViewDataSource {
         print("MainViewController点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            pushNext(viewController: TestArraySort_VC())
+            pushNext(viewController: TestGenerics_VC())
         case 1:
             pushNext(viewController: TestNavibar_VC())
         case 2:
@@ -134,19 +130,25 @@ extension MainViewController {
     /// 设置collection view的UI
     private func setCollectionViewUI(){
         
+        let SCREEN_WIDTH = UIScreen.main.bounds.size.width
         let layout = UICollectionViewFlowLayout.init()
-//        layout.headerReferenceSize = CGSize.init(width: UIScreen.main.bounds.size.width, height: 130)
         layout.itemSize = CGSize.init(width: 80, height: 80)
-        
-        baseCollView = UICollectionView.init(frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width,height:SCREEN_HEIGHT),
-                                             collectionViewLayout: layout)
+        baseCollView = UICollectionView.init(frame: CGRect(x:0, y:0, width:SCREEN_WIDTH,
+                                                           height:SCREEN_HEIGHT / 3),collectionViewLayout: layout)
         baseCollView.backgroundColor = UIColor.white
         baseCollView.delegate = self
         baseCollView.dataSource = self
-        // register cell
         baseCollView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CollectionView_Cell_ID")
-        
         self.view.addSubview(baseCollView)
+        
+        self.addChild(ocTestViewVC)
+        self.view.addSubview(ocTestViewVC.view)
+        ocTestViewVC.view.snp.makeConstraints { make in
+            make.top.equalTo(baseCollView.snp.bottom).offset(20)
+            make.bottom.equalToSuperview()
+            make.width.equalToSuperview()
+            make.centerX.equalToSuperview()
+        }
         
     }
 }

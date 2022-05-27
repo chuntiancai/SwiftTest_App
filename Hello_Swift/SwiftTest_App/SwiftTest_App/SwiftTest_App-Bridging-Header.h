@@ -10,8 +10,12 @@
 #ifndef SwiftTest_App_Bridging_Header_h
 #define SwiftTest_App_Bridging_Header_h
 
-#import <CommonCrypto/CommonCrypto.h>
+
+//MARK: 暴露自己的OC头文件给swift
+#import "OCTestViewController.h"
+
 //MARK: swift使用OC的库
+#import <CommonCrypto/CommonCrypto.h>
 #import "Reachability.h"
 #import "MJRefresh.h"
 #import <Bugly/Bugly.h>

@@ -105,6 +105,24 @@
 		042648E927F3FB6E0034FF51 /* SubThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042648E827F3FB6E0034FF51 /* SubThread.swift */; };
 		042648EB27F4422B0034FF51 /* labigif0.gif in Resources */ = {isa = PBXBuildFile; fileRef = 042648EA27F4422B0034FF51 /* labigif0.gif */; };
 		042648EF27F4462A0034FF51 /* TestNSCache_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042648EE27F4462A0034FF51 /* TestNSCache_VC.swift */; };
+		04330A9F283F6737007DF2D0 /* 测试泛型_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04330A9E283F6737007DF2D0 /* 测试泛型_VC.swift */; };
+		04330AA1283F76B5007DF2D0 /* Generic_Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04330AA0283F76B5007DF2D0 /* Generic_Person.swift */; };
+		04330AB1283F7E34007DF2D0 /* 2、枚举,可选项.md in Resources */ = {isa = PBXBuildFile; fileRef = 04330AA2283F7E33007DF2D0 /* 2、枚举,可选项.md */; };
+		04330AB2283F7E34007DF2D0 /* 8、多态.md in Resources */ = {isa = PBXBuildFile; fileRef = 04330AA3283F7E33007DF2D0 /* 8、多态.md */; };
+		04330AB3283F7E34007DF2D0 /* 11、Error,泛型,关联类型.md in Resources */ = {isa = PBXBuildFile; fileRef = 04330AA4283F7E33007DF2D0 /* 11、Error,泛型,关联类型.md */; };
+		04330AB4283F7E34007DF2D0 /* 9、初始化.md in Resources */ = {isa = PBXBuildFile; fileRef = 04330AA5283F7E33007DF2D0 /* 9、初始化.md */; };
+		04330AB5283F7E34007DF2D0 /* 7、继承.md in Resources */ = {isa = PBXBuildFile; fileRef = 04330AA6283F7E33007DF2D0 /* 7、继承.md */; };
+		04330AB6283F7E34007DF2D0 /* 13、高级运算符.md in Resources */ = {isa = PBXBuildFile; fileRef = 04330AA7283F7E33007DF2D0 /* 13、高级运算符.md */; };
+		04330AB7283F7E34007DF2D0 /* 面试总结.md in Resources */ = {isa = PBXBuildFile; fileRef = 04330AA8283F7E33007DF2D0 /* 面试总结.md */; };
+		04330AB8283F7E34007DF2D0 /* 12、String,Array底层.md in Resources */ = {isa = PBXBuildFile; fileRef = 04330AA9283F7E33007DF2D0 /* 12、String,Array底层.md */; };
+		04330AB9283F7E34007DF2D0 /* 10、协议.md in Resources */ = {isa = PBXBuildFile; fileRef = 04330AAA283F7E33007DF2D0 /* 10、协议.md */; };
+		04330ABA283F7E34007DF2D0 /* 0、语言环境.md in Resources */ = {isa = PBXBuildFile; fileRef = 04330AAB283F7E33007DF2D0 /* 0、语言环境.md */; };
+		04330ABB283F7E34007DF2D0 /* 5、属性(inout).md in Resources */ = {isa = PBXBuildFile; fileRef = 04330AAC283F7E33007DF2D0 /* 5、属性(inout).md */; };
+		04330ABC283F7E34007DF2D0 /* 1、swift基础语法初探.md in Resources */ = {isa = PBXBuildFile; fileRef = 04330AAD283F7E33007DF2D0 /* 1、swift基础语法初探.md */; };
+		04330ABD283F7E34007DF2D0 /* 4、闭包的本质.md in Resources */ = {isa = PBXBuildFile; fileRef = 04330AAE283F7E33007DF2D0 /* 4、闭包的本质.md */; };
+		04330ABE283F7E34007DF2D0 /* 6、方法(下标).md in Resources */ = {isa = PBXBuildFile; fileRef = 04330AAF283F7E33007DF2D0 /* 6、方法(下标).md */; };
+		04330ABF283F7E34007DF2D0 /* 3、结构体,类.md in Resources */ = {isa = PBXBuildFile; fileRef = 04330AB0283F7E33007DF2D0 /* 3、结构体,类.md */; };
+		04330AC2284060B4007DF2D0 /* OCTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04330AC1284060B4007DF2D0 /* OCTestViewController.m */; };
 		044CBA7127F587C100FA2CB8 /* TestSubVC_SubVC3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBA7027F587C100FA2CB8 /* TestSubVC_SubVC3.swift */; };
 		044CBA7727F5A82A00FA2CB8 /* 测试文字的自适应高度.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBA7627F5A82A00FA2CB8 /* 测试文字的自适应高度.swift */; };
 		044CBA7927F68EDC00FA2CB8 /* MultiBtns_ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBA7827F68EDC00FA2CB8 /* MultiBtns_ScrollView.swift */; };
@@ -271,6 +289,10 @@
 		04C2DC0726CE3F9500F9B3EE /* TestURLSession_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2DC0626CE3F9500F9B3EE /* TestURLSession_VC.swift */; };
 		04C45C8B271D539100E1EA9B /* Selector和NSStringFromClass的自定义类.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C45C8A271D539100E1EA9B /* Selector和NSStringFromClass的自定义类.swift */; };
 		04C45C8D271D5BB100E1EA9B /* 测试selector的VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C45C8C271D5BB100E1EA9B /* 测试selector的VC.swift */; };
+		04C7EA2A2840A2B500685624 /* OCGeneric_Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7EA292840A2B500685624 /* OCGeneric_Person.m */; };
+		04C7EA362840AAB500685624 /* TestRumtime_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7EA352840AAB500685624 /* TestRumtime_VC.m */; };
+		04C7EA392840AB7700685624 /* OCTemp_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7EA382840AB7700685624 /* OCTemp_VC.m */; };
+		04C7EA3C2840AF5D00685624 /* OCRuntime_Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7EA3B2840AF5D00685624 /* OCRuntime_Person.m */; };
 		04CBB62626CA476E00436C0E /* TableView_DelegateLifeCycle_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBB62526CA476E00436C0E /* TableView_DelegateLifeCycle_Cell.swift */; };
 		04CBB62926CA47AD00436C0E /* 测试TableView闭包循环引用_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBB62826CA47AD00436C0E /* 测试TableView闭包循环引用_VC.swift */; };
 		04CBB62C26CA48FF00436C0E /* TestTableView_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBB62B26CA48FF00436C0E /* TestTableView_Cell.swift */; };
@@ -410,6 +432,25 @@
 		042648E827F3FB6E0034FF51 /* SubThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubThread.swift; sourceTree = "<group>"; };
 		042648EA27F4422B0034FF51 /* labigif0.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = labigif0.gif; sourceTree = "<group>"; };
 		042648EE27F4462A0034FF51 /* TestNSCache_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNSCache_VC.swift; sourceTree = "<group>"; };
+		04330A9E283F6737007DF2D0 /* 测试泛型_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试泛型_VC.swift"; sourceTree = "<group>"; };
+		04330AA0283F76B5007DF2D0 /* Generic_Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generic_Person.swift; sourceTree = "<group>"; };
+		04330AA2283F7E33007DF2D0 /* 2、枚举,可选项.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "2、枚举,可选项.md"; sourceTree = "<group>"; };
+		04330AA3283F7E33007DF2D0 /* 8、多态.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "8、多态.md"; sourceTree = "<group>"; };
+		04330AA4283F7E33007DF2D0 /* 11、Error,泛型,关联类型.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "11、Error,泛型,关联类型.md"; sourceTree = "<group>"; };
+		04330AA5283F7E33007DF2D0 /* 9、初始化.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "9、初始化.md"; sourceTree = "<group>"; };
+		04330AA6283F7E33007DF2D0 /* 7、继承.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "7、继承.md"; sourceTree = "<group>"; };
+		04330AA7283F7E33007DF2D0 /* 13、高级运算符.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "13、高级运算符.md"; sourceTree = "<group>"; };
+		04330AA8283F7E33007DF2D0 /* 面试总结.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "面试总结.md"; sourceTree = "<group>"; };
+		04330AA9283F7E33007DF2D0 /* 12、String,Array底层.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "12、String,Array底层.md"; sourceTree = "<group>"; };
+		04330AAA283F7E33007DF2D0 /* 10、协议.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "10、协议.md"; sourceTree = "<group>"; };
+		04330AAB283F7E33007DF2D0 /* 0、语言环境.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "0、语言环境.md"; sourceTree = "<group>"; };
+		04330AAC283F7E33007DF2D0 /* 5、属性(inout).md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "5、属性(inout).md"; sourceTree = "<group>"; };
+		04330AAD283F7E33007DF2D0 /* 1、swift基础语法初探.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "1、swift基础语法初探.md"; sourceTree = "<group>"; };
+		04330AAE283F7E33007DF2D0 /* 4、闭包的本质.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "4、闭包的本质.md"; sourceTree = "<group>"; };
+		04330AAF283F7E33007DF2D0 /* 6、方法(下标).md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "6、方法(下标).md"; sourceTree = "<group>"; };
+		04330AB0283F7E33007DF2D0 /* 3、结构体,类.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "3、结构体,类.md"; sourceTree = "<group>"; };
+		04330AC0284060B4007DF2D0 /* OCTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCTestViewController.h; sourceTree = "<group>"; };
+		04330AC1284060B4007DF2D0 /* OCTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCTestViewController.m; sourceTree = "<group>"; };
 		044CBA7027F587C100FA2CB8 /* TestSubVC_SubVC3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSubVC_SubVC3.swift; sourceTree = "<group>"; };
 		044CBA7627F5A82A00FA2CB8 /* 测试文字的自适应高度.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试文字的自适应高度.swift"; sourceTree = "<group>"; };
 		044CBA7827F68EDC00FA2CB8 /* MultiBtns_ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiBtns_ScrollView.swift; sourceTree = "<group>"; };
@@ -582,6 +623,14 @@
 		04C2DC0626CE3F9500F9B3EE /* TestURLSession_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestURLSession_VC.swift; sourceTree = "<group>"; };
 		04C45C8A271D539100E1EA9B /* Selector和NSStringFromClass的自定义类.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Selector和NSStringFromClass的自定义类.swift"; sourceTree = "<group>"; };
 		04C45C8C271D5BB100E1EA9B /* 测试selector的VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试selector的VC.swift"; sourceTree = "<group>"; };
+		04C7EA282840A2B500685624 /* OCGeneric_Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCGeneric_Person.h; sourceTree = "<group>"; };
+		04C7EA292840A2B500685624 /* OCGeneric_Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCGeneric_Person.m; sourceTree = "<group>"; };
+		04C7EA342840AAB500685624 /* TestRumtime_VC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestRumtime_VC.h; sourceTree = "<group>"; };
+		04C7EA352840AAB500685624 /* TestRumtime_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestRumtime_VC.m; sourceTree = "<group>"; };
+		04C7EA372840AB7700685624 /* OCTemp_VC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCTemp_VC.h; sourceTree = "<group>"; };
+		04C7EA382840AB7700685624 /* OCTemp_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCTemp_VC.m; sourceTree = "<group>"; };
+		04C7EA3A2840AF5D00685624 /* OCRuntime_Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCRuntime_Person.h; sourceTree = "<group>"; };
+		04C7EA3B2840AF5D00685624 /* OCRuntime_Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCRuntime_Person.m; sourceTree = "<group>"; };
 		04CBB62526CA476E00436C0E /* TableView_DelegateLifeCycle_Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView_DelegateLifeCycle_Cell.swift; sourceTree = "<group>"; };
 		04CBB62826CA47AD00436C0E /* 测试TableView闭包循环引用_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试TableView闭包循环引用_VC.swift"; sourceTree = "<group>"; };
 		04CBB62B26CA48FF00436C0E /* TestTableView_Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableView_Cell.swift; sourceTree = "<group>"; };
@@ -1146,6 +1195,17 @@
 			path = "NSCache测试";
 			sourceTree = "<group>";
 		};
+		04330A9D283F66BF007DF2D0 /* 测试泛型 */ = {
+			isa = PBXGroup;
+			children = (
+				04330A9E283F6737007DF2D0 /* 测试泛型_VC.swift */,
+				04330AA0283F76B5007DF2D0 /* Generic_Person.swift */,
+				04C7EA282840A2B500685624 /* OCGeneric_Person.h */,
+				04C7EA292840A2B500685624 /* OCGeneric_Person.m */,
+			);
+			path = "测试泛型";
+			sourceTree = "<group>";
+		};
 		0454A486272A8B4D00EFE31A /* 测试snpkit与frame移动的问题 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1256,6 +1316,9 @@
 		04600033271190F70074DFA2 /* Swift语法测试 */ = {
 			isa = PBXGroup;
 			children = (
+				04C7EA2B2840A9FF00685624 /* 语法笔记 */,
+				04C7EA2C2840AA3D00685624 /* 测试OC的Runtime */,
+				04330A9D283F66BF007DF2D0 /* 测试泛型 */,
 				04155832283DC5A1007FC2E8 /* 测试数组排序 */,
 				042648D627F2A9D40034FF51 /* 测试单例 */,
 				0474C25727D8533E00B95D7C /* 枚举的使用 */,
@@ -1263,7 +1326,6 @@
 				04927014279EA6A5000A61FC /* 测试框架的消息机制(Notification等) */,
 				041A2E1927901CD400F9CABF /* 测试KVC和KVO */,
 				048608AF273527B9000F816E /* 测试selector结构体 */,
-				0454A487272AA2FF00EFE31A /* Swift语法备忘录.md */,
 			);
 			path = "Swift语法测试";
 			sourceTree = "<group>";
@@ -1845,6 +1907,40 @@
 			path = "iOS网络测试";
 			sourceTree = "<group>";
 		};
+		04C7EA2B2840A9FF00685624 /* 语法笔记 */ = {
+			isa = PBXGroup;
+			children = (
+				0454A487272AA2FF00EFE31A /* Swift语法备忘录.md */,
+				04330AAB283F7E33007DF2D0 /* 0、语言环境.md */,
+				04330AAD283F7E33007DF2D0 /* 1、swift基础语法初探.md */,
+				04330AA2283F7E33007DF2D0 /* 2、枚举,可选项.md */,
+				04330AB0283F7E33007DF2D0 /* 3、结构体,类.md */,
+				04330AAE283F7E33007DF2D0 /* 4、闭包的本质.md */,
+				04330AAC283F7E33007DF2D0 /* 5、属性(inout).md */,
+				04330AAF283F7E33007DF2D0 /* 6、方法(下标).md */,
+				04330AA6283F7E33007DF2D0 /* 7、继承.md */,
+				04330AA3283F7E33007DF2D0 /* 8、多态.md */,
+				04330AA5283F7E33007DF2D0 /* 9、初始化.md */,
+				04330AAA283F7E33007DF2D0 /* 10、协议.md */,
+				04330AA4283F7E33007DF2D0 /* 11、Error,泛型,关联类型.md */,
+				04330AA9283F7E33007DF2D0 /* 12、String,Array底层.md */,
+				04330AA7283F7E33007DF2D0 /* 13、高级运算符.md */,
+				04330AA8283F7E33007DF2D0 /* 面试总结.md */,
+			);
+			path = "语法笔记";
+			sourceTree = "<group>";
+		};
+		04C7EA2C2840AA3D00685624 /* 测试OC的Runtime */ = {
+			isa = PBXGroup;
+			children = (
+				04C7EA342840AAB500685624 /* TestRumtime_VC.h */,
+				04C7EA352840AAB500685624 /* TestRumtime_VC.m */,
+				04C7EA3A2840AF5D00685624 /* OCRuntime_Person.h */,
+				04C7EA3B2840AF5D00685624 /* OCRuntime_Person.m */,
+			);
+			path = "测试OC的Runtime";
+			sourceTree = "<group>";
+		};
 		04CBB62426C4BC1E00436C0E /* 业务UI代码 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1986,8 +2082,10 @@
 				04870E0C26E9AA880030B1D2 /* 第三方库对比测试 */,
 				AF2C738725539D69000AD7A9 /* Main */,
 				AF2C735325539C54000AD7A9 /* MainViewController.swift */,
-				EB645E3E26A449AE00773A98 /* tempView.swift */,
 				651C714C2609ED600066C13B /* tempVC.swift */,
+				EB645E3E26A449AE00773A98 /* tempView.swift */,
+				04330AC1284060B4007DF2D0 /* OCTestViewController.m */,
+				04C7EA382840AB7700685624 /* OCTemp_VC.m */,
 				AF2C736325539C7A000AD7A9 /* resource */,
 				AF2C734F25539C54000AD7A9 /* AppDelegate.swift */,
 				04A0CA5526A0054A00ECAE1B /* SwiftTest_App-Bridging-Header.h */,
@@ -2013,6 +2111,8 @@
 			isa = PBXGroup;
 			children = (
 				0421E5DB26A829A800C6A922 /* CommanTestVC.swift */,
+				04C7EA372840AB7700685624 /* OCTemp_VC.h */,
+				04330AC0284060B4007DF2D0 /* OCTestViewController.h */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -2082,26 +2182,41 @@
 				04B76907280E4D580080102F /* FSCalendarTest.storyboard in Resources */,
 				041CBC452788272400AF9B05 /* labi.bundle in Resources */,
 				04B7692A281797790080102F /* xmlFile.xml in Resources */,
+				04330AB4283F7E34007DF2D0 /* 9、初始化.md in Resources */,
 				AF2C735925539C60000AD7A9 /* Assets.xcassets in Resources */,
 				041CBC412788206500AF9B05 /* labi006.jpg in Resources */,
+				04330AB2283F7E34007DF2D0 /* 8、多态.md in Resources */,
+				04330AB6283F7E34007DF2D0 /* 13、高级运算符.md in Resources */,
 				044CBA7B27F6908200FA2CB8 /* TestScrollView.xcassets in Resources */,
 				AF2C735725539C54000AD7A9 /* Main.storyboard in Resources */,
+				04330ABA283F7E34007DF2D0 /* 0、语言环境.md in Resources */,
 				049270102796CCC4000A61FC /* TestTableView.storyboard in Resources */,
 				041CBC53278D666800AF9B05 /* NamePlistFile.plist in Resources */,
+				04330AB7283F7E34007DF2D0 /* 面试总结.md in Resources */,
+				04330AB9283F7E34007DF2D0 /* 10、协议.md in Resources */,
+				04330AB5283F7E34007DF2D0 /* 7、继承.md in Resources */,
 				041CBC3F2788206500AF9B05 /* labi003.jpg in Resources */,
+				04330ABB283F7E34007DF2D0 /* 5、属性(inout).md in Resources */,
 				04A0CA4926A0027800ECAE1B /* JFZPlayer.bundle in Resources */,
+				04330AB8283F7E34007DF2D0 /* 12、String,Array底层.md in Resources */,
 				042648DE27F2E4EC0034FF51 /* ImageList.plist in Resources */,
 				042648EB27F4422B0034FF51 /* labigif0.gif in Resources */,
+				04330ABC283F7E34007DF2D0 /* 1、swift基础语法初探.md in Resources */,
 				041CBC3E2788206500AF9B05 /* labi007.jpg in Resources */,
 				041CBC402788206500AF9B05 /* labi005.jpg in Resources */,
 				041CBC3D2788206500AF9B05 /* labi001.jpg in Resources */,
 				041CBC422788206500AF9B05 /* labi008.jpg in Resources */,
+				04330AB1283F7E34007DF2D0 /* 2、枚举,可选项.md in Resources */,
 				041A2E2A279405A500F9CABF /* TestScrollView.xib in Resources */,
 				0492700C27956C9C000A61FC /* Test_UIConstraint.storyboard in Resources */,
+				04330AB3283F7E34007DF2D0 /* 11、Error,泛型,关联类型.md in Resources */,
+				04330ABD283F7E34007DF2D0 /* 4、闭包的本质.md in Resources */,
 				042036B427479CC000424E05 /* flagItem.plist in Resources */,
 				041CBC58278D858300AF9B05 /* TestXibFile.xib in Resources */,
 				04870E3A26E9AD280030B1D2 /* AAJSFiles.bundle in Resources */,
+				04330ABE283F7E34007DF2D0 /* 6、方法(下标).md in Resources */,
 				041CBC51278D31A900AF9B05 /* TestPlistFile.plist in Resources */,
+				04330ABF283F7E34007DF2D0 /* 3、结构体,类.md in Resources */,
 				040BFF4327B26F910010C999 /* naviVCStoryTest.storyboard in Resources */,
 				042036B7274B9B3800424E05 /* 测试TextField的Image.xcassets in Resources */,
 				041CBC49278D1EDB00AF9B05 /* TestButton.storyboard in Resources */,
@@ -2215,6 +2330,7 @@
 				04A0CA4A26A0027800ECAE1B /* String+md5Extension.swift in Sources */,
 				049EAFE526B7D85000903DA8 /* TouchDeliver_SubView.swift in Sources */,
 				049EAFE126B404AD00903DA8 /* TestGCD_VC.swift in Sources */,
+				04330A9F283F6737007DF2D0 /* 测试泛型_VC.swift in Sources */,
 				04587C8927B643D600824F69 /* DragTouch_View.swift in Sources */,
 				04870E4226E9AD280030B1D2 /* AALabels.swift in Sources */,
 				042648D827F2A9F60034FF51 /* TestSingleton_VC.swift in Sources */,
@@ -2261,6 +2377,8 @@
 				0414F97C27BA48C50037EE70 /* TableView的contentInset与刷新_VC.swift in Sources */,
 				0492701C279EA972000A61FC /* Noti_Subject.swift in Sources */,
 				042036D0275862E000424E05 /* ColllectionView的Cell.swift in Sources */,
+				04C7EA3C2840AF5D00685624 /* OCRuntime_Person.m in Sources */,
+				04330AA1283F76B5007DF2D0 /* Generic_Person.swift in Sources */,
 				04A0CA4526A0027800ECAE1B /* JFZAccelerationTipsView.swift in Sources */,
 				651C71492609EB870066C13B /* FileTest_VC.swift in Sources */,
 				041D5D4E27FD336C00446FDF /* TestSnapkit_VC.swift in Sources */,
@@ -2321,6 +2439,7 @@
 				04B76922281154980080102F /* OC中枚举的写法.m in Sources */,
 				04927013279E8FBB000A61FC /* 测试UIView的VC.swift in Sources */,
 				044FB587276735BE00479442 /* TextField的点击测试(键盘弹起)_View.swift in Sources */,
+				04330AC2284060B4007DF2D0 /* OCTestViewController.m in Sources */,
 				0477B8F1282CE4E700D6EB3A /* ScrollView导航栏内边距_VC.swift in Sources */,
 				0484806F27798FEB00698106 /* 自定义字体渐变色的label.swift in Sources */,
 				04870E5126E9AD280030B1D2 /* AASeries.swift in Sources */,
@@ -2357,6 +2476,7 @@
 				0421E5EE26A9701600C6A922 /* JFZPlayerVideoTableViewCell.swift in Sources */,
 				049EAFE326B7D53200903DA8 /* TouchDeliver_Btn.swift in Sources */,
 				045505A328000AF800785F02 /* CTCCalendarDayModel.swift in Sources */,
+				04C7EA2A2840A2B500685624 /* OCGeneric_Person.m in Sources */,
 				04587C7D27B50BCD00824F69 /* Tabar_SubVC3.swift in Sources */,
 				0474C25327D1F3B900B95D7C /* TabBar_MainVC.swift in Sources */,
 				04870E3F26E9AD280030B1D2 /* AAStates.swift in Sources */,
@@ -2369,6 +2489,7 @@
 				0421E5DC26A829A800C6A922 /* CommanTestVC.swift in Sources */,
 				04C2DC0426CE304700F9B3EE /* SubVC1_View.swift in Sources */,
 				041CBC5B279000A700AF9B05 /* TestImageView_VC.swift in Sources */,
+				04C7EA392840AB7700685624 /* OCTemp_VC.m in Sources */,
 				045505A127FFD0C700785F02 /* TestCalendar_VC.swift in Sources */,
 				042648E027F2E65B0034FF51 /* AsyncImg_Model.swift in Sources */,
 				0421E5F226A9701600C6A922 /* JFZ_AudioPlayerView.swift in Sources */,
@@ -2381,6 +2502,7 @@
 				0455059D27FDA9D900785F02 /* 测试TableView的布局约束.swift in Sources */,
 				04A0CA3B26A0027800ECAE1B /* JFZPlayerCommonConfig.swift in Sources */,
 				041A2E282794041000F9CABF /* Test_ScorllView.swift in Sources */,
+				04C7EA362840AAB500685624 /* TestRumtime_VC.m in Sources */,
 				651C71502609EDFF0066C13B /* DataTestVC.swift in Sources */,
 				04587C8427B6016400824F69 /* Modal_SubVC.swift in Sources */,
 				04A0CA5026A0027800ECAE1B /* JFZPlayerCacheStorage.swift in Sources */,
@@ -2563,6 +2685,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WGS3P7C8Z5;
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				INFOPLIST_FILE = SwiftTest_App/resource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2585,6 +2708,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				INFOPLIST_FILE = SwiftTest_App/resource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
