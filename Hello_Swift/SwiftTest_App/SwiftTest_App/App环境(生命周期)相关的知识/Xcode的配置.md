@@ -12,3 +12,6 @@
 ## 配置SVN或者Git
     Source Control --> commit
     Xcode --> preferences --> Accounts --> + --> Xcode Sever    (Xcode10之后就不再自带svn了)
+    
+## OC情况下，LLDB不能打印view的bounds时
+    在命令行输入：expr @import UIKit

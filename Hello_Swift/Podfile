@@ -20,7 +20,7 @@ target 'SwiftTest_App' do
   
   # 网络检测
   pod 'Reachability'
-  pod 'Alamofire' #网络处理
+  pod 'Alamofire', :inhibit_warnings => true #网络处理
   pod 'ctc_podspec', :git =>'https://github.com/chuntiancai/TestCocoapod.git' #测试自己制作的cocoapod库
   
   # 测试绘制图表第三方库

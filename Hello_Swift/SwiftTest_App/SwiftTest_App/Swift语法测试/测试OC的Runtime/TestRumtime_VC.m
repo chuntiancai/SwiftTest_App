@@ -35,6 +35,7 @@
             //TODO: 0、测试runtime相关的系统方法。
             /**
              1、performSelector可以调用私有方法。objc_msgSend当然也可以调用私有方法。
+             
              2、方法调用的流程，也就是方法体寻找的过程：
                 类对象：存放实例方法的映射列表。描述实例的信息。
                 元类：存放类方法的映射列表。描述类的信息。
@@ -42,11 +43,18 @@
                 2.找到方法名，注册或转换成方法编号。（编号更快，因为数组寻址）
                 3.根据方法编号，去找到方法地址。（页表寻址）
                 4.根据方法地址去寻找方法体代码。
-                
+             
+             3、动态添加方法，OC都是懒加载机制,只要一个方法实现了,就会马上添加到方法列表中。都是动态寻址。
+                方法除了映射表，还有缓存表，调用的时候，会存入缓存表中。
+                在步骤2中，如果在 方法映射表 中找不到方法的实现，那么就会调用 + (BOOL)resolveInstanceMethod:(SEL)sel 或+ (BOOL)resolveClassMethod:(SEL)sel 来处理这些没找到方法地址的方法。步骤2也就是消息发送阶段。
+                所以你要重写+ (BOOL)resolveInstanceMethod:(SEL)sel 或+ (BOOL)resolveClassMethod:(SEL)sel方法。
+             
              */
         {
             NSLog(@"测试runtime相关的系统方法。");
             OCRuntime_Person * p = [[OCRuntime_Person alloc] init];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
             
             //TODO: 获取方法体的结构
             Method curMove = class_getInstanceMethod([p class], @selector(move));
@@ -80,8 +88,11 @@
             p2 = objc_msgSend(p2, sel_registerName("init"));
             [p2 performSelector:@selector(move)];
             
+            //TODO: 测试动态解析方法。
+            [p2 performSelector:@selector(playing)];
             
         }
+#pragma clang diagnostic pop
             break;
         case 1:
             break;

@@ -40,6 +40,7 @@ extension TestPointee_VC: UICollectionViewDataSource {
         case 0:
             //TODO: 0、测试访问系统的类的私有属性名字
             print("     (@@  测试访问系统的类的私有属性名字")
+            //code这里插入相关的代码
             /// 通过runtime机制，测试获取UIGestureRecognizer的所有属性(包括私有)
             /**
                 目的：获取vc的interactivePopGestureRecognizer的target属性，然后我们新建一个GestureRecognizer来替换vc的interactivePopGestureRecognizer。
@@ -77,9 +78,10 @@ extension TestPointee_VC: UICollectionViewDataSource {
             let targetObject:NSObject = targetArr[0] as! NSObject
             let target = targetObject.value(forKeyPath: "_target")
 //            let target = targetObject
+            
+            
             let pan = UIPanGestureRecognizer.init(target: target, action: Selector.init("handleNavigationTransition:"))
             self.navigationController?.view.addGestureRecognizer(pan)
-            
             
             break
         case 1:

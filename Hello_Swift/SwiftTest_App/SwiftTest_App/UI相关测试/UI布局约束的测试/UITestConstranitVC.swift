@@ -154,8 +154,8 @@ extension UITestConstranitVC: UICollectionViewDataSource {
             print("     (@@从父控件中移除带有约束的greenView")
             greenView.removeFromSuperview()
         case 8:
+            //TODO: 8、setNeedsLayout方法与layoutIfNeeded方法的区别。
             print("     (@@实现约束的动画效果")
-            //setNeedsLayout方法与layoutIfNeeded方法的区别。
             widthConstraint.constant = 20
             UIView.animate(withDuration: 2) {
                 [weak self] in
