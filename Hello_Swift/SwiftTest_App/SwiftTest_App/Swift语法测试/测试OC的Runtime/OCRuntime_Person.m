@@ -55,7 +55,7 @@
         // SEL: 添加哪个方法
         // IMP: 方法实现 => 函数 => 函数入口 => 函数名
         // type: 方法类型
-        class_addMethod(self, sel,(IMP)aaa, <#const char * _Nullable types#>)
+//        class_addMethod(self, sel,(IMP)aaa, <#const char * _Nullable types#>)
 //        class_addMethod(self, sel, (IMP)aaa, "v@:@");
         
 

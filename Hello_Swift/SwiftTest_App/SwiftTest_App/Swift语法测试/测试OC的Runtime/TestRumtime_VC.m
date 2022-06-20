@@ -58,34 +58,34 @@
             
             //TODO: 获取方法体的结构
             Method curMove = class_getInstanceMethod([p class], @selector(move));
-            method_invoke(p, curMove);
+            ((void(*)(id, Method))method_invoke)(p, curMove);
             
             Method curEat = class_getInstanceMethod([p class], @selector(eat));
-            method_invoke(p, curEat);
+            ((void(*)(id, Method))method_invoke)(p, curEat);
             
             Method curSleeping = class_getClassMethod([OCRuntime_Person class], @selector(sleeping));
-            method_invoke([OCRuntime_Person class], curSleeping);
+            ((void(*)(id, Method))method_invoke)([OCRuntime_Person class], curSleeping);
             
             //TODO:交换方法体的地址
             /// 可以在load的方法里面进行交换。
             method_exchangeImplementations(curMove, curEat);
             NSLog(@"交换方法后---");
-            method_invoke(p, curMove);
-            method_invoke(p, curEat);
+            ((void(*)(id, Method))method_invoke)(p, curMove);
+            ((void(*)(id, Method))method_invoke)(p, curEat);
             
             //TODO:发送调方法用消息。
-            objc_msgSend(p, @selector(eat));
-            objc_msgSend(p, @selector(run:and:),1000,@"10分钟");
-            objc_msgSend(objc_getClass("OCRuntime_Person"), @selector(sleeping));
+            ((void(*)(id, SEL))objc_msgSend)(p, @selector(eat));
+            ((void(*)(id, SEL,int,id))objc_msgSend)(p, @selector(run:and:),1000,@"10分钟");
+            ((void(*)(id, SEL))objc_msgSend)(objc_getClass("OCRuntime_Person"), @selector(sleeping));
             
             
             ///TODO:  获取类的描述结构体。
             Class pClass = objc_getClass("OCRuntime_Person");
-            method_invoke(pClass, curSleeping);
+            ((void(*)(id, Method))method_invoke)(pClass, curSleeping);
             
-            OCRuntime_Person * p2 = objc_msgSend(objc_getClass("OCRuntime_Person"), sel_registerName("alloc"));
+            OCRuntime_Person * p2 = ((id(*)(id, SEL))objc_msgSend)(objc_getClass("OCRuntime_Person"), sel_registerName("alloc"));
             p2 = [p2 init];
-            p2 = objc_msgSend(p2, sel_registerName("init"));
+            p2 = ((id(*)(id, SEL))objc_msgSend)(p2, sel_registerName("init"));
             [p2 performSelector:@selector(move)];
             
             //TODO: 测试动态解析方法。
@@ -176,5 +176,7 @@
       SEL是方法结构体(C语言)。消息机制原理:对象根据方法编号SEL去映射表查找对应的方法实现。
       @selector(xxx) 返回的是SEL结构体。可以理解为语法表达式，或者理解为宏。
  
-    3、
+    3、Too many arguments to function call,报错，需要强制声明方法的参数。
+        例如： method_invoke(p, curEat) 变成((void(*)(id, Method))method_invoke)(p, curEat); 加了强制声明前缀((void(*)(id, Method))。
+              cmd+鼠标左键，去查看method_invoke的头文件，来确定函数的类型，从而确定前缀。
  */
