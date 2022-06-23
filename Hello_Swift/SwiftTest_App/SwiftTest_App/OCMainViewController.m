@@ -1,5 +1,5 @@
 //
-//  OCTestViewController.m
+//  OCMainViewController.m
 //  SwiftTest_App
 //
 //  Created by mathew on 2022/5/27.
@@ -7,11 +7,11 @@
 //
 // 测试OC语法的主VC
 
-#import "OCTestViewController.h"
+#import "OCMainViewController.h"
 #import "SwiftTest_App-Swift.h"
 #import "TestRumtime_VC.h"
 
-@interface OCTestViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface OCMainViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 
 @property(nonatomic,strong) UILabel * titleLabel;
 @property(nonatomic,strong) UICollectionView * baseCollView;
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation OCTestViewController
+@implementation OCMainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -68,7 +68,7 @@
     label.numberOfLines = 0;
     label.textColor = [UIColor blackColor];
     label.textAlignment = NSTextAlignmentCenter;
-    label.font = [UIFont systemFontOfSize:13];
+    label.font = [UIFont systemFontOfSize:15 weight:UIFontWeightMedium];
     [cell addSubview:label];
     
     cell.layer.cornerRadius = 8;
@@ -96,9 +96,10 @@
     if (!_baseCollView) {
         UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
         layout.itemSize = CGSizeMake(80, 60);
+        layout.sectionInset = UIEdgeInsetsMake(5, 5, 0, 5);
         _baseCollView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 32, 400, 400) collectionViewLayout:layout];
         [_baseCollView registerClass:UICollectionViewCell.class forCellWithReuseIdentifier:@"OCTestCEll"];
-        _baseCollView.backgroundColor = [UIColor whiteColor];
+        _baseCollView.backgroundColor = [UIColor clearColor];
         _baseCollView.delegate = self;
         _baseCollView.dataSource = self;
     }

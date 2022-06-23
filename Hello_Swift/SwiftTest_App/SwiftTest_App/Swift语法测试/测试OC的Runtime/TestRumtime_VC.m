@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"测试";
+    self.title = @"测试Rumtime_VC";
     self.view.backgroundColor = [[UIColor alloc] initWithRed: 199/255.0 green: 204/255.0 blue: 237/255.0 alpha:1.0];
     [self.view addSubview:self.baseCollView];
 
@@ -53,6 +53,7 @@
         {
             NSLog(@"测试runtime相关的系统方法。");
             OCRuntime_Person * p = [[OCRuntime_Person alloc] init];
+//忽略警告，方法过期的警告
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
             
@@ -121,10 +122,11 @@
     }
     UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, cell.bounds.size.width, cell.bounds.size.height)];
     label.text = self.collDataArr[indexPath.row];
+    label.adjustsFontSizeToFitWidth = YES;
     label.numberOfLines = 0;
     label.textColor = [UIColor blackColor];
     label.textAlignment = NSTextAlignmentCenter;
-    label.font = [UIFont systemFontOfSize:13];
+    label.font = [UIFont systemFontOfSize:14];
     [cell addSubview:label];
     
     cell.layer.cornerRadius = 8;
@@ -141,10 +143,13 @@
 - (UICollectionView *)baseCollView{
     if (!_baseCollView) {
         UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
-        layout.itemSize = CGSizeMake(80, 60);
-        _baseCollView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 220) collectionViewLayout:layout];
+        layout.itemSize = CGSizeMake(60, 40);
+        layout.sectionInset = UIEdgeInsetsMake(5, 5, 0, 5);
+        _baseCollView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 160) collectionViewLayout:layout];
         [_baseCollView registerClass:UICollectionViewCell.class forCellWithReuseIdentifier:@"OCTestCEll"];
-        _baseCollView.backgroundColor = [UIColor whiteColor];
+        _baseCollView.backgroundColor = [[UIColor alloc] initWithRed:240/255.0 green:240/255.0 blue:243/255.0 alpha:1.0];
+        _baseCollView.layer.borderColor = [[[UIColor alloc] initWithRed:0 green:30/255.0 blue:60/255.0 alpha:1.0] CGColor];
+        _baseCollView.layer.borderWidth = 1.0;
         _baseCollView.delegate = self;
         _baseCollView.dataSource = self;
     }
@@ -153,8 +158,9 @@
 
 - (NSArray *)collDataArr{
     if (!_collDataArr) {
-        _collDataArr = @[@"测试0",@"测试1",@"测试2",@"测试3",
-                         @"测试4",@"测试5",@"测试6",@"测试7"];
+        _collDataArr = @[@"0、",@"1、",@"2、",@"3、",
+                         @"4、",@"5、",@"6、",@"7、",
+                         @"8、",@"9、",@"10、",@"11、"];
     }
     return _collDataArr;
 }
@@ -164,9 +170,11 @@
 //MARK: - 笔记
 /**
     1、runtime的本质就是在运行阶段，通过消息机制的方式，去寻找方法的实现体。
-        注意与编译阶段 区分。
+        注意与 编译阶段 区分。
     2、OC调用方法的本质是，通过调用系统函数objc_msgSend，让 对象 向 方法映射表 发消息，让 方法映射表 寻找方法体并执行。
+        
         在项目的Building setting 里设置严格检查objc_msgSend为NO，不然objc_msgSend方法没有参数提示。
+ 
         #import <objc/message.h>
         objc_msgSend(p, @selector(eat));
  
@@ -179,4 +187,6 @@
     3、Too many arguments to function call,报错，需要强制声明方法的参数。
         例如： method_invoke(p, curEat) 变成((void(*)(id, Method))method_invoke)(p, curEat); 加了强制声明前缀((void(*)(id, Method))。
               cmd+鼠标左键，去查看method_invoke的头文件，来确定函数的类型，从而确定前缀。
+ 
+    
  */

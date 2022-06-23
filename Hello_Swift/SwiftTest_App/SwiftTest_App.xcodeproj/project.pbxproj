@@ -122,7 +122,7 @@
 		04330ABD283F7E34007DF2D0 /* 4、闭包的本质.md in Resources */ = {isa = PBXBuildFile; fileRef = 04330AAE283F7E33007DF2D0 /* 4、闭包的本质.md */; };
 		04330ABE283F7E34007DF2D0 /* 6、方法(下标).md in Resources */ = {isa = PBXBuildFile; fileRef = 04330AAF283F7E33007DF2D0 /* 6、方法(下标).md */; };
 		04330ABF283F7E34007DF2D0 /* 3、结构体,类.md in Resources */ = {isa = PBXBuildFile; fileRef = 04330AB0283F7E33007DF2D0 /* 3、结构体,类.md */; };
-		04330AC2284060B4007DF2D0 /* OCTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04330AC1284060B4007DF2D0 /* OCTestViewController.m */; };
+		04330AC2284060B4007DF2D0 /* OCMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04330AC1284060B4007DF2D0 /* OCMainViewController.m */; };
 		044CBA7127F587C100FA2CB8 /* TestSubVC_SubVC3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBA7027F587C100FA2CB8 /* TestSubVC_SubVC3.swift */; };
 		044CBA7727F5A82A00FA2CB8 /* 测试文字的自适应高度.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBA7627F5A82A00FA2CB8 /* 测试文字的自适应高度.swift */; };
 		044CBA7927F68EDC00FA2CB8 /* MultiBtns_ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBA7827F68EDC00FA2CB8 /* MultiBtns_ScrollView.swift */; };
@@ -448,8 +448,8 @@
 		04330AAE283F7E33007DF2D0 /* 4、闭包的本质.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "4、闭包的本质.md"; sourceTree = "<group>"; };
 		04330AAF283F7E33007DF2D0 /* 6、方法(下标).md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "6、方法(下标).md"; sourceTree = "<group>"; };
 		04330AB0283F7E33007DF2D0 /* 3、结构体,类.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "3、结构体,类.md"; sourceTree = "<group>"; };
-		04330AC0284060B4007DF2D0 /* OCTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCTestViewController.h; sourceTree = "<group>"; };
-		04330AC1284060B4007DF2D0 /* OCTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCTestViewController.m; sourceTree = "<group>"; };
+		04330AC0284060B4007DF2D0 /* OCMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMainViewController.h; sourceTree = "<group>"; };
+		04330AC1284060B4007DF2D0 /* OCMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCMainViewController.m; sourceTree = "<group>"; };
 		044CBA7027F587C100FA2CB8 /* TestSubVC_SubVC3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSubVC_SubVC3.swift; sourceTree = "<group>"; };
 		044CBA7627F5A82A00FA2CB8 /* 测试文字的自适应高度.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试文字的自适应高度.swift"; sourceTree = "<group>"; };
 		044CBA7827F68EDC00FA2CB8 /* MultiBtns_ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiBtns_ScrollView.swift; sourceTree = "<group>"; };
@@ -2080,9 +2080,9 @@
 				04870E0C26E9AA880030B1D2 /* 第三方库对比测试 */,
 				AF2C738725539D69000AD7A9 /* Main */,
 				AF2C735325539C54000AD7A9 /* MainViewController.swift */,
+				04330AC1284060B4007DF2D0 /* OCMainViewController.m */,
 				651C714C2609ED600066C13B /* tempVC.swift */,
 				EB645E3E26A449AE00773A98 /* tempView.swift */,
-				04330AC1284060B4007DF2D0 /* OCTestViewController.m */,
 				04C7EA382840AB7700685624 /* OCTemp_VC.m */,
 				AF2C736325539C7A000AD7A9 /* resource */,
 				AF2C734F25539C54000AD7A9 /* AppDelegate.swift */,
@@ -2109,7 +2109,7 @@
 			children = (
 				0421E5DB26A829A800C6A922 /* CommanTestVC.swift */,
 				04C7EA372840AB7700685624 /* OCTemp_VC.h */,
-				04330AC0284060B4007DF2D0 /* OCTestViewController.h */,
+				04330AC0284060B4007DF2D0 /* OCMainViewController.h */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -2435,7 +2435,7 @@
 				04B76922281154980080102F /* OC中枚举的写法.m in Sources */,
 				04927013279E8FBB000A61FC /* 测试UIView的VC.swift in Sources */,
 				044FB587276735BE00479442 /* TextField的点击测试(键盘弹起)_View.swift in Sources */,
-				04330AC2284060B4007DF2D0 /* OCTestViewController.m in Sources */,
+				04330AC2284060B4007DF2D0 /* OCMainViewController.m in Sources */,
 				0477B8F1282CE4E700D6EB3A /* ScrollView导航栏内边距_VC.swift in Sources */,
 				0484806F27798FEB00698106 /* 自定义字体渐变色的label.swift in Sources */,
 				04870E5126E9AD280030B1D2 /* AASeries.swift in Sources */,

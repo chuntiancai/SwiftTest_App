@@ -12,7 +12,7 @@
 
 
 //MARK: 暴露自己的OC头文件给swift
-#import "OCTestViewController.h"
+#import "OCMainViewController.h"
 
 //MARK: swift使用OC的库
 #import <CommonCrypto/CommonCrypto.h>

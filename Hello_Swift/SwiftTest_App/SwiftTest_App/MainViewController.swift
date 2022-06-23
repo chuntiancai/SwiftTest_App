@@ -11,14 +11,14 @@ let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 class MainViewController: UIViewController {
 
     //MARK: 内部属性
-    private var collDataArr = ["公共测试","公共测试1","公共测试2","公共测试3","公共测试4","公共测试5","公共测试6","公共测试7"]
-    private let ocTestViewVC = OCTestViewController()
+    private var collDataArr = ["Swift 测试0","Swift 测试1","Swift 测试2","Swift 测试3","Swift 测试4","Swift 测试5","Swift 测试6","Swift 测试7"]
+    private let ocMainViewVC = OCMainViewController()
     
     ///UI组件
     private var baseCollView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = UIColor(red: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1.0)
         self.title = "测试App"
         setNavigationBarUI()
         setCollectionViewUI()
@@ -77,14 +77,14 @@ extension MainViewController: UICollectionViewDataSource {
             view.removeFromSuperview()
         }
         
-        cell.backgroundColor = .lightGray
+        cell.backgroundColor = UIColor(red: 250/255.0, green: 80/255.0, blue: 65/255.0, alpha: 1.0)
         let label = UILabel(frame: CGRect(x: 10, y: 0, width: cell.frame.size.width-20, height: cell.frame.size.height));
         label.numberOfLines = 0
         label.textColor = .white
         cell.layer.cornerRadius = 8
         label.text = collDataArr[indexPath.row];
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 14)
+        label.font = .boldSystemFont(ofSize: 16)
         cell.contentView.addSubview(label)
         
         return cell
@@ -151,17 +151,18 @@ extension MainViewController {
         let SCREEN_WIDTH = UIScreen.main.bounds.size.width
         let layout = UICollectionViewFlowLayout.init()
         layout.itemSize = CGSize.init(width: 80, height: 80)
+        layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 0, right: 5)
         baseCollView = UICollectionView.init(frame: CGRect(x:0, y:0, width:SCREEN_WIDTH,
                                                            height:SCREEN_HEIGHT / 3),collectionViewLayout: layout)
-        baseCollView.backgroundColor = UIColor.white
+        baseCollView.backgroundColor = UIColor(red: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1.0)
         baseCollView.delegate = self
         baseCollView.dataSource = self
         baseCollView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CollectionView_Cell_ID")
         self.view.addSubview(baseCollView)
         
-        self.addChild(ocTestViewVC)
-        self.view.addSubview(ocTestViewVC.view)
-        ocTestViewVC.view.snp.makeConstraints { make in
+        self.addChild(ocMainViewVC)
+        self.view.addSubview(ocMainViewVC.view)
+        ocMainViewVC.view.snp.makeConstraints { make in
             make.top.equalTo(baseCollView.snp.bottom).offset(20)
             make.bottom.equalToSuperview()
             make.width.equalToSuperview()

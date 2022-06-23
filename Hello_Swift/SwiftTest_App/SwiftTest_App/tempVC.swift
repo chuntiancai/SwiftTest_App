@@ -113,7 +113,7 @@ extension tempVC {
         
         let layout = UICollectionViewFlowLayout.init()
         layout.itemSize = CGSize.init(width: 80, height: 40)
-        
+        layout.sectionInset = UIEdgeInsets.init(top: 5, left: 5, bottom: 0, right: 5)
         baseCollView = UICollectionView.init(frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width,height:200),
                                              collectionViewLayout: layout)
         

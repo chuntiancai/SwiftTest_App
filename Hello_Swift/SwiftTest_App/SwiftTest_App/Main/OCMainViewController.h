@@ -1,5 +1,5 @@
 //
-//  OCTestViewController.h
+//  OCMainViewController.h
 //  SwiftTest_App
 //
 //  Created by mathew on 2022/5/27.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OCTestViewController : UIViewController
+@interface OCMainViewController : UIViewController
 
 @end
 
