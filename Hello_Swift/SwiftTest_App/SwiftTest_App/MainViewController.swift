@@ -37,7 +37,7 @@ extension MainViewController: UICollectionViewDataSource {
         print("MainViewController点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            pushNext(viewController: TestGenerics_VC())
+            pushNext(viewController: TestDate_VC())
         case 1:
             pushNext(viewController: TestNavibar_VC())
         case 2:
@@ -120,11 +120,29 @@ extension MainViewController {
         //去掉导航栏的下划线，导致子页面的布局是从导航栏下方开始，即snpkit会以导航栏下方为零坐标
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = false    //去掉透明，即去掉毛玻璃效果
+//        self.edgesForExtendedLayout = .all
+        
+        if #available(iOS 13.0, *) {
+            
+            if let appearence = navigationController?.navigationBar.standardAppearance {
+                appearence.configureWithOpaqueBackground()  //在设置appearence的属性值前，必须先调用配置方法。设置透明背景，或者非透明背景。
+                appearence.backgroundEffect = nil       //基于 backgroundColor 或 backgroundImage 的磨砂效果
+                appearence.shadowImage = nil    //设置为nil，则UIKit会默认提供一个shadow，但是如果shadowColor也是nil，则不再显示shadow。
+                appearence.shadowColor = nil
+
+                navigationController?.navigationBar.scrollEdgeAppearance = appearence
+            }
+            
+            
+        } else {
+            // Fallback on earlier versions
+            print("iOS13之前还是直接用isTranslucent和shadowImage组合")
+        }
         
         //设置子页面的navigation bar的返回按钮样式
         let backItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         self.navigationItem.backBarButtonItem = backItem
-        self.navigationController?.navigationBar.tintColor = .black
+//        self.navigationController?.navigationBar.tintColor = .black
     }
     
     /// 设置collection view的UI

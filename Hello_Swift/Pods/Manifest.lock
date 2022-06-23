@@ -1,14 +1,14 @@
 PODS:
   - Alamofire (4.9.1)
-  - Bugly (2.5.90)
+  - Bugly (2.5.91)
   - Charts (3.6.0):
     - Charts/Core (= 3.6.0)
   - Charts/Core (3.6.0)
   - ctc_podspec (0.1.0)
   - FilesProvider (0.26.0)
   - FLAnimatedImage (1.0.16)
-  - FSCalendar (2.8.2)
-  - MJRefresh (3.7.2)
+  - FSCalendar (2.8.4)
+  - MJRefresh (3.7.5)
   - Reachability (3.2)
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
@@ -50,23 +50,23 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   ctc_podspec:
-    :commit: ccdce74a6ba00b83f12d34db7ea1e9226a61fa5e
+    :commit: 8a6c545095f03432fb81a4b12b410a7b92cb4411
     :git: https://github.com/chuntiancai/TestCocoapod.git
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
-  Bugly: 88bc32c0acc6fef7b74d610f0319ee7560d6b9fe
+  Bugly: afe841bba2ea6de6d432a3c125240a5e75949c55
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   ctc_podspec: f6baf061bb4cc0b9dd1fcbab2a695aef1259bf10
   FilesProvider: 2a8ae17d8b9c23a6feadb1308ee638fa31d21065
   FLAnimatedImage: 8f3e854ebf9680b71f0b6e700939687fc4d82b4b
-  FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
-  MJRefresh: 30997d30b347c8e9508a4db11e3a690da0c9b85a
+  FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
+  MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: e1605ae38f31267dff7aecac1f6f69ffeec0aa72
+PODFILE CHECKSUM: 33a7b5ddbc7eb2864fcfedcc707ce0fb2c9c8729
 
-COCOAPODS: 1.10.2
+COCOAPODS: 1.11.3

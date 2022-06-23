@@ -45,6 +45,19 @@ extension TestDate_VC: UICollectionViewDataSource {
             let dateComponent = DateComponents.init(calendar: Calendar.current, year: years, month: 1, day: 1, hour: 0, minute: 0, second: 0)
             let yearTime = dateComponent.date!.timeIntervalSince1970
             print("当前的时间戳：\(String(describing: yearTime))")
+            
+            print("     (@@  获取去年今天零点时间")
+            let today = Date()
+            var component = Calendar.current.dateComponents([.year, .month, .day], from: today)
+            component.year = component.year! - 1
+            let zeroDate = Calendar.current.date(from: component)
+            
+            print("   today的输出:\(today)\n --zeroDate的输出:\(zeroDate)")
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yy-MM-dd"
+            
+            
+            
             break
         case 1:
             //TODO: 1、计算日期的加减
@@ -113,9 +126,6 @@ extension TestDate_VC {
     
     /// 设置导航栏的UI
     private func setNavigationBarUI(){
-        
-        ///布局从导航栏下方开始
-        self.edgesForExtendedLayout = .bottom
         
         //设置子页面的navigation bar的返回按钮样式
         let backItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)

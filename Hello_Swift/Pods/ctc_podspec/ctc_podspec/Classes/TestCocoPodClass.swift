@@ -23,3 +23,8 @@ open class TestCocoPodClass: NSObject {
     }
     
 }
+//MARK: - 笔记
+/*
+    1、主要是编写spec文件，然后根据文件的描述，在classes文件夹下放swift文件，.framework文件即可，因为在spec文件中会描述这些文件的路径，与之对应即可。
+    2、cocoapod给根据git仓库中的spec文件来查找spec文件中描述的文件和信息，来对swift这些文件进行编译。注意，不要把.framework文件放进spec编译的描述中，而是放到framwork的描述即可。
+**/

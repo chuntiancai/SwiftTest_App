@@ -15,3 +15,9 @@
     
 ## OC情况下，LLDB不能打印view的bounds时
     在命令行输入：expr @import UIKit
+
+## building for iOS Simulator, but linking in dylib built for iOS, 报错
+    因为苹果M1芯片用的是arm64的架构，而之前的mac是用的英特尔芯片。
+    所以要在 TARGET -> Architectures -> Excluded Architectures -> 添加arm64
+    同时在 pod项目里，也要 PROJECT -> Architectures -> Excluded Architectures -> 添加arm64
+    之前一直没解决是因为没有在pod项目里也添加arm64

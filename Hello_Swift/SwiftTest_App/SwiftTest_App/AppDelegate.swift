@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.backgroundColor = .blue
         let mainVC = MainViewController()
         self.window?.rootViewController = UINavigationController.init(rootViewController: mainVC)
-//        self.window?.makeKeyAndVisible() //如果info.plist中有指定，则可以不调用这个方法，系统默认替你调用
+        self.window?.makeKeyAndVisible() //如果info.plist中有指定，则可以不调用这个方法，系统默认替你调用
         
         firstWindow.backgroundColor = UIColor.init(red: 218/255.0, green: 226/255.0, blue: 239/255.0, alpha: 1.0)   //用于测试的第二window
         

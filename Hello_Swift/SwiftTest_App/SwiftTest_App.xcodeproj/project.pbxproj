@@ -301,7 +301,6 @@
 		04D9B4FF26D76DF400289824 /* FrameworkTest_MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9B4FE26D76DF400289824 /* FrameworkTest_MainVC.swift */; };
 		04D9B53826DCDB4500289824 /* FrameworkMake_Test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04D9B53726DCDB4500289824 /* FrameworkMake_Test.framework */; };
 		04D9B53926DCDB4500289824 /* FrameworkMake_Test.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04D9B53726DCDB4500289824 /* FrameworkMake_Test.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		52F4E29B09568F011EAADEEC /* Pods_SwiftTest_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4C06FA2172551275C4FCEE6 /* Pods_SwiftTest_App.framework */; };
 		651C713D2609E3CA0066C13B /* File的常见操作总结.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651C713A2609E3CA0066C13B /* File的常见操作总结.swift */; };
 		651C713E2609E3CA0066C13B /* File的理解.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651C713B2609E3CA0066C13B /* File的理解.swift */; };
 		651C713F2609E3CA0066C13B /* FileManager的使用.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651C713C2609E3CA0066C13B /* FileManager的使用.swift */; };
@@ -311,9 +310,9 @@
 		651C71502609EDFF0066C13B /* DataTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651C714F2609EDFF0066C13B /* DataTestVC.swift */; };
 		AF2C735025539C54000AD7A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2C734F25539C54000AD7A9 /* AppDelegate.swift */; };
 		AF2C735425539C54000AD7A9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2C735325539C54000AD7A9 /* MainViewController.swift */; };
-		AF2C735725539C54000AD7A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF2C735525539C54000AD7A9 /* Main.storyboard */; };
 		AF2C735925539C60000AD7A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF2C735825539C60000AD7A9 /* Assets.xcassets */; };
 		AF2C735C25539C60000AD7A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF2C735A25539C60000AD7A9 /* LaunchScreen.storyboard */; };
+		AFD8A1BB286060290094554A /* Pods_SwiftTest_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4C06FA2172551275C4FCEE6 /* Pods_SwiftTest_App.framework */; };
 		EB5C881427FC2EA200655119 /* 位移枚举的写法.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C881327FC2EA200655119 /* 位移枚举的写法.swift */; };
 		EB645E3F26A449AE00773A98 /* tempView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645E3E26A449AE00773A98 /* tempView.swift */; };
 /* End PBXBuildFile section */
@@ -649,7 +648,6 @@
 		AF2C734C25539C54000AD7A9 /* SwiftTest_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftTest_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF2C734F25539C54000AD7A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF2C735325539C54000AD7A9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		AF2C735625539C54000AD7A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AF2C735825539C60000AD7A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF2C735B25539C60000AD7A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF2C735D25539C60000AD7A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -665,8 +663,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFD8A1BB286060290094554A /* Pods_SwiftTest_App.framework in Frameworks */,
 				04D9B53826DCDB4500289824 /* FrameworkMake_Test.framework in Frameworks */,
-				52F4E29B09568F011EAADEEC /* Pods_SwiftTest_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2098,7 +2096,6 @@
 			children = (
 				042648EC27F442B80034FF51 /* gif图片 */,
 				041CBC332788204D00AF9B05 /* labi_Image */,
-				AF2C735525539C54000AD7A9 /* Main.storyboard */,
 				AF2C735825539C60000AD7A9 /* Assets.xcassets */,
 				AF2C735A25539C60000AD7A9 /* LaunchScreen.storyboard */,
 				AF2C735D25539C60000AD7A9 /* Info.plist */,
@@ -2188,7 +2185,6 @@
 				04330AB2283F7E34007DF2D0 /* 8、多态.md in Resources */,
 				04330AB6283F7E34007DF2D0 /* 13、高级运算符.md in Resources */,
 				044CBA7B27F6908200FA2CB8 /* TestScrollView.xcassets in Resources */,
-				AF2C735725539C54000AD7A9 /* Main.storyboard in Resources */,
 				04330ABA283F7E34007DF2D0 /* 0、语言环境.md in Resources */,
 				049270102796CCC4000A61FC /* TestTableView.storyboard in Resources */,
 				041CBC53278D666800AF9B05 /* NamePlistFile.plist in Resources */,
@@ -2542,14 +2538,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		AF2C735525539C54000AD7A9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AF2C735625539C54000AD7A9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AF2C735A25539C60000AD7A9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2565,6 +2553,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+					"$(ARCHS_STANDARD)",
+				);
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2597,6 +2589,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -2626,6 +2619,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+					"$(ARCHS_STANDARD)",
+				);
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2658,6 +2655,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -2686,6 +2684,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WGS3P7C8Z5;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
+				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = SwiftTest_App/resource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2709,6 +2709,8 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
+				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = SwiftTest_App/resource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
