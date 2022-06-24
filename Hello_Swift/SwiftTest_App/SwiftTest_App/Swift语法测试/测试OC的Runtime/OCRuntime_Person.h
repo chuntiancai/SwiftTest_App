@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface OCRuntime_Person : NSObject
 
+-(void)changeAAA:(NSString * )name;
+-(void)changeBBB:(NSString * )name;
+
 @end
 
 NS_ASSUME_NONNULL_END
