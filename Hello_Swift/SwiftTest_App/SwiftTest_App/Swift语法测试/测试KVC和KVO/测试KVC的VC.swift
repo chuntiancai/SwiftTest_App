@@ -7,6 +7,28 @@
 //
 //测试KVC的VC，keyPath的使用。
 
+// MARK: - 笔记
+/**
+    1、KVC的主要应用是可以访问对象的私有属性，准确来说是可以访问对象的所有属性。
+    2、被操作的对象(非结构体)，必须要在其属性变量前加上@objc关键字，声明是@objc类型的属性，哪怕是在类名前加上@objc关键字都不行，必须是属性前。
+    3、setValue(, forKey:)方法和setValue(,forKeyPath: )方法的区别是，forKeyPath可以链式访问更一层的属性，forkey只能访问当前对象的属性（手写字符串）。(swift和oc均可用)
+       setValue方法会对value自动进行类型转换。
+    4、xib文件内部的练习其实也是通过KVC的方法进行连接。
+    5、swift结构体的的KVC访问只能通过swift的KVC语法糖(\Person.name)去访问。
+    6、#keyPath(KVC_Person.name)语法糖放回的是属性字符串，与手写字符串是一样的。
+    
+    总结：swift结构体只能通过语法糖(\Person.name)去访问，student[keyPath: \Person.name]方式读写，其余都是NSObject的类访问方式了。
+         语法糖#keyPath(KVC_Person.name)只能访问公共变量。
+         setValue(,forKeyPath: )既可以访问共有变量，也可以访问私有变量，但是变量必须是加上@objc前缀。
+ 
+    KVC的应用：
+    1、访问私有变量。OC和swift可以通过setValue的方式访问私有变量，公共变量swift还有个语法糖：\Person.name 这个样子就是写出keypath的对象(可链式)，私有变量还没找到是怎么操作。
+    2、字典转模型，模型转字典也可以。
+    3、取出数组中所有模型的某个属性。
+    4、重写系统方法的两个思路：一是添加额外的功能。二是删除原来的功能。
+ */
+
+
 class TestKVC_VC: UIViewController {
     
     //MARK: 对外属性
@@ -86,8 +108,18 @@ extension TestKVC_VC: UICollectionViewDataSource {
             
             
         case 3:
-            //TODO: 3、
-            print("     (@@ ")
+            //TODO: 3、获取对象中的属性
+            print("     (@@ 3、获取对象中的属性。")
+            var ivarCount:UInt32 = 0
+            let p0 = KVC_Person()
+            print("实例。self：\(p0.self) ---类。self：\(KVC_Person.self)")
+            let ivarList:UnsafeMutablePointer<Ivar>? = class_copyIvarList(KVC_Person.self , &ivarCount)
+            if let ivarList = ivarList {
+                let ivar0 = ivarList[0]
+                print("获取到属性链表指针的第一个元素数据是：\(ivar0)")
+            }
+            print("获取到的属性列表：\(String(describing: ivarList))")
+            
         case 5:
             print("     (@@")
         case 6:
@@ -212,22 +244,4 @@ extension TestKVC_VC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 笔记
-/**
-    1、KVC的主要应用是可以访问对象的私有属性，准确来说是可以访问对象的所有属性。
-    2、被操作的对象(非结构体)，必须要在其属性变量前加上@objc关键字，声明是@objc类型的属性，哪怕是在类名前加上@objc关键字都不行，必须是属性前。
-    3、setValue(, forKey:)方法和setValue(,forKeyPath: )方法的区别是，forKeyPath可以链式访问更一层的属性，forkey只能访问当前对象的属性（手写字符串）。(swift和oc均可用)
-       setValue方法会对value自动进行类型转换。
-    4、xib文件内部的练习其实也是通过KVC的方法进行连接。
-    5、swift结构体的的KVC访问只能通过swift的KVC语法糖(\Person.name)去访问。
-    6、#keyPath(KVC_Person.name)语法糖放回的是属性字符串，与手写字符串是一样的。
-    
-    总结：swift结构体只能通过语法糖(\Person.name)去访问，student[keyPath: \Person.name]方式读写，其余都是NSObject的类访问方式了。
-         语法糖#keyPath(KVC_Person.name)只能访问公共变量。
-         setValue(,forKeyPath: )既可以访问共有变量，也可以访问私有变量，但是变量必须是加上@objc前缀。
- 
-    KVC的应用：
-    1、访问私有变量。OC和swift可以通过setValue的方式访问私有变量，公共变量swift还有个语法糖：\Person.name 这个样子就是写出keypath的对象(可链式)，私有变量还没找到是怎么操作。
-    2、字典转模型，模型转字典也可以。
-    3、取出数组中所有模型的某个属性。
- */
+

@@ -7,7 +7,7 @@
 //
 // 用于测试KVC的Person类
 
-class KVC_Person: NSObject {
+@objc class KVC_Person: NSObject {
     
     @objc var name:String = ""
     @objc private var age:Int = 0

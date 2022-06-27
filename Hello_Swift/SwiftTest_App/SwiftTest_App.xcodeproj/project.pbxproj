@@ -1601,7 +1601,7 @@
 			path = "测试ios-chart库";
 			sourceTree = "<group>";
 		};
-		049EAFD726B3E18000903DA8 /* IOS多线程测试 */ = {
+		049EAFD726B3E18000903DA8 /* 多线程测试 */ = {
 			isa = PBXGroup;
 			children = (
 				042648E427F3FB050034FF51 /* 测试Thread */,
@@ -1611,7 +1611,7 @@
 				049EAFE826B93D7200903DA8 /* 异步下载图片测试 */,
 				041558292834F513007FC2E8 /* 测试定时器 */,
 			);
-			path = "IOS多线程测试";
+			path = "多线程测试";
 			sourceTree = "<group>";
 		};
 		049EAFDA26B3E1D700903DA8 /* Runloop测试 */ = {
@@ -1898,14 +1898,14 @@
 			path = "子VC的测试";
 			sourceTree = "<group>";
 		};
-		04C2DC0526CE3F6900F9B3EE /* iOS网络测试 */ = {
+		04C2DC0526CE3F6900F9B3EE /* 网络测试 */ = {
 			isa = PBXGroup;
 			children = (
 				04B769272814E2B20080102F /* TestHTTPS_VC.swift */,
 				04CBB62F26CBA1F200436C0E /* 测试URLSession */,
 				04B7692B2817DFC90080102F /* 测试网络文件下载上传 */,
 			);
-			path = "iOS网络测试";
+			path = "网络测试";
 			sourceTree = "<group>";
 		};
 		04C7EA2B2840A9FF00685624 /* 语法笔记 */ = {
@@ -2071,18 +2071,18 @@
 				048DFE94281BC76000F210E8 /* 编程拓展知识 */,
 				0455059E27FFD09E00785F02 /* 自定义控件 */,
 				048608AC27350E89000F816E /* App环境(生命周期)相关的知识 */,
-				048608A127325C45000F816E /* 日期处理的相关测试 */,
 				04600033271190F70074DFA2 /* Swift语法测试 */,
-				04D9B4FD26D76DD100289824 /* Framework第三方库测试 */,
-				049EAFD726B3E18000903DA8 /* IOS多线程测试 */,
-				04C2DC0526CE3F6900F9B3EE /* iOS网络测试 */,
+				049EAFD726B3E18000903DA8 /* 多线程测试 */,
+				04C2DC0526CE3F6900F9B3EE /* 网络测试 */,
 				0421E60C26AAE6F600C6A922 /* VC相关的测试 */,
 				0421E5FA26AAAEA600C6A922 /* UI相关测试 */,
 				0414F97D27BBB0A10037EE70 /* CALayer的相关测试 */,
-				04A0CA0226A0022000ECAE1B /* 音视频播放 */,
 				651C71412609E5E20066C13B /* 数据处理 */,
 				651C71392609E39A0066C13B /* 文件测试 */,
+				048608A127325C45000F816E /* 日期处理的相关测试 */,
+				04D9B4FD26D76DD100289824 /* Framework第三方库测试 */,
 				04870E0C26E9AA880030B1D2 /* 第三方库对比测试 */,
+				04A0CA0226A0022000ECAE1B /* 音视频播放 */,
 				AF2C738725539D69000AD7A9 /* Main */,
 				AF2C735325539C54000AD7A9 /* MainViewController.swift */,
 				04330AC1284060B4007DF2D0 /* OCMainViewController.m */,

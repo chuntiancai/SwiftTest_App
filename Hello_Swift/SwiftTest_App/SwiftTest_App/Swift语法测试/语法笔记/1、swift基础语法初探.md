@@ -301,10 +301,11 @@ inout参数只能传递能多次被赋值的
 
 
 ### self(小写)，X.self、X.Type、AnyClass的区别
-####  X.self通过类的名称来调用，如：ClassName.Type
+#### X.self通过类的名称来调用，如：ClassName.Type
 #### X.self属于X.Type类型，代表 类X 的元类型(类信息)。 ---X.self是具体类信息(元类型)，X.Type是类信息的声明。
 #### AnyClass是AnyObject.Type的别名
 #### AnyObject.Type代表所有类的元类型(可以理解为超类型，所以.Type是表示元类型的抽象类)
+#### X.Type 描述 类的信息 的类型。 X.self 描述 自身类信息 的类型。  AnyObject.Type(超类型) --> X.Type(类对象的类型) --> X.self(类对象) --> x.self(实例对象)
 
 >  X.self是一个元类型（metadata）的指针，metadata存放着类型相关信息（对象在堆空间的前八个字节存放的就是类型信息的指针，也就是metadata的指针）
 >  X.self属于X.Type类型，X.Type代表该类的类信息。（ 类型不是类，类是类型范畴中的一员(更抽象) ）
