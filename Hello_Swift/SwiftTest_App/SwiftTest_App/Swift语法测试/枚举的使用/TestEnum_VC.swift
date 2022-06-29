@@ -6,6 +6,12 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 // 测试枚举的使用
+// MARK: - 笔记
+/**
+    1、位移枚举可以使用 与、或、非 这些逻辑运算符，关键是位移枚举的定义写法。
+    
+ */
+
 
 class TestEnum_VC: UIViewController {
     
@@ -170,9 +176,4 @@ extension TestEnum_VC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 笔记
-/**
-    1、位移枚举可以使用 与、或、非 这些逻辑运算符，关键是位移枚举的定义写法。
-    
- */
 

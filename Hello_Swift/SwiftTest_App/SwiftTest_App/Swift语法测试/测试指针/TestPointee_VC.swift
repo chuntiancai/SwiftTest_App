@@ -6,6 +6,21 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 
+//MARK: - 笔记
+/**
+    1、    OC                     swift                         解释
+       const T *            unsafePointer<T>             指针及所指向的内容都不可变
+       T *                  unsafeMutablePointer         指针及所指向的内容都可变
+       const void *         unsafeRawPointer             无类型指针，指向的值必须是常量（指向的内存区域未定）
+       void *               unsafeMutableRawPointer      无类型指针，指向的内存区域未定，也叫通用指针（指向的内存区域未定）
+    
+    2、print(MemoryLayout<Int>.alignment)    // 8 字节对齐
+       print(MemoryLayout<Teacher>.size)     // 9 字节实际大小
+       print(MemoryLayout<Teacher>.stride)   // 16 字节步长
+        
+
+ */
+
 class TestPointee_VC: UIViewController {
     
     //MARK: 对外属性
@@ -85,9 +100,22 @@ extension TestPointee_VC: UICollectionViewDataSource {
             
             break
         case 1:
-            //TODO: 1、
-            print("     (@@ ")
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: "返回", style: .plain, target: nil, action: nil)
+            //TODO: 1、测试
+            /**
+                1、实例对象的大小、对齐、步长 都是8字节。
+                2、结构体的对齐8，步长和实际大小，根据具体的分配来。 步长是一个对象占位的空间大小，不是实际填充的大小。
+             */
+            print("     (@@ 1、测试指针的类型，指针的内容。")
+            let p0 = Point_Person()
+            print("对象的对齐字节：\(MemoryLayout<Point_Person>.alignment)")
+            print("对象的实际大小：\(MemoryLayout.size(ofValue: p0))")
+            print("对象的步长：\(MemoryLayout<Point_Person>.stride)")
+            
+            let s0 = Point_Student(PName: "小学生", PAge: 5)
+            print("结构体的对齐字节：\(MemoryLayout<Point_Student>.alignment)")
+            print("结构体的实际大小：\(MemoryLayout.size(ofValue: s0))")
+            print("结构体的步长：\(MemoryLayout<Point_Student>.stride)")
+            
         case 2:
             //TODO: 2、
             print("     (@@ ")
@@ -112,6 +140,7 @@ extension TestPointee_VC: UICollectionViewDataSource {
             print("     (@@")
         case 12:
             print("     (@@")
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: "返回", style: .plain, target: nil, action: nil)
         default:
             break
         }

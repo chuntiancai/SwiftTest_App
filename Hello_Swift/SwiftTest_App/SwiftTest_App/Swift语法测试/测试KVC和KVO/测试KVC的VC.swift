@@ -113,12 +113,36 @@ extension TestKVC_VC: UICollectionViewDataSource {
             var ivarCount:UInt32 = 0
             let p0 = KVC_Person()
             print("实例。self：\(p0.self) ---类。self：\(KVC_Person.self)")
+            
+            /// 获取 属性结构体 的链表，地址。
             let ivarList:UnsafeMutablePointer<Ivar>? = class_copyIvarList(KVC_Person.self , &ivarCount)
+            print("属性的个数：\(ivarCount)")
             if let ivarList = ivarList {
-                let ivar0 = ivarList[0]
-                print("获取到属性链表指针的第一个元素数据是：\(ivar0)")
+                for i in 0 ..< ivarCount{
+                    
+                    /// 获取描述属性的结构体
+                    let ivar0:Ivar = ivarList[Int(i)]
+                    print("获取到属性链表指针的元素数据是：\(ivar0)")
+                    
+                    /// 获取 属性的名字 的指针
+                    let namePoint:UnsafePointer<CChar> = ivar_getName(ivar0)!
+                    
+                    /// 获取 属性的名字 字符串
+                    let name = String(cString: namePoint)
+                    print("获取到的属性名字是：\(String(describing: name))")
+                    
+                    /// 获取 属性的类型名字字符串 的指针，指向空字符串地址，swift已经无法获取到属性的类型了，OC可以。
+                    let ivarTypePoint:UnsafePointer<CChar> = ivar_getTypeEncoding(ivar0)!
+                    
+                    /// 获取 属性的类型名字字符串，swift已经不可以，可以尝试通过xcode断点碰碰运气。
+                    let ivarTypeName = String(cString: ivarTypePoint)
+                    print("获取到的属性类型名字是：\(String(describing: ivarTypeName))")
+                    
+                }
+               
             }
-            print("获取到的属性列表：\(String(describing: ivarList))")
+            
+            print("获取到的属性列表地址：\(String(describing: ivarList))")
             
         case 5:
             print("     (@@")
