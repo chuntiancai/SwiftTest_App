@@ -6,7 +6,25 @@
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
 
-//测试的VC
+//MARK: - 笔记
+/**
+    NSOperation、NSOperationQueue 是基于 GCD 更高一层的封装，完全面向对象。所以GCD中的概念对于NSOperation中也是通用的，只是提供了更多， 更便捷的接口给用户使用。
+ 
+    1、Operation对应GCD中的workItem，只是Operation具有更灵活的操作性，譬如设置并发数，被子类化等等。OperationQueue对应的就是DispatchQueue，也有主队列之分，也是在主线程和其他线程中执行之分，Operation没有指定OperationQueue的话，默认在主线程中执行。
+ 
+    2、NSOperation 是个抽象类，可以自定子类，也可以用系统提供的子类： NSInvocationOperation、 NSBlockOperation。有点类似线程Thread的操作， 要调用start方法。有就绪，执行这些状态。
+ 
+    3、NSOperation是线程池概念，可以设置NSOperationQueue的并发数来实现串行效果maxConcurrentOperationCount 控制的不是并发线程的数量， 而是一个队列中同时能并发执行的最大操作数。而且一个操作也并非只能在一个线程中运行。默认情况下为-1，表示不进行限制，可进行并发执行。
+ 
+    4、NSOperation的依赖，就是决定任务的执行先后顺序。依赖于谁，就是谁执行完了，再轮到我执行。
+ 
+    5、这里的队列是并发执行的，对于添加到队列中的“操作”，首先进入准备就绪的状态（依赖完成后，我才进入就绪），然后进入就绪状态的“操作”的开始执行顺序（非结束执行顺序）由操作之间相对的优先级决定（优先级是操作对象自身的属性）。
+ 
+    6、暂停和取消（包括操作的取消和队列的取消）并不代表可以将当前的操作立即取消，而是当当前的操作执行完毕之后不再执行新的操作。暂停和取消的区别就在于：暂停操作之后还可以恢复操作，继续向下执行；而取消操作之后，所有的操作就清空了，无法再接着执行剩下的操作。
+ 
+    7、NSOperation可以独立执行，不需要加入到任何队列，调用start()方法即可，默认加入到主队列，肯定也是可以加入到队列中，让队列决定什么时候执行吖～
+ 
+ */
 
 import UIKit
 
@@ -308,22 +326,4 @@ extension TestNSOperation_VC: UICollectionViewDelegate {
     }
 }
 
-//MARK: - 笔记
-/**
-    NSOperation、NSOperationQueue 是基于 GCD 更高一层的封装，完全面向对象。所以GCD中的概念对于NSOperation中也是通用的，只是提供了更多， 更便捷的接口给用户使用。
- 
-    1、Operation对应GCD中的workItem，只是Operation具有更灵活的操作性，譬如设置并发数，被子类化等等。OperationQueue对应的就是DispatchQueue，也有主队列之分，也是在主线程和其他线程中执行之分，Operation没有指定OperationQueue的话，默认在主线程中执行。
- 
-    2、NSOperation 是个抽象类，可以自定子类，也可以用系统提供的子类： NSInvocationOperation、 NSBlockOperation。有点类似线程Thread的操作， 要调用start方法。有就绪，执行这些状态。
- 
-    3、NSOperation是线程池概念，可以设置NSOperationQueue的并发数来实现串行效果maxConcurrentOperationCount 控制的不是并发线程的数量， 而是一个队列中同时能并发执行的最大操作数。而且一个操作也并非只能在一个线程中运行。默认情况下为-1，表示不进行限制，可进行并发执行。
- 
-    4、NSOperation的依赖，就是决定任务的执行先后顺序。依赖于谁，就是谁执行完了，再轮到我执行。
- 
-    5、这里的队列是并发执行的，对于添加到队列中的“操作”，首先进入准备就绪的状态（依赖完成后，我才进入就绪），然后进入就绪状态的“操作”的开始执行顺序（非结束执行顺序）由操作之间相对的优先级决定（优先级是操作对象自身的属性）。
- 
-    6、暂停和取消（包括操作的取消和队列的取消）并不代表可以将当前的操作立即取消，而是当当前的操作执行完毕之后不再执行新的操作。暂停和取消的区别就在于：暂停操作之后还可以恢复操作，继续向下执行；而取消操作之后，所有的操作就清空了，无法再接着执行剩下的操作。
- 
-    7、NSOperation可以独立执行，不需要加入到任何队列，调用start()方法即可，默认加入到主队列，肯定也是可以加入到队列中，让队列决定执行吖～
- 
- */
+

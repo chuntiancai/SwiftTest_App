@@ -79,7 +79,7 @@ extension Quartz_Draw_VC: UICollectionViewDataSource {
 extension Quartz_Draw_VC{
     // MARK: 写入手机相册必须绑定的 动作方法 格式
     func image(image:UIImage, didFinishSavingWithError:NSError?, contextInfo:AnyObject){
-        print("保存图片到相册的 \(#function) 方法 -- image:\(image) -- error:\(didFinishSavingWithError) -- contextInfo:\(contextInfo)")
+        print("保存图片到相册的 \(#function) 方法 -- image:\(image) -- error:\(String(describing: didFinishSavingWithError)) -- contextInfo:\(contextInfo))")
     }
    
     //MARK: 0、

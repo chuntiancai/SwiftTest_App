@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         firstWindow.backgroundColor = UIColor.init(red: 218/255.0, green: 226/255.0, blue: 239/255.0, alpha: 1.0)   //用于测试的第二window
         
         /// 用于测试bugly
-        Bugly.start(withAppId: "aff906cba5")
+//        Bugly.start(withAppId: "aff906cba5")
         return true
     }
     

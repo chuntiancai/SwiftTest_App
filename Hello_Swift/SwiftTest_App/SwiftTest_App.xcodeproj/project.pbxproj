@@ -743,13 +743,13 @@
 			path = "测试定时器";
 			sourceTree = "<group>";
 		};
-		04155832283DC5A1007FC2E8 /* 测试数组排序 */ = {
+		04155832283DC5A1007FC2E8 /* 测试数组 */ = {
 			isa = PBXGroup;
 			children = (
 				0415582E283DC4A1007FC2E8 /* 测试数组排序_VC.swift */,
 				04155830283DC569007FC2E8 /* Sort_People.swift */,
 			);
-			path = "测试数组排序";
+			path = "测试数组";
 			sourceTree = "<group>";
 		};
 		041A2E1927901CD400F9CABF /* 测试KVC和KVO */ = {
@@ -1322,7 +1322,7 @@
 				04C7EA2B2840A9FF00685624 /* 语法笔记 */,
 				04C7EA2C2840AA3D00685624 /* 测试OC的Runtime */,
 				04330A9D283F66BF007DF2D0 /* 测试泛型 */,
-				04155832283DC5A1007FC2E8 /* 测试数组排序 */,
+				04155832283DC5A1007FC2E8 /* 测试数组 */,
 				042648D627F2A9D40034FF51 /* 测试单例 */,
 				0474C25727D8533E00B95D7C /* 枚举的使用 */,
 				0474C25427D5F23800B95D7C /* 测试指针 */,
@@ -2614,7 +2614,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2674,7 +2674,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -2697,7 +2697,7 @@
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = SwiftTest_App/resource/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2722,7 +2722,7 @@
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = SwiftTest_App/resource/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -6,6 +6,16 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 // 测试数组排序的语法
+// MARK: - 笔记
+/**
+    1、sort函数的理解是，是否按s1在前，s2在后的顺序排序。true就是按照，false就是反过来。
+    peopleArr.sort(by: {(s1: Sort_People, s2: Sort_People) -> Bool in return s1.age > s2.age })
+ 
+    2、数组和数组之间的传递得看元素是什么，如果元素是基本数据类型，包括string，那就是值传递，直接copy。
+       如果是元素是对象，那就是元素的引用传递，不会copy元素内容，而是copy元素的地址。
+ 
+ */
+
 
 class TestArraySort_VC: UIViewController {
     
@@ -22,6 +32,12 @@ class TestArraySort_VC: UIViewController {
         return arr
         
     }()
+    
+    var strArr0 = [String]()
+    var strArr1 = [String]()
+    
+    var pArr0:[Sort_People] = [Sort_People]()
+    var pArr1:[Sort_People] = [Sort_People]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,8 +100,26 @@ extension TestArraySort_VC: UICollectionViewDataSource {
          */
             
         case 1:
-            //TODO: 1、
-            print("     (@@ ")
+            //TODO: 1、测试数组是值传递还是地址传递。
+            print("     (@@ 测试数组是值传递还是地址传递。")
+            strArr0 = ["张三","李四","王五","赵六"]
+            strArr1 = strArr0
+            print("strArr0:\(strArr0),\n strArr1:\(strArr1)")///Unmanaged.passUnretained(self as! AnyObject).toOpaque()
+            print("strArr0地址:\(String(format: "%p", strArr0)),\n strArr1地址:\(String(format: "%p", strArr1))")
+            strArr1[1] = "阿猫"
+            print("修改后：strArr0:\(strArr0),\n strArr1:\(strArr1)")
+            print("修改后：strArr0地址:\(String(format: "%p", strArr0[0])),\n strArr1地址:\(String(format: "%p", strArr1[0]))")
+            
+            
+            pArr0 = [Sort_People(PName: "张", PAge: 12),
+                     Sort_People(PName: "李四", PAge: 15),
+                     Sort_People(PName: "赵", PAge: 7),
+                     Sort_People(PName: "孙", PAge: 16)]
+            pArr1 = pArr0
+            pArr1[2].name = "阿狗"
+            print("pArr0:\(pArr0), --- pArr1:\(pArr1)")
+            
+            
         case 2:
             //TODO: 2、
             print("     (@@ ")
@@ -206,8 +240,3 @@ extension TestArraySort_VC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 笔记
-/**
-    1、
- 
- */

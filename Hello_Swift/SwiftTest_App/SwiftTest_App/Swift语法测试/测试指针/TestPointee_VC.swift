@@ -13,10 +13,17 @@
        T *                  unsafeMutablePointer         指针及所指向的内容都可变
        const void *         unsafeRawPointer             无类型指针，指向的值必须是常量（指向的内存区域未定）
        void *               unsafeMutableRawPointer      无类型指针，指向的内存区域未定，也叫通用指针（指向的内存区域未定）
+ 
+        计算机指针的最小寻址单位是一个字节，8bit。指针的大小由编译器的位数来决定，编译器的位数决定的当前环境的最大寻址空间。
+        
     
     2、print(MemoryLayout<Int>.alignment)    // 8 字节对齐
        print(MemoryLayout<Teacher>.size)     // 9 字节实际大小
-       print(MemoryLayout<Teacher>.stride)   // 16 字节步长
+       print(MemoryLayout<Teacher>.stride)   // 16 字节步长，一个对象占位的空间大小。
+ 
+    3、指针指向对象分配的内存空间，不同的指针类型，指针偏移内存空间的的计数方式不一样。
+        原生指针：
+        类型指针：
         
 
  */
@@ -95,12 +102,12 @@ extension TestPointee_VC: UICollectionViewDataSource {
 //            let target = targetObject
             
             
-            let pan = UIPanGestureRecognizer.init(target: target, action: Selector.init("handleNavigationTransition:"))
+            let pan = UIPanGestureRecognizer.init(target: target, action: Selector.init(("handleNavigationTransition:")))
             self.navigationController?.view.addGestureRecognizer(pan)
             
             break
         case 1:
-            //TODO: 1、测试
+            //TODO: 1、测试对象与结构体的内存分配
             /**
                 1、实例对象的大小、对齐、步长 都是8字节。
                 2、结构体的对齐8，步长和实际大小，根据具体的分配来。 步长是一个对象占位的空间大小，不是实际填充的大小。
@@ -117,8 +124,8 @@ extension TestPointee_VC: UICollectionViewDataSource {
             print("结构体的步长：\(MemoryLayout<Point_Student>.stride)")
             
         case 2:
-            //TODO: 2、
-            print("     (@@ ")
+            //TODO: 2、测试原生指针。
+            print("     (@@ 2、测试原生指针。")
         case 3:
             //TODO: 3、
             print("     (@@ ")

@@ -17,10 +17,18 @@ class TestDate_VC: UIViewController {
     ///UI组件
     private var baseCollView: UICollectionView!
     
+    /// 测试工具
+    lazy var dayFormatter:DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yy-MM-dd"
+        return formatter
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 199/255.0, green: 204/255.0, blue: 237/255.0, alpha: 1.0)
-        self.title = "测试日期功能"
+        self.title = "测试日期的VC"
         
         setNavigationBarUI()
         setCollectionViewUI()
@@ -52,11 +60,22 @@ extension TestDate_VC: UICollectionViewDataSource {
             component.year = component.year! - 1
             let zeroDate = Calendar.current.date(from: component)
             
-            print("   today的输出:\(today)\n --zeroDate的输出:\(zeroDate)")
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yy-MM-dd"
             
             
+            print("   today的输出:\(today)\n --zeroDate的输出:\(String(describing: zeroDate))")
+            
+            
+            print("     @@ 获取这个月第一天的日期")
+            var comp0 = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+            comp0.day = 1
+            let monFirstDay = Calendar.current.date(from: comp0)!
+            print("     @@ 月第一天：\(dayFormatter.string(from: monFirstDay))")
+            
+            print("     @@ 获取这个月最后一天的日期")
+            comp0.month! += 1   ///内部已经处理月=13天的情况，是下一年的一月
+            comp0.day = 0
+            let monLastDay = Calendar.current.date(from: comp0)!
+            print("     @@ 月最后一天：\(dayFormatter.string(from: monLastDay))")
             
             break
         case 1:
@@ -71,6 +90,9 @@ extension TestDate_VC: UICollectionViewDataSource {
             components.day = 31
             let endDate = calendar.date(byAdding: components, to: Date())
             print("开始日期：\(String(describing: startDate)) ------- 结束日期:\(String(describing: endDate))")
+            
+            var comp0 = DateComponents()
+            print("日期工具：\(comp0)")
         case 2:
             //TODO: 2、
             print("     (@@ ")
