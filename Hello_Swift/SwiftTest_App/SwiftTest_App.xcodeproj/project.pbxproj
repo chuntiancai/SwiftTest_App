@@ -314,6 +314,7 @@
 		AF2C735C25539C60000AD7A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF2C735A25539C60000AD7A9 /* LaunchScreen.storyboard */; };
 		AF3557B92865B5A5009B291C /* OCRuntime_Person+Property.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3557B82865B5A5009B291C /* OCRuntime_Person+Property.m */; };
 		AF3557BB286AF145009B291C /* Point_Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3557BA286AF145009B291C /* Point_Person.swift */; };
+		AFBCA8C52872DC4500AD51D1 /* TestClassStruct_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBCA8C42872DC4500AD51D1 /* TestClassStruct_VC.swift */; };
 		AFD8A1BB286060290094554A /* Pods_SwiftTest_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4C06FA2172551275C4FCEE6 /* Pods_SwiftTest_App.framework */; };
 		EB5C881427FC2EA200655119 /* 位移枚举的写法.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C881327FC2EA200655119 /* 位移枚举的写法.swift */; };
 		EB645E3F26A449AE00773A98 /* tempView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645E3E26A449AE00773A98 /* tempView.swift */; };
@@ -656,6 +657,7 @@
 		AF3557B72865B5A5009B291C /* OCRuntime_Person+Property.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OCRuntime_Person+Property.h"; sourceTree = "<group>"; };
 		AF3557B82865B5A5009B291C /* OCRuntime_Person+Property.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "OCRuntime_Person+Property.m"; sourceTree = "<group>"; };
 		AF3557BA286AF145009B291C /* Point_Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point_Person.swift; sourceTree = "<group>"; };
+		AFBCA8C42872DC4500AD51D1 /* TestClassStruct_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestClassStruct_VC.swift; sourceTree = "<group>"; };
 		BB6AAD3455F9D2C8F661C07D /* Pods-SwiftTest_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTest_App.debug.xcconfig"; path = "Target Support Files/Pods-SwiftTest_App/Pods-SwiftTest_App.debug.xcconfig"; sourceTree = "<group>"; };
 		C4C06FA2172551275C4FCEE6 /* Pods_SwiftTest_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftTest_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB5C881327FC2EA200655119 /* 位移枚举的写法.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "位移枚举的写法.swift"; sourceTree = "<group>"; };
@@ -1319,6 +1321,7 @@
 		04600033271190F70074DFA2 /* Swift语法测试 */ = {
 			isa = PBXGroup;
 			children = (
+				AFBCA8C32872C15A00AD51D1 /* 测试类与结构体 */,
 				04C7EA2B2840A9FF00685624 /* 语法笔记 */,
 				04C7EA2C2840AA3D00685624 /* 测试OC的Runtime */,
 				04330A9D283F66BF007DF2D0 /* 测试泛型 */,
@@ -2122,6 +2125,14 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		AFBCA8C32872C15A00AD51D1 /* 测试类与结构体 */ = {
+			isa = PBXGroup;
+			children = (
+				AFBCA8C42872DC4500AD51D1 /* TestClassStruct_VC.swift */,
+			);
+			path = "测试类与结构体";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2465,6 +2476,7 @@
 				0474C24127C4837F00B95D7C /* TestCoreAnimation_VC.swift in Sources */,
 				04B7692D2817E0190080102F /* TestNetWorkDownload_VC.swift in Sources */,
 				0474C24527CE0A5F00B95D7C /* LifeCycleVC_View.swift in Sources */,
+				AFBCA8C52872DC4500AD51D1 /* TestClassStruct_VC.swift in Sources */,
 				04C2DC0026CE26FB00F9B3EE /* TestSubVC_SubVC.swift in Sources */,
 				049EAFED26B9478C00903DA8 /* TestAsyncImage_TableView.swift in Sources */,
 				041A2E1B27901D0400F9CABF /* 测试KVC的VC.swift in Sources */,

@@ -1,3 +1,4 @@
+
 //
 //  TestPointee_VC.swift
 //  SwiftTest_App
@@ -15,15 +16,19 @@
        void *               unsafeMutableRawPointer      无类型指针，指向的内存区域未定，也叫通用指针（指向的内存区域未定）
  
         计算机指针的最小寻址单位是一个字节，8bit。指针的大小由编译器的位数来决定，编译器的位数决定的当前环境的最大寻址空间。
+        你得先知道需要多少内存，然后才知道该创建什么样的指针，所以你必须通过内存分布函数来知道，你的对象所需要的内存空间是多少。
         
     
     2、print(MemoryLayout<Int>.alignment)    // 8 字节对齐
        print(MemoryLayout<Teacher>.size)     // 9 字节实际大小
        print(MemoryLayout<Teacher>.stride)   // 16 字节步长，一个对象占位的空间大小。
  
-    3、指针指向对象分配的内存空间，不同的指针类型，指针偏移内存空间的的计数方式不一样。
-        原生指针：
-        类型指针：
+    3、指针 指向 对象被分配的 内存空间，不同的指针类型，指针偏移内存空间的的计数方式不一样。
+        原生指针，类型指针只是用于告诉编译器，编译器该怎么去编译这些指针，生成什么样的指令，所以它的目的只是用于告诉编译器该怎么做而已，并没有说cpu该怎么做。
+        CPU是不区分什么原生指针，类型指针的，它只有一个功能，就是执行指令。而你什么指针变成什么指令，是由编译器完成，而告诉编译器该变成什么指令的人就是你(通过原生或类型告知)。
+ 
+        原生指针：需要手动管理，手动释放，只是很原始一个字节一个字节地寻址。
+        类型指针：以指向类型的步长来寻址，不需要手动释放。
         
 
  */
@@ -37,6 +42,9 @@ class TestPointee_VC: UIViewController {
     private var baseCollView: UICollectionView!
     
     //MARK: 测试组件
+    var person = Point_Person()     //类
+    var student = Point_Student(PName: "小辣鸡", PAge: 12)   //结构体
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,12 +131,84 @@ extension TestPointee_VC: UICollectionViewDataSource {
             print("结构体的实际大小：\(MemoryLayout.size(ofValue: s0))")
             print("结构体的步长：\(MemoryLayout<Point_Student>.stride)")
             
+            //打印对象地址
+            print( "打印结构体地址: %p",s0)
+            
+            print("=========== 测试类与结构体 ============== ")
+            /**
+                1、结构体是值类型，都是copy传递的。
+                2、实例对象是引用类型，是引用传递的。
+             */
+            print("学生：\(student)")
+            var st1 = student
+            st1.name = "傻不拉几"
+            print("修改后的学生：\(student) --- st1:\(st1)")
+            
+            print("人：\(person)")
+            let p1 = person
+            p1.name = "诸葛亮"
+            print("修改后的人：\(person) --- st1:\(p1)")
         case 2:
             //TODO: 2、测试原生指针。
             print("     (@@ 2、测试原生指针。")
+            /// 请求内存分配一个32字节的空间，该空间8字节对齐，并返回指向该空间的可变指针。原生指针是没有类型这一说的。可变是指指针可以改变指向。
+            let p = UnsafeMutableRawPointer.allocate(byteCount: 32, alignment: 8)
+            for i in 0...3{
+                /// 每8个字节就赋值i，以Int.self的方式赋值。
+                p.storeBytes(of: i * 3, toByteOffset: i * 8, as: Int.self)
+            }
+            for i in 0...3{
+                /// 每8格字节就取值，以Int.self的方式读取。这是通过内存平移的方式来读取值。
+                let value = p.load(fromByteOffset: i*8, as: Int.self)
+                print("下标：\(i),值：\(value)")
+            }
+           
+            for i in 0...3{
+                /// 以类型的步长的方式来存储，更加安全，不用瞎猜。
+                p.advanced(by: i * MemoryLayout<Int>.stride).storeBytes(of: i * 4, as: Int.self)
+            }
+            //TODO: 指针指向的内容的访问方式。
+            for i in 0...3{
+                /// 每8格字节就取值，以Int.self的方式读取。这是通过内存平移的方式来读取值。
+                let value = p.load(fromByteOffset: i*8, as: Int.self)
+                print("再次下标：\(i),值：\(value)")
+            }
+            /// 使用完之后必须手动释放内存。
+            p.deallocate()
         case 3:
-            //TODO: 3、
-            print("     (@@ ")
+            //TODO: 3、测试类型指针。
+            print("     (@@  3、测试类型指针")
+            //TODO: 获取指针变量自身的地址，withUnsafePointer(to:)系统函数
+            person.name = "指针变量"
+            let retStr = withUnsafePointer(to: &person) { ptr -> String in
+                print("指针变量自身所在的地址：\(ptr)")
+                return "看看返回值"
+            }
+            print("withUnsafePointer的返回值：\(retStr)")
+            print(String(format: "指针指向的对象的地址：%p",person))
+            
+            //TODO: 修改指针绑定的类型，就是修改指针的类型。
+            /**
+             swift 提供了三种不同的 API 来绑定/重新绑定指针：
+                 assumingMemoryBound(to:)   //只是让编译器绕过类型检查，并没有发⽣实际类型的转换。绕过编译检查。
+                 bindMemory(to: capacity:)  //重新(或首次)绑定该类型，并且内存中所有的值都会变成该类型。实际改变指针类型。
+                 withMemoryRebound(to: capacity: body:)     //临时更改内存绑定类型。临时改变指针的类型。
+             */
+            
+            /// 测试类型指针的闭包
+            let testPointBlock:((UnsafePointer<Int>) -> Void) = {
+                (ptr) in
+                print("指针的值：\(ptr), 指针指向的对象：\(ptr.pointee)")
+                print("通过指针的下标访问ptr[0]:\(ptr[0]) --- ptr[1]:\(ptr[1])")
+            }
+            var tuple:(Int,Int) = (27,28)
+            /// 这里因为tuples是(Int,Int)类型，指针是UnsafePointer<(Int, Int)>类型，而testPointBlock的参数是UnsafeMutablePointer<UInt8>类型，所以必须做指针的类型转换。
+            withUnsafePointer(to: &tuple) { tuplePtr in
+                /// 1、先转换为原生指针UnsafeRawPointer，2、再重新假设绑定为指向Int.self类型，以此绕过编译器的类型检查。
+                testPointBlock(UnsafeRawPointer(tuplePtr).assumingMemoryBound(to: Int.self))
+            }
+            
+          
         case 4:
             print("     (@@")
         case 5:
