@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void)changeAAA:(NSString * )name;
 -(void)changeBBB:(NSString * )name;
+-(void)testSuper;
+-(void)testSuper2;
 
 @end
 

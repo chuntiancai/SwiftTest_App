@@ -16,14 +16,14 @@ class TableView_LifeCycle_Cell: UITableViewCell {
     var titleStr = "一二三四五六七八九十"{
         didSet{
             // TODO： 测试label的计算高度
-            print("label的之前的内容的高度：\(titleLab.intrinsicContentSize.height)")
+//            print("label的之前的内容的高度：\(titleLab.intrinsicContentSize.height)")
             titleLab.text = titleStr
-            let attrStr = NSAttributedString.init(string: titleStr, attributes: [.font:UIFont.systemFont(ofSize: 16)])
-            let size = attrStr.boundingRect(with: CGSize(width: 240, height: 812), options: .usesLineFragmentOrigin, context: nil)
-            titleLab.sizeToFit()
+//            let attrStr = NSAttributedString.init(string: titleStr, attributes: [.font:UIFont.systemFont(ofSize: 16)])
+//            let size = attrStr.boundingRect(with: CGSize(width: 240, height: 812), options: .usesLineFragmentOrigin, context: nil)
+//            titleLab.sizeToFit()
 //            let height  = titleLab.text
-            print("label的内容的高度：\(titleLab.intrinsicContentSize.height)---\(titleStr)")
-            print("label的计算的高度：\(size)")
+//            print("label的内容的高度：\(titleLab.intrinsicContentSize.height)---\(titleStr)")
+//            print("label的计算的高度：\(size)")
         }
     }
     
@@ -87,7 +87,7 @@ class TableView_LifeCycle_Cell: UITableViewCell {
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(2)
             make.width.equalTo(300)
-            make.height.equalTo(300)
+            make.height.equalToSuperview().multipliedBy(0.8)
         }
         
         self.contentView.addSubview(titleLab)

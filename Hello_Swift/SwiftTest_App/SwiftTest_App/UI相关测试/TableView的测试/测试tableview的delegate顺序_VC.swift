@@ -6,6 +6,23 @@
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
 //测试tableView代理的执行顺序，生命周期的VC
+//MARK: - 笔记
+/**
+    UITableViewDelegate方法的执行顺序：
+        ∆～numberOfSections方法～∆ 设置有多少个section
+        ∆～numberOfRowsInSection方法～∆ 设置每个section多少个row
+        (一轮之后，又继续下面的一轮)
+        ∆～cellForRowAt方法～∆ 设置每个Cell的UI
+        ∆～heightForRowAt方法～∆ 设置每个row的高度
+ 
+    1、首先询问有多少个section
+    2、然后询问每个section有多少个row，有多少个section，就询问多少次。
+    3、设置每一个cell的UI
+    4、询问每一个cell的高度，这个section有多少个cell，就询问多少次cell的高度。
+ 
+ 
+ */
+
 
 class TestTableViewDelegateLifeCycle_VC: UIViewController {
     
@@ -17,7 +34,7 @@ class TestTableViewDelegateLifeCycle_VC: UIViewController {
     
     //MARK: 测试的View
     ///测试闭包循环引用的tableView,tag = 1000
-    private var testTableView:UITableView = {
+    private var myTableView:UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(TableView_LifeCycle_Cell.self, forCellReuseIdentifier: "TableView_LifeCycle_Cell_ID")
 
@@ -47,10 +64,10 @@ class TestTableViewDelegateLifeCycle_VC: UIViewController {
 
     /// 初始化你要测试的view
     func initTestView(){
-        view.addSubview(testTableView)
-        testTableView.delegate = self
-        testTableView.dataSource = self
-        testTableView.snp.makeConstraints { make in
+        view.addSubview(myTableView)
+        myTableView.delegate = self
+        myTableView.dataSource = self
+        myTableView.snp.makeConstraints { make in
             make.top.equalTo(baseCollView.snp.bottom).offset(10)
             make.width.equalToSuperview()
             make.height.equalTo(400)
@@ -68,14 +85,33 @@ extension TestTableViewDelegateLifeCycle_VC: UICollectionViewDataSource {
         print("点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            print("     (@@ 测试cell的阴影效果")
-            break
+            //TODO: 0、测试调用myTableView.reloadRows(at indexPaths:,)方法之后的顺序
+            /**
+             如果indexPaths的cell现在是可见的：
+                1、它会去询问每一个section有多少个row。   //numberOfRowsInSection:
+                2、询问当前可见的cell的高度。   //heightForRowAt:
+                3、调用indexPaths的cell的cellForRowAt: 设置cellUI方法。     //cellForRowAt:
+                4、调用indexPaths的cell的willDisplay: 将要显示cell方法。         //willDisplay:
+                5、调用indexPaths的cell的didEndDisplaying: 结束显示cell的方法。         //didEndDisplaying:
+                
+                所以，你不能在cellForRowAt:、willDisplay: 、didEndDisplaying: 方法中调用reloadRows方法。
+             
+             如果indexPaths的cell现在是不可见的：
+                1、去询问每一个section有多少个row。 回调tableView(_:numberOfRowsInSection:)
+                2、询问当前可见的cell的高度。   回调tableView(_::)
+                3、没了，结束了。
+             */
+            print("     (@@ 0、测试调用myTableView.reloadRows(at indexPaths:,)方法之后的顺序")
+            myTableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .automatic)
         case 1:
-            print("     (@@")
+            //TODO: 1、
+            print("     (@@ 1、")
         case 2:
-            print("     (@@")
+            //TODO: 2、
+            print("     (@@ 2、")
         case 3:
-            print("     (@@")
+            //TODO: 3、
+            print("     (@@ 3、")
         case 4:
             print("     (@@")
         case 5:
@@ -109,30 +145,49 @@ extension TestTableViewDelegateLifeCycle_VC{
 //MARK: - TableView的代理方法，UITableViewDelegate ,UITableViewDataSource
 extension TestTableViewDelegateLifeCycle_VC: UITableViewDelegate ,UITableViewDataSource {
     
-    //MARK: 设置有多少个section
+    //MARK: 1 、设置有多少个section
     func numberOfSections(in tableView: UITableView) -> Int {
         print("∆～\(#function)方法～∆ 设置有多少个section")
-        return 2
-    }
-    
-    //MARK: 设置每个section多少个row
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("∆～\(#function)方法～∆ 设置每个section多少个row")
         return 3
     }
     
-    //MARK: 设置每个row的高度
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        print("∆～\(#function)方法～∆ 设置每个row的高度")
-        return 350
+    //MARK: 2、设置每个section多少个row
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("∆～\(#function)方法～∆ 设置第\(section)个section多少个row")
+        return 7
     }
     
-    //MARK: 设置每个Cell的UI
+    //MARK: 3、设置每个Cell的UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("∆～\(#function)～∆ 设置每个Cell的UI")
+        print("∆～\(#function)～∆ 设置每个Cell的UI：\(indexPath)")
         let curCell = tableView.dequeueReusableCell(withIdentifier: "TableView_LifeCycle_Cell_ID", for: indexPath) as! TableView_LifeCycle_Cell
-        curCell.titleStr = "一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十"
+        curCell.titleStr = "\(indexPath)"
         return curCell
+    }
+    
+    //MARK: 4、设置每个row的高度
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        print("∆～\(#function)方法～∆ 设置每个row的高度：\(indexPath)")
+        return 60
+    }
+    
+    //MARK: 5、当cell即将显示时调用。
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        print("∆～\(#function)～∆ 当cell即将显示时调用：\(indexPath)")
+        /// 对即将出现的cell做动画。如果你想让进来的时候就动画，那就要在viewWillAppear中reload table的数据。
+        if indexPath.row == 2 {
+            /// 1、先移出屏幕外，然后再动画移回来。
+            cell.transform = CGAffineTransform.init(translationX: self.view.bounds.width, y: 0)
+            UIView.animate(withDuration: 0.5) {
+                /// 让cell复位
+                cell.transform = .identity
+            }
+        }
+    }
+    
+    //MARK: 6、当cell结束显示时调用，已经看不见的时候调用
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        print("∆～\(#function)～∆ 当cell结束显示时调用：\(indexPath)")
     }
     
     //MARK: 点击了哪一行
@@ -145,19 +200,9 @@ extension TestTableViewDelegateLifeCycle_VC: UITableViewDelegate ,UITableViewDat
         print("∆～\(#function)～∆ 取消点击第\(indexPath)行")
     }
     
-    //MARK: 当cell即将显示时调用。
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        print("∆～\(#function)～∆ 当cell即将显示时调用。")
-        /// 对即将出现的cell做动画。如果你想让进来的时候就动画，那就要在viewWillAppear中reload table的数据。
-        if indexPath.row == 2 {
-            /// 1、先移出屏幕外，然后再动画移回来。
-            cell.transform = CGAffineTransform.init(translationX: self.view.bounds.width, y: 0)
-            UIView.animate(withDuration: 0.5) {
-                /// 让cell复位
-                cell.transform = .identity
-            }
-        }
-    }
+    
+    
+    
     
 }
 
@@ -233,19 +278,3 @@ extension TestTableViewDelegateLifeCycle_VC: UICollectionViewDelegate {
     }
 }
 
-//MARK: - 笔记
-/**
-    UITableViewDelegate方法的执行顺序：
-        ∆～numberOfSections方法～∆ 设置有多少个section
-        ∆～numberOfRowsInSection方法～∆ 设置每个section多少个row
-        (一轮之后，又继续下面的一轮)
-        ∆～cellForRowAt方法～∆ 设置每个Cell的UI
-        ∆～heightForRowAt方法～∆ 设置每个row的高度
- 
-    1、首先询问有多少个section
-    2、然后询问每个section有多少个row，有多少个section，就询问多少次。
-    3、设置每一个cell的UI
-    4、询问每一个cell的高度，这个section有多少个cell，就询问多少次cell的高度。
- 
- 
- */

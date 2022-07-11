@@ -1,32 +1,51 @@
 //
-//  OCTemp_VC.m
+//  TestOCGrama_VC.m
 //  SwiftTest_App
 //
-//  Created by mathew on 2022/5/27.
+//  Created by mathew on 2022/7/11.
 //  Copyright © 2022 com.mathew. All rights reserved.
-//  测试VC
+//
+// 测试OC语法的VC
 
-#import "OCTemp_VC.h"
+#import "TestOCGrama_VC.h"
 #import "SwiftTest_App-Swift.h"
 
 //MARK: - 笔记
 /**
-    1、
+    1、宏 是预编译（编译之前处理)阶段，把 宏 替换成 宏定义的字符串，不会做编译检查，是直接的字符串替换。可以用宏定义函数方法等。宏会影响编译速度，因为替换要花时间。
+    2、const 用来限制类型为常量(只读)，指针指向的地址不可变、变量的内容不可以变。
+        // 两种方式一样
+        const int *p1; // *p1：常量 p1:变量
+        int const *p1; // *p1：常量 p1:变量
+    
+        // const修饰指针变量p1
+        int * const p1; // *p1:变量 p1:常量 ； 地址上的内容可变，指针指向的地址不可变。
+    
+        // 第一个const修饰*p1 第二个const修饰 p1
+        // 两种方式一样
+        const int * const p1; // *p1：常量 p1：常量
+        int const * const p1;  // *p1：常量 p1：常量
+ 
+    3、static 延迟局变量生命周期(只会创建一份内存，只会执行一次)，app结束的时候才释放静态变量。注意，全局静态变量只有当前文件可见，全局普通变量，app全局可见。
+    4、extern 到外部去查找全局变量(静态或者普通)。先在当前文件找，找不到就去外部找。只能用于声明，不能用于定义。
+    5、全局变量，一般不定义在类的文件中，而是额外创建一个文件，专门用来定义全局变量，在工程里的.h,.m文件默认都会被添加进编译。
  */
 
 
-@interface OCTemp_VC ()<UICollectionViewDataSource,UICollectionViewDelegate>
+static int age = 20;    /// static修饰全局变量
+
+@interface TestOCGrama_VC ()<UICollectionViewDataSource,UICollectionViewDelegate>
 
 @property(nonatomic,strong) UICollectionView * baseCollView;
 @property(nonatomic,strong) NSArray * collDataArr;
 
 @end
 
-@implementation OCTemp_VC
+@implementation TestOCGrama_VC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"测试";
+    self.title = @"测试OC的语法";
     self.view.backgroundColor = [[UIColor alloc] initWithRed: 199/255.0 green: 204/255.0 blue: 237/255.0 alpha:1.0];
     [self.view addSubview:self.baseCollView];
 
@@ -36,21 +55,32 @@
     NSLog(@"点击了OC的第%ld个item",(long)indexPath.row);
     switch (indexPath.row) {
         case 0:
-            //TODO: 0、
-            NSLog(@"0、");
+            //TODO: 0、测试 宏、static、const、extern 关键字的区别。
+            NSLog(@"0、测试 宏、static、const、extern 关键字的区别。");
         {
-            
+            extern int age;
+            NSLog(@"extern的使用 %d",age);
         }
             break;
         case 1:
-            //TODO: 1、
+            //TODO: 1、测试静态局部变量对全局的影响
+            /**
+                1、static修饰的局部变量，static所在的代码之后执行一次。
+             */
             NSLog(@"1、");
         {
-            
+            // static修饰局部变量
+            static int age = 5; //这句代码只会执行一次，下次进入，直接跳过。age的生命周期已经演延长到全局。
+            age++;
+            NSLog(@"1、测试静态局部变量对全局的影响： %d",age);
         }
-            
             break;
         case 2:
+            //TODO: 2、测试static局部变量只会创建一份内存
+        {
+            static int age;
+            NSLog(@"2、测试静态局部变量对全局的影响： %d",age);
+        }
             break;
         case 3:
             break;

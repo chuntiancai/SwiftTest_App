@@ -22,4 +22,7 @@
     同时在 pod项目里，也要 PROJECT -> Architectures -> Excluded Architectures -> 添加arm64
     之前一直没解决是因为没有在pod项目里也添加arm64
 
-## 
+## iOS Undefined symbols for architecture arm64 _OBJC_CLASS_$_叉叉类", referenced from: 叉叉.o文件 报错。
+
+    原因是，你添加该 叉叉类 文件时，没有把它添加到 Targets 中进行编译，所以就没有参与到编译中去。
+    解决办法：TARGET -> Building phrase -> complie sources -> 添加叉叉类的文件进去。

@@ -33,6 +33,8 @@
 
  */
 
+import UIKit
+
 class TestPointee_VC: UIViewController {
     
     //MARK: 对外属性
@@ -175,10 +177,15 @@ extension TestPointee_VC: UICollectionViewDataSource {
             }
             /// 使用完之后必须手动释放内存。
             p.deallocate()
+            
         case 3:
             //TODO: 3、测试类型指针。
             print("     (@@  3、测试类型指针")
-            //TODO: 获取指针变量自身的地址，withUnsafePointer(to:)系统函数
+            //TODO: 获取指针变量自身的地址，withUnsafePointer(to:)系统函数，
+            /**
+                1、withUnsafePointer(to:)根据参数传入的指针，去执行闭包的内容，并返回闭包的返回值。
+                  因为swift的 &运算符 只能运用在参数上，所以需要通过withUnsafePointer(to:)参数传入指针，闭包返回指针，从而获取变量的指针。
+             */
             person.name = "指针变量"
             let retStr = withUnsafePointer(to: &person) { ptr -> String in
                 print("指针变量自身所在的地址：\(ptr)")
@@ -191,10 +198,11 @@ extension TestPointee_VC: UICollectionViewDataSource {
             /**
              swift 提供了三种不同的 API 来绑定/重新绑定指针：
                  assumingMemoryBound(to:)   //只是让编译器绕过类型检查，并没有发⽣实际类型的转换。绕过编译检查。
-                 bindMemory(to: capacity:)  //重新(或首次)绑定该类型，并且内存中所有的值都会变成该类型。实际改变指针类型。
                  withMemoryRebound(to: capacity: body:)     //临时更改内存绑定类型。临时改变指针的类型。
+                 bindMemory(to: capacity:)  //重新(或首次)绑定该类型，并且内存中所有的值都会变成该类型。实际改变指针类型。
              */
             
+            //TODO: assumingMemoryBound(to:),绕过编译器
             /// 测试类型指针的闭包
             let testPointBlock:((UnsafePointer<Int>) -> Void) = {
                 (ptr) in
@@ -208,6 +216,43 @@ extension TestPointee_VC: UICollectionViewDataSource {
                 testPointBlock(UnsafeRawPointer(tuplePtr).assumingMemoryBound(to: Int.self))
             }
             
+            //TODO: withMemoryRebound(to: capacity: body:) ，临时改变内存分配。
+            let testReboundBlock:((UnsafePointer<Int8>) -> Void) = {
+                (ptr) in
+                print("临时改变内存绑定，指针的值：\(ptr), 指针指向的对象：\(ptr.pointee)")
+            }
+            var num:Int = 15
+            let numPtr:UnsafePointer<Int> = withUnsafePointer(to: &num) { ptr in
+                return ptr
+            }
+            /// 将numPtr指令临时绑定为 Int8.self 内存类型，只在闭包作用域中有效。
+            numPtr.withMemoryRebound(to: Int8.self, capacity: 1) { ptr0 in
+                /// 只在该作用域中有效
+                testReboundBlock(ptr0)
+            }
+            
+            
+            //TODO:  - bindMemory(to: capacity:)，实际改变内存分配。
+            /// 把Point_Person对象绑定到自定义的Point_HeapObject内存类型上。
+            let p0 = Point_Person(PName: "张三", PAge: 17)
+            
+            // 通过Unmanaged指定内存管理，类似于OC与CF的交互方式（所有权的转换 __bridge）
+            // passUnretained 不增加引用计数，即不需要获取所有权
+            // passRetained 增加引用技术，即需要获取所有权
+            // toOpaque 不透明的指针
+            let ptr0 = Unmanaged.passUnretained(p0 as AnyObject).toOpaque()
+            
+            // bindMemory更改当前UnsafeMutableRawPointer的指针类型，绑定到具体类型值
+            // - 如果没有绑定，则绑定
+            // - 如果已经绑定，则重定向到 HeapObject类型上
+            let heapObject = ptr0.bindMemory(to: Point_HeapObject.self, capacity: 1)
+            print("输出自定义的元数据：",heapObject.pointee.metadata)
+            print("输出自定义的引用计数：",heapObject.pointee.refCounts)
+            
+            ///对 metadata的指针指向的内容 绑定到Point_MetaData内存类型上。就是用Point_MetaData的内存格式来解析metadata的指针指向的内容。
+            let metadataPtr = heapObject.pointee.metadata.bindMemory(to: Point_MetaData.self, capacity: 1)
+            print("输出绑定后的metadata：\(metadataPtr.pointee)")
+           
           
         case 4:
             print("     (@@")

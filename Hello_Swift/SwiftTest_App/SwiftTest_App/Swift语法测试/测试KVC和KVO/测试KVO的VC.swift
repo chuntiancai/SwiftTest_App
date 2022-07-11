@@ -13,7 +13,7 @@
     2、KVO也可以监听得到私有变量的变化。
     3、苹果KVO的实现是，为主题者隐含生成一个子类，当主题者的属性发生变化时，该子类去调用观察者的监听方法。也就是子类完成观察者模式的操作。
        苹果会经常采用隐含子类的方式来实现一些模式，例如字典和数组的扩展也是。
- 
+    4、必须在析构方法中释放观察者。
  */
 
 
@@ -43,7 +43,11 @@ class TestKVO_VC: UIViewController {
        
     }
 
-
+    deinit {
+        print("TestKVO_VC的析构方法\(#function)～")
+        personA.removeObserver(kvo_Observer, forKeyPath: "name")
+        personA.removeObserver(kvo_Observer, forKeyPath: "sex")
+    }
 }
 
 
@@ -64,8 +68,8 @@ extension TestKVO_VC: UICollectionViewDataSource {
             
             break
         case 1:
-            //TODO: 1、
-            print("     (@@ 通过闭包接收监听的消息")
+            //TODO: 1、通过闭包接收监听的消息
+            print("     (@@ 1、通过闭包接收监听的消息")
             observerObj = personB.observe(\KVO_Person.name, options: .new) { (person, change) in
                 print("闭包中的监听：\(person)---change:\(change)")
             }

@@ -90,7 +90,7 @@ void aaa(id self, SEL _cmd, NSNumber *meter) {
 
 + (BOOL)resolveInstanceMethod:(SEL)sel
 {
-    NSLog(@"传入的方法名%@",NSStringFromSelector(sel));
+    NSLog(@"动态解析实例方法，传入的方法名%@",NSStringFromSelector(sel));
     // [NSStringFromSelector(sel) isEqualToString:@"eat"];
     //TODO: 动态添加方法。例如网页通过字符串调用app的方法。
     if (sel == NSSelectorFromString(@"playing:")) {
@@ -123,8 +123,22 @@ void aaa(id self, SEL _cmd, NSNumber *meter) {
 
 //TODO: 动态解析类方法。
 + (BOOL)resolveClassMethod:(SEL)sel{
-    NSLog(@"传入的方法名%@",NSStringFromSelector(sel));
-    return NO;
+//    NSLog(@"动态解析类方法，传入的方法名%@",NSStringFromSelector(sel));
+    return [super resolveClassMethod:sel];
+}
+
+//TODO: 测试super关键字
+- (void)testSuper
+{
+    // 如果是在 OCRuntime_SubPerson 中通过super来调用，那么这里的self指的是OCRuntime_SubPerson，打印结果是SubPerson Person  SubPerson Person
+     NSLog(@"在OCRuntime_Person中的打印：%@ %@ %@ %@",[self class], [self superclass], [super class], [super superclass]);
+}
+
+//TODO: 测试子类实例显示调用 继承于父类的方法。
+- (void)testSuper2
+{
+    //
+     NSLog(@"在OCRuntime_Person中的打印：%@ %@ %@ %@",[self class], [self superclass], [super class], [super superclass]);
 }
 
 @end

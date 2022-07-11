@@ -10,6 +10,8 @@
 #import "OCRuntime_Person.h"
 #import "OCRuntime_Person+Property.h"
 #import <objc/message.h>
+#import "OCRuntime_StatusModel.h"
+#import "OCRuntime_SubPerson.h""
 
 
 //MARK: - 笔记
@@ -48,6 +50,7 @@
         SEL是方法名选择择器，是描述方法名的对象，也就是方法名的结构体，内部哈希化了方法名字符串。\\ @slector() 是编译器给的语法糖
         IMP是函数指针，指向了方法体的首地址。
         Method是描述方法的结构体，里面包含了SEL和IMP。
+    7、 super关键字:仅仅是一个编译指示器,就是给编译器看的,不是一个指针，本质还是在当前对象里执行代码。
  */
 
 
@@ -163,8 +166,31 @@
 #pragma clang diagnostic pop
             break;
         case 2:
+            //TODO: 2、字典转model。测试通过RunTime，用KVC机制 打印plist文件里的属性字符串，转字典后，再转换成model。
+        {
+            /// 1、找到plist文件，打印出plist文件里的属性字符串，然后复制粘贴到 你自定义的 模型类中，就不用一个一个地敲属性声明字符串了。
+            // 获取文件全路径
+            NSString *filePath = [[NSBundle mainBundle] pathForResource:@"OCRuntimeStatus.plist" ofType:nil];
+            // 文件全路径
+            NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:filePath];
+            // 打印属性字符串
+            [self printPropertyCode:dict];
+            
+            //传入字典，创建model
+            OCRuntime_StatusModel * model = [OCRuntime_StatusModel initWithDict:dict];
+            
+            NSLog(@"转换后的model：%@",model);
+            
+        }
             break;
         case 3:
+            //TODO: 3、测试super关键字
+        {
+            OCRuntime_SubPerson * subPerson =  [[OCRuntime_SubPerson alloc] init];
+            [subPerson testSuper];
+            NSLog(@"  =========== 调用继承于父类的方法 =================== ");
+            [subPerson testSuper2];
+        }
             break;
         case 4:
             break;
@@ -178,6 +204,8 @@
             break;
     }
 }
+
+
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"OCTestCEll" forIndexPath:indexPath];
@@ -201,6 +229,36 @@
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.collDataArr.count;
+}
+//MARK: - 工具方法
+
+/// 打印属性的声明代码
+-(void) printPropertyCode: (NSDictionary *) dict {
+    
+    NSMutableString *codes = [NSMutableString string];
+    // 遍历字典
+    [dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull value, BOOL * _Nonnull stop) {
+        
+        NSString *code;
+        if ([value isKindOfClass:[NSString class]]) {
+            code = [NSString stringWithFormat:@"@property (nonatomic, strong) NSString *%@;",key];
+        } else if ([value isKindOfClass:NSClassFromString(@"__NSCFBoolean")]) {
+            code = [NSString stringWithFormat:@"@property (nonatomic, assign) BOOL %@;",key];
+        } else if ([value isKindOfClass:[NSNumber class]]) {
+             code = [NSString stringWithFormat:@"@property (nonatomic, assign) NSInteger %@;",key];
+        } else if ([value isKindOfClass:[NSArray class]]) {
+             code = [NSString stringWithFormat:@"@property (nonatomic, strong) NSArray *%@;",key];
+        } else if ([value isKindOfClass:[NSDictionary class]]) {
+             code = [NSString stringWithFormat:@"@property (nonatomic, strong) NSDictionary *%@;",key];
+        }
+
+        // @property (nonatomic, strong) NSString *source;
+        
+        [codes appendFormat:@"\n%@\n",code];
+        
+    }];
+    
+    NSLog(@"打印属性字符串：%@",codes);
 }
 
 

@@ -9,7 +9,8 @@
 
 #import "OCMainViewController.h"
 #import "SwiftTest_App-Swift.h"
-#import "TestRumtime_VC.h"
+#import "OCMainViewControllerHeader.h"
+
 
 @interface OCMainViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 
@@ -33,12 +34,18 @@
     NSLog(@"点击了OC的第%ld个item",(long)indexPath.row);
     switch (indexPath.row) {
         case 0:
+            //TODO: 0、
         {
-            UIViewController * vc = [[TestRumtime_VC alloc] init];
+            UIViewController * vc = [[TestOCGrama_VC alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         case 1:
+            //TODO: 1、
+        {
+            UIViewController * vc = [[TestRumtime_VC alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
             break;
         case 2:
             break;

@@ -38,16 +38,25 @@ class TestNSOperation_VC: UIViewController {
     
     /// 测试组件
     let opQueue1 = OperationQueue.init()    // 默认是并发队列，测试队列的属性。
+    var opQueue2:OperationQueue?
+    var kvoObservation:NSKeyValueObservation?   /// 监听行为 的对象
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        self.title = "测试功能"
+        self.title = "测试Operation_VC"
         
         setNavigationBarUI()
         setCollectionViewUI()
     }
 
+    /// 在析构方法中释放观察者
+    deinit {
+        print("TestKVO_VC的析构方法\(#function)～")
+        //如果没有注册到观察者然后移除的话，还是会报错。
+//        opQueue1.removeObserver(self, forKeyPath: "operationCount")
+        opQueue2?.removeObserver(self, forKeyPath: "operationCount")
+    }
 
 }
 
@@ -60,14 +69,75 @@ extension TestNSOperation_VC: UICollectionViewDataSource {
         print("点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            //TODO: 0、测试Operation
-            print("     (@@测试Operation")
-            testOperation()
-            break
+            //TODO: 0、测试不断追加Operation，BlockOperation的使用
+            /**
+             swift 不可以使用NSInvocationOperation，不提供NSInvocationOperation的api
+             测试Operation
+             */
+            print("     (@@0、测试不断追加Operation，BlockOperation的使用")
+            let op1 = BlockOperation.init{ print("这是BlockOperation op1 的 block --Thread: \(Thread.current) ") }
+            op1.queuePriority = .high   //设置在队列中的优先级，执行状态的优先级，决定并发的顺序，而非结束的顺序。
+            op1.addExecutionBlock {  print("这是BlockOperation op1 的add block 1 --Thread: \(Thread.current)")  }
+            let op2 = BlockOperation.init {  print("这是BlockOperation op2 的 block --Thread: \(Thread.current)")  }
+            op2.queuePriority = .veryHigh
+            op2.addExecutionBlock {  print("这是BlockOperation op2 的add block 1 --Thread: \(Thread.current)") }
+            /**
+             ：添加依赖，在依赖的后面执行自己，但是这里报错，因为两个operation都没有加入队列吗？是的，需要加入队列
+             ：不能循环依赖，循环依赖，则两个任务都不执行。
+             ：可以跨队列依赖。
+             */
+            op1.addDependency(op2)
+            
+            let opQueue = OperationQueue.init() //Operation的队列，默认是并发队列
+            opQueue.maxConcurrentOperationCount = 3 //队列中，任务的并发数，开启多少条线程，用户不可知
+            opQueue.addOperation(op1)
+            opQueue.addOperation(op2)
+            
+            //TODO: 自定义任务
+            let subOp = SubOperation.init() //子类化Operation
+            subOp.start()   //不用添加到队列，也可以自己执行
+            //        op1.start()   //这里是立马开启任务。
+            //        op2.start()
+            opQueue.addOperation {   print("这是opQueue,添加的block --Thread: \(Thread.current)")  }
+            
+            OperationQueue.main.addOperation{   print("这是主队列的block，-- Thread: \(Thread.current)") }
+           
+            ///可以单独start()执行，也可在主队列中，让主队列决定什么时候执行。
+            let opBlock = BlockOperation.init(block: { print("测试没有加入队列的blockOperation是否可以单独执行-- Thread: \(Thread.current)")})
+            opBlock.start()
+            
+            let mainQ = OperationQueue.main //主队列
+            mainQ.addOperation {  print("在主队列中执行任务～") }
+            
         case 1:
             //TODO: 1、测试Operation的加锁
             print("     (@@测试Operation的加锁")
-            testOperationLock()
+            let lock = NSLock()
+            var comNum = 100
+            func decOne(){
+                lock.lock()
+                comNum -= 1
+                print("现在测comNUm的值是：\(comNum)")
+                lock.unlock()
+            }
+            let opQueue1 = OperationQueue.init()
+            opQueue1.maxConcurrentOperationCount = 1    //设置最大并发数
+            opQueue1.addOperation {
+                while comNum > 0  {  decOne(); print("opQueue1 Block 1 对comNum减一,comNUm:\(comNum) --Thread: \(Thread.current)")  }
+            }
+            let opQueue2 = OperationQueue.init()
+            opQueue2.maxConcurrentOperationCount = 1
+            opQueue2.addOperation {
+                while comNum > 0 {  decOne();  print("opQueue2 block 1 对comNum减一,comNUm:\(comNum) --Thread: \(Thread.current)") }
+            }
+            
+            let opQueue3 = OperationQueue.init()
+            opQueue3.maxConcurrentOperationCount = 1
+            opQueue3.addOperation {
+                while comNum > 0 { decOne(); print("opQueue3 block 1 对comNum减一,comNUm:\(comNum) --Thread: \(Thread.current)")   }
+            }
+            
+            
         case 2:
             //TODO: 2、测试Operation队列的最大并发数，其他属性
             print("     (@@     测试Operation队列的最大并发数，其他属性")
@@ -77,28 +147,29 @@ extension TestNSOperation_VC: UICollectionViewDataSource {
             opQueue1.maxConcurrentOperationCount = 1
             /// 添加任务
             opQueue1.addOperation {
-                for i in 0 ... 888 {
+                for i in 0 ... 8 {
                     print("执行任务1 -- \(i) -- \(Thread.current)")
                     Thread.sleep(forTimeInterval: 0.001)
                 }
             }
             opQueue1.addOperation {
-                for i in 0 ... 8888 {
+                for i in 0 ... 8 {
                     print("执行任务2 -- \(i) -- \(Thread.current)")
                     Thread.sleep(forTimeInterval: 0.001)
                 }
             }
             opQueue1.addOperation {
-                for i in 0 ... 8888 {
+                for i in 0 ... 8 {
                     print("执行任务3 -- \(i)  -- \(Thread.current)")
                     Thread.sleep(forTimeInterval: 0.001)
                 }
             }
             opQueue1.addOperation {
-                for i in 0 ... 8888 {
+                for i in 0 ... 8 {
                     print("执行任务4 -- \(i) -- \(Thread.current)")
                     Thread.sleep(forTimeInterval: 0.001)
                 }
+                
             }
             
         case 3:
@@ -106,7 +177,7 @@ extension TestNSOperation_VC: UICollectionViewDataSource {
             print("     (@@ 暂停任务队列")
             /// 挂起任务，暂停任务，不能暂停正在执行的任务，只能暂停下一个到来的任务。所以当前任务会被执行完后再暂停。
             /**
-                任务也有状态：正在执行，排队等候，执行完毕。
+             任务也有状态：正在执行，排队等候，执行完毕。
              */
             opQueue1.isSuspended = true //暂停任务
             opQueue1.isSuspended = false    //恢复任务队列
@@ -121,7 +192,13 @@ extension TestNSOperation_VC: UICollectionViewDataSource {
             OperationQueue().addOperation(op2)//通过队列启动
             
         case 5:
-            print("     (@@ ")
+            //TODO: 5、监听OperationQueue还有多少个Operation在执行
+            print("     (@@ 5、监听OperationQueue还有多少个Operation在执行")
+            opQueue1.addObserver(self, forKeyPath: "operationCount", options: [.new,.old], context: nil)
+            /// 通过swift的observe语法访问不了，只能通过addObserver这个来获取变化的值，我也不知道为什么。
+            kvoObservation = opQueue1.observe(\OperationQueue.operationCount) { opQueue, change in
+                print("旧值：\(String(describing: change.oldValue) ) --- 新值：\(String(describing: change.newValue) )")
+            }
             
         case 6:
             print("     (@@")
@@ -145,101 +222,12 @@ extension TestNSOperation_VC: UICollectionViewDataSource {
 }
 //MARK: - 测试的方法
 extension TestNSOperation_VC{
-    //MARK: 0、测试不断追加Operation，BlockOperation的使用
-    /// swift 不可以使用NSInvocationOperation，不提供NSInvocationOperation的api
-    /// 测试Operation
-    func testOperation(){
-        
-        let op1 = BlockOperation.init{
-            print("这是BlockOperation op1 的 block --Thread: \(Thread.current) ")
-        }
-        op1.queuePriority = .high   //设置在队列中的优先级，执行状态的优先级，决定并发的顺序，而非结束的顺序。
-        op1.addExecutionBlock {
-            print("这是BlockOperation op1 的add block 1 --Thread: \(Thread.current)")
-        }
-        let op2 = BlockOperation.init {
-            print("这是BlockOperation op2 的 block --Thread: \(Thread.current)")
-        }
-        op2.queuePriority = .veryHigh
-        op2.addExecutionBlock {
-            print("这是BlockOperation op2 的add block 1 --Thread: \(Thread.current)")
-        }
-        /**
-         ：添加依赖，在依赖的后面执行自己，但是这里报错，因为两个operation都没有加入队列吗？是的，需要加入队列
-         ：不能循环依赖，循环依赖，则两个任务都不执行。
-         ：可以跨队列依赖。
-         */
-        op1.addDependency(op2)
-        
-        let opQueue = OperationQueue.init() //Operation的队列，默认是并发队列
-        opQueue.maxConcurrentOperationCount = 3 //队列中，任务的并发数，开启多少条线程，用户不可知
-        opQueue.addOperation(op1)
-        opQueue.addOperation(op2)
-        
-        //TODO: 自定义任务
-        let subOp = SubOperation.init() //子类化Operation
-        subOp.start()   //不用添加到队列，也可以自己执行
-//        op1.start()   //这里是立马开启任务。
-//        op2.start()
-        opQueue.addOperation {
-            print("这是opQueue,添加的block --Thread: \(Thread.current)")
-        }
-        
-        OperationQueue.main.addOperation{
-            print("这是主队列的block，-- Thread: \(Thread.current)")
-        }
-        
-        let opBlock = BlockOperation.init(block: {
-            print("测试没有加入队列的blockOperation是否可以单独执行-- Thread: \(Thread.current)")//可以单独执行，在主队列中执行
-        })
-        opBlock.start()
-        
-        let mainQ = OperationQueue.main //主队列
-        mainQ.addOperation {
-            print("在主队列中执行任务～")
-        }
-    }
     
-    //MARK: 1、测试Operation的加锁
-    /// 测试Operation的加锁问题
-    func testOperationLock(){
-        let lock = NSLock()
-        var comNum = 100
-        func decOne(){
-            lock.lock()
-            comNum -= 1
-            print("现在测comNUm的值是：\(comNum)")
-            lock.unlock()
-        }
-        let opQueue1 = OperationQueue.init()
-        opQueue1.maxConcurrentOperationCount = 1    //设置最大并发数
-        opQueue1.addOperation {
-            while comNum > 0  {
-                decOne()
-                print("opQueue1 Block 1 对comNum减一,comNUm:\(comNum) --Thread: \(Thread.current)")
-            }
-        }
-        let opQueue2 = OperationQueue.init()
-        opQueue2.maxConcurrentOperationCount = 1
-        opQueue2.addOperation {
-            while comNum > 0 {
-                decOne()
-                print("opQueue2 block 1 对comNum减一,comNUm:\(comNum) --Thread: \(Thread.current)")
-            }
-        }
-        
-        let opQueue3 = OperationQueue.init()
-        opQueue3.maxConcurrentOperationCount = 1
-        opQueue3.addOperation {
-            while comNum > 0 {
-                decOne()
-                print("opQueue3 block 1 对comNum减一,comNUm:\(comNum) --Thread: \(Thread.current)")
-            }
-        }
-        
-
+    //TODO: 监听队列里还有多少个Operation，通过KVO。
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        print("KVO_Observer接收到的主题者的属性是：\n\(String(describing: keyPath));\n--主题者object:\(String(describing: object));\n---变化的值change:\(String(describing: change));\n---context:\(String(describing: context))")
+//        super .observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
     }
-    
     
 }
 

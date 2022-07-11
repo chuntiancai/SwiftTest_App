@@ -46,16 +46,16 @@ extension tempVC: UICollectionViewDataSource {
         switch indexPath.row {
         case 0:
             //TODO: 0、
-            print("     (@@  ")
+            print("     (@@ 0、")
         case 1:
             //TODO: 1、
-            print("     (@@ ")
+            print("     (@@ 1、")
         case 2:
             //TODO: 2、
-            print("     (@@ ")
+            print("     (@@ 2、")
         case 3:
             //TODO: 3、
-            print("     (@@ ")
+            print("     (@@ 3、")
         case 4:
             print("     (@@")
         case 5:

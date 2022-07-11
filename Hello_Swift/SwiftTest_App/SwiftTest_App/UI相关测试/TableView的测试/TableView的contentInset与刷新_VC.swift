@@ -6,6 +6,12 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 //测试TableView的contengInset与刷新的VC
+// MARK: - 笔记
+/**
+    1、手动调用reloadRows方法之后，会回调cellForRowAt方法，但是要在cell可见的时候才会去回调，不可见的时候不会回调。
+ 
+ */
+
 
 class TestTableViewcontentInset_VC: UIViewController {
     
@@ -137,8 +143,9 @@ extension TestTableViewcontentInset_VC: UICollectionViewDataSource {
                 self?.tableDataDict[1] = ["三国演义","关羽","刘备","张飞","孔明","赵云"]
             }
         case 2:
-            //TODO: 2、
-            print("     (@@ ")
+            //TODO: 2、测试调用reloadRows方法之后，会不会回调cellForRowAt方法
+            print("     (@@ 测试调用reloadRows方法之后，会不会回调cellForRowAt方法")
+            testTableView.reloadRows(at: [IndexPath.init(row: 4, section: 1)], with: .automatic)
         case 3:
             //TODO: 3、
             print("     (@@ ")
@@ -271,8 +278,3 @@ extension TestTableViewcontentInset_VC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 笔记
-/**
-    1、
- 
- */
