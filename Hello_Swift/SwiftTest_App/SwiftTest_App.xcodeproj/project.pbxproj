@@ -130,7 +130,7 @@
 		044CBA7D27F6D6F000FA2CB8 /* MultiViews_ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBA7C27F6D6F000FA2CB8 /* MultiViews_ScrollView.swift */; };
 		044FB587276735BE00479442 /* TextField的点击测试(键盘弹起)_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FB586276735BE00479442 /* TextField的点击测试(键盘弹起)_View.swift */; };
 		0454A48E272FCA5600EFE31A /* 测试tableview的delegate顺序_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454A48D272FCA5600EFE31A /* 测试tableview的delegate顺序_VC.swift */; };
-		0454A4912731097E00EFE31A /* 测试导航栏VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454A4902731097E00EFE31A /* 测试导航栏VC.swift */; };
+		0454A4912731097E00EFE31A /* 测试导航栏UI的VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454A4902731097E00EFE31A /* 测试导航栏UI的VC.swift */; };
 		0455059D27FDA9D900785F02 /* 测试TableView的布局约束.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455059C27FDA9D900785F02 /* 测试TableView的布局约束.swift */; };
 		045505A127FFD0C700785F02 /* TestCalendar_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045505A027FFD0C700785F02 /* TestCalendar_VC.swift */; };
 		045505A328000AF800785F02 /* CTCCalendarDayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045505A228000AF800785F02 /* CTCCalendarDayModel.swift */; };
@@ -322,6 +322,7 @@
 		AFBCA8C72874224800AD51D1 /* Point_HeapObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBCA8C62874224800AD51D1 /* Point_HeapObject.swift */; };
 		AFBCA8C92874228A00AD51D1 /* Point_MetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBCA8C82874228A00AD51D1 /* Point_MetaData.swift */; };
 		AFD8A1BB286060290094554A /* Pods_SwiftTest_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4C06FA2172551275C4FCEE6 /* Pods_SwiftTest_App.framework */; };
+		AFDA1325287D0F1B0015BFC3 /* TestNaviBarVC_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDA1324287D0F1B0015BFC3 /* TestNaviBarVC_VC.swift */; };
 		EB5C881427FC2EA200655119 /* 位移枚举的写法.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C881327FC2EA200655119 /* 位移枚举的写法.swift */; };
 		EB645E3F26A449AE00773A98 /* tempView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645E3E26A449AE00773A98 /* tempView.swift */; };
 /* End PBXBuildFile section */
@@ -467,7 +468,7 @@
 		044FB586276735BE00479442 /* TextField的点击测试(键盘弹起)_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField的点击测试(键盘弹起)_View.swift"; sourceTree = "<group>"; };
 		0454A487272AA2FF00EFE31A /* Swift语法备忘录.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Swift语法备忘录.md"; sourceTree = "<group>"; };
 		0454A48D272FCA5600EFE31A /* 测试tableview的delegate顺序_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试tableview的delegate顺序_VC.swift"; sourceTree = "<group>"; };
-		0454A4902731097E00EFE31A /* 测试导航栏VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试导航栏VC.swift"; sourceTree = "<group>"; };
+		0454A4902731097E00EFE31A /* 测试导航栏UI的VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试导航栏UI的VC.swift"; sourceTree = "<group>"; };
 		0455059C27FDA9D900785F02 /* 测试TableView的布局约束.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试TableView的布局约束.swift"; sourceTree = "<group>"; };
 		045505A027FFD0C700785F02 /* TestCalendar_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCalendar_VC.swift; sourceTree = "<group>"; };
 		045505A228000AF800785F02 /* CTCCalendarDayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTCCalendarDayModel.swift; sourceTree = "<group>"; };
@@ -675,6 +676,7 @@
 		AFBCA8C62874224800AD51D1 /* Point_HeapObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point_HeapObject.swift; sourceTree = "<group>"; };
 		AFBCA8C82874228A00AD51D1 /* Point_MetaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point_MetaData.swift; sourceTree = "<group>"; };
 		AFDA1322287C28C20015BFC3 /* OCMainViewControllerHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMainViewControllerHeader.h; sourceTree = "<group>"; };
+		AFDA1324287D0F1B0015BFC3 /* TestNaviBarVC_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNaviBarVC_VC.swift; sourceTree = "<group>"; };
 		BB6AAD3455F9D2C8F661C07D /* Pods-SwiftTest_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTest_App.debug.xcconfig"; path = "Target Support Files/Pods-SwiftTest_App/Pods-SwiftTest_App.debug.xcconfig"; sourceTree = "<group>"; };
 		C4C06FA2172551275C4FCEE6 /* Pods_SwiftTest_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftTest_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB5C881327FC2EA200655119 /* 位移枚举的写法.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "位移枚举的写法.swift"; sourceTree = "<group>"; };
@@ -1027,6 +1029,7 @@
 			isa = PBXGroup;
 			children = (
 				0421E5FC26AAAEF800C6A922 /* UITestMainVC.swift */,
+				0454A48F2731094000EFE31A /* 导航栏的UI布局测试 */,
 				0474C24F27CF4CBE00B95D7C /* UIWindow的测试 */,
 				04133082281A7B3C00E8CA0A /* WKWebView的测试(网页) */,
 				04927011279E8F99000A61FC /* UIView的测试 */,
@@ -1096,14 +1099,14 @@
 		0421E60C26AAE6F600C6A922 /* VC相关的测试 */ = {
 			isa = PBXGroup;
 			children = (
-				04587C8027B6010100824F69 /* 模态VC的测试 */,
+				0421E60D26AAE72400C6A922 /* VCTestMainVC.swift */,
+				04C2DBFC26CE267600F9B3EE /* 父子VC的测试 */,
+				AFDA1323287D0DAA0015BFC3 /* 导航栏VC */,
 				04587C7527B508F300824F69 /* 工具栏VC(UITabBarController)的测试 */,
+				04587C8027B6010100824F69 /* 模态VC的测试 */,
 				047C851427B3B50C0060D7CB /* UIAlertController的测试 */,
-				04C2DBFC26CE267600F9B3EE /* 子VC的测试 */,
 				0421E60F26AAE77C00C6A922 /* VC生命周期测试 */,
 				0421E61726AEA39900C6A922 /* VC模态显示测试 */,
-				0454A48F2731094000EFE31A /* 导航栏的UI布局测试 */,
-				0421E60D26AAE72400C6A922 /* VCTestMainVC.swift */,
 			);
 			path = "VC相关的测试";
 			sourceTree = "<group>";
@@ -1238,7 +1241,7 @@
 		0454A48F2731094000EFE31A /* 导航栏的UI布局测试 */ = {
 			isa = PBXGroup;
 			children = (
-				0454A4902731097E00EFE31A /* 测试导航栏VC.swift */,
+				0454A4902731097E00EFE31A /* 测试导航栏UI的VC.swift */,
 			);
 			path = "导航栏的UI布局测试";
 			sourceTree = "<group>";
@@ -1913,7 +1916,7 @@
 			path = "测试网络文件下载上传";
 			sourceTree = "<group>";
 		};
-		04C2DBFC26CE267600F9B3EE /* 子VC的测试 */ = {
+		04C2DBFC26CE267600F9B3EE /* 父子VC的测试 */ = {
 			isa = PBXGroup;
 			children = (
 				04C2DBFD26CE269700F9B3EE /* TestSubVC_MainVC.swift */,
@@ -1922,7 +1925,7 @@
 				044CBA7027F587C100FA2CB8 /* TestSubVC_SubVC3.swift */,
 				04C2DC0326CE304700F9B3EE /* SubVC1_View.swift */,
 			);
-			path = "子VC的测试";
+			path = "父子VC的测试";
 			sourceTree = "<group>";
 		};
 		04C2DC0526CE3F6900F9B3EE /* 网络测试 */ = {
@@ -2169,6 +2172,14 @@
 			path = "测试类与结构体";
 			sourceTree = "<group>";
 		};
+		AFDA1323287D0DAA0015BFC3 /* 导航栏VC */ = {
+			isa = PBXGroup;
+			children = (
+				AFDA1324287D0F1B0015BFC3 /* TestNaviBarVC_VC.swift */,
+			);
+			path = "导航栏VC";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2403,6 +2414,7 @@
 				04C45C8B271D539100E1EA9B /* Selector和NSStringFromClass的自定义类.swift in Sources */,
 				041CBC4D278D2BC800AF9B05 /* plist文件测试_VC.swift in Sources */,
 				0414F98A27BF7F2E0037EE70 /* Quartz_Draw_View.swift in Sources */,
+				AFDA1325287D0F1B0015BFC3 /* TestNaviBarVC_VC.swift in Sources */,
 				042036B127439B1200424E05 /* TestUITextField_VC.swift in Sources */,
 				042036CE27574CAF00424E05 /* CollectionView的datasource.swift in Sources */,
 				04870E3326E9AD280030B1D2 /* PackageBundlePathLoader.swift in Sources */,
@@ -2586,7 +2598,7 @@
 				04C45C8D271D5BB100E1EA9B /* 测试selector的VC.swift in Sources */,
 				04A0CA3C26A0027800ECAE1B /* JFZAudiovisualSpeedyOperateManager.swift in Sources */,
 				040BFF4527B277080010C999 /* Story_FirstVC.swift in Sources */,
-				0454A4912731097E00EFE31A /* 测试导航栏VC.swift in Sources */,
+				0454A4912731097E00EFE31A /* 测试导航栏UI的VC.swift in Sources */,
 				0421E60B26AAB5B200C6A922 /* TestLifeCycleView.swift in Sources */,
 				04B769282814E2B20080102F /* TestHTTPS_VC.swift in Sources */,
 				049EAFEA26B9437D00903DA8 /* TestAsyncDownloadImage_VC.swift in Sources */,

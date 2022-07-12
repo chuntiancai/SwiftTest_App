@@ -6,6 +6,18 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 // 测试UIView的VC
+// MARK: - 笔记
+/**
+    1、UIAppearance协议主要是用来返回类型本身，也就是相当于获取UIView的元类型，但是UIAppearance协议还提供了获取某类型View视图下的所有子View的方法，因为操作的是类，所以这种一般用于全局设置。这种是对一类对象的默认全局外观样式设置，它对设置时机有要求。通常需要在UIWindow的viewlayout之前。错过了时机后，设置是没有效果的。
+    所以可以用来设置UINavigationBar这种影响全局的UI组件。
+ 
+    2、 UIScreen, UIWindow, UIViewController, UIPresentationController, UIView都遵循了UITraitEnvironment协议，而该协议的传递值的方式 就是通过它们的traitCollection属性来进行。UITraitCollection主要是描述了当前的UI环境，设备类型，紧凑型还是宽松型布局(长就是宽松，短就是紧凑)、布局方向、对比度这些。
+ 
+    3、view的tintColor属性是描述线条轮廓的一种颜色,该颜色默认具有传递性,默认状态下最底部的视图的tintcolor会一直往上面的视图传递(父传子)。描述镂空里面的线条颜色。
+ 
+    4、addSubview方法，首先去判断子view原来有没有父view，如果有，则把原来的父view移除，然后添加到当前view中。
+ */
+
 
 class TestUIView_VC: UIViewController {
     
@@ -210,13 +222,4 @@ extension TestUIView_VC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 笔记
-/**
-    1、UIAppearance协议主要是用来返回类型本身，也就是相当于获取UIView的元类型，但是UIAppearance协议还提供了获取某类型View视图下的所有子View的方法，因为操作的是类，所以这种一般用于全局设置。这种是对一类对象的默认全局外观样式设置，它对设置时机有要求。通常需要在UIWindow的viewlayout之前。错过了时机后，设置是没有效果的。
-    所以可以用来设置UINavigationBar这种影响全局的UI组件。
- 
-    2、 UIScreen, UIWindow, UIViewController, UIPresentationController, UIView都遵循了UITraitEnvironment协议，而该协议的传递值的方式 就是通过它们的traitCollection属性来进行。UITraitCollection主要是描述了当前的UI环境，设备类型，紧凑型还是宽松型布局(长就是宽松，短就是紧凑)、布局方向、对比度这些。
- 
-    3、view的tintColor属性是描述线条轮廓的一种颜色,该颜色默认具有传递性,默认状态下最底部的视图的tintcolor会一直往上面的视图传递(父传子)。描述镂空里面的线条颜色。
- */
 

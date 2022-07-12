@@ -1,5 +1,5 @@
 //
-//  TestNavibar_VC.swift
+//  TestNavibarUI_VC.swift
 //  SwiftTest_App
 //
 //  Created by mathew on 2021/11/2.
@@ -9,7 +9,7 @@
 
 import UIKit
 
-class TestNavibar_VC: UIViewController {
+class TestNavibarUI_VC: UIViewController {
     
     //MARK: 对外属性
     public var collDataArr = ["0、","1、","2、","3、","4、","5、","6、","7、","8、","9、","10、","11、","12、"]
@@ -39,7 +39,7 @@ class TestNavibar_VC: UIViewController {
 
 }
 //MARK: - 设置测试的UI
-extension TestNavibar_VC{
+extension TestNavibarUI_VC{
     
     /// 初始化你要测试的view
     func initTestViewUI(){
@@ -50,7 +50,7 @@ extension TestNavibar_VC{
 
 
 //MARK: - 遵循数据源协议,UICollectionViewDataSource
-extension TestNavibar_VC: UICollectionViewDataSource {
+extension TestNavibarUI_VC: UICollectionViewDataSource {
     
     ///点击了cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -298,7 +298,7 @@ extension TestNavibar_VC: UICollectionViewDataSource {
     
 }
 //MARK: - 测试的方法
-extension TestNavibar_VC{
+extension TestNavibarUI_VC{
     
     //TODO: 顶部安全区高度
     func vg_safeDistanceTop() -> CGFloat {
@@ -374,7 +374,7 @@ extension TestNavibar_VC{
 
 
 //MARK: - 设计UI
-extension TestNavibar_VC {
+extension TestNavibarUI_VC {
     
     // MARK: 设置导航栏的UI
     private func setNavigationBarUI(){
@@ -438,7 +438,7 @@ extension TestNavibar_VC {
 }
 
 //MARK: - 遵循委托协议,UICollectionViewDelegate
-extension TestNavibar_VC: UICollectionViewDelegate {
+extension TestNavibarUI_VC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collDataArr.count

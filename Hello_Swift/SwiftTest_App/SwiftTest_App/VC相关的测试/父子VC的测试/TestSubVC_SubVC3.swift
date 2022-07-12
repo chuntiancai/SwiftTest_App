@@ -6,6 +6,11 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 // 测试VC的初始化方法
+//MARK: - 笔记
+/**
+    1、重写构造器，必须在构造器内调用父类的指定构造器，VC有指定构造器是init(nibName: nil, bundle: nil)。
+ 
+ */
 
 class TestSubVC_SubVC3: UIViewController {
 
@@ -37,8 +42,4 @@ class TestSubVC_SubVC3: UIViewController {
     }
     
 }
-//MARK: - 笔记
-/**
-    1、重写构造器，必须在构造器内调用父类的指定构造器，VC有指定构造器是init(nibName: nil, bundle: nil)。
- 
- */
+

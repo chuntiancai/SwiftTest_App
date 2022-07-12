@@ -5,9 +5,15 @@
 //  Created by mathew on 2021/8/19.
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
-//测试子VC的主VC
+//测试父子VC的VC
+//MARK: - 笔记
+/**
+    1、VC与VC的view是独立的，只不过VC是View的下一个响应者，VC的销毁不影响VC的View单独存在。VC的View可以自定义替换，只有在加载或者使用View的时候才会去调用View。
+    2、VC会通过touchesBegan方法，将事件传递给子VC。而不是子VC传递给父VC。
+    3、无论是导航VC的push方式，还是modal VC 的present方式，只要两个vc建立了父子关系，那么子VC调用pop方法或者dismiss方法之后，UIKit都会沿着父子链去寻找父VC是不是导航VC或者presenting VC，
+       然后执行pop方法或者dismiss方法，也就是方法的调用会沿着父子去寻找目标执行。
+ */
 
-import UIKit
 
 class TestSubVC_MainVC: UIViewController {
     
@@ -22,7 +28,7 @@ class TestSubVC_MainVC: UIViewController {
         super.viewDidLoad()
         print(" TestSubVC_MainVC 的 viewDidLoad方法")
         self.view.backgroundColor = .white
-        self.title = "测试子VC的主VC"
+        self.title = "测试父子VC的VC"
         
         setNavigationBarUI()
         setCollectionViewUI()
@@ -44,6 +50,7 @@ extension TestSubVC_MainVC: UICollectionViewDataSource {
         print("点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
+            //TODO: 0、
             print("     (@@ 添加subVC1，只添加子view")
             let subVC1 = TestSubVC_SubVC()
             subVC1.view = SubVC1_View()
@@ -60,6 +67,7 @@ extension TestSubVC_MainVC: UICollectionViewDataSource {
             }
             break
         case 1:
+            //TODO: 1、
             print("     (@@ 添加subVC2,添加到VC的chlid中")
             let subVC2 = TestSubVC_SubVC2()
             subVC2.view.backgroundColor = .blue
@@ -72,7 +80,7 @@ extension TestSubVC_MainVC: UICollectionViewDataSource {
                 make.left.equalToSuperview().offset(100)
             }
         case 2:
-            //TODO: 测试VC重写初始化方法
+            //TODO: 2、测试VC重写初始化方法
             print("     (@@ 测试VC重写初始化方法")
             let subVC3 = TestSubVC_SubVC3()
             subVC3.view.backgroundColor = .brown
@@ -192,9 +200,3 @@ extension TestSubVC_MainVC: UICollectionViewDelegate {
     }
 }
 
-//MARK: - 笔记
-/**
-    1、VC与VC的view是独立的，只不过VC是View的下一个响应者，VC的销毁不影响VC的View单独存在。VC的View可以自定义替换，只有在加载或者使用View的时候才会去调用View。
-    2、VC会通过touchesBegan方法，将事件传递给子VC。而不是子VC传递给父VC。
-    
- */

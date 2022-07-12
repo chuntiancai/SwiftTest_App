@@ -6,6 +6,15 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 // 测试UIScrollView的VC
+// MARK: - 笔记
+/**
+    1、设置scrollView的maximumZoomScale缩放因子，可以实现缩放效果。
+    2、设置scrollView的contentSize的height为0，则表示竖直方向不可以滚动，同理可得水平方向。
+       testScrollView.isPagingEnabled属性会根据contentSize和scrollView的frame进行计算，分多少页，然后滑动起来就有分页的效果。
+       如果要实现轮播图效果，则可以通过计算位移实现，肉眼是看不出来的。
+    3、如果要设置UIPageControl选中的图片效果，可以通过KVC来设置，因为源代码是有这个私有变量的。
+ */
+
 
 class TestUIScrollView_VC: UIViewController {
     
@@ -329,12 +338,4 @@ extension TestUIScrollView_VC: UICollectionViewDelegate {
 }
 
 
-// MARK: - 笔记
-/**
-    1、设置scrollView的maximumZoomScale缩放因子，可以实现缩放效果。
-    2、设置scrollView的contentSize的height为0，则表示竖直方向不可以滚动，同理可得水平方向。
-       testScrollView.isPagingEnabled属性会根据contentSize和scrollView的frame进行计算，分多少页，然后滑动起来就有分页的效果。
-       如果要实现轮播图效果，则可以通过计算位移实现，肉眼是看不出来的。
-    3、如果要设置UIPageControl选中的图片效果，可以通过KVC来设置，因为源代码是有这个私有变量的。
- */
 
