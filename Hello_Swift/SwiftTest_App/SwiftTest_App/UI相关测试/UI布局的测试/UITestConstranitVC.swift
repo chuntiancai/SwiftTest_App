@@ -6,8 +6,30 @@
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
 // 测试UI的布局约束
+//MARK: - 笔记
+/**
+    1、UIKit会先调用VC的viewDidLayoutSubviews方法，然后再调用view的layoutSubviews方法。
+ 
+    2、AutoResizing是iOS6之前的技术了，很老很老了，已经抛弃了，iOS6之后推出了AutoLayout,目前还在用这个。
+       AutoResizing只能定义父子控件之间的约束关系，AutoLayout可以定义任意控件之间的关系。
+       AutoLayout如果你不指明约束参考哪个控件，那么它默认参考最近的控件(在storyboard的布局约束中)。
+ 
+    3、UILabel使用AutoLayout，在没有AutoLayout之前label中的文字上下总是居中显示。因为label回根据文字的多少和字体来计算宽度，
+      所以在label中使用约束时，需要指明label的宽高。
+ 
+    4、纯代码写约束，以前是添加到view的方法里，现在是直接设置widthConstraint.isActive = true就可以了，会自动绑定到view里面去。但还是可以遍历view的约束数组。
+ 
+    5、viewB参考viewA的约束，那么viewA移除之后，viewB也会因为没有约束而移除，所以viewB可以设置多一些相同的约束参考，但是优先级必须不一样，否则会冲突。
+        也就是viewB再设置参考viewC的约束，但是优先级要比参考viewA的约束低，这样viewA被删除后，viewB还是可以参考viewC的约束。
+ 
+    6、实现约束的动画效果，必须是在UIView的动画方法里立即更新父view的布局约束，更新自身的没用。因为在使用约束添加动画的时候，有个原则就是动画要添加到当前视图的父视图上。
+       因为约束最终是反映在frame上，所以要在UIView的动画block里面调用父view的layoutIfNeeded()方法，这是不等下一个周期里面更新UI，也就是里面设置frame， 这和直接设置frame的效果是一样的，如果是调用setNeedsLayout()方法，则当前修改的约束还没应用到frame上，也就是frame的值还是之前的，要等到下一个UI周期才会应用到frame上， 所以在UIview的动画block里的frame值还是旧的值，所以就不会用动画效果，而是在下一个UI周期时，直接就修改了view的frame就直接渲染了，没有在动画效果。
+ 
+    7、translatesAutoresizingMaskIntoConstraints 的本意是将 frame 布局 自动转化为 约束布局，转化的结果是为这个视图自动添加所有需要的约束， 如果我们这时给视图添加自己创建的约束就一定会约束冲突。为了避免上面说的约束冲突，我们在代码创建 约束布局 的控件时 直接指定这个视图不能用frame 布局 （即translatesAutoresizingMaskIntoConstraints=NO），可以放心的去使用约束了。
 
-import UIKit
+
+ 
+ */
 
 class UITestConstranitVC: UIViewController {
     
@@ -272,27 +294,4 @@ extension UITestConstranitVC {
     }
 }
 
-//MARK: - 笔记
-/**
-    1、UIKit会先调用VC的viewDidLayoutSubviews方法，然后再调用view的layoutSubviews方法。
- 
-    2、AutoResizing是iOS6之前的技术了，很老很老了，已经抛弃了，iOS6之后推出了AutoLayout,目前还在用这个。
-       AutoResizing只能定义父子控件之间的约束关系，AutoLayout可以定义任意控件之间的关系。
-       AutoLayout如果你不指明约束参考哪个控件，那么它默认参考最近的控件(在storyboard的布局约束中)。
- 
-    3、UILabel使用AutoLayout，在没有AutoLayout之前label中的文字上下总是居中显示。因为label回根据文字的多少和字体来计算宽度，
-      所以在label中使用约束时，需要指明label的宽高。
- 
-    4、纯代码写约束，以前是添加到view的方法里，现在是直接设置widthConstraint.isActive = true就可以了，会自动绑定到view里面去。但还是可以遍历view的约束数组。
- 
-    5、viewB参考viewA的约束，那么viewA移除之后，viewB也会因为没有约束而移除，所以viewB可以设置多一些相同的约束参考，但是优先级必须不一样，否则会冲突。
-        也就是viewB再设置参考viewC的约束，但是优先级要比参考viewA的约束低，这样viewA被删除后，viewB还是可以参考viewC的约束。
- 
-    6、实现约束的动画效果，必须是在UIView的动画方法里立即更新父view的布局约束，更新自身的没用。因为在使用约束添加动画的时候，有个原则就是动画要添加到当前视图的父视图上。
-       因为约束最终是反映在frame上，所以要在UIView的动画block里面调用父view的layoutIfNeeded()方法，这是不等下一个周期里面更新UI，也就是里面设置frame， 这和直接设置frame的效果是一样的，如果是调用setNeedsLayout()方法，则当前修改的约束还没应用到frame上，也就是frame的值还是之前的，要等到下一个UI周期才会应用到frame上， 所以在UIview的动画block里的frame值还是旧的值，所以就不会用动画效果，而是在下一个UI周期时，直接就修改了view的frame就直接渲染了，没有在动画效果。
- 
-    7、translatesAutoresizingMaskIntoConstraints 的本意是将 frame 布局 自动转化为 约束布局，转化的结果是为这个视图自动添加所有需要的约束， 如果我们这时给视图添加自己创建的约束就一定会约束冲突。为了避免上面说的约束冲突，我们在代码创建 约束布局 的控件时 直接指定这个视图不能用frame 布局 （即translatesAutoresizingMaskIntoConstraints=NO），可以放心的去使用约束了。
 
-
- 
- */

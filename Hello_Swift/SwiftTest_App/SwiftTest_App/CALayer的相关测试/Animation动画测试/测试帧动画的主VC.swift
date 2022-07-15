@@ -6,8 +6,28 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 // 测试帧动画的VC
+// MARK: - 笔记
+/**
+    1、设置UIImageView的属性animationImages，即可实现帧动画，还有时长这些。
+    2、渐变动画演示(逐渐变化)
+        /// 开始动画，在设置开始到设置结束之间设置动画的一些属性。
+        /// 设置动画的属性，市场，变化位移，形变这些。
+        ///提交动画。
+ 
+    3、CGAffineTransform是一个结构体，不是一个类。 CGAffineTransform，是相对于原始的redview的fram的x，y坐标进行加减的平移。
+ 
+       而原始的redview的frame不是你设置的frame，而是UIKit根据view当前的frame和view当前的transform来计算出的的，它认为这个才是原始的frame。
+       譬如：当前frame的origin=（100，200），transform = (...,tx:50,ty:-60),那么它认为原始的frame的origin = (X:100-50,y:200+60) = (X:50,y:260),也就是它认为当前的frame是已经形变过一次的了，所以你每次都需要重置清零transform属性才能达到你想要的效果。
+ 
+       transform是作为view的一个存储属性，所以每一次transform之后，transform的痕迹都会被记录下来，而UIKit的机制就是参考上一次的transform，来决定它认为的原始的view的frame。
+ 
+       如果你要实现transform是相对于上一次形变之后的形变，那么你要用transform的translatedBy(x: , y: )方法 对view的transform属性 进行累加。
+ 
+       使用CGAffineTransform.identity属性可以对transform进行重置清零，但是这一刻只是把view重置为它认为的原始位置，并且清零tranform属性，所以你最好是先清零，后自定义view的位置。
+ 
+ 
+ */
 
-import UIKit
 
 class TestFrameAnimation_VC: UIViewController {
     
@@ -20,6 +40,7 @@ class TestFrameAnimation_VC: UIViewController {
     //MARK: 测试组件
     let imgView1 = UIImageView()
     let redView = UIView()
+    let blueView = UIView()
     let scaleView = UIView()
     
     var imgArr = [UIImage]()    //图片数组
@@ -102,32 +123,37 @@ extension TestFrameAnimation_VC: UICollectionViewDataSource {
             }
 
         case 4:
-            //TODO: 3、UIview的transform属性，形变。
+            //TODO: 4、UIview的transform属性，形变。
             print("     (@@ 测试transform形变属性。+ 100 ")
             /// 平移，是相对于原始的redview的fram的x，y坐标进行加减的平移。transform属性并不会参考transform之后的frame，只会参考非transform之前的frame
             redView.transform = CGAffineTransform(translationX: 100, y: 100)
             print("     (@@ redview的frame是：\(redView.frame)")
             print("     (@@ redview的transform是：\(redView.transform)")
         case 5:
+            //TODO: 5、transform形变 -50
             print("     (@@ transform形变 -50")
             redView.transform = CGAffineTransform(translationX: -50, y: -50)
             print("     (@@ redview的frame是：\(redView.frame)")
             print("     (@@ redview的transform是：\(redView.transform)")
         case 6:
+            //TODO: 6、手动设置redView的frame
             redView.frame = CGRect.init(x: 100.0, y: 400.0, width: 40.0, height: 20.0)
-            print("     (@@ 手动设置redView的frame：CGRect(x: 100.0, y: 400.0, width: 40.0, height: 20.0)")
+            print("     (@@ 6、手动设置redView的frame：CGRect(x: 100.0, y: 400.0, width: 40.0, height: 20.0)")
             print("     (@@ redview的transform是：\(redView.transform)")
             
         case 7:
+            //TODO: 7、对transform进行累加
             print("     (@@ 对transform进行累加")
             redView.transform = redView.transform.translatedBy(x: 10, y: -20)
 //            redView.transform = redView.transform.rotated(by: 0.5) //这个是弧度
         case 8:
+            //TODO: 8、对redview的transform进行重置
             print("     (@@ 对redview的transform进行重置")
             redView.transform = .identity
             print("     (@@ redview的frame是：\(redView.frame)")
             print("     (@@ redview的transform是：\(redView.transform)")
         case 9:
+            //TODO: 9、
             print("     (@@ redview的frame是：\(redView.frame)")
             print("     (@@ redview的transform是：\(redView.transform)")
             
@@ -185,6 +211,14 @@ extension TestFrameAnimation_VC{
             make.centerX.equalToSuperview()
             make.height.equalTo(20)
             make.width.equalTo(40)
+        }
+        
+        blueView.backgroundColor = .blue
+        self.view.addSubview(blueView)
+        blueView.snp.makeConstraints { make in
+            make.top.equalTo(redView.snp.top)
+            make.left.equalTo(redView.snp_right).offset(5)
+            make.height.width.equalTo(30)
         }
         
         scaleView.layer.borderWidth = 1.0
@@ -274,25 +308,5 @@ extension TestFrameAnimation_VC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 笔记
-/**
-    1、设置UIImageView的属性animationImages，即可实现帧动画，还有时长这些。
-    2、渐变动画演示(逐渐变化)
-        /// 开始动画，在设置开始到设置结束之间设置动画的一些属性。
-        /// 设置动画的属性，市场，变化位移，形变这些。
-        ///提交动画。
- 
-    3、CGAffineTransform是一个结构体，不是一个类。 CGAffineTransform，是相对于原始的redview的fram的x，y坐标进行加减的平移。
- 
-       而原始的redview的frame不是你设置的frame，而是UIKit根据view当前的frame和view当前的transform来计算出的的，它认为这个才是原始的frame。
-       譬如：当前frame的origin=（100，200），transform = (...,tx:50,ty:-60),那么它认为原始的frame的origin = (X:100-50,y:200+60) = (X:50,y:260),也就是它认为当前的frame是已经形变过一次的了，所以你每次都需要重置清零transform属性才能达到你想要的效果。
- 
-       transform是作为view的一个存储属性，所以每一次transform之后，transform的痕迹都会被记录下来，而UIKit的机制就是参考上一次的transform，来决定它认为的原始的view的frame。
- 
-       如果你要实现transform是相对于上一次形变之后的形变，那么你要用transform的translatedBy(x: , y: )方法 对view的transform属性 进行累加。
- 
-       使用CGAffineTransform.identity属性可以对transform进行重置清零，但是这一刻只是把view重置为它认为的原始位置，并且清零tranform属性，所以你最好是先清零，后自定义view的位置。
- 
- 
- */
+
 

@@ -133,6 +133,7 @@ extension TestUIScrollView_VC: UICollectionViewDataSource {
             print("     (@@ 测试自定义的滑动按钮scrollView")
             hideOtherView(curView: btnScroView)
             btnScroView.btnTitleArr = ["按钮标题","按钮标题题","按钮标题题题","按钮标题题题题","按钮标题题题题题","按钮标题","按钮标题","按钮标题题题题题题"]
+            btnScroView.seletedBtnBgImage = MyImageTool.getColorImg(alpha: 0.8, .green)
             
         case 4:
             //TODO: 4、测试增加按钮的标题

@@ -7,6 +7,8 @@
 //
 // 含有多个按钮的ScrollView，横向滑动按钮
 
+import CoreGraphics
+
 
 class MultiBtns_ScrollView: UIView{
     
@@ -29,6 +31,7 @@ class MultiBtns_ScrollView: UIView{
                 btn.tag = 1000 + index
                 btn.layer.borderWidth = 1.0
                 btn.layer.borderColor = UIColor.brown.cgColor
+                btn.layer.masksToBounds = true
                 
                 ///设置按钮标题
                 btn.setTitle(btnTitle, for: .normal)
@@ -38,32 +41,41 @@ class MultiBtns_ScrollView: UIView{
                 btn.backgroundColor = .white
                 if index == curBtnIndex {   ///初始化选中按钮
                     btn.isSelected = true
+                    btn.transform = CGAffineTransform(scaleX: 1.15, y: 1.15)  /// 缩放选中的按钮
                 }
                 
                 ///按钮的动作方法
                 btn.addTarget(self, action: #selector(clickBtnAction(_:)), for: .touchUpInside)
                 
-                //计算scrollView的contentsize
-                let btnSize = btn.sizeThatFits(CGSize.init(width: 88, height: 34))
-                /// 设置按钮的圆角
-                btn.layer.cornerRadius = (btnSize.height + outEdgeInset.top + outEdgeInset.bottom) / 2
-                contentSize.width += (btnSize.width + outEdgeInset.left + outEdgeInset.right)
+                
+                let btnFitSize = btn.sizeThatFits(CGSize.init(width: 88, height: 34))
+                /// 计算按钮的占用的size
+                let btnPlaceSize = CGSize(width: btnFitSize.width + titleEdgeInset.left + titleEdgeInset.right + btnInterSpacing / 2,
+                                     height: btnFitSize.height + titleEdgeInset.top + titleEdgeInset.bottom)
+                /// 计算按钮实际的size
+                let btnSize = CGSize(width: btnPlaceSize.width - btnInterSpacing / 2,
+                                     height: btnFitSize.height + titleEdgeInset.top + titleEdgeInset.bottom)
+                btn.layer.cornerRadius = btnSize.height / 2  /// 设置按钮的圆角
+
+                ///计算scrollView的contentsize
+                contentSize.width += btnPlaceSize.width
                 self.baseScrollView.contentSize = contentSize
+                
                 
                 /// 添加btn
                 self.baseScrollView.addSubview(btn)
                 btn.snp.makeConstraints { make in
-                    make.centerX.equalTo(contentSize.width - btnSize.width / 2 - (outEdgeInset.left + outEdgeInset.right) / 2)
+                    make.centerX.equalTo(contentSize.width - btnPlaceSize.width / 2)
                     make.centerY.equalToSuperview()
-                    make.height.equalTo(btnSize.height + outEdgeInset.top + outEdgeInset.bottom)
-                    make.width.equalTo(btnSize.width + outEdgeInset.left + outEdgeInset.right)
+                    make.height.equalTo(btnSize.height)
+                    make.width.equalTo(btnSize.width)
                 }
                 
                 /// 设置选中的背景图片
                 btn.setBackgroundImage(normalBtnBgImage, for: .normal)
                 btn.setBackgroundImage(seletedBtnBgImage, for: .selected)
                 
-                print("按钮的最合适尺寸：\(btnSize)")
+                print("按钮的最合适尺寸：\(btnFitSize)")
                 btnArr.append(btn)
             }
             self.baseScrollView.contentSize.width += 10
@@ -82,28 +94,47 @@ class MultiBtns_ScrollView: UIView{
             
             let curBtn = btnArr[curBtnIndex]
             curBtn.isSelected = true
-//            curBtn.backgroundColor = .cyan
+            self.baseScrollView.bringSubviewToFront(curBtn)
+            curBtn.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)   /// 缩放选中的按钮
+            
             if curBtnIndex != oldValue {
                 btnArr[oldValue].isSelected = false   //前一个按钮
+                btnArr[oldValue].transform = .identity  //还原缩放
             }
             
             //设置点中按钮后，按钮滑动到中间，然后最前面和最后面的按钮点了也不用滑动
-            let curMidX = curBtn.frame.midX
+            let curMidX = curBtn.center.x
             let boundWidth = baseScrollView.bounds.width
+            let offsetX = curMidX - boundWidth / 2  ///计算设置 当前按钮居中 时，x的偏移值应该是多少。
             
             UIView.animate(withDuration: 0.5) {
-                /// 如果按钮中点不超过视图中点，不滑动
-                if curMidX <= boundWidth/2 {
+                
+                /// 如果偏移移过了原点，恢复到零点，因为最首的几个button不需要偏移
+                if offsetX <= 0 {
                     self.baseScrollView.contentOffset = .zero
-                    
-                }else if curMidX > boundWidth / 2 && curMidX < (self.baseScrollView.contentSize.width - boundWidth / 2) {
-                    ///如果按钮的中点位移超过视图中点，则滑动按钮到视图中点
-                    self.baseScrollView.contentOffset = CGPoint.init(x: curMidX - boundWidth / 2 , y: 0)//滑动到矩形中间
-                    
-                }else if curMidX >= (self.baseScrollView.contentSize.width - boundWidth / 2) {
-                    ///如果按钮靠近最后，直接滑动动到最后
-                    self.baseScrollView.contentOffset = CGPoint.init(x: self.baseScrollView.contentSize.width - boundWidth , y: 0)
+                    return
                 }
+                /// 如果偏移到了最后几个button的位置，则不需要偏移
+                if offsetX >= self.baseScrollView.contentSize.width - boundWidth {
+                    self.baseScrollView.contentOffset = CGPoint.init(x: self.baseScrollView.contentSize.width - boundWidth , y: 0)
+                    return
+                }
+                self.baseScrollView.contentOffset = CGPoint.init(x: offsetX, y: 0)//滑动到矩形中间
+                /**
+                 /// 如果按钮中点不超过视图中点，不滑动
+                 if curMidX <= boundWidth/2 {
+                     self.baseScrollView.contentOffset = .zero
+                     
+                 }else if curMidX > boundWidth / 2 && curMidX < (self.baseScrollView.contentSize.width - boundWidth / 2) {
+                     ///如果按钮的中点位移超过视图中点，则滑动按钮到视图中点
+                     self.baseScrollView.contentOffset = CGPoint.init(x: curMidX - boundWidth / 2 , y: 0)//滑动到矩形中间
+                     
+                 }else if curMidX >= (self.baseScrollView.contentSize.width - boundWidth / 2) {
+                     ///如果按钮靠近最后，直接滑动动到最后
+                     self.baseScrollView.contentOffset = CGPoint.init(x: self.baseScrollView.contentSize.width - boundWidth , y: 0)
+                 }
+                 */
+                
             }
             
         }
@@ -129,7 +160,8 @@ class MultiBtns_ScrollView: UIView{
     }
     
     ///按钮标题的外边距，其实是设置sizeThatFits之后外加的边距
-    var outEdgeInset:UIEdgeInsets = UIEdgeInsets.init(top: 10, left: 20, bottom: 10, right: 20)
+    var titleEdgeInset:UIEdgeInsets = UIEdgeInsets.init(top: 5, left: 10, bottom: 5, right: 10)   /// 标题距离 按钮边缘 的内边距
+    var btnInterSpacing:CGFloat = 20  /// 按钮之间的间距
     var btnTitleFont:UIFont = .systemFont(ofSize: 14)
     
     //MARK: UI组件

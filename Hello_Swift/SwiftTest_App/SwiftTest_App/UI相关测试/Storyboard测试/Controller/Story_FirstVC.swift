@@ -5,7 +5,13 @@
 //  Created by mathew on 2022/2/8.
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
-
+//MARK: - 笔记
+/**
+    1、连线的话，要先绑定VC才可以连线，要么就是按住ctrl键，要么就是按住command键，要么就是不用按键。
+    2、我也不知道为什么连线绑定按钮，和动作方法不管用，不知道是不是使用了第二window的问题。
+        ：我也不知道是什么问题，之前是没有调用viewDidLoad方法，现在又好了，可能是xcode傻不拉几的原因。
+ 
+ */
 
 class Story_FirstVC: UIViewController {
     
@@ -46,10 +52,4 @@ class Story_FirstVC: UIViewController {
     }
 }
 
-//MARK: - 笔记
-/**
-    1、连线的话，要先绑定VC才可以连线，要么就是按住ctrl键，要么就是按住command键，要么就是不用按键。
-    2、我也不知道为什么连线绑定按钮，和动作方法不管用，不知道是不是使用了第二window的问题。
-        ：我也不知道是什么问题，之前是没有调用viewDidLoad方法，现在又好了，可能是xcode傻不拉几的原因。
- 
- */
+

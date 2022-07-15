@@ -6,6 +6,38 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 //测试CALayer的VC
+// MARK: - 笔记
+/**
+    背景知识：1、CALayer是在QuartzCore框架中，CGImage、CGColor是在CoreGraphics框架中，UIImage、UIColor是在UIKit框架中。
+               QuartzCore和CoreGraphics框架是MAC OS和iOS两个平台通用的，而UIKit是只能iOS平台使用。
+               为了保证可移植性，QuartzCore不能使用UIKit框架里的东西。但是UIKit可以使用QuartzCore框架里面的东西。
+               UIView比CALayer多了事件处理的功能，UIView内部其实就是封装了CALayer。但是涉及到动画这些，直接用CALayer，性能更高，更灵活。
+    
+    1、在创建UIView对象时，UIView内部会先创建一个Layer，Layer也就是图层，当UIView需要被显示到屏幕上时，会调用UIView的draw方法，并将内容绘制到Layer上，绘图完毕之后， 系统会将图层的拷贝到屏幕上，于是就完成了UIView的显示。
+      也就是UIView并不具有显示显示的功能，是它内部的图层才有显示功能。
+ 
+    2、边框的宽度，是向内扩张的，也就是不会大于view的frame。
+ 
+    3、UIImageView的一些Layer属性对UIImageView里面的图片不起作用的原因是，UIImageView的图片并不是直接添加到UIImageView的Layer上，而是把图片存放在Layer的contents属性上。
+ 
+    5、UIView内部还有一层mask层，初始化的大小是和根层Layer的大小一样的。当根层Layer的大小发生变化时，mask层的大小是跟随根层Layer变化的，所以这也是Layer的masksToBounds属性的原理。就是超过mask层的内容都被裁掉。
+        mask层的 alpha通道 用作 遮罩效果，也就是mask层的不透明部分是可见部分，但是mask层默认是不显示的，是用于过滤当前layer的背景与内容的辅助作用。 作为mask的layer是不支持自身有mask的， 也就是不支持mask的mask这种关系。
+    
+    6、通过NSValue类，可以把结构体转换为对象。
+ 
+    7、每一个UIView内部都默认关联一个CALayer，这个Layer我们称之为root Layer。其余我们手动添加上的Layer就叫做非root layer，所有我们手动添加到UIview的非root layer，当我们对它的某一些属性进行修改时，都会产生动画效果，而这种动画效果也就叫做隐式动画，这些属性也叫做可动画属性(Animatable Properties)。
+    例如：bounds\backgroundColor\position等属性。你可以看一下api的注释，上面会说Animatable。
+        可以通过CATransaction事务的方式关闭默认的隐式动画效果。
+        只有非root layer才有隐式动画效果，相对于显式动画而言。
+        如果在UIView中，要让这些属性产生动画效果，就需要用到动画事务来提交对这些属性的修改，这是显式动画了。
+ 
+    8、所有的旋转、缩放，都是围绕着Layer的锚点进行的。
+ 
+    9、CALayer还有字典的功能，例如Layer没有一个myName属性;'myName'属性是我setValue附加给layer的，但是现在，我可以通过获取各自的“myName”键的值。
+ 
+    10、layer的transform改变了view的frame，但是并没有改变view的center。
+    
+ */
 
 class TestCALayer_VC: UIViewController {
     
@@ -262,36 +294,4 @@ extension TestCALayer_VC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 笔记
-/**
-    背景知识：1、CALayer是在QuartzCore框架中，CGImage、CGColor是在CoreGraphics框架中，UIImage、UIColor是在UIKit框架中。
-               QuartzCore和CoreGraphics框架是MAC OS和iOS两个平台通用的，而UIKit是只能iOS平台使用。
-               为了保证可移植性，QuartzCore不能使用UIKit框架里的东西。但是UIKit可以使用QuartzCore框架里面的东西。
-               UIView比CALayer多了事件处理的功能，UIView内部其实就是封装了CALayer。但是涉及到动画这些，直接用CALayer，性能更高，更灵活。
-    
-    1、在创建UIView对象时，UIView内部会先创建一个Layer，Layer也就是图层，当UIView需要被显示到屏幕上时，会调用UIView的draw方法，并将内容绘制到Layer上，绘图完毕之后， 系统会将图层的拷贝到屏幕上，于是就完成了UIView的显示。
-      也就是UIView并不具有显示显示的功能，是它内部的图层才有显示功能。
- 
-    2、边框的宽度，是向内扩张的，也就是不会大于view的frame。
- 
-    3、UIImageView的一些Layer属性对UIImageView里面的图片不起作用的原因是，UIImageView的图片并不是直接添加到UIImageView的Layer上，而是把图片存放在Layer的contents属性上。
- 
-    5、UIView内部还有一层mask层，初始化的大小是和根层Layer的大小一样的。当根层Layer的大小发生变化时，mask层的大小是跟随根层Layer变化的，所以这也是Layer的masksToBounds属性的原理。就是超过mask层的内容都被裁掉。
-        mask层的 alpha通道 用作 遮罩效果，也就是mask层的不透明部分是可见部分，但是mask层默认是不显示的，是用于过滤当前layer的背景与内容的辅助作用。 作为mask的layer是不支持自身有mask的， 也就是不支持mask的mask这种关系。
-    
-    6、通过NSValue类，可以把结构体转换为对象。
- 
-    7、每一个UIView内部都默认关联一个CALayer，这个Layer我们称之为root Layer。其余我们手动添加上的Layer就叫做非root layer，所有我们手动添加到UIview的非root layer，当我们对它的某一些属性进行修改时，都会产生动画效果，而这种动画效果也就叫做隐式动画，这些属性也叫做可动画属性(Animatable Properties)。
-    例如：bounds\backgroundColor\position等属性。你可以看一下api的注释，上面会说Animatable。
-        可以通过CATransaction事务的方式关闭默认的隐式动画效果。
-        只有非root layer才有隐式动画效果，相对于显式动画而言。
-        如果在UIView中，要让这些属性产生动画效果，就需要用到动画事务来提交对这些属性的修改，这是显式动画了。
- 
-    8、所有的旋转、缩放，都是围绕着Layer的锚点进行的。
- 
-    9、CALayer还有字典的功能，例如Layer没有一个myName属性;'myName'属性是我setValue附加给layer的，但是现在，我可以通过获取各自的“myName”键的值。
- 
-    10、layer的transform改变了view的frame，但是并没有改变view的center。
-    
- */
 

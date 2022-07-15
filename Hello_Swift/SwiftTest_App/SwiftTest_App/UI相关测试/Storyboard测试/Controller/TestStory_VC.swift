@@ -6,8 +6,26 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 // 测试storyboard的主VC
+//MARK: - 笔记
+/**
+    1、 //通过代码加载storyboard，UIStoryboard初始化参数的name是storyboard再在工程目录中的名字，而不是在storyboard文件中的名字。
+       //storyboard文件中的名字就是Storyboard ID，这个表示这个Storyboard本身，也是Storyboard绑定的VC的ID，通过这个来初始化Storyboard的VC
+            let storyBoard = UIStoryboard.init(name: "mainStoryTest", bundle: nil)
+            let mainStoryVC = storyBoard.instantiateViewController(withIdentifier: "TestStory_VC_ID")
+ 
+    2、@IBAction的是方法，跟storyboard中的control控件进行连线，绑定事件的方法。不可以跟View控件连线。
+       @IBOutlet的是属性，跟storyboard中的控件进行连线。
+ 
+    3、毛玻璃效果，UIToolbar这个控件本来就有毛玻璃效果，它本来是用来作为底部工具栏的控价，自带毛玻璃效果，所以我们可以直接拿来用。
 
-import UIKit
+    4、UIimageView的frame可以通过image的size来设置。这样就可以保持图片原来的大小了。
+ 
+    5、在storyboard页面，点击视图上面的VC图标，然后在右侧边栏 按住cmd+opt+鼠标点击 那个箭头，就可以跳转到vc代码页面，且分页显示。
+ 
+    6、 UIScrollView做自动布局: 首先确定scrollView滚动范围 => 如何在stroboard对scrollView确定滚动范围 => 搞一个专门view去确定scrollView的滚动范围 => 如何确定:水平 和 垂直方向 => scrollView水平能否滚动: view的宽度 + 左右两边间距 才能确定scrollView水平滚动区域 => 垂直 = view的高度 + 上下两边间距。
+        然后就是在这个专门的view里面添加自己的UI就可以了。
+ */
+
 
 class TestStory_VC: UIViewController {
     
@@ -76,19 +94,3 @@ class TestStory_VC: UIViewController {
     
 }
 
-//MARK: - 笔记
-/**
-    1、 //通过代码加载storyboard，UIStoryboard初始化参数的name是storyboard再在工程目录中的名字，而不是在storyboard文件中的名字。
-       //storyboard文件中的名字就是Storyboard ID，这个表示这个Storyboard本身，也是Storyboard绑定的VC的ID，通过这个来初始化Storyboard的VC
-            let storyBoard = UIStoryboard.init(name: "mainStoryTest", bundle: nil)
-            let mainStoryVC = storyBoard.instantiateViewController(withIdentifier: "TestStory_VC_ID")
- 
-    2、@IBAction的是方法，跟storyboard中的control控件进行连线，绑定事件的方法。不可以跟View控件连线。
-       @IBOutlet的是属性，跟storyboard中的控件进行连线。
- 
-    3、毛玻璃效果，UIToolbar这个控件本来就有毛玻璃效果，它本来是用来作为底部工具栏的控价，自带毛玻璃效果，所以我们可以直接拿来用。
-
-    4、UIimageView的frame可以通过image的size来设置。这样就可以保持图片原来的大小了。
- 
-    5、在storyboard页面，按住cmd+opt+鼠标点击，就可以跳转到vc代码页面，且分页显示。
- */

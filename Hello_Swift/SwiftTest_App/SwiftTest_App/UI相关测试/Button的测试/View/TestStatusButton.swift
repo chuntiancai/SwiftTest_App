@@ -6,6 +6,10 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 // 测试按钮的状态的按钮View
+// MARK: - 笔记
+/**
+ 
+ */
 
 class TestStatusButton: UIButton {
     //MARK: - 对外属性
@@ -66,8 +70,5 @@ extension TestStatusButton{
     
 }
 
-// MARK: - 笔记
-/**
- 
- */
+
 

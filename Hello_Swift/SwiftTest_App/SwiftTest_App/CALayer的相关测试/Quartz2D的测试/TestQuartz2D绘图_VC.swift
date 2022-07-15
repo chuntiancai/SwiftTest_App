@@ -6,6 +6,31 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 //测试Quartz2D绘图技术的VC
+// MARK: - 笔记
+/**
+    1、Quartz2D属于iOS的Core Graphics框架，iOS中大部分控件的内容都是通过Quartz2D画出来的，Quartz2D很重要的一个价值是：自定义view（自定义UI控件）。
+    2、CGContext类是图形上下文，它的作用是，保存绘图信息、绘图状态、决定输出目标等等，就是一个绘制图形的环境类。(语境)
+       相同的一套绘图序列，指定不同的Graphics Context，就可将相同的图像绘制到不同的目标上。（也就是一套上下文只对应一幅绘图？：是的）
+       CGContext可以设置为几种语境，所以绘制不同的图时，要关闭当前语境，开新的语境，也就是不能直接切换。
+       Quartz2D提供了以下几种类型的Graphics Context：
+            Bitmap Graphics Context
+            PDF Graphics Context
+            Window Graphics Context
+            Layer Graphics Context
+            Printer Graphics Context
+    3、利用Quartz2D技术绘制图形到view上，也只能绘制到view上。
+        绘制view的步骤：
+            新建一个类，继承自UIView。
+            实现- (void)drawRect:(CGRect)rect方法，然后在这个方法中取得跟当前view相关联的图形上下文(CGContext)。
+            在CGContext的语境下，利用贝塞尔曲线等技术类 来绘制相应的图形内容。
+            利用CGContext 将绘制的所有内容渲染显示到view上面。
+ 
+    4、每开启一次上下文，都记得必须关闭一次上下文。draw方法里不用是因为默认帮你关闭了.
+ 
+    5、View生成图片，必须用view的layer的渲染方式绘制进上下文当中，不能用layer的draw方式，我也不知道为什么。
+
+ 
+ */
 
 class TestQuartz2D_VC: UIViewController {
     
@@ -436,29 +461,5 @@ extension TestQuartz2D_VC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 笔记
-/**
-    1、Quartz2D属于iOS的Core Graphics框架，iOS中大部分控件的内容都是通过Quartz2D画出来的，Quartz2D很重要的一个价值是：自定义view（自定义UI控件）。
-    2、CGContext类是图形上下文，它的作用是，保存绘图信息、绘图状态、决定输出目标等等，就是一个绘制图形的环境类。(语境)
-       相同的一套绘图序列，指定不同的Graphics Context，就可将相同的图像绘制到不同的目标上。（也就是一套上下文只对应一幅绘图？：是的）
-       CGContext可以设置为几种语境，所以绘制不同的图时，要关闭当前语境，开新的语境，也就是不能直接切换。
-       Quartz2D提供了以下几种类型的Graphics Context：
-            Bitmap Graphics Context
-            PDF Graphics Context
-            Window Graphics Context
-            Layer Graphics Context
-            Printer Graphics Context
-    3、利用Quartz2D技术绘制图形到view上，也只能绘制到view上。
-        绘制view的步骤：
-            新建一个类，继承自UIView。
-            实现- (void)drawRect:(CGRect)rect方法，然后在这个方法中取得跟当前view相关联的图形上下文(CGContext)。
-            在CGContext的语境下，利用贝塞尔曲线等技术类 来绘制相应的图形内容。
-            利用CGContext 将绘制的所有内容渲染显示到view上面。
- 
-    4、每开启一次上下文，都记得必须关闭一次上下文。draw方法里不用是因为默认帮你关闭了.
- 
-    5、View生成图片，必须用view的layer的渲染方式绘制进上下文当中，不能用layer的draw方式，我也不知道为什么。
 
- 
- */
 

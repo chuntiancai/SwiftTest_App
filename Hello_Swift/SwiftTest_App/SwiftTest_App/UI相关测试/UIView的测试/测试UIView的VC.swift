@@ -74,8 +74,6 @@ extension TestUIView_VC: UICollectionViewDataSource {
                 
                 3、内边距只有当View已经添加到视图层的时候才是准确有效的，如果还没添加到视图层，则是不准确的。所以可以再view将要appear的时候再调整safeAreaInsets。VC的内边距是痛过additionalSafeAreaInsets属性来调整的，从而影响到VC的view的safeAreaInsets。
                 
-                
-                
              */
             print("     (@@ 测试UIView的安全内边距")
             let layoutGuide = self.view.safeAreaLayoutGuide

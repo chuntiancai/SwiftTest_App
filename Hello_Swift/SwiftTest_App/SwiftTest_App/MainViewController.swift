@@ -37,9 +37,9 @@ extension MainViewController: UICollectionViewDataSource {
         print("MainViewController点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            pushNext(viewController: TestSubVC_MainVC())
+            pushNext(viewController: TestUIButton_MainVC())
         case 1:
-            pushNext(viewController: TestPointee_VC())
+            pushNext(viewController: TestUIScrollView_VC())
         case 2:
             self.navigationItem.backBarButtonItem = nil
             let storyBoard = UIStoryboard.init(name: "FSCalendarTest", bundle: nil)
@@ -51,7 +51,7 @@ extension MainViewController: UICollectionViewDataSource {
             pushNext(viewController: TestSnapkit_VC())
         case 4:
             //TODO: 4、UI相关测试
-            pushNext(viewController: UIButtonTest_MainVC())
+            pushNext(viewController: TestUIButton_MainVC())
         case 5:
             //TODO: 5、多线程测试
             pushNext(viewController: TestNSOperation_VC())

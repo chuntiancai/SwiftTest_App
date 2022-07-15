@@ -5,10 +5,12 @@
 //  Created by mathew on 2021/11/15.
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
-
 //测试UILabel的VC
-
-import UIKit
+//MARK: - 笔记
+/**
+    1、调用sizeToFit()方法，只针对特定的View起作用，例如label一开始你没有设置frame，然后你就添加到view上去了，然后你这时候调用label的sizeToFit()方法， 就可以计算出这个label的位置和尺寸了，这个方法只是为没有设置frame的view计算最适合的尺寸，然后放到位置上，没什么卵用。
+    2、
+ */
 
 class TestUILabel_VC: UIViewController {
     
@@ -106,6 +108,7 @@ extension TestUILabel_VC: UICollectionViewDataSource {
             print("     (@@")
             adaptLabel.sizeToFit()
         case 7:
+            //TODO: 7、
             print("     (@@")
         case 8:
             print("     (@@")
@@ -248,8 +251,3 @@ extension TestUILabel_VC: UICollectionViewDelegate {
     }
 }
 
-//MARK: - 笔记
-/**
-    1、调用sizeToFit()方法，只针对特定的View起作用，例如label一开始你没有设置frame，然后你就添加到view上去了，然后你这时候调用label的sizeToFit()方法， 就可以计算出这个label的位置和尺寸了，这个方法只是为没有设置frame的view计算最适合的尺寸，然后放到位置上，没什么卵用。
-    2、
- */

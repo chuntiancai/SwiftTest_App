@@ -6,8 +6,46 @@
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
 // 测试VC的导航栏对view布局的影响,测试edgesForExtendedLayout属性、automaticallyAdjustsScrollViewInsets属性
+// MARK: - 笔记
+/**
+    1、edgesForExtendedLayout设置了vc的view的布局开始参考点，但是要结合安全区域的内边距来判断、要结合self.navigationController?.navigationBar.isTranslucent的透明度来判断，如果导航栏透明度是透明，则按照edgesForExtendedLayout有效，否则edgesForExtendedLayout无效，还是按照从导航栏下方开始布局。
+ 
+    2、UIBarItem : NSObject
+        UIBarItem 类是一个可以放置在 Bar 之上的所有小控件类的抽象类。
+      
+      UIBarButtonItem : UIBarItem
+        类似 UIButton 。放在 UINavigationBar 或者 UIToolbar 上。
+        重点属性: customView
+      
+      UINavigationItem : NSObject
+        包含了当前页面导航栏上需要显示的全部信息
+        title、prompt、titleView、leftBarButtonItem、rightBarButtonItem、backBarButonItem
+        UIViewController 有一个 navigationItem 属性，通过这个属性可以来设置导航栏上的布局。
+ 
+      UINavigationBar : UIView
+        管理一个存放 UINavigationItem 的栈
+ 
+    小结:
+        设置导航栏上按钮的布局，使用 UIViewController 的 navigationItem 属性来设置其二级 leftBarButtonItem 、 rightBarButtonItem、backBarButonItem、leftBarButtonItems、rightBarButtonItems
+        设置导航栏的背景色就设置 self.navigationController.navigationBar
+    注意:
+        backBarButtonItem 就是我们平时使用的返回箭头后面的按钮，我们通常会设置其 title 为 nil ，这个按钮自带返回事件。如果我们设置了 leftBarButtonItem 或者 leftBarButtonItems ，backBarButonItem 将会失效。
+    
+    3、如果要隐藏导航栏，可以self.navigationController?.navigationBar.isHidden = true，但是在disappear方法，记得设置为false， 因为这个影响的是整个navigationController。你也可以在自己定义的返回上一层方法中设置回false。
+ 
+    4、导航栏的内容由栈顶控制器来决定，栈里面的vc和导航栏是同一层次的视图，由navigationVC来管理，都隶属于navigationVC。只是sdk中，vc提供了接口来操作导航栏的内容。
+       所以vc的接口是间接操作了navigationVC的导航栏。
+ 
+    5、self.navigationController?.navigationBar用于设置全局的bar，self.navigationItem用于设置当前页面的bar。
+ 
+    6、要设置导航栏透明，则需要同时设置navigationBar.isTranslucent = true，并且赋值给导航栏背景图片一个空图片navigationBar.setBackgroundImage(UIImage(), for: .default)。当背景图片设置为nil时，系统会为你自动生成一张白色的半透明图片作为背景图片。
+      导航栏的标题控件设置透明度无效，但是可以通过设置label的textcolor来实现透明效果。
 
-import UIKit
+    7、如果设置了导航栏的leftBarButtonItems返回按钮，则会没有滑动返回的手势，所以你需要设置self.navigationController?.interactivePopGestureRecognizer.delegate = nil，把手势的代理给去掉，但是这时候有一个问题，就是第一个进入的导航栈的VC不能出栈，但是你已经把手势代理去掉了，所以还是存在这个手势，所以你要在根VC的时候还原interactivePopGestureRecognizer.delegate代理为导航栏VC原来的代理。
+ 
+    8、iOS 13 之后，要用navigationBar.standardAppearance、scrollEdgeAppearance属性, scrollEdgeAppearance用于导航栏下方是scrollview时的情况，默认会根据偏移做调整。
+ 
+ */
 
 class TestNavibarUI_VC: UIViewController {
     
@@ -73,7 +111,7 @@ extension TestNavibarUI_VC: UICollectionViewDataSource {
              
                    extendedLayoutIncludesOpaqueBars属性：决定了在isTranslucent为true的情况下，edgesForExtendedLayout是否有效。
                               意思是延伸vc的View的布局时包含不包含不透明的Bar,是用来指示vc的View布局的延伸包不包括导航栏。
-                              而当我们设置一张不透明的图片作为导航栏背景时,该属性就会变成false,然后就从导航栏下方开始布局。
+                              而当我们设置一张不透明的图片作为导航栏背景时,该属性就会自动变成false,然后就从导航栏下方开始布局。
                               所以这也是一个标识器的作用，并没有实际改变UI布局。
              
                    edgesForExtendedLayout属性：默认是.all,也就是vc的view延伸到屏幕四边布局，top是屏幕顶部，bottom是屏幕底部，all是到屏幕所有。
@@ -147,6 +185,7 @@ extension TestNavibarUI_VC: UICollectionViewDataSource {
                 appearence.shadowColor = nil
 
                 navigationController?.navigationBar.standardAppearance = appearence
+                navigationController?.navigationBar.scrollEdgeAppearance = appearence
                 
                 self.navigationController?.navigationBar.setBackgroundImage(getColorImg(alpha: 0.9,UIColor.black), for: .default)
                 
@@ -470,40 +509,4 @@ extension TestNavibarUI_VC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 笔记
-/**
-    1、edgesForExtendedLayout设置了vc的view的布局开始参考点，但是要结合安全区域的内边距来判断、要结合self.navigationController?.navigationBar.isTranslucent的透明度来判断，如果导航栏透明度是透明，则按照edgesForExtendedLayout有效，否则edgesForExtendedLayout无效，还是按照从导航栏下方开始布局。
- 
-    2、UIBarItem : NSObject
-        UIBarItem 类是一个可以放置在 Bar 之上的所有小控件类的抽象类。
-      
-      UIBarButtonItem : UIBarItem
-        类似 UIButton 。放在 UINavigationBar 或者 UIToolbar 上。
-        重点属性: customView
-      
-      UINavigationItem : NSObject
-        包含了当前页面导航栏上需要显示的全部信息
-        title、prompt、titleView、leftBarButtonItem、rightBarButtonItem、backBarButonItem
-        UIViewController 有一个 navigationItem 属性，通过这个属性可以来设置导航栏上的布局。
- 
-      UINavigationBar : UIView
-        管理一个存放 UINavigationItem 的栈
- 
-    小结:
-        设置导航栏上按钮的布局，使用 UIViewController 的 navigationItem 属性来设置其二级 leftBarButtonItem 、 rightBarButtonItem、backBarButonItem、leftBarButtonItems、rightBarButtonItems
-        设置导航栏的背景色就设置 self.navigationController.navigationBar
-    注意:
-        backBarButtonItem 就是我们平时使用的返回箭头后面的按钮，我们通常会设置其 title 为 nil ，这个按钮自带返回事件。如果我们设置了 leftBarButtonItem 或者 leftBarButtonItems ，backBarButonItem 将会失效。
-    
-    3、如果要隐藏导航栏，可以self.navigationController?.navigationBar.isHidden = true，但是在disappear方法，记得设置为false， 因为这个影响的是整个navigationController。你也可以在自己定义的返回上一层方法中设置回false。
- 
-    4、导航栏的内容由栈顶控制器来决定，栈里面的vc和导航栏是同一层次的视图，由navigationVC来管理，都隶属于navigationVC。只是sdk中，vc提供了接口来操作导航栏的内容。
-       所以vc的接口是间接操作了navigationVC的导航栏。
- 
-    5、self.navigationController?.navigationBar用于设置全局的bar，self.navigationItem用于设置当前页面的bar。
- 
-    6、要设置导航栏透明，则需要同时设置navigationBar.isTranslucent = true，并且赋值给导航栏背景图片一个空图片navigationBar.setBackgroundImage(UIImage(), for: .default)。当背景图片设置为nil时，系统会为你自动生成一张白色的半透明图片作为背景图片。
-      导航栏的标题控件设置透明度无效，但是可以通过设置label的textcolor来实现透明效果。
 
-    7、如果设置了导航栏的leftBarButtonItems返回按钮，则会没有滑动返回的手势，所以你需要设置self.navigationController?.interactivePopGestureRecognizer.delegate = nil，把手势的代理给去掉，但是这时候有一个问题，就是第一个进入的导航栈的VC不能出栈，但是你已经把手势代理去掉了，所以还是存在这个手势，所以你要在根VC的时候还原interactivePopGestureRecognizer.delegate代理为导航栏VC原来的代理。
- */

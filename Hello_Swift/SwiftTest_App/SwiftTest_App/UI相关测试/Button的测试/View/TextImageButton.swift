@@ -6,6 +6,12 @@
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
 // 测试上图下文按钮的view
+// MARK: - 笔记
+/**
+    1、可以通过修改内边距,设置按钮上图下文。
+    2、可以通过复写父类的方法设置上图下文，要注意此时还没有可以访问里面的label和imageView，因为是先给尺寸，然后才有对象创建。
+    3、也可以在layoutSubview方法中，赋值给label和imageView的frame。
+ */
 
 class TestButton: UIButton {
     //MARK: - 对外属性
@@ -113,9 +119,4 @@ extension TestButton{
     
 }
 
-// MARK: - 笔记
-/**
-    1、可以通过修改内边距,设置按钮上图下文。
-    2、可以通过复写父类的方法设置上图下文，要注意此时还没有可以访问里面的label和imageView，因为是先给尺寸，然后才有对象创建。
-    3、也可以在layoutSubview方法中，赋值给label和imageView的frame。
- */
+
