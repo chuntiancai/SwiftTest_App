@@ -13,6 +13,8 @@
        testScrollView.isPagingEnabled属性会根据contentSize和scrollView的frame进行计算，分多少页，然后滑动起来就有分页的效果。
        如果要实现轮播图效果，则可以通过计算位移实现，肉眼是看不出来的。
     3、如果要设置UIPageControl选中的图片效果，可以通过KVC来设置，因为源代码是有这个私有变量的。
+    4、scrollview滚动的本质是滚动view的内容，其实就是在bounds原地不动(相对于父view的bounds)的情况下，滚动view自身的整个坐标系(内容，bounds相对自身坐标系位置发生改变)。
+        注意：bounds的坐标是用自身坐标系描述的，bounds不是内容，只是一个坐标点。只是手机的机制是：在bounds这个坐标位置渲染图层。
  */
 
 

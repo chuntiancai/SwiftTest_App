@@ -9,7 +9,7 @@
 
 #import "OCMainViewController.h"
 #import "SwiftTest_App-Swift.h"
-#import "OCMainViewControllerHeader.h"
+#import "My_OC_Header.h"
 
 
 @interface OCMainViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
@@ -36,7 +36,7 @@
         case 0:
             //TODO: 0、
         {
-            UIViewController * vc = [[TestOCGrama_VC alloc] init];
+            UIViewController * vc = [[TestOCBlock_VC alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;

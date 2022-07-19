@@ -5,7 +5,12 @@
 //  Created by mathew on 2022/1/24.
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
-// 测试通知的接受者，其实就是观察者模式
+// 测试通知的接收者，其实就是观察者模式
+//MARK: - 笔记
+/**
+    1、接收通知的方法的参数必须是Notification类型。
+ */
+
 
 class Noti_person: NSObject {
     
@@ -32,11 +37,7 @@ class Noti_person: NSObject {
     
     /// 接收新闻
     @objc func acceptNews(note:Notification){
-        print("\(self)--\(#function)接收到的新闻是：\n\(note)\n")
+        print("接收到通知：\(self.name)--\(#function) --- 接收到的新闻是：\n\(note)\n")
     }
     
 }
-//MARK: - 笔记
-/**
-    1、接收通知的方法的参数必须是Notification类型。
- */

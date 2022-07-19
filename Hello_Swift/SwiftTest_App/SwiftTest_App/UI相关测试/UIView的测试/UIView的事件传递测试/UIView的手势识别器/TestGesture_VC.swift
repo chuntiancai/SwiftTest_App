@@ -6,6 +6,23 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 //测试手势识别的VC
+// MARK: - 笔记
+/**
+    1、手势识别器可以插入view的触摸事件，所以你可以不用自定义view，也不用复写view的touchBegan方法，而是给view赋值一个手势识别器就可以了。
+        UIGestureRecognizer是一个基类，需要你自定义具体类来实现你的需求，但是你也可以使用系统提供的一些UIGestureRecognizer的具体类，例如平移，捏合这些手势。
+        UIGestureRecognizer的触摸事件 会插入 在 UIview的touchesBegan(_:with:) 方法 和 touchesCancelled(_:with:) 方法 之间。
+ 
+    2、UIview的gestureRecognizers是一个数组，用于管理当前view绑定的每一个手势识别器。
+ 
+    3、UIGestureRecognizer也有代理协议，可以通过代理协议来管理UIGestureRecognizer的手势识别事件。
+ 
+    4、平移手势识别器的平移点，是相对于最开始时刻的总偏移量，不是每段的偏移量，所以需要重置偏移值，因为transform有个方法是计算每段平移累加的。
+ 
+    5、捏合手势识别器的缩放倍数，也是相对于最开始点击时刻的总放大倍数,不是每段的放大倍数，和平移手势类似，所以需要重置倍数，因为transform有个方法是每段倍数累加的。
+ 
+    6、如果要支持多个手势识别器，那么必须实现代理方法来判断识别器，然后在代理方法中判断让哪个识别器起作用。
+ 
+ */
 
 class TestGesture_VC: UIViewController {
     
@@ -305,20 +322,4 @@ extension TestGesture_VC: UIGestureRecognizerDelegate {
     
 }
     
-// MARK: - 笔记
-/**
-    1、手势识别器可以插入view的触摸事件，所以你可以不用自定义view，也不用复写view的touchBegan方法，而是给view赋值一个手势识别器就可以了。
-        UIGestureRecognizer是一个基类，需要你自定义具体类来实现你的需求，但是你也可以使用系统提供的一些UIGestureRecognizer的具体类，例如平移，捏合这些手势。
-        UIGestureRecognizer的触摸事件 会插入 在 UIview的touchesBegan(_:with:) 方法 和 touchesCancelled(_:with:) 方法 之间。
- 
-    2、UIview的gestureRecognizers是一个数组，用于管理当前view绑定的每一个手势识别器。
- 
-    3、UIGestureRecognizer也有代理协议，可以通过代理协议来管理UIGestureRecognizer的手势识别事件。
- 
-    4、平移手势识别器的平移点，是相对于最开始时刻的总偏移量，不是每段的偏移量，所以需要重置偏移值，因为transform有个方法是计算每段平移累加的。
- 
-    5、捏合手势识别器的缩放倍数，也是相对于最开始点击时刻的总放大倍数,不是每段的放大倍数，和平移手势类似，所以需要重置倍数，因为transform有个方法是每段倍数累加的。
- 
-    6、如果要支持多个手势识别器，那么必须实现代理方法来判断识别器，然后在代理方法中判断让哪个识别器起作用。
- 
- */
+

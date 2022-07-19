@@ -7,10 +7,9 @@
 //
 // 测试swift的位移枚举
 
-/// 测试方向的位移枚举
+//MARK: - 位移枚举第一种写法
 struct directionType:OptionSet {
     var rawValue: Int   ///参考范型
-    
     static let all = directionType.init(rawValue: 1)
     static let top = directionType.init(rawValue: 2)
     static let dowm = directionType.init(rawValue: 4)
