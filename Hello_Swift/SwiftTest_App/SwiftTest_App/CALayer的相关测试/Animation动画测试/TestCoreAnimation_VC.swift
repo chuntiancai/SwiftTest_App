@@ -6,6 +6,38 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 //测试核心动画的VC
+// MARK: - 笔记
+/**
+    1、Core Animation 框架是mac和iOS系统通用的框架，它的执行过程是在后台，所以不会阻塞主线程。
+    2、使用步骤：
+            1、首先得有一个CALayer。
+            2、初始化一个CAAnimation对象，并设置一些动画相关的属性。
+            3、通过调用方法，添加CAAnimation对象到CALayer中，这样就能执行动画了。
+            添加动画后，动画结束后，默认回到原来的位置,因为动画完成后，CAAnimation默认会移除自身。
+ 
+    3、你也可以通过动画事务CATransaction来实现隐式动画效果。
+    
+    4、CAKeyframeAnimation类是可以多个属性同时动画，CABasicAnimation类是单个属性的动画效果，都继承CAPropertyAnimation类。
+    
+    5、如果KVC的属性不知道是啥，那就去api文档里面找，会有对应的说明。
+    
+    6、Core Animation可以设置代理，所以你就可以监听动画的进度。
+        1、核心动画技术并没有去修改UIView的frame属性，所以它是一个假象，和形变一样，只是个属性。UIView的动画，则会修改UIView的frame值。
+        2、核心动画技术，只作用于layer层，并不影响view层。
+        
+        3、当不需要和用户进行交互时，使用核心动画
+        4、当需要做路径动画时，使用核心动画。
+        5、当做转场动画时，使用核心动画。UIView也有转场动画，UIView.transition方法。
+            
+    7、动画的旋转、缩放等都是以锚点座位参考点的。
+ 
+    8、Core Animation维护的是Layer的呈现树，GPU或者硬件会根据呈现树的值来渲染动画。而我们平时代码创建的View的layer，或者直接的Layer属于模型树，顾名思义， 就是用来存储画面数据的，而每一个UI刷新周期，呈现树就回从模型树中复制数值，然后GPU从呈现树里那到数值渲染到屏幕上。
+ 
+    9、我还是不知道为什么Transaction里设置单纯layer的属性就可以动画，而设置view的layer的属性就不可以动画。但是UIView.animate方法里设置view的属性，却又可以动画， 是因为子layer的代理是view，然后所以就可以动画？
+        ：是因为UIKit禁止了事务动画，而CAlayer是属于Quartz框架。所以UIKit只能是普通动画，而不能是事务动画。UIView是beginAnimations这些方法。
+ 
+    10、CAReplicatorLayer可以对自己的子layer进行复制。
+ */
 
 class TestCoreAnimation_VC: UIViewController {
     
@@ -346,35 +378,4 @@ extension TestCoreAnimation_VC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 笔记
-/**
-    1、Core Animation 框架是mac和iOS系统通用的框架，它的执行过程是在后台，所以不会阻塞主线程。
-    2、使用步骤：
-            1、首先得有一个CALayer。
-            2、初始化一个CAAnimation对象，并设置一些动画相关的属性。
-            3、通过调用方法，添加CAAnimation对象到CALayer中，这样就能执行动画了。
-            添加动画后，动画结束后，默认回到原来的位置,因为动画完成后，CAAnimation默认会移除自身。
- 
-    3、你也可以通过动画事务CATransaction来实现隐式动画效果。
-    
-    4、CAKeyframeAnimation类是可以多个属性同时动画，CABasicAnimation类是单个属性的动画效果，都继承CAPropertyAnimation类。
-    
-    5、如果KVC的属性不知道是啥，那就去api文档里面找，会有对应的说明。
-    
-    6、Core Animation可以设置代理，所以你就可以监听动画的进度。
-        1、核心动画技术并没有去修改UIView的frame属性，所以它是一个假象，和形变一样，只是个属性。UIView的动画，则会修改UIView的frame值。
-        2、核心动画技术，只作用于layer层，并不影响view层。
-        
-        3、当不需要和用户进行交互时，使用核心动画
-        4、当需要做路径动画时，使用核心动画。
-        5、当做转场动画时，使用核心动画。UIView也有转场动画，UIView.transition方法。
-            
-    7、动画的旋转、缩放等都是以锚点座位参考点的。
- 
-    8、Core Animation维护的是Layer的呈现树，GPU或者硬件会根据呈现树的值来渲染动画。而我们平时代码创建的View的layer，或者直接的Layer属于模型树，顾名思义， 就是用来存储画面数据的，而每一个UI刷新周期，呈现树就回从模型树中复制数值，然后GPU从呈现树里那到数值渲染到屏幕上。
- 
-    9、我还是不知道为什么Transaction里设置单纯layer的属性就可以动画，而设置view的layer的属性就不可以动画。但是UIView.animate方法里设置view的属性，却又可以动画， 是因为子layer的代理是view，然后所以就可以动画？
-        ：是因为UIKit禁止了事务动画，而CAlayer是属于Quartz框架。所以UIKit只能是普通动画，而不能是事务动画。UIView是beginAnimations这些方法。
- 
-    10、CAReplicatorLayer可以对自己的子layer进行复制。
- */
+

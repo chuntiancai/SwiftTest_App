@@ -1,38 +1,50 @@
 //
-//  TestSnapkit_VC.swift
+//  TestUIPageControl_VC.swift
 //  SwiftTest_App
 //
-//  Created by mathew on 2022/4/6.
+//  Created by mathew on 2022/7/20.
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
-// 测试Snapkit的VC
+// 测试滑动小圆点的VC
 // MARK: - 笔记
+
+import UIKit
 /**
-    1、移除被参考的view后，Snpkit约束会从新计算，然后参考该view的其他view，会从新调整位置和尺寸。
-    
-    2、可以通过手写约束的方式，来实现snpkit的动态修改布局，这样就不用直接修改frame的值。
-    
-    
+    1、
+ 
  */
 
-class TestSnapkit_VC: UIViewController {
+class TestUIPageControl_VC: UIViewController {
     
     //MARK: 对外属性
     public var collDataArr = ["0、","1、","2、","3、","4、","5、","6、","7、","8、","9、","10、","11、","12、"]
 
     ///UI组件
     private var baseCollView: UICollectionView!
+    /// 继承UIPageControl的pageCtrl
+    lazy var pageCtrl : UIPageControl = {
+        let ctrl = UIPageControl()
+        ctrl.layer.borderWidth = 1.0
+        ctrl.layer.borderColor = UIColor.brown.cgColor
+        ctrl.numberOfPages = 3
+        return ctrl
+    }()
+    
+    lazy var pageCtrvlView : TestPageControl_View = {
+        let ctrl = TestPageControl_View()
+        ctrl.layer.borderWidth = 1.0
+        ctrl.layer.borderColor = UIColor.brown.cgColor
+        ctrl.numberOfPages = 10
+        
+        return ctrl
+    }()
     
     //MARK: 测试组件
-    private let redView = UIView()
-    private let blueView = UIView()
-    private let brownView = UIView()
-    var widthConstraint:NSLayoutConstraint = NSLayoutConstraint()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 199/255.0, green: 204/255.0, blue: 237/255.0, alpha: 1.0)
-        self.title = "测试Snapkit的VC"
+        self.title = "测试UIPageControl_VC"
         
         setNavigationBarUI()
         setCollectionViewUI()
@@ -45,53 +57,32 @@ class TestSnapkit_VC: UIViewController {
 
 
 //MARK: - 遵循数据源协议,UICollectionViewDataSource
-extension TestSnapkit_VC: UICollectionViewDataSource {
+extension TestUIPageControl_VC: UICollectionViewDataSource {
     
     ///点击了cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            //TODO: 0、测试移除被参考的view后，Snpkit约束的变化。
-            /**
-                1、移除被参考的view之后，其他的view的位置大小会发生变化。
-             */
-            print("     (@@  隐藏redView")
-//            redView.removeFromSuperview()
-            widthConstraint = NSLayoutConstraint.init(item: redView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 0)
-            UIView.animate(withDuration: 2) {
-                [weak self] in
-                self?.widthConstraint.constant = 0
-                self?.widthConstraint.isActive = true
-                self?.view.layoutIfNeeded()
+            //TODO: 0、测试自定义的pageCotrolView
+            print("     (@@ 0、测试自定义的pageCotrolView")
+            if pageCtrvlView.currentPage >= pageCtrvlView.numberOfPages - 1  {
+                pageCtrvlView.currentPage -= 1
+            }else if pageCtrvlView.currentPage <= 0 {
+                pageCtrvlView.currentPage += 1
+            }else{
+                pageCtrvlView.currentPage += 1
             }
             
-            break
         case 1:
-            //TODO: 1、重新添加被参考的view，参考该view的其他view的约束不会从新计算，因为之前的View已经被移除了。约束也消失了，只能所有的view都从新计算了。
-            print("     (@@ 添加redview")
-            self.view.addSubview(redView)
-            redView.snp.remakeConstraints { make in
-                make.top.equalTo(baseCollView.snp.bottom).offset(20)
-                make.left.equalToSuperview().offset(20)
-                make.width.equalTo(80)
-                make.height.equalTo(50)
-            }
-            self.view.updateConstraints()
-            self.blueView.updateConstraints()
-            self.view.layoutIfNeeded()
+            //TODO: 1、
+            print("     (@@ 1、")
         case 2:
-            //TODO: 2、测试动态修改约束，更新view的布局。
-            print("     (@@ ")
-            UIView.animate(withDuration: 2) {
-                [weak self] in
-                self?.widthConstraint.constant = 100
-                self?.view.layoutIfNeeded()
-            }
-            
+            //TODO: 2、
+            print("     (@@ 2、")
         case 3:
             //TODO: 3、
-            print("     (@@ ")
+            print("     (@@ 3、")
         case 4:
             print("     (@@")
         case 5:
@@ -117,10 +108,11 @@ extension TestSnapkit_VC: UICollectionViewDataSource {
     
 }
 //MARK: - 测试的方法
-extension TestSnapkit_VC{
+extension TestUIPageControl_VC{
    
     //MARK: 0、
     func test0(){
+        
         
     }
     
@@ -128,55 +120,35 @@ extension TestSnapkit_VC{
 
 
 //MARK: - 设置测试的UI
-extension TestSnapkit_VC{
+extension TestUIPageControl_VC{
     
     /// 初始化你要测试的view
     func initTestViewUI(){
+//        self.view.addSubview(pageCtrl)
+//        pageCtrl.snp.makeConstraints { make in
+//            make.top.equalTo(baseCollView.snp_bottom).offset(40)
+//            make.centerX.equalToSuperview()
+//            make.height.equalTo(60)
+//            make.width.equalTo(200)
+//        }
         
-        redView.backgroundColor = .red
-        self.view.addSubview(redView)
-        redView.snp.makeConstraints { make in
-            make.top.equalTo(baseCollView.snp.bottom).offset(20)
-            make.left.equalToSuperview().offset(20)
-            make.width.equalTo(80)
-            make.height.equalTo(50)
+        self.view.addSubview(pageCtrvlView)
+        pageCtrvlView.snp.makeConstraints { make in
+            make.top.equalTo(baseCollView.snp_bottom).offset(60)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(20)
+            make.width.equalTo(200)
         }
-        
-        blueView.backgroundColor = .blue
-        self.view.addSubview(blueView)
-        blueView.snp.makeConstraints { make in
-            make.top.equalTo(baseCollView.snp.bottom).offset(20)
-            make.left.equalToSuperview().offset(20).priority(998)
-            make.left.equalTo(redView.snp.right).offset(20).priority(999)
-            make.width.equalTo(60)
-            make.height.equalTo(40)
-        }
-        
-        brownView.backgroundColor = .brown
-        self.view.addSubview(brownView)
-        brownView.snp.makeConstraints { make in
-            make.top.equalTo(baseCollView.snp.bottom).offset(20)
-            make.left.equalTo(blueView.snp.right).offset(20).priority(999)
-            make.left.equalTo(redView.snp.right).offset(20).priority(998)
-            make.left.equalToSuperview().offset(20).priority(997)
-            make.width.equalTo(60)
-            make.height.equalTo(40)
-        }
-        
     }
     
 }
 
 
 //MARK: - 设计UI
-extension TestSnapkit_VC {
+extension TestUIPageControl_VC {
     
     /// 设置导航栏的UI
     private func setNavigationBarUI(){
-        
-        ///布局从导航栏下方开始
-        self.edgesForExtendedLayout = .bottom
-        
         //设置子页面的navigation bar的返回按钮样式
         let backItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         self.navigationItem.backBarButtonItem = backItem
@@ -188,7 +160,7 @@ extension TestSnapkit_VC {
         
         let layout = UICollectionViewFlowLayout.init()
         layout.itemSize = CGSize.init(width: 80, height: 40)
-        
+        layout.sectionInset = UIEdgeInsets.init(top: 5, left: 5, bottom: 0, right: 5)
         baseCollView = UICollectionView.init(frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width,height:200),
                                              collectionViewLayout: layout)
         
@@ -208,7 +180,7 @@ extension TestSnapkit_VC {
 }
 
 //MARK: - 遵循委托协议,UICollectionViewDelegate
-extension TestSnapkit_VC: UICollectionViewDelegate {
+extension TestUIPageControl_VC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collDataArr.count
@@ -238,6 +210,4 @@ extension TestSnapkit_VC: UICollectionViewDelegate {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
-
-
 

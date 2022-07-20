@@ -4,8 +4,11 @@
 //
 //  Created by chuntiancai on 2021/7/18.
 //  Copyright © 2021 com.mathew. All rights reserved.
-//
 // 测试
+// MARK:  笔记
+/**
+ 
+ */
 
 class tempView: UIView {
     //MARK: - 对外属性
@@ -42,7 +45,4 @@ extension tempView{
     
 }
 
-// MARK: - 笔记
-/**
- 
- */
+

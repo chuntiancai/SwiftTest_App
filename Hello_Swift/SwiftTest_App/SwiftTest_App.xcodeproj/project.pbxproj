@@ -324,6 +324,10 @@
 		AFBCA8C92874228A00AD51D1 /* Point_MetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBCA8C82874228A00AD51D1 /* Point_MetaData.swift */; };
 		AFD34EEA2886876F00C807A3 /* TestBlock_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD34EE92886876F00C807A3 /* TestBlock_VC.swift */; };
 		AFD34EED2886892500C807A3 /* TestOCBlock_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = AFD34EEC2886892500C807A3 /* TestOCBlock_VC.m */; };
+		AFD34EF02887D20100C807A3 /* TestUIPageControl_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD34EEF2887D20100C807A3 /* TestUIPageControl_VC.swift */; };
+		AFD34EF22887D62500C807A3 /* Sub_PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD34EF12887D62500C807A3 /* Sub_PageControl.swift */; };
+		AFD34EF62887DA9800C807A3 /* TestBounds_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD34EF52887DA9800C807A3 /* TestBounds_View.swift */; };
+		AFD34EF82887E2E100C807A3 /* TestPageControl_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD34EF72887E2E100C807A3 /* TestPageControl_View.swift */; };
 		AFD8A1BB286060290094554A /* Pods_SwiftTest_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4C06FA2172551275C4FCEE6 /* Pods_SwiftTest_App.framework */; };
 		AFDA1325287D0F1B0015BFC3 /* TestNaviBarVC_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDA1324287D0F1B0015BFC3 /* TestNaviBarVC_VC.swift */; };
 		AFDA1327287E6EE90015BFC3 /* 测试UIView的形变_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDA1326287E6EE90015BFC3 /* 测试UIView的形变_VC.swift */; };
@@ -684,6 +688,10 @@
 		AFD34EE92886876F00C807A3 /* TestBlock_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBlock_VC.swift; sourceTree = "<group>"; };
 		AFD34EEB2886892500C807A3 /* TestOCBlock_VC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestOCBlock_VC.h; sourceTree = "<group>"; };
 		AFD34EEC2886892500C807A3 /* TestOCBlock_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestOCBlock_VC.m; sourceTree = "<group>"; };
+		AFD34EEF2887D20100C807A3 /* TestUIPageControl_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUIPageControl_VC.swift; sourceTree = "<group>"; };
+		AFD34EF12887D62500C807A3 /* Sub_PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sub_PageControl.swift; sourceTree = "<group>"; };
+		AFD34EF52887DA9800C807A3 /* TestBounds_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBounds_View.swift; sourceTree = "<group>"; };
+		AFD34EF72887E2E100C807A3 /* TestPageControl_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPageControl_View.swift; sourceTree = "<group>"; };
 		AFDA1322287C28C20015BFC3 /* My_OC_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = My_OC_Header.h; sourceTree = "<group>"; };
 		AFDA1324287D0F1B0015BFC3 /* TestNaviBarVC_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNaviBarVC_VC.swift; sourceTree = "<group>"; };
 		AFDA1326287E6EE90015BFC3 /* 测试UIView的形变_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试UIView的形变_VC.swift"; sourceTree = "<group>"; };
@@ -1029,14 +1037,15 @@
 				0474C24F27CF4CBE00B95D7C /* UIWindow的测试 */,
 				04133082281A7B3C00E8CA0A /* WKWebView的测试(网页) */,
 				04927011279E8F99000A61FC /* UIView的测试 */,
+				0421E5FB26AAAEBF00C6A922 /* UI布局的测试 */,
 				042036A5274250F000424E05 /* UILabel的测试 */,
 				0492701D27A0ED9D000A61FC /* UIPickerView的测试 */,
 				041CBC592790007B00AF9B05 /* UIImageView(图片)的测试 */,
 				042036AD274399CA00424E05 /* UITextField的测试 */,
 				04870E9326EF1E440030B1D2 /* Button的测试 */,
 				0421E61F26B0F65000C6A922 /* 屏幕旋转的测试 */,
-				0421E5FB26AAAEBF00C6A922 /* UI布局的测试 */,
 				041A2E24279402E000F9CABF /* UIScrollView的测试 */,
+				AFD34EEE2887D1D800C807A3 /* UIPageControl的测试 */,
 				04CBB62726CA477200436C0E /* TableView的测试 */,
 				042036C12756414F00424E05 /* UICollectionView的测试 */,
 				048480802785320600698106 /* Storyboard测试 */,
@@ -1049,6 +1058,7 @@
 			isa = PBXGroup;
 			children = (
 				AFB34DAF287EC41E0039123C /* 测试UIVIew的frame_VC.swift */,
+				AFD34EF52887DA9800C807A3 /* TestBounds_View.swift */,
 				041D5D4D27FD336C00446FDF /* TestSnapkit_VC.swift */,
 				0421E60426AAB30100C6A922 /* UITestConstranitVC.swift */,
 				0492700B27956C9C000A61FC /* Test_UIConstraint.storyboard */,
@@ -2173,6 +2183,16 @@
 			path = "测试block";
 			sourceTree = "<group>";
 		};
+		AFD34EEE2887D1D800C807A3 /* UIPageControl的测试 */ = {
+			isa = PBXGroup;
+			children = (
+				AFD34EEF2887D20100C807A3 /* TestUIPageControl_VC.swift */,
+				AFD34EF12887D62500C807A3 /* Sub_PageControl.swift */,
+				AFD34EF72887E2E100C807A3 /* TestPageControl_View.swift */,
+			);
+			path = "UIPageControl的测试";
+			sourceTree = "<group>";
+		};
 		AFDA1323287D0DAA0015BFC3 /* 导航栏VC */ = {
 			isa = PBXGroup;
 			children = (
@@ -2447,6 +2467,7 @@
 				0492701C279EA972000A61FC /* Noti_Subject.swift in Sources */,
 				042036D0275862E000424E05 /* ColllectionView的Cell.swift in Sources */,
 				04C7EA3C2840AF5D00685624 /* OCRuntime_Person.m in Sources */,
+				AFD34EF22887D62500C807A3 /* Sub_PageControl.swift in Sources */,
 				04330AA1283F76B5007DF2D0 /* Generic_Person.swift in Sources */,
 				04A0CA4526A0027800ECAE1B /* JFZAccelerationTipsView.swift in Sources */,
 				651C71492609EB870066C13B /* FileTest_VC.swift in Sources */,
@@ -2493,6 +2514,8 @@
 				04155831283DC569007FC2E8 /* Sort_People.swift in Sources */,
 				0421E60326AAB2DD00C6A922 /* UITestLifeCycleVC.swift in Sources */,
 				04B76903280D3A730080102F /* 手势识别器之间的交互_VC.swift in Sources */,
+				AFD34EF62887DA9800C807A3 /* TestBounds_View.swift in Sources */,
+				AFD34EF02887D20100C807A3 /* TestUIPageControl_VC.swift in Sources */,
 				04870E4A26E9AD280030B1D2 /* AADataLabels.swift in Sources */,
 				049EAFF926C2630200903DA8 /* TestVideoFunc_VC.swift in Sources */,
 				048608A72733D25C000F816E /* 测试view的阴影.swift in Sources */,
@@ -2602,6 +2625,7 @@
 				042036AF27439A0F00424E05 /* 更换TextField弹出的键盘_TextField.swift in Sources */,
 				04133084281A7B8200E8CA0A /* TestWKWebView_VC.swift in Sources */,
 				04C45C8D271D5BB100E1EA9B /* 测试selector的VC.swift in Sources */,
+				AFD34EF82887E2E100C807A3 /* TestPageControl_View.swift in Sources */,
 				04A0CA3C26A0027800ECAE1B /* JFZAudiovisualSpeedyOperateManager.swift in Sources */,
 				040BFF4527B277080010C999 /* Story_FirstVC.swift in Sources */,
 				0454A4912731097E00EFE31A /* 测试导航栏UI的VC.swift in Sources */,

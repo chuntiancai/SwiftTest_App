@@ -52,6 +52,18 @@ class TestUIViewFrame_VC: UIViewController {
         return view
     }()
     
+    lazy var boundsView : TestBounds_View = {
+        let curView = TestBounds_View()
+        curView.layer.borderWidth = 2.0
+        curView.layer.borderColor = UIColor.brown.cgColor
+        self.view.addSubview(curView)
+        curView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.height.width.equalTo(80)
+        }
+        return curView
+    }()
+    
     
     //MARK: 标志器
     var xAxis:CGFloat = 0.0
@@ -97,7 +109,7 @@ extension TestUIViewFrame_VC: UICollectionViewDataSource {
         case 1:
             //TODO: 1、测试view的center属性。
             /**
-             1、未条件到父view的时候，子view的frame都是.zero。
+             1、子view还没添加到父view的时候，子view的frame都是.zero。
              2、frame的扩展是从左上角到右下角的延伸，bounds是从中心向四周延伸，而center是子view的中心点在父view中的位置，是view层。而position是子layer在父layer中的位置，是layer层。
              3、frame延伸之后，center也会延伸，因为center是根据frame计算出来的。
              */
@@ -134,14 +146,25 @@ extension TestUIViewFrame_VC: UICollectionViewDataSource {
             
             //TODO: 3、测试view的bounds属性。
             /**
-            
+                1、如果有snpkit布局，改变frame无效。则只能通过ayer.bounds来改变位置和大小，layer.bounds.size也是有效。
+                    可以通过移除snp.removeConstraints()约束来使得frame的改变有效。
+                
              */
             print("     (@@ 3、测试view的bounds属性。")
+            self.boundsView.isChangeBoundsSize = true
             
         case 4:
             print("     (@@")
+            self.boundsView.setBoundSize()
+            self.view.layoutIfNeeded()
         case 5:
-            print("     (@@")
+            //TODO: 5、测试改变bounds
+            print("     (@@ 5、测试改变bounds" )
+            superView.layer.bounds.size = CGSize(width: 300, height: 150)
+//            superView.snp.removeConstraints()
+//            superView.frame = CGRect.init(x: 10, y: 400, width: 180, height: 180)
+//            superView.center = CGPoint.init(x: 200, y: 600)
+//            redView.frame = CGRect.init(x: 10, y: 450, width: 200, height: 200)
         case 6:
             print("     (@@")
         case 7:
