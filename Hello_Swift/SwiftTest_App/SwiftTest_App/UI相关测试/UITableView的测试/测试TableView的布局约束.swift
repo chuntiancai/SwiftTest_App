@@ -6,6 +6,18 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 // 测试TableView的布局约束
+// MARK: - 笔记
+/**
+    1、如果结合MJRefresh使用，要注意header和footer的隐藏问题。iOS11中UITableView在reloadData时contentOffset发生了改变，这时候MJ监听了contentOffset的变化，就导致再一次的调用上拉加载，变成了循环调用。
+        ///修复代码
+        if #available(iOS 11.0, *) {
+            self.mainTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentBehavior.never
+        } else {
+            self.mainTableView.translatesAutoresizingMaskIntoConstraints = false
+        }
+
+ 
+ */
 
 class TestTableViewLayout_VC: UIViewController {
     
@@ -18,11 +30,11 @@ class TestTableViewLayout_VC: UIViewController {
     //MARK: 测试组件
     var tableDataDict = [0:["张三","李四","王武"],1:["蜡笔小新","小白","美伢","小葵","广治","娜娜子"]]{
         didSet{
-//            testTableView.reloadData()
+//            myTableView.reloadData()
         }
     }
     /// 被测试的tableview
-    private var testTableView:UITableView = {
+    private var myTableView:UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.register(TestTableView_Cell.self, forCellReuseIdentifier: "TestTableViewcontentInset_CELL_ID")
         
@@ -43,8 +55,57 @@ class TestTableViewLayout_VC: UIViewController {
         setCollectionViewUI()
         initTestViewUI()
     }
+}
 
-
+//MARK: - 遵循数据源协议,UICollectionViewDataSource
+extension TestTableViewLayout_VC: UICollectionViewDataSource {
+    
+    ///点击了cell
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("点击了第\(indexPath.row)个item")
+        switch indexPath.row {
+        case 0:
+            //TODO: 0、设置tableview的contentInset
+            print("     (@@  设置tableview的contentInset")
+            myTableView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 400, right: 0)
+            break
+        case 1:
+            //TODO: 1、更新tableview的数据源
+            print("     (@@ 延时2秒更新数据源")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                [weak self] in
+                self?.tableDataDict[1] = ["三国演义","关羽","刘备","张飞","孔明","赵云"]
+            }
+        case 2:
+            //TODO: 2、
+            print("     (@@ ")
+        case 3:
+            //TODO: 3、
+            print("     (@@ ")
+        case 4:
+            print("     (@@")
+        case 5:
+            print("     (@@")
+        case 6:
+            print("     (@@")
+        case 7:
+            print("     (@@")
+        case 8:
+            print("     (@@")
+        case 9:
+            print("     (@@")
+        case 10:
+            print("     (@@")
+            print("这是tableview的contentOffset:\(myTableView.contentOffset)\n---contentInset：\(myTableView.contentInset)\n---contentSize:\(myTableView.contentSize)")
+        case 11:
+            print("     (@@")
+        case 12:
+            print("     (@@")
+        default:
+            break
+        }
+    }
+    
 }
 
 //MARK: - 遵循UIScrollViewDelegate协议
@@ -95,65 +156,7 @@ extension TestTableViewLayout_VC:UITableViewDelegate ,UITableViewDataSource {
 }
 
 
-//MARK: - 遵循数据源协议,UICollectionViewDataSource
-extension TestTableViewLayout_VC: UICollectionViewDataSource {
-    
-    ///点击了cell
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("点击了第\(indexPath.row)个item")
-        switch indexPath.row {
-        case 0:
-            //TODO: 0、设置tableview的contentInset
-            print("     (@@  设置tableview的contentInset")
-            testTableView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 400, right: 0)
-            break
-        case 1:
-            //TODO: 1、更新tableview的数据源
-            print("     (@@ 延时2秒更新数据源")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                [weak self] in
-                self?.tableDataDict[1] = ["三国演义","关羽","刘备","张飞","孔明","赵云"]
-            }
-        case 2:
-            //TODO: 2、
-            print("     (@@ ")
-        case 3:
-            //TODO: 3、
-            print("     (@@ ")
-        case 4:
-            print("     (@@")
-        case 5:
-            print("     (@@")
-        case 6:
-            print("     (@@")
-        case 7:
-            print("     (@@")
-        case 8:
-            print("     (@@")
-        case 9:
-            print("     (@@")
-        case 10:
-            print("     (@@")
-            print("这是tableview的contentOffset:\(testTableView.contentOffset)\n---contentInset：\(testTableView.contentInset)\n---contentSize:\(testTableView.contentSize)")
-        case 11:
-            print("     (@@")
-        case 12:
-            print("     (@@")
-        default:
-            break
-        }
-    }
-    
-}
-//MARK: - 测试的方法
-extension TestTableViewLayout_VC{
-   
-    //MARK: 0、
-    func test0(){
-        
-    }
-    
-}
+
 
 
 //MARK: - 设置测试的UI
@@ -161,15 +164,15 @@ extension TestTableViewLayout_VC{
     
     /// 初始化你要测试的view
     func initTestViewUI(){
-        view.addSubview(testTableView)
+        view.addSubview(myTableView)
         ///设置代理
-        testTableView.delegate = self
-        testTableView.dataSource = self
-        testTableView.snp.makeConstraints { make in
+        myTableView.delegate = self
+        myTableView.dataSource = self
+        myTableView.snp.makeConstraints { make in
             make.top.equalTo(baseCollView.snp.bottom).offset(10)
             make.width.equalToSuperview().multipliedBy(0.8)
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().offset(100)
         }
     }
     
@@ -249,16 +252,5 @@ extension TestTableViewLayout_VC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 笔记
-/**
-    1、如果结合MJRefresh使用，要注意header和footer的隐藏问题。iOS11中UITableView在reloadData时contentOffset发生了改变，这时候MJ监听了contentOffset的变化，就导致再一次的调用上拉加载，变成了循环调用。
-        ///修复代码
-        if #available(iOS 11.0, *) {
-            self.mainTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentBehavior.never
-        } else {
-        self.mainTableView.translatesAutoresizingMaskIntoConstraints = false
-  
 
- 
- */
 

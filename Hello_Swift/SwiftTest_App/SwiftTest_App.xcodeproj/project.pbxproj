@@ -1045,9 +1045,9 @@
 				04870E9326EF1E440030B1D2 /* Button的测试 */,
 				0421E61F26B0F65000C6A922 /* 屏幕旋转的测试 */,
 				041A2E24279402E000F9CABF /* UIScrollView的测试 */,
-				AFD34EEE2887D1D800C807A3 /* UIPageControl的测试 */,
-				04CBB62726CA477200436C0E /* TableView的测试 */,
+				04CBB62726CA477200436C0E /* UITableView的测试 */,
 				042036C12756414F00424E05 /* UICollectionView的测试 */,
+				AFD34EEE2887D1D800C807A3 /* UIPageControl的测试 */,
 				048480802785320600698106 /* Storyboard测试 */,
 				041CBC54278D84E600AF9B05 /* xib测试 */,
 			);
@@ -1989,12 +1989,12 @@
 			path = "业务UI代码";
 			sourceTree = "<group>";
 		};
-		04CBB62726CA477200436C0E /* TableView的测试 */ = {
+		04CBB62726CA477200436C0E /* UITableView的测试 */ = {
 			isa = PBXGroup;
 			children = (
 				0455059C27FDA9D900785F02 /* 测试TableView的布局约束.swift */,
-				0414F97B27BA48C50037EE70 /* TableView的contentInset与刷新_VC.swift */,
 				0492700D2796C60D000A61FC /* 测试TableView的VC.swift */,
+				0414F97B27BA48C50037EE70 /* TableView的contentInset与刷新_VC.swift */,
 				04CBB62826CA47AD00436C0E /* 测试TableView闭包循环引用_VC.swift */,
 				0454A48D272FCA5600EFE31A /* 测试tableview的delegate顺序_VC.swift */,
 				04870E8226EB2D690030B1D2 /* TestSectionTableView_VC.swift */,
@@ -2002,7 +2002,7 @@
 				04CBB62A26CA48E600436C0E /* View */,
 				04870E9126EEF8EE0030B1D2 /* tableView测试的图标.xcassets */,
 			);
-			path = "TableView的测试";
+			path = "UITableView的测试";
 			sourceTree = "<group>";
 		};
 		04CBB62A26CA48E600436C0E /* View */ = {

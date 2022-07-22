@@ -6,6 +6,29 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 // 测试tableview属性的vc，
+// MARK: - 笔记
+/**
+    1、如果你的tableview的cell是一个普通的view ，那么你就单独给这个cell一个变量，然后也单独给这个cell一个reuseID，然后就可以不进复用池，从而导致复用的问题。
+    2、动态tableview是根据数据源来动态设置section和cell的个数，静态table是固定section和cell的个数。我们一般使用的是动态tableview，所谓静态tableview，是只能在UITableViewCotroller中使用，一般也是在storyboard中使用而已了。
+ 
+    3、如果tableview在复用池里面没有找到cell，则自动会去storyboard里面找。
+ 
+    4、苹果为了确定tableview的contentsize，所以要知道所有cell的高度，所以就会每次都调用heightForRowAt代理方法。contentsize一开始的设计初衷是为了计算滚动条的高度。 UIKit会根据tableView.estimatedRowHeight的值来估算tableview的contentsize大小，设置tableView.estimatedRowHeight的值，会减少heightForRowAt代理方法的调用次数。 设置estimatedRowHeight的值后会出现cellForRowAt代理方法在heightForRowAt代理方法前被调用，因为有了估算的高度，但是等真正显示cell的时候，还是会调用heightForRowAt代理方法再显示。
+ 
+    5、所以设置estimatedRowHeight的值，可以很大地提高性能。类似于懒加载cell高度。
+    6、注册的cell会在所有代理方法调用之前就已经创建好cell对象放在复用池里面了，所以heightForRowAt代理方法调用前，是肯定有cell的了。
+ 
+ 
+    cell的常见属性：
+    1、cell里面的imageView，textlabel，detailTextLabel是属于cell的contentView的子view，不是cell的直接子view。
+    2、cell设置contentView的目的是，为了侧滑删除这些UI的布局方便，可以统一管理用户自定义的view。
+ 
+ 
+    tableview的刷新：
+    1、tableView.reloadRows局部刷新方法，会刷新你传入的indexpath数组，但必须保证该section内的cell的个数不发生改变，只刷新cell里面的数据。
+      插入或者删除cell，有对应的其他更新的方法。testTableView.insertRows方法和testTableView.deleteRows方法，记得同步数据源。
+ 
+ */
 
 class TestTableView_VC: UIViewController {
     
@@ -308,23 +331,4 @@ extension TestTableView_VC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 笔记
-/**
-    1、如果你的tableview的cell是一个普通的view ，那么你就单独给这个cell一个变量，然后也单独给这个cell一个reuseID，然后就可以不进复用池，从而导致复用的问题。
-    2、动态tableview是根据数据源来动态设置section和cell的个数，静态table是固定section和cell的个数。我们一般使用的是动态tableview，所谓静态tableview，是只能在UITableViewCotroller中使用，一般也是在storyboard中使用而已了。
-    3、如果tableview在复用池里面没有找到cell，则自动会去storyboard里面找。
-    4、苹果为了确定tableview的contentsize，所以要知道所有cell的高度，所以就会每次都调用heightForRowAt代理方法。contentsize一开始的设计初衷是为了计算滚动条的高度。UIKit会根据tableView.estimatedRowHeight的值来估算tableview的contentsize大小，设置tableView.estimatedRowHeight的值，会减少heightForRowAt代理方法的调用次数。设置estimatedRowHeight的值后会出现cellForRowAt代理方法在heightForRowAt代理方法前被调用，因为有了估算的高度，但是等真正显示cell的时候，还是会调用heightForRowAt代理方法再显示。
-    5、所以设置estimatedRowHeight的值，可以很大地提高性能。类似于懒加载cell高度。
-    6、注册的cell会在所有代理方法调用之前就已经创建好cell对象放在复用池里面了，所以heightForRowAt代理方法调用前，是肯定有cell的了。
- 
- 
-    cell的常见属性：
-    1、cell里面的imageView，textlabel，detailTextLabel是属于cell的contentView的子view，不是cell的直接子view。
-    2、cell设置contentView的目的是，为了侧滑删除这些UI的布局方便，可以统一管理用户自定义的view。
- 
- 
-    tableview的刷新：
-    1、tableView.reloadRows局部刷新方法，会刷新你传入的indexpath数组，但必须保证该section内的cell的个数不发生改变，只刷新cell里面的数据。
-      插入或者删除cell，有对应的其他更新的方法。testTableView.insertRows方法和testTableView.deleteRows方法，记得同步数据源。
- 
- */
+

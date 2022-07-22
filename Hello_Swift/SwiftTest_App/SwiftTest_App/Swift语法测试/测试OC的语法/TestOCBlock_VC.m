@@ -121,10 +121,28 @@ typedef int(^blockType)(void); //也可以通过别名的方式
         }
             break;
         case 1:
-            //TODO: 1、
+            //TODO: 1、测试block的循环引用，weak self
             NSLog(@"1、");
         {
-            
+            /**
+             typeof(int *) a,b;
+             等价于：
+             int a,b;
+             */
+            ///__weak TestOCBlock_VC weakSelf = self
+            __weak typeof(self) weakSelf = self;    ///typeof(self)相当于TestOCBlock_VC，这里就相当于声明了一个弱引用的TestOCBlock_VC变量
+            _block1 = ^{
+                /**
+                    1、相对于block1而言，因为weakSelf是外部的变量，直接引用的话weakSelf会生成_block1对象的成员变量，所以_block1对象是对weakSelf进行了一个强引用。
+                    2、而__strong typeof(weakSelf) strongSelf = weakSelf; 相当于在block里面声明了一个局部变量，相当于方法栈的局部变量，执行完就释放了。
+                 */
+                ///  __strong TestOCBlock_VC strongSelf = weakSelf;
+                __strong typeof(weakSelf) strongSelf = weakSelf;    /// 在block声明了一个强引用的TestOCBlock_VC变量，block执行完之后，便释放strongSelf，因为strongSelf是局部变量。
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    NSLog(@"打印strongSelf：%@",strongSelf);
+                });
+            };
         }
             
             break;
