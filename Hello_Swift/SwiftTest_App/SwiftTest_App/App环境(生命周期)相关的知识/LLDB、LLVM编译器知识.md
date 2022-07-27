@@ -14,3 +14,7 @@
 ## Clang编译器
     macOS下的编译器，一般是集成在xcode里面的，也就是你安装了xcode，也就安装了Clang编译器，如果在终端用不了Clang命令，那么就在 xcode -> preference -> locations中选择命令行工具，就可以了。
     Clang是object-c、c、c++ 的编译器，swift使用 swiftcc编译器，但是两者最终都会生成llvm接受的语言。然后llvm再编译成arm、x86、m1等CPU架构接受的语言。
+
+
+## OC情况下，LLDB不能打印view的bounds时。命令行打印不了UIKit的情况。
+    在命令行输入：expr @import UIKit

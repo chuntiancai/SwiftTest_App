@@ -7,7 +7,30 @@
 //
 // 测试流布局的Collection View的Cell
 
+import UIKit
+
 class TestFlowCollectionView_Cell: UICollectionViewCell {
+    
+    //MARK: UI控件
+    lazy var nameLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.textColor = .white
+        label.numberOfLines = 0
+        label.shadowColor = UIColor.gray
+        label.shadowOffset = CGSize(width: 1, height: 1)
+        label.layer.shadowRadius = 16
+        label.layer.shadowOpacity = 0.8
+        label.layer.borderColor = UIColor.brown.cgColor
+        label.layer.borderWidth = 1.0
+        label.font = .systemFont(ofSize: 20)
+        return label
+    }()
+    
+    lazy var bgImageView:UIImageView = {
+        let imgView = UIImageView()
+        return imgView
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,18 +46,15 @@ class TestFlowCollectionView_Cell: UICollectionViewCell {
 extension TestFlowCollectionView_Cell{
     //MARK: 设置初始化的UI
     func initDefaultUI(){
-        let label = UILabel()
-        label.text = "布局的Cell"
-        label.textAlignment = .center
-        label.textColor = .black
-        label.numberOfLines = 0
-        label.layer.borderColor = UIColor.black.cgColor
-        label.layer.borderWidth = 1.0
-        label.font = .systemFont(ofSize: 16)
-        self.contentView.addSubview(label)
-        label.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.width.equalToSuperview()
+        
+        self.contentView.addSubview(bgImageView)
+        bgImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        self.contentView.addSubview(nameLabel)
+        nameLabel.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
 }

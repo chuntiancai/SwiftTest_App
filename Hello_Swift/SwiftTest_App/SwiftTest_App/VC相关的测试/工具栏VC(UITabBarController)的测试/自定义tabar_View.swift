@@ -51,7 +51,7 @@ class TestBtmTabBar_View: UIView {
             for index in 0 ..< btnArr.count {
                 let btn = btnArr[index]
                 self.addSubview(btn)
-                btn.snp.makeConstraints { make in
+                btn.snp.remakeConstraints { make in
                     make.left.equalToSuperview().offset(btnW * CGFloat(index))
                     make.width.equalTo(btnW)
                     make.centerY.equalToSuperview()

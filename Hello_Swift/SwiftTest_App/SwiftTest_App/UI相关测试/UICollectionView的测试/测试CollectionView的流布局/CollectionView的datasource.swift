@@ -7,19 +7,33 @@
 //
 // 测试流布局CollectionView的数据源代理datasource
 
+import UIKit
+
 
 class TestCollViewDataSource: NSObject,UICollectionViewDataSource {
     
     //TODO:设置section的数量
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
+    //TODO:设置每个section中item的数量
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return 9
     }
     
     //TODO:设置每个section中的item的UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FlowCollectionView_Cell_ID", for: indexPath)
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FlowCollectionView_Cell_ID", for: indexPath) as? TestFlowCollectionView_Cell else {
+            print("没有转换成 TestFlowCollectionView_Cell")
+            return UICollectionViewCell()
+        }
+        cell.nameLabel.text = "\(indexPath.section)-\(indexPath.row)"
+        cell.bgImageView.image = UIImage(named: "labi0\(indexPath.row)")
         return cell
     }
+    
     
     
 }

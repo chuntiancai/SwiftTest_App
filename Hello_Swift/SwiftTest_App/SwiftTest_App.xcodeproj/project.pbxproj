@@ -942,10 +942,10 @@
 			isa = PBXGroup;
 			children = (
 				042036C3275641F600424E05 /* 测试UICollectionView流布局_VC.swift */,
+				042036C52756433D00424E05 /* CollectionView的流布局Layout.swift */,
 				042036CF275862E000424E05 /* ColllectionView的Cell.swift */,
 				042036CD27574CAF00424E05 /* CollectionView的datasource.swift */,
 				042036CB27574C9400424E05 /* CollectionView的delegate.swift */,
-				042036C52756433D00424E05 /* CollectionView的流布局Layout.swift */,
 				042036C7275644AC00424E05 /* CollectionView的LayoutDeleagate.swift */,
 				042036C92757197500424E05 /* CollectionView的网格布局Layout.swift */,
 			);
@@ -1340,7 +1340,7 @@
 		04600033271190F70074DFA2 /* Swift语法测试 */ = {
 			isa = PBXGroup;
 			children = (
-				AFD34EE82886875500C807A3 /* 测试block */,
+				AFD34EE82886875500C807A3 /* 测试Block */,
 				AFBCA8C32872C15A00AD51D1 /* 测试类与结构体 */,
 				04C7EA2B2840A9FF00685624 /* 语法笔记 */,
 				04330A9D283F66BF007DF2D0 /* 测试泛型 */,
@@ -2175,12 +2175,12 @@
 			path = "测试类与结构体";
 			sourceTree = "<group>";
 		};
-		AFD34EE82886875500C807A3 /* 测试block */ = {
+		AFD34EE82886875500C807A3 /* 测试Block */ = {
 			isa = PBXGroup;
 			children = (
 				AFD34EE92886876F00C807A3 /* TestBlock_VC.swift */,
 			);
-			path = "测试block";
+			path = "测试Block";
 			sourceTree = "<group>";
 		};
 		AFD34EEE2887D1D800C807A3 /* UIPageControl的测试 */ = {

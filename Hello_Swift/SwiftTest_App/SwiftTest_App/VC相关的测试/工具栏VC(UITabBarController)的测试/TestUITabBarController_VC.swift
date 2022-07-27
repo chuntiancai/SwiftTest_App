@@ -42,7 +42,11 @@ extension TestUITabBarController_VC: UICollectionViewDataSource {
         case 0:
             //TODO: 0、在第二window中添加TabBarController
             print("     (@@  在第二window中添加TabBarController")
-            
+            let app = UIApplication.shared.delegate as! AppDelegate
+            if app.firstWindow.rootViewController != nil {
+                app.firstWindow.makeKeyAndVisible()
+                return
+            }
             let naviVC = UINavigationController(rootViewController: Tabar_SubVC1())
             naviVC.view.backgroundColor = .brown
             ///UITabBarController默认选中第一个子VC
@@ -59,29 +63,15 @@ extension TestUITabBarController_VC: UICollectionViewDataSource {
             tabVC.addChild(subVC4)
             tabVC.selectedIndex = 1 //从零开始计算
             
-            let app = UIApplication.shared.delegate as! AppDelegate
+            
 //            app.firstWindow.becomeKey()
+            
             app.firstWindow.rootViewController = tabVC
             app.firstWindow.makeKeyAndVisible()
             
         case 1:
-            //TODO: 1、设置自定义的底部工具了，TabBar
-            print("     (@@ 设置自定义的底部工具了，TabBar")
-            //设置自定义的底部工具了，TabBar
-            let mytabBar = TestBtmTabBar_View()
-            var barItemAarr = [UITabBarItem()]
-            for i in 0 ..< 4 {
-                let item = UITabBarItem()
-                item.image = UIImage(named: "labi0\(i)")
-                item.selectedImage = UIImage(named: "labi0\(i+4)")
-                barItemAarr.append(item)
-            }
-            mytabBar.itemArr = barItemAarr
-            
-            tabVC.tabBar.removeFromSuperview()
-            tabVC.view.addSubview(mytabBar)
-            mytabBar.frame = tabVC.tabBar.frame
-            
+            //TODO: 1、
+            print("     (@@  ")
         case 2:
             //TODO: 2、
             print("     (@@ ")

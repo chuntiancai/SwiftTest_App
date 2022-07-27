@@ -12,6 +12,11 @@
 //MARK: - 笔记
 /**
     1、// block定义:三种方式 = ^(参数){};
+          总结：block的声明需要写出block的名字，block的定义不能写block的名字。
+               block的声明只能写出参数的类型，block的定义需要写出参数的类型和写名字。
+               block的声明里有多个参数用逗号分开，block的定义也是。
+               block的定义，用^表示是block。
+ 
         // 第一种
         void(^block1)() = ^{
             NSLog(@"调用了block1");
@@ -57,6 +62,8 @@
                       1、只要block引用外部局部变量,block放在堆里面。
                       2、@property (nonatomic, copy) void(^block)();
                          block使用strong，最好不要使用copy。因为用strong和copy的效果是一样的，但是copy还有一个判断类型、复制内存的过程，没啥必要，因为结果都是绑定对象的引用。
+ 
+    3、当由方法内部决定是什么时候执行block的时候，就把block写成参数，由外部提供执行代码，由方法内部决定执行时机。
  */
 
 typedef int(^blockType)(void); //也可以通过别名的方式
@@ -147,8 +154,35 @@ typedef int(^blockType)(void); //也可以通过别名的方式
             
             break;
         case 2:
+            //TODO: 2、测试block的变量传递
+            NSLog(@"2、测试block的变量传递");
+        {
+            /**
+                1、局部变量，在定义block时，传进去给block代码块里面的值就已经复制了，是值传递。
+                2、如果是静态局部变量，全局变量，那么就是指针传递。static int a = 3
+             */
+            int a = 3;
+            void(^curBlock)(void) = ^{
+                NSLog(@"闯进去block的值：%d",a);
+            };
+            a = 5;
+            curBlock(); //结果是3
+        }
             break;
         case 3:
+            //TODO: 3、测试block作为返回值,链式编程。
+            /// 返回值是一个block，block的返回值是TestOCBlock_VC,block的参数是 两个NSString
+            NSLog(@"3、测试block作为返回值,链式编程。");
+        {
+            self.blockLink(@"哈",@"啦").blockLink(@"哈哈",@"啦啦").blockLink(@"哈哈哈",@"啦啦啦");
+            
+            /// 链式编程的写法。
+            TestOCBlock_VC * (^curBlock)(NSString *, NSString *) = ^TestOCBlock_VC * (NSString * name,NSString * nickName){
+                NSLog(@"curBlock的第一个参数是：%@ 第二个参数是：%@\n",name,nickName);
+                return self;
+            };
+            curBlock(@"写",@"法");
+        }
             break;
         case 4:
             break;
@@ -162,6 +196,20 @@ typedef int(^blockType)(void); //也可以通过别名的方式
             break;
     }
 }
+//MARK: - 测试的方法
+
+//TODO: 测试block的链式编程
+/// 返回值是一个block，block的返回值是TestOCBlock_VC,block的参数是 两个NSString
+- (TestOCBlock_VC * (^)(NSString * , NSString * ))blockLink{
+    
+    TestOCBlock_VC * (^curBlock)(NSString *, NSString *) = ^TestOCBlock_VC * (NSString * name,NSString * nickName){
+        NSLog(@"block的第一个参数是：%@ 第二个参数是：%@\n",name,nickName);
+        return self;
+    };
+    return curBlock;
+}
+
+
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"OCTestCEll" forIndexPath:indexPath];

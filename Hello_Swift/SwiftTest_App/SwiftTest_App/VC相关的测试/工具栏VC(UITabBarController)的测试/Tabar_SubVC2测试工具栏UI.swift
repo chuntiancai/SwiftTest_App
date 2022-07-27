@@ -7,6 +7,8 @@
 //
 //测试UITabBarController的子VC
 
+import UIKit
+
 class Tabar_SubVC2: UIViewController {
     
     //MARK: 对外属性
@@ -39,12 +41,18 @@ extension Tabar_SubVC2: UICollectionViewDataSource {
         print("点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            //TODO: 0、
-            print("     (@@  ")
-            break
+            //TODO: 0、测试tabbar工具栏UI。
+            print(" (@@  0、测试tabbar工具栏UI。")
+            let tabVC = self.tabBarController
+            let tabBar = tabVC?.tabBar
+            tabBar?.isTranslucent = false
+            tabBar?.backgroundColor = UIColor.orange
+//            tabBar?.backgroundImage = UIImage()
+            let appearence = UITabBar.appearance()
+            print("获取到的tabbarVC 是：\(tabVC) -- tabbar是：\(tabBar) -- appearence：\(appearence)")
         case 1:
             //TODO: 1、
-            print("     (@@ ")
+            print("     (@@")
         case 2:
             //TODO: 2、
             print("     (@@ ")
@@ -62,16 +70,34 @@ extension Tabar_SubVC2: UICollectionViewDataSource {
         case 9:
             print("     (@@")
         case 10:
-            print("     (@@")
+            //TODO: 10、设置自定义的底部工具了，TabBar
+            print("     (@@ 10、设置自定义的底部工具了，TabBar")
+            //设置自定义的底部工具了，TabBar
+            let mytabBar = TestBtmTabBar_View()
+            var barItemAarr = [UITabBarItem]()
+            for i in 0 ..< 4 {
+                let item = UITabBarItem()
+                item.image = UIImage(named: "labi0\(i+1)")
+                item.selectedImage = UIImage(named: "labi0\(i+4)")
+                barItemAarr.append(item)
+            }
+            mytabBar.itemArr = barItemAarr
+            
+            self.tabBarController?.tabBar.removeFromSuperview()
+            self.tabBarController?.view.addSubview(mytabBar)
+            mytabBar.frame = self.tabBarController?.tabBar.frame ?? CGRect.zero
         case 11:
+            //TODO: 11、
             print("     (@@")
         case 12:
+            //TODO: 12、
             print("     (@@ 退出第二window")
             let app = UIApplication.shared.delegate as! AppDelegate
             app.firstWindow.resignKey()
-            for subView in app.firstWindow.subviews {
-                subView.removeFromSuperview()
-            }
+            app.firstWindow.rootViewController = nil
+//            for subView in app.firstWindow.subviews {
+//                subView.removeFromSuperview()
+//            }
             app.window?.makeKeyAndVisible()
         default:
             break
