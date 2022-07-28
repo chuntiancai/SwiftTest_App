@@ -23,6 +23,8 @@
  
         UICollectionViewDelegateFlowLayout 是额外的行为协议，用于补充说明section的尺寸行为这些。
  
+    5、delegate的优先级 > layout 对象。
+ 
  */
 
 import UIKit
@@ -101,13 +103,15 @@ extension TestUICollectionViewLayout_VC: UICollectionViewDataSource {
             flowCollView.showsVerticalScrollIndicator = true    //显示y滚动器
             flowCollView.showsHorizontalScrollIndicator = true    //显示x滚动器
             
+            
             /// 必须要注册cell才能使用，这与tableview有所区别
             flowCollView.register(TestFlowCollectionView_Cell.self, forCellWithReuseIdentifier: "FlowCollectionView_Cell_ID")
             
             self.view.addSubview(flowCollView)
         case 1:
-            //TODO: 1、
-            print("     (@@ \(flowLayout.minimumInteritemSpacing)");
+            //TODO: 1、测试flowlayout的属性和方法。
+            print("     (@@ 1、测试flowlayout的属性和方法。")
+            print("flowLayout.layoutAttributesForItem的值是：\(flowLayout.layoutAttributesForItem(at: IndexPath(row: 0, section: 0)) )");
         case 2:
             //TODO: 2、
             print("     (@@ ")

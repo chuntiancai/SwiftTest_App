@@ -78,6 +78,7 @@ class TableView_LifeCycle_Cell: UITableViewCell {
         whiteBgView.layer.shadowOffset = CGSize.init(width: 10, height: 10)
         whiteBgView.layer.shadowColor =  UIColor.gray.cgColor
         whiteBgView.layer.shadowOpacity = 0.4
+        whiteBgView.layer.shadowPath = UIBezierPath.init(rect: CGRect(x: 0, y: 0, width: 300, height: 260)).cgPath  
 //        whiteBgView.layer.masksToBounds = false
         /// 白色背景图
         whiteBgView.backgroundColor = .white

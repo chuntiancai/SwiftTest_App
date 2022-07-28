@@ -39,6 +39,7 @@ extension TestShadowView{
         whiteBgView.layer.shadowOffset = CGSize.init(width: 4, height: 5)
         whiteBgView.layer.shadowColor =  UIColor.black.cgColor
         whiteBgView.layer.shadowOpacity = 0.5
+        whiteBgView.layer.shadowPath = UIBezierPath.init(rect: CGRect(x: 0, y: 0, width: 300, height: 260)).cgPath   ///没有cgpath将导致离屏渲染，消耗性能
         
         /// 白色背景图
         whiteBgView.backgroundColor = .white
