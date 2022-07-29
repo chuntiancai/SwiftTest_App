@@ -328,6 +328,7 @@
 		AFD34EF22887D62500C807A3 /* Sub_PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD34EF12887D62500C807A3 /* Sub_PageControl.swift */; };
 		AFD34EF62887DA9800C807A3 /* TestBounds_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD34EF52887DA9800C807A3 /* TestBounds_View.swift */; };
 		AFD34EF82887E2E100C807A3 /* TestPageControl_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD34EF72887E2E100C807A3 /* TestPageControl_View.swift */; };
+		AFD34EFA28937DC000C807A3 /* 轮播图Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD34EF928937DC000C807A3 /* 轮播图Layout.swift */; };
 		AFD8A1BB286060290094554A /* Pods_SwiftTest_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4C06FA2172551275C4FCEE6 /* Pods_SwiftTest_App.framework */; };
 		AFDA1325287D0F1B0015BFC3 /* TestNaviBarVC_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDA1324287D0F1B0015BFC3 /* TestNaviBarVC_VC.swift */; };
 		AFDA1327287E6EE90015BFC3 /* 测试UIView的形变_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDA1326287E6EE90015BFC3 /* 测试UIView的形变_VC.swift */; };
@@ -692,6 +693,7 @@
 		AFD34EF12887D62500C807A3 /* Sub_PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sub_PageControl.swift; sourceTree = "<group>"; };
 		AFD34EF52887DA9800C807A3 /* TestBounds_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBounds_View.swift; sourceTree = "<group>"; };
 		AFD34EF72887E2E100C807A3 /* TestPageControl_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPageControl_View.swift; sourceTree = "<group>"; };
+		AFD34EF928937DC000C807A3 /* 轮播图Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "轮播图Layout.swift"; sourceTree = "<group>"; };
 		AFDA1322287C28C20015BFC3 /* My_OC_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = My_OC_Header.h; sourceTree = "<group>"; };
 		AFDA1324287D0F1B0015BFC3 /* TestNaviBarVC_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNaviBarVC_VC.swift; sourceTree = "<group>"; };
 		AFDA1326287E6EE90015BFC3 /* 测试UIView的形变_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试UIView的形变_VC.swift"; sourceTree = "<group>"; };
@@ -943,6 +945,7 @@
 			children = (
 				042036C3275641F600424E05 /* 测试UICollectionView流布局_VC.swift */,
 				042036C52756433D00424E05 /* CollectionView的流布局Layout.swift */,
+				AFD34EF928937DC000C807A3 /* 轮播图Layout.swift */,
 				042036CF275862E000424E05 /* ColllectionView的Cell.swift */,
 				042036CD27574CAF00424E05 /* CollectionView的datasource.swift */,
 				042036CB27574C9400424E05 /* CollectionView的delegate.swift */,
@@ -2474,6 +2477,7 @@
 				041D5D4E27FD336C00446FDF /* TestSnapkit_VC.swift in Sources */,
 				04587C7F27B50BD500824F69 /* Tabar_SubVC4.swift in Sources */,
 				04870E3526E9AD280030B1D2 /* AAChartModel.swift in Sources */,
+				AFD34EFA28937DC000C807A3 /* 轮播图Layout.swift in Sources */,
 				04A0CA4026A0027800ECAE1B /* JFZEndPlayView.swift in Sources */,
 				042036CA2757197500424E05 /* CollectionView的网格布局Layout.swift in Sources */,
 				0484808B27853FE800698106 /* TestStory_VC.swift in Sources */,

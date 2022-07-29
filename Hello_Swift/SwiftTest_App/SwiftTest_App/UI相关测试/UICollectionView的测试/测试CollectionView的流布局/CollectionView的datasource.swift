@@ -7,9 +7,6 @@
 //
 // 测试流布局CollectionView的数据源代理datasource
 
-import UIKit
-
-
 class TestCollViewDataSource: NSObject,UICollectionViewDataSource {
     
     //TODO:设置section的数量

@@ -53,6 +53,17 @@ class TestUICollectionViewLayout_VC: UIViewController {
          return layout
     }()
     
+    /// 轮播图布局对象
+    private let roundLayout:CollectionViewRoungImage_Layout = {   // lazy var 是使用之后才会执行，直接var(或let)代码块，则是在初始化的时候就执行，都是只执行一次。
+        let layout = CollectionViewRoungImage_Layout()
+        layout.itemSize = CGSize(width: 200, height: 100) ///item的尺寸，默认是(50,50)
+        layout.minimumLineSpacing = 0   /// item 左右之间的 竖间距 (item相互之间)
+        layout.scrollDirection = .horizontal    /// 流水布局的方向，水平方向是 从左到右 布局，item的坐标是从上到下，从左到右。但是会被contentSize限制。
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 15, bottom: 20, right: 15)  //每个section的内边距，优先级比代理设置的优先级低。
+         return layout
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 199/255.0, green: 204/255.0, blue: 237/255.0, alpha: 1.0)
@@ -109,9 +120,26 @@ extension TestUICollectionViewLayout_VC: UICollectionViewDataSource {
             
             self.view.addSubview(flowCollView)
         case 1:
-            //TODO: 1、测试flowlayout的属性和方法。
-            print("     (@@ 1、测试flowlayout的属性和方法。")
-            print("flowLayout.layoutAttributesForItem的值是：\(flowLayout.layoutAttributesForItem(at: IndexPath(row: 0, section: 0)) )");
+            //TODO: 1、测试轮播图flowlayout
+            print("     (@@ 1、测试轮播图flowlayout。")
+            if flowCollView != nil {
+                print("已经初始化flowCollView")
+                return
+            }
+            /// 初始化的时候就要传入 布局对象。
+            flowCollView = UICollectionView(frame: CGRect.init(x: 15, y: 215, width: 350, height: 300), collectionViewLayout: roundLayout)
+            flowCollView.delegate = collViewDelegate    //行为代理
+            flowCollView.dataSource = collViewDataSource    //数据源代理
+            flowCollView.backgroundColor = UIColor.white.withAlphaComponent(0.6)
+            flowCollView.layer.borderWidth = 1.5
+            flowCollView.layer.borderColor = UIColor.gray.cgColor
+            flowCollView.showsVerticalScrollIndicator = true    //显示y滚动器
+            flowCollView.showsHorizontalScrollIndicator = true    //显示x滚动器
+            
+            /// 必须要注册cell才能使用，这与tableview有所区别
+            flowCollView.register(TestFlowCollectionView_Cell.self, forCellWithReuseIdentifier: "FlowCollectionView_Cell_ID")
+            
+            self.view.addSubview(flowCollView)
         case 2:
             //TODO: 2、
             print("     (@@ ")

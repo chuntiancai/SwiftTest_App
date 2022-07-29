@@ -19,6 +19,8 @@
     3、流水布局的意思是：如果当前你给的cell的尺寸比手机屏幕要宽，那么久自动把这个cell往下挪。
  
     4、UICollectionViewLayoutAttributes是每一个item的详细的位置尺寸信息，用于告知UIkit怎么详细布局一个item。
+ 
+    5、cell是通过indexpath定位的，不是通过rect定位的。
  */
 
 
@@ -69,6 +71,7 @@ extension TestUICollectionViewFlowLayout{
         2、其实rect只是指示可见范围而已，还是回返回所有的cell的attribute数组，你可以返回指定rect的attribute数组，也可以返回所有cell的attribute数组。
            但是要注意，attribute是根据indexpath来定位的，不是根据rect来定位的。
         3、所以你可以写一个缓存attribute数组的属性，提高查找性能，完全自己控制。
+        4、其实这个rect就是collection view 的bounds，因为bounds是可见范围在自身坐标系的位置。
      */
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         print("∆∆∆∆ 这是TestUICollectionViewFlowLayout的\(#function)方法～")
