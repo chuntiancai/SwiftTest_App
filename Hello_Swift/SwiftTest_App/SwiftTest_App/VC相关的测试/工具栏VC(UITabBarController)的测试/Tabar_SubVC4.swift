@@ -21,6 +21,7 @@ class Tabar_SubVC4: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .purple
         self.title = "测试Tabar_SubVC4"
+        self.tabBarItem.title = "SubVC4"
         
         setNavigationBarUI()
         setCollectionViewUI()

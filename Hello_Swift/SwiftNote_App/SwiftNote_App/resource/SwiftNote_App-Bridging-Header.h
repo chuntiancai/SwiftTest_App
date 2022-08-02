@@ -3,7 +3,7 @@
 //  SwiftNote_App
 //
 //  Created by mathew on 2021/7/29.
-//  Copyright © 2021 com.fendaTeamIOS. All rights reserved.
+//  Copyright © 2021 com.ctchTeamIOS. All rights reserved.
 //
 
 #ifndef SwiftNote_App_Bridging_Header_h

@@ -6,6 +6,24 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 //测试UITabBarController的VC
+// MARK: - 笔记
+/**
+    1、一般的使用是在UITabBarController中容纳多个UINavigationController，注意UINavigationController不可以push UINavigationController。
+ 
+    2、UITabBarController底部的工具栏是UITabBar,有若干个UITabBarButton组成(有多少个子VC，就有多少个按钮)。
+        UITabBarButton里面显示什么内容，是由当前对应的子vc的tabBarItem属性决定。
+ 
+    3、主流的框架结构是：底层是一个UITabBarController，然后UITabBarController每一个子VC都是UINavigationController。
+ 
+    4、UITabBarController切换子vc是把上一个子vc移除，把当前子vc放到栈顶，所以工具栏的子vc同一时刻只有一个在栈。
+ 
+    5、tabBarItem默认会以当前VC的title为准，如果你在VC加载前设置了title，那么在没切换到当前VC时，显示你加载前设置的title。
+       如果切换到当前的vc时，如果你没在viewDidload的时候设置tabBarItem的title，那么就以vc的title作为tabBarItem的title，如果有设置，则用你现在设置的tabBarItem的title，
+       也就是viewdidload之后，当前VC加载之前设置的tabBarItem的title是无效的。
+        
+ 
+ */
+
 
 class TestUITabBarController_VC: UIViewController {
     
@@ -16,7 +34,7 @@ class TestUITabBarController_VC: UIViewController {
     private var baseCollView: UICollectionView!
     
     //MARK: 测试组件
-    let tabVC = TabBar_MainVC.init()   ///工具栏VC
+    let tabVC = TabBar_VC.init()   ///工具栏VC
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,16 +70,20 @@ extension TestUITabBarController_VC: UICollectionViewDataSource {
             ///UITabBarController默认选中第一个子VC
             tabVC.addChild(naviVC)  //第1个VC，导航栏控制器VC
             
-            tabVC.addChild(Tabar_SubVC2())//第2个VC
+            let subVC2 = Tabar_SubVC2()
+            subVC2.tabBarItem.title = "测试subVC2"
+            tabVC.addChild(subVC2)//第2个VC
             
             let naviVC3 = UINavigationController(rootViewController: Tabar_SubVC3())
+            naviVC3.tabBarItem.title = "naviVC3"
             tabVC.addChild(naviVC3)//第3个VC，导航栏控制器VC
             
             let subVC4 = Tabar_SubVC4()//第4个VC
             
             subVC4.tabBarItem.title = "subVC4"  //要在这里设置好tabBarItem.title才会在工具栏中显示标题，不然标题是懒加载出VC的标题。
             tabVC.addChild(subVC4)
-            tabVC.selectedIndex = 1 //从零开始计算
+            tabVC.selectedIndex = 0 //从零开始计算
+            
             
             
 //            app.firstWindow.becomeKey()
@@ -70,8 +92,20 @@ extension TestUITabBarController_VC: UICollectionViewDataSource {
             app.firstWindow.makeKeyAndVisible()
             
         case 1:
-            //TODO: 1、
-            print("     (@@  ")
+            //TODO: 1、在第二window中添加UINavigationController、TabBarController
+            print("     (@@  在第二window中添加TabBarController")
+            let app = UIApplication.shared.delegate as! AppDelegate
+            if app.firstWindow.rootViewController != nil {
+                app.firstWindow.makeKeyAndVisible()
+                return
+            }
+            let naviVC = UINavigationController(rootViewController: tabVC)
+            tabVC.addChild(Tabar_SubVC1())  //第1个VC
+            tabVC.addChild(Tabar_SubVC2())  //第1个VC
+            tabVC.addChild(Tabar_SubVC3())  //第1个VC
+            tabVC.addChild(Tabar_SubVC4())  //第1个VC
+            app.firstWindow.rootViewController = naviVC
+            app.firstWindow.makeKeyAndVisible()
         case 2:
             //TODO: 2、
             print("     (@@ ")
@@ -202,11 +236,4 @@ extension TestUITabBarController_VC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 笔记
-/**
-    1、一般的使用是在UITabBarController中容纳多个UINavigationController，注意UINavigationController不可以push UINavigationController。
-    2、UITabBarController底部的工具栏是UITabBar,有若干个UITabBarButton组成(有多少个子VC，就有多少个按钮)。 UITabBarButton里面显示什么内容，是由当前对应的子vc的tabBarItem属性决定。
-    3、主流的框架结构是：底层是一个UITabBarController，然后UITabBarController每一个子VC都是UINavigationController。
- 
- */
 

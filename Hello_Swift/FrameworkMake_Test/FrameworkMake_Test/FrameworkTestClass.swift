@@ -5,8 +5,10 @@
 //  Created by mathew on 2021/8/26.
 //
 // 测试framework对外公开的类
-
-import UIKit
+//MARK: - 笔记
+/**
+    1、open、public关键字暴露对外的接口即可，跟新建project差不多的流程。
+ */
 
 open class FrameworkTestClass: NSObject {
     
@@ -23,7 +25,4 @@ open class FrameworkTestClass: NSObject {
     
 }
 
-//MARK: - 笔记
-/**
-    1、open、public关键字暴露对外的接口即可，跟新建project差不多的流程。
- */
+

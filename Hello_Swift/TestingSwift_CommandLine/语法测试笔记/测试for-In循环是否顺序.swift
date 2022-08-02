@@ -3,7 +3,7 @@
 //  SwiftTest_CommandLine
 //
 //  Created by mathew on 2021/12/29.
-//  Copyright © 2021 com.fendaTeamIOS. All rights reserved.
+//  Copyright © 2021 com.ctchTeamIOS. All rights reserved.
 //
 
 import Foundation

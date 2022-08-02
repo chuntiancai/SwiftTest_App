@@ -6,6 +6,15 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 // 测试图片相关的功能VC
+// MARK: - 笔记
+/**
+    1、拉伸图片，但是保护某些区域不被拉伸，用image的resizableImage方法，一般就拉伸最中间的一个像素而已。这个应用于纯色的背景图片就可以。这一个像素用于均匀填充拉伸区域(默认平铺)。
+        1、平铺是直接copy没有被保护的区域的像素，像铺砖一样平铺到拉伸的区域。
+        2、拉伸是将没有保护的区域的像素，同比拉长放大延伸到拉伸的区域。
+ 
+    2、图片的类型可以根据图片的二进制流，的第一个字节的值来判断是jpg还是png这些。
+ 
+ */
 
 class TestImageView_VC: UIViewController {
     
@@ -198,7 +207,11 @@ extension TestImageView_VC: UICollectionViewDataSource {
             imgView1.image = img
             
         case 10:
-            print("     (@@")
+            //TODO: 10、图片的渲染模式
+            print("     (@@ 10、图片的渲染模式")
+            let curImage = UIImage(named: "labi01")?.withRenderingMode(.alwaysOriginal)
+            /// 设置为原始的渲染模式之后，图的的通明通道就不会被渲染成渲染色
+            imgView1.image = curImage
         case 11:
             print("     (@@")
         case 12:
@@ -423,13 +436,5 @@ extension TestImageView_VC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 笔记
-/**
-    1、拉伸图片，但是保护某些区域不被拉伸，用image的resizableImage方法，一般就拉伸最中间的一个像素而已。这个应用于纯色的背景图片就可以。这一个像素用于均匀填充拉伸区域(默认平铺)。
-        1、平铺是直接copy没有被保护的区域的像素，像铺砖一样平铺到拉伸的区域。
-        2、拉伸是将没有保护的区域的像素，同比拉长放大延伸到拉伸的区域。
- 
-    2、图片的类型可以根据图片的二进制流，的第一个字节的值来判断是jpg还是png这些。
- 
- */
+
 

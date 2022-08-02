@@ -21,6 +21,7 @@ class Tabar_SubVC3: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .orange
         self.title = "测试Tabar_SubVC3"
+        self.tabBarItem.title = "SubVC3"
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "labi03"), for: .default)
         
         setNavigationBarUI()

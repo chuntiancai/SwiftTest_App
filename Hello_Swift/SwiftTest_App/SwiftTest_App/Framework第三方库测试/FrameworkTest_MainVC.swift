@@ -6,8 +6,14 @@
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
 //测试Framework的VC
+// MARK: - 笔记
+/**
+    1、把.Framework文件拖进项目工程的目录中，在项目的TARGETS -> General -> Embedded Binaries -> +  中添加.Framework文件。
+    2、在需要使用到Framework的源文件中，import "你的framework"
 
-import UIKit
+ */
+
+
 import FrameworkMake_Test   //引进你制作的framework
 import ctc_podspec  //引进自己制作的cocoapod私有库
 
@@ -190,9 +196,3 @@ extension FrameworkTest_MainVC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 笔记
-/**
-    1、把.Framework文件拖进项目工程的目录中，在项目的TARGETS -> General -> Embedded Binaries -> +  中添加.Framework文件。
-    2、在需要使用到Framework的源文件中，import "你的framework"
-
- */

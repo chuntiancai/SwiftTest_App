@@ -3,7 +3,7 @@
 //  SwiftTest_App
 //
 //  Created by Mathew Cai on 2020/11/5.
-//  Copyright © 2020 com.fendaTeamIOS. All rights reserved.
+//  Copyright © 2020 com.ctchTeamIOS. All rights reserved.
 //
 
 let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
@@ -37,7 +37,7 @@ extension MainViewController: UICollectionViewDataSource {
         print("MainViewController点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            pushNext(viewController: TestUICollectionViewLayout_VC())
+            pushNext(viewController: TestNaviVC_VC())
         case 1:
             pushNext(viewController: TestUIPageControl_VC())
         case 2:

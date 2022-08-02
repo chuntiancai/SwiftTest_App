@@ -213,13 +213,15 @@ extension TestNavibarUI_VC: UICollectionViewDataSource {
                 print("iOS13之前还是直接用isTranslucent和shadowImage组合")
             }
         case 3:
+            //TODO: 3、
             print("     (@@")
         case 4:
+            //TODO: 4、
             print("     (@@")
         case 5:
+            //TODO: 5、
             print("     (@@")
         case 6:
-            
             //TODO: 6、设置导航栏bar里面的item
             print("     (@@ 设置导航栏bar里面的item")
             let titleView = UILabel()
