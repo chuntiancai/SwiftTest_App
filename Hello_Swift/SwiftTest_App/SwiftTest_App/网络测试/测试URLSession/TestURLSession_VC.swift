@@ -6,6 +6,52 @@
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
 //测试URLSession的VC
+//MARK: - 笔记
+/**
+    1、URLSession有自己的delegate，而URLSession中的task也有task自身的delegate，URLRequest也有自己的配置策略。
+        URLSession的层级结构
+        
+            URLSession
+            URLSessionconfiguration
+            URLSessionTask
+        
+            URLSessionDataTask (URLSessionDataTask的闭包里执行线程是子线程，不是主线程。)
+                URLSessionUploadTask
+            URLSessionDownloadTask
+            URLSessionStreamTask
+        
+        URLSession相关的代理方法
+        
+            URLSessionDelegate
+            URLSessionTaskDelegate
+            URLSessionDataDelegate
+            URLSessionDownloadDelegate
+            URLSessionStreamDelegate
+        
+        URLSession使用的时候也会用到相关的若干类：
+        
+            NSURL
+            NSURLRequest
+            URLResponse
+        
+            HTTPURLResponse
+        
+            CachedURLResponse
+
+    2、url地址中的中文字符，需要转换为百分号编码才可以被识别。
+ 
+    3、URLSession的DownloadTask方法内部已经实现了边接受数据边写沙盒(tmp)的操作，不需要担心内存问题。
+        如果是downloadTask，直接不经过didReceive response代理方法，而是直接走URLSessionDownloadDelegate 的 didWriteData bytesWritten 方法。
+        downTask.resume()   //恢复下载
+        downTask.suspend()  //暂停，是可以恢复
+        downTask.cancel()   //cancel:取消是不能恢复;
+  
+        downTask.cancel(byProducingResumeData: (ResumeData?) -> Void)     //是可以恢复的，但是如果是程序闪退，则ResumeData保存到沙盒里也很难操作。因为还没封装好。
+            // cancelByProducingResumeData:是可以恢复; 恢复下载的数据!=已下载文件数据，而是封装了的数据。
+            // 对应的恢复方法是：URLSession.shared.downloadTask(withResumeData: ResumeData)
+        
+    
+ */
 
 import UIKit
 
@@ -99,7 +145,7 @@ extension TestURLSession_VC: UICollectionViewDataSource {
                 print("请求网络返回的结果～")
                 
                 /// 网络的响应体信息，一般就是响应的数据.
-                print("URLSession.shared返回的data:\(String(data: data ?? Data(), encoding: .utf8))")    //用utf8来解析返回的data
+                print("URLSession.shared返回的data:\(String(describing: String(data: data ?? Data(), encoding: .utf8)))")    //用utf8来解析返回的data
                 if let _ = data {
                     do {
                         print("URLSessionDataTask闭包里的当前线程：\(Thread.current)")
@@ -527,49 +573,4 @@ extension TestURLSession_VC: UICollectionViewDelegate {
     }
 }
 
-//MARK: - 笔记
-/**
-    1、URLSession有自己的delegate，而URLSession中的task也有task自身的delegate，URLRequest也有自己的配置策略。
-        URLSession的层级结构
-        
-            URLSession
-            URLSessionconfiguration
-            URLSessionTask
-        
-            URLSessionDataTask (URLSessionDataTask的闭包里执行线程是子线程，不是主线程。)
-                URLSessionUploadTask
-            URLSessionDownloadTask
-            URLSessionStreamTask
-        
-        URLSession相关的代理方法
-        
-            URLSessionDelegate
-            URLSessionTaskDelegate
-            URLSessionDataDelegate
-            URLSessionDownloadDelegate
-            URLSessionStreamDelegate
-        
-        URLSession使用的时候也会用到相关的若干类：
-        
-            NSURL
-            NSURLRequest
-            URLResponse
-        
-            HTTPURLResponse
-        
-            CachedURLResponse
 
-    2、url地址中的中文字符，需要转换为百分号编码才可以被识别。
- 
-    3、URLSession的DownloadTask方法内部已经实现了边接受数据边写沙盒(tmp)的操作，不需要担心内存问题。
-        如果是downloadTask，直接不经过didReceive response代理方法，而是直接走URLSessionDownloadDelegate 的 didWriteData bytesWritten 方法。
-        downTask.resume()   //恢复下载
-        downTask.suspend()  //暂停，是可以恢复
-        downTask.cancel()   //cancel:取消是不能恢复;
-  
-        downTask.cancel(byProducingResumeData: (ResumeData?) -> Void)     //是可以恢复的，但是如果是程序闪退，则ResumeData保存到沙盒里也很难操作。因为还没封装好。
-            // cancelByProducingResumeData:是可以恢复; 恢复下载的数据!=已下载文件数据，而是封装了的数据。
-            // 对应的恢复方法是：URLSession.shared.downloadTask(withResumeData: ResumeData)
-        
-    
- */

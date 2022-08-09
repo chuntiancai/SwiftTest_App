@@ -20,6 +20,9 @@ class TestBlock_VC: UIViewController {
 
     ///UI组件
     private var baseCollView: UICollectionView!
+    @objc var swiftBlock:(()->Void) = {
+        print("这是swift的blcok")
+    }
     
     //MARK: 测试组件
     

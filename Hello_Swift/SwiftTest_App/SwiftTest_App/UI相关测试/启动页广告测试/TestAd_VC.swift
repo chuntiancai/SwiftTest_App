@@ -1,109 +1,67 @@
 //
-//  TestDate_VC.swift
+//  TestAd_VC.swift
 //  SwiftTest_App
 //
-//  Created by mathew on 2021/11/3.
-//  Copyright © 2021 com.mathew. All rights reserved.
+//  Created by mathew on 2022/8/5.
+//  Copyright © 2022 com.mathew. All rights reserved.
 //
-//测试日期的VC
+// 测试启动页广告的VC
+// MARK: - 笔记
+/**
+    1、
+ 
+ */
 
-import UIKit
-
-class TestDate_VC: UIViewController {
+class TestAd_VC: UIViewController {
     
     //MARK: 对外属性
-    public var collDataArr = ["0、","1、","2、","3、","4、","5、","6、","7、","8、","9、","10、"]
+    public var collDataArr = ["0、","1、","2、","3、","4、","5、","6、","7、","8、","9、","10、","11、","12、"]
 
     ///UI组件
     private var baseCollView: UICollectionView!
     
-    /// 测试工具
-    lazy var dayFormatter:DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yy-MM-dd"
-        return formatter
-    }()
-    
+    //MARK: 测试组件
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 199/255.0, green: 204/255.0, blue: 237/255.0, alpha: 1.0)
-        self.title = "测试日期的VC"
+        self.title = "测试启动页广告的VC"
         
         setNavigationBarUI()
         setCollectionViewUI()
         initTestViewUI()
     }
-
-
+    
+    
+    
 }
 
 
 //MARK: - 遵循数据源协议,UICollectionViewDataSource
-extension TestDate_VC: UICollectionViewDataSource {
+extension TestAd_VC: UICollectionViewDataSource {
     
     ///点击了cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            //TODO: 0、获取今年第一天零点的时间戳
-            print("     (@@  获取今年第一天零点的时间戳")
-            let years = Calendar.current.dateComponents([.year], from: Date()).year!  //今年
-            let dateComponent = DateComponents.init(calendar: Calendar.current, year: years, month: 1, day: 1, hour: 0, minute: 0, second: 0)
-            let yearTime = dateComponent.date!.timeIntervalSince1970
-            print("当前的时间戳：\(String(describing: yearTime))")
-            
-            print("     (@@  获取去年今天零点时间")
-            let today = Date()
-            var component = Calendar.current.dateComponents([.year, .month, .day], from: today)
-            component.year = component.year! - 1
-            let zeroDate = Calendar.current.date(from: component)
-            
-            
-            
-            print("   today的输出:\(today)\n --zeroDate的输出:\(String(describing: zeroDate))")
-            
-            
-            print("     @@ 获取这个月第一天的日期")
-            var comp0 = Calendar.current.dateComponents([.year, .month, .day], from: Date())
-            comp0.day = 1
-            let monFirstDay = Calendar.current.date(from: comp0)!
-            print("     @@ 月第一天：\(dayFormatter.string(from: monFirstDay))")
-            
-            print("     @@ 获取这个月最后一天的日期")
-            comp0.month! += 1   ///内部已经处理月=13天的情况，是下一年的一月
-            comp0.day = 0
-            let monLastDay = Calendar.current.date(from: comp0)!
-            print("     @@ 月最后一天：\(dayFormatter.string(from: monLastDay))")
-            
-            break
+            //TODO: 0、跳转到广告页，置换window的根vc
+            print("     (@@ 0、跳转到广告页，置换window的根vc")
+            guard let app = UIApplication.shared.delegate as? AppDelegate else { print("没找到app"); return  }
+            let adVC = AdXib_VC()
+            app.firstWindow.rootViewController = adVC
+            app.firstWindow.makeKeyAndVisible()
         case 1:
-            //TODO: 1、计算日期的加减
-            print("     (@@ ")
-            let calendar = Calendar.current
-            var components = DateComponents()
-            components.month = 0
-            components.day = -31
-            let startDate = calendar.date(byAdding: components, to: Date())
-            
-            components.day = 31
-            let endDate = calendar.date(byAdding: components, to: Date())
-            print("开始日期：\(String(describing: startDate)) ------- 结束日期:\(String(describing: endDate))")
-            
-            let comp0 = DateComponents()
-            print("日期工具：\(comp0)")
+            //TODO: 1、
+            print("     (@@ 1、")
         case 2:
-            //TODO: 2、获取日期的属性，星期几，第几天这些。
-            /**
-                1、weekday的1是星期天，2是星期一，这是描述这是一周中的第几天，从星期天开始计算，从1开始。
-             */
-            print("     (@@ 获取日期的属性，星期几，第几天这些。")
-            let dayComp = Calendar.current.dateComponents([.year,.month,.day,.weekOfMonth,.weekday], from: Date())
-            print("日期的星期几：\(String(describing: dayComp.weekday))")
+            //TODO: 2、
+            print("     (@@ 2、")
         case 3:
             //TODO: 3、
-            print("     (@@ ")
+            print("     (@@ 3、")
+        case 4:
+            print("     (@@")
         case 5:
             print("     (@@")
         case 6:
@@ -119,7 +77,14 @@ extension TestDate_VC: UICollectionViewDataSource {
         case 11:
             print("     (@@")
         case 12:
-            print("     (@@")
+            //TODO: 12、退出firstwindow。
+            print("     (@@ 12、退出firstwindow。")
+            guard let app = UIApplication.shared.delegate as? AppDelegate else { print("没找到app"); return  }
+            if app.firstWindow.rootViewController == self {
+                app.firstWindow.resignKey()
+                app.firstWindow.rootViewController = nil
+                app.window?.makeKeyAndVisible()
+            }
         default:
             break
         }
@@ -127,21 +92,21 @@ extension TestDate_VC: UICollectionViewDataSource {
     
 }
 //MARK: - 测试的方法
-extension TestDate_VC{
+extension TestAd_VC{
    
     //MARK: 0、
     func test0(){
         
     }
+    
 }
 
 
 //MARK: - 设置测试的UI
-extension TestDate_VC{
+extension TestAd_VC{
     
     /// 初始化你要测试的view
     func initTestViewUI(){
-        
         
     }
     
@@ -149,11 +114,10 @@ extension TestDate_VC{
 
 
 //MARK: - 设计UI
-extension TestDate_VC {
+extension TestAd_VC {
     
     /// 设置导航栏的UI
     private func setNavigationBarUI(){
-        
         //设置子页面的navigation bar的返回按钮样式
         let backItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         self.navigationItem.backBarButtonItem = backItem
@@ -165,7 +129,7 @@ extension TestDate_VC {
         
         let layout = UICollectionViewFlowLayout.init()
         layout.itemSize = CGSize.init(width: 80, height: 40)
-        
+        layout.sectionInset = UIEdgeInsets.init(top: 5, left: 5, bottom: 0, right: 5)
         baseCollView = UICollectionView.init(frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width,height:200),
                                              collectionViewLayout: layout)
         
@@ -185,7 +149,7 @@ extension TestDate_VC {
 }
 
 //MARK: - 遵循委托协议,UICollectionViewDelegate
-extension TestDate_VC: UICollectionViewDelegate {
+extension TestAd_VC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collDataArr.count
@@ -213,12 +177,6 @@ extension TestDate_VC: UICollectionViewDelegate {
     private func pushNext(viewController: UIViewController) {
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
-        
     }
 }
-
-// MARK: - 笔记
-/**
- 
- */
 

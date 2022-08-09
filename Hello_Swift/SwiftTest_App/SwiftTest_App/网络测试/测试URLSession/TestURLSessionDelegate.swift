@@ -6,7 +6,11 @@
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
 // 测试URLSession的代理方法
-
+//MARK: - 笔记
+/**
+    1、如果是downloadTask，直接不经过didReceive response代理方法，而是直接走URLSessionDownloadDelegate 的 didWriteData bytesWritten 方法。
+ 
+ */
 
 class TestURLSessionDelegate:NSObject,URLSessionDelegate {
     
@@ -267,8 +271,4 @@ extension TestURLSessionDelegate: URLSessionStreamDelegate {
 
 
 
-//MARK: - 笔记
-/**
-    1、如果是downloadTask，直接不经过didReceive response代理方法，而是直接走URLSessionDownloadDelegate 的 didWriteData bytesWritten 方法。
- 
- */
+

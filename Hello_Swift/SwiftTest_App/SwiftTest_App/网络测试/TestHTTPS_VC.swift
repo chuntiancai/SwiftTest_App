@@ -6,8 +6,86 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 // 测试网络通信，http协议的VC
+// MARK: - 笔记
+/**
+    1、URL的基本格式 = 协议://主机地址/路径
+                例如：http://www.520it.com/img/logo.png
+       URL中常见的协议：HTTP://--远程的网络资源、
+                     file://--本地计算机上的资源、
+                     mailto:--电子邮件地址、
+                     FTP://--共享主机的文件资源
  
+    2、HTTP协议中的GET和POST请求：
+        GET：在请求URL后面以?的形式跟上发给服务器的参数，多个参数之间用&隔开。URL后面附带的参数是有限制的，通常不能超过1KB。
+        POST：参数全部放在请求体中。理论上，POST传递的数据量没有限制（具体还得看服务器的处理能力）。
+     它们的响应体都是一样的，都是服务器返回来的数据。只是请求体有区别而已。
+ 
+    3、HTTP协议的规定：
+            HTTP协议中请求的规定：
+ 
+                一、请求头：包含了对客户端的环境描述、客户端请求信息等
+                GET /minion.png HTTP/1.1   // 包含了请求方法、请求资源路径、HTTP协议版本
+                Host: 120.25.226.186:32812     // 客户端想访问的服务器主机地址
+                User-Agent: Mozilla/5.0  // 客户端的类型，客户端的软件环境
+                Accept: text/html, * / *     // 客户端所能接收的数据类型
+                Accept-Language: zh-cn     // 客户端的语言环境
+                Accept-Encoding: gzip     // 客户端支持的数据压缩格式
+    
+                二、请求体：客户端发给服务器的具体数据，比如文件数据(POST请求才会有)
+    
+            HTTP协议中响应的规定：
+                 
+                 一、响应头：包含了对服务器的描述、对返回数据的描述
+                 HTTP/1.1 200 OK            // 包含了HTTP协议版本、状态码、状态英文名称
+                 Server: Apache-Coyote/1.1         // 服务器的类型
+                 Content-Type: image/jpeg         // 返回数据的类型
+                 Content-Length: 56811         // 返回数据的长度
+                 Date: Mon, 23 Jun 2014 12:54:52 GMT    // 响应的时间
 
+                 二、响应体：服务器返回给客户端的具体数据，比如文件数据。
+
+            
+    4、NSURLRequest：一个NSURLRequest对象就代表一个请求，它包含的信息有
+                    一个NSURL对象
+                    请求方法、请求头、请求体
+                    请求超时
+                    … …
+                    
+                    NSMutableURLRequest：NSURLRequest的子类
+                    
+      NSURLConnection：相当于一个端口，建立起客户端与服务器之间的联系。代理方法默认在主线程执行，但是你可以设置属性，让它在子线程执行。
+    
+                    负责发送请求，建立客户端和服务器的连接
+                    发送数据给服务器，并收集来自服务器的响应数据
+
+    5、OC对象 --> JSON字符串 ：序列化
+       JSON字符串 --> OC对象 ： 反序列化
+       JOSN   OC
+       {}     @{}
+       []     @[]
+       ""     @""
+       false  NSNumber 0
+       true   NSNumber 1
+       null      NSNull为空
+ 
+    6、XML文档，其实也是一个语法或者说协议。
+        在XML文档前面必须写一段声明代码，用来声明XML文档的类型。
+       XML的的元素：开始标签---结束标签。元素名。
+                  元素之间可以嵌套元素。xml的元素内容对空行和换行敏感。
+                  元素标签里的属性名--属性值，也可以用嵌套元素来替换。
+      
+       XML文档的解析：
+                  DOM解析，一次性加载整个xml文档，然后再解析，适合小文档。
+                  SAX解析，从根元素开始，一个个元素地解析，适合大文档。
+ 
+      苹果原生的XML解析框架：NSXMLParser,是以SAX方式进行解析。
+ 
+      Plist就是一个XML文档。
+ 
+    6、xcode控制台输出unicode乱码的问题，重写被输出对象的description属性，
+
+ */
+ 
 class TestHTTPS_VC: UIViewController {
     
     //MARK: 对外属性
@@ -524,83 +602,5 @@ extension TestHTTPS_VC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 笔记
-/**
-    1、URL的基本格式 = 协议://主机地址/路径
-                例如：http://www.520it.com/img/logo.png
-       URL中常见的协议：HTTP://--远程的网络资源、
-                     file://--本地计算机上的资源、
-                     mailto:--电子邮件地址、
-                     FTP://--共享主机的文件资源
- 
-    2、HTTP协议中的GET和POST请求：
-        GET：在请求URL后面以?的形式跟上发给服务器的参数，多个参数之间用&隔开。URL后面附带的参数是有限制的，通常不能超过1KB。
-        POST：参数全部放在请求体中。理论上，POST传递的数据量没有限制（具体还得看服务器的处理能力）。
-     它们的响应体都是一样的，都是服务器返回来的数据。只是请求体有区别而已。
- 
-    3、HTTP协议的规定：
-            HTTP协议中请求的规定：
- 
-                一、请求头：包含了对客户端的环境描述、客户端请求信息等
-                GET /minion.png HTTP/1.1   // 包含了请求方法、请求资源路径、HTTP协议版本
-                Host: 120.25.226.186:32812     // 客户端想访问的服务器主机地址
-                User-Agent: Mozilla/5.0  // 客户端的类型，客户端的软件环境
-                Accept: text/html, * / *     // 客户端所能接收的数据类型
-                Accept-Language: zh-cn     // 客户端的语言环境
-                Accept-Encoding: gzip     // 客户端支持的数据压缩格式
-    
-                二、请求体：客户端发给服务器的具体数据，比如文件数据(POST请求才会有)
-    
-            HTTP协议中响应的规定：
-                 
-                 一、响应头：包含了对服务器的描述、对返回数据的描述
-                 HTTP/1.1 200 OK            // 包含了HTTP协议版本、状态码、状态英文名称
-                 Server: Apache-Coyote/1.1         // 服务器的类型
-                 Content-Type: image/jpeg         // 返回数据的类型
-                 Content-Length: 56811         // 返回数据的长度
-                 Date: Mon, 23 Jun 2014 12:54:52 GMT    // 响应的时间
 
-                 二、响应体：服务器返回给客户端的具体数据，比如文件数据。
-
-            
-    4、NSURLRequest：一个NSURLRequest对象就代表一个请求，它包含的信息有
-                    一个NSURL对象
-                    请求方法、请求头、请求体
-                    请求超时
-                    … …
-                    
-                    NSMutableURLRequest：NSURLRequest的子类
-                    
-      NSURLConnection：相当于一个端口，建立起客户端与服务器之间的联系。代理方法默认在主线程执行，但是你可以设置属性，让它在子线程执行。
-    
-                    负责发送请求，建立客户端和服务器的连接
-                    发送数据给服务器，并收集来自服务器的响应数据
-
-    5、OC对象 --> JSON字符串 ：序列化
-       JSON字符串 --> OC对象 ： 反序列化
-       JOSN   OC
-       {}     @{}
-       []     @[]
-       ""     @""
-       false  NSNumber 0
-       true   NSNumber 1
-       null      NSNull为空
- 
-    6、XML文档，其实也是一个语法或者说协议。
-        在XML文档前面必须写一段声明代码，用来声明XML文档的类型。
-       XML的的元素：开始标签---结束标签。元素名。
-                  元素之间可以嵌套元素。xml的元素内容对空行和换行敏感。
-                  元素标签里的属性名--属性值，也可以用嵌套元素来替换。
-      
-       XML文档的解析：
-                  DOM解析，一次性加载整个xml文档，然后再解析，适合小文档。
-                  SAX解析，从根元素开始，一个个元素地解析，适合大文档。
- 
-      苹果原生的XML解析框架：NSXMLParser,是以SAX方式进行解析。
- 
-      Plist就是一个XML文档。
- 
-    6、xcode控制台输出unicode乱码的问题，重写被输出对象的description属性，
-
- */
 

@@ -78,17 +78,17 @@ extension TestNaviVC_VC: UICollectionViewDataSource {
              */
             print("     (@@ 0、设置当前VC的UINavigationItem的各个item属性。")
             /// 左侧按钮
-            let leftBtnArr = [getUIBarButtonItem(img: UIImage(named: "naviBar_game")!, clickImg: UIImage(named: "naviBar_game_click")!,
+            let leftBtnArr = [MyNaviTool.getUIBarButtonItem(img: UIImage(named: "naviBar_game")!, highImg: UIImage(named: "naviBar_game_click")!,
                                                  target: self, action: #selector(self.clickLeftItem(_:))),
-                              getUIBarButtonItem(img: UIImage(named: "naviBar_coin")!,clickImg: UIImage(named: "naviBar_coin_click")!,
+                              MyNaviTool.getUIBarButtonItem(img: UIImage(named: "naviBar_coin")!,highImg: UIImage(named: "naviBar_coin_click")!,
                                                  target: self, action: #selector(self.clickLeftItem(_:)))]
             self.navigationItem.leftBarButtonItems = leftBtnArr
             
             /// 右侧按钮
             let rightBtnArr = [
-                               getUIBarButtonItem(img: UIImage(named: "naviBar_coin")!,clickImg: UIImage(named: "naviBar_coin_click")!,
+                               MyNaviTool.getUIBarButtonItem(img: UIImage(named: "naviBar_coin")!,highImg: UIImage(named: "naviBar_coin_click")!,
                                                   target: self, action: #selector(self.clickLeftItem(_:))),
-                               getUIBarButtonItem(img: UIImage(named: "naviBar_game")!, clickImg: UIImage(named: "naviBar_game_click")!,
+                               MyNaviTool.getUIBarButtonItem(img: UIImage(named: "naviBar_game")!, highImg: UIImage(named: "naviBar_game_click")!,
                                                   target: self, action: #selector(self.clickLeftItem(_:)))]
             self.navigationItem.rightBarButtonItems = rightBtnArr
             
@@ -107,6 +107,7 @@ extension TestNaviVC_VC: UICollectionViewDataSource {
             /**
                 1、当设置了leftBarButtonItem时，因为覆盖了原来的backItem，会清空掉返回手势，导致滑动返回手势无效。
                 2、分析:把系统的返回按钮覆盖 -> 1.手势失效(1.手势被清空 2.可能是手势代理做了一些事情,导致手势失效)
+                3、所以，设置了leftbaritem之后，系统的侧滑手势就会失效。
              */
             print("     (@@ 1、测试滑动返回手势")
             let app = UIApplication.shared.delegate as! AppDelegate
@@ -116,6 +117,7 @@ extension TestNaviVC_VC: UICollectionViewDataSource {
             }
             let subVC1 = MyNavigation_SubVC1()
             let naviVC = MyNavigation_NaviVC(rootViewController: subVC1)
+            naviVC.isFullPopGesture = true
             app.firstWindow.rootViewController = naviVC
             app.firstWindow.makeKeyAndVisible()
             
@@ -154,18 +156,7 @@ extension TestNaviVC_VC: UICollectionViewDataSource {
 //MARK: - 测试的方法
 @objc extension TestNaviVC_VC{
    
-    //TODO: 0、获取UIBarButtonItem的工具方法
-    func getUIBarButtonItem(img:UIImage, clickImg:UIImage, target:NSObject ,action:Selector) -> UIBarButtonItem{
-        
-        let btn  = UIButton()
-        btn.addTarget(target, action: action, for: .touchUpInside)
-        btn.setImage(img, for: .normal)
-        btn.setImage(clickImg, for: .highlighted)
-        btn.layer.borderColor = UIColor.brown.cgColor
-        btn.layer.borderWidth = 1.0
-        let barItem = UIBarButtonItem(customView: btn)
-        return barItem
-    }
+    
     
     func clickLeftItem(_ btn:UIButton){
         print("点击了左侧按钮:\(btn)")

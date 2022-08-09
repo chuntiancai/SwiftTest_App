@@ -6,6 +6,12 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 // 测试定时器的VC
+// MARK: - 笔记
+/**
+    1、
+ 
+ */
+
 
 class TestTimer_VC: UIViewController {
     
@@ -197,9 +203,4 @@ extension TestTimer_VC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 笔记
-/**
-    1、
- 
- */
 

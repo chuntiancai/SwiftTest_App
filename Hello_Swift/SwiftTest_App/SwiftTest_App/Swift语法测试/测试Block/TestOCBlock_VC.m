@@ -185,6 +185,12 @@ typedef int(^blockType)(void); //也可以通过别名的方式
         }
             break;
         case 4:
+            //TODO: 4、测试OC调用swift的blcok
+            NSLog(@" 4、测试OC调用swift的blcok");
+        {
+            TestBlock_VC * vc = [[TestBlock_VC alloc] init];
+            vc.swiftBlock();
+        }
             break;
         case 5:
             break;

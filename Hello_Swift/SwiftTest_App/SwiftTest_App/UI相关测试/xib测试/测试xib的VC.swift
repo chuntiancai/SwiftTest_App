@@ -6,6 +6,22 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 //测试xib的VC
+// MARK: - 笔记
+/**
+    1、xib就是一个简单的storyboard，轻量级的文件，很久之前是nib，编译打包后是nib。但是xib绑定的是view，storyboard绑定的是VC。xib更加轻量，storyboard内嵌了xib。
+    2、一个xib文件是一个容器，不止是绑定的一个view，可以绑定多个view。
+    3、xib绑定的view是通过bundle来定位的，也就是通过文件名来定位，不像storyboard，storyboard是通过id来定位的。
+    4、如果View是从xib加载，则不会调用init和init(_ frame:)方法，而是调用init?(coder: NSCoder)方法初始化，所以你可以用代码在该方法加载子控件。
+      如果是想控制xib文件中原来的(通过IB添加的)控件，则需要在复写awakeFromNib()方法中操作，因为xib是先初始化，后唤醒才可以操作。
+    
+    5、vc默认会去寻找同名的xib，会去调用initWithNibName寻找：
+        init ->  initWithNibName 1.首先判断有没有指定nibName 2.判断下有没有跟类名同名xib。
+        是寻找xib的view，不是寻找xib的VC，但是需要在xib的placeholder的file's owner中绑定vc的类。
+ 
+    6、按住 ctrl键 + 鼠标长按 进行属性的连线。
+ 
+ */
+
 
 class TestXibFile_VC: UIViewController {
     
@@ -193,12 +209,3 @@ extension TestXibFile_VC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 笔记
-/**
-    1、xib就是一个简单的storyboard，轻量级的文件，很久之前是nib，编译打包后是nib。但是xib绑定的是view，storyboard绑定的是VC。xib更加轻量，storyboard内嵌了xib。
-    2、一个xib文件是一个容器，不止是绑定的一个view，可以绑定多个view。
-    3、xib绑定的view是通过bundle来定位的，也就是通过文件名来定位，不像storyboard，storyboard是通过id来定位的。
-    4、如果View是从xib加载，则不会调用init和init(_ frame:)方法，而是调用init?(coder: NSCoder)方法初始化，所以你可以用代码在该方法加载子控件。
-      如果是想控制xib文件中原来的(通过IB添加的)控件，则需要在复写awakeFromNib()方法中操作，因为xib是先初始化，后唤醒才可以操作。
- 
- */

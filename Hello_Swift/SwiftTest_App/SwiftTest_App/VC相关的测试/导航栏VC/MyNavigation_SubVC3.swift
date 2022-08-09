@@ -1,8 +1,8 @@
 //
-//  MyNavigation_SubVC1.swift
+//  MyNavigation_SubVC3.swift
 //  SwiftTest_App
 //
-//  Created by mathew on 2022/8/2.
+//  Created by mathew on 2022/8/3.
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 // 导航栏VC里的子VC
@@ -12,7 +12,7 @@
  
  */
 
-class MyNavigation_SubVC1: UIViewController {
+class MyNavigation_SubVC3: UIViewController {
     
     //MARK: 对外属性
     public var collDataArr = ["0、","1、","2、","3、","4、","5、","6、","7、","8、","9、","10、","11、","12、"]
@@ -25,8 +25,9 @@ class MyNavigation_SubVC1: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 199/255.0, green: 204/255.0, blue: 237/255.0, alpha: 1.0)
-        self.title = "导航SubVC1"
+        self.title = "导航SubVC3"
         setCollectionViewUI()
+        self.navigationItem.leftBarButtonItem = MyNaviTool.getUIBarButtonItem(img: UIImage(named: "naviBar_back")!, highImg: UIImage(named: "naviBar_back_click")!, target: self, action: #selector(self.back))
     }
     
     
@@ -35,22 +36,18 @@ class MyNavigation_SubVC1: UIViewController {
 
 
 //MARK: - 遵循数据源协议,UICollectionViewDataSource
-extension MyNavigation_SubVC1: UICollectionViewDataSource {
+extension MyNavigation_SubVC3: UICollectionViewDataSource {
     
     ///点击了cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            //TODO: 0、入栈下一个VC
-            print("     (@@ 0、入栈下一个VC2")
-            let subVC2 = MyNavigation_SubVC2()
-            self.navigationController?.pushViewController(subVC2, animated: true)
+            //TODO: 0、
+            print("     (@@ 0、")
         case 1:
             //TODO: 1、
-            print("     (@@ 1、入栈下一个VC3")
-            let subVC3 = MyNavigation_SubVC3()
-            self.navigationController?.pushViewController(subVC3, animated: true)
+            print("     (@@ 1、")
         case 2:
             //TODO: 2、
             print("     (@@ 2、")
@@ -74,14 +71,7 @@ extension MyNavigation_SubVC1: UICollectionViewDataSource {
         case 11:
             print("     (@@")
         case 12:
-            //TODO: 12、退出当前window
-            print("     (@@ 12、退出当前window")
-            let app = UIApplication.shared.delegate as! AppDelegate
-            if app.firstWindow.rootViewController != nil {
-                app.firstWindow.resignKey()
-                app.firstWindow.rootViewController = nil
-                app.window?.makeKeyAndVisible()
-            }
+            print("     (@@")
         default:
             break
         }
@@ -89,18 +79,18 @@ extension MyNavigation_SubVC1: UICollectionViewDataSource {
     
 }
 //MARK: - 测试的方法
-extension MyNavigation_SubVC1{
+@objc extension MyNavigation_SubVC3{
    
-    //MARK: 0、
-    func test0(){
-        
+    //MARK: 0、出栈
+    func back(){
+        self.navigationController?.popViewController(animated: true)
     }
     
 }
 
 
 //MARK: - 设计UI
-extension MyNavigation_SubVC1 {
+extension MyNavigation_SubVC3 {
     
     /// 设置collection view的UI
     private func setCollectionViewUI(){
@@ -127,7 +117,7 @@ extension MyNavigation_SubVC1 {
 }
 
 //MARK: - 遵循委托协议,UICollectionViewDelegate
-extension MyNavigation_SubVC1: UICollectionViewDelegate {
+extension MyNavigation_SubVC3: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collDataArr.count
@@ -153,4 +143,3 @@ extension MyNavigation_SubVC1: UICollectionViewDelegate {
     }
     
 }
-

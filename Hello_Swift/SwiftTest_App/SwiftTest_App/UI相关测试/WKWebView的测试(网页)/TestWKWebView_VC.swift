@@ -6,8 +6,15 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 // 测试WKWebView的VC
-import WebKit
+// MARK: - 笔记
+/**
+    1、首先要import WebKit。
+    2、必须在WKNavigationDelegate 的 webView(_:decidePolicyFor:decisionHandler:) 方法中，执行decisionHandler闭包，允许网页跳转。
+    3、WKWebView也可以用来加载pdf，ppt，图片,视频,html等等这些本地文件，也是传入文件url就可以了。
+ 
+ */
 
+import WebKit
 class TestWKWebView_VC: UIViewController {
     
     //MARK: 对外属性
@@ -292,10 +299,3 @@ extension TestWKWebView_VC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 笔记
-/**
-    1、首先要import WebKit。
-    2、必须在WKNavigationDelegate 的 webView(_:decidePolicyFor:decisionHandler:) 方法中，执行decisionHandler闭包，允许网页跳转。
-    3、WKWebView也可以用来加载pdf，ppt，图片,视频,html等等这些本地文件，也是传入文件url就可以了。
- 
- */
