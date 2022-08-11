@@ -26,7 +26,6 @@ class TestImageView_VC: UIViewController {
     
     //MARK: 测试组件
     let imgView1 = UIImageView()
-    
     let image1 = UIImage(named: "labi09")!
     
     let turnImgV = UIImageView(image: UIImage(named: "labi10"))
@@ -115,7 +114,7 @@ extension TestImageView_VC: UICollectionViewDataSource {
             let cropHeight:CGFloat = 50 * pixScale
             
             /// cropping是用C语言实现的，使用的坐标是像素坐标。而ios使用的坐标是点坐标，所以要进行坐标系的转换。
-            let cropImg = (orgImage.cgImage?.cropping(to: CGRect.init(x: 0, y: 0, width: cropWidth, height: cropHeight)))!
+            let cropImg = (orgImage.cgImage?.cropping(to: CGRect.init(x: 50, y: 100, width: cropWidth, height: cropHeight)))!
             let turnImgV = UIImageView(image: UIImage(cgImage: cropImg))
             self.view.addSubview(turnImgV)
             turnImgV.snp.makeConstraints { make in
@@ -123,10 +122,57 @@ extension TestImageView_VC: UICollectionViewDataSource {
                 make.centerX.equalToSuperview()
             }
             
+            
+            
+            
+            // 1.开启图形上下文
+            // 比例因素:当前点与像素比例,0表示自适应
+            UIGraphicsBeginImageContextWithOptions(orgImage.size, false, 0)
+            // 2.描述裁剪区域,用路径来描述
+            let path = UIBezierPath(ovalIn: CGRect(x: -1, y: -1, width: orgImage.size.width , height: orgImage.size.height))
+            // 3.设置裁剪区域生效;
+            path.addClip()
+            // 4.画图片
+            orgImage.draw(at: .zero)
+            // 5.取出图片
+            let drawImg = UIGraphicsGetImageFromCurrentImageContext()!
+            // 6.关闭上下文
+            UIGraphicsEndImageContext()
+            
+            //抗锯齿图片的本质就是在图片生成一个透明度为1的像素边框。现在的做法就是把边缘的一个像素留出来，然后再画一张延伸一个像素的同一个图片作为底部背景。
+            ///1、留出一个像素空白，并且图片外延一个像素。即截取掉图片外延的一个像素。
+            let antialiasRect = CGRect(x: 1.0, y: 1.0, width: drawImg.size.width - 2.0 , height: drawImg.size.height - 2.0)
+            UIGraphicsBeginImageContext(antialiasRect.size)
+            drawImg.draw(in: CGRect(x: -1.0, y: -1.0, width: drawImg.size.width , height: drawImg.size.height))
+            let antialiasImg1 = UIGraphicsGetImageFromCurrentImageContext()!
+            UIGraphicsEndImageContext()
+            
+            /// 2、图片缩小一个像素渲染。最终的结果就是截取了图片外延的倒数第二个像素的边缘来填充图片的边缘。肉眼看不出是啥。
+            UIGraphicsBeginImageContext(drawImg.size)
+            antialiasImg1.draw(in: antialiasRect)
+            let antialiasImg2 = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            let turnImgV2 = UIImageView(image: drawImg)
+            self.view.addSubview(turnImgV2)
+            turnImgV2.snp.makeConstraints { make in
+                make.top.equalTo(turnImgV.snp.bottom).offset(10)
+                make.left.equalToSuperview().offset(5)
+                make.height.width.equalTo(160)
+            }
+            
+            let turnImgV3 = UIImageView(image: antialiasImg2)
+            self.view.addSubview(turnImgV3)
+            turnImgV3.snp.makeConstraints { make in
+                make.top.equalTo(turnImgV.snp.bottom).offset(10)
+                make.left.equalTo(turnImgV2.snp_right).offset(5)
+                make.height.width.equalTo(160)
+            }
+            
         case 6:
             //TODO: 6、UIImageView只显示部分图片，测试图片重叠动画
             /**
-             turnImgV2.layer.contentsRect
+                1、turnImgV2.layer.contentsRect
              */
             print("     (@@ UIImageView只显示部分图片。图片重叠")
             imgView1.isHidden = true
@@ -213,7 +259,8 @@ extension TestImageView_VC: UICollectionViewDataSource {
             /// 设置为原始的渲染模式之后，图的的通明通道就不会被渲染成渲染色
             imgView1.image = curImage
         case 11:
-            print("     (@@")
+           
+            print("     (@@11、设置图片的抗锯齿")
         case 12:
             print("     (@@ 重置形变")
             turnImgV.transform = .identity

@@ -8,14 +8,16 @@
 // 测试tableview属性的vc，
 // MARK: - 笔记
 /**
-    1、如果你的tableview的cell是一个普通的view ，那么你就单独给这个cell一个变量，然后也单独给这个cell一个reuseID，然后就可以不进复用池，从而导致复用的问题。
+    1、如果你的tableview的cell是一个普通的view ，那么你就单独给这个cell一个变量，然后也单独给这个cell一个reuseID，然后就可以不进复用池，从而不会导致复用的问题。
+ 
     2、动态tableview是根据数据源来动态设置section和cell的个数，静态table是固定section和cell的个数。我们一般使用的是动态tableview，所谓静态tableview，是只能在UITableViewCotroller中使用，一般也是在storyboard中使用而已了。
  
     3、如果tableview在复用池里面没有找到cell，则自动会去storyboard里面找。
  
-    4、苹果为了确定tableview的contentsize，所以要知道所有cell的高度，所以就会每次都调用heightForRowAt代理方法。contentsize一开始的设计初衷是为了计算滚动条的高度。 UIKit会根据tableView.estimatedRowHeight的值来估算tableview的contentsize大小，设置tableView.estimatedRowHeight的值，会减少heightForRowAt代理方法的调用次数。 设置estimatedRowHeight的值后会出现cellForRowAt代理方法在heightForRowAt代理方法前被调用，因为有了估算的高度，但是等真正显示cell的时候，还是会调用heightForRowAt代理方法再显示。
+    4、苹果为了确定tableview的contentsize，所以要知道所有cell的高度，所以就会每次都调用heightForRowAt代理方法。contentsize一开始的设计初衷是为了计算滚动条的高度。 UIKit会根据tableView.estimatedRowHeight的值来估算tableview的contentsize大小，设置tableView.estimatedRowHeight的值， 会减少heightForRowAt代理方法的调用次数。 设置estimatedRowHeight的值后会出现cellForRowAt代理方法在heightForRowAt代理方法前被调用，因为有了估算的高度，但是等真正显示cell的时候，还是会调用heightForRowAt代理方法再显示。
  
     5、所以设置estimatedRowHeight的值，可以很大地提高性能。类似于懒加载cell高度。
+ 
     6、注册的cell会在所有代理方法调用之前就已经创建好cell对象放在复用池里面了，所以heightForRowAt代理方法调用前，是肯定有cell的了。
  
  
@@ -26,7 +28,7 @@
  
     tableview的刷新：
     1、tableView.reloadRows局部刷新方法，会刷新你传入的indexpath数组，但必须保证该section内的cell的个数不发生改变，只刷新cell里面的数据。
-      插入或者删除cell，有对应的其他更新的方法。testTableView.insertRows方法和testTableView.deleteRows方法，记得同步数据源。
+      插入或者删除cell，有对应的其他更新的方法。myTableView.insertRows方法和testTableView.deleteRows方法，记得同步数据源。
  
  */
 
@@ -40,7 +42,7 @@ class TestTableView_VC: UIViewController {
     
     //MARK: 测试组件
     /// 被测试的tableview
-    private var testTableView:UITableView = {
+    private var myTableView:UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(TestTableView_Cell.self, forCellReuseIdentifier: "TestTableView_Cell_ID")
         
@@ -173,9 +175,9 @@ extension TestTableView_VC: UICollectionViewDataSource {
         case 0:
             //TODO: 0、设置分割线
             print("     (@@  设置分割线")
-            testTableView.separatorStyle = .singleLine
-            testTableView.separatorColor = .blue
-            testTableView.separatorInset = UIEdgeInsets.init(top: 0, left: UIScreen.main.bounds.width, bottom: 0, right: UIScreen.main.bounds.width)
+            myTableView.separatorStyle = .singleLine
+            myTableView.separatorColor = .blue
+            myTableView.separatorInset = UIEdgeInsets.init(top: 0, left: UIScreen.main.bounds.width, bottom: 0, right: UIScreen.main.bounds.width)
             
             break
         case 1:
@@ -183,14 +185,14 @@ extension TestTableView_VC: UICollectionViewDataSource {
             print("     (@@ ")
         case 2:
             //TODO: 2、 设置tableview的编辑模式,则变成侧滑进入编辑模式。设置为false则退出编辑模式。
-            print("     (@@ 进入编辑模式:\(!testTableView.isEditing)")
-            testTableView.isEditing = !testTableView.isEditing
-//            testTableView.setEditing(true, animated: true)  //动画效果进入编辑模式
+            print("     (@@ 进入编辑模式:\(!myTableView.isEditing)")
+            myTableView.isEditing = !myTableView.isEditing
+//            myTableView.setEditing(true, animated: true)  //动画效果进入编辑模式
         case 3:
             //TODO: 3、获取编辑模式多选的cell的indexpath
             /// 记得同步更新数据源，不要遍历删除row，因为每删除一个row，其他row的indexpath会发生变化。
             print("     (@@ 获取编辑模式多选的cell的indexpath")
-            let pathsArr = testTableView.indexPathsForSelectedRows
+            let pathsArr = myTableView.indexPathsForSelectedRows
             print("选中的indexpath是：\(String(describing: pathsArr))")
             
         case 5:
@@ -239,11 +241,11 @@ extension TestTableView_VC{
     
     /// 初始化你要测试的view
     func initTestViewUI(){
-        view.addSubview(testTableView)
+        view.addSubview(myTableView)
         ///设置代理
-        testTableView.delegate = self
-        testTableView.dataSource = self
-        testTableView.snp.makeConstraints { make in
+        myTableView.delegate = self
+        myTableView.dataSource = self
+        myTableView.snp.makeConstraints { make in
             make.top.equalTo(baseCollView.snp.bottom).offset(10)
             make.width.equalToSuperview().multipliedBy(0.8)
             make.centerX.equalToSuperview()

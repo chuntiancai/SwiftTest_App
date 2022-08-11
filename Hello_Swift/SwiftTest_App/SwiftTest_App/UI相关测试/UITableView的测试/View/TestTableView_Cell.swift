@@ -43,6 +43,15 @@ class TestTableView_Cell: UITableViewCell {
         createUI()
     }
     
+    override var frame: CGRect {
+        get{
+            return super.frame
+        }
+        set{
+            super.frame = newValue
+        }
+    }
+    
     override func draw(_ rect: CGRect) {
         print("TestTableView_Cell 的 \(#function)方法")
         /**

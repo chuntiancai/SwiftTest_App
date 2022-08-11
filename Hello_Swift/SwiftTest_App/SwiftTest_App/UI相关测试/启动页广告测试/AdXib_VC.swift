@@ -65,7 +65,7 @@ class AdXib_VC: UIViewController {
         adImgView.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
-        let myUrl  = URL.init(string: "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi.qqkou.com%2Fi%2F0a404548537x2815430900b26.jpg&refer=http%3A%2F%2Fi.qqkou.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1653555587&t=dcc5b600a9121d59752918e4a8c08d22")
+        let myUrl  = URL.init(string: "https://pic3.zhimg.com/v2-36169847e092bdd993f7e759e7520d7a_r.jpg?source=1940ef5c")
         if let imgData = try? Data(contentsOf: myUrl!){
             adImgView.image  = UIImage(data: imgData)
         }
@@ -88,7 +88,31 @@ class AdXib_VC: UIViewController {
     /// 跳转广告的方法
     func clickJumpAction(){
         print("点击了广告，去openUrl")
+        
+        var myUrl = URL.init(string: "https://pic3.zhimg.com/v2-36169847e092bdd993f7e759e7520d7a_r.jpg?source=1940ef5c")
+        if timeCount <= 3 {
+            myUrl  = URL.init(string: "https://pic1.zhimg.com/v2-580628b3f705778987e2142f5fcea823_r.jpg?source=1940ef5c")
+        }
+        if timeCount <= 6 {
+            myUrl  = URL.init(string: "https://pic2.zhimg.com/v2-b1c88b18f652e83e28237c47fca2320d_r.jpg")
+        }
+        
+        /// 打开网页
+        if let myUrl = myUrl {
+            UIApplication.shared.open(myUrl, options: [:]) { isSucess in
+                print("打开网页成功： \(isSucess)")
+            }
+        }
+       
+        
         /// 销毁定时器
+        if adTimer != nil {
+            print("AdXib_VC 销毁定时器了～")
+            adTimer?.invalidate()
+            adTimer = nil
+            skipBtnAciton(skipBtn)
+        }
+        
     }
     
     /// 定时器计时方法
@@ -97,12 +121,20 @@ class AdXib_VC: UIViewController {
         timeCount -= 1;
         skipBtn.setTitle("跳过(\(timeCount))", for: .normal)
         
-        if timeCount == 5 {
+        if timeCount == 6 {
             let myUrl  = URL.init(string: "https://pic2.zhimg.com/v2-b1c88b18f652e83e28237c47fca2320d_r.jpg")
             if let imgData = try? Data(contentsOf: myUrl!){
                 adImgView.image  = UIImage(data: imgData)
             }
         }
+        
+        if timeCount == 3 {
+            let myUrl  = URL.init(string: "https://pic1.zhimg.com/v2-580628b3f705778987e2142f5fcea823_r.jpg?source=1940ef5c")
+            if let imgData = try? Data(contentsOf: myUrl!){
+                adImgView.image  = UIImage(data: imgData)
+            }
+        }
+    
         if timeCount == 0 {
             if adTimer != nil {
                 print("AdXib_VC 销毁定时器了～")

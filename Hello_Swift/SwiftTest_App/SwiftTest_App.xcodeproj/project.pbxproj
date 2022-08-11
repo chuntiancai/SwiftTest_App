@@ -311,6 +311,9 @@
 		AF2C735425539C54000AD7A9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2C735325539C54000AD7A9 /* MainViewController.swift */; };
 		AF2C735925539C60000AD7A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF2C735825539C60000AD7A9 /* Assets.xcassets */; };
 		AF2C735C25539C60000AD7A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF2C735A25539C60000AD7A9 /* LaunchScreen.storyboard */; };
+		AF2DDAE928A349FF00E1CCF3 /* TestDictSet_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAE828A349FF00E1CCF3 /* TestDictSet_VC.swift */; };
+		AF2DDAEB28A34A3600E1CCF3 /* Dict_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAEA28A34A3600E1CCF3 /* Dict_Model.swift */; };
+		AF2DDAEE28A3B70600E1CCF3 /* TestXcode_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAED28A3B70600E1CCF3 /* TestXcode_VC.swift */; };
 		AF3557B92865B5A5009B291C /* OCRuntime_Person+Property.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3557B82865B5A5009B291C /* OCRuntime_Person+Property.m */; };
 		AF3557BB286AF145009B291C /* Point_Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3557BA286AF145009B291C /* Point_Person.swift */; };
 		AF824279287534EA002311AF /* OCRuntimeStatus.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF824278287534EA002311AF /* OCRuntimeStatus.plist */; };
@@ -681,6 +684,9 @@
 		AF2C735825539C60000AD7A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF2C735B25539C60000AD7A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF2C735D25539C60000AD7A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF2DDAE828A349FF00E1CCF3 /* TestDictSet_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDictSet_VC.swift; sourceTree = "<group>"; };
+		AF2DDAEA28A34A3600E1CCF3 /* Dict_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dict_Model.swift; sourceTree = "<group>"; };
+		AF2DDAED28A3B70600E1CCF3 /* TestXcode_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestXcode_VC.swift; sourceTree = "<group>"; };
 		AF3557B72865B5A5009B291C /* OCRuntime_Person+Property.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OCRuntime_Person+Property.h"; sourceTree = "<group>"; };
 		AF3557B82865B5A5009B291C /* OCRuntime_Person+Property.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "OCRuntime_Person+Property.m"; sourceTree = "<group>"; };
 		AF3557BA286AF145009B291C /* Point_Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point_Person.swift; sourceTree = "<group>"; };
@@ -1361,6 +1367,7 @@
 		04600033271190F70074DFA2 /* Swift语法测试 */ = {
 			isa = PBXGroup;
 			children = (
+				AF2DDAE728A349DE00E1CCF3 /* 测试字典、集合 */,
 				AFD34EE82886875500C807A3 /* 测试Block */,
 				AFBCA8C32872C15A00AD51D1 /* 测试类与结构体 */,
 				04C7EA2B2840A9FF00685624 /* 语法笔记 */,
@@ -1480,6 +1487,7 @@
 		048608AC27350E89000F816E /* App环境(生命周期)相关的知识 */ = {
 			isa = PBXGroup;
 			children = (
+				AF2DDAEC28A3B6EC00E1CCF3 /* Xcode性能工具测试 */,
 				042036D427604F8B00424E05 /* 测试获取手机系统的信息 */,
 				048608AD27350EC5000F816E /* App环境配置的知识.md */,
 				041BCA3627EC153B00E3BEB8 /* Xcode的配置.md */,
@@ -2013,8 +2021,8 @@
 		04CBB62726CA477200436C0E /* UITableView的测试 */ = {
 			isa = PBXGroup;
 			children = (
-				0455059C27FDA9D900785F02 /* 测试TableView的布局约束.swift */,
 				0492700D2796C60D000A61FC /* 测试TableView的VC.swift */,
+				0455059C27FDA9D900785F02 /* 测试TableView的布局约束.swift */,
 				0414F97B27BA48C50037EE70 /* TableView的contentInset与刷新_VC.swift */,
 				04CBB62826CA47AD00436C0E /* 测试TableView闭包循环引用_VC.swift */,
 				0454A48D272FCA5600EFE31A /* 测试tableview的delegate顺序_VC.swift */,
@@ -2175,6 +2183,23 @@
 				04330AC0284060B4007DF2D0 /* OCMainViewController.h */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		AF2DDAE728A349DE00E1CCF3 /* 测试字典、集合 */ = {
+			isa = PBXGroup;
+			children = (
+				AF2DDAE828A349FF00E1CCF3 /* TestDictSet_VC.swift */,
+				AF2DDAEA28A34A3600E1CCF3 /* Dict_Model.swift */,
+			);
+			path = "测试字典、集合";
+			sourceTree = "<group>";
+		};
+		AF2DDAEC28A3B6EC00E1CCF3 /* Xcode性能工具测试 */ = {
+			isa = PBXGroup;
+			children = (
+				AF2DDAED28A3B70600E1CCF3 /* TestXcode_VC.swift */,
+			);
+			path = "Xcode性能工具测试";
 			sourceTree = "<group>";
 		};
 		AF824281287C0F4B002311AF /* 测试OC的语法 */ = {
@@ -2445,6 +2470,7 @@
 				041A2E262794038F00F9CABF /* TestUIScrollView_VC.swift in Sources */,
 				04587C7B27B50BC500824F69 /* Tabar_SubVC2测试工具栏UI.swift in Sources */,
 				042036D8276052FF00424E05 /* AppSystemInfo.swift in Sources */,
+				AF2DDAEE28A3B70600E1CCF3 /* TestXcode_VC.swift in Sources */,
 				04870E4826E9AD280030B1D2 /* AALegend.swift in Sources */,
 				048608B1273527CA000F816E /* Animal.swift in Sources */,
 				04A0CA4126A0027800ECAE1B /* JFZMoreFunctionSpeedCollectionViewCell.swift in Sources */,
@@ -2459,6 +2485,7 @@
 				042648E327F312A60034FF51 /* TestSDWebImage_VC.swift in Sources */,
 				AF82427C2875369C002311AF /* OCRuntime_StatusModel.m in Sources */,
 				0421E5F526A9701600C6A922 /* JFZ_VideoPlayerView.swift in Sources */,
+				AF2DDAEB28A34A3600E1CCF3 /* Dict_Model.swift in Sources */,
 				044CBA7727F5A82A00FA2CB8 /* 测试文字的自适应高度_label.swift in Sources */,
 				AF3557B92865B5A5009B291C /* OCRuntime_Person+Property.m in Sources */,
 				04A0CA4A26A0027800ECAE1B /* String+md5Extension.swift in Sources */,
@@ -2516,6 +2543,7 @@
 				04C7EA3C2840AF5D00685624 /* OCRuntime_Person.m in Sources */,
 				AFD34EF22887D62500C807A3 /* Sub_PageControl.swift in Sources */,
 				04330AA1283F76B5007DF2D0 /* Generic_Person.swift in Sources */,
+				AF2DDAE928A349FF00E1CCF3 /* TestDictSet_VC.swift in Sources */,
 				04A0CA4526A0027800ECAE1B /* JFZAccelerationTipsView.swift in Sources */,
 				651C71492609EB870066C13B /* FileTest_VC.swift in Sources */,
 				041D5D4E27FD336C00446FDF /* TestSnapkit_VC.swift in Sources */,
