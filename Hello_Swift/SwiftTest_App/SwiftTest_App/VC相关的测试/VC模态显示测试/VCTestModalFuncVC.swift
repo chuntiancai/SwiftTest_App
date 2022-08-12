@@ -5,10 +5,15 @@
 //  Created by mathew on 2021/7/26.
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
-
-// 测试VC的生命周期
-
-import UIKit
+// 测试VC的模态显示
+// MARK: - 笔记
+/**
+    1、需要在系统的tabBarButton添加到UITabBar上之前，把自己的SubTabBar替换成系统的UITabBar。不然的话，系统已经把tabBarButton放在之前的UITabBar上了。
+    2、系统的tabBarButton是在UITabBarController的viewWillAppear方法中添加的。
+    3、通过KVC修改tabBar属性。UITabBarButton是系统私有的类，没有暴露给用户使用，所以你是敲不出来的，只能通过反编译的方式，NSClassFromString(clsName)的方式获取类。
+        还有一个方法是比较类的字符串，NSStringFromClass(type(of: subView))；
+        这里有个问题，UITabBarButton会被销毁替换，而且无法控制，在子VC布局的时候，会影响UITabBarButton的位置销毁等等的，所以该方法不可取。
+ */
 
 class VCTestModalFuncVC: UIViewController {
     
@@ -57,6 +62,7 @@ extension VCTestModalFuncVC: UICollectionViewDataSource {
         print("点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
+            //TODO: 0、模态显示一个VC
             print("     (@@模态显示一个VC")
             let curVC = TestModalVC()
             curVC.view.backgroundColor = .blue
@@ -83,6 +89,7 @@ extension VCTestModalFuncVC: UICollectionViewDataSource {
             print("创建一个VC完毕")
             break
         case 1:
+            //TODO: 0、
             print("     (@@show一个VC")
             let curVC = TestModalVC()
             curVC.view.backgroundColor = .blue
@@ -95,13 +102,14 @@ extension VCTestModalFuncVC: UICollectionViewDataSource {
             self.show(curVC, sender: nil)
             break
         case 2:
-            print("     (@@ 重新设置snpkit")
+            //TODO: 0、
+            print("     (@@ ")
             
         case 3:
-            print("     (@@旋转view")
+            print("     (@@")
             break
         case 4:
-            print("     (@@ 复原view的矩阵变换")
+            print("     (@@ ")
             break
             
         case 5:

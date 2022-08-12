@@ -12,6 +12,15 @@
     2、必须在WKNavigationDelegate 的 webView(_:decidePolicyFor:decisionHandler:) 方法中，执行decisionHandler闭包，允许网页跳转。
     3、WKWebView也可以用来加载pdf，ppt，图片,视频,html等等这些本地文件，也是传入文件url就可以了。
  
+    历史：
+    1.Safari openURL :自带很多功能(进度条,刷新,前进,倒退等等功能),必须要跳出当前应用
+    2.UIWebView (没有功能) ,在当前应用打开网页,并且有safari,自己实现,UIWebView不能实现进度条
+    3.SFSafariViewController:专门用来展示网页 需求:即想要在当前应用展示网页,又想要safari功能 iOS9才能使用
+        3.1 导入#import <SafariServices/SafariServices.h>
+
+    4.WKWebView:iOS8 (UIWebView升级版本,添加功能 1.监听进度 2.缓存)
+        4.1 导入#import <WebKit/WebKit.h>
+ 
  */
 
 import WebKit

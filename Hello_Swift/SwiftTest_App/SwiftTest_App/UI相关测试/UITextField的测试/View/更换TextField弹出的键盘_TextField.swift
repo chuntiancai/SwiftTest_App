@@ -6,6 +6,16 @@
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
 // 测试替换TextField弹起的键盘
+// MARK: - 笔记
+/**
+    1、赋值textfield的inputView属性，可以更改弹出的键盘。
+    2、通过plist文件加载模型。
+ 
+    问题：
+        1、在设置row的显示为view，为什么键盘的pickerView中间会有一个蒙版，然后显示不出来图片？
+            :是view的赋值问题，但是我还没找到问题出现在哪里。我不知道为什么view一定要是在viewForRow代理方法中新建，而不能暂存在数组里面，暂存的话，会显示不出来。
+             所以一般的操作是，你在viewForRow代理方法中新建自定义view，但是你的自定义view的数据则用数组缓存起来。不可以暂存view。
+ */
 
 
 class KeyBoardTextField: UITextField {
@@ -112,15 +122,5 @@ extension KeyBoardTextField{
     
 }
 
-// MARK: - 笔记
-/**
-    1、赋值textfield的inputView属性，可以更改弹出的键盘。
-    2、通过plist文件加载模型。
- 
-    问题：
-        1、在设置row的显示为view，为什么键盘的pickerView中间会有一个蒙版，然后显示不出来图片？
-            :是view的赋值问题，但是我还没找到问题出现在哪里。我不知道为什么view一定要是在viewForRow代理方法中新建，而不能暂存在数组里面，暂存的话，会显示不出来。
-             所以一般的操作是，你在viewForRow代理方法中新建自定义view，但是你的自定义view的数据则用数组缓存起来。不可以暂存view。
- */
 
  

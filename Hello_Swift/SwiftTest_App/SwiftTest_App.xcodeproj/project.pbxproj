@@ -314,6 +314,9 @@
 		AF2DDAE928A349FF00E1CCF3 /* TestDictSet_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAE828A349FF00E1CCF3 /* TestDictSet_VC.swift */; };
 		AF2DDAEB28A34A3600E1CCF3 /* Dict_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAEA28A34A3600E1CCF3 /* Dict_Model.swift */; };
 		AF2DDAEE28A3B70600E1CCF3 /* TestXcode_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAED28A3B70600E1CCF3 /* TestXcode_VC.swift */; };
+		AF2DDAF028A5EE6D00E1CCF3 /* Test_UITestFied.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAEF28A5EE6D00E1CCF3 /* Test_UITestFied.swift */; };
+		AF2DDAF328A62FAF00E1CCF3 /* TestSFSafariViewController_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAF228A62FAF00E1CCF3 /* TestSFSafariViewController_VC.swift */; };
+		AF2DDAF628A6381600E1CCF3 /* TestWindow_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAF528A6381600E1CCF3 /* TestWindow_VC.swift */; };
 		AF3557B92865B5A5009B291C /* OCRuntime_Person+Property.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3557B82865B5A5009B291C /* OCRuntime_Person+Property.m */; };
 		AF3557BB286AF145009B291C /* Point_Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3557BA286AF145009B291C /* Point_Person.swift */; };
 		AF824279287534EA002311AF /* OCRuntimeStatus.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF824278287534EA002311AF /* OCRuntimeStatus.plist */; };
@@ -687,6 +690,9 @@
 		AF2DDAE828A349FF00E1CCF3 /* TestDictSet_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDictSet_VC.swift; sourceTree = "<group>"; };
 		AF2DDAEA28A34A3600E1CCF3 /* Dict_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dict_Model.swift; sourceTree = "<group>"; };
 		AF2DDAED28A3B70600E1CCF3 /* TestXcode_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestXcode_VC.swift; sourceTree = "<group>"; };
+		AF2DDAEF28A5EE6D00E1CCF3 /* Test_UITestFied.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_UITestFied.swift; sourceTree = "<group>"; };
+		AF2DDAF228A62FAF00E1CCF3 /* TestSFSafariViewController_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSFSafariViewController_VC.swift; sourceTree = "<group>"; };
+		AF2DDAF528A6381600E1CCF3 /* TestWindow_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestWindow_VC.swift; sourceTree = "<group>"; };
 		AF3557B72865B5A5009B291C /* OCRuntime_Person+Property.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OCRuntime_Person+Property.h"; sourceTree = "<group>"; };
 		AF3557B82865B5A5009B291C /* OCRuntime_Person+Property.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "OCRuntime_Person+Property.m"; sourceTree = "<group>"; };
 		AF3557BA286AF145009B291C /* Point_Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point_Person.swift; sourceTree = "<group>"; };
@@ -750,6 +756,7 @@
 			isa = PBXGroup;
 			children = (
 				04133083281A7B8200E8CA0A /* TestWKWebView_VC.swift */,
+				AF2DDAF128A62F9B00E1CCF3 /* SFSafariViewController测试 */,
 			);
 			path = "WKWebView的测试(网页)";
 			sourceTree = "<group>";
@@ -938,6 +945,7 @@
 		042036B22744A0EE00424E05 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AF2DDAEF28A5EE6D00E1CCF3 /* Test_UITestFied.swift */,
 				044FB586276735BE00479442 /* TextField的点击测试(键盘弹起)_View.swift */,
 				042036AE27439A0F00424E05 /* 更换TextField弹出的键盘_TextField.swift */,
 				042036B6274B9B3800424E05 /* 测试TextField的Image.xcassets */,
@@ -1405,6 +1413,7 @@
 		0474C24F27CF4CBE00B95D7C /* UIWindow的测试 */ = {
 			isa = PBXGroup;
 			children = (
+				AF2DDAF528A6381600E1CCF3 /* TestWindow_VC.swift */,
 			);
 			path = "UIWindow的测试";
 			sourceTree = "<group>";
@@ -2202,6 +2211,14 @@
 			path = "Xcode性能工具测试";
 			sourceTree = "<group>";
 		};
+		AF2DDAF128A62F9B00E1CCF3 /* SFSafariViewController测试 */ = {
+			isa = PBXGroup;
+			children = (
+				AF2DDAF228A62FAF00E1CCF3 /* TestSFSafariViewController_VC.swift */,
+			);
+			path = "SFSafariViewController测试";
+			sourceTree = "<group>";
+		};
 		AF824281287C0F4B002311AF /* 测试OC的语法 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2504,6 +2521,7 @@
 				048608A52733BA40000F816E /* 测试给cell设置阴影.swift in Sources */,
 				045505A72803B9BF00785F02 /* CTCCalendarPageView.swift in Sources */,
 				042648EF27F4462A0034FF51 /* TestNSCache_VC.swift in Sources */,
+				AF2DDAF028A5EE6D00E1CCF3 /* Test_UITestFied.swift in Sources */,
 				041A2E232793EB7400F9CABF /* KVO_Observer.swift in Sources */,
 				04C45C8B271D539100E1EA9B /* Selector和NSStringFromClass的自定义类.swift in Sources */,
 				041CBC4D278D2BC800AF9B05 /* plist文件测试_VC.swift in Sources */,
@@ -2522,6 +2540,7 @@
 				04870E5326E9AD280030B1D2 /* AACrosshair.swift in Sources */,
 				047C851627B3B53E0060D7CB /* TestUIAlertController_VC.swift in Sources */,
 				651C713E2609E3CA0066C13B /* File的理解.swift in Sources */,
+				AF2DDAF628A6381600E1CCF3 /* TestWindow_VC.swift in Sources */,
 				0414F98827BE24730037EE70 /* Quartz_Img_View.swift in Sources */,
 				AF88EE77289772AB00660C28 /* TestUIColor_VC.swift in Sources */,
 				04C2DC0726CE3F9500F9B3EE /* TestURLSession_VC.swift in Sources */,
@@ -2668,6 +2687,7 @@
 				AFC1B388289CFD3C0050FC8F /* TestAd_VC.swift in Sources */,
 				04C2DC0426CE304700F9B3EE /* SubVC1_View.swift in Sources */,
 				041CBC5B279000A700AF9B05 /* TestImageView_VC.swift in Sources */,
+				AF2DDAF328A62FAF00E1CCF3 /* TestSFSafariViewController_VC.swift in Sources */,
 				04C7EA392840AB7700685624 /* OCTemp_VC.m in Sources */,
 				045505A127FFD0C700785F02 /* TestCalendar_VC.swift in Sources */,
 				042648E027F2E65B0034FF51 /* AsyncImg_Model.swift in Sources */,

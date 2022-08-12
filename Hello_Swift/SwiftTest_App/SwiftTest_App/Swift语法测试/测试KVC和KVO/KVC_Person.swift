@@ -10,7 +10,7 @@
 //MARK: 笔记
 /**
     1、非结构体使用KVC的，必须要在属性变量前加上@objc关键字，声明是@objc类型的属性，哪怕是在类名前加上@objc关键字都不行，必须是属性前。
- 
+    2、swift的扩展并不能扩展储存属性，但是可以扩展静态属性，所以可以通过关联静态属性的方式，添加“存储属性”。
  */
 
 
@@ -77,6 +77,22 @@ struct KVC_Student {
                         }
                         """
         return backStr
+    }
+    
+}
+//MARK: swift关联对象，kvc
+extension KVC_Person {
+    
+    static private var myWife:String?
+    
+    var wife:String{
+        set{
+            objc_setAssociatedObject(self, &Self.myWife, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        }
+        get{
+            let retStr = objc_getAssociatedObject(self, &Self.myWife) as? String ?? ""
+            return retStr
+        }
     }
     
 }

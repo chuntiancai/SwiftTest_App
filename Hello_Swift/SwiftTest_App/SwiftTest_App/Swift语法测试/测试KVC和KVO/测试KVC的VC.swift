@@ -144,6 +144,11 @@ extension TestKVC_VC: UICollectionViewDataSource {
             
             print("获取到的属性列表地址：\(String(describing: ivarList))")
             
+        case 4:
+            //TODO: 4、测试swift关联对象
+            print("     (@@ 4、测试swift关联对象")
+            personA.wife = "纯宝宝～"
+            print("wife:\(personA.wife)")
         case 5:
             print("     (@@")
         case 6:

@@ -19,7 +19,8 @@
     5、所以设置estimatedRowHeight的值，可以很大地提高性能。类似于懒加载cell高度。
  
     6、注册的cell会在所有代理方法调用之前就已经创建好cell对象放在复用池里面了，所以heightForRowAt代理方法调用前，是肯定有cell的了。
- 
+    
+    7、tableview的contentsize是自己自动计算的。tablew为group样式时，考虑tablewview的contentInset。
  
     cell的常见属性：
     1、cell里面的imageView，textlabel，detailTextLabel是属于cell的contentView的子view，不是cell的直接子view。

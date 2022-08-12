@@ -6,8 +6,14 @@
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
 // 测试TextField的点击事件(键盘弹起)，第一响应者
+// MARK: - 笔记
+/**
+    1、UITextField会拦截VC的touchBegan方法，所以可以直接在VC的touchBegan方法中收起键盘（辞去第一响应者）。
+ 
+    2、为什么textFied作为自定义view的子view时，textField.resignFirstResponder()不起作用，不会收起键盘？
+        ：这是因为你在textFieldShouldEndEditing代理方法中返回false，阻止了它辞去第一响应者，前后矛盾了，它以代理方法的判断为主。
+ */
 
-import UIKit
 
 class TestTextFileldEvent_View: UIView {
     //MARK: - 对外属性
@@ -148,10 +154,3 @@ extension TestTextFileldEvent_View:UITextFieldDelegate{
     }
 }
 
-// MARK: - 笔记
-/**
-    1、UITextField会拦截VC的touchBegan方法，所以可以直接在VC的touchBegan方法中收起键盘（辞去第一响应者）。
- 
-    2、为什么textFied作为自定义view的子view时，textField.resignFirstResponder()不起作用，不会收起键盘？
-        ：这是因为你在textFieldShouldEndEditing代理方法中返回false，阻止了它辞去第一响应者，前后矛盾了，它以代理方法的判断为主。
- */

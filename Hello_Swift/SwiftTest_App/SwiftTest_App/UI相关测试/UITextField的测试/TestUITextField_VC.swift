@@ -6,8 +6,13 @@
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
 //测试UITextField的VC
+// MARK: - 笔记
+/**
+    遇到问题：
+        1、如果在自定义view中定义的textfield，键盘收不起的问题。
+        2、textfield自定义键盘，键盘为pickerview时，选中项被遮挡住的问题。
+ */
 
-import UIKit
 
 class TestUITextField_VC: UIViewController {
     
@@ -18,8 +23,11 @@ class TestUITextField_VC: UIViewController {
     private var baseCollView: UICollectionView!
     
     //MARK: 测试的UI组件
+    private let bgView = UIView()   ///容纳测试组件的View
+    private var myTextFiled:Test_UITestFied = Test_UITestFied() //测试UITestFied的属性
     private var eventTextFieldView:TestTextFileldEvent_View =  TestTextFileldEvent_View() //测试textfield的事件传递
     private var keyBoardTextField:KeyBoardTextField = KeyBoardTextField()//测试 替换 弹起的键盘
+    
     
 
     override func viewDidLoad() {
@@ -54,7 +62,7 @@ extension TestUITextField_VC: UICollectionViewDataSource {
             }else{
                 eventTextFieldView.layer.borderWidth = 0.5
                 eventTextFieldView.layer.borderColor = UIColor.red.cgColor
-                self.view.addSubview(eventTextFieldView)
+                bgView.addSubview(eventTextFieldView)
                 eventTextFieldView.snp.makeConstraints { make in
                     make.top.equalTo(collectionView.snp.bottom).offset(40)
                     make.height.equalTo(80)
@@ -67,7 +75,12 @@ extension TestUITextField_VC: UICollectionViewDataSource {
             //TODO: 1、添加测试更换键盘的textField
             print("     (@@  添加测试更换键盘的textField")
             if keyBoardTextField.superview == nil {
-                self.view.addSubview(keyBoardTextField)
+                /// 测试用view替代弹起的键盘的textfield
+                keyBoardTextField.backgroundColor = .white
+                keyBoardTextField.layer.borderWidth = 0.5
+                keyBoardTextField.layer.borderColor = UIColor.black.cgColor
+                
+                bgView.addSubview(keyBoardTextField)
                 keyBoardTextField.snp.makeConstraints({ make in
                     make.center.equalToSuperview()
                     make.height.equalTo(45)
@@ -75,11 +88,34 @@ extension TestUITextField_VC: UICollectionViewDataSource {
                 })
             }
         case 2:
-            //TODO: 2、
-            print("     (@@ ")
+            //TODO: 2、测试UITestFied的属性
+            print("     (@@ 2、测试UITestFied的属性")
+            let _ = bgView.subviews.map {
+                $0.removeFromSuperview()
+            }
+            myTextFiled.backgroundColor = UIColor(red: 232/255.0, green: 202/255.0, blue: 233/255.0, alpha: 0.5)
+            myTextFiled.layer.borderWidth = 0.5
+            myTextFiled.layer.borderColor = UIColor.gray.cgColor
+            
+            myTextFiled.placeholder = "占位文字"
+            
+            
+            ///设置占位文字的颜色
+            let attrs:[NSAttributedString.Key:Any] = [.foregroundColor:UIColor.white]
+            myTextFiled.attributedPlaceholder = NSAttributedString.init(string: "占位文字", attributes: attrs)
+            myTextFiled.myPlaceHolderColor = .cyan
+            
+            bgView.addSubview(myTextFiled)
+            myTextFiled.snp.makeConstraints({ make in
+                make.top.equalToSuperview().offset(100)
+                make.centerX.equalToSuperview()
+                make.height.equalTo(45)
+                make.width.equalTo(350)
+            })
         case 3:
             //TODO: 3、
             print("     (@@ ")
+            
         case 5:
             print("     (@@")
         case 6:
@@ -129,10 +165,12 @@ extension TestUITextField_VC{
     /// 初始化你要测试的view
     func initTestViewUI(){
         
-        /// 测试用view替代弹起的键盘的textfield
-        keyBoardTextField.backgroundColor = .white
-        keyBoardTextField.layer.borderWidth = 0.5
-        keyBoardTextField.layer.borderColor = UIColor.black.cgColor
+        self.view.addSubview(bgView)
+        bgView.snp.makeConstraints { make in
+            make.top.equalTo(baseCollView.snp.bottom)
+            make.width.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
         
         
     }
@@ -212,10 +250,4 @@ extension TestUITextField_VC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 笔记
-/**
-    遇到问题：
-        1、如果在自定义view中定义的textfield，键盘收不起的问题。
-        2、textfield自定义键盘，键盘为pickerview时，选中项被遮挡住的问题。
- */
 

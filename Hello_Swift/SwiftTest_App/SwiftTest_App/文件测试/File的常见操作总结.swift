@@ -253,6 +253,9 @@ struct MyFileOperation{
     }
     
     //MARK: - 13，获取文件属性（创建时间，修改时间，文件大小，文件类型等信息）
+    /**
+        1、只能获取到文件的大小属性，并不能获取到文件夹的大小。
+     */
     func getFileAttributes(){
         let manager = FileManager.default
         let urlForDocument = manager.urls(for: .documentDirectory, in:.userDomainMask)
