@@ -49,7 +49,7 @@ extension Tabar_SubVC2: UICollectionViewDataSource {
     
     ///点击了cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("点击了第\(indexPath.row)个item")
+        print("Tabar_SubVC2 点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
             //TODO: 0、测试tabbar工具栏UI。

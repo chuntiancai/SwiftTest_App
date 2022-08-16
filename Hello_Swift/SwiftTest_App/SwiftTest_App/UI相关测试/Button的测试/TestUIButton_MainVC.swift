@@ -7,15 +7,13 @@
 //
 //测试Button的VC
 // MARK: - 笔记
-
-import UIKit
 /**
     1、button的一个事件可以同时绑定多个方法。
     2、UIButton的状态，其实是UIControl的状态，不是单单为UIButton设计的：
  
         1.highlighted
             1> 【当按住按钮不松开】或者用代码【button.highlighted = YES】时就能达到这种状态
-            2> 这种状态下的按钮【可以】接收点击事件,显示为【highlighted】状态下的文字颜色和图片
+            2> 这种状态下的按钮【可以】接收点击事件,显示为【highlighted】状态下的文字颜色和图片。高亮和选中可以共存，然后这种共存状态就是normal。
 
         2.disabled
             1> 【button.enabled = NO】时就能达到这种状态

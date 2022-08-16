@@ -42,6 +42,7 @@ class Tabar_SubVC1: UIViewController {
     //TODO: 3、当view即将显示的时候调用
     override func viewWillAppear(_ animated: Bool) {
         print("Tabar_SubVC1的\(#function)方法")
+//        print("Tabar_SubVC1 viewWillAppear tabar的子view：\(self.tabBarController?.tabBar.subviews)")
         super.viewWillAppear(animated)
     }
     
@@ -83,7 +84,7 @@ extension Tabar_SubVC1: UICollectionViewDataSource {
     
     ///点击了cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("点击了第\(indexPath.row)个item")
+        print("Tabar_SubVC1 点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
             //TODO: 0、

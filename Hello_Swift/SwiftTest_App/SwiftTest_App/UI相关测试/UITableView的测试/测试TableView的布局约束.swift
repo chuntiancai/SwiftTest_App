@@ -172,7 +172,7 @@ extension TestTableViewLayout_VC{
             make.top.equalTo(baseCollView.snp.bottom).offset(10)
             make.width.equalToSuperview().multipliedBy(0.8)
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(100)
+            make.bottom.equalToSuperview().offset(-100)
         }
     }
     

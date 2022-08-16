@@ -16,6 +16,8 @@
     3、view的tintColor属性是描述线条轮廓的一种颜色,该颜色默认具有传递性,默认状态下最底部的视图的tintcolor会一直往上面的视图传递(父传子)。描述镂空里面的线条颜色。
  
     4、addSubview方法，首先去判断子view原来有没有父view，如果有，则把原来的父view移除，然后添加到当前view中。
+ 
+    5、viewWithTag递归向下查找，包括自身，自身默认是0。
  */
 
 
@@ -83,6 +85,7 @@ extension TestUIView_VC: UICollectionViewDataSource {
         case 2:
             //TODO: 2、修改view的安全内边距
             print("     (@@ 修改view的安全内边距")
+            
         case 3:
             //TODO: 3、修改vc的安全内边距
             print("     (@@ 修改vc的安全内边距")

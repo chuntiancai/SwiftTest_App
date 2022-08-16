@@ -6,10 +6,9 @@
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
 
-import UIKit
 
 class TableSectionHeader: UIView {
-    //MARK: - 对外属性
+    //MARK:  对外属性
     var title:String = "" {
         didSet{
             titleLabel.text = title
@@ -67,7 +66,7 @@ extension TableSectionHeader{
         yellowBarBgView.layer.addSublayer(bgLayer1)
         self.addSubview(yellowBarBgView)
         yellowBarBgView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(screenWidth * 3.8 / 125.0)
+            make.bottom.equalToSuperview().offset(-5)
             make.left.equalToSuperview().offset(screenWidth * 20 / 375.0)
             make.height.equalTo(screenWidth * 10 / 375.0)
             make.width.equalTo(screenWidth * 72 / 375.0)

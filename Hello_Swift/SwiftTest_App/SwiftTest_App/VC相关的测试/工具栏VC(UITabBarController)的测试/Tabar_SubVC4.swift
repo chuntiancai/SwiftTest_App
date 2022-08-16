@@ -19,7 +19,7 @@ class Tabar_SubVC4: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .purple
+        self.view.backgroundColor = .green
         self.title = "测试Tabar_SubVC4"
         self.tabBarItem.title = "SubVC4"
         
@@ -37,7 +37,7 @@ extension Tabar_SubVC4: UICollectionViewDataSource {
     
     ///点击了cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("点击了第\(indexPath.row)个item")
+        print("Tabar_SubVC4 点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
             //TODO: 0、

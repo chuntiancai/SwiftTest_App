@@ -55,7 +55,7 @@ extension TestUITabBarController_VC: UICollectionViewDataSource {
     
     ///点击了cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("点击了第\(indexPath.row)个item")
+        print("TestUITabBarController_VC 点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
             //TODO: 0、在第二window中添加TabBarController
@@ -100,15 +100,24 @@ extension TestUITabBarController_VC: UICollectionViewDataSource {
                 return
             }
             let naviVC = UINavigationController(rootViewController: tabVC)
-            tabVC.addChild(Tabar_SubVC1())  //第1个VC
-            tabVC.addChild(Tabar_SubVC2())  //第1个VC
-            tabVC.addChild(Tabar_SubVC3())  //第1个VC
-            tabVC.addChild(Tabar_SubVC4())  //第1个VC
+            let vc1 = Tabar_SubVC1() //第1个VC
+            let vc2 = Tabar_SubVC2() //第2个VC
+            let vc3 = Tabar_SubVC3() //第3个VC
+            let vc4 = Tabar_SubVC4() //第4个VC
+            vc1.tabBarItem.title = "vc1"
+            vc2.tabBarItem.title = "vc2"
+            vc3.tabBarItem.title = "vc3"
+            vc4.tabBarItem.title = "vc4"
+            
+            tabVC.addChild(vc1)  //第1个VC
+            tabVC.addChild(vc2)  //第2个VC
+            tabVC.addChild(vc3)  //第3个VC
+            tabVC.addChild(vc4)  //第4个VC
             app.firstWindow.rootViewController = naviVC
             app.firstWindow.makeKeyAndVisible()
         case 2:
             //TODO: 2、
-            print("     (@@ ")
+            print("     (@@ 2、")
         case 3:
             //TODO: 3、
             print("     (@@ ")

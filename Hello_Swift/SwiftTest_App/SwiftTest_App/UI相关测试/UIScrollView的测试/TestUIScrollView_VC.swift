@@ -15,6 +15,14 @@
     3、如果要设置UIPageControl选中的图片效果，可以通过KVC来设置，因为源代码是有这个私有变量的。
     4、scrollview滚动的本质是滚动view的内容，其实就是在bounds原地不动(相对于父view的bounds)的情况下，滚动view自身的整个坐标系(内容，bounds相对自身坐标系位置发生改变)。
         注意：bounds的坐标是用自身坐标系描述的，bounds不是内容，只是一个坐标点。只是手机的机制是：在bounds这个坐标位置渲染图层。
+    
+    5、contentOffset是内容的顶边 和 frame的顶边的差值，contentInset不影响，只看两个顶边。
+        contentInset是加在content的顶边之外的边距，坐标系是负的。tableView的header和footer是在content之内的。
+ 
+    6、ScrollView.scrollsToTop属性，只有当前屏幕只有一个scrollview的scrollsToTop属性为true时，才会生效。
+        如果有多个scrollview的scrollsToTop属性都为true，那么所有的scrollview都不会生效。
+        看源码注释有时候比网页api获取更多的信息，两个文档的注释详细程度不一样。
+ 
  */
 
 

@@ -14,6 +14,8 @@
  
     2、图片的类型可以根据图片的二进制流，的第一个字节的值来判断是jpg还是png这些。
  
+    3、加载bundle里面的图片需要加上bundle的文件名，格式：bundle文件名/图片文件名
+ 
  */
 
 class TestImageView_VC: UIViewController {

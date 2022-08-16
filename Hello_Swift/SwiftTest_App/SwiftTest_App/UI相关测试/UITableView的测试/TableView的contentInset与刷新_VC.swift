@@ -10,6 +10,13 @@
 /**
     1、手动调用reloadRows方法之后，会回调cellForRowAt方法，但是要在cell可见的时候才会去回调，不可见的时候不会回调。
  
+    2、contentSize是tableView的放置内容的尺寸，也是用于计算contentOffset的参考尺寸，tableview的contentsize是自己根据cell、header这些内容自动计算的。
+      contentOffest是tableview的frame的顶边到contentSize的顶边的距离，contentInset是contentSize之外的坐标系尺寸，不纳入contentOffset的计算。
+      contentInset可以理解为在负坐标系放置的边距尺寸，注意有导航栏的时候，或者特殊VC的时候，tableview的contentInset可能被系统修改了。
+      例如UITableViewController,它的尺寸会因为导航栏的存在被修改。
+ 
+    3、tableView有两个imageview是垂直和水平的滑动指示器。
+ 
  */
 
 
@@ -24,26 +31,49 @@ class TestTableViewcontentInset_VC: UIViewController {
     //MARK: 测试组件
     var tableDataDict = [0:["张三","李四","王武"],1:["蜡笔小新","小白","美伢","小葵","广治","娜娜子"]]{
         didSet{
-//            testTableView.reloadData()
+//            myTableView.reloadData()
         }
     }
     /// 被测试的tableview
-    private var testTableView:UITableView = {
+    private var myTableView:UITableView = {
+        
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(TestTableView_Cell.self, forCellReuseIdentifier: "TestTableViewcontentInset_CELL_ID")
         
+        /// 去掉section顶部的留白
+        if #available(iOS 15.0, *) { tableView.sectionHeaderTopPadding = 0   }
+        
         /// 常见属性
         tableView.showsVerticalScrollIndicator = false
+        tableView.showsHorizontalScrollIndicator = false
         tableView.backgroundColor = UIColor(red: 238/255.0, green: 234/255.0, blue: 232/255.0, alpha: 1.0)
         tableView.bounces = true
         return tableView
+    }()
+    
+    private let myHeader:Table_Header = {
+        let header = Table_Header()
+        header.layer.borderWidth = 1.0
+        header.layer.borderColor = UIColor.gray.cgColor
+        header.frame = CGRect(x: 0, y: 0, width: 400, height: 40)
+        header.title = "这是header"
+        return header
+    }()
+    
+    private let myFooter:Table_Footer = {
+        let footer = Table_Footer()
+        footer.layer.borderWidth = 1.0
+        footer.layer.borderColor = UIColor.gray.cgColor
+        footer.frame = CGRect(x: 0, y: 0, width: 400, height: 40)
+        footer.title = "这是footer"
+        return footer
     }()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 199/255.0, green: 204/255.0, blue: 237/255.0, alpha: 1.0)
-        self.title = "测试tableview属性的vc"
+        self.title = "测试Tableview的ContentInset的vc"
         
         setNavigationBarUI()
         setCollectionViewUI()
@@ -55,16 +85,19 @@ class TestTableViewcontentInset_VC: UIViewController {
 
 //MARK: - 遵循UIScrollViewDelegate协议
 extension TestTableViewcontentInset_VC:UIScrollViewDelegate{
+    
+    /// tableview滑动的时候调用
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        //TODO: 测试自定义上拉加载，下拉刷新
         if scrollView.isKind(of: UITableView.self) {
             let table:UITableView = scrollView as! UITableView
-            print("这是tableview的contentOffset:\(table.contentOffset)---contentInset：\(table.contentInset)")
-            if table.contentOffset.y > 680 {
-                let offsetY = table.contentOffset.y - 680
-                if offsetY < 300 {
-                    table.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: offsetY, right: 0)
-                }
+            /// 当滑动的偏移量超出（内容 - 可视范围）时，就是tableview见底了，此时可以进行加载更多的操作。
+            /// 因为contentInset.bottom有可能留出空白，避免被tabBar阻挡，所以要加上contentInset.bottom的边距。
+            let totalOffsetY = (table.contentSize.height + table.contentInset.bottom - table.bounds.size.height) - (table.tableFooterView?.bounds.height ?? 0.0) * 0.5
+            if table.contentOffset.y > totalOffsetY {
+                print("已经见到footer的一半了，可以去加载更多了～")
             }
+            
         }
     }
     
@@ -108,16 +141,20 @@ extension TestTableViewcontentInset_VC:UITableViewDelegate ,UITableViewDataSourc
      2、必须实现了viewForHeaderInSection的代理方法，heightForHeaderInSection代理方法的设置才有效，否则无效。
      */
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return nil
+        let curView = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 50))
+        curView.backgroundColor = .red
+        return curView
     }
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return nil
+        let curView = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 50))
+        curView.backgroundColor = .blue
+        return curView
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0.01
+        return 20
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.01
+        return 20
     }
     
 }
@@ -133,7 +170,7 @@ extension TestTableViewcontentInset_VC: UICollectionViewDataSource {
         case 0:
             //TODO: 0、设置tableview的contentInset
             print("     (@@  设置tableview的contentInset")
-            testTableView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 400, right: 0)
+            myTableView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 400, right: 0)
             break
         case 1:
             //TODO: 1、更新tableview的数据源
@@ -145,10 +182,15 @@ extension TestTableViewcontentInset_VC: UICollectionViewDataSource {
         case 2:
             //TODO: 2、测试调用reloadRows方法之后，会不会回调cellForRowAt方法
             print("     (@@ 测试调用reloadRows方法之后，会不会回调cellForRowAt方法")
-            testTableView.reloadRows(at: [IndexPath.init(row: 4, section: 1)], with: .automatic)
+            myTableView.reloadRows(at: [IndexPath.init(row: 4, section: 1)], with: .automatic)
         case 3:
-            //TODO: 3、
-            print("     (@@ ")
+            //TODO: 3、测试footer和contentInset
+            print("     (@@ 3、测试footer和contentInset")
+            myTableView.tableHeaderView = myHeader
+            myHeader.title = "测试hader"
+            myTableView.tableFooterView = myFooter
+            myFooter.title = "测试footer"
+            
         case 4:
             print("     (@@")
         case 5:
@@ -163,7 +205,7 @@ extension TestTableViewcontentInset_VC: UICollectionViewDataSource {
             print("     (@@")
         case 10:
             print("     (@@")
-            print("这是tableview的contentOffset:\(testTableView.contentOffset)\n---contentInset：\(testTableView.contentInset)\n---contentSize:\(testTableView.contentSize)")
+            print("这是tableview的contentOffset:\(myTableView.contentOffset)\n---contentInset：\(myTableView.contentInset)\n---contentSize:\(myTableView.contentSize)")
         case 11:
             print("     (@@")
         case 12:
@@ -190,11 +232,11 @@ extension TestTableViewcontentInset_VC{
     
     /// 初始化你要测试的view
     func initTestViewUI(){
-        view.addSubview(testTableView)
+        view.addSubview(myTableView)
         ///设置代理
-        testTableView.delegate = self
-        testTableView.dataSource = self
-        testTableView.snp.makeConstraints { make in
+        myTableView.delegate = self
+        myTableView.dataSource = self
+        myTableView.snp.makeConstraints { make in
             make.top.equalTo(baseCollView.snp.bottom).offset(10)
             make.width.equalToSuperview().multipliedBy(0.8)
             make.centerX.equalToSuperview()

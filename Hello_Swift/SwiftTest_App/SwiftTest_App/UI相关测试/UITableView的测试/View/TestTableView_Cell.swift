@@ -5,8 +5,7 @@
 //  Created by mathew on 2021/8/16.
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
-
-// 播放音频的CELL
+// 测试tableView的CELL
 
 import UIKit
 
@@ -53,7 +52,7 @@ class TestTableView_Cell: UITableViewCell {
     }
     
     override func draw(_ rect: CGRect) {
-        print("TestTableView_Cell 的 \(#function)方法")
+//        print("TestTableView_Cell 的 \(#function)方法")
         /**
             1、设置cell的backgroundColor是无效的，只能通过contentView来操作。
          */
@@ -73,7 +72,7 @@ class TestTableView_Cell: UITableViewCell {
         layer.path = bPath.cgPath
         layer.strokeColor = UIColor.red.cgColor
         layer.fillColor = UIColor.cyan.cgColor
-        self.contentView.layer.addSublayer(layer)
+        self.contentView.layer.insertSublayer(layer, at: 0)
         
     }
     

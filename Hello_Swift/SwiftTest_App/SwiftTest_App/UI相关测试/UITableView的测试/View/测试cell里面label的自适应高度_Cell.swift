@@ -95,12 +95,12 @@ class TestLabelInCell: UITableViewCell {
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-        print("\n在layoutSubviews中label的frame：\(nameLabel.frame)")
+//        print("\n在layoutSubviews中label的frame：\(nameLabel.frame)")
     }
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        print("\n在draw方法中label的frame：\(nameLabel.frame)")
+//        print("\n在draw方法中label的frame：\(nameLabel.frame)")
     }
     
     ///cell准备被复用的时候
@@ -116,7 +116,7 @@ class TestLabelInCell: UITableViewCell {
     /// 初始化默认的UI
     func initDefaultUI(){
         
-        self.contentView.backgroundColor = UIColor.init(red: 22/255.0, green: 27/255.0, blue: 80/255.0, alpha: 1.0)
+        self.contentView.backgroundColor = UIColor.init(red: 122/255.0, green: 127/255.0, blue: 180/255.0, alpha: 1.0)
         
         ///名称文字的渐变颜色
 //        nameGradientView.frame = CGRect(x: 25, y: 30, width: 250, height: 80)

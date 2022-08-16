@@ -6,8 +6,18 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 // 测试图片的存放方式VC
-
-import UIKit
+// MARK: - 笔记
+/**
+ 方式1、放在xcassets里面，通过图片名字获取。
+    1、.xcassets资源文件，在编译后，会放在沙盒的bundle路径下，被打包成.car文件。
+    2、不能拿到.xcassets文件里的图片路径，所以在.xcassets文件中的文件，不能通过bundle来加载图片。
+    3、即便指向xcassets里面图片的指针被销毁，xcassets里面的图片仍停留在内存中。默认有缓存，图片经常被使用的时候，使用xcassets资源文件管理图片。
+  
+ 方式2、通过bundle来加载图片。
+    1、沙盒是表示整个app的存储空间，沙盒里的home目录和bunle是同一级别的文件夹。xocde工程程目录下的文件会存放在沙盒的bundle目录中。
+    2、这里面的图片可以拿得到路径。可以通过bundle来加载图片,也可以通过UIImage(named: "labi01.jpg")来加载
+    3、指向bundle里面图片的指针被销毁的话，xcassets里面的图片也会从内存中移除。没有缓存，大批量，或临时使用的图片，就可以用bundle资源文件来管理文件。
+ */
 
 class TestImageRestore_VC: UIViewController {
     
@@ -231,15 +241,4 @@ extension TestImageRestore_VC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 笔记
-/**
- 方式1、放在xcassets里面，通过图片名字获取。
-    1、.xcassets资源文件，在编译后，会放在沙盒的bundle路径下，被打包成.car文件。
-    2、不能拿到.xcassets文件里的图片路径，所以在.xcassets文件中的文件，不能通过bundle来加载图片。
-    3、即便指向xcassets里面图片的指针被销毁，xcassets里面的图片仍停留在内存中。默认有缓存，图片经常被使用的时候，使用xcassets资源文件管理图片。
-  
- 方式2、通过bundle来加载图片。
-    1、沙盒是表示整个app的存储空间，沙盒里的home目录和bunle是同一级别的文件夹。xocde工程程目录下的文件会存放在沙盒的bundle目录中。
-    2、这里面的图片可以拿得到路径。可以通过bundle来加载图片,也可以通过UIImage(named: "labi01.jpg")来加载
-    3、指向bundle里面图片的指针被销毁的话，xcassets里面的图片也会从内存中移除。没有缓存，大批量，或临时使用的图片，就可以用bundle资源文件来管理文件。
- */
+

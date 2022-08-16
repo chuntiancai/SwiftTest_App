@@ -6,8 +6,13 @@
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
 // 测试tableView 的section样式的VC
-
-import UIKit
+// MARK: - 笔记
+/**
+    1、.grouped样式的tableView的sectionheader、sectionfooter会跟随tableview的滑动而滑动。.plain的tableview不会跟随滑动。
+        在ios15之后，.plain样式的tableView默认会给section增加一个留白sectionHeaderTopPadding，需要手动去掉。
+        
+        
+ */
 
 class TestSectionTableView_VC: UIViewController {
     
@@ -18,7 +23,7 @@ class TestSectionTableView_VC: UIViewController {
     private var baseCollView: UICollectionView!
     
     /// 测试section样式的tableView,tag = 1000
-    private lazy var sectionTableView:UITableView = {
+    private lazy var myTableView:UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.tag = 1000
 //        tableView.register(JFZMyAssetDataValueCell.self, forCellReuseIdentifier: "SectionTableView_Cell_ID")
@@ -26,22 +31,38 @@ class TestSectionTableView_VC: UIViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = UIColor(red: 220/255.0, green: 230/255.0, blue: 240/255.0, alpha: 1.0)
         tableView.bounces = true
-        tableView.separatorStyle = .none
-        
+        tableView.separatorStyle = .singleLine
+
         tableView.delegate = self
         tableView.dataSource = self
         
-//        let tHeaderView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 20))
-//        tHeaderView.backgroundColor = .red
-//        tableView.tableHeaderView = tHeaderView
-        tableView.tableHeaderView?.isHidden = true
         
         
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+            tableView.fillerRowHeight = 0
+            tableView.isPrefetchingEnabled = false
+            tableView.allowsFocus = false
+        }
+        
+        tableView.sectionHeaderHeight = 0
+        let tHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 20))
+        tHeaderView.backgroundColor = .cyan
+        tableView.tableHeaderView = tHeaderView
+//        tableView.tableHeaderView?.isHidden = true
+
+
         return tableView
     }()
     
     //TODO:测试的UI组件
-    let secHeader = TableSectionHeader()    //测试table 的section的header的高度
+    let secHeader : TableSectionHeader = { //测试table 的section的header的高度
+        let header = TableSectionHeader()
+        header.layer.borderColor = UIColor.gray.cgColor
+        header.layer.borderWidth = 1.0
+        header.title = "这是 section的header"
+        return header
+    }()
     let labelCell = TestLabelInCell.init(style: .default, reuseIdentifier: "TestLabelInCell_ID")
     
     override func viewDidLoad() {
@@ -91,7 +112,16 @@ extension TestSectionTableView_VC: UICollectionViewDataSource {
         case 9:
             print("     (@@")
         case 10:
-            print("     (@@")
+            //TODO: 10、打印tableView的信息
+            let pStr = """
+                        tableView的信息：\(self.myTableView)
+                        ---tableView.sectionHeaderHeight:\(myTableView.sectionHeaderHeight)
+                        ---tableView.sectionFooterHeight:\(myTableView.sectionFooterHeight)
+                        ---contentOffset:\(myTableView.contentOffset)
+                        ---contentInset：\(myTableView.contentInset)
+                        ---contentSize:\(myTableView.contentSize)
+                        """
+            print(pStr)
         case 11:
             print("     (@@")
         case 12:
@@ -102,23 +132,7 @@ extension TestSectionTableView_VC: UICollectionViewDataSource {
     }
     
 }
-//MARK: - 测试的方法
-extension TestSectionTableView_VC{
-   
-    //MARK: 0、
-    func test0(){
-        
-    }
-    //MARK: 1、
-    func test1(){
-        
-    }
-    //MARK: 2、
-    func test2(){
-        
-    }
-    
-}
+
 //MARK: - tableview的代理方法, UITableViewDataSource,UITableViewDelegate
 extension TestSectionTableView_VC: UITableViewDataSource,UITableViewDelegate{
     
@@ -130,98 +144,63 @@ extension TestSectionTableView_VC: UITableViewDataSource,UITableViewDelegate{
         if section == 0 {
           return 3
         }else{
-            return 3
+            return 4
         }
     }
-    //MARK: 设置section的header
+    
+    //TODO: section 的header和footer的关系
+    /**
+     1、当delegate的section header的view和height有冲突时，以设置高度的heightForHeaderInSection方法为准， viewForHeaderInSection的高度无效。
+     2、必须实现了viewForHeaderInSection的代理方法，heightForHeaderInSection代理方法的设置才有效，否则无效。
+     */
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 50
+    }
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        print("©TableViewDelegate© 这是设置section 的 header的view的\(#function)方法 ")
         if section == 1{
             return secHeader
         }
-        return nil
-        
+        let curView = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 20))
+        curView.backgroundColor = .red
+        return curView
     }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        //TODO: section 的header和footer的关系
-        /**
-         结果：
-         1、当delegate的section header的view和height有冲突时，以设置高度的heightForHeaderInSection方法为准， viewForHeaderInSection的高度无效。
-         2、必须实现了viewForHeaderInSection的代理方法，heightForHeaderInSection代理方法的设置才有效，否则无效。
-         */
-        print("©TableViewDelegate© 这是设置section 的 header高度的\(#function)方法 ")
-        if section == 1 {
-            return 54
-        }else {
-//            return UIScreen.main.bounds.width * 12.5 / 125.0
-            return 0
-        }
-        
+
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let curView = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 30))
+        curView.backgroundColor = .blue
+        return curView
     }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return UIScreen.main.bounds.width * 8.0 / 125.0
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let screenWidth = UIScreen.main.bounds.width
-        if indexPath.section == 0 {
-            if indexPath.row == 0 {
-                return screenWidth * 62.0 / 125.0
-            }
-            if indexPath.row == 1 {
-                return screenWidth * 105.0 / 125.0
-            }
-            if indexPath.row == 2 {
-                return screenWidth * 25.5 / 125.0
-            }
-        }else {
-            return screenWidth * 53 / 125.0
-        }
-        return screenWidth * 53 / 125.0
-    }
-    
     
     
     //MARK: 设置Cell的UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:UITableViewCell =  UITableViewCell()
-        if indexPath.section == 0 {
-            /**
-             section == 0 的cell都是向下偏移15个点留出间隔
-             */
-            switch indexPath.row {
-            case 0: //测试cell中label的自适应高度
-                return labelCell
-            case 1:
-                break
-            case 2:
-                break
-            default:
-                break
-            }
-        }else {
-            switch indexPath.row {
-            case 0:
-                break
-            case 1:
-                break
-            case 2:
-                break
-            default:
-                break
-            }
-            
-        }
+        let curCell:TestTableView_Cell = tableView.dequeueReusableCell(withIdentifier: "TestHeaderCell_ID")  as? TestTableView_Cell ?? TestTableView_Cell.init(style: .default, reuseIdentifier: "TestHeaderCell_ID")
         
-        return cell
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {return labelCell}//测试cell中label的自适应高度
+        }
+        curCell.title = "\(indexPath.section)-\(indexPath.row)"
+        return curCell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
     
     
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return nil
+}
+
+//MARK: - 测试的方法
+extension TestSectionTableView_VC{
+   
+    //MARK: 0、
+    func test0(){
+        
     }
     
 }
@@ -232,14 +211,14 @@ extension TestSectionTableView_VC{
     
     /// 初始化你要测试的view
     func initTestViewUI(){
-        sectionTableView.layer.borderWidth = 2
-        sectionTableView.layer.borderColor = UIColor.gray.cgColor
-        self.view.addSubview(sectionTableView)
-        sectionTableView.snp.makeConstraints { make in
+        myTableView.layer.borderWidth = 2
+        myTableView.layer.borderColor = UIColor.gray.cgColor
+        self.view.addSubview(myTableView)
+        myTableView.snp.makeConstraints { make in
             make.top.equalTo(baseCollView.snp.bottom).offset(20)
-            make.left.equalToSuperview()
-            make.width.equalToSuperview()
-            make.height.equalTo(400)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(350)
+            make.height.equalTo(450)
         }
     }
     
@@ -318,8 +297,5 @@ extension TestSectionTableView_VC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 笔记
-/**
- 
- */
+
 

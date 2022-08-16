@@ -24,6 +24,8 @@ class Tabar_SubVC3: UIViewController {
         self.tabBarItem.title = "SubVC3"
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "labi03"), for: .default)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(barBtnClickRepeat(_:)), name: NSNotification.Name("ClickRepeatBarBtn"), object: nil)
+        
         setNavigationBarUI()
         setCollectionViewUI()
         initTestViewUI()
@@ -38,7 +40,7 @@ extension Tabar_SubVC3: UICollectionViewDataSource {
     
     ///点击了cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("点击了第\(indexPath.row)个item")
+        print("Tabar_SubVC3 点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
             //TODO: 0、
@@ -76,11 +78,14 @@ extension Tabar_SubVC3: UICollectionViewDataSource {
     
 }
 //MARK: - 测试的方法
-extension Tabar_SubVC3{
+@objc extension Tabar_SubVC3{
    
-    //MARK: 0、
-    func test0(){
-        
+    //MARK: 0、接收到barBtn的重复点击
+    func barBtnClickRepeat(_ noti: Notification){
+        print("Tabar_SubVC3 接收到了重复点击的通知：\(String(describing: noti.object))")
+        if let dict  = noti.object as? [String:Any] {
+            print("dict.tag = \(String(describing: dict["tag"]))")
+        }
     }
     //MARK: 1、
     func test1(){

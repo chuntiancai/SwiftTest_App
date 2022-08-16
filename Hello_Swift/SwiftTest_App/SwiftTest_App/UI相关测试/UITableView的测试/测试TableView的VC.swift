@@ -21,6 +21,10 @@
     6、注册的cell会在所有代理方法调用之前就已经创建好cell对象放在复用池里面了，所以heightForRowAt代理方法调用前，是肯定有cell的了。
     
     7、tableview的contentsize是自己自动计算的。tablew为group样式时，考虑tablewview的contentInset。
+        tableview在有导航栏的情况下，有可能系统为它设置了64的顶部内边距，所以在viewdidload方法中设置contentInset的top为40时，就会在显示前被计算成104。
+ 
+    8、UIViewController的view的frame是(0,0)开始，但是有一些特殊的VC，它的frame可能就不是(0,0)开始，而是(0,20)。例如UITableViewController。
+        这是历史遗留的问题。
  
     cell的常见属性：
     1、cell里面的imageView，textlabel，detailTextLabel是属于cell的contentView的子view，不是cell的直接子view。

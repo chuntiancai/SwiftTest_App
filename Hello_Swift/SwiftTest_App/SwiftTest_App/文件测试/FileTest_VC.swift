@@ -6,6 +6,14 @@
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
 //测试文件的VC
+// MARK: - 笔记
+/**
+    1、文件的压缩和解压缩，用第三方库SSZipArchive。
+ 
+    2、在编译完成的时候，xcode都会把storyboard、图片、xib、plist等这些文件打包经main.bundle文件中，只是这个main.bundle是在编译后生成。
+        bundle里面一般存放不需要编译的文件，例如图片，而不要放xib这些需要编译的文件。
+ 
+ */
 
 import MobileCoreServices
 
@@ -252,7 +260,4 @@ extension FileTest_VC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 笔记
-/**
-    1、文件的压缩和解压缩，用第三方库SSZipArchive
- */
+
