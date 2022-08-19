@@ -7,6 +7,14 @@
 //
 // 测试UIButton对响应链传递的影响
 // 1、button阻断了响应链的传递？取消了next responder？
+//MARK: - 笔记
+/**
+    1、button是先处理hitTest方法，然后才到Action方法。
+    2、touchesBegan方法的默认处理方式是：如果当前响应者不出来，那么顺着响应者链，将事件交给上一个响应者处理。
+        如果事件已经处理，例如Action动作方法已经接收，那么事件不会再顺着响应链传递，因为事件已经处理了啊，销毁了啊。
+        如果你不想Btn处理Action事件，那么你可以在hitTest方法中返回nil。
+ */
+
 
 import UIKit
 
@@ -52,10 +60,3 @@ class TouchDeliver_Btn: UIButton {
     
 
 }
-//MARK: - 笔记
-/**
-    1、button是先处理hitTest方法，然后才到Action方法。
-    2、touchesBegan方法的默认处理方式是：如果当前响应者不出来，那么顺着响应者链，将事件交给上一个响应者处理。
-        如果事件已经处理，例如Action动作方法已经接收，那么事件不会再顺着响应链传递，因为事件已经处理了啊，销毁了啊。
-        如果你不想Btn处理Action事件，那么你可以在hitTest方法中返回nil。
- */

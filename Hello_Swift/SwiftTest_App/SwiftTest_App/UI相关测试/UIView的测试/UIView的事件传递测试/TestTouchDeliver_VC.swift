@@ -6,8 +6,22 @@
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
 // 测试View的触摸事件传递的VC，点击事件的传递
-
-import UIKit
+/**
+    1、UIEvent是容器类，用于封装各种事件的容器，例如可能有touch事件、motion事件、remote-control事件、press事件等。
+ 
+    2、iOS中只有继承了UIResponder的类才能够接收并处理时间，其他类不可以。
+ 
+    3、有两条链：事件的寻找链 与 事件的响应链。
+ 
+    4、一个手指对应一个UITouch对象。UITouch对象用于保存手指的相关信息，当手指移动时，系统会更新同一个UITouch对象，使该UITouch对象始终对应着该手指的触摸信息。
+        UITouch对象包含的信息有：位置、事件、阶段。。。
+        当手指离开屏幕时，系统会销毁对应的UITouch对象。
+        UITouch的属性：touch所在的window、view、tapCount(点击次数)、timestamp(产生时间或更新时间)
+        UITouch的方法：location(in view: UIView?)当前触摸的点位置，previousLocation(in view: UIView?)上一个触摸的点的位置。
+ 
+    5、默认情况下，UIView的touchesBegan、touchesMoved等方法中的touches参数只有一个元素，除非你设置了UIview的isMultipleTouchEnabled为true。
+ 
+ */
 
 class TestTouchDeliver_VC: UIViewController {
     
@@ -249,19 +263,4 @@ extension TestTouchDeliver_VC{
 extension TestTouchDeliver_VC: UICollectionViewDelegate {
     
 }
-/**
-    1、UIEvent是容器类，用于封装各种事件的容器，例如可能有touch事件、motion事件、remote-control事件、press事件等。
- 
-    2、iOS中只有继承了UIResponder的类才能够接收并处理时间，其他类不可以。
- 
-    3、有两条链：事件的寻找链 与 事件的响应链。
- 
-    4、一个手指对应一个UITouch对象。UITouch对象用于保存手指的相关信息，当手指移动时，系统会更新同一个UITouch对象，使该UITouch对象始终对应着该手指的触摸信息。
-        UITouch对象包含的信息有：位置、事件、阶段。。。
-        当手指离开屏幕时，系统会销毁对应的UITouch对象。
-        UITouch的属性：touch所在的window、view、tapCount(点击次数)、timestamp(产生时间或更新时间)
-        UITouch的方法：location(in view: UIView?)当前触摸的点位置，previousLocation(in view: UIView?)上一个触摸的点的位置。
- 
-    5、默认情况下，UIView的touchesBegan、touchesMoved等方法中的touches参数只有一个元素，除非你设置了UIview的isMultipleTouchEnabled为true。
- 
- */
+

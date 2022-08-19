@@ -6,12 +6,15 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 //测试手势识别的View
+//MARK: - 笔记
+/**
+    1、UIGestureRecognizer的触摸事件 会插入 在 UIview的touchesBegan(_:with:) 方法 和 touchesCancelled(_:with:) 方法 之间。
+ 
+    2、如果要实现UIScrollView这些内嵌的UIGestureRecognizerDelegate方法，那就要子类化UIScrollView，并实现UIGestureRecognizerDelegate方法，这样这些代理方法就会被调用。
+       因为UIScrollView在初始化时就指定自己为UIGestureRecognizerDelegate。
+ */
 
 class TestGesture_View: UIView {
-    //MARK: - 对外属性
-    
-    
-    //MARK: - 内部属性
 
     //MARK: - 复写方法
     override init(frame: CGRect) {
@@ -70,11 +73,5 @@ extension TestGesture_View{
 }
 
 
-//MARK: - 笔记
-/**
-    1、UIGestureRecognizer的触摸事件 会插入 在 UIview的touchesBegan(_:with:) 方法 和 touchesCancelled(_:with:) 方法 之间。
- 
-    2、如果要实现UIScrollView这些内嵌的UIGestureRecognizerDelegate方法，那就要子类化UIScrollView，并实现UIGestureRecognizerDelegate方法，这样这些代理方法就会被调用。
-       因为UIScrollView在初始化时就指定自己为UIGestureRecognizerDelegate。
- */
+
 

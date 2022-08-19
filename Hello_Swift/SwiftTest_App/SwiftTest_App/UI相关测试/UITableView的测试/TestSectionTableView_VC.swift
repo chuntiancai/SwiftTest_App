@@ -10,7 +10,8 @@
 /**
     1、.grouped样式的tableView的sectionheader、sectionfooter会跟随tableview的滑动而滑动。.plain的tableview不会跟随滑动。
         在ios15之后，.plain样式的tableView默认会给section增加一个留白sectionHeaderTopPadding，需要手动去掉。
-        
+        在ios15，.grouped样式下，会默认给tableHeaderView留一个20高度的空白，所以你要给一个高度0.01的view，来去掉这个空白，高度不能为0。
+ 
         
  */
 
@@ -45,12 +46,15 @@ class TestSectionTableView_VC: UIViewController {
             tableView.allowsFocus = false
         }
         
-        tableView.sectionHeaderHeight = 0
+        // table header view
         let tHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 20))
         tHeaderView.backgroundColor = .cyan
         tableView.tableHeaderView = tHeaderView
-//        tableView.tableHeaderView?.isHidden = true
-
+        
+        // table footer view 设置高度为0.001，不然有20的留白间距。
+        let tFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 0.001))
+        tFooterView.backgroundColor = .brown
+        tableView.tableFooterView = tFooterView
 
         return tableView
     }()

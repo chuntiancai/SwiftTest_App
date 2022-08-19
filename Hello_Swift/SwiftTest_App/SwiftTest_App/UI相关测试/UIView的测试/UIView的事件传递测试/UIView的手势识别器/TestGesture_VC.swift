@@ -12,15 +12,19 @@
         UIGestureRecognizer是一个基类，需要你自定义具体类来实现你的需求，但是你也可以使用系统提供的一些UIGestureRecognizer的具体类，例如平移，捏合这些手势。
         UIGestureRecognizer的触摸事件 会插入 在 UIview的touchesBegan(_:with:) 方法 和 touchesCancelled(_:with:) 方法 之间。
  
-    2、UIview的gestureRecognizers是一个数组，用于管理当前view绑定的每一个手势识别器。
+    2、UIview的gestureRecognizers是一个数组，用于管理当前view绑定的每一个手势识别器。但是一个gestureRecognizer只能绑定一个view。
  
-    3、UIGestureRecognizer也有代理协议，可以通过代理协议来管理UIGestureRecognizer的手势识别事件。
+    3、UIGestureRecognizer也有代理协议（UIGestureRecognizerDelegate），可以通过代理协议来管理UIGestureRecognizer的手势识别事件。
  
     4、平移手势识别器的平移点，是相对于最开始时刻的总偏移量，不是每段的偏移量，所以需要重置偏移值，因为transform有个方法是计算每段平移累加的。
  
     5、捏合手势识别器的缩放倍数，也是相对于最开始点击时刻的总放大倍数,不是每段的放大倍数，和平移手势类似，所以需要重置倍数，因为transform有个方法是每段倍数累加的。
  
     6、如果要支持多个手势识别器，那么必须实现代理方法来判断识别器，然后在代理方法中判断让哪个识别器起作用。
+ 
+    7、在绑定的动作方法中，监听手势识别器的状态。
+ 
+    
  
  */
 
@@ -32,8 +36,13 @@ class TestGesture_VC: UIViewController {
     ///UI组件
     private var baseCollView: UICollectionView!
     var gestureView:TestGesture_View = TestGesture_View()
+    let blueView = UIView()
     
     //MARK: 测试组件
+    var tapGesture : UITapGestureRecognizer!
+    var longGesture : UILongPressGestureRecognizer!
+    var panGesture : UIPanGestureRecognizer!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,10 +68,15 @@ extension TestGesture_VC: UICollectionViewDataSource {
         case 0:
             //TODO: 0、测试 UIView的 点击手势 识别器。
             print("     (@@  添加 点击手势 识别器。")
-            let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(tapAction(_:)))
+            tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(tapAction(_:)))
             tapGesture.delegate = self
-            gestureView.addGestureRecognizer(tapGesture)
-            break
+//            if longGesture != nil {
+//                tapGesture.require(toFail: longGesture)
+//            }
+//            gestureView.addGestureRecognizer(tapGesture)
+            tapGesture.shouldRequireFailure(of: longGesture)
+            tapGesture.shouldBeRequiredToFail(by: longGesture)
+            blueView.addGestureRecognizer(tapGesture)
         case 1:
             //TODO: 1、测试 UIView的 长按手势 识别器。
             /**
@@ -70,9 +84,10 @@ extension TestGesture_VC: UICollectionViewDataSource {
                 2、所以你可以判断手势识别器的状态，来实现对应的需求。
              */
             print("     (@@ 添加 长按手势 识别器")
-            let longGesture = UILongPressGestureRecognizer.init(target: self, action: #selector(longTapAction(_:)))
+            longGesture = UILongPressGestureRecognizer.init(target: self, action: #selector(longTapAction(_:)))
             longGesture.delegate = self
-            gestureView.addGestureRecognizer(longGesture)
+//            gestureView.addGestureRecognizer(longGesture)
+            blueView.addGestureRecognizer(longGesture)
         case 2:
             //TODO: 2、测试 UIView的 轻扫手势 识别器。
             print("     (@@ 添加 轻扫手势 识别器。")
@@ -88,8 +103,9 @@ extension TestGesture_VC: UICollectionViewDataSource {
         case 3:
             //TODO: 3、测试 拖动 手势识别器。
             print("     (@@ 测试 拖动 手势识别器。")
-            let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panAction(_:)))
-            gestureView.addGestureRecognizer(panGesture)
+            panGesture = UIPanGestureRecognizer(target: self, action: #selector(panAction(_:)))
+//            gestureView.addGestureRecognizer(panGesture)
+            blueView.addGestureRecognizer(panGesture)
         case 4:
             //TODO: 4、测试 捏合 手势识别器。
             print("     (@@ 测试 捏合 手势识别器")
@@ -125,7 +141,8 @@ extension TestGesture_VC: UICollectionViewDataSource {
    
     /// 点击手势的动作方法
     func tapAction(_ sender:UIGestureRecognizer){
-        print("点击手势识别器 的 \(#function) 方法")
+        print("点击手势识别器 的 \(#function) 方法 --状态：\(sender.state.rawValue)")
+        
     }
     
     /// 长按手势的动作方法
@@ -161,7 +178,7 @@ extension TestGesture_VC: UICollectionViewDataSource {
 //        print("拖动手势识别器 的 \(#function) 方法 --- 状态：\(sender.state.rawValue)")
         /// 获取平移的点，是相对于开始时刻的总平移量的值，至少有两个时刻才有平移可言，一直平移，就一直相对于最开始时刻点下的点。
         let point = sender.translation(in: self.gestureView)
-        print("拖动手势识别器 的 \(point) 移动点")
+        print("拖动手势识别器 的 \(point) 移动点 --\(sender.state)")
         /// 移动view，这个是累加
         self.gestureView.transform = self.gestureView.transform.translatedBy(x: point.x, y: point.y)
         sender.setTranslation(.zero, in: self.gestureView)///设置手势识别器的平移点相对于开始时刻是零。
@@ -197,6 +214,15 @@ extension TestGesture_VC{
             make.top.equalTo(baseCollView.snp.bottom).offset(80)
             make.centerX.equalToSuperview()
             make.height.width.equalTo(100)
+        }
+        
+        blueView.backgroundColor = .blue
+        blueView.isUserInteractionEnabled = true
+        self.view.addSubview(blueView)
+        blueView.snp.makeConstraints { make in
+            make.top.equalTo(gestureView.snp.bottom).offset(80)
+            make.centerX.equalToSuperview()
+            make.height.width.equalTo(120)
         }
     }
     
@@ -278,45 +304,48 @@ extension TestGesture_VC: UICollectionViewDelegate {
 //MARK: - 遵循手势识别 UIGestureRecognizerDelegate 协议
 extension TestGesture_VC: UIGestureRecognizerDelegate {
     
-    // 控制Gesture的开始
+    // 当前识别器是否应该开始识别。如果返回false，则当前控制器的状态被置为false，刚好其他的识别器依赖于当前识别器失败状态的，就可以开始识别了。
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        print("UIGestureRecognizerDelegate 的 \(#function) 方法")
+        print("TestGesture_VC UIGestureRecognizerDelegate 的 \(#function) 方法,\(type(of: gestureRecognizer))的状态：\(gestureRecognizer.state.rawValue)")
         return true
     }
     
-    /// 是否支持多个手势识别器起作用。控制Gesture是否可以同时识别
+    /// 当前识别器是否和其他识别器同时起作用。如果返回false，则别的识别器的该代理方法也返回false才可以阻止同时识别，不然不可以保证阻止成功。
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool{
-        print("UIGestureRecognizerDelegate 的 \(#function) 方法")
+        print("TestGesture_VC UIGestureRecognizerDelegate 的 \(#function) 方法：\(gestureRecognizer) --\(gestureRecognizer.state.rawValue)")
+        print("gestureRecognizer:\(type(of: gestureRecognizer))   ---   otherGestureRecognizer:\(type(of: otherGestureRecognizer))")
         return true
     }
     
-    // 控制自身的Gesture和其他Gesture的失败
+    // 当view有多个识别器时，是否把别的手势识别器置失败状态。
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool{
-        print("UIGestureRecognizerDelegate 的 \(#function) 方法")
+        print("TestGesture_VC UIGestureRecognizerDelegate 的 \(#function) 方法,\(type(of: gestureRecognizer))的状态：\(gestureRecognizer.state.rawValue)")
+        print("gestureRecognizer:\(type(of: gestureRecognizer))   ---   otherGestureRecognizer:\(type(of: otherGestureRecognizer))\n")
         return true
     }
     
-    // 控制自身的Gesture和其他Gesture的失败
+    // 当view有多个识别器时，是否被别的手势识别器置失败状态。
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool{
-        print("UIGestureRecognizerDelegate 的 \(#function) 方法")
+        print("TestGesture_VC UIGestureRecognizerDelegate 的 \(#function) 方法,状态：\(gestureRecognizer.state.rawValue)")
+        print("gestureRecognizer:\(type(of: gestureRecognizer))   ---   otherGestureRecognizer:\(type(of: otherGestureRecognizer))\n")
         return true
     }
     
     /// 是否允许手势识别器接收 触摸事件。控制Gesture是否接受touch
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool{
-        print("UIGestureRecognizerDelegate 的 \(#function) 方法")
+        print("TestGesture_VC UIGestureRecognizerDelegate 的 \(#function) 方法,\(type(of: gestureRecognizer))的状态：\(gestureRecognizer.state.rawValue)")
         return true
     }
     
     // 控制Gesture是否接受press
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive press: UIPress) -> Bool{
-        print("UIGestureRecognizerDelegate 的 \(#function) 方法")
+        print("TestGesture_VC UIGestureRecognizerDelegate 的 \(#function) 方法,\(type(of: gestureRecognizer))的状态：\(gestureRecognizer.state.rawValue)")
         return true
     }
     
     // 控制Gesture是否接受event
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive event: UIEvent) -> Bool{
-        print("UIGestureRecognizerDelegate 的 \(#function) 方法")
+        print("TestGesture_VC UIGestureRecognizerDelegate 的 \(#function) 方法,\(type(of: gestureRecognizer))的状态：\(gestureRecognizer.state.rawValue)")
         return true
     }
     

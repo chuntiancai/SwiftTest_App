@@ -1,17 +1,23 @@
 //
-//  Table_Footer.swift
+//  Table_RefreshHeader.swift
 //  SwiftTest_App
 //
-//  Created by mathew on 2022/8/16.
+//  Created by mathew on 2022/8/17.
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
-// 测试tableView的footer
+// 测试tableView的下拉刷新的控件
 // MARK:  笔记
 /**
-    1、
- */
+    1、一般不用tableHeader来作为刷新控件，而是在contentInset里面添加一个subview，因为tableHeader可以用来放置广告。
+*/
+enum MyTableRefreshHeader_Status {
+    case none
+    case refreshing
+    case finshed
+    case failed
+}
 
-class Table_Footer: UIView {
+class Table_RefreshHeader: UIView {
     
     //MARK:  对外属性
     var title:String = ""{
@@ -19,8 +25,12 @@ class Table_Footer: UIView {
             titleLabel.text = title
         }
     }
-    //正在刷新
-    var isRefreshing:Bool = false
+    
+    var status:MyTableRefreshHeader_Status = .none {
+        didSet{
+            
+        }
+    }
     
     //MARK:  内部属性
     let titleLabel:UILabel = {
@@ -46,7 +56,7 @@ class Table_Footer: UIView {
 }
 
 //MARK: - 设置UI
-extension Table_Footer{
+extension Table_RefreshHeader{
     //MARK: 设置初始化的UI
     func initDefaultUI(){
         
@@ -59,11 +69,11 @@ extension Table_Footer{
 }
 
 //MARK: - 动作方法
-@objc extension Table_Footer{
+@objc extension Table_RefreshHeader{
     
 }
 
 //MARK: -
-extension Table_Footer{
+extension Table_RefreshHeader{
     
 }

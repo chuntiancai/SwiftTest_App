@@ -322,6 +322,7 @@
 		AF2DDAFD28AB685700E1CCF3 /* Table_Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAFC28AB685700E1CCF3 /* Table_Footer.swift */; };
 		AF3557B92865B5A5009B291C /* OCRuntime_Person+Property.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3557B82865B5A5009B291C /* OCRuntime_Person+Property.m */; };
 		AF3557BB286AF145009B291C /* Point_Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3557BA286AF145009B291C /* Point_Person.swift */; };
+		AF688FB728ACBDE0005C619C /* Table_RefreshHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF688FB628ACBDE0005C619C /* Table_RefreshHeader.swift */; };
 		AF824279287534EA002311AF /* OCRuntimeStatus.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF824278287534EA002311AF /* OCRuntimeStatus.plist */; };
 		AF82427C2875369C002311AF /* OCRuntime_StatusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AF82427B2875369C002311AF /* OCRuntime_StatusModel.m */; };
 		AF82427F287587F3002311AF /* OCRuntime_SubPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = AF82427E287587F3002311AF /* OCRuntime_SubPerson.m */; };
@@ -702,6 +703,7 @@
 		AF3557B72865B5A5009B291C /* OCRuntime_Person+Property.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OCRuntime_Person+Property.h"; sourceTree = "<group>"; };
 		AF3557B82865B5A5009B291C /* OCRuntime_Person+Property.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "OCRuntime_Person+Property.m"; sourceTree = "<group>"; };
 		AF3557BA286AF145009B291C /* Point_Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point_Person.swift; sourceTree = "<group>"; };
+		AF688FB628ACBDE0005C619C /* Table_RefreshHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table_RefreshHeader.swift; sourceTree = "<group>"; };
 		AF824278287534EA002311AF /* OCRuntimeStatus.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = OCRuntimeStatus.plist; sourceTree = "<group>"; };
 		AF82427A2875369C002311AF /* OCRuntime_StatusModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCRuntime_StatusModel.h; sourceTree = "<group>"; };
 		AF82427B2875369C002311AF /* OCRuntime_StatusModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCRuntime_StatusModel.m; sourceTree = "<group>"; };
@@ -1372,9 +1374,9 @@
 		04587C8A27B65ED200824F69 /* UIView的手势识别器 */ = {
 			isa = PBXGroup;
 			children = (
-				04B76902280D3A730080102F /* 手势识别器之间的交互_VC.swift */,
 				04587C8B27B6654500824F69 /* TestGesture_VC.swift */,
 				04587C8D27B6691F00824F69 /* TestGesture_View.swift */,
+				04B76902280D3A730080102F /* 手势识别器之间的交互_VC.swift */,
 			);
 			path = "UIView的手势识别器";
 			sourceTree = "<group>";
@@ -2064,6 +2066,7 @@
 				042036AB27425A2C00424E05 /* TableSectionHeader.swift */,
 				AF2DDAFA28AB684900E1CCF3 /* Table_Header.swift */,
 				AF2DDAFC28AB685700E1CCF3 /* Table_Footer.swift */,
+				AF688FB628ACBDE0005C619C /* Table_RefreshHeader.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2742,6 +2745,7 @@
 				651C714D2609ED600066C13B /* tempVC.swift in Sources */,
 				04870E4E26E9AD280030B1D2 /* AACredits.swift in Sources */,
 				0421E62426B1037100C6A922 /* TestScreenRotateView.swift in Sources */,
+				AF688FB728ACBDE0005C619C /* Table_RefreshHeader.swift in Sources */,
 				04C2DBFE26CE269700F9B3EE /* TestSubVC_MainVC.swift in Sources */,
 				AF2C735025539C54000AD7A9 /* AppDelegate.swift in Sources */,
 				04C2DC0226CE28BA00F9B3EE /* TestSubVC_SubVC2.swift in Sources */,
