@@ -12,6 +12,7 @@
         //storyboard文件中的名字就是Storyboard ID，这个表示这个Storyboard本身，也是Storyboard绑定的VC的ID，通过这个来初始化Storyboard的VC
          let storyBoard = UIStoryboard.init(name: "mainStoryTest", bundle: nil)
          let mainStoryVC = storyBoard.instantiateViewController(withIdentifier: "TestStory_VC_ID")
+ 
  */
 
 

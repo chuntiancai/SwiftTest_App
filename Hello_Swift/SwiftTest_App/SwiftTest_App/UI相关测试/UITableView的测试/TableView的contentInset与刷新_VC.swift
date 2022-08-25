@@ -57,6 +57,8 @@ class TestTableViewcontentInset_VC: UIViewController {
     /// header之上的下拉刷新控件。
     private let myRefreshHeader:Table_RefreshHeader = {
         let rHeader = Table_RefreshHeader()
+        rHeader.layer.borderColor = UIColor.brown.cgColor
+        rHeader.layer.borderWidth = 1.0
         return rHeader
     }()
     
@@ -190,7 +192,15 @@ extension TestTableViewcontentInset_VC: UICollectionViewDataSource {
             myTableView.scrollIndicatorInsets = myTableView.contentInset
         case 5:
             //TODO: 5、测试顶部下拉刷新控件
-            print("     (@@")
+            /**
+             1、不用header来做，因为header可以用来放广告图片，所以用contentInset来做，放在contentInset里面，然后监听位移来刷新。
+             */
+            print("     (@@ 5、测试顶部下拉刷新控件 ")
+            myTableView.addSubview(myRefreshHeader)
+            myRefreshHeader.backgroundColor = .cyan
+            myRefreshHeader.frame = CGRect(x: 0, y: -40, width: myTableView.bounds.width, height: 40)
+            myRefreshHeader.title = "下拉刷新数据"
+            self.headerBeginRefrehing()
         case 6:
             print("     (@@")
         case 7:
@@ -220,20 +230,6 @@ extension TestTableViewcontentInset_VC: UICollectionViewDataSource {
     }
     
 }
-//MARK: - 遵循UIScrollViewDelegate协议
-extension TestTableViewcontentInset_VC:UIScrollViewDelegate{
-    
-    /// tableview滑动的时候调用
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //TODO: 测试自定义上拉加载，下拉刷新
-        if scrollView.isKind(of: UITableView.self){
-            dealFooter()
-        }
-    }
-    
-}
-
-
 //MARK: - 测试的方法
 extension TestTableViewcontentInset_VC{
     
@@ -242,6 +238,48 @@ extension TestTableViewcontentInset_VC{
         /**
             1、不用tableHeaderView作为控件，而是用contentInset的范围放置subView来做刷新控件。
          */
+        if myTableView.contentOffset.y < -(myTableView.contentInset.top + 40) { /// 此时refreshHeader完全出现
+            myRefreshHeader.title = "松开立即刷新"
+            myRefreshHeader.backgroundColor = UIColor.red
+        }else {
+            if myRefreshHeader.status == .refreshing {  //回到正常状态
+                myRefreshHeader.title = "正在刷新数据..."
+                myRefreshHeader.backgroundColor = UIColor.cyan
+            }else{
+                myRefreshHeader.title = "下拉刷新数据"
+                myRefreshHeader.backgroundColor = UIColor.cyan
+            }
+            
+        }
+    }
+    
+    //开始下拉刷新
+    func headerBeginRefrehing(){
+        if myRefreshHeader.status == .refreshing { return }
+        myRefreshHeader.status = .refreshing
+        let refreshHeight = myRefreshHeader.bounds.height
+        //  让刷新控件一直展示
+        myTableView.contentInset = UIEdgeInsets(top: myTableView.contentInset.top + refreshHeight, left: 0, bottom: 0, right: 0)
+        // 定位到刷新控件的偏移
+        myTableView.contentOffset = CGPoint(x: myTableView.contentOffset.x, y: -myTableView.contentInset.top)
+        //模拟请求网络数据
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            if self?.tableDataDict[1] != nil {  self?.tableDataDict[0]! += ["上拉的数据","上拉的数据","上拉的数据"] }
+            self?.myTableView.reloadData()
+            self?.headerEndRefrehing()  }
+    }
+    
+    //结束下拉刷新
+    func headerEndRefrehing(){
+        let refreshHeight = myRefreshHeader.bounds.height
+        myRefreshHeader.status = .finshed
+        myRefreshHeader.backgroundColor = .cyan
+        UIView.animate(withDuration: 0.25) {
+            let inset = self.myTableView.contentInset
+            // 还原偏移量
+            self.myTableView.contentInset = UIEdgeInsets(top: inset.top - refreshHeight, left: 0, bottom: 0, right: 0)
+        }
+        
     }
     
     //MARK: 处理tableview的footer,上拉加载更多
@@ -252,7 +290,8 @@ extension TestTableViewcontentInset_VC{
          */
         
         let totalOffsetY = (myTableView.contentSize.height + myTableView.contentInset.bottom - myTableView.bounds.size.height) - (myTableView.tableFooterView?.bounds.height ?? 0.0) * 0.2
-        if myTableView.contentOffset.y > totalOffsetY {
+        /// 要防止下拉的时候，数据量少的时候，footer也是完全出现的情况
+        if myTableView.contentOffset.y > totalOffsetY && myTableView.contentOffset.y > myTableView.contentInset.top {
             print("已经见到footer的一半了，可以去加载更多了～")
             if !myFooter.isRefreshing{
                 myFooter.title = "正在加载数据。。。"
@@ -267,6 +306,33 @@ extension TestTableViewcontentInset_VC{
     }
     
 }
+
+//MARK: - 遵循UIScrollViewDelegate协议
+extension TestTableViewcontentInset_VC:UIScrollViewDelegate{
+    
+    /// tableview滑动的时候调用
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        //TODO: 测试自定义上拉加载，下拉刷新
+        if scrollView.isKind(of: UITableView.self){
+            dealFooter()
+            dealRefreshHeader()
+        }
+    }
+    
+    /// 监听手指松开的偏移量，从而决定下拉刷新与否
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if myRefreshHeader.status == .refreshing { return }
+        let offsetY = -(myTableView.contentInset.top + myRefreshHeader.bounds.height)
+        if myTableView.contentOffset.y < offsetY {
+            /// 松开的位置，此时刷新控件已经完全出现，那就开始刷新数据
+            headerBeginRefrehing()
+        }
+    }
+    
+}
+
+
+
 
 
 //MARK: - 设置测试的UI

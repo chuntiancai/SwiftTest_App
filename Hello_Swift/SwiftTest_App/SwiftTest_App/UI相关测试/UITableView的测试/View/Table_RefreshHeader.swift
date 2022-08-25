@@ -28,7 +28,16 @@ class Table_RefreshHeader: UIView {
     
     var status:MyTableRefreshHeader_Status = .none {
         didSet{
-            
+            switch status {
+            case .none:
+                print("none")
+            case .refreshing:
+                print("refreshing")
+            case .finshed:
+                print("finshed")
+            case .failed:
+                print("failed")
+            }
         }
     }
     
@@ -38,7 +47,7 @@ class Table_RefreshHeader: UIView {
         label.layer.borderWidth = 1.0
         label.layer.borderColor = UIColor.gray.cgColor
         label.text = "table 的 header"
-        label.textAlignment = .center
+        label.textAlignment = .left
         label.textColor = .black
         label.font = .systemFont(ofSize: 16)
         return label

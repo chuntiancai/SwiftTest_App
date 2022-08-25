@@ -34,6 +34,7 @@ class TestUIScrollView_VC: UIViewController {
     ///UI组件
     private var baseCollView: UICollectionView!
     
+    
     //MARK: 测试组件
     var testScrollView = Test_ScorllView()
     var scrollDelegate = TestScrollView_deleagate()
@@ -189,7 +190,8 @@ extension TestUIScrollView_VC: UICollectionViewDataSource {
             }
             viewScroView.curViewIndex = curTestIndex
         case 8:
-            print("     (@@")
+            //TODO: 8、测试同方向滚动的ScrollView
+            print("     (@@ 8、测试同方向滚动的ScrollView")
         case 9:
             print("     (@@")
         case 10:

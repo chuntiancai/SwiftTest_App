@@ -19,7 +19,7 @@ class tempVC: UIViewController {
 
     ///UI组件
     private var baseCollView: UICollectionView!
-    
+    let bgView = UIView()   //测试的view可以放在这里面
     
     //MARK: 测试组件
     
@@ -93,6 +93,14 @@ extension tempVC{
     
     /// 初始化你要测试的view
     func initTestViewUI(){
+        /// 内容背景View，测试的子view这里
+        self.view.addSubview(bgView)
+        bgView.snp.makeConstraints { make in
+            make.top.equalTo(baseCollView.snp.bottom)
+            make.bottom.equalToSuperview()
+            make.width.equalToSuperview()
+            make.centerX.equalToSuperview()
+        }
         
     }
     

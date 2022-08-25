@@ -30,9 +30,6 @@
             协议方法：gestureRecognizer(_:shouldRequireFailureOf:) 当前识别器是否应该被别的识别器置为失败状态。
                     该方法在当前识别器每次尝试识别手势的时候就被调用。
  
- 
-        
- 
     3、
  
  */
@@ -74,13 +71,16 @@ class TestGestureInteract_VC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 199/255.0, green: 204/255.0, blue: 237/255.0, alpha: 1.0)
-        self.title = "测试手势识别器间的交互"
+        self.title = "测试手势识别器间的交互VC"
         
         setNavigationBarUI()
         setCollectionViewUI()
         initTestViewUI()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("这是TestGestureInteract_VC的touchesBegan方法～")
+    }
     
     
 }
@@ -130,11 +130,16 @@ extension TestGestureInteract_VC: UICollectionViewDataSource {
             isRelation = !isRelation
             print("设置之后：\(isRelation)")
         case 2:
-            //TODO: 2、
-            print("     (@@ ")
+            //TODO: 2、测试父view识别器与子scrollView的panGestureRecognizer的系。
+            print("     (@@ 2、测试父view识别器与子scrollView的panGestureRecognizer的系。")
+            self.view.addGestureRecognizer(gesture1)
+            gesture1.delegate = self
+            gesture1.addTarget(self, action: #selector(gesAction1(_:)))
+            
         case 3:
-            //TODO: 3、
-            print("     (@@ ")
+            //TODO: 3、测试去掉识别器之间的依赖关系
+            print("     (@@ 3、测试去掉识别器之间的依赖关系")
+            gesture1.require(toFail: UITapGestureRecognizer())
         case 4:
             print("     (@@")
         case 5:
@@ -148,7 +153,10 @@ extension TestGestureInteract_VC: UICollectionViewDataSource {
         case 9:
             print("     (@@")
         case 10:
-            print("     (@@")
+            //TODO: 10、打印识别器信息
+            print("     (@@ 10、打印识别器信息")
+            print("gesture1是：\(gesture1)\n")
+            print("gesture2是：\(gesture2)\n")
         case 11:
             print("     (@@")
         case 12:
@@ -192,6 +200,7 @@ extension TestGestureInteract_VC{
         redScrollView.backgroundColor = UIColor.red.withAlphaComponent(0.8)
         redScrollView.contentSize = CGSize.init(width: 350, height: 1200)
         redScrollView.showsVerticalScrollIndicator = true
+        redScrollView.bounces = false
         redScrollView.delegate = self
         bgView.addSubview(redScrollView)
         redScrollView.snp.makeConstraints { make in
@@ -222,8 +231,9 @@ extension TestGestureInteract_VC{
         }
         
         blueScrollView.backgroundColor = .blue.withAlphaComponent(0.8)
-        blueScrollView.bounces = false
+        blueScrollView.bounces = true
         blueScrollView.tag = 1234
+//        blueScrollView.panGestureRecognizer.require(toFail: redScrollView.panGestureRecognizer)
         blueScrollView.delegate = self
         blueScrollView.contentSize = CGSize.init(width: 280, height: 800)
         blueScrollView.showsVerticalScrollIndicator = true
@@ -274,7 +284,6 @@ extension TestGestureInteract_VC:UIGestureRecognizerDelegate {
                 return false
             }
         }
-        
         return true
     }
     
@@ -284,16 +293,16 @@ extension TestGestureInteract_VC:UIGestureRecognizerDelegate {
         return true
     }
     
-    // 当view有多个识别器时，是否把别的手势识别器置失败状态。
+    // 当view有多个识别器时，是否被别的手势识别器置失败状态。是否依赖于别人
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool{
         print("TestGestureInteract_VC 的 \(#function) 方法 --\(gestureRecognizer)\n --别的识别器：\(otherGestureRecognizer)\n")
-        return true
+        return false
     }
     
-    // 当view有多个识别器时，是否被别的手势识别器置失败状态。
+    // 当view有多个识别器时，是否被别的手势识别器置失败状态。是否被别人依赖。
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool{
         print("TestGestureInteract_VC 的 \(#function) 方法")
-        return true
+        return false
     }
     
     /// 是否允许手势识别器接收 触摸事件。控制Gesture是否接受touch
@@ -321,6 +330,13 @@ extension TestGestureInteract_VC:UIGestureRecognizerDelegate {
 extension TestGestureInteract_VC: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        //TODO: 2、测试父子scrollView的panGestureRecognizer的依赖关系。
+        if scrollView == redScrollView {
+            if redScrollView.contentOffset.y > 30 {
+//                redScrollView.panGestureRecognizer.state = .failed
+                return
+            }
+        }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

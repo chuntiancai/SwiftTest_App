@@ -317,7 +317,7 @@ extension TestGesture_VC: UIGestureRecognizerDelegate {
         return true
     }
     
-    // 当view有多个识别器时，是否把别的手势识别器置失败状态。
+    // 当view有多个识别器时，是否应该把别的手势识别器置失败状态。
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool{
         print("TestGesture_VC UIGestureRecognizerDelegate 的 \(#function) 方法,\(type(of: gestureRecognizer))的状态：\(gestureRecognizer.state.rawValue)")
         print("gestureRecognizer:\(type(of: gestureRecognizer))   ---   otherGestureRecognizer:\(type(of: otherGestureRecognizer))\n")

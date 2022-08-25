@@ -125,7 +125,6 @@
 		044CBA7127F587C100FA2CB8 /* TestSubVC_SubVC3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBA7027F587C100FA2CB8 /* TestSubVC_SubVC3.swift */; };
 		044CBA7727F5A82A00FA2CB8 /* 测试文字的自适应高度_label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBA7627F5A82A00FA2CB8 /* 测试文字的自适应高度_label.swift */; };
 		044CBA7927F68EDC00FA2CB8 /* MultiBtns_ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBA7827F68EDC00FA2CB8 /* MultiBtns_ScrollView.swift */; };
-		044CBA7B27F6908200FA2CB8 /* TestScrollView.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 044CBA7A27F6908200FA2CB8 /* TestScrollView.xcassets */; };
 		044CBA7D27F6D6F000FA2CB8 /* MultiViews_ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBA7C27F6D6F000FA2CB8 /* MultiViews_ScrollView.swift */; };
 		044FB587276735BE00479442 /* TextField的点击测试(键盘弹起)_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FB586276735BE00479442 /* TextField的点击测试(键盘弹起)_View.swift */; };
 		0454A48E272FCA5600EFE31A /* 测试tableview的delegate顺序_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454A48D272FCA5600EFE31A /* 测试tableview的delegate顺序_VC.swift */; };
@@ -354,6 +353,9 @@
 		AFDA1325287D0F1B0015BFC3 /* TestNaviVC_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDA1324287D0F1B0015BFC3 /* TestNaviVC_VC.swift */; };
 		AFDA1327287E6EE90015BFC3 /* 测试UIView的形变_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDA1326287E6EE90015BFC3 /* 测试UIView的形变_VC.swift */; };
 		AFDA1329287E9B760015BFC3 /* MyImageTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDA1328287E9B760015BFC3 /* MyImageTool.swift */; };
+		AFEF468C28B5D23100B3EA2D /* VerScroll_ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF468B28B5D23100B3EA2D /* VerScroll_ScrollView.swift */; };
+		AFEF468E28B5D2C400B3EA2D /* VerScroll_ScrollView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF468D28B5D2C400B3EA2D /* VerScroll_ScrollView2.swift */; };
+		AFEF469028B5F79B00B3EA2D /* TestScrollViewGesture_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF468F28B5F79B00B3EA2D /* TestScrollViewGesture_VC.swift */; };
 		EB5C881427FC2EA200655119 /* 位移枚举的写法.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C881327FC2EA200655119 /* 位移枚举的写法.swift */; };
 		EB645E3F26A449AE00773A98 /* tempView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645E3E26A449AE00773A98 /* tempView.swift */; };
 /* End PBXBuildFile section */
@@ -493,7 +495,6 @@
 		044CBA7027F587C100FA2CB8 /* TestSubVC_SubVC3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSubVC_SubVC3.swift; sourceTree = "<group>"; };
 		044CBA7627F5A82A00FA2CB8 /* 测试文字的自适应高度_label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试文字的自适应高度_label.swift"; sourceTree = "<group>"; };
 		044CBA7827F68EDC00FA2CB8 /* MultiBtns_ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiBtns_ScrollView.swift; sourceTree = "<group>"; };
-		044CBA7A27F6908200FA2CB8 /* TestScrollView.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestScrollView.xcassets; sourceTree = "<group>"; };
 		044CBA7C27F6D6F000FA2CB8 /* MultiViews_ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiViews_ScrollView.swift; sourceTree = "<group>"; };
 		044FB586276735BE00479442 /* TextField的点击测试(键盘弹起)_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField的点击测试(键盘弹起)_View.swift"; sourceTree = "<group>"; };
 		0454A487272AA2FF00EFE31A /* Swift语法备忘录.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Swift语法备忘录.md"; sourceTree = "<group>"; };
@@ -740,6 +741,9 @@
 		AFDA1324287D0F1B0015BFC3 /* TestNaviVC_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNaviVC_VC.swift; sourceTree = "<group>"; };
 		AFDA1326287E6EE90015BFC3 /* 测试UIView的形变_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试UIView的形变_VC.swift"; sourceTree = "<group>"; };
 		AFDA1328287E9B760015BFC3 /* MyImageTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImageTool.swift; sourceTree = "<group>"; };
+		AFEF468B28B5D23100B3EA2D /* VerScroll_ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerScroll_ScrollView.swift; sourceTree = "<group>"; };
+		AFEF468D28B5D2C400B3EA2D /* VerScroll_ScrollView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerScroll_ScrollView2.swift; sourceTree = "<group>"; };
+		AFEF468F28B5F79B00B3EA2D /* TestScrollViewGesture_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScrollViewGesture_VC.swift; sourceTree = "<group>"; };
 		BB6AAD3455F9D2C8F661C07D /* Pods-SwiftTest_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTest_App.debug.xcconfig"; path = "Target Support Files/Pods-SwiftTest_App/Pods-SwiftTest_App.debug.xcconfig"; sourceTree = "<group>"; };
 		C4C06FA2172551275C4FCEE6 /* Pods_SwiftTest_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftTest_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB5C881327FC2EA200655119 /* 位移枚举的写法.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "位移枚举的写法.swift"; sourceTree = "<group>"; };
@@ -857,8 +861,10 @@
 				0492700727941D73000A61FC /* TestScrollView_deleagate.swift */,
 				044CBA7827F68EDC00FA2CB8 /* MultiBtns_ScrollView.swift */,
 				044CBA7C27F6D6F000FA2CB8 /* MultiViews_ScrollView.swift */,
+				AFEF468F28B5F79B00B3EA2D /* TestScrollViewGesture_VC.swift */,
+				AFEF468B28B5D23100B3EA2D /* VerScroll_ScrollView.swift */,
+				AFEF468D28B5D2C400B3EA2D /* VerScroll_ScrollView2.swift */,
 				041A2E29279405A500F9CABF /* TestScrollView.xib */,
-				044CBA7A27F6908200FA2CB8 /* TestScrollView.xcassets */,
 			);
 			path = "UIScrollView的测试";
 			sourceTree = "<group>";
@@ -2377,7 +2383,6 @@
 				041CBC412788206500AF9B05 /* labi006.jpg in Resources */,
 				04330AB2283F7E34007DF2D0 /* 8、多态.md in Resources */,
 				04330AB6283F7E34007DF2D0 /* 13、高级运算符.md in Resources */,
-				044CBA7B27F6908200FA2CB8 /* TestScrollView.xcassets in Resources */,
 				04330ABA283F7E34007DF2D0 /* 0、语言环境.md in Resources */,
 				AFC1B386289B74BA0050FC8F /* XibFile_VC.xib in Resources */,
 				049270102796CCC4000A61FC /* TestTableView.storyboard in Resources */,
@@ -2493,6 +2498,7 @@
 				0414F98227BC940A0037EE70 /* Quartz_View.swift in Sources */,
 				049EAFF726C25E9700903DA8 /* JFZ_AVAsset.swift in Sources */,
 				0421E5F326A9701600C6A922 /* JFZVideoControlPanelView.swift in Sources */,
+				AFEF469028B5F79B00B3EA2D /* TestScrollViewGesture_VC.swift in Sources */,
 				042036CC27574C9400424E05 /* CollectionView的delegate.swift in Sources */,
 				0421E60526AAB30100C6A922 /* UITestConstranitVC.swift in Sources */,
 				0415582F283DC4A1007FC2E8 /* 测试数组排序_VC.swift in Sources */,
@@ -2561,6 +2567,7 @@
 				04870E5326E9AD280030B1D2 /* AACrosshair.swift in Sources */,
 				047C851627B3B53E0060D7CB /* TestUIAlertController_VC.swift in Sources */,
 				651C713E2609E3CA0066C13B /* File的理解.swift in Sources */,
+				AFEF468E28B5D2C400B3EA2D /* VerScroll_ScrollView2.swift in Sources */,
 				AF2DDAF628A6381600E1CCF3 /* TestWindow_VC.swift in Sources */,
 				0414F98827BE24730037EE70 /* Quartz_Img_View.swift in Sources */,
 				AF88EE77289772AB00660C28 /* TestUIColor_VC.swift in Sources */,
@@ -2715,6 +2722,7 @@
 				045505A127FFD0C700785F02 /* TestCalendar_VC.swift in Sources */,
 				042648E027F2E65B0034FF51 /* AsyncImg_Model.swift in Sources */,
 				0421E5F226A9701600C6A922 /* JFZ_AudioPlayerView.swift in Sources */,
+				AFEF468C28B5D23100B3EA2D /* VerScroll_ScrollView.swift in Sources */,
 				AFB34DB0287EC41E0039123C /* 测试UIVIew的frame_VC.swift in Sources */,
 				0414F98627BDF69C0037EE70 /* Quartz_Font_View.swift in Sources */,
 				0454A48E272FCA5600EFE31A /* 测试tableview的delegate顺序_VC.swift in Sources */,
