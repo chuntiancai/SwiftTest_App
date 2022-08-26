@@ -25,6 +25,7 @@ class TestImageView_VC: UIViewController {
 
     ///UI组件
     private var baseCollView: UICollectionView!
+    let bgView = UIView()   //测试的view可以放在这里面
     
     //MARK: 测试组件
     let imgView1 = UIImageView()
@@ -118,7 +119,7 @@ extension TestImageView_VC: UICollectionViewDataSource {
             /// cropping是用C语言实现的，使用的坐标是像素坐标。而ios使用的坐标是点坐标，所以要进行坐标系的转换。
             let cropImg = (orgImage.cgImage?.cropping(to: CGRect.init(x: 50, y: 100, width: cropWidth, height: cropHeight)))!
             let turnImgV = UIImageView(image: UIImage(cgImage: cropImg))
-            self.view.addSubview(turnImgV)
+            self.bgView.addSubview(turnImgV)
             turnImgV.snp.makeConstraints { make in
                 make.top.equalTo(imgView1.snp.bottom).offset(20)
                 make.centerX.equalToSuperview()
@@ -156,7 +157,7 @@ extension TestImageView_VC: UICollectionViewDataSource {
             UIGraphicsEndImageContext()
             
             let turnImgV2 = UIImageView(image: drawImg)
-            self.view.addSubview(turnImgV2)
+            self.bgView.addSubview(turnImgV2)
             turnImgV2.snp.makeConstraints { make in
                 make.top.equalTo(turnImgV.snp.bottom).offset(10)
                 make.left.equalToSuperview().offset(5)
@@ -164,7 +165,7 @@ extension TestImageView_VC: UICollectionViewDataSource {
             }
             
             let turnImgV3 = UIImageView(image: antialiasImg2)
-            self.view.addSubview(turnImgV3)
+            self.bgView.addSubview(turnImgV3)
             turnImgV3.snp.makeConstraints { make in
                 make.top.equalTo(turnImgV.snp.bottom).offset(10)
                 make.left.equalTo(turnImgV2.snp_right).offset(5)
@@ -177,14 +178,35 @@ extension TestImageView_VC: UICollectionViewDataSource {
                 1、turnImgV2.layer.contentsRect
              */
             print("     (@@ UIImageView只显示部分图片。图片重叠")
-            imgView1.isHidden = true
-            turnImgV.isHidden = false
-            turnImgV2.isHidden = false
+            let _ = bgView.subviews.map { $0.removeFromSuperview() }
+            
+            //上面的图片
+            /// 也是比例坐标，只显示部分图片内容。显示上半部分的图片。
+            turnImgV.layer.contentsRect = CGRect.init(x: 0, y: 0, width: 1, height: 0.5)
+            self.bgView.addSubview(turnImgV)
+            self.bgView.addSubview(turnImgV2)
+            /// 只显示部分图片内容。显示下半部分的图片。
+            turnImgV2.layer.contentsRect = CGRect.init(x: 0, y: 0.5, width: 1, height: 0.5)
+            
+            /// 以锚点为中心进行旋转的，所以你要设置锚点。设置锚点之后，view的frame回发生变化，因为view的布局本来是根据锚点和position进行计算的。
+            turnImgV.layer.anchorPoint = CGPoint.init(x: 0.5, y: 1)
+            turnImgV2.layer.anchorPoint = CGPoint.init(x: 0.5, y: 0)
+            /// 手势的容器view
+            turnImgV.snp.makeConstraints { make in
+                make.top.equalTo(baseCollView.snp.bottom).offset(20 + 100)
+                make.centerX.equalToSuperview()
+                make.width.equalTo(300)
+                make.height.equalTo(200)
+            }
+            /// 因为锚点已经设置了，所以重叠是刚刚好。
+            turnImgV2.snp.makeConstraints { make in
+                make.edges.equalTo(turnImgV.snp.edges)
+            }
             
             //接收手势的view，用于控制两张图片的翻转效果。
-            self.view.addSubview(turnBgView)
+            self.bgView.addSubview(turnBgView)
             turnBgView.snp.makeConstraints { make in
-                make.top.equalTo(baseCollView.snp.bottom).offset(20)
+                make.top.equalTo(20)
                 make.centerX.equalToSuperview()
                 make.width.equalTo(300)
                 make.height.equalTo(400)
@@ -351,10 +373,19 @@ extension TestImageView_VC{
     /// 初始化你要测试的view
     func initTestViewUI(){
         
+        /// 内容背景View，测试的子view这里
+        self.view.addSubview(bgView)
+        bgView.snp.makeConstraints { make in
+            make.top.equalTo(baseCollView.snp.bottom)
+            make.bottom.equalToSuperview()
+            make.width.equalToSuperview()
+            make.centerX.equalToSuperview()
+        }
+        
         imgView1.layer.borderWidth = 1.0
         imgView1.layer.borderColor = UIColor.gray.cgColor
         imgView1.image = image1
-        self.view.addSubview(imgView1)
+        self.bgView.addSubview(imgView1)
         imgView1.snp.makeConstraints { make in
             make.top.equalTo(baseCollView.snp.bottom).offset(5)
             make.centerX.equalToSuperview()
@@ -362,33 +393,10 @@ extension TestImageView_VC{
             make.width.equalTo(240)
         }
         
-        //TODO: 做图片翻转重叠,只显示部分图片
-        /// 也是比例坐标，只显示部分图片内容。显示上半部分的图片。
-        turnImgV.layer.contentsRect = CGRect.init(x: 0, y: 0, width: 1, height: 0.5)
-        self.view.addSubview(turnImgV)
-        self.view.addSubview(turnImgV2)
-        /// 只显示部分图片内容。显示下半部分的图片。
-        turnImgV2.layer.contentsRect = CGRect.init(x: 0, y: 0.5, width: 1, height: 0.5)
         
-        /// 以锚点为中心进行旋转的，所以你要设置锚点。设置锚点之后，view的frame回发生变化，因为view的布局本来是根据锚点和position进行计算的。
-        turnImgV.layer.anchorPoint = CGPoint.init(x: 0.5, y: 1)
-        turnImgV2.layer.anchorPoint = CGPoint.init(x: 0.5, y: 0)
-        /// 手势的容器view
-        turnImgV.snp.makeConstraints { make in
-            make.top.equalTo(baseCollView.snp.bottom).offset(20 + 100)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(300)
-            make.height.equalTo(200)
-        }
-        /// 因为锚点已经设置了，所以重叠是刚刚好。
-        turnImgV2.snp.makeConstraints { make in
-            make.edges.equalTo(turnImgV.snp.edges)
-        }
-        turnImgV.isHidden = true
-        turnImgV2.isHidden = true
         
         // 测试图片倒影的View
-        self.view.addSubview(imgInvertView)
+        self.bgView.addSubview(imgInvertView)
         imgInvertView.layer.borderWidth = 1
         imgInvertView.layer.borderColor = UIColor.gray.cgColor
         imgInvertView.snp.makeConstraints { make in

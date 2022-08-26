@@ -356,6 +356,7 @@
 		AFEF468C28B5D23100B3EA2D /* VerScroll_ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF468B28B5D23100B3EA2D /* VerScroll_ScrollView.swift */; };
 		AFEF468E28B5D2C400B3EA2D /* VerScroll_ScrollView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF468D28B5D2C400B3EA2D /* VerScroll_ScrollView2.swift */; };
 		AFEF469028B5F79B00B3EA2D /* TestScrollViewGesture_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF468F28B5F79B00B3EA2D /* TestScrollViewGesture_VC.swift */; };
+		AFEF469428B8B04700B3EA2D /* VerScroll_ScrollView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF469328B8B04700B3EA2D /* VerScroll_ScrollView3.swift */; };
 		EB5C881427FC2EA200655119 /* 位移枚举的写法.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C881327FC2EA200655119 /* 位移枚举的写法.swift */; };
 		EB645E3F26A449AE00773A98 /* tempView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645E3E26A449AE00773A98 /* tempView.swift */; };
 /* End PBXBuildFile section */
@@ -744,6 +745,7 @@
 		AFEF468B28B5D23100B3EA2D /* VerScroll_ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerScroll_ScrollView.swift; sourceTree = "<group>"; };
 		AFEF468D28B5D2C400B3EA2D /* VerScroll_ScrollView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerScroll_ScrollView2.swift; sourceTree = "<group>"; };
 		AFEF468F28B5F79B00B3EA2D /* TestScrollViewGesture_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScrollViewGesture_VC.swift; sourceTree = "<group>"; };
+		AFEF469328B8B04700B3EA2D /* VerScroll_ScrollView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerScroll_ScrollView3.swift; sourceTree = "<group>"; };
 		BB6AAD3455F9D2C8F661C07D /* Pods-SwiftTest_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTest_App.debug.xcconfig"; path = "Target Support Files/Pods-SwiftTest_App/Pods-SwiftTest_App.debug.xcconfig"; sourceTree = "<group>"; };
 		C4C06FA2172551275C4FCEE6 /* Pods_SwiftTest_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftTest_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB5C881327FC2EA200655119 /* 位移枚举的写法.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "位移枚举的写法.swift"; sourceTree = "<group>"; };
@@ -864,6 +866,7 @@
 				AFEF468F28B5F79B00B3EA2D /* TestScrollViewGesture_VC.swift */,
 				AFEF468B28B5D23100B3EA2D /* VerScroll_ScrollView.swift */,
 				AFEF468D28B5D2C400B3EA2D /* VerScroll_ScrollView2.swift */,
+				AFEF469328B8B04700B3EA2D /* VerScroll_ScrollView3.swift */,
 				041A2E29279405A500F9CABF /* TestScrollView.xib */,
 			);
 			path = "UIScrollView的测试";
@@ -2601,6 +2604,7 @@
 				042036CA2757197500424E05 /* CollectionView的网格布局Layout.swift in Sources */,
 				0484808B27853FE800698106 /* TestStory_VC.swift in Sources */,
 				0492701A279EA840000A61FC /* Noti_person.swift in Sources */,
+				AFEF469428B8B04700B3EA2D /* VerScroll_ScrollView3.swift in Sources */,
 				04587C8E27B6691F00824F69 /* TestGesture_View.swift in Sources */,
 				AFC1B372289A677B0050FC8F /* MyNavigation_SubVC3.swift in Sources */,
 				0498537B26F5BEC7009E4637 /* PointMarkerView.swift in Sources */,

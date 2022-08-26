@@ -37,7 +37,7 @@ extension MainViewController: UICollectionViewDataSource {
         print("MainViewController 点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            pushNext(viewController: TestScrollViewGesture_VC())
+            pushNext(viewController: TestUIView_VC())
         case 1:
             pushNext(viewController: TestGestureInteract_VC())
         case 2:

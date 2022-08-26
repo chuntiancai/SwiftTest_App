@@ -28,8 +28,12 @@ class TestUIView_VC: UIViewController {
 
     ///UI组件
     private var baseCollView: UICollectionView!
+    let bgView = UIView()   //测试的view可以放在这里面
     
     //MARK: 测试组件
+    let redView = UIView()
+    var changeY:CGFloat = 0;
+    let maskView = UIView()  //测试UIView的mask属性
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,12 +87,47 @@ extension TestUIView_VC: UICollectionViewDataSource {
             print("vc 的 view 的safeAreaLayoutGuide是：  \(layoutGuide)")
             print("vc 的 view 的safeAreaInsets是：  \(view.safeAreaInsets)")
         case 2:
-            //TODO: 2、修改view的安全内边距
-            print("     (@@ 修改view的安全内边距")
+            //TODO: 2、测试UIView的属性
+            print("     (@@ 2、测试UIView的属性")
+            let _ = self.bgView.subviews.map { $0.removeFromSuperview() }
+            redView.backgroundColor = .red
+            redView.layer.borderWidth = 5.0
+            redView.layer.borderColor = UIColor.brown.cgColor
+            
+            self.view.addSubview(redView)
+            redView.snp.makeConstraints { make in
+                make.center.equalToSuperview()
+                make.width.height.equalTo(200)
+            }
             
         case 3:
-            //TODO: 3、修改vc的安全内边距
-            print("     (@@ 修改vc的安全内边距")
+            //TODO: 3、测试mask属性。
+            /**
+             1、mask属性的使用是，定义了宿主对象的可显示的内容，mask属性就是宿主view的不透明通道，也就是mask view中的不透明颜色的内容就是 宿主对象的可显示的内容轮廓。
+              mask view 中的透明颜色就是遮挡宿主对象的显示内容，注意，mask view的布局是相对于宿主的坐标系，而不是mask view的父view，mask的父view是无效的。
+              mask view不要使用snpkit，不然不知道具体尺寸在什么时候算出来，比较麻烦，虽然是在layoutsubview方法中算出来，但是取出来就比较麻烦。
+             */
+            print("     (@@ 3、测试mask属性。")
+            if redView.mask == nil {
+                maskView.frame = CGRect(x: 0, y: 0, width: redView.bounds.width, height: redView.bounds.height)
+                maskView.backgroundColor = .blue
+                redView.mask = maskView
+            }
+            print("mask view 的frame：\(maskView.frame) --bounds:\(maskView.bounds)")
+            if maskView.bounds.height <= 0 {
+               changeY = 10
+            }
+            if maskView.bounds.height >= redView.bounds.height{
+               changeY = -10
+            }
+            let curHeight = maskView.bounds.height + changeY
+            maskView.frame = CGRect(x: 0, y:redView.bounds.height - curHeight , width: redView.bounds.width, height: curHeight)
+            
+        case 4:
+            //TODO: 4、
+            print("     (@@ 4")
+            
+            
         case 5:
             print("     (@@")
         case 6:
@@ -135,7 +174,14 @@ extension TestUIView_VC{
     
     /// 初始化你要测试的view
     func initTestViewUI(){
-        
+        /// 内容背景View，测试的子view这里面
+        self.view.addSubview(bgView)
+        bgView.snp.makeConstraints { make in
+            make.top.equalTo(baseCollView.snp.bottom)
+            make.bottom.equalToSuperview()
+            make.width.equalToSuperview()
+            make.centerX.equalToSuperview()
+        }
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

@@ -44,6 +44,8 @@ extension tempVC: UICollectionViewDataSource {
         case 0:
             //TODO: 0、
             print("     (@@ 0、")
+            let _ = self.bgView.subviews.map { $0.removeFromSuperview() }
+            
         case 1:
             //TODO: 1、
             print("     (@@ 1、")
@@ -93,7 +95,7 @@ extension tempVC{
     
     /// 初始化你要测试的view
     func initTestViewUI(){
-        /// 内容背景View，测试的子view这里
+        /// 内容背景View，测试的子view这里面
         self.view.addSubview(bgView)
         bgView.snp.makeConstraints { make in
             make.top.equalTo(baseCollView.snp.bottom)
