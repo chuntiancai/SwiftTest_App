@@ -23,6 +23,8 @@
         如果有多个scrollview的scrollsToTop属性都为true，那么所有的scrollview都不会生效。
         看源码注释有时候比网页api获取更多的信息，两个文档的注释详细程度不一样。
  
+    7、contentOffset的值可隐式动画
+ 
  */
 
 

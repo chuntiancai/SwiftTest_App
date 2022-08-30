@@ -7,7 +7,6 @@
 //
 // 在售页面，背景的ScrollView，主要是实现顶部上下滑动刷新交互，底部有UIScrollView的交互。
 
-import UIKit
 /**
     1、delegate已经设置为自身，用于控制tableview的ContentOffset。主要是通过gestureRecognizerShouldBegin和scrollViewDidScroll方法来控制。
  */

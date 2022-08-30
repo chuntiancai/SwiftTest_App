@@ -32,12 +32,13 @@ class MainViewController: UIViewController {
 extension MainViewController: UICollectionViewDataSource {
     
     ///点击了cell
+    ///
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         print("MainViewController 点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            pushNext(viewController: TestUIView_VC())
+            pushNext(viewController: TestUICollectionViewLayout_VC())
         case 1:
             pushNext(viewController: TestGestureInteract_VC())
         case 2:

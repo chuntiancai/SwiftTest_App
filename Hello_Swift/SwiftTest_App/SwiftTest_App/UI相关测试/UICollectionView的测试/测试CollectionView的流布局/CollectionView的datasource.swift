@@ -9,14 +9,16 @@
 
 class TestCollViewDataSource: NSObject,UICollectionViewDataSource {
     
+    var rowAndSection:IndexPath = IndexPath(row: 9, section: 2)
+    
     //TODO:设置section的数量
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return rowAndSection.section
     }
     
     //TODO:设置每个section中item的数量
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        return rowAndSection.row
     }
     
     //TODO:设置每个section中的item的UI

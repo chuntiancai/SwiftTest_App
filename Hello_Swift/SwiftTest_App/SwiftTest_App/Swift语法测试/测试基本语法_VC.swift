@@ -1,47 +1,48 @@
 //
-//  TestScrollViewGesture_VC.swift
+//  测试基本语法_VC.swift
 //  SwiftTest_App
 //
-//  Created by mathew on 2022/8/24.
+//  Created by mathew on 2022/8/29.
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
-//测试UIScrollView手势的VC
+//测试基本语法的VC
 // MARK: - 笔记
 /**
     1、
  
  */
 
-class TestScrollViewGesture_VC: UIViewController {
+class TestGramma_VC: UIViewController {
     
     //MARK: 对外属性
     public var collDataArr = ["0、","1、","2、","3、","4、","5、","6、","7、","8、","9、","10、","11、","12、"]
+    var MyInt:Int = 0 {
+        willSet{
+            print("将要设置MyInt的newValue值：\(newValue)")
+            if newValue > 10 {
+//                MyInt = 10
+                print("在willSet中重新设置MyInt的值：\(MyInt)")
+            }
+        }
+        didSet{
+            print("MyInt的oldValue值：\(oldValue)")
+            if MyInt > 12 {
+                MyInt = 12
+            }
+            print("MyInt的NewValue值：\(MyInt)")
+        }
+    }
 
     ///UI组件
     private var baseCollView: UICollectionView!
-    let bgView = UIView()   //背景的view
-    
+    let bgView = UIView()   //测试的view可以放在这里面
     
     //MARK: 测试组件
-    let scrView1 : VerScroll_ScrollView = {
-        let sView = VerScroll_ScrollView()
-        sView.backgroundColor = .red
-        sView.contentSize = CGSize(width: 300, height: 1200)
-        sView.bounces = false
-        return sView
-    }()
-    
-    let scrView2 : VerScroll_ScrollView2 = {
-        let sView = VerScroll_ScrollView2()
-        sView.backgroundColor = .blue
-        sView.contentSize = CGSize(width: 200, height: 700)
-        return sView
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 199/255.0, green: 204/255.0, blue: 237/255.0, alpha: 1.0)
-        self.title = "测试UIScrollView手势的VC"
+        self.title = "测试基本语法_VC"
         setNavigationBarUI()
         setCollectionViewUI()
         initTestViewUI()
@@ -50,36 +51,24 @@ class TestScrollViewGesture_VC: UIViewController {
 
 
 //MARK: - 遵循数据源协议,UICollectionViewDataSource
-extension TestScrollViewGesture_VC: UICollectionViewDataSource {
+extension TestGramma_VC: UICollectionViewDataSource {
     
     ///点击了cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("TestScrollViewGesture_VC 点击了第\(indexPath.row)个item")
+        print("TestGramma_VC 点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            //TODO: 0、测试同一个方向滑动时，两个scrollView的手势和事件。
-            print("     (@@ 0、测试同一个方向滑动时，两个scrollView的手势和事件。")
-            let _ = bgView.subviews.map { $0.removeFromSuperview() }
-            bgView.addSubview(scrView1)
-            scrView1.btmScrollView = scrView2
-            scrView1.snp.makeConstraints { make in
-                make.top.equalTo(20)
-                make.centerX.equalToSuperview()
-                make.width.equalTo(300)
-                make.bottom.equalToSuperview().offset(-40)
-            }
-            scrView1.addSubview(scrView2)
-            scrView2.snp.makeConstraints { make in
-                make.top.equalToSuperview().offset(80)
-                make.centerX.equalToSuperview()
-                make.width.equalTo(240)
-                make.height.equalTo(350)
-            }
+            //TODO: 0、测试willSet和didSet
+            /**
+                1、在willSet中修改MyInt的值无效，原来的值还是会传达到didSet中。
+                2、在didSet的方法中修改MyInt的值有效，而且不会循环调用didSet方法。
+             */
+            print("     (@@ 0、测试willSet和didSet")
+            MyInt = 15
+            
         case 1:
-            //TODO: 1、打印ScrollView的Gesture信息
-            print("     (@@ 1、打印ScrollView的Gesture信息")
-            print(" scrView1的gesture是：\(scrView1.panGestureRecognizer) --- 代理delegate是：\(scrView1.panGestureRecognizer.delegate)")
-            print(" scrView2的gesture是：\(scrView2.panGestureRecognizer) --- 代理delegate是：\(scrView2.panGestureRecognizer.delegate)")
+            //TODO: 1、
+            print("     (@@ 1、")
         case 2:
             //TODO: 2、
             print("     (@@ 2、")
@@ -111,7 +100,7 @@ extension TestScrollViewGesture_VC: UICollectionViewDataSource {
     
 }
 //MARK: - 测试的方法
-extension TestScrollViewGesture_VC{
+extension TestGramma_VC{
    
     //MARK: 0、
     func test0(){
@@ -122,11 +111,11 @@ extension TestScrollViewGesture_VC{
 
 
 //MARK: - 设置测试的UI
-extension TestScrollViewGesture_VC{
+extension TestGramma_VC{
     
     /// 初始化你要测试的view
     func initTestViewUI(){
-        /// 内容背景View，测试的子view这里
+        /// 内容背景View，测试的子view这里面
         self.view.addSubview(bgView)
         bgView.snp.makeConstraints { make in
             make.top.equalTo(baseCollView.snp.bottom)
@@ -135,14 +124,13 @@ extension TestScrollViewGesture_VC{
             make.centerX.equalToSuperview()
         }
         
-        
     }
     
 }
 
 
 //MARK: - 设计UI
-extension TestScrollViewGesture_VC {
+extension TestGramma_VC {
     
     /// 设置导航栏的UI
     private func setNavigationBarUI(){
@@ -177,7 +165,7 @@ extension TestScrollViewGesture_VC {
 }
 
 //MARK: - 遵循委托协议,UICollectionViewDelegate
-extension TestScrollViewGesture_VC: UICollectionViewDelegate {
+extension TestGramma_VC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collDataArr.count

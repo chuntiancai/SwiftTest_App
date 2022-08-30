@@ -15,9 +15,22 @@
 
 class TestFlowCollViewDelegate: NSObject,UICollectionViewDelegate {
     
+    var isInfinite:Bool = false //是否无限滑动,测试无限滑动
+    
     //TODO: scrollView已经滑动
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        print("TestFlowCollViewDelegate的\(#function)方法，\(scrollView.contentOffset.x)")
         
+        if isInfinite{
+            if scrollView.isKind(of: UICollectionView.self) {
+                
+            }
+        }
+    }
+    
+    //TODO: scrollView已经停止加速
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        print("TestFlowCollViewDelegate的\(#function)方法")
     }
     
     //TODO: 设置section 的 header的尺寸
@@ -34,10 +47,10 @@ class TestFlowCollViewDelegate: NSObject,UICollectionViewDelegate {
 extension TestFlowCollViewDelegate: UICollectionViewDelegateFlowLayout {
     
     //TODO: 设置section 的内边距
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        print("TestFlowCollViewDelegate 的 \(#function) 方法～")
-        return UIEdgeInsets.init(top: 24, left: 0, bottom: 24, right: 0)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//        print("TestFlowCollViewDelegate 的 \(#function) 方法～")
+//        return UIEdgeInsets.init(top: 0, left: 20, bottom: 0, right: 20)
+//    }
     
 }
 

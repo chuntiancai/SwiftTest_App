@@ -6,7 +6,7 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 
-import CoreGraphics
+//import CoreGraphics
 
 // CollectionView的轮播图布局Layout对象
 // MARK: - 笔记
@@ -51,7 +51,7 @@ extension CollectionViewRoungImage_Layout{
         1、设置cell尺寸 => UICollectionViewLayoutAttributes
         2、越靠近中心点,距离越小,缩放越大
         3、求cell与中心点距离
-     */
+    
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         
         guard let superArr = super.layoutAttributesForElements(in: rect) else { return nil  }
@@ -65,6 +65,7 @@ extension CollectionViewRoungImage_Layout{
         }
         return superArr
     }
+     */
     
     //TODO: 4、当collectionview的bounds发生改变时，即在滚动的时候是否允许刷新布局。
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {

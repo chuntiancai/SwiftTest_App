@@ -1,52 +1,36 @@
 //
-//  CollectionView的流布局Layout.swift
+//  无限滑动Layout.swift
 //  SwiftTest_App
 //
-//  Created by mathew on 2021/11/30.
-//  Copyright © 2021 com.mathew. All rights reserved.
+//  Created by mathew on 2022/8/30.
+//  Copyright © 2022 com.mathew. All rights reserved.
 //
-// CollectionView的流布局Layout对象
+// CollectionView的无限滑动布局Layout对象
 // MARK: - 笔记
 /**
-    1、如果collection view的delegate对象有遵循UICollectionViewDelegateFlowLayout协议，那么Collection View就会从该协议的实现方法中获取和更新UI布局。
-       如果CollectionView的delegate对象没有遵循UICollectionViewDelegateFlowLayout协议，那么CollectionView就可以初始化时传入UICollectionViewFlowLayout对象，
-       然后CollectionView就会从UICollectionViewFlowLayout对象的属性中获取相关的UI尺寸信息，所以你要赋值给UICollectionViewFlowLayout对象的属性。
- 
-    2、在从UICollectionViewFlowLayout对象中获取布局信息的顺序是：
-        2.1、首先调用prepare()，所以你要重写prepare()方法，在里面设置好UICollectionViewFlowLayout对象的属性， 提供给CollectionView参考。
-        2.2、UICollectionView对象也会作为UICollectionViewFlowLayout对象的一个内含绑定属性(默认的)。
-    
-    3、流水布局的意思是：如果当前你给的cell的尺寸比手机屏幕要宽，那么久自动把这个cell往下挪。
- 
-    4、UICollectionViewLayoutAttributes是每一个item的详细的位置尺寸信息，用于告知UIkit怎么详细布局一个item。
- 
-    5、cell是通过indexpath定位的，不是通过rect定位的。
+    1、
  */
 
 
-class TestUICollectionViewFlowLayout: UICollectionViewFlowLayout {
+class Infinite_FlowLayout: UICollectionViewFlowLayout {
     //MARK: - 对外属性
     
     
     //MARK: - 内部属性
     var contentBounds = CGRect.zero       //内容的size
-    var cachedAttributes = [UICollectionViewLayoutAttributes]()        /// 缓存每一个item的布局特征
 
-    
-    
-}
-
-//MARK: - 设置UI
-extension TestUICollectionViewFlowLayout{
-    //MARK: 设置初始化的UI
-    func initDefaultUI(){
-        
-//        self.sectionInset = UIEdgeInsets.init(top: 0, left: 50, bottom: 0, right: 50)
+    override init() {
+        super.init()
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }
 
 //MARK: - 复写计算属性和方法
-extension TestUICollectionViewFlowLayout{
+extension Infinite_FlowLayout{
     
     //TODO: 1、collectionView 第一次布局 或者 刷新 的时候调用。
     /**
@@ -54,7 +38,7 @@ extension TestUICollectionViewFlowLayout{
      */
     override func prepare() {
         super.prepare()
-        print("∑∑∑∑∑∑∑ TestUICollectionViewFlowLayout的\(#function)方法～")
+        print("∑∑∑∑∑∑∑ Infinite_FlowLayout的\(#function)方法～")
     }
     
     //TODO: 2、返回collection view的内容尺寸。
@@ -64,11 +48,12 @@ extension TestUICollectionViewFlowLayout{
                 let itemCount = collView.numberOfItems(inSection: 0)
                 let itemWidth = (self.itemSize.width + self.minimumLineSpacing) * CGFloat(itemCount)
                 let itemHeight = self.itemSize.height + self.minimumInteritemSpacing
-                contentBounds = CGRect(x: 0, y: 0, width: itemWidth + self.minimumLineSpacing, height: itemHeight)
+                let contentWidth = itemWidth + self.minimumLineSpacing + self.sectionInset.left + self.sectionInset.right
+                contentBounds = CGRect(x: 0, y: 0, width: contentWidth, height: itemHeight)
             }
         }
         
-        print("∆∆∆∆ 这是TestUICollectionViewFlowLayout的\(#function)计算属性～")
+        print("∆∆∆∆ 这是Infinite_FlowLayout的\(#function)计算属性～")
         return contentBounds.size
     }
     
@@ -82,7 +67,7 @@ extension TestUICollectionViewFlowLayout{
         4、其实这个rect就是collection view 的bounds，因为bounds是可见范围在自身坐标系的位置。
      */
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        print("∆∆∆∆ 这是TestUICollectionViewFlowLayout的\(#function)方法～")
+        print("∆∆∆∆ 这是Infinite_FlowLayout的\(#function)方法～")
         if let superArr = super.layoutAttributesForElements(in: rect){
             for attribute in superArr {
                 if attribute.indexPath.row == 0 {
@@ -101,7 +86,7 @@ extension TestUICollectionViewFlowLayout{
         2、这里的目的是bounds的尺寸发生变化时，去更新布局。
      */
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-//        print("∆∆∆∆ 这是TestUICollectionViewFlowLayout的\(#function)方法 -- \(newBounds)～")
+//        print("∆∆∆∆ 这是Infinite_FlowLayout的\(#function)方法 -- \(newBounds)～")
         guard let collectionView = self.collectionView else { return false }
         return !newBounds.size.equalTo(collectionView.bounds.size)
     }
@@ -111,12 +96,65 @@ extension TestUICollectionViewFlowLayout{
         1、proposedContentOffset:建议停止时的位移。
            targetContentOffset方法的返回值：你要求collectionView的最终偏移量。
            self.collectionView?.contentOffset: 手指松开时的位移。
+     
+        2、滚动速度，我也不知道怎么算的，正着走为正数，负着走为负数，不需要加速则为零。
+     
+        3、你重新赋值之后，滑动结束后会调用CollViewDelegate的scrollViewDidEndDecelerating(_:)方法
      */
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
-        let targetP = super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity)
-        print("手指：\(proposedContentOffset) -- \(velocity) - 最终偏移量: \(targetP) --contentOffset:\(self.collectionView?.contentOffset)")
         
-        return targetP
+        // 拖动比较快 最终偏移量 不等于 手指离开时偏移量
+        let boundsWidth = self.collectionView!.bounds.size.width;
+        
+        print("滚动速度：\(velocity) -- \(self.collectionView!.decelerationRate)")
+        // 最终偏移量
+        var targetP = super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity)
+        
+        // 0.获取最终显示的区域
+        let targetRect = CGRect(x: targetP.x, y: 0, width: boundsWidth, height: CGFloat(MAXFLOAT))
+        
+         // 1.获取最终显示的rect内的所有cell的attribute
+        guard let attrs = super.layoutAttributesForElements(in: targetRect) else { return .zero}
+        
+        // 找出最小间距
+        var minDelta = CGFloat(MAXFLOAT)
+        var targetAttr:UICollectionViewLayoutAttributes?
+        for attr in attrs {
+            // 获取距离中心点距离:注意:应该用最终的x
+            let delta = (attr.center.x - targetP.x) - boundsWidth * 0.5;
+            
+            if (abs(delta) < abs(minDelta)) {
+                minDelta = delta;
+                targetAttr = attr
+            }
+        }
+        
+
+        // 设置移动间距
+        targetP.x += minDelta
+        
+        if (targetP.x < 0) { targetP.x = 0;  }
+        
+        if targetAttr != nil {
+            var indexPath = targetAttr!.indexPath
+            var finalAttr : UICollectionViewLayoutAttributes?
+            
+            if indexPath.row == 0 {
+                indexPath.row = self.collectionView!.numberOfItems(inSection: 0) - 2
+                finalAttr = self.layoutAttributesForItem(at: indexPath)
+                self.collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+            }else if indexPath.row == self.collectionView!.numberOfItems(inSection: 0) - 1 {
+                indexPath.row = 1
+                finalAttr = self.layoutAttributesForItem(at: indexPath)
+                self.collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+            }
+            print("目标attr：\(indexPath)")
+            print("最终attr：\(finalAttr)")
+            if let attr = finalAttr {
+                targetP.x = attr.center.x - boundsWidth * 0.5
+            }
+        }
+        return targetP;
     }
     
     //TODO: 工具：手动调用获取每一个item的布局特征，目的是根据indexPath获取item特征数组里面的指定的元素。
@@ -126,7 +164,7 @@ extension TestUICollectionViewFlowLayout{
         3、所以就是一个工具方法，根据indexpath获取item的特征对象，没有其它作用了。相当于一个工具而已。
      */
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        print("∆∆∆∆ 这是TestUICollectionViewFlowLayout的\(#function)方法～")
+        print("∆∆∆∆ 这是Infinite_FlowLayout的\(#function)方法～")
         let itemAttribute = super.layoutAttributesForItem(at: indexPath)
         
 //        if indexPath.row == 0 {
@@ -137,11 +175,4 @@ extension TestUICollectionViewFlowLayout{
         return itemAttribute
     }
     
-    
-    
-    
-    
 }
-
-
-
