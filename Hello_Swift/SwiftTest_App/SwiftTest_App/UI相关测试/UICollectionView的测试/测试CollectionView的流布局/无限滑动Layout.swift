@@ -8,7 +8,7 @@
 // CollectionView的无限滑动布局Layout对象
 // MARK: - 笔记
 /**
-    1、
+    1、主要是在targetContentOffset模仿分页滑动的效果，设置只能滑动一页，然后再在scrolldelegta的停止加速方法中，调用scrollToItem方法，以肉眼不可见的速度滚动到指定的item中，实现无现轮滑的效果。数据源要复制三组，这样看起来才比较流畅。
  */
 
 
@@ -109,6 +109,17 @@ extension Infinite_FlowLayout{
         print("滚动速度：\(velocity) -- \(self.collectionView!.decelerationRate)")
         // 最终偏移量
         var targetP = super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity)
+        // 模仿翻页效果
+        let diffOffset = targetP.x - self.collectionView!.contentOffset.x
+        if abs(diffOffset) > boundsWidth {
+            print("加速之后的位移超过一个屏幕的宽度")
+            if diffOffset > 0 {
+                targetP.x = self.collectionView!.contentOffset.x + boundsWidth * 0.5
+            }else{
+                targetP.x = self.collectionView!.contentOffset.x - boundsWidth * 0.5
+            }
+            
+        }
         
         // 0.获取最终显示的区域
         let targetRect = CGRect(x: targetP.x, y: 0, width: boundsWidth, height: CGFloat(MAXFLOAT))
@@ -118,14 +129,12 @@ extension Infinite_FlowLayout{
         
         // 找出最小间距
         var minDelta = CGFloat(MAXFLOAT)
-        var targetAttr:UICollectionViewLayoutAttributes?
         for attr in attrs {
             // 获取距离中心点距离:注意:应该用最终的x
             let delta = (attr.center.x - targetP.x) - boundsWidth * 0.5;
             
             if (abs(delta) < abs(minDelta)) {
                 minDelta = delta;
-                targetAttr = attr
             }
         }
         
@@ -135,25 +144,6 @@ extension Infinite_FlowLayout{
         
         if (targetP.x < 0) { targetP.x = 0;  }
         
-        if targetAttr != nil {
-            var indexPath = targetAttr!.indexPath
-            var finalAttr : UICollectionViewLayoutAttributes?
-            
-            if indexPath.row == 0 {
-                indexPath.row = self.collectionView!.numberOfItems(inSection: 0) - 2
-                finalAttr = self.layoutAttributesForItem(at: indexPath)
-                self.collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
-            }else if indexPath.row == self.collectionView!.numberOfItems(inSection: 0) - 1 {
-                indexPath.row = 1
-                finalAttr = self.layoutAttributesForItem(at: indexPath)
-                self.collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
-            }
-            print("目标attr：\(indexPath)")
-            print("最终attr：\(finalAttr)")
-            if let attr = finalAttr {
-                targetP.x = attr.center.x - boundsWidth * 0.5
-            }
-        }
         return targetP;
     }
     

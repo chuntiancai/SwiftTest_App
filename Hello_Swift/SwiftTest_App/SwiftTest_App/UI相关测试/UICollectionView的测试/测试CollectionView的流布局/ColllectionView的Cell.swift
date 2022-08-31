@@ -7,8 +7,6 @@
 //
 // 测试流布局的Collection View的Cell
 
-import UIKit
-
 class TestFlowCollectionView_Cell: UICollectionViewCell {
     
     //MARK: UI控件

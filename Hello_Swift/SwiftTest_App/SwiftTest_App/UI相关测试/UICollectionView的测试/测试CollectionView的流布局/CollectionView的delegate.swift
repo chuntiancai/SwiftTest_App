@@ -10,7 +10,7 @@
 //MARK: - 笔记
 /**
     1、如果Collection View有Delegate对象，那么如果layout对象的布局和Delegate协议的布局重复的话，以Delegate的设置为主。
- 
+    2、如果实现了UICollectionViewFlowLayout的targetContentOffset方法，那么scrollViewDidEndDecelerating必然会被调用。
  */
 
 class TestFlowCollViewDelegate: NSObject,UICollectionViewDelegate {
@@ -21,16 +21,28 @@ class TestFlowCollViewDelegate: NSObject,UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
 //        print("TestFlowCollViewDelegate的\(#function)方法，\(scrollView.contentOffset.x)")
         
-        if isInfinite{
-            if scrollView.isKind(of: UICollectionView.self) {
-                
-            }
-        }
+    }
+    
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        print("TestFlowCollViewDelegate的\(#function)方法,开始加速，\(scrollView.contentOffset.x),bounds:\(scrollView.bounds.width)")
     }
     
     //TODO: scrollView已经停止加速
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        print("TestFlowCollViewDelegate的\(#function)方法")
+        print("TestFlowCollViewDelegate的\(#function)方法,结束减速，\(scrollView.contentOffset.x)")
+        //TODO: 测试无限滑动
+        if isInfinite{
+            //计算无限轮播，滚动到第一个item或者最后一个item。
+            if let collView = scrollView as? UICollectionView {
+                guard let flowLayout = collView.collectionViewLayout as? UICollectionViewFlowLayout else{ return }
+                print("计算无限轮播，滚动到第一个item或者最后一个item:\(collView.contentOffset.x)")
+                let itemCount:Int = 10
+                let itemWidth:CGFloat = flowLayout.itemSize.width + flowLayout.minimumLineSpacing
+                let page = (collView.contentOffset.x + collView.bounds.width * 0.5 - flowLayout.sectionInset.left) / itemWidth
+                let row = Int(page) % itemCount + itemCount
+                collView.scrollToItem(at: IndexPath(row: row, section: 0), at: .centeredHorizontally, animated: false)
+            }
+        }
     }
     
     //TODO: 设置section 的 header的尺寸

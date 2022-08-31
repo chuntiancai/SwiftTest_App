@@ -59,17 +59,19 @@ extension TestUICollectionViewFlowLayout{
     
     //TODO: 2、返回collection view的内容尺寸。
     override var collectionViewContentSize: CGSize {
+        print("∆∆∆∆ 这是TestUICollectionViewFlowLayout的\(#function)计算属性～")
+        // 计算ContentSize
         if let collView = collectionView {
-            if collView.numberOfSections == 1 {
+            if collView.numberOfSections == 1 && self.scrollDirection == .horizontal{
                 let itemCount = collView.numberOfItems(inSection: 0)
                 let itemWidth = (self.itemSize.width + self.minimumLineSpacing) * CGFloat(itemCount)
                 let itemHeight = self.itemSize.height + self.minimumInteritemSpacing
                 contentBounds = CGRect(x: 0, y: 0, width: itemWidth + self.minimumLineSpacing, height: itemHeight)
+                return contentBounds.size
             }
         }
+        return super.collectionViewContentSize
         
-        print("∆∆∆∆ 这是TestUICollectionViewFlowLayout的\(#function)计算属性～")
-        return contentBounds.size
     }
     
     

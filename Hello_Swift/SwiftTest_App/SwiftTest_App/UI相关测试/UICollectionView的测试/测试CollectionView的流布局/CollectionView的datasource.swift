@@ -9,7 +9,7 @@
 
 class TestCollViewDataSource: NSObject,UICollectionViewDataSource {
     
-    var rowAndSection:IndexPath = IndexPath(row: 9, section: 2)
+    var rowAndSection:IndexPath = IndexPath(row: 12, section: 2)
     
     //TODO:设置section的数量
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -29,7 +29,9 @@ class TestCollViewDataSource: NSObject,UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         cell.nameLabel.text = "\(indexPath.section)-\(indexPath.row)"
-        cell.bgImageView.image = UIImage(named: "labi0\(indexPath.row)")
+        let row:Int = indexPath.row % 10
+        print("整数取余：\(row)")
+        cell.bgImageView.image = UIImage(named: "labi0\(row)")
         return cell
     }
     

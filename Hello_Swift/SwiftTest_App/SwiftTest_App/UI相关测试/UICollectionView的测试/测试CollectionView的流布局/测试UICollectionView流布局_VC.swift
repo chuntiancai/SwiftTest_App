@@ -45,10 +45,10 @@ class TestUICollectionViewLayout_VC: UIViewController {
     /// 流布局对象
     private let flowLayout:TestUICollectionViewFlowLayout = {   // lazy var 是使用之后才会执行，直接var(或let)代码块，则是在初始化的时候就执行，都是只执行一次。
         let layout = TestUICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 80, height: 60) ///item的尺寸，默认是(50,50)
-        layout.minimumLineSpacing = 20    /// item 左右之间的 竖间距 (item相互之间)
-        layout.minimumInteritemSpacing = 10   ///item 上下之间的 横间距（一排item之间）
-        layout.scrollDirection = .horizontal    /// 流水布局的方向，水平方向是 从左到右 布局，item的坐标是从上到下，从左到右。但是会被contentSize限制。
+        layout.itemSize = CGSize(width: 100, height: 80) ///item的尺寸，默认是(50,50)
+        layout.minimumLineSpacing = 20    /// item在滚动方向上的间距，是滚动方向上，两个item的间距。
+        layout.minimumInteritemSpacing = 10   /// item在与滚动方向垂直的方向上的间距，是垂直的方向上，两个item的间距。
+        layout.scrollDirection = .vertical    /// 流水布局的方向，水平方向是 从左到右 布局，item的坐标是从上到下，从左到右。但是会被contentSize限制。
         layout.sectionInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)  //每个section的内边距，优先级比代理设置的优先级低。
          return layout
     }()
@@ -97,6 +97,7 @@ extension TestUICollectionViewLayout_VC: UICollectionViewDataSource {
                 4、在从UICollectionViewFlowLayout对象中获取布局信息的顺序是：
                     2.1、首先调用prepare()，所以你要重写prepare()方法，在里面设置好UICollectionViewFlowLayout对象的属性， 提供给CollectionView参考。
                     2.2、UICollectionViewFlowLayout对象也会作为UICollectionViewFlowLayout对象的一个内含绑定属性(默认的)。
+                5、collectionViewLayout会自动计算collectionView的contentSize，如果与手动设置的contentSize有冲突，以collectionViewLayout为准。
              */
             print("     (@@  0、测试流布局")
             if flowCollView != nil {
@@ -107,7 +108,7 @@ extension TestUICollectionViewLayout_VC: UICollectionViewDataSource {
             flowCollView = UICollectionView(frame: CGRect.init(x: 15, y: 215, width: 350, height: 300), collectionViewLayout: flowLayout)
             flowCollView.delegate = collViewDelegate    //行为代理
             flowCollView.dataSource = collViewDataSource    //数据源代理
-            flowCollView.contentSize = CGSize.init(width: 400, height: 900)
+//            flowCollView.contentSize = CGSize.init(width: 400, height: 100)
             flowCollView.backgroundColor = UIColor.white.withAlphaComponent(0.6)
             flowCollView.layer.borderWidth = 1.5
             flowCollView.layer.borderColor = UIColor.gray.cgColor
@@ -118,6 +119,7 @@ extension TestUICollectionViewLayout_VC: UICollectionViewDataSource {
             /// 必须要注册cell才能使用，这与tableview有所区别
             flowCollView.register(TestFlowCollectionView_Cell.self, forCellWithReuseIdentifier: "FlowCollectionView_Cell_ID")
             self.view.addSubview(flowCollView)
+            flowCollView.scrollToItem(at: IndexPath(row: 1, section: 0), at: .centeredHorizontally, animated: false)
             
         case 1:
             //TODO: 1、测试轮播图flowlayout
@@ -139,12 +141,13 @@ extension TestUICollectionViewLayout_VC: UICollectionViewDataSource {
             /// 必须要注册cell才能使用，这与tableview有所区别
             flowCollView.register(TestFlowCollectionView_Cell.self, forCellWithReuseIdentifier: "FlowCollectionView_Cell_ID")
             self.view.addSubview(flowCollView)
-            flowCollView.scrollToItem(at: IndexPath(row: 1, section: 0), at: .centeredHorizontally, animated: false)
+            
         case 2:
             //TODO: 2、测试isPagingEnabled属性、sectionInset属性和scrollToItem方法，无限滑动。
             /**
                 1、isPagingEnabled属性是根据scrollView的bounds进行滑动的，scrollToItem是滑动第几个item到可见范围。
                 2、sectionInset的内边距实在content里面插入空白边距的，并不是把整个坐标系下移，contentOffset不会发生偏移。
+                3、在 UICollectionViewDelegate的scrollViewDidEndDecelerating方法 和 UICollectionViewFlowLayout的targetContentOffset方法来实现。
               */
             print("     (@@ 2、测试isPagingEnabled属性、sectionInset属性和scrollToItem方法，无限滑动。")
             if flowCollView != nil { print("已经初始化flowCollView"); return }
@@ -158,14 +161,14 @@ extension TestUICollectionViewLayout_VC: UICollectionViewDataSource {
             curLayout.scrollDirection = .horizontal
             
             /// 初始化的时候就要传入 布局对象。
-            flowCollView = UICollectionView(frame: CGRect.init(x: 15, y: 215, width: 360, height: 100), collectionViewLayout: curLayout)
-            collViewDataSource.rowAndSection = IndexPath(row: 20, section: 1)   //设置数据源
+            flowCollView = UICollectionView(frame: CGRect.init(x: 5, y: 215, width: 360, height: 100), collectionViewLayout: curLayout)
+            collViewDataSource.rowAndSection = IndexPath(row: 30, section: 1)   //设置数据源
             collViewDelegate.isInfinite = true  //测试无限滑动
             flowCollView.delegate = collViewDelegate    //行为代理
             flowCollView.dataSource = collViewDataSource    //数据源代理
             flowCollView.showsVerticalScrollIndicator = true    //显示y滚动器
             flowCollView.showsHorizontalScrollIndicator = true    //显示x滚动器
-            flowCollView.decelerationRate = UIScrollView.DecelerationRate.init(rawValue: 0)
+//            flowCollView.decelerationRate = UIScrollView.DecelerationRate.init(rawValue: 0)
             
             
 //            flowCollView.isPagingEnabled = true
@@ -177,7 +180,7 @@ extension TestUICollectionViewLayout_VC: UICollectionViewDataSource {
             flowCollView.layer.borderColor = UIColor.gray.cgColor
             self.view.addSubview(flowCollView)
             
-            flowCollView.scrollToItem(at: IndexPath(row: 1, section: 0), at: .centeredHorizontally, animated: false)
+            flowCollView.scrollToItem(at: IndexPath(row: 10, section: 0), at: .centeredHorizontally, animated: false)
             
         case 3:
             //TODO: 3、
