@@ -6,8 +6,10 @@
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
 // 测试tableView的CELL
-
-import UIKit
+//MARK: - 笔记
+/**
+    1、可以通过修改frame的属性，实现cell的悬浮效果。而且frame里面的内容会按约束收缩。
+ */
 
 class TestTableView_Cell: UITableViewCell {
     
@@ -42,12 +44,17 @@ class TestTableView_Cell: UITableViewCell {
         createUI()
     }
     
+    //TODO: 修改frame，实现悬浮效果。
     override var frame: CGRect {
         get{
             return super.frame
         }
         set{
-            super.frame = newValue
+            var curFrame = newValue
+            curFrame.origin.x += 20
+            curFrame.size.width -= 60
+            curFrame.size.height -= 10
+            super.frame = curFrame
         }
     }
     

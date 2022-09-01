@@ -8,8 +8,11 @@
 // 测试xcode工具的VC
 // MARK: - 笔记
 /**
-    1、点击 product --> profile --> 进入instrument --> 选择你要测试的性能。--> 左上角选择真机 --> 点击红色录制按钮 --> 查看运行数据
+    1、点击 product --> profile --> 进入instrument --> 选择你要测试的性能。--> 左上角选择真机 --> 点击红色录制按钮 --> 查看运行数据。
  
+    2、插件的安装路径:
+        1.旧版本路径：/Users/用户名/Library/Application Support/Developer/Shared/Xcode/Plug-ins
+        2.新版本路径：/Users/用户名/Library/Developer/Xcode/Plug-ins
  */
 
 class TestXcode_VC: UIViewController {
