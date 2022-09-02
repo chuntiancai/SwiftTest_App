@@ -16,7 +16,7 @@
  
     4、苹果为了确定tableview的contentsize，所以要知道所有cell的高度，所以就会每次都调用heightForRowAt代理方法。contentsize一开始的设计初衷是为了计算滚动条的高度。 UIKit会根据tableView.estimatedRowHeight的值来估算tableview的contentsize大小，设置tableView.estimatedRowHeight的值， 会减少heightForRowAt代理方法的调用次数。 设置estimatedRowHeight的值后会出现cellForRowAt代理方法在heightForRowAt代理方法前被调用，因为有了估算的高度，但是等真正显示cell的时候，还是会调用heightForRowAt代理方法再显示。
  
-    5、所以设置estimatedRowHeight的值，可以很大地提高性能。类似于懒加载cell高度。
+    5、所以设置estimatedRowHeight的值，可以很大地提高性能。类似于懒加载cell高度。没有设置estimatedRowHeight的值，会一次性调用全部heightForRowAt方法计算出tableview的contentSize的高度，来设置滚动条。
  
     6、注册的cell会在所有代理方法调用之前就已经创建好cell对象放在复用池里面了，所以heightForRowAt代理方法调用前，是肯定有cell的了。
     

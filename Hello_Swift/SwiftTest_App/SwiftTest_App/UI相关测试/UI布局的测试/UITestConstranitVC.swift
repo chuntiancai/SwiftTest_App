@@ -14,6 +14,11 @@
        AutoResizing只能定义父子控件之间的约束关系，AutoLayout可以定义任意控件之间的关系。
        AutoLayout如果你不指明约束参考哪个控件，那么它默认参考最近的控件(在storyboard的布局约束中)。
  
+        一般情况下，以下这些view的autoresizingMask默认就是18（UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth）
+        (1).从xib里面创建出来的默认控件
+        (2).控制器的view
+        如果不希望控件拥有autoresizingMask的自动伸缩功能，应该设置为none，例如：blueView.autoresizingMask = UIViewAutoresizingNone;
+ 
     3、UILabel使用AutoLayout，在没有AutoLayout之前label中的文字上下总是居中显示。因为label回根据文字的多少和字体来计算宽度，
       所以在label中使用约束时，需要指明label的宽高。
  

@@ -152,7 +152,7 @@ extension TestSectionTableView_VC: UITableViewDataSource,UITableViewDelegate{
         }
     }
     
-    //TODO: section 的header和footer的关系
+    //TODO: Section 的header和footer的关系
     /**
      1、当delegate的section header的view和height有冲突时，以设置高度的heightForHeaderInSection方法为准， viewForHeaderInSection的高度无效。
      2、必须实现了viewForHeaderInSection的代理方法，heightForHeaderInSection代理方法的设置才有效，否则无效。

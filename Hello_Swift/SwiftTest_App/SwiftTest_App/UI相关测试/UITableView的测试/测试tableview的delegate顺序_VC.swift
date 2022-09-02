@@ -166,6 +166,10 @@ extension TestTableViewDelegateLifeCycle_VC: UITableViewDelegate ,UITableViewDat
     }
     
     //MARK: 4、设置每个row的高度
+    /**
+        1、heightForRowAt默认情况下，有多少条数据，就会调用多少次，而且每次增加数据源也会调用。所以你最好把计算过程封装在model里面，减少计算频率。
+        2、每次cell进入可视范围时候，也会调用一次。
+     */
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         print("∆～\(#function)方法～∆ 设置每个row的高度：\(indexPath)")
         return 60
