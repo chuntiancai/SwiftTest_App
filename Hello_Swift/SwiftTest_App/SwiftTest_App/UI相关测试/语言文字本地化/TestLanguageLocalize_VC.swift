@@ -1,37 +1,30 @@
 //
-//  测试基本语法_VC.swift
+//  TestLanguageLocalize_VC.swift
 //  SwiftTest_App
 //
-//  Created by mathew on 2022/8/29.
+//  Created by mathew on 2022/9/13.
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
-//测试基本语法的VC
+//测试语言本地化的VC
 // MARK: - 笔记
 /**
-   
+    1、首先要在project的配置中设置语言文件，然后手机切换语言环境就会切换语言文字了，具体本地化可以百度一下。
+        project -> info -> localizations -> "+"
+        创建string file文件 -> 右侧边栏 -> 点击localize -> 选择你要本地化的语言 -> base文件就是其他语言。
+ 
+    2、终端 -> genstrings TestLanguageLocalize_VC.swift -> 会根据TestLanguageLocalize_VC里的NSLocalizedString函数生成string file
+        i18n: 国际化(其他语言)
+ 
+    3、app名字本地化：
+        有专用的strings文件，名字是：infoPlist.strings //该文件专门为infoplist本地化使用的。
+        app名字的key是：CFBundleName
  
  */
 
-class TestGramma_VC: UIViewController {
+class TestLanguageLocalize_VC: UIViewController {
     
     //MARK: 对外属性
     public var collDataArr = ["0、","1、","2、","3、","4、","5、","6、","7、","8、","9、","10、","11、","12、"]
-    var MyInt:Int = 0 {
-        willSet{
-            print("将要设置MyInt的newValue值：\(newValue)")
-            if newValue > 10 {
-//                MyInt = 10
-                print("在willSet中重新设置MyInt的值：\(MyInt)")
-            }
-        }
-        didSet{
-            print("MyInt的oldValue值：\(oldValue)")
-            if MyInt > 12 {
-                MyInt = 12
-            }
-            print("MyInt的NewValue值：\(MyInt)")
-        }
-    }
 
     ///UI组件
     private var baseCollView: UICollectionView!
@@ -42,7 +35,7 @@ class TestGramma_VC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 199/255.0, green: 204/255.0, blue: 237/255.0, alpha: 1.0)
-        self.title = "测试基本语法_VC"
+        self.title = "OK".localized()
         setNavigationBarUI()
         setCollectionViewUI()
         initTestViewUI()
@@ -51,20 +44,16 @@ class TestGramma_VC: UIViewController {
 
 
 //MARK: - 遵循数据源协议,UICollectionViewDataSource
-extension TestGramma_VC: UICollectionViewDataSource {
+extension TestLanguageLocalize_VC: UICollectionViewDataSource {
     
     ///点击了cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("TestGramma_VC 点击了第\(indexPath.row)个item")
+        print("TestLanguageLocalize_VC 点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            //TODO: 0、测试willSet和didSet
-            /**
-                1、在willSet中修改MyInt的值无效，原来的值还是会传达到didSet中。
-                2、在didSet的方法中修改MyInt的值有效，而且不会循环调用didSet方法。
-             */
-            print("     (@@ 0、测试willSet和didSet")
-            MyInt = 15
+            //TODO: 0、
+            print("     (@@ 0、")
+            let _ = self.bgView.subviews.map { $0.removeFromSuperview() }
             
         case 1:
             //TODO: 1、
@@ -100,7 +89,7 @@ extension TestGramma_VC: UICollectionViewDataSource {
     
 }
 //MARK: - 测试的方法
-extension TestGramma_VC{
+extension TestLanguageLocalize_VC{
    
     //MARK: 0、
     func test0(){
@@ -111,7 +100,7 @@ extension TestGramma_VC{
 
 
 //MARK: - 设置测试的UI
-extension TestGramma_VC{
+extension TestLanguageLocalize_VC{
     
     /// 初始化你要测试的view
     func initTestViewUI(){
@@ -130,7 +119,7 @@ extension TestGramma_VC{
 
 
 //MARK: - 设计UI
-extension TestGramma_VC {
+extension TestLanguageLocalize_VC {
     
     /// 设置导航栏的UI
     private func setNavigationBarUI(){
@@ -165,7 +154,7 @@ extension TestGramma_VC {
 }
 
 //MARK: - 遵循委托协议,UICollectionViewDelegate
-extension TestGramma_VC: UICollectionViewDelegate {
+extension TestLanguageLocalize_VC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collDataArr.count
@@ -195,6 +184,3 @@ extension TestGramma_VC: UICollectionViewDelegate {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
-
-
-

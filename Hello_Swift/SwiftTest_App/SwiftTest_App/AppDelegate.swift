@@ -9,12 +9,16 @@
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?   /// UIApplicationDelegate要求实现window
-    var firstWindow:UIWindow = UIWindow()   //用于测试多个window
+    lazy var window: UIWindow? = {   /// UIApplicationDelegate要求实现window
+        let window = UIWindow.init(frame: UIScreen.main.bounds)
+        return window
+    }()
+    lazy var firstWindow:UIWindow = {
+        return UIWindow()
+    }()  //用于测试多个window
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        self.window = UIWindow.init(frame: UIScreen.main.bounds)
         self.window?.backgroundColor =  UIColor.init(red: 187/255.0, green: 174/255.0, blue: 180/255.0, alpha: 1.0)
         let mainVC = MainViewController()
         self.window?.rootViewController = UINavigationController.init(rootViewController: mainVC)

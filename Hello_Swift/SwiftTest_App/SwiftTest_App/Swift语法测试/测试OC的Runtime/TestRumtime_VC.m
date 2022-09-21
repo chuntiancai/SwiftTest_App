@@ -134,10 +134,6 @@
             p2 = ((id(*)(id, SEL))objc_msgSend)(p2, sel_registerName("init"));
             [p2 performSelector:@selector(move)];
             
-
-            
-            
-            
         }
 
             break;
@@ -155,7 +151,7 @@
             ///例如网页通过字符串调用app的方法。
             [p0 performSelector:@selector(playing:) withObject:@15];
             
-            //TODO: 测试动态添加属性。
+            //TODO: 测试动态添加属性。关联对象。
             /**
                 1、动态添加属性的本质是，让某个属性和某个对象产生关联。例如，让一个NSObject对象存储一个字符串。
                 2、给系统的类添加属性的时候，就可以用到关联属性，也就是动态添加属性咯，其实是利用了分类，利用get，set方法和key-value存储实现这样的效果而已。

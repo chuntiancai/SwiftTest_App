@@ -321,7 +321,12 @@
 		AF2DDAFD28AB685700E1CCF3 /* Table_Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAFC28AB685700E1CCF3 /* Table_Footer.swift */; };
 		AF3557B92865B5A5009B291C /* OCRuntime_Person+Property.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3557B82865B5A5009B291C /* OCRuntime_Person+Property.m */; };
 		AF3557BB286AF145009B291C /* Point_Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3557BA286AF145009B291C /* Point_Person.swift */; };
+		AF402FF228D1CC6A00407CEE /* TestMap_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF402FF128D1CC6A00407CEE /* TestMap_VC.swift */; };
+		AF402FF428D1D3B900407CEE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF402FF328D1D3B900407CEE /* MapKit.framework */; };
 		AF688FB728ACBDE0005C619C /* Table_RefreshHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF688FB628ACBDE0005C619C /* Table_RefreshHeader.swift */; };
+		AF72956A28D05AC50035BF59 /* TestLanguageLocalize_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF72956928D05AC50035BF59 /* TestLanguageLocalize_VC.swift */; };
+		AF72956E28D05E900035BF59 /* TestLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AF72957028D05E900035BF59 /* TestLocalizable.strings */; };
+		AF72957428D0604C0035BF59 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF72957328D0604C0035BF59 /* String+Localized.swift */; };
 		AF824279287534EA002311AF /* OCRuntimeStatus.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF824278287534EA002311AF /* OCRuntimeStatus.plist */; };
 		AF82427C2875369C002311AF /* OCRuntime_StatusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AF82427B2875369C002311AF /* OCRuntime_StatusModel.m */; };
 		AF82427F287587F3002311AF /* OCRuntime_SubPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = AF82427E287587F3002311AF /* OCRuntime_SubPerson.m */; };
@@ -330,6 +335,8 @@
 		AF88EE792897C22500660C28 /* 子类tabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF88EE782897C22500660C28 /* 子类tabBar.swift */; };
 		AF9F2FD328BDF0280041F96A /* 无限滑动Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9F2FD228BDF0280041F96A /* 无限滑动Layout.swift */; };
 		AFB34DB0287EC41E0039123C /* 测试UIVIew的frame_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB34DAF287EC41E0039123C /* 测试UIVIew的frame_VC.swift */; };
+		AFB4C04B28DAB8B100F52BC7 /* MySafeInsetTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB4C04A28DAB8B100F52BC7 /* MySafeInsetTool.swift */; };
+		AFB647C628C6EC2B00DCD791 /* 点击文本跳转url_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB647C528C6EC2B00DCD791 /* 点击文本跳转url_view.swift */; };
 		AFBCA8C52872DC4500AD51D1 /* TestClassStruct_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBCA8C42872DC4500AD51D1 /* TestClassStruct_VC.swift */; };
 		AFBCA8C72874224800AD51D1 /* Point_HeapObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBCA8C62874224800AD51D1 /* Point_HeapObject.swift */; };
 		AFBCA8C92874228A00AD51D1 /* Point_MetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBCA8C82874228A00AD51D1 /* Point_MetaData.swift */; };
@@ -708,7 +715,14 @@
 		AF3557B72865B5A5009B291C /* OCRuntime_Person+Property.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OCRuntime_Person+Property.h"; sourceTree = "<group>"; };
 		AF3557B82865B5A5009B291C /* OCRuntime_Person+Property.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "OCRuntime_Person+Property.m"; sourceTree = "<group>"; };
 		AF3557BA286AF145009B291C /* Point_Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point_Person.swift; sourceTree = "<group>"; };
+		AF402FF128D1CC6A00407CEE /* TestMap_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMap_VC.swift; sourceTree = "<group>"; };
+		AF402FF328D1D3B900407CEE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		AF688FB628ACBDE0005C619C /* Table_RefreshHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table_RefreshHeader.swift; sourceTree = "<group>"; };
+		AF72956928D05AC50035BF59 /* TestLanguageLocalize_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLanguageLocalize_VC.swift; sourceTree = "<group>"; };
+		AF72956D28D05E570035BF59 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		AF72957128D05E970035BF59 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TestLocalizable.strings; sourceTree = "<group>"; };
+		AF72957228D05EED0035BF59 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TestLocalizable.strings"; sourceTree = "<group>"; };
+		AF72957328D0604C0035BF59 /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
 		AF824278287534EA002311AF /* OCRuntimeStatus.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = OCRuntimeStatus.plist; sourceTree = "<group>"; };
 		AF82427A2875369C002311AF /* OCRuntime_StatusModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCRuntime_StatusModel.h; sourceTree = "<group>"; };
 		AF82427B2875369C002311AF /* OCRuntime_StatusModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCRuntime_StatusModel.m; sourceTree = "<group>"; };
@@ -721,6 +735,8 @@
 		AF88EE782897C22500660C28 /* 子类tabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "子类tabBar.swift"; sourceTree = "<group>"; };
 		AF9F2FD228BDF0280041F96A /* 无限滑动Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "无限滑动Layout.swift"; sourceTree = "<group>"; };
 		AFB34DAF287EC41E0039123C /* 测试UIVIew的frame_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试UIVIew的frame_VC.swift"; sourceTree = "<group>"; };
+		AFB4C04A28DAB8B100F52BC7 /* MySafeInsetTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySafeInsetTool.swift; sourceTree = "<group>"; };
+		AFB647C528C6EC2B00DCD791 /* 点击文本跳转url_view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "点击文本跳转url_view.swift"; sourceTree = "<group>"; };
 		AFBCA8C42872DC4500AD51D1 /* TestClassStruct_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestClassStruct_VC.swift; sourceTree = "<group>"; };
 		AFBCA8C62874224800AD51D1 /* Point_HeapObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point_HeapObject.swift; sourceTree = "<group>"; };
 		AFBCA8C82874228A00AD51D1 /* Point_MetaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point_MetaData.swift; sourceTree = "<group>"; };
@@ -765,6 +781,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFD8A1BB286060290094554A /* Pods_SwiftTest_App.framework in Frameworks */,
+				AF402FF428D1D3B900407CEE /* MapKit.framework in Frameworks */,
 				04D9B53826DCDB4500289824 /* FrameworkMake_Test.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -952,6 +969,7 @@
 				042036BD2754B16E00424E05 /* 测试文字的渐变色_View.swift */,
 				0484806E27798FEB00698106 /* 自定义字体渐变色_label.swift */,
 				044CBA7627F5A82A00FA2CB8 /* 测试文字的自适应高度_label.swift */,
+				AFB647C528C6EC2B00DCD791 /* 点击文本跳转url_view.swift */,
 			);
 			path = "UILabel的测试";
 			sourceTree = "<group>";
@@ -1110,6 +1128,7 @@
 				AFD34EEE2887D1D800C807A3 /* UIPageControl的测试 */,
 				048480802785320600698106 /* Storyboard测试 */,
 				041CBC54278D84E600AF9B05 /* xib测试 */,
+				AF72956828D05A700035BF59 /* 语言文字本地化 */,
 			);
 			path = "UI相关测试";
 			sourceTree = "<group>";
@@ -1472,6 +1491,7 @@
 				0477B8EC282B8BC500D6EB3A /* 测试安全内边距VC.swift */,
 				0477B8EE282B8E7F00D6EB3A /* TestSafeInset_SubVC.swift */,
 				0477B8F0282CE4E700D6EB3A /* ScrollView导航栏内边距_VC.swift */,
+				AFB4C04A28DAB8B100F52BC7 /* MySafeInsetTool.swift */,
 			);
 			path = "安全区域与内边距测试";
 			sourceTree = "<group>";
@@ -2144,6 +2164,7 @@
 		7801BCFAA19C16690C210779 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AF402FF328D1D3B900407CEE /* MapKit.framework */,
 				04D9B53726DCDB4500289824 /* FrameworkMake_Test.framework */,
 				04D9B50026D76F0F00289824 /* FrameworkMake_Test.framework */,
 				C4C06FA2172551275C4FCEE6 /* Pods_SwiftTest_App.framework */,
@@ -2184,6 +2205,7 @@
 				651C71412609E5E20066C13B /* 数据处理 */,
 				651C71392609E39A0066C13B /* 文件测试 */,
 				048608A127325C45000F816E /* 日期处理的相关测试 */,
+				AF402FF028D1CBE800407CEE /* 地图导航测试 */,
 				04D9B4FD26D76DD100289824 /* Framework第三方库测试 */,
 				04870E0C26E9AA880030B1D2 /* 第三方库对比测试 */,
 				04A0CA0226A0022000ECAE1B /* 音视频播放 */,
@@ -2255,6 +2277,24 @@
 				AF2DDAF828AA3E3800E1CCF3 /* TestStatusBar_VC.swift */,
 			);
 			path = "状态栏的测试";
+			sourceTree = "<group>";
+		};
+		AF402FF028D1CBE800407CEE /* 地图导航测试 */ = {
+			isa = PBXGroup;
+			children = (
+				AF402FF128D1CC6A00407CEE /* TestMap_VC.swift */,
+			);
+			path = "地图导航测试";
+			sourceTree = "<group>";
+		};
+		AF72956828D05A700035BF59 /* 语言文字本地化 */ = {
+			isa = PBXGroup;
+			children = (
+				AF72956928D05AC50035BF59 /* TestLanguageLocalize_VC.swift */,
+				AF72957328D0604C0035BF59 /* String+Localized.swift */,
+				AF72957028D05E900035BF59 /* TestLocalizable.strings */,
+			);
+			path = "语言文字本地化";
 			sourceTree = "<group>";
 		};
 		AF824281287C0F4B002311AF /* 测试OC的语法 */ = {
@@ -2370,6 +2410,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = AF2C734325539C54000AD7A9;
 			productRefGroup = AF2C734D25539C54000AD7A9 /* Products */;
@@ -2387,6 +2428,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF2C735C25539C60000AD7A9 /* LaunchScreen.storyboard in Resources */,
+				AF72956E28D05E900035BF59 /* TestLocalizable.strings in Resources */,
 				04B76907280E4D580080102F /* FSCalendarTest.storyboard in Resources */,
 				041CBC452788272400AF9B05 /* labi.bundle in Resources */,
 				04B7692A281797790080102F /* xmlFile.xml in Resources */,
@@ -2485,6 +2527,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFB4C04B28DAB8B100F52BC7 /* MySafeInsetTool.swift in Sources */,
 				04587C7727B5092B00824F69 /* TestUITabBarController_VC.swift in Sources */,
 				04870E4D26E9AD280030B1D2 /* AAYAxis.swift in Sources */,
 				049EAFF426C1067A00903DA8 /* subOperation.swift in Sources */,
@@ -2545,6 +2588,7 @@
 				AF2DDAEB28A34A3600E1CCF3 /* Dict_Model.swift in Sources */,
 				044CBA7727F5A82A00FA2CB8 /* 测试文字的自适应高度_label.swift in Sources */,
 				AF3557B92865B5A5009B291C /* OCRuntime_Person+Property.m in Sources */,
+				AF72956A28D05AC50035BF59 /* TestLanguageLocalize_VC.swift in Sources */,
 				04A0CA4A26A0027800ECAE1B /* String+md5Extension.swift in Sources */,
 				049EAFE526B7D85000903DA8 /* TouchDeliver_SubView.swift in Sources */,
 				049EAFE126B404AD00903DA8 /* TestGCD_VC.swift in Sources */,
@@ -2591,6 +2635,7 @@
 				041A2E212793C7B900F9CABF /* KVO_Person.swift in Sources */,
 				04A0CA4826A0027800ECAE1B /* JFZPlayerCommonView.swift in Sources */,
 				04870E3D26E9AD280030B1D2 /* AAExtension.swift in Sources */,
+				AF402FF228D1CC6A00407CEE /* TestMap_VC.swift in Sources */,
 				04870E4926E9AD280030B1D2 /* AAPane.swift in Sources */,
 				049EAFD926B3E1A700903DA8 /* TestThread_VC.swift in Sources */,
 				044CBA7127F587C100FA2CB8 /* TestSubVC_SubVC3.swift in Sources */,
@@ -2614,6 +2659,7 @@
 				042036CA2757197500424E05 /* CollectionView的网格布局Layout.swift in Sources */,
 				0484808B27853FE800698106 /* TestStory_VC.swift in Sources */,
 				0492701A279EA840000A61FC /* Noti_person.swift in Sources */,
+				AF72957428D0604C0035BF59 /* String+Localized.swift in Sources */,
 				AFEF469428B8B04700B3EA2D /* VerScroll_ScrollView3.swift in Sources */,
 				04587C8E27B6691F00824F69 /* TestGesture_View.swift in Sources */,
 				AFC1B372289A677B0050FC8F /* MyNavigation_SubVC3.swift in Sources */,
@@ -2709,6 +2755,7 @@
 				AF824284287C1B47002311AF /* TestOCGrama_VC.m in Sources */,
 				045505AB2803BCFF00785F02 /* CTCCalendarDayCell.swift in Sources */,
 				041CBC1E2787DB7600AF9B05 /* 测试帧动画的主VC.swift in Sources */,
+				AFB647C628C6EC2B00DCD791 /* 点击文本跳转url_view.swift in Sources */,
 				0421E5F426A9701600C6A922 /* JFZResponseExpandButtton.swift in Sources */,
 				04587C7227B4E58700824F69 /* TestArchives_VC.swift in Sources */,
 				04A0CA4D26A0027800ECAE1B /* JFZMediaCacheDelegate.swift in Sources */,
@@ -2800,8 +2847,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				AF2C735B25539C60000AD7A9 /* Base */,
+				AF72956D28D05E570035BF59 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		AF72957028D05E900035BF59 /* TestLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AF72957128D05E970035BF59 /* en */,
+				AF72957228D05EED0035BF59 /* zh-Hans */,
+			);
+			name = TestLocalizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -2811,10 +2868,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					arm64,
-					"$(ARCHS_STANDARD)",
-				);
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2877,10 +2932,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					arm64,
-					"$(ARCHS_STANDARD)",
-				);
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2938,6 +2991,7 @@
 			baseConfigurationReference = BB6AAD3455F9D2C8F661C07D /* Pods-SwiftTest_App.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;

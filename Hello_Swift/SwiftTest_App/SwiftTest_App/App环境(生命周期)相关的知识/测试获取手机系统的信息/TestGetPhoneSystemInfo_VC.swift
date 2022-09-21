@@ -6,8 +6,11 @@
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
 // 测试获取手机系统的信息
-
-import UIKit
+// - MARK: 笔记
+/**
+    1、UI_USER_INTERFACE_IDIOM() 系统函数，返回当前设备的类型，是手机还是平板，还是电视。
+ 
+ */
 
 class TestGetPhoneSystemInfo_VC: UIViewController {
     

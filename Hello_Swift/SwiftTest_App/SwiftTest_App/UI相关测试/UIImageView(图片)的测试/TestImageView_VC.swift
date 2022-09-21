@@ -18,6 +18,8 @@
  
  */
 
+import Photos
+
 class TestImageView_VC: UIViewController {
     
     //MARK: 对外属性
@@ -30,6 +32,7 @@ class TestImageView_VC: UIViewController {
     //MARK: 测试组件
     let imgView1 = UIImageView()
     let image1 = UIImage(named: "labi09")!
+    let image2 = UIImage(named: "labi11")!
     
     let turnImgV = UIImageView(image: UIImage(named: "labi10"))
     let turnImgV2 = UIImageView(image: UIImage(named: "labi10"))
@@ -69,6 +72,7 @@ extension TestImageView_VC: UICollectionViewDataSource {
             /// 只留出一个像素被拉伸
             let curImg = image1.resizableImage(withCapInsets: UIEdgeInsets.init(top: 20, left: 20, bottom: 20, right: 20), resizingMode: .tile)
             imgView1.image = curImg
+            
             break
         case 1:
             //TODO: 1、保护且拉伸的方式进行缩放。
@@ -92,11 +96,138 @@ extension TestImageView_VC: UICollectionViewDataSource {
             //TODO: 3、图片保存到手机相册
             /**
              1、注意该方法的参数，selector的写法是必须满足那三个方法参数的写法，而且要用类名来调用selector方法。
+             2、记得要在info.plist文件中申请访问相册的权限。
+            
+             2.保存图片到【相机胶卷】
+             1> C语言函数UIImageWriteToSavedPhotosAlbum 【不支持自定义相册】
+             2> AssetsLibrary框架 （旧，已丢弃）【支持自定义相册】
+             3> Photos框架【支持自定义相册】
+             
+             3、Photos框架。暂时还没支持.webp格式的图片
+                1.PHAsset : 一个PHAsset对象就代表相册中的一张图片或者一个视频
+                    1> 查 : [PHAsset fetchAssets...]
+                    2> 增删改 : PHAssetChangeRequest(包括图片\视频相关的所有改动操作)
+                
+                2.PHAssetCollection : 一个PHAssetCollection对象就代表一个相册。查询自己做，增删改都通过request去做。
+                    1> 查 : [PHAssetCollection fetchAssetCollections...]
+                    2> 增删改 : PHAssetCollectionChangeRequest(包括相册相关的所有改动操作)
+                
+                3.对相片\相册的任何【增删改】操作，都必须放到以下方法的block中执行
+                    -[PHPhotoLibrary performChanges:completionHandler:]
+                    -[PHPhotoLibrary performChangesAndWait:error:]
+             
+                4.PHAssetCollection这些东西只能通过类方法来获取，通过增删改查的对象来操作，而不能通过常规的数组字典这些数据结构体获取。
+             
+                5.每次增删改照片都要新开一个performChanges的block，所以保存照片到根相册是一个操作，添加照片到自定义相册又是另外一个操作。
+             
              */
             print("     (@@ 图片保存到手机相册")
+            
+            // C语言函数，selector的写法是必须满足那三个方法参数的写法，而且要用类名来调用selector方法。
+            // 错误信息：-[NSInvocation setArgument:atIndex:]: index (2) out of bounds [-1, 1]
+            // 错误解释：参数越界错误，方法的参数个数和实际传递的参数个数不一致
             UIImageWriteToSavedPhotosAlbum(image1, self, #selector(TestImageView_VC.saveImage(image:didFinishSavingWithError:contextInfo:)), nil)
+            
+            //TODO: - Photos框架
+            
+            // 获取app的名字，查看info.plist的源代码找出字典的key,kCFBundleNameKey = "CFBundleName"
+            // 注意C语言的string和swift字符串的转换。
+            let appTitle:String = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String ?? ""
+            print("获取到的app的名字：\(appTitle)")
+            
+            // 相册列表
+            let results: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .albumRegular, options: nil)
+            var phCollection:PHAssetCollection?
+            
+            // 获取相册列表中 的 自定义相册
+            results.enumerateObjects { curCollection, index, isStop in
+                print("遍历相册列表：\(index) -- \(isStop) --\(curCollection)")
+                // 找到相册
+                if curCollection.localizedTitle == appTitle { phCollection = curCollection }
+            }
+
+            let phStatus = PHPhotoLibrary.authorizationStatus()
+            print("查询到的相册状态：\(phStatus)")
+            // 检查相册的权限
+            if #available(iOS 14, *) {
+                // 如果用户已经做过权限的选择，那么直接执行block里面的代码。否则弹窗出给用户做权限选择
+                PHPhotoLibrary.requestAuthorization(for: .readWrite) { status in
+                    print("请求相册权限的结果：\(status.rawValue)")
+                }
+            } else {
+                PHPhotoLibrary.requestAuthorization { status in
+                    print("iOS 14之前请求相册权限：\(status.rawValue)")
+                }
+            }
+            
+            // 创建自定义相册
+            if phCollection == nil {
+                do {
+                    var albumID:String!
+                    // 会阻塞当前线程。
+                    try PHPhotoLibrary.shared().performChangesAndWait {
+                        print("创建自定义相册")
+                        // 创建自定义相册，并获取相册的占位对象。同名的相册也会重复创建。
+                        let phObjectPlaceholder = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: appTitle).placeholderForCreatedAssetCollection
+                        // 获取相册占位对象的id
+                        albumID = phObjectPlaceholder.localIdentifier
+                    }
+                    if albumID != nil {
+                        // 根据相册的id获取到相册
+                        phCollection = PHAssetCollection.fetchAssetCollections(withLocalIdentifiers: [albumID], options: nil).firstObject
+                    }
+                    
+                } catch let err {  print("创建自定义相册的报错：\(err)") ; break}
+            }
+            
+            // 保存照片到相册，对于照片的增删改操作都必须放在performChanges方法的闭包里面执行。
+            var phAssetHolder:PHObjectPlaceholder!  /// 照片的占位对象
+            var imgAssetID:String = ""
+            
+            // 直接存进相册app的根相册中。并获取照片的占位对象
+            do {
+                try PHPhotoLibrary.shared().performChangesAndWait({
+                    print("保存照片到相册～")
+                    /// 创建照片的asset，并且获取asset的id，只能通过id来获取到asset。placeholderForCreatedAsset是照片的占位对象。
+                    phAssetHolder = PHAssetChangeRequest.creationRequestForAsset(from: self.image2).placeholderForCreatedAsset
+                    imgAssetID = phAssetHolder.localIdentifier
+                })
+            } catch let err {  print("保存照片到相册，的报错：\(err)") }
+            
+            
+
+            // 添加照片到自定义相册。每一次修改照片都要新开一个performChanges的block
+            PHPhotoLibrary.shared().performChanges {
+                /// 获取照片的asset
+                let imgAsset = PHAsset.fetchAssets(withLocalIdentifiers: [imgAssetID], options: nil)
+
+                /// 把照片的存进自定义相册中，但是照片的本质是在根相册的引用
+                let phAssetReq = PHAssetCollectionChangeRequest(for: phCollection!)
+                phAssetReq?.addAssets(imgAsset)
+//                phAssetReq?.addAssets([phAssetHolder] as NSFastEnumeration)
+//                phAssetReq?.insertAssets(imgAsset, at: IndexSet(integer: 0))
+                
+            } completionHandler: { isSuccess, error in
+                print("添加照片到自定义相册成功了吗？：\(isSuccess) -- \(String(describing: error))")
+            }
+
+            
         case 4:
             //TODO: 4、从手机相册中选择照片。
+            /**
+                一、从相册里面选择图片到App中
+                1.选择单张图片
+                    UIImagePickerController (自带选择界面)、AssetsLibrary框架 (选择界面需要开发者自己搭建)、 Photos框架 (选择界面需要开发者自己搭建)
+                
+                2.选择多张图片(图片数量 >= 2)
+                    AssetsLibrary框架 (选择界面需要开发者自己搭建)、 Photos框架 (选择界面需要开发者自己搭建)
+                
+                二、利用照相机拍一张照片到App
+                    1> UIImagePickerController (自带选择界面)
+                    2> AVCapture****，比如AVCaptureSeession
+             
+                三、用第三方库吧，关键字搜photo，然后语言选OC或者swift，一个一个下载下来看看
+             */
             print("     (@@ 从手机相册中选择照片")
             let imgVC = UIImagePickerController()
             imgVC.sourceType = .photoLibrary    //选择照片来源
