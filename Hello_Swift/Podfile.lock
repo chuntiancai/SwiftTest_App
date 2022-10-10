@@ -50,14 +50,14 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   ctc_podspec:
-    :commit: 8a6c545095f03432fb81a4b12b410a7b92cb4411
+    :commit: 5e142a6c011461e423209f672e4b81ac4818321c
     :git: https://github.com/chuntiancai/TestCocoapod.git
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Bugly: afe841bba2ea6de6d432a3c125240a5e75949c55
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
-  ctc_podspec: f6baf061bb4cc0b9dd1fcbab2a695aef1259bf10
+  ctc_podspec: 11515223988733579091ab1aed01beebe73de572
   FilesProvider: 2a8ae17d8b9c23a6feadb1308ee638fa31d21065
   FLAnimatedImage: 8f3e854ebf9680b71f0b6e700939687fc4d82b4b
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
@@ -67,6 +67,6 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: 33a7b5ddbc7eb2864fcfedcc707ce0fb2c9c8729
+PODFILE CHECKSUM: 0866502915288ee76d4c3920d1c5d40399025dc4
 
 COCOAPODS: 1.11.3

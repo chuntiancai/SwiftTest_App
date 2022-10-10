@@ -9,5 +9,4 @@ ${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework
 ${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
 ${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
-${PODS_ROOT}/ctc_podspec/ctc_podspec/Classes/Framework/CocoaPodFrameworkTest.framework
 ${BUILT_PRODUCTS_DIR}/ctc_podspec/ctc_podspec.framework

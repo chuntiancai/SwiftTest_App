@@ -42,3 +42,30 @@
 ## __OBJC__ 宏：
     1、每一个OC的源文件，xcode都隐式为它在头部定义了一个宏，这个宏就是 __OBJC__ ，所以可以在PCH文件的头部加上宏判断语句，也就是不是OC文件(例如兼容c文件)， 就不要把PCH的内容copy到当前文件中了。 宏判断语句： #ifdef __OBJC__  //内容//  #endif
     
+
+## 开发者账户：
+    apple developer账户中的Certificates, Identifiers & Profiles选项分别是限制电脑，限制人，限制app和真机的。
+    1、Certificates 限制了当前apple账号可以在那台电脑进行开发。电脑需要安装证书，apple服务器通过验证电脑上的证书来允许该电脑是否可以开发。
+    2、Identifiers 限制了当前apple账号可以开发哪个app，这里是app的BundleID。
+    3、Devices 限制了哪台真机可以调试当前app代码，苹果开发者账号绑定的设备数量，每种平台(Platform)上限是100台。
+              满了就不能添加新设备了，也无法自行移除不需要的设备，因为只有在每年账号续费时，才会有一次清理设备的机会。可以联系人工客服。
+              xcode -->window -->  devices and simulator --> 查看真机的identifiers (即UUID)
+    4、Profiles 账号绑定的电脑证书、app、真机等的描述信息的文件(上述的各个选项)。用于在电脑没有联网的时候，也可以通过Profiles文件中获取权限来调试app的代码。
+                (Profiles文件在apple developer下载下来后双击即可安装到电脑上)。
+                project --> target --> bulding setting --> code signing --> 这里可以手动添加你的Profiles文件和cer证书。
+                
+    总结：必须要有Certificates证书(或者p12文件)和Profiles文件才能开发。
+    
+    xcode7之后：
+        1、一个免费的apple账户 --> join the apple developer program (加入到公司的(或个人)开发者账户中)
+        2、xode --> preference --> account --> 添加 免费的 apple账户 --> download manual Profiles --> 即可自动化生成cer证书和Profiles文件，并且绑定到电脑和当前xcode中。
+        
+    ### p12文件：
+        1、p12文件其实就是Certificates证书的导出文件，也就是个人信息交换文件。相当于cer证书的复印件。
+
+        
+## app打包测试：
+    1、在apple developer账户的Certificates设置发布(Distribution)的证书(之前是开发development的证书)，Ad Hoc是临时的发布证书的意思。 然后就是同样的创建安装cer证书的步骤。
+    2、在xcode安装cer证书和Profiles文件。
+    3、xcode --> Product --> Archive --> export --> Ad Hoc 
+    4、记得重新下载过期的证书。(如果证书无效，可以搜一下看是不是已经过期了，是的话重新下载)

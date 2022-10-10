@@ -1,6 +1,6 @@
 # Uncomment the next line to define a global platform for your project
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '9.0'
+platform :ios, '10.0'
 workspace 'Hello_Swift.xcworkspace'
 
 #xcodeproj 'SwiftNote_App/SwiftNote_App.xcodeproj'
@@ -50,6 +50,7 @@ target 'SwiftNote_App' do
 end
 
 target 'SwiftBluetooth_App' do
+  +
   project 'SwiftBluetooth_App/SwiftBluetooth_App.xcodeproj'
 #  pod 'iOSDFULibrary'
   commonPods

@@ -186,7 +186,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
-  install_framework "${PODS_ROOT}/ctc_podspec/ctc_podspec/Classes/Framework/CocoaPodFrameworkTest.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ctc_podspec/ctc_podspec.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -200,7 +199,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
-  install_framework "${PODS_ROOT}/ctc_podspec/ctc_podspec/Classes/Framework/CocoaPodFrameworkTest.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ctc_podspec/ctc_podspec.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

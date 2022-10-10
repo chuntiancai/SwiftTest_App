@@ -59,6 +59,8 @@ class TestMap_VC: UIViewController {
         return map
     }()
     
+    var isTestAnnotation:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 199/255.0, green: 204/255.0, blue: 237/255.0, alpha: 1.0)
@@ -71,6 +73,39 @@ class TestMap_VC: UIViewController {
     deinit {
         print("\(self)销毁了")
     }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //TODO: 测试地图上的大头针
+        if isTestAnnotation {
+            // 1. 获取当前点击的位置, 对应的经纬度信息
+            let point = touches.first?.location(in: mapView)
+            
+            // 把view上的点转换为经纬度的点。
+            let coordinate = mapView.convert(point!, toCoordinateFrom: mapView)
+            
+            // 2, 创建一个大头针数据模型
+            let annotation: MyAnnotation = MyAnnotation()
+            annotation.coordinate = coordinate
+            annotation.title = "大头针"
+            annotation.subtitle = "子标题"
+            
+            // 2.1、 添加大头针数据模型, 到地图上
+            mapView.addAnnotation(annotation)
+            
+            // 反地理编码的代码
+            let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            geoCoder.reverseGeocodeLocation(location) { (pls: [CLPlacemark]?, error: Error?) -> Void  in
+                if error == nil {
+                    let pl = pls?.first
+                    print("反编码闭包里的值：\(String(describing: pl))")
+                    annotation.title = pl?.locality
+                    annotation.subtitle = pl?.name
+                } }
+        }
+        
+    }
+    
 }
 
 
@@ -263,7 +298,7 @@ extension TestMap_VC: UICollectionViewDataSource {
             mapView.showsCompass = true // 指南针
             mapView.showsScale = true   // 比例尺
             mapView.showsTraffic = true // 交通状况
-            mapView.showsPointsOfInterest = true    // poi兴趣点
+            mapView.showsPointsOfInterest = true    // poi兴趣点，加油站，旅馆，学校，医院这些(point of interest)
            
             
             // 1. 显示用户位置
@@ -273,19 +308,78 @@ extension TestMap_VC: UICollectionViewDataSource {
             mapView.showsUserLocation = true
             
             // 2. 用户的追踪模式
-            // 显示一个蓝点, 在地图上面标示用户的位置信息
-            // 会自动放大地图, 并且当用户 位置移动时, 地图会自动跟着跑
-            // 不灵光
+            // 显示一个蓝点, 在地图上面标示用户的位置信息, 会自动放大地图, 并且当用户 位置移动时, 地图会自动跟着跑,不灵光。
     //        mapView.userTrackingMode = MKUserTrackingMode.FollowWithHeading
             
-            // 设置地图代理
+            // 设置地图代理，MKMapViewDelegate
             mapView.delegate = self
             
         case 5:
-            //TODO: 5、
-            print("     (@@")
+            //TODO: 5、使用地图上大头针。先点击4按钮。
+            /**
+              理论基础
+              在地图上操作大头针, 实际上操作的是大头针"数据模型"，就是添加增删mapView的大头针数组里的元素。
+              删除大头针: 移除大头针数据模型
+              添加大头针: 添加一个大头针数据模型
+             */
+            print("     (@@ 5、使用地图上大头针。")
+            // 先点击4，再点击5
+            
+            isTestAnnotation = true
+            
+            // 设置定位按钮，也就是自动追踪模式,目前我也不知道怎么把MKUserTrackingBarButtonItem放到view中。
+            let item = MKUserTrackingBarButtonItem(mapView: mapView)
+            self.navigationItem.rightBarButtonItem = item
+            
+            
         case 6:
-            print("     (@@")
+            //TODO: 6、使用系统的app进行导航。跳转到系统的地图app。
+            /**
+                1、使用系统的app进行导航。
+                2、请求苹果服务器获取导航路线，自己绘制。
+                3、使用第三方框架的SDK。(常用，例如百度地图)
+             */
+            print("     (@@ 6、使用系统的app进行导航。")
+            
+            func beginNav(startPLCL: CLPlacemark, endPLCL: CLPlacemark) {
+                // 起点
+                let plMK: MKPlacemark = MKPlacemark(placemark: startPLCL)
+                let startItem: MKMapItem = MKMapItem(placemark: plMK)
+                
+                // 终点
+                let endplMK: MKPlacemark = MKPlacemark(placemark: endPLCL)
+                let endItem: MKMapItem = MKMapItem(placemark: endplMK)
+
+                // 起点和终点
+                let mapItems: [MKMapItem] = [startItem, endItem]
+                
+                // 导航设置字典
+                let dic: [String : Any] = [
+                    // 导航模式
+                    MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving,
+                    // 地图样式
+                    MKLaunchOptionsMapTypeKey: MKMapType.standard.rawValue,
+                    // 显示交通
+                    MKLaunchOptionsShowsTrafficKey: true
+                    
+                ]
+                
+                MKMapItem.openMaps(with: mapItems, launchOptions: dic)
+            }
+            
+            geoCoder.geocodeAddressString("广州") { (pls: [CLPlacemark]?, error) -> Void in
+                
+                // 广州地标对象
+                let gzPL = pls?.first
+                
+                self.geoCoder.geocodeAddressString("上海") { (pls: [CLPlacemark]?, error) -> Void in
+                    // 上海地标对象
+                    let shPL = pls?.first
+                    //开始导航
+                    beginNav(startPLCL: gzPL!, endPLCL: shPL!)
+                }
+
+            }
         case 7:
             print("     (@@")
         case 8:
@@ -311,7 +405,7 @@ extension TestMap_VC: MKMapViewDelegate {
     // 蓝点: 大头针"视图"  大头针"数据模型"
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         
-        
+        print("更新用户信息时：\(#function)")
         
         // MKUserLocation: 大头针数据模型
         // location : 这就是大头针的位置信息(经纬度)
@@ -337,6 +431,44 @@ extension TestMap_VC: MKMapViewDelegate {
     //注意地球是椭圆的，经纬度也是椭圆的。
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         print("变化的纬度跨度：",mapView.region.span.latitudeDelta, "变化的经度跨度：",mapView.region.span.longitudeDelta)
+    }
+    
+    //TODO: 提供大头针视图给mapView
+    /**
+     如果当我们添加一个大头针数据模型, 到地图上, 那么地图就会自动调用一个代理方法, 来查找对应的大头针"视图!!!!"
+     
+     - parameter mapView:    地图
+     - parameter annotation: 大头针"数据模型"
+     
+     - returns: 大头针"视图"
+     // 注意事项: 如果这个方法没有实现, 或者返回Nil, 那么就会使用系统默认的大头针视图来显示
+     */
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        // 系统大头这视图对应的类 MKPinAnnotationView
+        // 大头针视图和cell一样, 都有一个"循环利用"机制
+        // 1. 从缓存池取出大头针视图
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "item") as? MKPinAnnotationView
+        
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "item")
+        }
+        
+        // 显示弹框
+        annotationView?.canShowCallout = true
+        
+        
+        // 设置大头针颜色
+        annotationView?.pinTintColor = .yellow
+        
+        // 设置大头针可以拖动
+        annotationView?.isDraggable = true
+        
+        // 设置下落动画
+        annotationView?.animatesDrop = true
+        
+        print("提供大头针视图给mapView的\(#function)方法～")
+        return annotationView
     }
     
 }

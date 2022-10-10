@@ -18,6 +18,5 @@
   "platforms": {
     "ios": "9.0"
   },
-  "source_files": "ctc_podspec/Classes/*.swift",
-  "vendored_frameworks": "ctc_podspec/Classes/Framework/*.framework"
+  "source_files": "ctc_podspec/Classes/*.swift"
 }

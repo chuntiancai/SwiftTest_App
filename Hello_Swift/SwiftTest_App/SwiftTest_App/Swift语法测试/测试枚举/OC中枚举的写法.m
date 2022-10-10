@@ -16,7 +16,7 @@ typedef enum {
 //MARK: 枚举的第二种写法,OC写法，NSInteger是枚举绑定类型，MyEnumTwo是枚举的名称
 typedef NS_ENUM(NSInteger,MyEnumTwo){
     MyEnumTwoTop,
-    MyEnumTwoBottom,
+    MyEnumTwoBottom
 };
 
 //MARK: 枚举的第三种写法,位移枚举，
