@@ -69,3 +69,28 @@
     2、在xcode安装cer证书和Profiles文件。
     3、xcode --> Product --> Archive --> export --> Ad Hoc 
     4、记得重新下载过期的证书。(如果证书无效，可以搜一下看是不是已经过期了，是的话重新下载)
+    
+    
+
+## 发布App：
+    1、在xcode打包好可以发布的ipa包，然后也可以在xcode直接联网上传到app store账号中，这时的打包就是构建版本。
+    2、在apple developer上填写app的相关信息，上传，等待审核，然后发布。
+    3、info.plist中的Bundle version string (short)上的版本号，必须和apple developer网页上的版本号一致。
+       info.plist中的Bundle version可以作为内部版本号测试用，也可以作为Bundle version string (short)缺省时的值。
+
+## TestFlight是app的beta测试版本：
+    1、TestFlight本来是一个测试分发平台，在2014年被苹果收购了，用于beta测试流水化。就是发布内测版本。
+    2、测试者提供邮箱。
+       开发者登陆iTunes connect，给测试者发送邮箱邀请。
+       测试者通过TestFlight软件下载app。
+       不需要证书、不需要手动发ipa包、不需要真机uuid，但是有人数限制，外部人员2000，内部人员25人。
+       
+    3、TestFlight也是在iTunes connect网页上的，你可以选择在这里上传构建版本：
+        在这里上传构建版本、添加测试人员。
+        
+## App里的内购：
+    1、如果用户要购买App相关的功能服务，必须通过苹果内购的方式购买，例如qq会员。
+    2、内购的话，苹果会收取开发商提成，4:6.
+    3、也是iTunes connect网页上配置内购选项，代码上要用到StoreKit框架。
+    4、配置内购选项要处理税务问题，配置税务信息。
+    5、广告也是从苹果那里来的，分成是3:7。广告之后要调用iAd框架的方法。
