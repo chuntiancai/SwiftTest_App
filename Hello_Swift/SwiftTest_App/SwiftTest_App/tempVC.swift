@@ -26,7 +26,7 @@ class tempVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 199/255.0, green: 204/255.0, blue: 237/255.0, alpha: 1.0)
-        self.title = "测试功能"
+        self.title = "测试的VC"
         setNavigationBarUI()
         setCollectionViewUI()
         initTestViewUI()

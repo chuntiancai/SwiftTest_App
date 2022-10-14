@@ -15,6 +15,7 @@
 			dependencies = (
 			);
 			name = Bugly;
+			productName = Bugly;
 		};
 /* End PBXAggregateTarget section */
 
@@ -1060,7 +1061,7 @@
 		9C842970A3EAFF1491957250747B4A01 /* FileProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileProvider.swift; path = Sources/FileProvider.swift; sourceTree = "<group>"; };
 		9CBC4DC994E1D0653EDACE50858228B3 /* UIView+WebCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+WebCache.m"; path = "SDWebImage/Core/UIView+WebCache.m"; sourceTree = "<group>"; };
 		9D5904E98E19CEA0A3805A40152AE0F3 /* SMB2FileOperation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SMB2FileOperation.swift; path = Sources/SMBTypes/SMB2FileOperation.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E0D21FD0EAEB3A8209C12FF2D6B3448 /* RadarChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadarChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/RadarChartDataSet.swift; sourceTree = "<group>"; };
 		9E25440246E0751C8FE9F1944EB92D49 /* LegendRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LegendRenderer.swift; path = Source/Charts/Renderers/LegendRenderer.swift; sourceTree = "<group>"; };
 		9E78721CD2604945FB6272F8EEC21549 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSData+ImageContentType.h"; path = "SDWebImage/Core/NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -1457,7 +1458,6 @@
 				A50244D9EDD539A7BC3B8BC0365ADCC6 /* Core */,
 				0C34E4AD1655C81FD0A744F9CD688D42 /* Support Files */,
 			);
-			name = SDWebImage;
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
@@ -1497,7 +1497,6 @@
 				A3EFB950D0F65CFD8D5E944D86603952 /* Frameworks */,
 				A0CDEF8BF5FB6C585D3083413A0BD562 /* Support Files */,
 			);
-			name = Bugly;
 			path = Bugly;
 			sourceTree = "<group>";
 		};
@@ -1554,7 +1553,6 @@
 				B7D75F3A123643490377D34A91DD90F9 /* FSCalendarWeekdayView.m */,
 				1B7D642F4D151BC7414BDFA7F7508BDD /* Support Files */,
 			);
-			name = FSCalendar;
 			path = FSCalendar;
 			sourceTree = "<group>";
 		};
@@ -1580,7 +1578,6 @@
 				018848214936917FD53FC5C53B90A580 /* Validation.swift */,
 				47CD3EE62CF44DC2A2E7E3A7B8E2079E /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -1643,7 +1640,6 @@
 				7913AFF8144E44688034E9679E7E59FD /* WebDAVFileProvider.swift */,
 				785AE2C778D312EEDB7CDA3D253F36B3 /* Support Files */,
 			);
-			name = FilesProvider;
 			path = FilesProvider;
 			sourceTree = "<group>";
 		};
@@ -1693,7 +1689,6 @@
 				8627B93995075B1194B27E8A546D4902 /* SwiftyJSON.swift */,
 				714301914A2B7D692E6E621E0EAEE6F9 /* Support Files */,
 			);
-			name = SwiftyJSON;
 			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
@@ -1747,7 +1742,6 @@
 				34D8C9C71C54CD37C662C6A4FE101032 /* TestCocoPodClass.swift */,
 				B56694B2DEA151BCD81620B763AFF0B2 /* Support Files */,
 			);
-			name = ctc_podspec;
 			path = ctc_podspec;
 			sourceTree = "<group>";
 		};
@@ -2144,7 +2138,6 @@
 				A64CE86B5E8A78C40267EF67E8484D85 /* Core */,
 				D6004C4F970BB4F18610E06822E6393E /* Support Files */,
 			);
-			name = Charts;
 			path = Charts;
 			sourceTree = "<group>";
 		};
@@ -2229,7 +2222,6 @@
 				AE0380EA9AAE34F7B8A8DF60506D813D /* Resources */,
 				E61408EEC7AA77EE69AD8863F1FE1751 /* Support Files */,
 			);
-			name = MJRefresh;
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
@@ -2287,7 +2279,6 @@
 				31745BD121AE88DB8F9471B9011CF862 /* UILayoutSupport+Extensions.swift */,
 				7267280278975DACF613A834D764645F /* Support Files */,
 			);
-			name = SnapKit;
 			path = SnapKit;
 			sourceTree = "<group>";
 		};
@@ -2300,7 +2291,6 @@
 				C85AD7E37102B5D7651A01A9D93B774B /* FLAnimatedImageView.m */,
 				FFFCB899CD10B67F68913E69271A1BE1 /* Support Files */,
 			);
-			name = FLAnimatedImage;
 			path = FLAnimatedImage;
 			sourceTree = "<group>";
 		};
@@ -2311,7 +2301,6 @@
 				676F2389FD96DFC72A23E48EB7455ACE /* Reachability.m */,
 				1B559ABD9F41E02CA8B30A7C71DE6C8D /* Support Files */,
 			);
-			name = Reachability;
 			path = Reachability;
 			sourceTree = "<group>";
 		};
@@ -4545,6 +4534,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;

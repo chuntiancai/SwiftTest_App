@@ -75,6 +75,7 @@ extension TestNotification_VC: UICollectionViewDataSource {
             blockNSObject = NotificationCenter.default.addObserver(forName: NSNotification.Name.init(rawValue: "block通知"), object: nil, queue: nil) { noti in
                 print("通过block执行通知到达时的任务：\(noti) --- \(Thread.current)")
             }
+            
         case 1:
             //TODO: 1、主题者 在框架 发布通知
             /**

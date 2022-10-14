@@ -94,3 +94,7 @@
     3、也是iTunes connect网页上配置内购选项，代码上要用到StoreKit框架。
     4、配置内购选项要处理税务问题，配置税务信息。
     5、广告也是从苹果那里来的，分成是3:7。广告之后要调用iAd框架的方法。
+
+
+## 推送通知：
+    1、远程推送服务，又称为APNs（Apple Push Notification Services）
