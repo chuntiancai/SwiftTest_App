@@ -45,7 +45,6 @@ class AddPaymentClipVC: UIViewController{
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1.0)
         self.title = "添加打款凭条"
-        self.edgesForExtendedLayout = .bottom
         setUI()
         
     }

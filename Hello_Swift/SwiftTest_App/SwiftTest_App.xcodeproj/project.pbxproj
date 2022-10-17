@@ -306,6 +306,7 @@
 		651C71492609EB870066C13B /* FileTest_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651C71482609EB870066C13B /* FileTest_VC.swift */; };
 		651C714D2609ED600066C13B /* tempVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651C714C2609ED600066C13B /* tempVC.swift */; };
 		651C71502609EDFF0066C13B /* DataTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651C714F2609EDFF0066C13B /* DataTestVC.swift */; };
+		AF172C1A28FCFCE1005BD750 /* 测试App跳转_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF172C1928FCFCE1005BD750 /* 测试App跳转_VC.swift */; };
 		AF2C735025539C54000AD7A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2C734F25539C54000AD7A9 /* AppDelegate.swift */; };
 		AF2C735425539C54000AD7A9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2C735325539C54000AD7A9 /* MainViewController.swift */; };
 		AF2C735925539C60000AD7A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF2C735825539C60000AD7A9 /* Assets.xcassets */; };
@@ -702,6 +703,7 @@
 		651C71482609EB870066C13B /* FileTest_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTest_VC.swift; sourceTree = "<group>"; };
 		651C714C2609ED600066C13B /* tempVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempVC.swift; sourceTree = "<group>"; };
 		651C714F2609EDFF0066C13B /* DataTestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTestVC.swift; sourceTree = "<group>"; };
+		AF172C1928FCFCE1005BD750 /* 测试App跳转_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试App跳转_VC.swift"; sourceTree = "<group>"; };
 		AF2C734C25539C54000AD7A9 /* SwiftTest_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftTest_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF2C734F25539C54000AD7A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF2C735325539C54000AD7A9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -1555,6 +1557,7 @@
 		048608AC27350E89000F816E /* App环境(生命周期)相关的知识 */ = {
 			isa = PBXGroup;
 			children = (
+				AF172C1828FCFCB3005BD750 /* 测试应用间的跳转 */,
 				AF2DDAEC28A3B6EC00E1CCF3 /* Xcode性能工具测试 */,
 				042036D427604F8B00424E05 /* 测试获取手机系统的信息 */,
 				048608AD27350EC5000F816E /* App环境配置的知识.md */,
@@ -2185,6 +2188,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AF172C1828FCFCB3005BD750 /* 测试应用间的跳转 */ = {
+			isa = PBXGroup;
+			children = (
+				AF172C1928FCFCE1005BD750 /* 测试App跳转_VC.swift */,
+			);
+			path = "测试应用间的跳转";
+			sourceTree = "<group>";
+		};
 		AF2C734325539C54000AD7A9 = {
 			isa = PBXGroup;
 			children = (
@@ -2777,6 +2788,7 @@
 				04A0CA5326A0027800ECAE1B /* JFZDefaultVideoCacheLocation.swift in Sources */,
 				048608A327325C67000F816E /* TestDate_VC.swift in Sources */,
 				AF2DDAF928AA3E3800E1CCF3 /* TestStatusBar_VC.swift in Sources */,
+				AF172C1A28FCFCE1005BD750 /* 测试App跳转_VC.swift in Sources */,
 				04870E4C26E9AD280030B1D2 /* AATitle.swift in Sources */,
 				042648E927F3FB6E0034FF51 /* SubThread.swift in Sources */,
 				041CBC4B278D26D400AF9B05 /* HaveMutipleButtonView.swift in Sources */,

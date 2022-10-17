@@ -166,8 +166,6 @@ extension MainViewController {
     /// 设置导航栏的UI
     private func setNavigationBarUI(){
         
-        //去掉导航栏的下划线，导致子页面的布局是从导航栏下方开始，即snpkit会以导航栏下方为零坐标
-        self.edgesForExtendedLayout = .bottom
         //设置子页面的navigation bar的返回按钮样式
         let backItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         self.navigationItem.backBarButtonItem = backItem
