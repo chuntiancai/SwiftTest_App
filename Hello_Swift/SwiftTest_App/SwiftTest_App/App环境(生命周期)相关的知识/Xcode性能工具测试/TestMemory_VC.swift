@@ -119,6 +119,7 @@ extension TestMemory_VC: UICollectionViewDataSource {
                 2、出现内存泄漏的时候，会出现❌，然后就可以选择Cycle & root来查看循环引用。
              */
             print("     (@@ 1、测试内存泄漏Leaks，循环引用，不释放。")
+            // person 和 curDog 会循环引用，不释放。
             let person = TestMemory_Person()
             let curDog = TestMemory_Dog()
             person.dog = curDog
