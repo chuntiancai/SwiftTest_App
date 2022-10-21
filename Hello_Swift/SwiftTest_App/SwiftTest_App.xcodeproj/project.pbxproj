@@ -311,6 +311,8 @@
 		AF2C735425539C54000AD7A9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2C735325539C54000AD7A9 /* MainViewController.swift */; };
 		AF2C735925539C60000AD7A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF2C735825539C60000AD7A9 /* Assets.xcassets */; };
 		AF2C735C25539C60000AD7A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF2C735A25539C60000AD7A9 /* LaunchScreen.storyboard */; };
+		AF2CF86C29029DCE00C9388E /* TestMemory_Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2CF86B29029DCE00C9388E /* TestMemory_Person.swift */; };
+		AF2CF86E29029DDB00C9388E /* TestMemory_Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2CF86D29029DDB00C9388E /* TestMemory_Dog.swift */; };
 		AF2DDAE928A349FF00E1CCF3 /* TestDictSet_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAE828A349FF00E1CCF3 /* TestDictSet_VC.swift */; };
 		AF2DDAEB28A34A3600E1CCF3 /* Dict_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAEA28A34A3600E1CCF3 /* Dict_Model.swift */; };
 		AF2DDAEE28A3B70600E1CCF3 /* TestXcode_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAED28A3B70600E1CCF3 /* TestXcode_VC.swift */; };
@@ -367,6 +369,7 @@
 		AFDA1325287D0F1B0015BFC3 /* TestNaviVC_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDA1324287D0F1B0015BFC3 /* TestNaviVC_VC.swift */; };
 		AFDA1327287E6EE90015BFC3 /* 测试UIView的形变_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDA1326287E6EE90015BFC3 /* 测试UIView的形变_VC.swift */; };
 		AFDA1329287E9B760015BFC3 /* MyImageTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDA1328287E9B760015BFC3 /* MyImageTool.swift */; };
+		AFE55AD92902762700EC52AC /* TestMemory_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE55AD82902762700EC52AC /* TestMemory_VC.swift */; };
 		AFEF468C28B5D23100B3EA2D /* VerScroll_ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF468B28B5D23100B3EA2D /* VerScroll_ScrollView.swift */; };
 		AFEF468E28B5D2C400B3EA2D /* VerScroll_ScrollView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF468D28B5D2C400B3EA2D /* VerScroll_ScrollView2.swift */; };
 		AFEF469028B5F79B00B3EA2D /* 测试ScrollView手势交互_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF468F28B5F79B00B3EA2D /* 测试ScrollView手势交互_VC.swift */; };
@@ -710,6 +713,8 @@
 		AF2C735825539C60000AD7A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF2C735B25539C60000AD7A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF2C735D25539C60000AD7A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF2CF86B29029DCE00C9388E /* TestMemory_Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMemory_Person.swift; sourceTree = "<group>"; };
+		AF2CF86D29029DDB00C9388E /* TestMemory_Dog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMemory_Dog.swift; sourceTree = "<group>"; };
 		AF2DDAE828A349FF00E1CCF3 /* TestDictSet_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDictSet_VC.swift; sourceTree = "<group>"; };
 		AF2DDAEA28A34A3600E1CCF3 /* Dict_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dict_Model.swift; sourceTree = "<group>"; };
 		AF2DDAED28A3B70600E1CCF3 /* TestXcode_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestXcode_VC.swift; sourceTree = "<group>"; };
@@ -752,6 +757,7 @@
 		AFBCA8C42872DC4500AD51D1 /* TestClassStruct_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestClassStruct_VC.swift; sourceTree = "<group>"; };
 		AFBCA8C62874224800AD51D1 /* Point_HeapObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point_HeapObject.swift; sourceTree = "<group>"; };
 		AFBCA8C82874228A00AD51D1 /* Point_MetaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point_MetaData.swift; sourceTree = "<group>"; };
+		AFBEBB502902468A00A9E7AF /* ctchStaticLib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ctchStaticLib.swift; sourceTree = "<group>"; };
 		AFC1B3692899120B0050FC8F /* MyNavigation_NaviVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyNavigation_NaviVC.swift; path = "SwiftTest_App/VC相关的测试/导航栏VC/MyNavigation_NaviVC.swift"; sourceTree = SOURCE_ROOT; };
 		AFC1B36B2899168C0050FC8F /* MyNavigation_SubVC1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNavigation_SubVC1.swift; sourceTree = "<group>"; };
 		AFC1B36D289916A30050FC8F /* MyNavigation_SubVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNavigation_SubVC2.swift; sourceTree = "<group>"; };
@@ -774,6 +780,7 @@
 		AFDA1324287D0F1B0015BFC3 /* TestNaviVC_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNaviVC_VC.swift; sourceTree = "<group>"; };
 		AFDA1326287E6EE90015BFC3 /* 测试UIView的形变_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试UIView的形变_VC.swift"; sourceTree = "<group>"; };
 		AFDA1328287E9B760015BFC3 /* MyImageTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImageTool.swift; sourceTree = "<group>"; };
+		AFE55AD82902762700EC52AC /* TestMemory_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMemory_VC.swift; sourceTree = "<group>"; };
 		AFEF468B28B5D23100B3EA2D /* VerScroll_ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerScroll_ScrollView.swift; sourceTree = "<group>"; };
 		AFEF468D28B5D2C400B3EA2D /* VerScroll_ScrollView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerScroll_ScrollView2.swift; sourceTree = "<group>"; };
 		AFEF468F28B5F79B00B3EA2D /* 测试ScrollView手势交互_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试ScrollView手势交互_VC.swift"; sourceTree = "<group>"; };
@@ -2200,6 +2207,7 @@
 			isa = PBXGroup;
 			children = (
 				AF2C734E25539C54000AD7A9 /* SwiftTest_App */,
+				AFBEBB4F2902468A00A9E7AF /* ctchStaticLib */,
 				AF2C734D25539C54000AD7A9 /* Products */,
 				2D5BB9A349F695B6403FA174 /* Pods */,
 				7801BCFAA19C16690C210779 /* Frameworks */,
@@ -2283,6 +2291,9 @@
 			isa = PBXGroup;
 			children = (
 				AF2DDAED28A3B70600E1CCF3 /* TestXcode_VC.swift */,
+				AFE55AD82902762700EC52AC /* TestMemory_VC.swift */,
+				AF2CF86B29029DCE00C9388E /* TestMemory_Person.swift */,
+				AF2CF86D29029DDB00C9388E /* TestMemory_Dog.swift */,
 			);
 			path = "Xcode性能工具测试";
 			sourceTree = "<group>";
@@ -2372,6 +2383,14 @@
 			path = "测试类与结构体";
 			sourceTree = "<group>";
 		};
+		AFBEBB4F2902468A00A9E7AF /* ctchStaticLib */ = {
+			isa = PBXGroup;
+			children = (
+				AFBEBB502902468A00A9E7AF /* ctchStaticLib.swift */,
+			);
+			path = ctchStaticLib;
+			sourceTree = "<group>";
+		};
 		AFC1B373289A71540050FC8F /* 启动页广告测试 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2444,7 +2463,7 @@
 		AF2C734425539C54000AD7A9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1160;
+				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = com.mathew;
 				TargetAttributes = {
@@ -2706,6 +2725,7 @@
 				04587C7F27B50BD500824F69 /* Tabar_SubVC4.swift in Sources */,
 				AF9D5B2A28F6A9C1002A1FDD /* 本地推送_单例.swift in Sources */,
 				04870E3526E9AD280030B1D2 /* AAChartModel.swift in Sources */,
+				AF2CF86C29029DCE00C9388E /* TestMemory_Person.swift in Sources */,
 				AFD34EFA28937DC000C807A3 /* 轮播图Layout.swift in Sources */,
 				04A0CA4026A0027800ECAE1B /* JFZEndPlayView.swift in Sources */,
 				042036CA2757197500424E05 /* CollectionView的网格布局Layout.swift in Sources */,
@@ -2751,6 +2771,7 @@
 				04A0CA4226A0027800ECAE1B /* JFZFullScreenMaskView.swift in Sources */,
 				04A0CA5226A0027800ECAE1B /* JFZPlayerStorage.swift in Sources */,
 				04155831283DC569007FC2E8 /* Sort_People.swift in Sources */,
+				AFE55AD92902762700EC52AC /* TestMemory_VC.swift in Sources */,
 				0421E60326AAB2DD00C6A922 /* UITestLifeCycleVC.swift in Sources */,
 				04B76903280D3A730080102F /* 手势识别器之间的交互_VC.swift in Sources */,
 				AFD34EF62887DA9800C807A3 /* TestBounds_View.swift in Sources */,
@@ -2771,6 +2792,7 @@
 				04A0CA3F26A0027800ECAE1B /* JFZWithoutNetView.swift in Sources */,
 				04B76922281154980080102F /* OC中枚举的写法.m in Sources */,
 				04927013279E8FBB000A61FC /* 测试UIView的VC.swift in Sources */,
+				AF2CF86E29029DDB00C9388E /* TestMemory_Dog.swift in Sources */,
 				044FB587276735BE00479442 /* TextField的点击测试(键盘弹起)_View.swift in Sources */,
 				04330AC2284060B4007DF2D0 /* OCMainViewController.m in Sources */,
 				0477B8F1282CE4E700D6EB3A /* ScrollView导航栏内边距_VC.swift in Sources */,
@@ -2973,7 +2995,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -3031,7 +3053,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -3061,7 +3083,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ctch.SwiftTest-App1";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SwiftTest_App/Framework第三方库测试",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ctch.SwiftTest-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftTest_App/SwiftTest_App-Bridging-Header.h";
@@ -3076,8 +3103,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WGS3P7C8Z5;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = SwiftTest_App/resource/Info.plist;
@@ -3086,7 +3113,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ctch.swiftTest-App1";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SwiftTest_App/Framework第三方库测试",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ctch.swiftTest-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftTest_App/SwiftTest_App-Bridging-Header.h";

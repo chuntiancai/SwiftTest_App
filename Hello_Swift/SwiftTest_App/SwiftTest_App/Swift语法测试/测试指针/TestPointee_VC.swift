@@ -192,7 +192,7 @@ extension TestPointee_VC: UICollectionViewDataSource {
                 return "看看返回值"
             }
             print("withUnsafePointer的返回值：\(retStr)")
-            print(String(format: "指针指向的对象的地址：%p",person))
+            print(String(format: "指针指向的对象的地址：%p",person))//swift打印地址。
             
             //TODO: 修改指针绑定的类型，就是修改指针的类型。
             /**

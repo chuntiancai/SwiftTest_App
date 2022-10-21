@@ -14,7 +14,7 @@
         1.旧版本路径：/Users/用户名/Library/Application Support/Developer/Shared/Xcode/Plug-ins
         2.新版本路径：/Users/用户名/Library/Developer/Xcode/Plug-ins
  */
-
+import UIKit
 class TestXcode_VC: UIViewController {
     
     //MARK: 对外属性

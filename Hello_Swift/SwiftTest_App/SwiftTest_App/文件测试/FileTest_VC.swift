@@ -24,6 +24,7 @@ class FileTest_VC: UIViewController {
 
     ///UI组件
     private var baseCollView: UICollectionView!
+    var imgView = UIImageView()
     
     //MARK: 测试组件
     private var outStream:OutputStream? //文件输出流，记得关闭
@@ -128,8 +129,25 @@ extension FileTest_VC: UICollectionViewDataSource {
 
         
         case 2:
-            //TODO: 2、 
-            print("     (@@  ")
+            //TODO: 2、获取bundle中的文件。
+            /**
+             1、沙盒是表示整个app的存储空间，沙盒里的home目录和bunle是同一级别的文件夹。xocde工程程目录下的文件会存放在沙盒的bundle目录中。
+             2、这里面的图片可以拿得到路径。可以通过bundle来加载图片,也可以通过UIImage(named: "labi01.jpg")来加载
+             */
+            print("     (@@  2、获取bundle中的文件。")
+            self.view.addSubview(imgView)
+            imgView.snp.makeConstraints { make in
+                make.top.equalTo(baseCollView.snp.bottom).offset(40)
+                make.left.right.equalTo(20)
+                make.bottom.equalToSuperview().offset(-60)
+            }
+            let bundlePath = Bundle.main.bundlePath //主bundle
+            let labiBundlePath = Bundle.main.path(forResource: "labi", ofType: "bundle")    //自定义的bundle的路径
+            let labiBundle = Bundle.init(path: labiBundlePath!)//自定义的bundle
+            //获取bundle中的文件夹中的文件
+            let labi01Path = labiBundle?.path(forResource: "labixiaoxin01", ofType: "jpg", inDirectory: "labixiaoxinImage/labi01")
+            imgView.image = UIImage.init(contentsOfFile: labi01Path!)
+            print("bundle的路径:\(bundlePath)\n-- 自定义bundle:\(String(describing: labiBundle))")
         case 3:
             //TODO: 3、
             print("     (@@ ")

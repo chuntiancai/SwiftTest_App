@@ -17,6 +17,9 @@
     1、沙盒是表示整个app的存储空间，沙盒里的home目录和bunle是同一级别的文件夹。xocde工程程目录下的文件会存放在沙盒的bundle目录中。
     2、这里面的图片可以拿得到路径。可以通过bundle来加载图片,也可以通过UIImage(named: "labi01.jpg")来加载
     3、指向bundle里面图片的指针被销毁的话，xcassets里面的图片也会从内存中移除。没有缓存，大批量，或临时使用的图片，就可以用bundle资源文件来管理文件。
+ 
+ 方式3、直接放在工程目录下。
+    1、直接放在工程目录下，在app打包成api包的时候，图片会直接存放在包的根路径下，可以在 项目 -> product文件夹 -> xxx.app -> 显示包内容看。
  */
 
 class TestImageRestore_VC: UIViewController {

@@ -50,7 +50,6 @@ target 'SwiftNote_App' do
 end
 
 target 'SwiftBluetooth_App' do
-  +
   project 'SwiftBluetooth_App/SwiftBluetooth_App.xcodeproj'
 #  pod 'iOSDFULibrary'
   commonPods

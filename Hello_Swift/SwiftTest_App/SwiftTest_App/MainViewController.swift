@@ -70,9 +70,9 @@ extension MainViewController: UICollectionViewDataSource {
         print("MainViewController 点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            pushNext(viewController: TestAppJump_VC())
+            pushNext(viewController: TestMemory_VC())
         case 1:
-            pushNext(viewController: TestImageView_VC())
+            pushNext(viewController: FileTest_VC())
         case 2:
             self.navigationItem.backBarButtonItem = nil
             let storyBoard = UIStoryboard.init(name: "FSCalendarTest", bundle: nil)

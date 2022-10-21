@@ -4,7 +4,7 @@
 //
 //  Created by mathew on 2021/8/26.
 //
-// 这个是创建framework时自带的头文件，用于适配OC的
+// 这个是创建framework时自带的头文件，用于适配OC的。对外暴露的头文件。
 
 #import <Foundation/Foundation.h>
 
