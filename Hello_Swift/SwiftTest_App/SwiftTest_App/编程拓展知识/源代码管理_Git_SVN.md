@@ -6,8 +6,8 @@ GIT
 
 
 
-### GIT命令
-####  01. 创建代码库 & 配置个人信息
+# GIT命令
+##  01. 创建代码库 & 配置个人信息
     1>  创建代码仓库
     $ git init
     $ git init --bare   # 建立空白代码库(专门用于团队开发) 
@@ -28,7 +28,7 @@ GIT
     4>  查看当前所有配置
     $ git config -l
 
-####  02. 实际开发
+##  02. 实际开发
     1>  创建代码，开始开发
     $ touch main.c
     $ open main.c
@@ -60,7 +60,7 @@ GIT
 暂存区(staged)
 分支(HEAD)
 
-#### 03. 别名 & 日志
+## 03. 别名 & 日志
     $ git config alias.st status
     $ git config alias.ci "commit -m"
     
@@ -69,12 +69,14 @@ GIT
     $ git log    # 查看所有版本库日志
     $ git log 文件名   # 查看指定文件的版本库日志
     
+    $ git reflog    # 查看分支引用记录
+    
     # 配置带颜色的log别名
     git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
     
     提示：在git中，版本号是一个由SHA1生成的哈希值
 
-#### 04. 版本号，让我们在任意版本之间穿梭
+## 04. 版本号，让我们在任意版本之间穿梭
     
     $ git reset --hard HEAD     # 回到当前版本，放弃所有没有提交的修改
     $ git reset --hard HEAD^    # 回到上一个版本
@@ -89,19 +91,21 @@ GIT
     git push -f :强制上传到共享版本库
     git reset —hard HEAD^ :回到上⼀个版本(经理)
     
--------------------------------------------------------------------------
-#### 05、.gitignore 文件的设置
+
+## 05、.gitignore 文件的设置
     02、设置.gitignore 文件
     .gitignore 文件可以指定哪些文件不纳入版本库的管理
     参考网址：https://github.com/github/gitignore ，去网址下载文件，然后放到目录中，然后git add
     $ cd /Users/Desktop/git演练/经理/weibo  # 命令行中进入与.git同级的目录
     $ git add .gitignore    # 将.gitignore添加到代码库
 
-#### 06、分支管理 
+## 06、分支管理 
     
     $ git tag        # 查看当前标签
     $ git tag -a v1.0 -m 'Version 1.0'       # 在本地代码库给项目打上一个标签
     $ git push origin v1.0      # 将标签添推送到远程代码库中
+    
+    
     
     # 使用tag，就能够将项目快速切换到某一个中间状态，例如产品开发线上的某一个稳定版本
     
@@ -115,8 +119,38 @@ GIT
     切换分支：git checkout <name>或者git switch <name>
     创建+切换分支：git checkout -b <name>或者git switch -c <name>
     合并某分支到当前分支：git merge <name>
+    
+    ## #合并分支
+        $ git pull  # 取回远程主机某个分支的更新，再与本地的指定分支合并. 是git fetch后跟git merge FETCH_HEAD的缩写。
+        $ git pull <远程主机名> <远程分支名>:<本地分支名>
+        $ git fetch  #相当于是从远程获取最新版本到本地，不会自动合并
+        $ git merge 分支1 分支2    #git merge命令用于将两个或两个以上的开发历史加入(合并)一起。在当前分支的顶部，使它们合并。
+        
+        //远程拉取分支、合并的示例：
+        $ git fetch origin master   #首先从远程的origin的master主分支下载最新的版本到origin/master分支上
+        $ git log -p master..origin/master  #然后比较本地的master分支和origin/master分支的差别
+        $ git merge origin/master #最后进行合并
+        
+    ## #常用于处理合并冲突的命令
+        $ git rm text1.txt  #用于从工作区和索引中删除文件。 
+        $ git rm -r directory   # 删除文件夹。
+        $ git checkout text1.txt    #撤销对text1.txt的修改。
+        $ git reset  分支或提交   #用于复位或恢复更改,复位分支指针的位置。
+        
+        $ git reset [--hard|soft|mixed|merge|keep] [<commit>或HEAD]
+        //将当前的分支重设(reset)到指定的<commit>或者HEAD(默认，如果不显示指定<commit>，默认是HEAD，即最新的一次提交)，
+          并且根据[mode]有可能更新索引和工作目录。mode的取值可以是hard、soft、mixed、merged、keep。
+        //执行git reset时，git会把reset之前的HEAD放入.git/ORIG_HEAD文件中，命令行中使用ORIG_HEAD引用这个提交。
+        
+        //示例： 重置单独的一个文件 
+        $ git reset -- text1.txt                    #(1) 把文件frotz.c从索引中去除。
+        $ git commit -m "Commit files in index"     #(2) 把索引中的文件提交。
+        
+        
 
-#### 07、共享版本库、版本备份
+
+
+## 07、共享版本库、版本备份
     ⼆.共享版本库
     git服务器的搭建⾮常繁琐(linux)
     可以把代码托管到(Github/OSChina)
@@ -193,7 +227,7 @@ SVN
 
 
 
-### SVN命令
+# SVN命令
 svn checkout : 将服务器代码完整的下载到本地。
 svn commit : 将本地修改的内容,提交到服务器。
 svn update : 将服务器最新的代码下载带本地。
@@ -293,7 +327,7 @@ svn update : 将服务器最新的代码下载带本地。
             尽量提前半⼩时提交代码,5.00
 
 
-### SVN的目录结构：
+## SVN的目录结构：
     正规项目的SVN目录结构一般有3个文件夹：
         trunk：主干，当前开发项目的主目录
         branches：分支目录，添加非主线功能时使用，开发测试之后，可以合并到主干项目中
