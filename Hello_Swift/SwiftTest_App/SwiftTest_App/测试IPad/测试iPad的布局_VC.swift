@@ -10,10 +10,11 @@
 // MARK: - 笔记
 /**
     1、手工代码、Autoresizing、AutoLayout、UIStackView、SizeClass五种方案来布局IPad。
+    2、ipad的window大小取决于启动图片Brand Asset 的大小，所以最后还是用Launch screen来做启动页面，启动图片已经被丢弃了。
  
  */
 
-class TestIPadLayout_VC: UIViewController {
+class TestiPadLayout_VC: UIViewController {
     
     //MARK: 对外属性
     public var collDataArr = ["0、","1、","2、","3、","4、","5、","6、","7、","8、","9、","10、","11、","12、"]
@@ -27,7 +28,7 @@ class TestIPadLayout_VC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 199/255.0, green: 204/255.0, blue: 237/255.0, alpha: 1.0)
-        self.title = "测试IPad布局的VC"
+        self.title = "测试iPad布局的VC"
         setNavigationBarUI()
         setCollectionViewUI()
         initTestViewUI()
@@ -36,11 +37,11 @@ class TestIPadLayout_VC: UIViewController {
 
 
 //MARK: - 遵循数据源协议,UICollectionViewDataSource
-extension TestIPadLayout_VC: UICollectionViewDataSource {
+extension TestiPadLayout_VC: UICollectionViewDataSource {
     
     ///点击了cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("TestIPadLayout_VC 点击了第\(indexPath.row)个item")
+        print("TestiPadLayout_VC 点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
             //TODO: 0、
@@ -81,7 +82,7 @@ extension TestIPadLayout_VC: UICollectionViewDataSource {
     
 }
 //MARK: - 测试的方法
-extension TestIPadLayout_VC{
+extension TestiPadLayout_VC{
    
     //MARK: 0、
     func test0(){
@@ -92,7 +93,7 @@ extension TestIPadLayout_VC{
 
 
 //MARK: - 设置测试的UI
-extension TestIPadLayout_VC{
+extension TestiPadLayout_VC{
     
     /// 初始化你要测试的view
     func initTestViewUI(){
@@ -111,7 +112,7 @@ extension TestIPadLayout_VC{
 
 
 //MARK: - 设计UI
-extension TestIPadLayout_VC {
+extension TestiPadLayout_VC {
     
     /// 设置导航栏的UI
     private func setNavigationBarUI(){
@@ -146,7 +147,7 @@ extension TestIPadLayout_VC {
 }
 
 //MARK: - 遵循委托协议,UICollectionViewDelegate
-extension TestIPadLayout_VC: UICollectionViewDelegate {
+extension TestiPadLayout_VC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collDataArr.count

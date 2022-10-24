@@ -314,7 +314,8 @@
 		AF2CF86C29029DCE00C9388E /* TestMemory_Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2CF86B29029DCE00C9388E /* TestMemory_Person.swift */; };
 		AF2CF86E29029DDB00C9388E /* TestMemory_Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2CF86D29029DDB00C9388E /* TestMemory_Dog.swift */; };
 		AF2CF8712902A48B00C9388E /* TestContact_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2CF8702902A48B00C9388E /* TestContact_VC.swift */; };
-		AF2CF876290683A700C9388E /* 测试IPad的布局_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2CF875290683A700C9388E /* 测试IPad的布局_VC.swift */; };
+		AF2CF876290683A700C9388E /* 测试iPad的布局_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2CF875290683A700C9388E /* 测试iPad的布局_VC.swift */; };
+		AF2CF878290699AE00C9388E /* TestiPad_MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2CF877290699AE00C9388E /* TestiPad_MainVC.swift */; };
 		AF2DDAE928A349FF00E1CCF3 /* TestDictSet_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAE828A349FF00E1CCF3 /* TestDictSet_VC.swift */; };
 		AF2DDAEB28A34A3600E1CCF3 /* Dict_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAEA28A34A3600E1CCF3 /* Dict_Model.swift */; };
 		AF2DDAEE28A3B70600E1CCF3 /* TestXcode_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAED28A3B70600E1CCF3 /* TestXcode_VC.swift */; };
@@ -718,7 +719,8 @@
 		AF2CF86B29029DCE00C9388E /* TestMemory_Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMemory_Person.swift; sourceTree = "<group>"; };
 		AF2CF86D29029DDB00C9388E /* TestMemory_Dog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMemory_Dog.swift; sourceTree = "<group>"; };
 		AF2CF8702902A48B00C9388E /* TestContact_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestContact_VC.swift; sourceTree = "<group>"; };
-		AF2CF875290683A700C9388E /* 测试IPad的布局_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试IPad的布局_VC.swift"; sourceTree = "<group>"; };
+		AF2CF875290683A700C9388E /* 测试iPad的布局_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试iPad的布局_VC.swift"; sourceTree = "<group>"; };
+		AF2CF877290699AE00C9388E /* TestiPad_MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestiPad_MainVC.swift; sourceTree = "<group>"; };
 		AF2DDAE828A349FF00E1CCF3 /* TestDictSet_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDictSet_VC.swift; sourceTree = "<group>"; };
 		AF2DDAEA28A34A3600E1CCF3 /* Dict_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dict_Model.swift; sourceTree = "<group>"; };
 		AF2DDAED28A3B70600E1CCF3 /* TestXcode_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestXcode_VC.swift; sourceTree = "<group>"; };
@@ -2295,7 +2297,8 @@
 		AF2CF8742906839300C9388E /* 测试IPad */ = {
 			isa = PBXGroup;
 			children = (
-				AF2CF875290683A700C9388E /* 测试IPad的布局_VC.swift */,
+				AF2CF877290699AE00C9388E /* TestiPad_MainVC.swift */,
+				AF2CF875290683A700C9388E /* 测试iPad的布局_VC.swift */,
 			);
 			path = "测试IPad";
 			sourceTree = "<group>";
@@ -2645,6 +2648,7 @@
 				049EAFF726C25E9700903DA8 /* JFZ_AVAsset.swift in Sources */,
 				0421E5F326A9701600C6A922 /* JFZVideoControlPanelView.swift in Sources */,
 				AFEF469028B5F79B00B3EA2D /* 测试ScrollView手势交互_VC.swift in Sources */,
+				AF2CF878290699AE00C9388E /* TestiPad_MainVC.swift in Sources */,
 				AFEF469728BC519100B3EA2D /* 测试基本语法_VC.swift in Sources */,
 				042036CC27574C9400424E05 /* CollectionView的delegate.swift in Sources */,
 				0421E60526AAB30100C6A922 /* UITestConstranitVC.swift in Sources */,
@@ -2721,7 +2725,7 @@
 				AF2DDAF628A6381600E1CCF3 /* TestWindow_VC.swift in Sources */,
 				0414F98827BE24730037EE70 /* Quartz_Img_View.swift in Sources */,
 				AF88EE77289772AB00660C28 /* TestUIColor_VC.swift in Sources */,
-				AF2CF876290683A700C9388E /* 测试IPad的布局_VC.swift in Sources */,
+				AF2CF876290683A700C9388E /* 测试iPad的布局_VC.swift in Sources */,
 				04C2DC0726CE3F9500F9B3EE /* TestURLSession_VC.swift in Sources */,
 				0414F98F27BF951C0037EE70 /* TestCALayer3D形变_VC.swift in Sources */,
 				0492700827941D73000A61FC /* TestScrollView_deleagate.swift in Sources */,
