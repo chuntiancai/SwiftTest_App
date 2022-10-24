@@ -314,6 +314,7 @@
 		AF2CF86C29029DCE00C9388E /* TestMemory_Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2CF86B29029DCE00C9388E /* TestMemory_Person.swift */; };
 		AF2CF86E29029DDB00C9388E /* TestMemory_Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2CF86D29029DDB00C9388E /* TestMemory_Dog.swift */; };
 		AF2CF8712902A48B00C9388E /* TestContact_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2CF8702902A48B00C9388E /* TestContact_VC.swift */; };
+		AF2CF876290683A700C9388E /* 测试IPad的布局_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2CF875290683A700C9388E /* 测试IPad的布局_VC.swift */; };
 		AF2DDAE928A349FF00E1CCF3 /* TestDictSet_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAE828A349FF00E1CCF3 /* TestDictSet_VC.swift */; };
 		AF2DDAEB28A34A3600E1CCF3 /* Dict_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAEA28A34A3600E1CCF3 /* Dict_Model.swift */; };
 		AF2DDAEE28A3B70600E1CCF3 /* TestXcode_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAED28A3B70600E1CCF3 /* TestXcode_VC.swift */; };
@@ -717,6 +718,7 @@
 		AF2CF86B29029DCE00C9388E /* TestMemory_Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMemory_Person.swift; sourceTree = "<group>"; };
 		AF2CF86D29029DDB00C9388E /* TestMemory_Dog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMemory_Dog.swift; sourceTree = "<group>"; };
 		AF2CF8702902A48B00C9388E /* TestContact_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestContact_VC.swift; sourceTree = "<group>"; };
+		AF2CF875290683A700C9388E /* 测试IPad的布局_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试IPad的布局_VC.swift"; sourceTree = "<group>"; };
 		AF2DDAE828A349FF00E1CCF3 /* TestDictSet_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDictSet_VC.swift; sourceTree = "<group>"; };
 		AF2DDAEA28A34A3600E1CCF3 /* Dict_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dict_Model.swift; sourceTree = "<group>"; };
 		AF2DDAED28A3B70600E1CCF3 /* TestXcode_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestXcode_VC.swift; sourceTree = "<group>"; };
@@ -2228,6 +2230,7 @@
 		AF2C734E25539C54000AD7A9 /* SwiftTest_App */ = {
 			isa = PBXGroup;
 			children = (
+				AF2CF8742906839300C9388E /* 测试IPad */,
 				048DFE94281BC76000F210E8 /* 编程拓展知识 */,
 				0455059E27FFD09E00785F02 /* 自定义控件 */,
 				048608AC27350E89000F816E /* App环境(生命周期)相关的知识 */,
@@ -2287,6 +2290,14 @@
 				AF2CF8702902A48B00C9388E /* TestContact_VC.swift */,
 			);
 			path = "获取通讯录";
+			sourceTree = "<group>";
+		};
+		AF2CF8742906839300C9388E /* 测试IPad */ = {
+			isa = PBXGroup;
+			children = (
+				AF2CF875290683A700C9388E /* 测试IPad的布局_VC.swift */,
+			);
+			path = "测试IPad";
 			sourceTree = "<group>";
 		};
 		AF2DDAE728A349DE00E1CCF3 /* 测试字典、集合 */ = {
@@ -2710,6 +2721,7 @@
 				AF2DDAF628A6381600E1CCF3 /* TestWindow_VC.swift in Sources */,
 				0414F98827BE24730037EE70 /* Quartz_Img_View.swift in Sources */,
 				AF88EE77289772AB00660C28 /* TestUIColor_VC.swift in Sources */,
+				AF2CF876290683A700C9388E /* 测试IPad的布局_VC.swift in Sources */,
 				04C2DC0726CE3F9500F9B3EE /* TestURLSession_VC.swift in Sources */,
 				0414F98F27BF951C0037EE70 /* TestCALayer3D形变_VC.swift in Sources */,
 				0492700827941D73000A61FC /* TestScrollView_deleagate.swift in Sources */,

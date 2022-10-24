@@ -83,7 +83,7 @@ extension UITestConstranitVC: UICollectionViewDataSource {
         print("点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            //TODO: 添加一个view,测试snpkit的约束计算时机
+            //TODO: 0、添加一个view,测试snpkit的约束计算时机
             print("     (@@添加一个view")
             let curView = TestConstraintView()
             curView.tag = 12345
@@ -130,7 +130,8 @@ extension UITestConstranitVC: UICollectionViewDataSource {
             curView?.transform = CGAffineTransform.identity
             break
             
-        case 5://TODO: 5、手工纯代码写View的约束。
+        case 5:
+            //TODO: 5、手工纯代码写View的约束。
             print("     (@@手工纯代码写View的约束。")
             //创建一个红色的view添加到界面上，试验添加一个红色的view到界面上，距上220，距左各20，宽200，高100.
             redView.backgroundColor = .red
@@ -156,7 +157,8 @@ extension UITestConstranitVC: UICollectionViewDataSource {
             
             
             
-        case 6: //TODO: 6、测试view从父控件中移除时，约束会不会也被移除掉。答：不会被移除，但是参考的view会因为没有参考物，而被移除掉。(或者说默认是0)
+        case 6:
+            //TODO: 6、测试view从父控件中移除时，约束会不会也被移除掉。答：不会被移除，但是参考的view会因为没有参考物，而被移除掉。(或者说默认是0)
             print("     (@@测试view从父控件中移除时，约束会不会也被移除掉")
             if greenView.superview ==  nil{
                 greenView.backgroundColor = .green

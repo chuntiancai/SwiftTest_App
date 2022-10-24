@@ -80,8 +80,12 @@ extension TestGetPhoneSystemInfo_VC: UICollectionViewDataSource {
             print("tabBar的高度：\(tabVC.tabBar.frame)")
             
         case 2:
-            //TODO: 2、
-            print("     (@@ ")
+            //TODO: 2、获取手机的硬件信息。
+            /**
+                1、直接用UIDevice.current来获取，但是会涉及到很多C语言。
+                2、用第三方框架吧，或者去第三方框架里面看源码是怎么转换C语言的，关键词搜UIDevice。
+             */
+            print("     (@@ 2、获取手机的硬件信息。")
            
         case 3:
             //TODO: 3、获取本机的ip地址
