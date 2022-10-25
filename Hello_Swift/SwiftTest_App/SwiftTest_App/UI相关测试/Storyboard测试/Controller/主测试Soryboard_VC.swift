@@ -9,9 +9,24 @@
 // MARK: - 笔记
 /**
     1、 //通过代码加载storyboard，UIStoryboard初始化参数的name是storyboard再在工程目录中的名字，而不是在storyboard文件中的名字。
-        //storyboard文件中的名字就是Storyboard ID，这个表示这个Storyboard本身，也是Storyboard绑定的VC的ID，通过这个来初始化Storyboard的VC
+        //storyboard文件名字就是Storyboard本身，文件里面的Storyboard ID是Storyboard绑定的VC的ID，通过这个来初始化Storyboard的VC。
          let storyBoard = UIStoryboard.init(name: "mainStoryTest", bundle: nil)
          let mainStoryVC = storyBoard.instantiateViewController(withIdentifier: "TestStory_VC_ID")
+ 
+    2、storyboard搭建UI时的一些快捷键如下
+        2.1、 command + option + =    //修复frame，即刷新布局，根据约束布局frame预览。
+        2.2、command + shift + |     //可以添加当前View的垂直中线
+        2.3、command + shift + —        //可以添加当前View的水平中线
+        2.4、想要查看某个视图的层级关系： 按住shift，在想要查看的视图上右击
+        2.5、想要查看兄弟视图之间的距离：选中一个控件，按住option（alt）按键，想要查看与谁之间的距离，用鼠标去触碰那个控件即可。
+        2.6、按住control键除了可以生成属性和方法外，还可以生成约束。
+            （缺点：拖拽添加的约束有个缺点，就是月数值就是当前值， 添加过程中无法修改，如需要修改，需要添加后再选择修改）
+        2.7、右击出现的HUD，多个共存的方法：右击，显示出来后，点击顶部拖动，只要拖动了就可以长存屏幕
+        2.8、快速复制一个控件： ctrl + d
+        2.9、option + 鼠标拖拽   //可以复制一个一模一样属性的控件。
+        2.10、快速复制一个控件是Command+D
+
+
  
  */
 

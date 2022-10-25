@@ -8,8 +8,8 @@
 // 测试storyboard的主VC
 //MARK: - 笔记
 /**
-    1、 //通过代码加载storyboard，UIStoryboard初始化参数的name是storyboard再在工程目录中的名字，而不是在storyboard文件中的名字。
-       //storyboard文件中的名字就是Storyboard ID，这个表示这个Storyboard本身，也是Storyboard绑定的VC的ID，通过这个来初始化Storyboard的VC
+    1、 通过代码加载storyboard，UIStoryboard初始化参数的name是storyboard再在工程目录中的名字，而不是在storyboard文件中的名字。
+        //storyboard文件名字就是Storyboard本身，文件里面的Storyboard ID是Storyboard绑定的VC的ID，通过这个来初始化Storyboard的VC
             let storyBoard = UIStoryboard.init(name: "mainStoryTest", bundle: nil)
             let mainStoryVC = storyBoard.instantiateViewController(withIdentifier: "TestStory_VC_ID")
  

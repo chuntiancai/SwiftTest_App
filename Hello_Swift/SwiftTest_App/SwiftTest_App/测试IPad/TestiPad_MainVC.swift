@@ -27,7 +27,7 @@ class TestiPad_MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 199/255.0, green: 204/255.0, blue: 237/255.0, alpha: 1.0)
-        self.title = "测试iPad布局的主VC"
+        self.title = "测试iPad的主VC"
         setNavigationBarUI()
         setCollectionViewUI()
         initTestViewUI()
@@ -43,9 +43,11 @@ extension TestiPad_MainVC: UICollectionViewDataSource {
         print("TestiPad_MainVC 点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            //TODO: 0、
-            print("     (@@ 0、")
-            let _ = self.bgView.subviews.map { $0.removeFromSuperview() }
+            //TODO: 0、测试ipad的UI布局。
+            print("     (@@ 0、测试ipad的UI布局。")
+            let storyBoard = UIStoryboard.init(name: "TestiPadLayoutVC", bundle: nil)
+            let layoutVC = storyBoard.instantiateViewController(withIdentifier: "TestiPadLayoutVC_ID")
+            pushNext(viewController: layoutVC)
             
         case 1:
             //TODO: 1、
