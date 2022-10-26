@@ -1,66 +1,54 @@
 //
-//  TestWindow_VC.swift
+//  TestSpilt_SubVC1.swift
 //  SwiftTest_App
 //
-//  Created by mathew on 2022/8/12.
+//  Created by mathew on 2022/10/26.
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
-// 测试window的vc
+//测试SpiltVC的VC1
 // MARK: - 笔记
 /**
     1、
  
  */
 
-class TestWindow_VC: UIViewController {
+class TestSpilt_SubVC1: UIViewController {
     
     //MARK: 对外属性
     public var collDataArr = ["0、","1、","2、","3、","4、","5、","6、","7、","8、","9、","10、","11、","12、"]
 
     ///UI组件
     private var baseCollView: UICollectionView!
+    let bgView = UIView()   //测试的view可以放在这里面
     
     //MARK: 测试组件
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 199/255.0, green: 204/255.0, blue: 237/255.0, alpha: 1.0)
-        self.title = "测试window的VC"
-        
+        self.title = "测试Spilt_SubVC1"
         setNavigationBarUI()
         setCollectionViewUI()
         initTestViewUI()
     }
-    
-    
-    
 }
 
 
 //MARK: - 遵循数据源协议,UICollectionViewDataSource
-extension TestWindow_VC: UICollectionViewDataSource {
+extension TestSpilt_SubVC1: UICollectionViewDataSource {
     
     ///点击了cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("点击了第\(indexPath.row)个item")
+        print("TestSpilt_SubVC1 点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            //TODO: 0、测试切换window。
-            print("     (@@ 0、测试切换window。")
-            let app = UIApplication.shared.delegate as! AppDelegate
-            if app.firstWindow.rootViewController != nil {
-                app.firstWindow.makeKeyAndVisible()
-                return
-            }
-            app.firstWindow.rootViewController = TestWindow_SubVC()
-            app.firstWindow.makeKeyAndVisible()
+            //TODO: 0、
+            print("     (@@ 0、")
+            let _ = self.bgView.subviews.map { $0.removeFromSuperview() }
             
         case 1:
-            //TODO: 1、退出第二window。
-            print("     (@@ 1、退出第二window")
-            let app = UIApplication.shared.delegate as! AppDelegate
-            app.firstWindow.resignKey()
-            app.window?.makeKeyAndVisible()
+            //TODO: 1、
+            print("     (@@ 1、")
         case 2:
             //TODO: 2、
             print("     (@@ 2、")
@@ -84,7 +72,7 @@ extension TestWindow_VC: UICollectionViewDataSource {
         case 11:
             print("     (@@")
         case 12:
-            print("     (@@ 12、")
+            print("     (@@")
         default:
             break
         }
@@ -92,7 +80,7 @@ extension TestWindow_VC: UICollectionViewDataSource {
     
 }
 //MARK: - 测试的方法
-extension TestWindow_VC{
+extension TestSpilt_SubVC1{
    
     //MARK: 0、
     func test0(){
@@ -103,10 +91,18 @@ extension TestWindow_VC{
 
 
 //MARK: - 设置测试的UI
-extension TestWindow_VC{
+extension TestSpilt_SubVC1{
     
     /// 初始化你要测试的view
     func initTestViewUI(){
+        /// 内容背景View，测试的子view这里面
+        self.view.addSubview(bgView)
+        bgView.snp.makeConstraints { make in
+            make.top.equalTo(baseCollView.snp.bottom)
+            make.bottom.equalToSuperview()
+            make.width.equalToSuperview()
+            make.centerX.equalToSuperview()
+        }
         
     }
     
@@ -114,7 +110,7 @@ extension TestWindow_VC{
 
 
 //MARK: - 设计UI
-extension TestWindow_VC {
+extension TestSpilt_SubVC1 {
     
     /// 设置导航栏的UI
     private func setNavigationBarUI(){
@@ -149,7 +145,7 @@ extension TestWindow_VC {
 }
 
 //MARK: - 遵循委托协议,UICollectionViewDelegate
-extension TestWindow_VC: UICollectionViewDelegate {
+extension TestSpilt_SubVC1: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collDataArr.count
@@ -179,3 +175,4 @@ extension TestWindow_VC: UICollectionViewDelegate {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
+
