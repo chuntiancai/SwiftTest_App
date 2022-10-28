@@ -200,7 +200,7 @@ extension TestVoiceRecord_VC: UICollectionViewDataSource {
             let fileUrl:URL = URL(fileURLWithPath: "/Users/mathew/Desktop/ctchVoice.caf")
             let exist = FileManager.default.fileExists(atPath: fileUrl.path)
             
-            //3、创建文件。
+            //1、转换文件格式。
             if exist {
                 // 将 .caf 转 .mp3 格式
                 let mp3Path: String = LameTool.audio(toMP3: fileUrl.path, isDeleteSourchFile: false)
