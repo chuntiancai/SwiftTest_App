@@ -6,8 +6,11 @@
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
 // 测试音视频功能的VC
+//MARK: - 笔记
+/**
+    1、
+ */
 
-import UIKit
 import AVFoundation
 
 class TestVideoFunc_VC: UIViewController {

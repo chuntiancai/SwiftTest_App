@@ -149,8 +149,30 @@ extension FileTest_VC: UICollectionViewDataSource {
             imgView.image = UIImage.init(contentsOfFile: labi01Path!)
             print("bundle的路径:\(bundlePath)\n-- 自定义bundle:\(String(describing: labiBundle))")
         case 3:
-            //TODO: 3、
-            print("     (@@ ")
+            //TODO: 3、创建文件。
+            /**
+                1、在文档目录下新建ctchTest.txt文件, 当前电脑的路径：/Users/{电脑名}/Desktop/ctchTest.txt
+             */
+            print("     (@@ 创建文件。")
+            
+            //1、拼凑文件的url。
+//            let urlForDocument = FileManager.default.urls( for: .documentDirectory,in:.userDomainMask)
+//            let fileUrl:URL = urlForDocument.first!.appendingPathComponent("folder/ctchTest.txt")
+            
+            let fileUrl = URL(fileURLWithPath: "/Users/mathew/Desktop/ctchTest.txt")
+            print("文件URL: \(fileUrl) -- fileUrl.path:\(fileUrl.path)")
+            
+            //2、判断文件是否存在。
+            let exist = FileManager.default.fileExists(atPath: fileUrl.path)
+            
+            //3、创建文件。
+            if !exist {
+                let data = Data(base64Encoded:"ABCdefgh123456" ,options:.ignoreUnknownCharacters)
+                let createSuccess = FileManager.default.createFile(atPath: fileUrl.path,contents:data,attributes:nil)
+                print("文件创建结果: \(createSuccess)")
+            }
+        case 4:
+            print("     (@@")
         case 5:
             print("     (@@")
         case 6:
@@ -183,15 +205,6 @@ extension FileTest_VC{
     func test0(){
         
     }
-    //MARK: 1、
-    func test1(){
-        
-    }
-    //MARK: 2、
-    func test2(){
-        
-    }
-    
 }
 
 

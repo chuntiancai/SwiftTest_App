@@ -320,6 +320,9 @@
 		AF2CF87C29091B8800C9388E /* TestWindow_SubVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2CF87B29091B8800C9388E /* TestWindow_SubVC.swift */; };
 		AF2CF87E29091D9B00C9388E /* TestSpilt_SubVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2CF87D29091D9B00C9388E /* TestSpilt_SubVC1.swift */; };
 		AF2CF88029091DAD00C9388E /* TestSpilt_SubVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2CF87F29091DAD00C9388E /* TestSpilt_SubVC2.swift */; };
+		AF2CF883290A854B00C9388E /* 测试录音_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2CF882290A854B00C9388E /* 测试录音_VC.swift */; };
+		AF2CF885290BBC1F00C9388E /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2CF884290BBC1F00C9388E /* libmp3lame.a */; };
+		AF2CF889290BC58C00C9388E /* LameTool.m in Sources */ = {isa = PBXBuildFile; fileRef = AF2CF888290BC58C00C9388E /* LameTool.m */; };
 		AF2DDAE928A349FF00E1CCF3 /* TestDictSet_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAE828A349FF00E1CCF3 /* TestDictSet_VC.swift */; };
 		AF2DDAEB28A34A3600E1CCF3 /* Dict_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAEA28A34A3600E1CCF3 /* Dict_Model.swift */; };
 		AF2DDAEE28A3B70600E1CCF3 /* TestXcode_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAED28A3B70600E1CCF3 /* TestXcode_VC.swift */; };
@@ -729,6 +732,11 @@
 		AF2CF87B29091B8800C9388E /* TestWindow_SubVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestWindow_SubVC.swift; sourceTree = "<group>"; };
 		AF2CF87D29091D9B00C9388E /* TestSpilt_SubVC1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSpilt_SubVC1.swift; sourceTree = "<group>"; };
 		AF2CF87F29091DAD00C9388E /* TestSpilt_SubVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSpilt_SubVC2.swift; sourceTree = "<group>"; };
+		AF2CF882290A854B00C9388E /* 测试录音_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试录音_VC.swift"; sourceTree = "<group>"; };
+		AF2CF884290BBC1F00C9388E /* libmp3lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmp3lame.a; sourceTree = "<group>"; };
+		AF2CF886290BBC2500C9388E /* lame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
+		AF2CF887290BC58C00C9388E /* LameTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LameTool.h; sourceTree = "<group>"; };
+		AF2CF888290BC58C00C9388E /* LameTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LameTool.m; sourceTree = "<group>"; };
 		AF2DDAE828A349FF00E1CCF3 /* TestDictSet_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDictSet_VC.swift; sourceTree = "<group>"; };
 		AF2DDAEA28A34A3600E1CCF3 /* Dict_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dict_Model.swift; sourceTree = "<group>"; };
 		AF2DDAED28A3B70600E1CCF3 /* TestXcode_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestXcode_VC.swift; sourceTree = "<group>"; };
@@ -814,6 +822,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFD8A1BB286060290094554A /* Pods_SwiftTest_App.framework in Frameworks */,
+				AF2CF885290BBC1F00C9388E /* libmp3lame.a in Frameworks */,
 				AF402FF428D1D3B900407CEE /* MapKit.framework in Frameworks */,
 				04D9B53826DCDB4500289824 /* FrameworkMake_Test.framework in Frameworks */,
 			);
@@ -1851,6 +1860,7 @@
 			isa = PBXGroup;
 			children = (
 				049EAFF826C2630200903DA8 /* TestVideoFunc_VC.swift */,
+				AF2CF881290A853400C9388E /* 录音功能测试 */,
 				0465628E26D61F6F00D38F2D /* TestModuel测试模块 */,
 				0421E5FE26AAAF6400C6A922 /* 一些小技巧总结 */,
 				04A0CA0326A0024600ECAE1B /* 自己封装的播放器模块 */,
@@ -2313,6 +2323,18 @@
 				AF2CF87F29091DAD00C9388E /* TestSpilt_SubVC2.swift */,
 			);
 			path = "测试IPad";
+			sourceTree = "<group>";
+		};
+		AF2CF881290A853400C9388E /* 录音功能测试 */ = {
+			isa = PBXGroup;
+			children = (
+				AF2CF884290BBC1F00C9388E /* libmp3lame.a */,
+				AF2CF886290BBC2500C9388E /* lame.h */,
+				AF2CF882290A854B00C9388E /* 测试录音_VC.swift */,
+				AF2CF887290BC58C00C9388E /* LameTool.h */,
+				AF2CF888290BC58C00C9388E /* LameTool.m */,
+			);
+			path = "录音功能测试";
 			sourceTree = "<group>";
 		};
 		AF2DDAE728A349DE00E1CCF3 /* 测试字典、集合 */ = {
@@ -2807,6 +2829,7 @@
 				04CBB62C26CA48FF00436C0E /* TestTableView_Cell.swift in Sources */,
 				0465629126D61FFD00D38F2D /* JFZ_AVAssetRes_LoaderDelegateObject.swift in Sources */,
 				04CBB62926CA47AD00436C0E /* 测试TableView闭包循环引用_VC.swift in Sources */,
+				AF2CF889290BC58C00C9388E /* LameTool.m in Sources */,
 				0474C25927D8535200B95D7C /* TestEnum_VC.swift in Sources */,
 				04870E9526EF1E630030B1D2 /* TestUIButton_MainVC.swift in Sources */,
 				045505A528000DE000785F02 /* CTCDateTool.swift in Sources */,
@@ -2896,6 +2919,7 @@
 				0477B8EF282B8E7F00D6EB3A /* TestSafeInset_SubVC.swift in Sources */,
 				042036C4275641F600424E05 /* 测试UICollectionView流布局_VC.swift in Sources */,
 				04A0CA3A26A0027800ECAE1B /* JFZPlayerConstant.swift in Sources */,
+				AF2CF883290A854B00C9388E /* 测试录音_VC.swift in Sources */,
 				0415582B2834F5CB007FC2E8 /* TestTimer_VC.swift in Sources */,
 				0421E5DC26A829A800C6A922 /* CommanTestVC.swift in Sources */,
 				AFC1B388289CFD3C0050FC8F /* TestAd_VC.swift in Sources */,
@@ -3130,6 +3154,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SwiftTest_App/Framework第三方库测试",
+					"$(PROJECT_DIR)/SwiftTest_App/音视频播放/录音功能测试",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ctch.SwiftTest-App";
@@ -3160,6 +3185,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SwiftTest_App/Framework第三方库测试",
+					"$(PROJECT_DIR)/SwiftTest_App/音视频播放/录音功能测试",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ctch.swiftTest-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";

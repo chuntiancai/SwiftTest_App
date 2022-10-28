@@ -20,40 +20,8 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1.0)
         self.title = "测试App"
-        
-        //VC的安全边距偏移。
-        let vcAddInset = self.additionalSafeAreaInsets
-        
-        // UIView的完全边距
-        let viewSafeLayoutGuide = self.view.safeAreaLayoutGuide
-        let viewSafeInset = self.view.safeAreaInsets
-        
-        // UIWindow的安全边距
-        let app = UIApplication.shared.delegate as! AppDelegate
-        let windowSafeLayoutGuide = app.window!.safeAreaLayoutGuide
-        let windowSafeInset = app.window!.safeAreaInsets
-        
-        // screen
-        
-        let printStr = """
-                        在viewDidLoad方法里:
-                        vcAddInset-- :\(vcAddInset)
-                    
-                        vc.view:
-                        viewSafeLayoutGuide-- :\(viewSafeLayoutGuide)
-                        viewSafeInset--: \(viewSafeInset)
-                    
-                        window:
-                        windowSafeLayoutGuide--:\(windowSafeLayoutGuide)
-                        windowSafeInset--:\(windowSafeInset)"
-                    """
-//        print(printStr)
-        
         setNavigationBarUI()
         setCollectionViewUI()
-        
-        
-        
     }
 
 
@@ -70,15 +38,11 @@ extension MainViewController: UICollectionViewDataSource {
         print("MainViewController 点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            pushNext(viewController: TestiPad_MainVC())
+            pushNext(viewController: TestVoiceRecord_VC())
         case 1:
             pushNext(viewController: FileTest_VC())
         case 2:
-            self.navigationItem.backBarButtonItem = nil
-            let storyBoard = UIStoryboard.init(name: "FSCalendarTest", bundle: nil)
-            let mainStoryVC = storyBoard.instantiateViewController(withIdentifier: "FSCalendar_SB_VC_ID")
-            pushNext(viewController: mainStoryVC)
-            break
+            pushNext(viewController: TestImageView_VC())
         case 3:
             //TODO: 3、
             pushNext(viewController: TestSnapkit_VC())

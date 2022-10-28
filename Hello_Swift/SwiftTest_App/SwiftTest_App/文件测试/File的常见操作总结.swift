@@ -114,10 +114,12 @@ struct MyFileOperation{
          let manager = FileManager.default
          let urlForDocument = manager.urls( for: .documentDirectory,
                                             in:.userDomainMask)
-        let fileBaseUrl = urlForDocument[0]
+        let fileBaseUrl:URL = urlForDocument[0]
         
-        let file = fileBaseUrl.appendingPathComponent("createFile.txt")
+        let file:URL = fileBaseUrl.appendingPathComponent("createFile.txt")
         //let file = fileBaseUrl.appendingPathComponent("folder/new.txt")
+//        let fileUrl:URL = (FileManager.default.urls( for: .documentDirectory,
+//                                                     in:.userDomainMask).first!.appendingPathComponent("folder/new.txt"))
         print("文件URL: \(file)")
         let exist = manager.fileExists(atPath: file.path)
         if !exist {

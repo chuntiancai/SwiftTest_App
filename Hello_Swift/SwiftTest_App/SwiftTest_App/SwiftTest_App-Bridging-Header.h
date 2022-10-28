@@ -13,6 +13,7 @@
 
 //MARK: 暴露自己的OC头文件给swift
 #import "OCMainViewController.h"
+#import "LameTool.h"    //录音文件转mp3格式。
 
 //MARK: swift使用OC的库
 #import <CommonCrypto/CommonCrypto.h>
@@ -20,6 +21,7 @@
 #import "MJRefresh.h"
 #import <Bugly/Bugly.h>
 //#import "NSData+ImageContentType.h"
+
 
 #endif /* SwiftTest_App_Bridging_Header_h */
 

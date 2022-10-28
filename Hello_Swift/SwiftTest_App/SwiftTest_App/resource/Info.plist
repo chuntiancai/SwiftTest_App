@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>ctch，请求麦克风使用权限？</string>
 	<key>NSContactsUsageDescription</key>
 	<string>老六，请求访问你的通讯录？</string>
 	<key>CFBundleDevelopmentRegion</key>
