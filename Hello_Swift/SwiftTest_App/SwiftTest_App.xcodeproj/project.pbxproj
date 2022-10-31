@@ -242,7 +242,7 @@
 		049EAFF226C0CE6900903DA8 /* TestNSOperation_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049EAFF126C0CE6900903DA8 /* TestNSOperation_VC.swift */; };
 		049EAFF426C1067A00903DA8 /* subOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049EAFF326C1067A00903DA8 /* subOperation.swift */; };
 		049EAFF726C25E9700903DA8 /* JFZ_AVAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049EAFF626C25E9700903DA8 /* JFZ_AVAsset.swift */; };
-		049EAFF926C2630200903DA8 /* TestVideoFunc_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049EAFF826C2630200903DA8 /* TestVideoFunc_VC.swift */; };
+		049EAFF926C2630200903DA8 /* TestNetVideo_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049EAFF826C2630200903DA8 /* TestNetVideo_VC.swift */; };
 		04A0CA3926A0027800ECAE1B /* JFZAudiovisualCommonEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A0CA0C26A0027800ECAE1B /* JFZAudiovisualCommonEnum.swift */; };
 		04A0CA3A26A0027800ECAE1B /* JFZPlayerConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A0CA0D26A0027800ECAE1B /* JFZPlayerConstant.swift */; };
 		04A0CA3B26A0027800ECAE1B /* JFZPlayerCommonConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A0CA0E26A0027800ECAE1B /* JFZPlayerCommonConfig.swift */; };
@@ -323,6 +323,11 @@
 		AF2CF883290A854B00C9388E /* 测试录音_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2CF882290A854B00C9388E /* 测试录音_VC.swift */; };
 		AF2CF885290BBC1F00C9388E /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2CF884290BBC1F00C9388E /* libmp3lame.a */; };
 		AF2CF889290BC58C00C9388E /* LameTool.m in Sources */ = {isa = PBXBuildFile; fileRef = AF2CF888290BC58C00C9388E /* LameTool.m */; };
+		AF2CF88B290F737800C9388E /* TestLocalVideo_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2CF88A290F737800C9388E /* TestLocalVideo_VC.swift */; };
+		AF2CF891290F9E3A00C9388E /* m_17.wav in Resources */ = {isa = PBXBuildFile; fileRef = AF2CF890290F9E3900C9388E /* m_17.wav */; };
+		AF2CF893290F9E4A00C9388E /* win.aac in Resources */ = {isa = PBXBuildFile; fileRef = AF2CF892290F9E4A00C9388E /* win.aac */; };
+		AF2CF895290FA9DC00C9388E /* 简单爱.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AF2CF894290FA9DB00C9388E /* 简单爱.mp3 */; };
+		AF2CF898290FCCA400C9388E /* TestQRCode_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2CF897290FCCA400C9388E /* TestQRCode_VC.swift */; };
 		AF2DDAE928A349FF00E1CCF3 /* TestDictSet_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAE828A349FF00E1CCF3 /* TestDictSet_VC.swift */; };
 		AF2DDAEB28A34A3600E1CCF3 /* Dict_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAEA28A34A3600E1CCF3 /* Dict_Model.swift */; };
 		AF2DDAEE28A3B70600E1CCF3 /* TestXcode_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAED28A3B70600E1CCF3 /* TestXcode_VC.swift */; };
@@ -647,7 +652,7 @@
 		049EAFF126C0CE6900903DA8 /* TestNSOperation_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNSOperation_VC.swift; sourceTree = "<group>"; };
 		049EAFF326C1067A00903DA8 /* subOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subOperation.swift; sourceTree = "<group>"; };
 		049EAFF626C25E9700903DA8 /* JFZ_AVAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JFZ_AVAsset.swift; sourceTree = "<group>"; };
-		049EAFF826C2630200903DA8 /* TestVideoFunc_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVideoFunc_VC.swift; sourceTree = "<group>"; };
+		049EAFF826C2630200903DA8 /* TestNetVideo_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNetVideo_VC.swift; sourceTree = "<group>"; };
 		04A0CA0C26A0027800ECAE1B /* JFZAudiovisualCommonEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JFZAudiovisualCommonEnum.swift; sourceTree = "<group>"; };
 		04A0CA0D26A0027800ECAE1B /* JFZPlayerConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JFZPlayerConstant.swift; sourceTree = "<group>"; };
 		04A0CA0E26A0027800ECAE1B /* JFZPlayerCommonConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JFZPlayerCommonConfig.swift; sourceTree = "<group>"; };
@@ -737,6 +742,11 @@
 		AF2CF886290BBC2500C9388E /* lame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
 		AF2CF887290BC58C00C9388E /* LameTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LameTool.h; sourceTree = "<group>"; };
 		AF2CF888290BC58C00C9388E /* LameTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LameTool.m; sourceTree = "<group>"; };
+		AF2CF88A290F737800C9388E /* TestLocalVideo_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLocalVideo_VC.swift; sourceTree = "<group>"; };
+		AF2CF890290F9E3900C9388E /* m_17.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = m_17.wav; path = "../../../../../../../../../Downloads/08_实用技术/z源码/9-音频播放/代码/二. 音效播放/二. 音效播放/m_17.wav"; sourceTree = "<group>"; };
+		AF2CF892290F9E4A00C9388E /* win.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = win.aac; sourceTree = "<group>"; };
+		AF2CF894290FA9DB00C9388E /* 简单爱.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "简单爱.mp3"; sourceTree = "<group>"; };
+		AF2CF897290FCCA400C9388E /* TestQRCode_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestQRCode_VC.swift; sourceTree = "<group>"; };
 		AF2DDAE828A349FF00E1CCF3 /* TestDictSet_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDictSet_VC.swift; sourceTree = "<group>"; };
 		AF2DDAEA28A34A3600E1CCF3 /* Dict_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dict_Model.swift; sourceTree = "<group>"; };
 		AF2DDAED28A3B70600E1CCF3 /* TestXcode_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestXcode_VC.swift; sourceTree = "<group>"; };
@@ -1859,12 +1869,14 @@
 		04A0CA0226A0022000ECAE1B /* 音视频播放 */ = {
 			isa = PBXGroup;
 			children = (
-				049EAFF826C2630200903DA8 /* TestVideoFunc_VC.swift */,
+				049EAFF826C2630200903DA8 /* TestNetVideo_VC.swift */,
+				AF2CF88A290F737800C9388E /* TestLocalVideo_VC.swift */,
 				AF2CF881290A853400C9388E /* 录音功能测试 */,
 				0465628E26D61F6F00D38F2D /* TestModuel测试模块 */,
 				0421E5FE26AAAF6400C6A922 /* 一些小技巧总结 */,
 				04A0CA0326A0024600ECAE1B /* 自己封装的播放器模块 */,
 				0421E5F726A971E400C6A922 /* 参考的demo */,
+				AF2CF88C290F747F00C9388E /* 音视频资源 */,
 			);
 			path = "音视频播放";
 			sourceTree = "<group>";
@@ -2069,6 +2081,7 @@
 				04B769272814E2B20080102F /* TestHTTPS_VC.swift */,
 				04CBB62F26CBA1F200436C0E /* 测试URLSession */,
 				04B7692B2817DFC90080102F /* 测试网络文件下载上传 */,
+				AF2CF896290FCBD700C9388E /* 二维码测试 */,
 			);
 			path = "网络测试";
 			sourceTree = "<group>";
@@ -2337,6 +2350,24 @@
 			path = "录音功能测试";
 			sourceTree = "<group>";
 		};
+		AF2CF88C290F747F00C9388E /* 音视频资源 */ = {
+			isa = PBXGroup;
+			children = (
+				AF2CF894290FA9DB00C9388E /* 简单爱.mp3 */,
+				AF2CF892290F9E4A00C9388E /* win.aac */,
+				AF2CF890290F9E3900C9388E /* m_17.wav */,
+			);
+			path = "音视频资源";
+			sourceTree = "<group>";
+		};
+		AF2CF896290FCBD700C9388E /* 二维码测试 */ = {
+			isa = PBXGroup;
+			children = (
+				AF2CF897290FCCA400C9388E /* TestQRCode_VC.swift */,
+			);
+			path = "二维码测试";
+			sourceTree = "<group>";
+		};
 		AF2DDAE728A349DE00E1CCF3 /* 测试字典、集合 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2570,8 +2601,10 @@
 				049270102796CCC4000A61FC /* TestTableView.storyboard in Resources */,
 				041CBC53278D666800AF9B05 /* NamePlistFile.plist in Resources */,
 				04330AB7283F7E34007DF2D0 /* 面试总结.md in Resources */,
+				AF2CF895290FA9DC00C9388E /* 简单爱.mp3 in Resources */,
 				04330AB9283F7E34007DF2D0 /* 10、协议.md in Resources */,
 				04330AB5283F7E34007DF2D0 /* 7、继承.md in Resources */,
+				AF2CF891290F9E3A00C9388E /* m_17.wav in Resources */,
 				041CBC3F2788206500AF9B05 /* labi003.jpg in Resources */,
 				04330ABB283F7E34007DF2D0 /* 5、属性(inout).md in Resources */,
 				AF824279287534EA002311AF /* OCRuntimeStatus.plist in Resources */,
@@ -2587,6 +2620,7 @@
 				04330AB1283F7E34007DF2D0 /* 2、枚举,可选项.md in Resources */,
 				041A2E2A279405A500F9CABF /* TestScrollView.xib in Resources */,
 				0492700C27956C9C000A61FC /* Test_UIConstraint.storyboard in Resources */,
+				AF2CF893290F9E4A00C9388E /* win.aac in Resources */,
 				04330AB3283F7E34007DF2D0 /* 11、Error,泛型,关联类型.md in Resources */,
 				04330ABD283F7E34007DF2D0 /* 4、闭包的本质.md in Resources */,
 				042036B427479CC000424E05 /* flagItem.plist in Resources */,
@@ -2843,7 +2877,7 @@
 				AFD34EF62887DA9800C807A3 /* TestBounds_View.swift in Sources */,
 				AFD34EF02887D20100C807A3 /* TestUIPageControl_VC.swift in Sources */,
 				04870E4A26E9AD280030B1D2 /* AADataLabels.swift in Sources */,
-				049EAFF926C2630200903DA8 /* TestVideoFunc_VC.swift in Sources */,
+				049EAFF926C2630200903DA8 /* TestNetVideo_VC.swift in Sources */,
 				048608A72733D25C000F816E /* 测试view的阴影.swift in Sources */,
 				0474C24927CE0E8500B95D7C /* TestCALayer_Layer.swift in Sources */,
 				04B76909280E4E010080102F /* FSCalendar_SB_VC.swift in Sources */,
@@ -2940,6 +2974,7 @@
 				0477B8ED282B8BC500D6EB3A /* 测试安全内边距VC.swift in Sources */,
 				AFC1B370289A548B0050FC8F /* MyNaviTool.swift in Sources */,
 				0455059D27FDA9D900785F02 /* 测试TableView的布局约束.swift in Sources */,
+				AF2CF88B290F737800C9388E /* TestLocalVideo_VC.swift in Sources */,
 				04A0CA3B26A0027800ECAE1B /* JFZPlayerCommonConfig.swift in Sources */,
 				041A2E282794041000F9CABF /* Test_ScorllView.swift in Sources */,
 				04C7EA362840AAB500685624 /* TestRumtime_VC.m in Sources */,
@@ -2952,6 +2987,7 @@
 				04A0CA4C26A0027800ECAE1B /* JFZMediaCacher.swift in Sources */,
 				04B76905280D64F20080102F /* TestFSCalendar_View.swift in Sources */,
 				049EAFEF26BA9B8B00903DA8 /* TouchDeliver_BtnBgView.swift in Sources */,
+				AF2CF898290FCCA400C9388E /* TestQRCode_VC.swift in Sources */,
 				045505AD2804062C00785F02 /* 测试日历库FSCalendar_VC.swift in Sources */,
 				AFDA1327287E6EE90015BFC3 /* 测试UIView的形变_VC.swift in Sources */,
 				0474C24327CE08A300B95D7C /* TestImgInvert_View.swift in Sources */,

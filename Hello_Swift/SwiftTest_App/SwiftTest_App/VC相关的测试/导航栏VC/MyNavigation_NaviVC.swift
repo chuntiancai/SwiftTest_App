@@ -74,6 +74,8 @@ class MyNavigation_NaviVC: UINavigationController {
         /**
             1、Appearance属性影响的是整个navigationBar的类，而不是实例，所以是一个全局的属性。
             2、standardAppearance是普通的外观管理，scrollEdgeAppearance是当导航子vc里有scrollview时的外观管理。
+                当scrollEdgeAppearance = nil时 ，如果当前界面中使用了 ScrollView ，当 ScrollView 向上滚动时，
+                scrollEdgeAppearance 会默认使用 standardAppearance，此时的透明可能就无效。
          */
         if #available(iOS 13.0, *) {
             print("导航栏bar的standardAppearance：\(self.navigationBar.standardAppearance)")

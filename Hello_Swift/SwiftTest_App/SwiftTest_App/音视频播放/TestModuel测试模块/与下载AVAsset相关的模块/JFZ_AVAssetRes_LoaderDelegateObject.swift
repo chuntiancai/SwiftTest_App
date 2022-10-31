@@ -5,9 +5,23 @@
 //  Created by mathew on 2021/8/25.
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
-// 用于遵循下载视频源的代理协议 的代理对象，拦截AVAsset的下载请求,AVAssetResourceLoaderDelegate
-// 采取将AVAssetResourceLoadingRequest作为参数传递给JFZ_AVAssetLoaderUrlSession的方式去下载
+// AVAsset下载请求的AVAssetResourceLoaderDelegate
+//MARK: - 笔记
+/**
+    1、用于遵循下载视频源的代理协议 的代理对象，拦截AVAsset下载的网络请求,AVAssetResourceLoaderDelegate
+       采取将AVAssetResourceLoadingRequest作为参数传递给JFZ_AVAssetLoaderUrlSession的方式去下载。
+    
+    2、想要回调AVAssetResourceLoaderDelegate协议的方法,则需要用自定义的URLScheme,当delegate识别不了url，就会去回调代理方法，让程序员去处理。
+       例如：把源URL的http://或者https://替换成xxxx://， 否则不会回调。
+    
+    3、保存代理方法 resourceLoader(_ resourceLoader: , loadingRequest: ) -> Bool 中的loadingRequest参数。
+       可以用一个成员变量来强引用保存，然后再次调用这个loadingRequest的finishLoading方法，来停止下载数据。
+       调用这个loadingRequest的finishLoading方法会再次再次回调起当前这个代理方法，并且参数是你修改后的loadingRequest。
+ 
+    4、手动调用代理回传的loadingRequest的finishLoading方法，会再次调用相应的代理完成方法。
+  
 
+ */
 import AVFoundation
 
 class JFZ_AVAssetResLoaderDelegateObject: NSObject {
@@ -35,7 +49,12 @@ class JFZ_AVAssetResLoaderDelegateObject: NSObject {
 extension JFZ_AVAssetResLoaderDelegateObject:AVAssetResourceLoaderDelegate{
     
     
-    //MARK: ##shouldWaitForLoadingOfRequestedResourcet方法，表示代理类是否可以处理该请求，这里需要返回True表示可以处理该请求， 然后在这里保存所有发出的请求，然后发出我们自己构造的NSUrlRequest：
+    //MARK: 代理对象是否可以处理该请求，一般是在这里处理自定义url。
+    /**
+        1、我们可以在这里处理我们自定义的网络请求前缀(url scheme)，替换成真正的网络请求，例如把 xxx:// 替换成 http://。
+        2、处理自定义：保存参数loadingRequest，构造真正的NSUrlRequest：,并且发出真正的url请求去请求数据。
+        4、调用当前参数loadingRequest的finishLoading()方法，会再次回调当前代理方法。
+     */
     func resourceLoader(_ resourceLoader: AVAssetResourceLoader, shouldWaitForLoadingOfRequestedResource loadingRequest: AVAssetResourceLoadingRequest) -> Bool{
         print("\n -- ©Loader© AVAssetResourceLoaderDelegate的 shouldWaitForLoadingOfRequestedResource 方法")
         curLoadingRequest = loadingRequest  //保存loader的参数
@@ -45,7 +64,7 @@ extension JFZ_AVAssetResLoaderDelegateObject:AVAssetResourceLoaderDelegate{
             fatalError("        获取自定义的url失败")
         }
         let realReqUrl = URL.init(string: customUrl.absoluteString.replacingOccurrences(of: "jfz_http", with: "http"))
-        var realRequest = URLRequest.init(url: realReqUrl!)
+        let realRequest = URLRequest.init(url: realReqUrl!)
         //        realRequest.setValue("bytes=0-1", forHTTPHeaderField: "Range")
         let task = URLSession.shared.dataTask(with: realRequest){ url, response, error in
             if let _ = response {
@@ -85,7 +104,7 @@ extension JFZ_AVAssetResLoaderDelegateObject:AVAssetResourceLoaderDelegate{
     }
     
     func resourceLoader(_ resourceLoader: AVAssetResourceLoader, shouldWaitForRenewalOfRequestedResource renewalRequest: AVAssetResourceRenewalRequest) -> Bool{
-        print("©Loader© AVAssetResourceLoaderDelegate的 shouldWaitForRenewalOfRequestedResource 方法")
+        print("©Loader© AVAssetResourceLoaderDelegate的 \(#function) 方法")
         return false
     }
     
@@ -97,9 +116,9 @@ extension JFZ_AVAssetResLoaderDelegateObject:AVAssetResourceLoaderDelegate{
      The loading request that has been cancelled.
      @discussion    Previously issued loading requests can be cancelled when data from the resource is no longer required or when a loading request is superseded by new requests for data from the same resource. For example, if to complete a seek operation it becomes necessary to load a range of bytes that's different from a range previously requested, the prior request may be cancelled while the delegate is still handling it.
      */
-    //MARK: ##didCancel loadingRequest方法，表示AVAssetResourceLoader放弃了本次请求，需要把该请求从我们保存的原始请求列表里移除。
+    //MARK: AVAssetResourceLoader取消了本次请求，需要把该请求从我们保存的原始请求列表里移除。
     func resourceLoader(_ resourceLoader: AVAssetResourceLoader, didCancel loadingRequest: AVAssetResourceLoadingRequest){
-        print("©Loader© AVAssetResourceLoaderDelegate的 didCancel loadingReques 方法")
+        print("©Loader© AVAssetResourceLoaderDelegate的 \(#function) 方法")
         
     }
     
@@ -116,7 +135,7 @@ extension JFZ_AVAssetResLoaderDelegateObject:AVAssetResourceLoaderDelegate{
      If the result is YES, the resource loader expects you to send an appropriate response, either subsequently or immediately, to the NSURLAuthenticationChallenge's sender, i.e. [authenticationChallenge sender], via use of one of the messages defined in the NSURLAuthenticationChallengeSender protocol (see NSAuthenticationChallenge.h). If you intend to respond to the authentication challenge after your handling of -resourceLoader:shouldWaitForResponseToAuthenticationChallenge: returns, you must retain the instance of NSURLAuthenticationChallenge until after your response has been made.
      */
     func resourceLoader(_ resourceLoader: AVAssetResourceLoader, shouldWaitForResponseTo authenticationChallenge: URLAuthenticationChallenge) -> Bool{
-        print("©Loader© AVAssetResourceLoaderDelegate的 shouldWaitForResponseTo authenticationChallenge 方法")
+        print("©Loader© AVAssetResourceLoaderDelegate的 \(#function) 方法")
         return false
     }
     
@@ -128,14 +147,8 @@ extension JFZ_AVAssetResLoaderDelegateObject:AVAssetResourceLoaderDelegate{
      The authentication challenge that has been cancelled.
      */
     func resourceLoader(_ resourceLoader: AVAssetResourceLoader, didCancel authenticationChallenge: URLAuthenticationChallenge){
-        print("©Loader© AVAssetResourceLoaderDelegate的 didCancel authenticationChallenge 方法")
+        print("©Loader© AVAssetResourceLoaderDelegate的 \(#function) 方法")
         
     }
 }
 
-//MARK: - 笔记
-/**
-    1、手动实现AVAssetResourceLoaderDelegate协议需要URL是自定义的URLScheme,只需要把源URL的http://或者https://替换成xxxx://， 然后再实现AVAssetResourceLoaderDelegate协议函数才可以生效，否则不会生效。
-    2、保存func resourceLoader(_ resourceLoader: AVAssetResourceLoader, shouldWaitForLoadingOfRequestedResource loadingRequest: AVAssetResourceLoadingRequest) -> Bool；代理方法中的loadingRequest参数，可以用一个成员变量来强引用保存，然后再次调用这个loadingRequest的finishLoading方法 ，可以再次回调起这个代理方法，并且参数是你修改后的loadingRequest？
- 
- */

@@ -57,9 +57,7 @@
              把fat-lame 里面的 lame.h 与 libmp3lame.a拖入到xcode的工程目录里面。
                 xcode会自动把libmp3lame.a添加到 project -> target -> framework,libraries 里，或者你手动添加。
  
-        4.8、写一个工具了，用于封装lame框架里面的api，由于lame方法内部多以 C 语言为主，用 Swift 语言写的时候有些问题，此处仍以 OC 文件。
- 
-        
+        4.8、写一个工具类，用于封装lame框架里面的api，由于lame方法内部多以 C 语言为主，用 Swift 语言写的时候有些问题，此处仍以 OC 文件。
  
 
  */

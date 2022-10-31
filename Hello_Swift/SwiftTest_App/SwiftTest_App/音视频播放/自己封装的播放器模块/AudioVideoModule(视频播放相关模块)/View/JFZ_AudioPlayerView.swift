@@ -7,7 +7,6 @@
 //
 // 音频播放器的view，在这里封装AVPalyer处理音频源。
 
-import UIKit
 import AVFoundation
 
 class JFZ_AudioPlayerView : UIView {
