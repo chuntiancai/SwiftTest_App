@@ -115,7 +115,7 @@ extension TestQuartz2D_VC: UICollectionViewDataSource {
             print("     (@@ 截屏")
             getScreenShot()
         case 7:
-            //TODO: 7、区域截屏
+            //TODO: 7、区域截屏，截图
             print("     (@@ 区域截屏")
             getPartScreenShot()
         case 8:

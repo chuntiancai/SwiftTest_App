@@ -183,7 +183,14 @@ extension UITestConstranitVC: UICollectionViewDataSource {
             print("     (@@从父控件中移除带有约束的greenView")
             greenView.removeFromSuperview()
         case 8:
-            //TODO: 8、setNeedsLayout方法与layoutIfNeeded方法的区别。
+            //TODO: 8、setNeedsLayout方法与layoutIfNeeded方法的区别,实现约束的动画效果.
+            /**
+                1、snpkit动画，需要在动画block里面调用layoutIfNeeded方法，layoutIfNeeded方法是立马更新约束的数值，不是更新布局。
+                    注意：如果要snpkit动画效果，那么记得snpkit需要调用layoutIfNeeded()方法后，它的约束才有值。
+                         所以snpkit没有动画的一个原因很可能是你动画block之前，snpkit没有值。
+                         所以在动画之前，snpkit需要调用layoutIfNeeded()方法，来确保snpkit有值了。
+                2、setNeedsLayout()方法是下一UI周期采取更新约束的数值。
+             */
             print("     (@@实现约束的动画效果")
             widthConstraint.constant = 20
             UIView.animate(withDuration: 2) {

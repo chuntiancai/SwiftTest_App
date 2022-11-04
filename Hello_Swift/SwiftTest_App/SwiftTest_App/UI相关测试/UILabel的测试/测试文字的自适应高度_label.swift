@@ -75,7 +75,7 @@ extension TestAdaptSize_Label{
 // MARK: - 笔记
 /**
     1、调用layoutIfNeeded()方法，立马更新布局约束，不等下一个周期里面更新UI，这和直接设置frame的效果是一样的。
-    2、调用setNeedsLayout()方法，则表示当前修改的约束还没应用到frame上，也就是frame的值还是之前的，要等到下一个UI周期才会应用到frame上。在layoutSubview时更新？
+    2、调用setNeedsLayout()方法，则表示当前修改的约束还没应用到frame上，也就是frame的值还是之前的， 要等到下一个UI周期才会应用到frame上。在layoutSubview时更新？
     3、调用sizeToFit()方法，只针对特定的View起作用，例如label一开始你没有设置frame，然后就添加到view上去了，然后你这时候调用label的sizeToFit()方法， 就可以计算出这个label的位置和尺寸了，这个方法只是为没有设置frame的view计算最适合的尺寸，然后放到位置上，没什么卵用。
     
     5、intrinsicContentSize属性，只与Label的font有关，与其他因素无关，因为它的定义就是去掉所有其他影响(frame,bounds)时，的自然尺寸是多少。
