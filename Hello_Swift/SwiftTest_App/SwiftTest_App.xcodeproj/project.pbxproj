@@ -341,6 +341,9 @@
 		AF3557BB286AF145009B291C /* Point_Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3557BA286AF145009B291C /* Point_Person.swift */; };
 		AF402FF228D1CC6A00407CEE /* TestMap_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF402FF128D1CC6A00407CEE /* TestMap_VC.swift */; };
 		AF402FF428D1D3B900407CEE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF402FF328D1D3B900407CEE /* MapKit.framework */; };
+		AF549D762918EA54001311A1 /* TestSqlite_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF549D752918EA54001311A1 /* TestSqlite_VC.swift */; };
+		AF549D7929190073001311A1 /* Sqlite_Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF549D7829190073001311A1 /* Sqlite_Student.swift */; };
+		AF549D7B291900DA001311A1 /* SqliteTestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF549D7A291900DA001311A1 /* SqliteTestTool.swift */; };
 		AF688FB728ACBDE0005C619C /* Table_RefreshHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF688FB628ACBDE0005C619C /* Table_RefreshHeader.swift */; };
 		AF72956A28D05AC50035BF59 /* TestLanguageLocalize_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF72956928D05AC50035BF59 /* TestLanguageLocalize_VC.swift */; };
 		AF72956E28D05E900035BF59 /* TestLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AF72957028D05E900035BF59 /* TestLocalizable.strings */; };
@@ -761,6 +764,10 @@
 		AF3557BA286AF145009B291C /* Point_Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point_Person.swift; sourceTree = "<group>"; };
 		AF402FF128D1CC6A00407CEE /* TestMap_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMap_VC.swift; sourceTree = "<group>"; };
 		AF402FF328D1D3B900407CEE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		AF549D752918EA54001311A1 /* TestSqlite_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSqlite_VC.swift; sourceTree = "<group>"; };
+		AF549D772918FB63001311A1 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		AF549D7829190073001311A1 /* Sqlite_Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sqlite_Student.swift; sourceTree = "<group>"; };
+		AF549D7A291900DA001311A1 /* SqliteTestTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SqliteTestTool.swift; sourceTree = "<group>"; };
 		AF688FB628ACBDE0005C619C /* Table_RefreshHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table_RefreshHeader.swift; sourceTree = "<group>"; };
 		AF72956928D05AC50035BF59 /* TestLanguageLocalize_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLanguageLocalize_VC.swift; sourceTree = "<group>"; };
 		AF72956D28D05E570035BF59 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -2206,6 +2213,7 @@
 				651C713A2609E3CA0066C13B /* File的常见操作总结.swift */,
 				651C713B2609E3CA0066C13B /* File的理解.swift */,
 				651C713C2609E3CA0066C13B /* FileManager的使用.swift */,
+				AF549D742918EA35001311A1 /* 测试数据库 */,
 				042648ED27F445AB0034FF51 /* NSCache测试 */,
 				04587C7027B4E40500824F69 /* 归档(序列化对象)测试 */,
 				04587C6D27B4BB9700824F69 /* UserDefault测试 */,
@@ -2226,6 +2234,7 @@
 		7801BCFAA19C16690C210779 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AF549D772918FB63001311A1 /* libsqlite3.0.tbd */,
 				AF402FF328D1D3B900407CEE /* MapKit.framework */,
 				04D9B53726DCDB4500289824 /* FrameworkMake_Test.framework */,
 				04D9B50026D76F0F00289824 /* FrameworkMake_Test.framework */,
@@ -2411,6 +2420,16 @@
 				AF79AEC628E17E9B003D86B7 /* 地图的大头针_Annotation.swift */,
 			);
 			path = "地图导航测试";
+			sourceTree = "<group>";
+		};
+		AF549D742918EA35001311A1 /* 测试数据库 */ = {
+			isa = PBXGroup;
+			children = (
+				AF549D752918EA54001311A1 /* TestSqlite_VC.swift */,
+				AF549D7829190073001311A1 /* Sqlite_Student.swift */,
+				AF549D7A291900DA001311A1 /* SqliteTestTool.swift */,
+			);
+			path = "测试数据库";
 			sourceTree = "<group>";
 		};
 		AF72956828D05A700035BF59 /* 语言文字本地化 */ = {
@@ -2761,6 +2780,7 @@
 				04587C8927B643D600824F69 /* DragTouch_View.swift in Sources */,
 				04870E4226E9AD280030B1D2 /* AALabels.swift in Sources */,
 				042648D827F2A9F60034FF51 /* TestSingleton_VC.swift in Sources */,
+				AF549D7929190073001311A1 /* Sqlite_Student.swift in Sources */,
 				0414F98027BBB1010037EE70 /* TestQuartz2D绘图_VC.swift in Sources */,
 				EB645E3F26A449AE00773A98 /* tempView.swift in Sources */,
 				651C713F2609E3CA0066C13B /* FileManager的使用.swift in Sources */,
@@ -2842,6 +2862,7 @@
 				041A2E1F27901E5400F9CABF /* KVC_Person.swift in Sources */,
 				049EAFDE26B3E31B00903DA8 /* TestRunloopView.swift in Sources */,
 				04870E7926EB004F0030B1D2 /* SectionTableView_Cell.swift in Sources */,
+				AF549D762918EA54001311A1 /* TestSqlite_VC.swift in Sources */,
 				04870E3626E9AD280030B1D2 /* AAOptions.swift in Sources */,
 				0474C24C27CE165900B95D7C /* 粒子效果_View.swift in Sources */,
 				042036BA274B9C6300424E05 /* 测试Textfiled键盘的model.swift in Sources */,
@@ -2883,6 +2904,7 @@
 				04B76909280E4E010080102F /* FSCalendar_SB_VC.swift in Sources */,
 				04870E8526EB339D0030B1D2 /* SectionTableView_SectionHeader.swift in Sources */,
 				04A0CA4E26A0027800ECAE1B /* JFZMediaCacheLocationDelegate.swift in Sources */,
+				AF549D7B291900DA001311A1 /* SqliteTestTool.swift in Sources */,
 				0474C24727CE0D3A00B95D7C /* TestCALayer_View.swift in Sources */,
 				04870E3B26E9AD280030B1D2 /* AAColor.swift in Sources */,
 				AF3557BB286AF145009B291C /* Point_Person.swift in Sources */,

@@ -10,6 +10,8 @@
 #ifndef SwiftTest_App_Bridging_Header_h
 #define SwiftTest_App_Bridging_Header_h
 
+//MARK: 系统的OC库
+#import "sqlite3.h" //sqlite数据库
 
 //MARK: 暴露自己的OC头文件给swift
 #import "OCMainViewController.h"

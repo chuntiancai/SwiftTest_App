@@ -211,6 +211,9 @@ extension TestQRCode_VC: UICollectionViewDataSource {
             
         case 2:
             //TODO: 2、测试二维码的扫描的动画。
+            /**
+                1、snpkit的动画效果，必须调用view.layoutIfNeeded()方法，来立马赋值给约束。
+             */
             print("     (@@ 2、测试二维码的扫描的动画。")
             imgView.image = UIImage(named: "qrcode_border")
             imgView.addSubview(qrCodeScanLine)
@@ -252,7 +255,12 @@ extension TestQRCode_VC: UICollectionViewDataSource {
              
              5、设置输出对象的有效识别区域，注意：摄像头是横屏，右上角为原点的。(镜像对称的问题)
                 rectOfInterest属性：是相对输出图像大小的比例，而不是相对设备或者预览图层AVCaptureVideoPreviewLayer的比例。
-                输出图像大小又是由AVCaptureVideoPreviewLayer的videoGravity属性决定的，类似UIview的contentMode。
+                                   输出图像大小又是由AVCaptureVideoPreviewLayer的videoGravity属性决定的，类似UIview的contentMode。
+                                   由于是相对于输出图像大小的比例，所以要转换成像素比例，这就涉及到videoGravity和分辨率了。
+                                   然后默认坐标系是横屏的，你扫描是竖屏，所以还要再将坐标系选装90度。
+             
+                metadataOutputRectOfInterestForRect方法：
+                                   这是输出对象AVCaptureOutput的方法，目的在于将摄像头捕获到的图像的坐标系，转换为元数据输出对象的坐标系。
              
              
              */
@@ -296,7 +304,7 @@ extension TestQRCode_VC: UICollectionViewDataSource {
             //8.创建预览图层
             let previewLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
             previewLayer.videoGravity = .resizeAspectFill
-            previewLayer.frame = imgView.bounds
+            previewLayer.frame =  imgView.bounds
             imgView.layer.insertSublayer(previewLayer, at: 0)
 //
 //            let kScreenHeight = UIScreen.main.bounds.size.height
@@ -309,8 +317,9 @@ extension TestQRCode_VC: UICollectionViewDataSource {
             
             //10. 开始扫描
             session.startRunning()
-            let interestRect = metadataOutput.metadataOutputRectConverted(fromOutputRect: previewLayer.bounds)
-            metadataOutput.rectOfInterest  = interestRect
+            let interestRect = metadataOutput.metadataOutputRectConverted(fromOutputRect: previewLayer.frame)
+            print("捕获到的图像坐标系，转换为有效坐标系：\(interestRect)")
+//            metadataOutput.rectOfInterest  = interestRect
             
         case 4:
             print("     (@@")
@@ -359,7 +368,11 @@ extension TestQRCode_VC: AVCaptureMetadataOutputObjectsDelegate{
                 resultArr.append(result.type.rawValue)
             }
         }
-
+        
+        let restr = resultArr.reduce("", { (pre:String, next:String) in
+            return pre + " " + next
+        })
+        textView.text = restr
         //5. 将结果
         print("扫描结果：\(resultArr)")
     }
