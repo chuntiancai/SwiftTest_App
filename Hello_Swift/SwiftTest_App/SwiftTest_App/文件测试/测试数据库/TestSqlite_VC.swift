@@ -28,6 +28,7 @@
     3、Sqlite的语言其实就和SQL语言差不多，所以你去复习SQL语言语法吧。
        sqlite语句不区分大小写，除了很个别的关键字。
  
+    4、现在都直接用Sqlite的第三方封装库FMDB了。去github搜一下。
     
  
  */
@@ -116,8 +117,11 @@ extension TestSqlite_VC: UICollectionViewDataSource {
             let isOK =  (sqlite3_exec(db, sql, nil, nil, nil) == SQLITE_OK)
             print("插入成功:\(isOK)")
         case 2:
-            //TODO: 2、
-            print("     (@@ 2、")
+            //TODO: 2、测试封装sql的预处理语句。
+            print("     (@@ 2、测试封装sql的预处理语句。")
+            let isOK =  SqliteTestTool.shareInstance.insertPrepareBind(tableName: "t_student", columnNameArray: ["name","score"], values: "大佬","99")
+            print("预处理语句是否插入成功:\(isOK)")
+            
         case 3:
             //TODO: 3、
             print("     (@@ 3、")
