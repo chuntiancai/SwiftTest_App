@@ -344,6 +344,9 @@
 		AF549D762918EA54001311A1 /* TestSqlite_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF549D752918EA54001311A1 /* TestSqlite_VC.swift */; };
 		AF549D7929190073001311A1 /* Sqlite_Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF549D7829190073001311A1 /* Sqlite_Student.swift */; };
 		AF549D7B291900DA001311A1 /* SqliteTestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF549D7A291900DA001311A1 /* SqliteTestTool.swift */; };
+		AF549D81291BA289001311A1 /* html的基本语法.html in Resources */ = {isa = PBXBuildFile; fileRef = AF549D80291BA289001311A1 /* html的基本语法.html */; };
+		AF549D83291BA6D6001311A1 /* htmlImg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AF549D82291BA6D6001311A1 /* htmlImg.jpg */; };
+		AF549D85291BAC4A001311A1 /* css基本语法.html in Resources */ = {isa = PBXBuildFile; fileRef = AF549D84291BAC4A001311A1 /* css基本语法.html */; };
 		AF688FB728ACBDE0005C619C /* Table_RefreshHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF688FB628ACBDE0005C619C /* Table_RefreshHeader.swift */; };
 		AF72956A28D05AC50035BF59 /* TestLanguageLocalize_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF72956928D05AC50035BF59 /* TestLanguageLocalize_VC.swift */; };
 		AF72956E28D05E900035BF59 /* TestLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AF72957028D05E900035BF59 /* TestLocalizable.strings */; };
@@ -768,6 +771,10 @@
 		AF549D772918FB63001311A1 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		AF549D7829190073001311A1 /* Sqlite_Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sqlite_Student.swift; sourceTree = "<group>"; };
 		AF549D7A291900DA001311A1 /* SqliteTestTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SqliteTestTool.swift; sourceTree = "<group>"; };
+		AF549D7F291B9D03001311A1 /* html5基础知识.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "html5基础知识.md"; sourceTree = "<group>"; };
+		AF549D80291BA289001311A1 /* html的基本语法.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "html的基本语法.html"; sourceTree = "<group>"; };
+		AF549D82291BA6D6001311A1 /* htmlImg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = htmlImg.jpg; sourceTree = "<group>"; };
+		AF549D84291BAC4A001311A1 /* css基本语法.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "css基本语法.html"; sourceTree = "<group>"; };
 		AF688FB628ACBDE0005C619C /* Table_RefreshHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table_RefreshHeader.swift; sourceTree = "<group>"; };
 		AF72956928D05AC50035BF59 /* TestLanguageLocalize_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLanguageLocalize_VC.swift; sourceTree = "<group>"; };
 		AF72956D28D05E570035BF59 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -1738,6 +1745,7 @@
 			children = (
 				048DFE98281BEC8D00F210E8 /* 源代码管理_Git_SVN.md */,
 				048DFE96281BC9BB00F210E8 /* 加密算法笔记.md */,
+				AF549D7E291B8021001311A1 /* html5开发 */,
 			);
 			path = "编程拓展知识";
 			sourceTree = "<group>";
@@ -2432,6 +2440,17 @@
 			path = "测试数据库";
 			sourceTree = "<group>";
 		};
+		AF549D7E291B8021001311A1 /* html5开发 */ = {
+			isa = PBXGroup;
+			children = (
+				AF549D7F291B9D03001311A1 /* html5基础知识.md */,
+				AF549D80291BA289001311A1 /* html的基本语法.html */,
+				AF549D84291BAC4A001311A1 /* css基本语法.html */,
+				AF549D82291BA6D6001311A1 /* htmlImg.jpg */,
+			);
+			path = "html5开发";
+			sourceTree = "<group>";
+		};
 		AF72956828D05A700035BF59 /* 语言文字本地化 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2613,11 +2632,13 @@
 				04330AB4283F7E34007DF2D0 /* 9、初始化.md in Resources */,
 				AF2C735925539C60000AD7A9 /* Assets.xcassets in Resources */,
 				041CBC412788206500AF9B05 /* labi006.jpg in Resources */,
+				AF549D81291BA289001311A1 /* html的基本语法.html in Resources */,
 				04330AB2283F7E34007DF2D0 /* 8、多态.md in Resources */,
 				04330AB6283F7E34007DF2D0 /* 13、高级运算符.md in Resources */,
 				04330ABA283F7E34007DF2D0 /* 0、语言环境.md in Resources */,
 				AFC1B386289B74BA0050FC8F /* XibFile_VC.xib in Resources */,
 				049270102796CCC4000A61FC /* TestTableView.storyboard in Resources */,
+				AF549D83291BA6D6001311A1 /* htmlImg.jpg in Resources */,
 				041CBC53278D666800AF9B05 /* NamePlistFile.plist in Resources */,
 				04330AB7283F7E34007DF2D0 /* 面试总结.md in Resources */,
 				AF2CF895290FA9DC00C9388E /* 简单爱.mp3 in Resources */,
@@ -2657,6 +2678,7 @@
 				AF2CF87A29077D3B00C9388E /* TestiPadLayoutVC.storyboard in Resources */,
 				041CBC432788206500AF9B05 /* labi004.jpg in Resources */,
 				04848087278538CF00698106 /* testStory.storyboard in Resources */,
+				AF549D85291BAC4A001311A1 /* css基本语法.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
