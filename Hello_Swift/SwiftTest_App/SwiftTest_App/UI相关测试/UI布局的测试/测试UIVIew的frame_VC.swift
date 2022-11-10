@@ -143,10 +143,9 @@ extension TestUIViewFrame_VC: UICollectionViewDataSource {
             print("superView的bounds：\(superView.bounds)")
             
         case 3:
-            
             //TODO: 3、测试view的bounds属性。
             /**
-                1、如果有snpkit布局，改变frame无效。则只能通过ayer.bounds来改变位置和大小，layer.bounds.size也是有效。
+                1、如果有snpkit布局，改变frame无效。则只能通过layer.bounds来改变位置和大小，layer.bounds.size也是有效。
                     可以通过移除snp.removeConstraints()约束来使得frame的改变有效。
                 
              */
@@ -166,7 +165,12 @@ extension TestUIViewFrame_VC: UICollectionViewDataSource {
 //            superView.center = CGPoint.init(x: 200, y: 600)
 //            redView.frame = CGRect.init(x: 10, y: 450, width: 200, height: 200)
         case 6:
-            print("     (@@")
+            //TODO: 6、测试view的frame的坐标宽高是否包含了border。
+            /**
+                1、是的，frame的宽高包含了border，也就border是在bounds的宽高里面的。
+             */
+            print("     (@@6、测试view的frame的坐标宽高是否包含了border。")
+            self.boundsView.layer.borderWidth += 10
         case 7:
             print("     (@@")
         case 8:

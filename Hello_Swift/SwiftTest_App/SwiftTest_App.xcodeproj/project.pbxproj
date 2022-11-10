@@ -324,7 +324,6 @@
 		AF2CF885290BBC1F00C9388E /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2CF884290BBC1F00C9388E /* libmp3lame.a */; };
 		AF2CF889290BC58C00C9388E /* LameTool.m in Sources */ = {isa = PBXBuildFile; fileRef = AF2CF888290BC58C00C9388E /* LameTool.m */; };
 		AF2CF88B290F737800C9388E /* TestLocalVideo_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2CF88A290F737800C9388E /* TestLocalVideo_VC.swift */; };
-		AF2CF891290F9E3A00C9388E /* m_17.wav in Resources */ = {isa = PBXBuildFile; fileRef = AF2CF890290F9E3900C9388E /* m_17.wav */; };
 		AF2CF893290F9E4A00C9388E /* win.aac in Resources */ = {isa = PBXBuildFile; fileRef = AF2CF892290F9E4A00C9388E /* win.aac */; };
 		AF2CF895290FA9DC00C9388E /* 简单爱.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AF2CF894290FA9DB00C9388E /* 简单爱.mp3 */; };
 		AF2CF898290FCCA400C9388E /* TestQRCode_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2CF897290FCCA400C9388E /* TestQRCode_VC.swift */; };
@@ -347,6 +346,8 @@
 		AF549D81291BA289001311A1 /* html的基本语法.html in Resources */ = {isa = PBXBuildFile; fileRef = AF549D80291BA289001311A1 /* html的基本语法.html */; };
 		AF549D83291BA6D6001311A1 /* htmlImg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AF549D82291BA6D6001311A1 /* htmlImg.jpg */; };
 		AF549D85291BAC4A001311A1 /* css基本语法.html in Resources */ = {isa = PBXBuildFile; fileRef = AF549D84291BAC4A001311A1 /* css基本语法.html */; };
+		AF549D87291C9101001311A1 /* css的外部样式.css in Resources */ = {isa = PBXBuildFile; fileRef = AF549D86291C9101001311A1 /* css的外部样式.css */; };
+		AF549D89291CFD4E001311A1 /* html的盒子模型.html in Resources */ = {isa = PBXBuildFile; fileRef = AF549D88291CFD4E001311A1 /* html的盒子模型.html */; };
 		AF688FB728ACBDE0005C619C /* Table_RefreshHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF688FB628ACBDE0005C619C /* Table_RefreshHeader.swift */; };
 		AF72956A28D05AC50035BF59 /* TestLanguageLocalize_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF72956928D05AC50035BF59 /* TestLanguageLocalize_VC.swift */; };
 		AF72956E28D05E900035BF59 /* TestLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AF72957028D05E900035BF59 /* TestLocalizable.strings */; };
@@ -749,7 +750,6 @@
 		AF2CF887290BC58C00C9388E /* LameTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LameTool.h; sourceTree = "<group>"; };
 		AF2CF888290BC58C00C9388E /* LameTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LameTool.m; sourceTree = "<group>"; };
 		AF2CF88A290F737800C9388E /* TestLocalVideo_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLocalVideo_VC.swift; sourceTree = "<group>"; };
-		AF2CF890290F9E3900C9388E /* m_17.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = m_17.wav; path = "../../../../../../../../../Downloads/08_实用技术/z源码/9-音频播放/代码/二. 音效播放/二. 音效播放/m_17.wav"; sourceTree = "<group>"; };
 		AF2CF892290F9E4A00C9388E /* win.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = win.aac; sourceTree = "<group>"; };
 		AF2CF894290FA9DB00C9388E /* 简单爱.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "简单爱.mp3"; sourceTree = "<group>"; };
 		AF2CF897290FCCA400C9388E /* TestQRCode_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestQRCode_VC.swift; sourceTree = "<group>"; };
@@ -775,6 +775,8 @@
 		AF549D80291BA289001311A1 /* html的基本语法.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "html的基本语法.html"; sourceTree = "<group>"; };
 		AF549D82291BA6D6001311A1 /* htmlImg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = htmlImg.jpg; sourceTree = "<group>"; };
 		AF549D84291BAC4A001311A1 /* css基本语法.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "css基本语法.html"; sourceTree = "<group>"; };
+		AF549D86291C9101001311A1 /* css的外部样式.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = "css的外部样式.css"; sourceTree = "<group>"; };
+		AF549D88291CFD4E001311A1 /* html的盒子模型.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "html的盒子模型.html"; sourceTree = "<group>"; };
 		AF688FB628ACBDE0005C619C /* Table_RefreshHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table_RefreshHeader.swift; sourceTree = "<group>"; };
 		AF72956928D05AC50035BF59 /* TestLanguageLocalize_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLanguageLocalize_VC.swift; sourceTree = "<group>"; };
 		AF72956D28D05E570035BF59 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -2372,7 +2374,6 @@
 			children = (
 				AF2CF894290FA9DB00C9388E /* 简单爱.mp3 */,
 				AF2CF892290F9E4A00C9388E /* win.aac */,
-				AF2CF890290F9E3900C9388E /* m_17.wav */,
 			);
 			path = "音视频资源";
 			sourceTree = "<group>";
@@ -2445,7 +2446,9 @@
 			children = (
 				AF549D7F291B9D03001311A1 /* html5基础知识.md */,
 				AF549D80291BA289001311A1 /* html的基本语法.html */,
+				AF549D88291CFD4E001311A1 /* html的盒子模型.html */,
 				AF549D84291BAC4A001311A1 /* css基本语法.html */,
+				AF549D86291C9101001311A1 /* css的外部样式.css */,
 				AF549D82291BA6D6001311A1 /* htmlImg.jpg */,
 			);
 			path = "html5开发";
@@ -2644,7 +2647,6 @@
 				AF2CF895290FA9DC00C9388E /* 简单爱.mp3 in Resources */,
 				04330AB9283F7E34007DF2D0 /* 10、协议.md in Resources */,
 				04330AB5283F7E34007DF2D0 /* 7、继承.md in Resources */,
-				AF2CF891290F9E3A00C9388E /* m_17.wav in Resources */,
 				041CBC3F2788206500AF9B05 /* labi003.jpg in Resources */,
 				04330ABB283F7E34007DF2D0 /* 5、属性(inout).md in Resources */,
 				AF824279287534EA002311AF /* OCRuntimeStatus.plist in Resources */,
@@ -2667,12 +2669,14 @@
 				041CBC58278D858300AF9B05 /* TestXibFile.xib in Resources */,
 				04870E3A26E9AD280030B1D2 /* AAJSFiles.bundle in Resources */,
 				04330ABE283F7E34007DF2D0 /* 6、方法(下标).md in Resources */,
+				AF549D89291CFD4E001311A1 /* html的盒子模型.html in Resources */,
 				041CBC51278D31A900AF9B05 /* TestPlistFile.plist in Resources */,
 				04330ABF283F7E34007DF2D0 /* 3、结构体,类.md in Resources */,
 				040BFF4327B26F910010C999 /* naviVCStoryTest.storyboard in Resources */,
 				AFC1B380289B71A90050FC8F /* AdXib_VC.xib in Resources */,
 				042036B7274B9B3800424E05 /* 测试TextField的Image.xcassets in Resources */,
 				041CBC49278D1EDB00AF9B05 /* TestButton.storyboard in Resources */,
+				AF549D87291C9101001311A1 /* css的外部样式.css in Resources */,
 				041CBC3C2788206500AF9B05 /* labi002.jpg in Resources */,
 				04870E9226EEF8EE0030B1D2 /* tableView测试的图标.xcassets in Resources */,
 				AF2CF87A29077D3B00C9388E /* TestiPadLayoutVC.storyboard in Resources */,
