@@ -141,8 +141,8 @@ extension FileTest_VC: UICollectionViewDataSource {
                 make.left.right.equalTo(20)
                 make.bottom.equalToSuperview().offset(-60)
             }
-            let bundlePath = Bundle.main.bundlePath //主bundle
-            let labiBundlePath = Bundle.main.path(forResource: "labi", ofType: "bundle")    //自定义的bundle的路径
+            let bundlePath:String = Bundle.main.bundlePath //主bundle
+            let labiBundlePath:String? = Bundle.main.path(forResource: "labi", ofType: "bundle")    //自定义的bundle的路径
             let labiBundle = Bundle.init(path: labiBundlePath!)//自定义的bundle
             //获取bundle中的文件夹中的文件
             let labi01Path = labiBundle?.path(forResource: "labixiaoxin01", ofType: "jpg", inDirectory: "labixiaoxinImage/labi01")

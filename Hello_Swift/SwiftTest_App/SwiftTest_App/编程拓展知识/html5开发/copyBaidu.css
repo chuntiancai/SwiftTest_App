@@ -1,0 +1,132 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-size: 14px;
+    /*设置背景*/
+    background: url("./images/bg.jpg");
+    /*设置背景的尺寸*/
+    background-size: cover;
+}
+
+/*头部*/
+#header{
+   background-color: rgba(0,0,0,0.2);
+   height: 44px;
+   line-height: 44px;
+    /*右对齐*/
+   text-align: right;
+    /*设置上下间距*/
+   margin: 0 0 50px 0;
+}
+
+#header a{  /** #header元素 里的<a>标签*/
+   margin-right: 8px;
+   color: white;
+    /*加粗*/
+   font-weight: bolder;
+   /* 设置字体  */
+   font-family: 'Arial';
+
+}
+
+#header a.no-weight{
+    font-weight: normal;
+}
+
+#header a.more-product{
+    background-color: #3385ff;
+    color: white;
+    /*去除下划线*/
+    text-decoration: none;
+    padding: 4px;
+}
+
+/*中间内容*/
+#main{
+  /*background-color: red;*/
+}
+
+#main .img-logo{
+    text-align: center;
+}
+
+#main .img-logo img{
+    width: 270px;
+    height: 129px;
+}
+
+#main .search{
+    background-color: red;
+    /*块级---水平居中*/
+    width: 600px;
+    height: 35px;
+    margin:0 auto 20px;
+}
+
+#main .search input{
+    width: 500px;
+    height: 100%;
+    box-sizing: border-box;
+    padding-left: 10px;
+    border:1px solid #e8e8e8;
+}
+
+#main .search input:focus{
+    outline: none;
+    border:1px solid #3385ff;
+}
+
+#main .search a{
+    background-color: #3385ff;
+    color: white;
+    /*去除下划线*/
+    text-decoration: none;
+    /*改变标签的类型*/
+    display: inline-block;
+    width: 100px;
+    height: 100%;
+    /*浮动*/
+    float: right;
+    /*水平-垂直居中*/
+    text-align: center;
+    line-height: 35px;
+}
+
+#main .normal-search{
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#main .normal-search img{
+   width: 110px;
+   margin: 0 10px;
+   border-radius: 5px;
+   /*box-shadow: 0 0 2px yellow;*/
+}
+
+#main .normal-search img:hover{
+    opacity: 0.5;
+}
+
+
+
+/*尾部*/
+#footer{
+   position: fixed;
+   bottom: 0;
+   /*background-color: red;*/
+   width: 100%;
+   height: 60px;
+   text-align: center;
+}
+
+#footer .footer-header{
+    margin-bottom: 8px;
+}
+
+#footer .footer-header a{
+    margin:0 5px;
+}
