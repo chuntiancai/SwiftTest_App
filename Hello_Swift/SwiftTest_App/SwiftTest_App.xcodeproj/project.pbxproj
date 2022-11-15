@@ -807,6 +807,11 @@
 		AF549DA3291E2AE7001311A1 /* 仿百度页面.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "仿百度页面.html"; sourceTree = "<group>"; };
 		AF549DA5291E2B07001311A1 /* copyBaidu.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = copyBaidu.css; sourceTree = "<group>"; };
 		AF549DA7291E4926001311A1 /* TestHtml_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHtml_VC.swift; sourceTree = "<group>"; };
+		AF549DAA292212E9001311A1 /* JavaScript基础知识.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "JavaScript基础知识.md"; sourceTree = "<group>"; };
+		AF549DAC2922167A001311A1 /* JS的基本语法.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "JS的基本语法.html"; sourceTree = "<group>"; };
+		AF549DAD29222CE5001311A1 /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		AF549DAF29222CE5001311A1 /* index.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = index.css; sourceTree = "<group>"; };
+		AF549DB129222CE5001311A1 /* index.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
 		AF688FB628ACBDE0005C619C /* Table_RefreshHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table_RefreshHeader.swift; sourceTree = "<group>"; };
 		AF72956928D05AC50035BF59 /* TestLanguageLocalize_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLanguageLocalize_VC.swift; sourceTree = "<group>"; };
 		AF72956D28D05E570035BF59 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -1777,6 +1782,7 @@
 			children = (
 				048DFE98281BEC8D00F210E8 /* 源代码管理_Git_SVN.md */,
 				048DFE96281BC9BB00F210E8 /* 加密算法笔记.md */,
+				AF549DA9292212BC001311A1 /* JavaScript开发 */,
 				AF549D7E291B8021001311A1 /* html5开发 */,
 			);
 			path = "编程拓展知识";
@@ -2505,6 +2511,34 @@
 				AF549D82291BA6D6001311A1 /* htmlImg.jpg */,
 			);
 			path = images;
+			sourceTree = "<group>";
+		};
+		AF549DA9292212BC001311A1 /* JavaScript开发 */ = {
+			isa = PBXGroup;
+			children = (
+				AF549DAE29222CE5001311A1 /* css */,
+				AF549DAD29222CE5001311A1 /* index.html */,
+				AF549DB029222CE5001311A1 /* js */,
+				AF549DAA292212E9001311A1 /* JavaScript基础知识.md */,
+				AF549DAC2922167A001311A1 /* JS的基本语法.html */,
+			);
+			path = "JavaScript开发";
+			sourceTree = "<group>";
+		};
+		AF549DAE29222CE5001311A1 /* css */ = {
+			isa = PBXGroup;
+			children = (
+				AF549DAF29222CE5001311A1 /* index.css */,
+			);
+			path = css;
+			sourceTree = "<group>";
+		};
+		AF549DB029222CE5001311A1 /* js */ = {
+			isa = PBXGroup;
+			children = (
+				AF549DB129222CE5001311A1 /* index.js */,
+			);
+			path = js;
 			sourceTree = "<group>";
 		};
 		AF72956828D05A700035BF59 /* 语言文字本地化 */ = {

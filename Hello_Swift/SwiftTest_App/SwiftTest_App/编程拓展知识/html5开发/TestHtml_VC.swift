@@ -52,7 +52,7 @@ extension TestHtml_VC: UICollectionViewDataSource {
             wkWebView.snp.makeConstraints { make in
                 make.edges.equalToSuperview()
             }
-            guard let filePath:String = Bundle.main.path(forResource: "仿百度页面.html", ofType: nil) else{
+            guard let filePath:String = Bundle.main.path(forResource: "html的基本语法.html", ofType: nil) else{
                 return
             }
             let fileUrl:URL = URL(fileURLWithPath: filePath)
