@@ -363,6 +363,7 @@
 		AF549DA4291E2AE7001311A1 /* 仿百度页面.html in Resources */ = {isa = PBXBuildFile; fileRef = AF549DA3291E2AE7001311A1 /* 仿百度页面.html */; };
 		AF549DA6291E2B07001311A1 /* copyBaidu.css in Resources */ = {isa = PBXBuildFile; fileRef = AF549DA5291E2B07001311A1 /* copyBaidu.css */; };
 		AF549DA8291E4926001311A1 /* TestHtml_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF549DA7291E4926001311A1 /* TestHtml_VC.swift */; };
+		AF549DB629236CC7001311A1 /* TestOpenGL_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF549DB529236CC7001311A1 /* TestOpenGL_VC.swift */; };
 		AF688FB728ACBDE0005C619C /* Table_RefreshHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF688FB628ACBDE0005C619C /* Table_RefreshHeader.swift */; };
 		AF72956A28D05AC50035BF59 /* TestLanguageLocalize_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF72956928D05AC50035BF59 /* TestLanguageLocalize_VC.swift */; };
 		AF72956E28D05E900035BF59 /* TestLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AF72957028D05E900035BF59 /* TestLocalizable.strings */; };
@@ -372,6 +373,7 @@
 		AF82427C2875369C002311AF /* OCRuntime_StatusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AF82427B2875369C002311AF /* OCRuntime_StatusModel.m */; };
 		AF82427F287587F3002311AF /* OCRuntime_SubPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = AF82427E287587F3002311AF /* OCRuntime_SubPerson.m */; };
 		AF824284287C1B47002311AF /* TestOCGrama_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = AF824283287C1B47002311AF /* TestOCGrama_VC.m */; };
+		AF83C5D029260ECB0019FC4B /* 测试逆向工程_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83C5CF29260ECB0019FC4B /* 测试逆向工程_VC.swift */; };
 		AF88EE77289772AB00660C28 /* TestUIColor_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF88EE76289772AB00660C28 /* TestUIColor_VC.swift */; };
 		AF88EE792897C22500660C28 /* 子类tabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF88EE782897C22500660C28 /* 子类tabBar.swift */; };
 		AF9D5B2828F51229002A1FDD /* 测试本地推送_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9D5B2728F51229002A1FDD /* 测试本地推送_VC.swift */; };
@@ -812,6 +814,7 @@
 		AF549DAD29222CE5001311A1 /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		AF549DAF29222CE5001311A1 /* index.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = index.css; sourceTree = "<group>"; };
 		AF549DB129222CE5001311A1 /* index.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
+		AF549DB529236CC7001311A1 /* TestOpenGL_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestOpenGL_VC.swift; sourceTree = "<group>"; };
 		AF688FB628ACBDE0005C619C /* Table_RefreshHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table_RefreshHeader.swift; sourceTree = "<group>"; };
 		AF72956928D05AC50035BF59 /* TestLanguageLocalize_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLanguageLocalize_VC.swift; sourceTree = "<group>"; };
 		AF72956D28D05E570035BF59 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -827,6 +830,7 @@
 		AF824280287BFD7B002311AF /* LLDB、LLVM编译器知识.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "LLDB、LLVM编译器知识.md"; sourceTree = "<group>"; };
 		AF824282287C1B47002311AF /* TestOCGrama_VC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestOCGrama_VC.h; sourceTree = "<group>"; };
 		AF824283287C1B47002311AF /* TestOCGrama_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestOCGrama_VC.m; sourceTree = "<group>"; };
+		AF83C5CF29260ECB0019FC4B /* 测试逆向工程_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试逆向工程_VC.swift"; sourceTree = "<group>"; };
 		AF88EE76289772AB00660C28 /* TestUIColor_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUIColor_VC.swift; sourceTree = "<group>"; };
 		AF88EE782897C22500660C28 /* 子类tabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "子类tabBar.swift"; sourceTree = "<group>"; };
 		AF9D5B2728F51229002A1FDD /* 测试本地推送_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试本地推送_VC.swift"; sourceTree = "<group>"; };
@@ -1211,6 +1215,7 @@
 		0421E5FA26AAAEA600C6A922 /* UI相关测试 */ = {
 			isa = PBXGroup;
 			children = (
+				AF549DB429236CA4001311A1 /* 测试OpenGL(离屏渲染) */,
 				AF9D5B2F28F90662002A1FDD /* UIDynamic(物理动态仿真) */,
 				AFC1B373289A71540050FC8F /* 启动页广告测试 */,
 				0421E62526B1568E00C6A922 /* UIView的事件传递测试 */,
@@ -1649,6 +1654,7 @@
 		048608AC27350E89000F816E /* App环境(生命周期)相关的知识 */ = {
 			isa = PBXGroup;
 			children = (
+				AF83C5CE29260E8E0019FC4B /* IOS逆向工程 */,
 				AF2CF86F2902A46F00C9388E /* 获取通讯录 */,
 				AF172C1828FCFCB3005BD750 /* 测试应用间的跳转 */,
 				AF2DDAEC28A3B6EC00E1CCF3 /* Xcode性能工具测试 */,
@@ -2541,6 +2547,14 @@
 			path = js;
 			sourceTree = "<group>";
 		};
+		AF549DB429236CA4001311A1 /* 测试OpenGL(离屏渲染) */ = {
+			isa = PBXGroup;
+			children = (
+				AF549DB529236CC7001311A1 /* TestOpenGL_VC.swift */,
+			);
+			path = "测试OpenGL(离屏渲染)";
+			sourceTree = "<group>";
+		};
 		AF72956828D05A700035BF59 /* 语言文字本地化 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2558,6 +2572,14 @@
 				AF824283287C1B47002311AF /* TestOCGrama_VC.m */,
 			);
 			path = "测试OC的语法";
+			sourceTree = "<group>";
+		};
+		AF83C5CE29260E8E0019FC4B /* IOS逆向工程 */ = {
+			isa = PBXGroup;
+			children = (
+				AF83C5CF29260ECB0019FC4B /* 测试逆向工程_VC.swift */,
+			);
+			path = "IOS逆向工程";
 			sourceTree = "<group>";
 		};
 		AF88EE752897725400660C28 /* UIColor的测试 */ = {
@@ -2889,6 +2911,7 @@
 				04A0CA4326A0027800ECAE1B /* JFZPlayerControlPanelView.swift in Sources */,
 				04927018279EA762000A61FC /* 测试Notification的VC.swift in Sources */,
 				04D9B4FF26D76DF400289824 /* FrameworkTest_MainVC.swift in Sources */,
+				AF549DB629236CC7001311A1 /* TestOpenGL_VC.swift in Sources */,
 				04B7692F2817E9F70080102F /* TestUrlDownload_delegate.swift in Sources */,
 				042036BE2754B16F00424E05 /* 测试文字的渐变色_View.swift in Sources */,
 				AFBCA8C72874224800AD51D1 /* Point_HeapObject.swift in Sources */,
@@ -2949,6 +2972,7 @@
 				0414F98D27BF7F9A0037EE70 /* Quartz_Draw_VC.swift in Sources */,
 				041A2E212793C7B900F9CABF /* KVO_Person.swift in Sources */,
 				04A0CA4826A0027800ECAE1B /* JFZPlayerCommonView.swift in Sources */,
+				AF83C5D029260ECB0019FC4B /* 测试逆向工程_VC.swift in Sources */,
 				04870E3D26E9AD280030B1D2 /* AAExtension.swift in Sources */,
 				AF402FF228D1CC6A00407CEE /* TestMap_VC.swift in Sources */,
 				04870E4926E9AD280030B1D2 /* AAPane.swift in Sources */,
