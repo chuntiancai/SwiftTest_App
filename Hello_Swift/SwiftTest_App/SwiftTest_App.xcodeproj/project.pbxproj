@@ -833,6 +833,7 @@
 		AF824283287C1B47002311AF /* TestOCGrama_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestOCGrama_VC.m; sourceTree = "<group>"; };
 		AF83C5CF29260ECB0019FC4B /* 测试逆向工程_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试逆向工程_VC.swift"; sourceTree = "<group>"; };
 		AF83C5D1292C9AE10019FC4B /* 测试分支删除的影响.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试分支删除的影响.swift"; sourceTree = "<group>"; };
+		AF83C5D3292C9D0E0019FC4B /* Cocoapod的使用.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Cocoapod的使用.md"; sourceTree = "<group>"; };
 		AF88EE76289772AB00660C28 /* TestUIColor_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUIColor_VC.swift; sourceTree = "<group>"; };
 		AF88EE782897C22500660C28 /* 子类tabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "子类tabBar.swift"; sourceTree = "<group>"; };
 		AF9D5B2728F51229002A1FDD /* 测试本地推送_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试本地推送_VC.swift"; sourceTree = "<group>"; };
@@ -1788,11 +1789,12 @@
 		048DFE94281BC76000F210E8 /* 编程拓展知识 */ = {
 			isa = PBXGroup;
 			children = (
+				AF83C5D3292C9D0E0019FC4B /* Cocoapod的使用.md */,
 				048DFE98281BEC8D00F210E8 /* 源代码管理_Git_SVN.md */,
+				AF83C5D1292C9AE10019FC4B /* 测试分支删除的影响.swift */,
 				048DFE96281BC9BB00F210E8 /* 加密算法笔记.md */,
 				AF549DA9292212BC001311A1 /* JavaScript开发 */,
 				AF549D7E291B8021001311A1 /* html5开发 */,
-				AF83C5D1292C9AE10019FC4B /* 测试分支删除的影响.swift */,
 			);
 			path = "编程拓展知识";
 			sourceTree = "<group>";

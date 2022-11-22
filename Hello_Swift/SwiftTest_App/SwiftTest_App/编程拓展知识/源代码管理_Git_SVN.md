@@ -120,6 +120,11 @@ GIT
         $ git branch -r     # 查看远程分支
         $ git branch -r -d origin/bugfix1.0      # 删除远程分支
         
+        /*
+         1、在当前分支添加或者删除文件，切换到另外一个分支的时候，这些添加或者删除的文件会被移除或者还原，也就是不影响别的分支的文件结构。
+         2、删除文件后，回滚，是肯定可以还原被删除的文件的啊。前提是你这些文件有加入到git的管理文件中。也就是没有在.gitignore文件中忽略掉这些文件。 
+        */
+        
         查看分支：git branch
         创建分支：git branch <name>
         切换分支：git checkout <name>或者git switch <name>
@@ -237,7 +242,7 @@ SVN
 svn checkout : 将服务器代码完整的下载到本地。
 svn commit : 将本地修改的内容,提交到服务器。
 svn update : 将服务器最新的代码下载带本地。
-       
+
        ⼀.命令⾏的演⽰
         1.项目经理将服务器的已有的内容下载到本地
             svn checkout 服务器地址 —username=mgr —password=mgr

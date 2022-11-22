@@ -45,7 +45,7 @@
 
  
     ==================
-    基本使用：
+    自己制作framework使用：
     1、xcode -> file -> new project -> framework -> 创建完成一个framwork工程。
         1.1、把.Framework文件拖进项目工程的目录中，在项目的TARGETS -> General -> Embedded Binaries -> +  中添加.Framework文件。
         1.2、在framework工程中，资源文件需要存放在bundle里面。例如：图片这些。
