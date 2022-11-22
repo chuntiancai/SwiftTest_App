@@ -108,25 +108,31 @@ GIT
     
     
     # 使用tag，就能够将项目快速切换到某一个中间状态，例如产品开发线上的某一个稳定版本
-    
-    $ git checkout v1.0     # 签出v1.0标签
-    $ git checkout -b bugfix1.0     # 从签出状态创建v1.0bugfix分支
-    $ git branch -r     # 查看远程分支
-    $ git branch -r -d origin/bugfix1.0      # 删除远程分支
-    
-    查看分支：git branch
-    创建分支：git branch <name>
-    切换分支：git checkout <name>或者git switch <name>
-    创建+切换分支：git checkout -b <name>或者git switch -c <name>
-    合并某分支到当前分支：git merge <name>
-    
+
+    ## #查看分支
+        $ git branch -a   //查看本地和远程仓库的所有分支
+        $ git branch -r   //查看远程仓库的分支
+        $ git reflog    // 查看分支引用记录
+        
+    ## #创建、切换、删除分支
+        $ git checkout v1.0     # 签出v1.0标签的分支。
+        $ git checkout -b bugfix1.0  origin/develop   # 切换并创建v1.0bugfix分支，该分支对应远程的develop分支，不指定则是当前工作分支的分支。
+        $ git branch -r     # 查看远程分支
+        $ git branch -r -d origin/bugfix1.0      # 删除远程分支
+        
+        查看分支：git branch
+        创建分支：git branch <name>
+        切换分支：git checkout <name>或者git switch <name>
+        创建+切换分支：git checkout -b <name>或者git switch -c <name>
+        合并某分支到当前分支：git merge <name>
+        
     ## #合并分支
         $ git pull  # 取回远程主机某个分支的更新，再与本地的指定分支合并. 是git fetch后跟git merge FETCH_HEAD的缩写。
         $ git pull <远程主机名> <远程分支名>:<本地分支名>
         $ git fetch  #相当于是从远程获取最新版本到本地，不会自动合并
         $ git merge 分支1 分支2    #git merge命令用于将两个或两个以上的开发历史加入(合并)一起。在当前分支的顶部，使它们合并。
         
-        //远程拉取分支、合并的示例：
+        //拉取远程分支、合并的示例：
         $ git fetch origin master   #首先从远程的origin的master主分支下载最新的版本到origin/master分支上
         $ git log -p master..origin/master  #然后比较本地的master分支和origin/master分支的差别
         $ git merge origin/master #最后进行合并
