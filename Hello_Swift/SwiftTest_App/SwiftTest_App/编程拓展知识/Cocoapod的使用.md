@@ -46,8 +46,8 @@
     # s.vendored_libraries = 'test_sh/Classes/*.a'   #lpod库含有lib库时使用，即.a文件。
     # s.vendored_frameworks = 'test_sh/Classes/*.framework'  # pod库含有framework库时使用
     end
-
     
+### podspec的vendored_libraries属性，引入.a文件时，必须把.a文件重命名为lib开头，cocoapod才可以识别出这是.a文件。 
 
                  
                  

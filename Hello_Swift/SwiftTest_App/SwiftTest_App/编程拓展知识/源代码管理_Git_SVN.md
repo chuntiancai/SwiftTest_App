@@ -115,10 +115,12 @@ GIT
         $ git reflog    // 查看分支引用记录
         
     ## #创建、切换、删除分支
-        $ git checkout v1.0     # 签出v1.0标签的分支。
+        $ git checkout v1.0     # 切换v1.0分支。
         $ git checkout -b bugfix1.0  origin/develop   # 切换并创建v1.0bugfix分支，该分支对应远程的develop分支，不指定则是当前工作分支的分支。
+        $ git push origin local_branch:remote_branch    #根据本地分支创建远程分支。
         $ git branch -r     # 查看远程分支
-        $ git branch -r -d origin/bugfix1.0      # 删除远程分支
+        $ git branch -r -d origin/bugfix1.0      # 删除远程分支。
+        $ git push origin :remote_branch      #推送空分支到远程分支，也是删除远程分支的一种方式。
         
         /*
          1、在当前分支添加或者删除文件，切换到另外一个分支的时候，这些添加或者删除的文件会被移除或者还原，也就是不影响别的分支的文件结构。
