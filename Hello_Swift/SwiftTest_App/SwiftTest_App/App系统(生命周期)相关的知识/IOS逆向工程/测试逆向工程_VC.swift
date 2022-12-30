@@ -123,8 +123,28 @@
 
 //MARK: - tweak工程
 /**
-    1、tweak工程：是一个脚本可执行文件，输入是ipa包，输出是注入了hook代码的ipa包，相当于破解了的ipa包。
+    1、tweak工程：是一个脚本可执行文件，输入是ipa包，输出是注入hook代码到ipa包的动态库中。相当于破解了的ipa包。
        SpringBoard软件：其实就是iPhone的桌面，桌面也是一个软件，万物皆软件。
+       tweak工程的原理：
+            1.编写Tweak代码
+                $ make：编译Tweak代码为动态库(*.dylib)
+                $ make package： 将dylib打包为deb文件。
+                $ make install：将deb文件传送到手机上，通过Cydia安装deb
+            2.插件(deb包)将会安装在手机的/Library/MobileSubstrate/DynamicLibraries文件夹中
+                2.1、*.dylib文件：编译后的Tweak代码。
+                2.2、*.plist文件：存放着需要hook的APP ID
+            3.当打开APP时：
+                3.1、Cydia Substrate（Cydia 已自动安装的插件）会让App去加载读经的edylib。
+                3.2、修改App内存中的代码逻辑，去执行dylib中的函数代码。
+            4.所以，theos的tweak并不会对App原来的可执行文件进行修改，仅仅是修改了内存中的代码逻辑。
+ 
+      Tweak工程的语法(也叫logos语法)：http://iphonedevwiki.net/index.php/Logos
+      Theos的环境变量配置：http://iphonedevwiki.net/index.php/Theos
+      Tweak工程的目录结构：https://github.com/theos/theos/wiki/Structure
+ */
+
+//MARK: - iOS命令行工具开放
+/**
  */
 
 
