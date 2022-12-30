@@ -91,6 +91,7 @@
      二、通用二进制文件(Universal Binary)：同时使用于多种CPU架构的二进制文件。
          $(ARCHS_STANDARD)：xcode内置的环境变量，不同xcode版本，该变量的值不一样。
  */
+
 //MARK: - 脱壳
 /**
     二、脱壳
@@ -111,18 +112,29 @@
             --> 用thoes里的nic.pl指令创建tweak工程 --> 修改tweak工程里的xm文件 --> 通过tweak工程将app的源码修改方法的实现
             --> tweak工程的makefile指令会把修改后的源码重新生成deb包(越狱的包) --> 安装deb包到手机上。
             linux命令工具：thoes命令(去github下载，放到手机里)
+ 
+        reveal软件：可视化查看源码的UI。
+        ldid签名工具：对应xcode的codesign工具，thoes工具会用到它来签名deb包。
+        thoes工具：安装到MAC上的命令工具，是tweak工程的运行和编译环境。
+        tweak工程：是一个脚本可执行文件，输入是ipa包，输出是注入了hook代码的ipa包，相当于破解了的ipa包。
+        hook代码：你在tweak工程里面写的源代码(Tweak.xm文件)，用的是tweak的语法(类似javascript)。
+ 
  */
+
+//MARK: - tweak工程
+/**
+    1、tweak工程：是一个脚本可执行文件，输入是ipa包，输出是注入了hook代码的ipa包，相当于破解了的ipa包。
+       SpringBoard软件：其实就是iPhone的桌面，桌面也是一个软件，万物皆软件。
+ */
+
 
 class TestReverse_VC: UIViewController {
     
-    //MARK: 对外属性
     public var collDataArr = ["0、","1、","2、","3、","4、","5、","6、","7、","8、","9、","10、","11、","12、"]
 
     ///UI组件
     private var baseCollView: UICollectionView!
     let bgView = UIView()   //测试的view可以放在这里面
-    
-    //MARK: 测试组件
     
     override func viewDidLoad() {
         super.viewDidLoad()
