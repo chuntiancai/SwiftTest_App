@@ -409,6 +409,9 @@
 		AFDA1325287D0F1B0015BFC3 /* TestNaviVC_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDA1324287D0F1B0015BFC3 /* TestNaviVC_VC.swift */; };
 		AFDA1327287E6EE90015BFC3 /* 测试UIView的形变_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDA1326287E6EE90015BFC3 /* 测试UIView的形变_VC.swift */; };
 		AFDA1329287E9B760015BFC3 /* MyImageTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDA1328287E9B760015BFC3 /* MyImageTool.swift */; };
+		AFE2C3672965281500369228 /* 测试汇编_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE2C3662965281500369228 /* 测试汇编_VC.swift */; };
+		AFE2C36A2965523400369228 /* TestAssembly_OCVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE2C3692965523400369228 /* TestAssembly_OCVC.m */; };
+		AFE2C36C2965538400369228 /* testArm.s in Sources */ = {isa = PBXBuildFile; fileRef = AFE2C36B2965538400369228 /* testArm.s */; };
 		AFE55AD92902762700EC52AC /* TestMemory_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE55AD82902762700EC52AC /* TestMemory_VC.swift */; };
 		AFEF468C28B5D23100B3EA2D /* VerScroll_ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF468B28B5D23100B3EA2D /* VerScroll_ScrollView.swift */; };
 		AFEF468E28B5D2C400B3EA2D /* VerScroll_ScrollView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF468D28B5D2C400B3EA2D /* VerScroll_ScrollView2.swift */; };
@@ -870,6 +873,11 @@
 		AFDA1324287D0F1B0015BFC3 /* TestNaviVC_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNaviVC_VC.swift; sourceTree = "<group>"; };
 		AFDA1326287E6EE90015BFC3 /* 测试UIView的形变_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试UIView的形变_VC.swift"; sourceTree = "<group>"; };
 		AFDA1328287E9B760015BFC3 /* MyImageTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImageTool.swift; sourceTree = "<group>"; };
+		AFE2C3662965281500369228 /* 测试汇编_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试汇编_VC.swift"; sourceTree = "<group>"; };
+		AFE2C3682965523400369228 /* TestAssembly_OCVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestAssembly_OCVC.h; sourceTree = "<group>"; };
+		AFE2C3692965523400369228 /* TestAssembly_OCVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestAssembly_OCVC.m; sourceTree = "<group>"; };
+		AFE2C36B2965538400369228 /* testArm.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = testArm.s; sourceTree = "<group>"; };
+		AFE2C36D296553AD00369228 /* testArm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testArm.h; sourceTree = "<group>"; };
 		AFE55AD82902762700EC52AC /* TestMemory_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMemory_VC.swift; sourceTree = "<group>"; };
 		AFEF468B28B5D23100B3EA2D /* VerScroll_ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerScroll_ScrollView.swift; sourceTree = "<group>"; };
 		AFEF468D28B5D2C400B3EA2D /* VerScroll_ScrollView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerScroll_ScrollView2.swift; sourceTree = "<group>"; };
@@ -1789,6 +1797,7 @@
 		048DFE94281BC76000F210E8 /* 编程拓展知识 */ = {
 			isa = PBXGroup;
 			children = (
+				AFE2C365296527F300369228 /* 汇编开发 */,
 				AF83C5D3292C9D0E0019FC4B /* Cocoapod的使用.md */,
 				048DFE98281BEC8D00F210E8 /* 源代码管理_Git_SVN.md */,
 				AF83C5D1292C9AE10019FC4B /* 测试分支删除的影响.swift */,
@@ -2679,6 +2688,18 @@
 			path = "导航栏VC";
 			sourceTree = "<group>";
 		};
+		AFE2C365296527F300369228 /* 汇编开发 */ = {
+			isa = PBXGroup;
+			children = (
+				AFE2C3662965281500369228 /* 测试汇编_VC.swift */,
+				AFE2C3682965523400369228 /* TestAssembly_OCVC.h */,
+				AFE2C3692965523400369228 /* TestAssembly_OCVC.m */,
+				AFE2C36D296553AD00369228 /* testArm.h */,
+				AFE2C36B2965538400369228 /* testArm.s */,
+			);
+			path = "汇编开发";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3066,6 +3087,7 @@
 				0474C24727CE0D3A00B95D7C /* TestCALayer_View.swift in Sources */,
 				04870E3B26E9AD280030B1D2 /* AAColor.swift in Sources */,
 				AF3557BB286AF145009B291C /* Point_Person.swift in Sources */,
+				AFE2C36C2965538400369228 /* testArm.s in Sources */,
 				041CBC222787DC6100AF9B05 /* 测试图片存放的VC.swift in Sources */,
 				04A0CA5426A0027800ECAE1B /* JFZPlayerCommonViewDelegate.swift in Sources */,
 				AF2CF88029091DAD00C9388E /* TestSpilt_SubVC2.swift in Sources */,
@@ -3085,6 +3107,7 @@
 				042036AA2742550E00424E05 /* 测试cell里面label的自适应高度_Cell.swift in Sources */,
 				042036C62756433D00424E05 /* CollectionView的流布局Layout.swift in Sources */,
 				04D9B4D626D6494800289824 /* JFZ_AVAssetLoader_UrlSession.swift in Sources */,
+				AFE2C36A2965523400369228 /* TestAssembly_OCVC.m in Sources */,
 				04870E3C26E9AD280030B1D2 /* AAGradientColor.swift in Sources */,
 				0474C24E27CE220D00B95D7C /* 弹粘性效果_View.swift in Sources */,
 				0421E5EF26A9701600C6A922 /* JFZPlayerAudioTableViewCell.swift in Sources */,
@@ -3172,6 +3195,7 @@
 				AFDA1327287E6EE90015BFC3 /* 测试UIView的形变_VC.swift in Sources */,
 				0474C24327CE08A300B95D7C /* TestImgInvert_View.swift in Sources */,
 				04870E8326EB2D690030B1D2 /* TestSectionTableView_VC.swift in Sources */,
+				AFE2C3672965281500369228 /* 测试汇编_VC.swift in Sources */,
 				AFBCA8C92874228A00AD51D1 /* Point_MetaData.swift in Sources */,
 				042648DC27F2E0FB0034FF51 /* AsyncImg_Cell.swift in Sources */,
 				651C714D2609ED600066C13B /* tempVC.swift in Sources */,

@@ -36,7 +36,7 @@
         case 0:
             //TODO: 0、
         {
-            UIViewController * vc = [[TestOCBlock_VC alloc] init];
+            UIViewController * vc = [[TestAssembly_OCVC alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;

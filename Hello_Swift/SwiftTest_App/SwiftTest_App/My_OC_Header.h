@@ -12,5 +12,6 @@
 #import "TestRumtime_VC.h"
 #import "TestOCGrama_VC.h"
 #import "TestOCBlock_VC.h"
+#import "TestAssembly_OCVC.h"
 
 #endif /* My_OC_Header_h */

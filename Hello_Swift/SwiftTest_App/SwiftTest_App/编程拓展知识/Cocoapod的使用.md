@@ -11,7 +11,8 @@
        4、上传文件：将yourLibName.podspe和xcode项目工程文件一同上传到yourLibName.podspe中描述的仓库地址上，并打上tag。
                  （tag 和yourLibName.podspec中s.version 的保持一致）
                  
-                 
+## pod命令
+    
                  
 ## podspec语法：
     1、podspec是cocoapod库的描述文件，cocoapod通过读取podspec文件里的信息，对路径中的文件进行加载，处理，包装成framework来使用。

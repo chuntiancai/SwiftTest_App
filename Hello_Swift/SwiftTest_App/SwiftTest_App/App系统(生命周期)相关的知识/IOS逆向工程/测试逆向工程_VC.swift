@@ -143,8 +143,83 @@
       Tweak工程的目录结构：https://github.com/theos/theos/wiki/Structure
  */
 
-//MARK: - iOS命令行工具开放
+//MARK: - iOS命令行工具开发
 /**
+    1、命令行工具就是一个软件，一个可执行文件，跟app差不多。
+    2、签名： 给可执行文件签上一定的权限，让它可以访问其他app的可执行文件。(这里的仅仅是权限的签名，其他的签名功能不是这里讨论的，例如加密签名这些)。
+            .entitlements文件，其实就是xml文件，就是用来描述可执行文件的权限的配置文件。
+            用ldid工具查看权限，加入权限。可以抄袭springboard桌面的权限。
+    3、其实就是读取mach-0源文件，解析二进制代码。
+    4、logos语法，其实就是用来写Tweak工程的语言。
+ */
+
+//MARK: - iOS签名机制
+/**
+    1、在iPhone的沙盒中，app有一个_CodeSignature文件夹，该文件夹保存了一些与app可执行文件相关的签名信息。签名信息会校验可执行文件是否被修改或者破坏。
+            encrypt:加密，decrypt：解密，plaintext：明文，ciphertext：密文。
+        签名基础知识：加密解密(对称密码DES、公钥密码RSA) --> 单向散列函数(MD4、SHA-1、) --> 数字签名 --> 证书 --> iOS签名机制。
+ 
+        密钥：用于加密明文，解密密文。有多种密钥。例如：对称密码、公钥密码(非对称密码)、
+             加密解密都用同一个密钥来操作的，就叫做对称密码。加密用一种密钥，解密用另一种密钥的，叫做非对称密码。
+             公钥密码(RSA)：  公钥：公开发布的密钥。用于加密明文。虽然也有解密的功能。
+                            私钥：私人持有的密钥。用于解密密文。虽然也有加密的功能。
+        混合密码系统：
+            因为非对称加密解密速度比较慢，所以就需要同时使用对称和非对称密码。
+            发送者对 对称密码 进行公钥加密，发送者用 对称密码 对数据量大的明文进行加密 --> 接收者用私钥解密出 对称密码 ，接收者用 对称密码 解密数据量大的密文。
+            HTTPS、SSL就是用了混合密码系统。
+ 
+        单向散列函数(MD4、MD5、SHA-1、SHA-2、SHA-3)：
+            单向散列函数可以根据消息的内容计算出散列值，而且散列值的位数时固定的，无论消息内容有多大。单向是指只能 消息-->散列值 ，无法 散列值 --> 消息，所以只能用于校验。
+            MAC系统默认提供了MD5函数。直接在终端使用md5命令。
+ 
+        数字签名(确保数据来源，目的是验证)：
+            验证消息是否被篡改、伪装、来源。--- 刚好和公钥密码算法的流程反过来。
+            数字签名流程：生成签名(发送者用签名密钥) --> 验证签名(接收者用验证密钥)
+            保证消息确实是发送者发送的：用发送者的私钥进行签名；接收者用公钥进行解密。接收者用解密出来的信息(散列值)和明文发过来的信息(做散列值)做对比。
+            中间人攻击：中间人拦截了 接收者 和 发送者 的公钥，冒名顶替 接收者 或者 发送者，在中间冒名顶替传递他们的通信。所以必须要确保公钥是来自接收者，而非中间人。
+ 
+        证书(确保公钥来自官方)：
+            可以解决中间人攻击。公钥证书(Public-Key Certificate, PKC)。认证机构(Certificate Authority,CA)。
+            个人发布公钥 --> (个人注册)通过CA施加签名验证 --> CA生成个人相关的PKC --> 接收者下载PKC --> 接收者用PKC加密/解密消息内容。
+                KPC里面包括了：个人姓名、邮箱、公钥等信息。
+                CA就是相当于一种官方机构，用于确认“公钥确实属于此人”，有很多种CA组织或者公司。所以CA通过对个人注册进行收费赚钱。
+                中间人无法替代CA来传递证书，因为CA是通过自己的私钥对PKC进行加密，中间人没有CA的私钥。
+ 
+    2、iOS签名机制：
+        2.1、保证安装到用户手机上的APP都是经过Apple官方允许的。
+            Apple签名App的流程(xcode已经帮你自动化完成)：
+            1.生成CertificateSigningRequest.cerSigningRequest文件。
+            2.获得ios_development.cer\ios_distribution证书文件。
+            3.注册device、添加App ID。
+            4.获得*.mobileprovison文件。
+ 
+            开发的MAC设备：mac公钥、mac密钥。
+            Apple官方：apple私钥。
+            iPhone真机：apple公钥。
+ 
+            app源码 --> Mac电脑私钥签名 --> 签名后的ipa包。
+            Mac电脑公钥 --> 被Apple私钥签名 --> 生成Apple认证的证书 --> Mac得到证书 --> 证书再被Apple私钥签名 --> 生成mobile provision(散列值) --> 再次被合进去ipa包。
+            iPhone真机上的apple公钥 --> 验证ipa的mobile provision没被篡改 --> apple公钥解密出Mac的公钥 --> 用Mac的公钥验证ipa源码没被篡改。
+            （Apple签名后的mobileprovision文件包含 MAC的公钥证书、devices、app id、entitlements等信息、devices、app id等信息是在MAC的公钥证书里的)
+ 
+            MAC设备上的公钥：CertificateSigningRequest.cerSigningRequest文件，就是Mac电脑钥匙串上申请的请求证书。
+            MAC电脑上的证书(KPC)：在Apple官网上上传Mac的公钥，Apple官网用私钥生成证书后，用Mac电脑下载下来就是了,然后用Mac电脑安装这个证书(.cer文件)，就可以在钥匙串访问了。
+            生成mobileprovision文件：在Apple官网上申请，输入你的KPC、App ID、devices等信息，然后Apple官网生成mobileprovision文件供你下载。
+ 
+            注意：通过Appstroe下载的app是没有mobileprovision文件的，因为已经证明该App是官方的了，只要用apple公钥再验证一下源码没被篡改就可以了。
+                 所以mobileprovision文件除了验证App的官方性之外，还有一个很大的功能是向开发者收费。
+ 
+            p12文件：所谓的p12文件，其实就是Mac电脑上的私钥、证书副本，用于团队开发。
+ 
+    3、iOS重签名：
+        3.1、也就是对原来的ipa包进行重签名，重签名可以让自己开发的ipa包也能安装到别人的未越狱手机上，该功能需要apple账号付费。
+             越狱手机安装app可以无视签名，但是非越狱手机必须经过签名验证。
+            重签名是付费开发者账号对app的证书进行一个重签名，也要在mobileprovision里面添加别人的手机device。
+            在Mac终端 --> (付费账号的证书ID)用codesign命令扩大ipa包的MAC公钥证书的权限 --> 在Apple官网申请添加了其他设备的mobileprovision文件  --> 修改mobileprovision文件就是用新的mobileprovision文件的entitlements文件替换原来mobileprovision文件里的entitlements文件，对它进行权限扩大。
+ 
+            总的来说，就是我已经生成了ipa包，我不想重新打包新的ipa包，但是我有ipa里面的Mac公钥证书，所以我就要替换掉原来ipa包里mobileprovision文件的权限，也就是重签名了。 也就是上面的一系列步骤，对MAC公钥权限扩大，扩大原来ipa包里的mobileprovision文件的权限。
+ 
+            (证书id查看、提取entitlements文件用security命令、codesign命令操作mobileprovision文件等操作)
  */
 
 
