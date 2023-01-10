@@ -141,6 +141,9 @@
       Tweak工程的语法(也叫logos语法)：http://iphonedevwiki.net/index.php/Logos
       Theos的环境变量配置：http://iphonedevwiki.net/index.php/Theos
       Tweak工程的目录结构：https://github.com/theos/theos/wiki/Structure
+ 
+    2、越狱的本质是在iOS系统调用动态库的时候，插入中间代码，或者插入其他动态库。正常的App是不被允许使用动态库的，动态库仅仅iOS系统自身控制调用，越狱就是打破这一限制。
+       源代码编译成汇编之后，汇编层面会去调用iOS系统的动态库。
  */
 
 //MARK: - iOS命令行工具开发
@@ -213,13 +216,17 @@
  
     3、iOS重签名：
         3.1、也就是对原来的ipa包进行重签名，重签名可以让自己开发的ipa包也能安装到别人的未越狱手机上，该功能需要apple账号付费。
-             越狱手机安装app可以无视签名，但是非越狱手机必须经过签名验证。
+             越狱手机安装app可以无视签名，但是非越狱手机必须经过签名验证，而且app包必须要经过脱壳的才可以重签名。
             重签名是付费开发者账号对app的证书进行一个重签名，也要在mobileprovision里面添加别人的手机device。
             在Mac终端 --> (付费账号的证书ID)用codesign命令扩大ipa包的MAC公钥证书的权限 --> 在Apple官网申请添加了其他设备的mobileprovision文件  --> 修改mobileprovision文件就是用新的mobileprovision文件的entitlements文件替换原来mobileprovision文件里的entitlements文件，对它进行权限扩大。
  
             总的来说，就是我已经生成了ipa包，我不想重新打包新的ipa包，但是我有ipa里面的Mac公钥证书，所以我就要替换掉原来ipa包里mobileprovision文件的权限，也就是重签名了。 也就是上面的一系列步骤，对MAC公钥权限扩大，扩大原来ipa包里的mobileprovision文件的权限。
  
             (证书id查看、提取entitlements文件用security命令、codesign命令操作mobileprovision文件等操作)
+ 
+            iOS系统两个常用的环境变量： @excutable_path 代表可执行文件所在的目录。 @loader_path 代表当前动态库在iOS系统中的目录。
+ 
+            非越狱手机非法添加app的动态库，那些动态库也需要重签名。
  */
 
 

@@ -37,31 +37,31 @@
         assgin:__unsafe_unretained修饰,也不会让引用计数器+1,但是如果指向对象被销毁,指针不会清空，需要手动清空，是MRC的历史遗留。
                 所以assign并不保留对实例的引用，也不销毁指针，所以在方法栈中通过assgin保留对象的引用，会导致坏地址访问报错。但是可用于基本类型，因为是值传递。
     
-    7、@class关键字 用在A.h文件中，在头部声明@class A ，目的是告诉编译器，当前正在A.h文件里，如果A.h文件中有协议是用到A的话，先不用管，等后面真正用到协议的时候，再引进A.h文件给协议使用。
-        是为了在A.h文件中使用A类而声明的关键字。
+    7、@class 关键字 用在A.h文件中，在头部声明 @class A ，目的是告诉编译器，当前正在A.h文件里，如果A.h文件中有协议是用到A的话，
+        先不用管，等后面真正用到协议的时候，再引进A.h文件给协议使用。是为了在A.h文件中使用A类而声明的关键字。
   1.weak
-  1> OC对象
+    1> OC对象
   
   2.assign
-  1> 基本数据类型
-  2> OC对象
+    1> 基本数据类型
+    2> OC对象
   
   3.strong
-  1> OC对象
+    1> OC对象
   
   4.copy
-  1> NSString *
-  2> block
+    1> NSString *
+    2> block
   
   5.使用weak和assign修饰OC对象的区别
-  1> 成员变量
-  1) weak生成的成员变量是用__weak修饰的，比如XMGCat * __weak _cat;
-  2) assign生成的成员变量是用__unsafe_unretained修饰的XMGCat * __unsafe_unretained _cat;
+    1> 成员变量
+        1) weak生成的成员变量是用__weak修饰的，比如XMGCat * __weak _cat;
+        2) assign生成的成员变量是用__unsafe_unretained修饰的XMGCat * __unsafe_unretained _cat;
 
-  2> __weak和__unsafe_unretained
-  1) 都不是强指针（不是强引用），不能保住对象的命
-  2) __weak : 所指向的对象销毁后，会自动变成nil指针（空指针），不再指向已经销毁的对象
-  3) __unsafe_unretained : 所指向的对象销毁后，仍旧指向已经销毁的对象
+    2> __weak和__unsafe_unretained
+        1) 都不是强指针（不是强引用），不能保住对象的命
+        2) __weak : 所指向的对象销毁后，会自动变成nil指针（空指针），不再指向已经销毁的对象
+        3) __unsafe_unretained : 所指向的对象销毁后，仍旧指向已经销毁的对象
  
  */
 

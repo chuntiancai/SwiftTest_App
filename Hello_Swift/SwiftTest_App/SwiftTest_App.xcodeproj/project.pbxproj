@@ -412,6 +412,8 @@
 		AFE2C3672965281500369228 /* 测试汇编_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE2C3662965281500369228 /* 测试汇编_VC.swift */; };
 		AFE2C36A2965523400369228 /* TestAssembly_OCVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE2C3692965523400369228 /* TestAssembly_OCVC.m */; };
 		AFE2C36C2965538400369228 /* testArm.s in Sources */ = {isa = PBXBuildFile; fileRef = AFE2C36B2965538400369228 /* testArm.s */; };
+		AFE2C370296BB78D00369228 /* TestOCCategory_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE2C36F296BB78D00369228 /* TestOCCategory_VC.m */; };
+		AFE2C373296BB81600369228 /* TestOCCategory_VC+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE2C372296BB81600369228 /* TestOCCategory_VC+Test.m */; };
 		AFE55AD92902762700EC52AC /* TestMemory_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE55AD82902762700EC52AC /* TestMemory_VC.swift */; };
 		AFEF468C28B5D23100B3EA2D /* VerScroll_ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF468B28B5D23100B3EA2D /* VerScroll_ScrollView.swift */; };
 		AFEF468E28B5D2C400B3EA2D /* VerScroll_ScrollView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF468D28B5D2C400B3EA2D /* VerScroll_ScrollView2.swift */; };
@@ -878,6 +880,10 @@
 		AFE2C3692965523400369228 /* TestAssembly_OCVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestAssembly_OCVC.m; sourceTree = "<group>"; };
 		AFE2C36B2965538400369228 /* testArm.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = testArm.s; sourceTree = "<group>"; };
 		AFE2C36D296553AD00369228 /* testArm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testArm.h; sourceTree = "<group>"; };
+		AFE2C36E296BB78D00369228 /* TestOCCategory_VC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestOCCategory_VC.h; sourceTree = "<group>"; };
+		AFE2C36F296BB78D00369228 /* TestOCCategory_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestOCCategory_VC.m; sourceTree = "<group>"; };
+		AFE2C371296BB81600369228 /* TestOCCategory_VC+Test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestOCCategory_VC+Test.h"; sourceTree = "<group>"; };
+		AFE2C372296BB81600369228 /* TestOCCategory_VC+Test.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TestOCCategory_VC+Test.m"; sourceTree = "<group>"; };
 		AFE55AD82902762700EC52AC /* TestMemory_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMemory_VC.swift; sourceTree = "<group>"; };
 		AFEF468B28B5D23100B3EA2D /* VerScroll_ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerScroll_ScrollView.swift; sourceTree = "<group>"; };
 		AFEF468D28B5D2C400B3EA2D /* VerScroll_ScrollView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerScroll_ScrollView2.swift; sourceTree = "<group>"; };
@@ -1554,8 +1560,6 @@
 				04927014279EA6A5000A61FC /* 测试消息机制(Notification等) */,
 				041A2E1927901CD400F9CABF /* 测试KVC和KVO */,
 				048608AF273527B9000F816E /* 测试selector结构体 */,
-				04C7EA2C2840AA3D00685624 /* 测试OC的Runtime */,
-				AF824281287C0F4B002311AF /* 测试OC的语法 */,
 			);
 			path = "Swift语法测试";
 			sourceTree = "<group>";
@@ -2343,6 +2347,7 @@
 				048DFE94281BC76000F210E8 /* 编程拓展知识 */,
 				0455059E27FFD09E00785F02 /* 自定义控件 */,
 				048608AC27350E89000F816E /* App系统(生命周期)相关的知识 */,
+				AF824281287C0F4B002311AF /* OC的语法测试 */,
 				04600033271190F70074DFA2 /* Swift语法测试 */,
 				049EAFD726B3E18000903DA8 /* 多线程测试 */,
 				04C2DC0526CE3F6900F9B3EE /* 网络测试 */,
@@ -2579,13 +2584,15 @@
 			path = "语言文字本地化";
 			sourceTree = "<group>";
 		};
-		AF824281287C0F4B002311AF /* 测试OC的语法 */ = {
+		AF824281287C0F4B002311AF /* OC的语法测试 */ = {
 			isa = PBXGroup;
 			children = (
 				AF824282287C1B47002311AF /* TestOCGrama_VC.h */,
 				AF824283287C1B47002311AF /* TestOCGrama_VC.m */,
+				AFE2C374296D02D500369228 /* 测试OC的分类category */,
+				04C7EA2C2840AA3D00685624 /* 测试OC的Runtime */,
 			);
-			path = "测试OC的语法";
+			path = "OC的语法测试";
 			sourceTree = "<group>";
 		};
 		AF83C5CE29260E8E0019FC4B /* IOS逆向工程 */ = {
@@ -2698,6 +2705,17 @@
 				AFE2C36B2965538400369228 /* testArm.s */,
 			);
 			path = "汇编开发";
+			sourceTree = "<group>";
+		};
+		AFE2C374296D02D500369228 /* 测试OC的分类category */ = {
+			isa = PBXGroup;
+			children = (
+				AFE2C36E296BB78D00369228 /* TestOCCategory_VC.h */,
+				AFE2C36F296BB78D00369228 /* TestOCCategory_VC.m */,
+				AFE2C371296BB81600369228 /* TestOCCategory_VC+Test.h */,
+				AFE2C372296BB81600369228 /* TestOCCategory_VC+Test.m */,
+			);
+			path = "测试OC的分类category";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3141,6 +3159,7 @@
 				04587C7227B4E58700824F69 /* TestArchives_VC.swift in Sources */,
 				04A0CA4D26A0027800ECAE1B /* JFZMediaCacheDelegate.swift in Sources */,
 				0498537926F58B16009E4637 /* IOSChartView.swift in Sources */,
+				AFE2C373296BB81600369228 /* TestOCCategory_VC+Test.m in Sources */,
 				0421E5EE26A9701600C6A922 /* JFZPlayerVideoTableViewCell.swift in Sources */,
 				AFD34EEA2886876F00C807A3 /* TestBlock_VC.swift in Sources */,
 				049EAFE326B7D53200903DA8 /* TouchDeliver_Btn.swift in Sources */,
@@ -3158,6 +3177,7 @@
 				04A0CA3A26A0027800ECAE1B /* JFZPlayerConstant.swift in Sources */,
 				AF2CF883290A854B00C9388E /* 测试录音_VC.swift in Sources */,
 				0415582B2834F5CB007FC2E8 /* TestTimer_VC.swift in Sources */,
+				AFE2C370296BB78D00369228 /* TestOCCategory_VC.m in Sources */,
 				0421E5DC26A829A800C6A922 /* CommanTestVC.swift in Sources */,
 				AFC1B388289CFD3C0050FC8F /* TestAd_VC.swift in Sources */,
 				04C2DC0426CE304700F9B3EE /* SubVC1_View.swift in Sources */,
