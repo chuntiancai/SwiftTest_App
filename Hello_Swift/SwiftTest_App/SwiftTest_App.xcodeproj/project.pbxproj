@@ -414,6 +414,7 @@
 		AFE2C36C2965538400369228 /* testArm.s in Sources */ = {isa = PBXBuildFile; fileRef = AFE2C36B2965538400369228 /* testArm.s */; };
 		AFE2C370296BB78D00369228 /* TestOCCategory_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE2C36F296BB78D00369228 /* TestOCCategory_VC.m */; };
 		AFE2C373296BB81600369228 /* TestOCCategory_VC+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE2C372296BB81600369228 /* TestOCCategory_VC+Test.m */; };
+		AFE2C378296D0C1E00369228 /* TestOCNSObject_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE2C377296D0C1E00369228 /* TestOCNSObject_VC.m */; };
 		AFE55AD92902762700EC52AC /* TestMemory_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE55AD82902762700EC52AC /* TestMemory_VC.swift */; };
 		AFEF468C28B5D23100B3EA2D /* VerScroll_ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF468B28B5D23100B3EA2D /* VerScroll_ScrollView.swift */; };
 		AFEF468E28B5D2C400B3EA2D /* VerScroll_ScrollView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF468D28B5D2C400B3EA2D /* VerScroll_ScrollView2.swift */; };
@@ -884,6 +885,10 @@
 		AFE2C36F296BB78D00369228 /* TestOCCategory_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestOCCategory_VC.m; sourceTree = "<group>"; };
 		AFE2C371296BB81600369228 /* TestOCCategory_VC+Test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestOCCategory_VC+Test.h"; sourceTree = "<group>"; };
 		AFE2C372296BB81600369228 /* TestOCCategory_VC+Test.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TestOCCategory_VC+Test.m"; sourceTree = "<group>"; };
+		AFE2C376296D0C1E00369228 /* TestOCNSObject_VC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestOCNSObject_VC.h; sourceTree = "<group>"; };
+		AFE2C377296D0C1E00369228 /* TestOCNSObject_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestOCNSObject_VC.m; sourceTree = "<group>"; };
+		AFE2C379296D0F8E00369228 /* OCObject_Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCObject_Person.h; sourceTree = "<group>"; };
+		AFE2C37C296D589800369228 /* OCObject_Student.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCObject_Student.h; sourceTree = "<group>"; };
 		AFE55AD82902762700EC52AC /* TestMemory_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMemory_VC.swift; sourceTree = "<group>"; };
 		AFEF468B28B5D23100B3EA2D /* VerScroll_ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerScroll_ScrollView.swift; sourceTree = "<group>"; };
 		AFEF468D28B5D2C400B3EA2D /* VerScroll_ScrollView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerScroll_ScrollView2.swift; sourceTree = "<group>"; };
@@ -2589,6 +2594,7 @@
 			children = (
 				AF824282287C1B47002311AF /* TestOCGrama_VC.h */,
 				AF824283287C1B47002311AF /* TestOCGrama_VC.m */,
+				AFE2C375296D09A200369228 /* OC的对象 */,
 				AFE2C374296D02D500369228 /* 测试OC的分类category */,
 				04C7EA2C2840AA3D00685624 /* 测试OC的Runtime */,
 			);
@@ -2716,6 +2722,17 @@
 				AFE2C372296BB81600369228 /* TestOCCategory_VC+Test.m */,
 			);
 			path = "测试OC的分类category";
+			sourceTree = "<group>";
+		};
+		AFE2C375296D09A200369228 /* OC的对象 */ = {
+			isa = PBXGroup;
+			children = (
+				AFE2C376296D0C1E00369228 /* TestOCNSObject_VC.h */,
+				AFE2C377296D0C1E00369228 /* TestOCNSObject_VC.m */,
+				AFE2C379296D0F8E00369228 /* OCObject_Person.h */,
+				AFE2C37C296D589800369228 /* OCObject_Student.h */,
+			);
+			path = "OC的对象";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3164,6 +3181,7 @@
 				AFD34EEA2886876F00C807A3 /* TestBlock_VC.swift in Sources */,
 				049EAFE326B7D53200903DA8 /* TouchDeliver_Btn.swift in Sources */,
 				045505A328000AF800785F02 /* CTCCalendarDayModel.swift in Sources */,
+				AFE2C378296D0C1E00369228 /* TestOCNSObject_VC.m in Sources */,
 				04C7EA2A2840A2B500685624 /* OCGeneric_Person.m in Sources */,
 				04587C7D27B50BCD00824F69 /* Tabar_SubVC3.swift in Sources */,
 				AFC1B36C2899168C0050FC8F /* MyNavigation_SubVC1.swift in Sources */,

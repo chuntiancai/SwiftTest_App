@@ -13,5 +13,6 @@
 #import "TestOCGrama_VC.h"
 #import "TestOCBlock_VC.h"
 #import "TestAssembly_OCVC.h"
+#import "TestOCNSObject_VC.h"
 
 #endif /* My_OC_Header_h */
