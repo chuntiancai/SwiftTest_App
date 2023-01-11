@@ -26,7 +26,7 @@ class KVO_Observer:NSObject{
     
 }
 
-//MARK: -
+//MARK: - 复写接收到主题消息的方法
 extension KVO_Observer{
     //MARK: 接受主题消息的方法
     ///还有一个observeValue是类方法，不要复写错了，类方法不是接收成员变量的变化消息的，应该是接收类成员变化的消息。

@@ -34,9 +34,31 @@
                         clang：编译器指令，-arch指定架构。arm64架构。-rewrite-objc重写oc代码的意思。
         xcode将要编译的文件选择：工程 --> Target --> buiding phases --> compile sources --> 里面就是需要编译的源代码文件了。
  
+    3、OC中对象的种类：
     
-
+        CPU --> 查看类的源代码 --> 根据源代码生成元类对象、类对象 --> 元类对象存储类方法、类对象存储实例对象的相关信息 --> 别的地方初始化实例对象 -->
+        类对象根据自身存储的信息生成实例对象  --> CPU开辟空间给实例对象存储东西。
+        
+        1> 实例对象(instance)
+            通过类描述信息alloc出来的对象，每次alloc都会分配内存产生新的instance对象。
+            实例对象内存空间存储的东西是：成员变量(isa指针、基本数据类型、结构体)，不存储方法体的内存。
+            所以子类的实例对象的内存空间，其实是会存储父类的成员变量的内存的，因为成员变量相对实例来讲，是唯一的内存空间。
  
+        2> 类对象(class)
+            OC语言为源代码的类描述信息定义了一个类对象，类对象的指令代码在内存中，就是根据自身的描述信息去叫系统alloc出实例对象。
+            类对象内存空间存储的是：isa指针、实例对象方法体代码的内存、成员变量描述信息的内存、协议信息的内存、类成员变量的内存等等。
+                                反正就是实例对象共享的代码、只需要存储一份的代码都在类对象里。
+            NSObject的class方法无论调用多少次，都是返回当前的类对象。
+    
+        3> 元类对象(meta-class)
+            描述数据的数据，就叫做元数据。
+            元类对象设计的目的，是让所有类继承于NSObject，有一个共同的超类，定义对象概念的最基础的属性和行为。
+            元类对象存储的是描述类对象的信息，元类对象和类对象的内存结构是一样的，只是用途不一样。
+            元类对象内存空间存储的是：isa指针、superclass指针、类方法信息等等，但是其他指针基本是都是Null，主要用于存储类方法信息的内容。
+            通过方法object_getClass(id  _Nullable obj)来获取类对象的元类对象，参数是类对象。
+ 
+        4> 无论是父类还是子类，都有自己的 instance、class、meta-class。
+
                         
  */
 
@@ -52,7 +74,6 @@
 
 - (void)viewDidLoad {
     
-    
     [super viewDidLoad];
     self.title = @"测试OC对象的VC";
     self.view.backgroundColor = [[UIColor alloc] initWithRed: 199/255.0 green: 204/255.0 blue: 237/255.0 alpha:1.0];
@@ -66,9 +87,12 @@
         case 0:
             //TODO: 0、测试常用的C语言函数。
             /**
-                1、class_getInstanceSize 返回一个类的实例的大小(字节)。参数是类对象。这里是实例对象的自身大小(C语言的结构体内存对齐规则后的大小)。
-                2、 malloc_size((__bridge const void *)(obj));获得指针所指向的分配内存的大小(字节)，参数是C语言指针，系统内存16字节对齐分配。
-                3、iOS系统是小端模式读取内存的值。
+                1、class_getInstanceSize 返回一个类的实例自身的大小(字节)。参数是类对象。(C语言的结构体内存对齐规则后的大小)。运行阶段。
+                2、malloc_size((__bridge const void *)(obj));获得指针所指向的动态分配内存的大小(字节)，参数是C语言指针，系统内存16字节对齐分配。
+                3、sizeof(expression-or-type)是计算数据类型自身大小的运算符，在编译阶段确认(C语言内存对齐规则)。iOS系统是小端模式读取内存的值。参数是类对象。
+                4、objc_getClass(const char * _Nonnull name)根据参数字符串返回对应的类对象。
+                   object_getClass(id  _Nullable obj)方法返回类对象的元类对象，参数是类对象。实例对象-->类对象-->元类对象-->NSObject(基类)的元类对象。
+                5、OC指针转换为C指针，需要在OC指针前加上(__bridge const XXX *)语句，强制类型转换。
              */
             NSLog(@"0、测试常用的C语言函数。");
         {
@@ -82,6 +106,12 @@
             //   OC指针转换为C语言指针，在OC指针前加上(__bridge const void *)语句，强制类型声明。
             NSInteger mallocSize = malloc_size((__bridge const void *)(obj));
             NSLog(@"指针所指向的内存的大小是：%zd",mallocSize);
+            
+            //3、C语言函数sizeof是计算数据类型自身的大小，在编译阶段确认，而非动态内存分配时确认。(所占空间根据C语言规则占用)
+            NSInteger personSize = sizeof([OCObject_Person class]);
+            NSLog(@"C语言函数sizeof的大小：%zd",personSize);
+            
+            
             
         }
             break;
@@ -106,7 +136,6 @@
             struct OCObject_Person_IMPL * personIMPL = (__bridge struct OCObject_Person_IMPL *)(person);   //OC指针桥接为C指针。
             NSLog(@"oc对象强转换为C语言结构体，_no:%d , _age:%d ",personIMPL->_no,person->_age);
         }
-            
             break;
         case 2:
             break;
