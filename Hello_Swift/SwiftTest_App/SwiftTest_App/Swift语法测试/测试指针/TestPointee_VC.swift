@@ -187,9 +187,9 @@ extension TestPointee_VC: UICollectionViewDataSource {
                   因为swift的 &运算符 只能运用在参数上，所以需要通过withUnsafePointer(to:)参数传入指针，闭包返回指针，从而获取变量的指针。
              */
             person.name = "指针变量"
-            let retStr = withUnsafePointer(to: &person) { ptr -> String in
+            let retStr = withUnsafePointer(to: &person) { ptr -> UnsafePointer<Point_Person> in
                 print("指针变量自身所在的地址：\(ptr)")
-                return "看看返回值"
+                return ptr
             }
             print("withUnsafePointer的返回值：\(retStr)")
             print(String(format: "指针指向的对象的地址：%p",person))//swift打印地址。

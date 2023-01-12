@@ -7,6 +7,8 @@
 //
 // 测试KVO的VC
 // MARK: - 笔记
+
+import Dispatch
 /**
     1、KVO用于监听对象的某个对象发生变化时，指定调用某个方法。(观察者模式)。也是通过keyPath进行操作。
        观察者自身要有定义接收主题消息的方法。
@@ -15,8 +17,12 @@
        苹果会经常采用隐含子类的方式来实现一些模式，例如字典和数组的扩展也是。
     4、必须在析构方法中释放观察者。
  
-    5、添加了KVO属性监听的对象，那么该对象的isa指针会重新指向一个中间对象，中间对象再指向类对象，中间对象就处理了发布通知，调用监听者方法的逻辑。
-        该中间对象是在程序运行过程runtime中，动态创建的。
+    5、添加了KVO属性监听的对象，那么该对象的isa指针会重新指向一个中间对象，中间对象的superclass指针再指向原来的类对象，中间对象就处理了发布通知，调用监听者方法的逻辑。
+        该中间对象(NSKVONotifying_XXX)是在程序运行过程runtime中，动态创建的。中间对象只用于寻找方法链表，找不到就直接原来类对象的逻辑。
+        中间对象继承了被监听对象的类对象，会重写类对象里的一些方法。
+        中间类对象重写了属性的set方法，去调用foundation框架的_NSSetXXXValueAndNotify方法，该方法重写了原来类对象的willChangeValueForKey和didChangeValueForKey方法，然后等属性的变量被改完之后，就去发布更新通知，是在重写didChangeValueForKey方法里去发布通知的，但是会校验willChangeValueForKey又没执行。
+ 
+    6、直接通过指针修改成员变量，不会出发KVO，因为这是直接修改地址上的值，不会调用set方法。
  */
 
 
@@ -88,8 +94,33 @@ extension TestKVO_VC: UICollectionViewDataSource {
             personB.setValue("22", forKey: "age")
             print("修改私有变量后的personB:\(personB)")
         case 3:
-            //TODO: 3、
-            print("     (@@ ")
+            //TODO: 3、查看KVO方法调用。
+            print("     (@@ 3、查看KVO方法调用。")
+            let address = personA.method(for: Selector.init(("name")));
+            print("age变量的地址：\(String(describing: address))")
+        case 4:
+            //TODO: 4、查看实例对象的方法列表
+            /**
+                1、只能获取到有 @objc 前缀的方法，也就是只能获取到OC方法，证明swift方法列表不在这里。
+             */
+            print("     (@@4、查看KVO方法调用。")
+            var mCount:UInt32 = 0
+            /// 指向数组的指针，数据的小标以元素类型单位为步长。
+            let mListPtr:UnsafeMutablePointer<Method>? = class_copyMethodList(personA.classForCoder, &mCount)
+            
+            for index in 0 ..< mCount {
+                ///获得方法指针
+                let method:Method = mListPtr![Int(index)]
+                
+                ///获取方法结构体
+                let mSelector:Selector = method_getName(method)
+                
+                ///获得方法名
+                let mName:String = NSStringFromSelector(mSelector)
+                
+                print("获得的方法名是：\(mName)")
+            }
+            
         case 5:
             print("     (@@")
         case 6:

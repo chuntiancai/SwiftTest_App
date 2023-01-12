@@ -23,6 +23,28 @@ class KVO_Person: NSObject {
         self.money = money
     }
     
+    @objc func eat(_ food:String){
+        print("吃东西：\(food)")
+    }
+    
+    @objc func walk(){
+        print("人行走")
+    }
+
+    func playBasketball(){
+        print("人打篮球")
+    }
+    
+    @objc private func playGame(){
+        print("人玩游戏")
+    }
+    
+    private func sleep(){
+        print("人睡觉")
+    }
+    
+    
+    
     override var description: String {
         let backStr = """
                         {
@@ -35,6 +57,7 @@ class KVO_Person: NSObject {
                         """
         return backStr
     }
+    
     
 }
 
