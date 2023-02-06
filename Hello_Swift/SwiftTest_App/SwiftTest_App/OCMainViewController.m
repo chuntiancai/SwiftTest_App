@@ -36,8 +36,10 @@
         case 0:
             //TODO: 0、
         {
-            UIViewController * vc = [[TestOCNSObject_VC alloc] init];
+            TestOCCategory_VC * vc = [[TestOCCategory_VC alloc] init];
+            vc.myName = @"测试关联对象添加属性_name";
             [self.navigationController pushViewController:vc animated:YES];
+            NSLog(@"取出的name值是：%@",vc.myName);
         }
             break;
         case 1:

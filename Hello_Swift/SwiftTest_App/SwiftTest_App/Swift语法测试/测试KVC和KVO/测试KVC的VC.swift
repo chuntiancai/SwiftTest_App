@@ -147,7 +147,7 @@ extension TestKVC_VC: UICollectionViewDataSource {
         case 4:
             //TODO: 4、测试swift关联对象
             print("     (@@ 4、测试swift关联对象")
-            personA.wife = "纯宝宝～"
+            personA.wife = "女人～"
             print("wife:\(personA.wife)")
         case 5:
             print("     (@@")

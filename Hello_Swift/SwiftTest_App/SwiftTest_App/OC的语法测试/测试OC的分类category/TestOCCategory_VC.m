@@ -2,24 +2,23 @@
 //  TestOCCategory_VC.m
 //  SwiftTest_App
 //
-//  Created by mathew on 2023/1/9.
+//  Created by mathew on 2023/1/31.
 //  Copyright © 2023 com.mathew. All rights reserved.
 //
 // 测试OC分类的VC
+//MARK: - 笔记
+/**
+    1、OC的类扩展不是分类，其实就是匿名类，是在编译时就编入了源代码里面了，就是写个私有属性，就是个语法规范。与分类区分。
+    2、OC语法糖，用@()将int、double等基本类型包起来，就会自动转换为对象类型。例如：@(age)
+ */
 
 #import "TestOCCategory_VC.h"
 #import "SwiftTest_App-Swift.h"
 
-//MARK: - 笔记
-/**
-    1、
- */
-
-
 @interface TestOCCategory_VC ()<UICollectionViewDataSource,UICollectionViewDelegate>
 
-@property(nonatomic,strong) UICollectionView * baseCollView;
-@property(nonatomic,strong) NSArray * collDataArr;
+@property(nonatomic,strong) UICollectionView *  baseCollView;
+@property(nonatomic,strong) NSArray *  collDataArr;
 
 @end
 
