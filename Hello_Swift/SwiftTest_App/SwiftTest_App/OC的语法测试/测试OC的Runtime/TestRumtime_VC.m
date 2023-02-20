@@ -11,7 +11,7 @@
 #import "OCRuntime_Person+Property.h"
 #import <objc/message.h>
 #import "OCRuntime_StatusModel.h"
-#import "OCRuntime_SubPerson.h""
+#import "OCRuntime_SubPerson.h"
 
 
 //MARK: - 笔记
@@ -47,9 +47,13 @@
     5、swift没有load方法，可以通过initialize里面用dispatch_once_t 实现。
  
     6、SEL，IMP， Method,
-        SEL是方法名选择择器，是描述方法名的对象，也就是方法名的结构体，内部哈希化了方法名字符串。\\ @slector() 是编译器给的语法糖
+        SEL是方法名选择择器，是描述方法名的对象，也就是方法名的结构体，内部哈希化了方法名字符串。
+            > @slector() 是编译器给的语法糖,SEL底层有点类似char的结构。
+            > 不同类的相同方法名，它们的SEL是一样的。
         IMP是函数指针，指向了方法体的首地址。
         Method是描述方法的结构体，里面包含了SEL和IMP。
+        类对象里有个方法缓存成员：用于缓存最近调用的方法，类似OS的内存寻址缓存技术。（散列映射寻找方法缓存）
+ 
     7、 super关键字:仅仅是一个编译指示器,就是给编译器看的,不是一个指针，本质还是在当前对象里执行代码。
  */
 
@@ -68,6 +72,7 @@
     self.title = @"测试Rumtime_VC";
     self.view.backgroundColor = [[UIColor alloc] initWithRed: 199/255.0 green: 204/255.0 blue: 237/255.0 alpha:1.0];
     [self.view addSubview:self.baseCollView];
+    
 
 }
 //MARK: - UICollectionViewDataSource & UICollectionViewDelegate 协议

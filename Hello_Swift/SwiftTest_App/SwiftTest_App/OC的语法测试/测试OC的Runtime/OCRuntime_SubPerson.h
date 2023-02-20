@@ -10,6 +10,5 @@
 
 @interface OCRuntime_SubPerson : OCRuntime_Person
 
-
 @end
 
