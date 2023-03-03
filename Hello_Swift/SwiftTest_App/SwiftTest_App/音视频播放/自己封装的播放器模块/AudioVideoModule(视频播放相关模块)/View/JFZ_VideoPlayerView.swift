@@ -211,6 +211,7 @@ extension JFZ_VideoPlayerView{
         
         ///控制面板View
         self.addSubview(ctrlPanelView)
+        setCtrlPanelViewLogic()
         ctrlPanelView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -232,7 +233,7 @@ extension JFZ_VideoPlayerView{
         
     }
     
-    /// 设置控制面板的逻辑
+    //TODO: 设置控制面板的逻辑
     private func setCtrlPanelViewLogic(){
         
         // 点击了播放按钮的回调
@@ -286,6 +287,7 @@ extension JFZ_VideoPlayerView{
             /// 跳转到播放时间
             let newTime = CMTime(seconds: Double(sliderValue), preferredTimescale: 600)
             self?.avPlayer!.seek(to: newTime, toleranceBefore: .zero, toleranceAfter: .zero)
+            print("seek之后的curtime：\(self?.avPlayer!.currentTime())")
             ///更新开始时间的值
             self?.ctrlPanelView.startTimeLabel.text = self?.createTimeString(time: sliderValue)
             ///print("滑块值变化的回调：\(sliderValue)")
@@ -294,7 +296,10 @@ extension JFZ_VideoPlayerView{
         //滑块已经抬起时的值
         ctrlPanelView.sliderValueDidChangedAction = {
             [weak self] sliderValue -> Void  in
+            
+            print("\(#file)手指抬起啦")
             self?.playVideo()  //开始播放
+            
         }
         
         //全屏播放按钮的回调
@@ -523,10 +528,6 @@ extension JFZ_VideoPlayerView{
         }
         self.curPlayerItem = playerItem
         avPlayer?.replaceCurrentItem(with: self.curPlayerItem)
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {    //延迟0.05秒，等待curPlayerItem加载完
-//            [weak self] in
-//            self?.playVideo()
-//        }
     }
 }
 
