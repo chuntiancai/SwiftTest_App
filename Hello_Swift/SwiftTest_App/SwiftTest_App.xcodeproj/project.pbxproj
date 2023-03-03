@@ -310,6 +310,9 @@
 		AF218579298903EC0033829F /* TestOCCategory_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = AF218578298903EC0033829F /* TestOCCategory_VC.m */; };
 		AF21857F2995E2FF0033829F /* 测试AVFoundation框架_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF21857E2995E2FF0033829F /* 测试AVFoundation框架_VC.swift */; };
 		AF2185822995E5DB0033829F /* AVFoundation的概览笔记.md in Resources */ = {isa = PBXBuildFile; fileRef = AF2185812995E5DB0033829F /* AVFoundation的概览笔记.md */; };
+		AF21858529A4C29D0033829F /* TestVideoMerge_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF21858429A4C29D0033829F /* TestVideoMerge_VC.swift */; };
+		AF21858729A4C4700033829F /* MergeVideo_PlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF21858629A4C4700033829F /* MergeVideo_PlayVC.swift */; };
+		AF21858B29A70FCA0033829F /* MergeVideo_MergeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF21858A29A70FCA0033829F /* MergeVideo_MergeVC.swift */; };
 		AF2C735025539C54000AD7A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2C734F25539C54000AD7A9 /* AppDelegate.swift */; };
 		AF2C735425539C54000AD7A9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2C735325539C54000AD7A9 /* MainViewController.swift */; };
 		AF2C735925539C60000AD7A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF2C735825539C60000AD7A9 /* Assets.xcassets */; };
@@ -758,6 +761,9 @@
 		AF218578298903EC0033829F /* TestOCCategory_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestOCCategory_VC.m; sourceTree = "<group>"; };
 		AF21857E2995E2FF0033829F /* 测试AVFoundation框架_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试AVFoundation框架_VC.swift"; sourceTree = "<group>"; };
 		AF2185812995E5DB0033829F /* AVFoundation的概览笔记.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "AVFoundation的概览笔记.md"; sourceTree = "<group>"; };
+		AF21858429A4C29D0033829F /* TestVideoMerge_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVideoMerge_VC.swift; sourceTree = "<group>"; };
+		AF21858629A4C4700033829F /* MergeVideo_PlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeVideo_PlayVC.swift; sourceTree = "<group>"; };
+		AF21858A29A70FCA0033829F /* MergeVideo_MergeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeVideo_MergeVC.swift; sourceTree = "<group>"; };
 		AF2C734C25539C54000AD7A9 /* SwiftTest_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftTest_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF2C734F25539C54000AD7A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF2C735325539C54000AD7A9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -1283,12 +1289,12 @@
 			path = "UI布局的测试";
 			sourceTree = "<group>";
 		};
-		0421E5FE26AAAF6400C6A922 /* 一些小技巧总结 */ = {
+		0421E5FE26AAAF6400C6A922 /* 音视频工具总结 */ = {
 			isa = PBXGroup;
 			children = (
 				0421E5FF26AAAF9400C6A922 /* VideoToolSummary.swift */,
 			);
-			path = "一些小技巧总结";
+			path = "音视频工具总结";
 			sourceTree = "<group>";
 		};
 		0421E60126AAB23D00C6A922 /* UIView生命周期测试 */ = {
@@ -1958,10 +1964,11 @@
 				AF21857E2995E2FF0033829F /* 测试AVFoundation框架_VC.swift */,
 				049EAFF826C2630200903DA8 /* TestNetVideo_VC.swift */,
 				AF2CF88A290F737800C9388E /* TestLocalVideo_VC.swift */,
+				AF21858329A4C2540033829F /* 视频录制、合并 */,
 				AF2185802995E5A80033829F /* 测试AVFouddation框架 */,
 				AF2CF881290A853400C9388E /* 录音功能测试 */,
 				0465628E26D61F6F00D38F2D /* TestModuel测试模块 */,
-				0421E5FE26AAAF6400C6A922 /* 一些小技巧总结 */,
+				0421E5FE26AAAF6400C6A922 /* 音视频工具总结 */,
 				04A0CA0326A0024600ECAE1B /* 自己封装的播放器模块 */,
 				0421E5F726A971E400C6A922 /* 参考的demo */,
 				AF2CF88C290F747F00C9388E /* 音视频资源 */,
@@ -2347,6 +2354,16 @@
 				AF2185812995E5DB0033829F /* AVFoundation的概览笔记.md */,
 			);
 			path = "测试AVFouddation框架";
+			sourceTree = "<group>";
+		};
+		AF21858329A4C2540033829F /* 视频录制、合并 */ = {
+			isa = PBXGroup;
+			children = (
+				AF21858429A4C29D0033829F /* TestVideoMerge_VC.swift */,
+				AF21858629A4C4700033829F /* MergeVideo_PlayVC.swift */,
+				AF21858A29A70FCA0033829F /* MergeVideo_MergeVC.swift */,
+			);
+			path = "视频录制、合并";
 			sourceTree = "<group>";
 		};
 		AF2C734325539C54000AD7A9 = {
@@ -2967,6 +2984,7 @@
 				044CBA7D27F6D6F000FA2CB8 /* MultiViews_ScrollView.swift in Sources */,
 				0414F98227BC940A0037EE70 /* Quartz_View.swift in Sources */,
 				049EAFF726C25E9700903DA8 /* JFZ_AVAsset.swift in Sources */,
+				AF21858529A4C29D0033829F /* TestVideoMerge_VC.swift in Sources */,
 				0421E5F326A9701600C6A922 /* JFZVideoControlPanelView.swift in Sources */,
 				AFEF469028B5F79B00B3EA2D /* 测试ScrollView手势交互_VC.swift in Sources */,
 				AF2CF878290699AE00C9388E /* TestiPad_MainVC.swift in Sources */,
@@ -3112,6 +3130,7 @@
 				04870E4726E9AD280030B1D2 /* AAScrollablePlotArea.swift in Sources */,
 				044CBA7927F68EDC00FA2CB8 /* MultiBtns_ScrollView.swift in Sources */,
 				04587C7427B4E5FE00824F69 /* Arch_Person.swift in Sources */,
+				AF21858B29A70FCA0033829F /* MergeVideo_MergeVC.swift in Sources */,
 				AF88EE792897C22500660C28 /* 子类tabBar.swift in Sources */,
 				04A0CA5126A0027800ECAE1B /* JFZMediaCryptor.swift in Sources */,
 				049EAFF226C0CE6900903DA8 /* TestNSOperation_VC.swift in Sources */,
@@ -3250,6 +3269,7 @@
 				041A2E1D27901D1300F9CABF /* 测试KVO的VC.swift in Sources */,
 				04870E4F26E9AD280030B1D2 /* AATooltip.swift in Sources */,
 				04A0CA4C26A0027800ECAE1B /* JFZMediaCacher.swift in Sources */,
+				AF21858729A4C4700033829F /* MergeVideo_PlayVC.swift in Sources */,
 				04B76905280D64F20080102F /* TestFSCalendar_View.swift in Sources */,
 				049EAFEF26BA9B8B00903DA8 /* TouchDeliver_BtnBgView.swift in Sources */,
 				AF2CF898290FCCA400C9388E /* TestQRCode_VC.swift in Sources */,

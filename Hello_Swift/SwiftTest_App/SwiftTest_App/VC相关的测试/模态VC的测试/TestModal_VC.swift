@@ -26,6 +26,7 @@ class TestModal_VC: UIViewController {
 
     ///UI组件
     private var baseCollView: UICollectionView!
+    let modalVC = Modal_SubVC()
     
     //MARK: 测试组件
     
@@ -53,16 +54,18 @@ extension TestModal_VC: UICollectionViewDataSource {
         case 0:
             //TODO: 0、modal方式展示控制器。
             print("     (@@  modal方式展示控制器")
-            let modalVC = Modal_SubVC()
             modalVC.modalPresentationStyle = .pageSheet    ///被模态显示时的效果。
             modalVC.modalTransitionStyle = .flipHorizontal  ///切换的动画过渡的效果。
             self.present(modalVC, animated: true) {
                 print("modal方式展示控制器的完成闭包")
             }
-            break
         case 1:
-            //TODO: 1、
-            print("     (@@ ")
+            //TODO: 1、fullScreen展示方式
+            print("     (@@ 1、fullScreen展示方式")
+            modalVC.modalPresentationStyle = .overFullScreen    ///被模态显示时的效果。
+            modalVC.modalTransitionStyle = .coverVertical  ///切换的动画过渡的效果。
+            self.present(modalVC, animated: true)
+            
         case 2:
             //TODO: 2、
             print("     (@@ ")

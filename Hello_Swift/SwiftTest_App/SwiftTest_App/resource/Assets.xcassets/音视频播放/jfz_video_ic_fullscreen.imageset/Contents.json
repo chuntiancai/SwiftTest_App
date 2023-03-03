@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "hy_video_ic_fullscreen.png",
+      "filename" : "hy_video_ic_normalscreen.png",
       "idiom" : "universal",
       "scale" : "1x"
     },

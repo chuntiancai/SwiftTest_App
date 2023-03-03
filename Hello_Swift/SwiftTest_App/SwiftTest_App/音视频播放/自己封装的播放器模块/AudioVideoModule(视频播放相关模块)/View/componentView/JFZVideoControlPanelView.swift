@@ -6,23 +6,25 @@
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
 // 视频播放控制面板，滑动条，暂停按钮，时间进度，全屏按钮，标题，返回按钮
-
-
-import UIKit
+//MARK: - 笔记
+/**
+    1、
+ */
 
 class JFZVideoControlPanelView: UIView {
     
     //MARK: - 对外属性
     
-    /// - Tag: 动作方法
+    // 动作方法
     var togglePlayAction:(()->Void)?  //点击了播放按钮
     var toggleFullScreenAction:(()->Void)?  //点击了全屏按钮
     var sliderTapDownAction:((_ sliderValue: Float)->Void)?  //滑块按下时的值
     var sliderValueChangingAction:((_ sliderValue: Float)->Void)?  //滑动了滑块,滑动时的值
     var sliderValueDidChangedAction:((_ sliderValue: Float)->Void)?  //滑动了滑块,抬起时的值
 
-    /// - Tag: 对外状态
-    var isPlaying:Bool = false {    //是否在播放，更新按钮UI
+    // 对外状态
+    /// 是否在播放，更新按钮UI
+    var isPlaying:Bool = false {
         didSet{
             if isPlaying {
                 playButton.setImage(UIImage(named: "jfz_video_ic_pause_nor"), for: .normal)
@@ -31,13 +33,13 @@ class JFZVideoControlPanelView: UIView {
             }
         }
     }
-    
-    var isFullScreen:Bool = false { //是否全屏，更新按钮UI
+    /// 是否全屏，更新按钮UI
+    var isFullScreen:Bool = false {
         didSet{
             if isFullScreen {
                 screenButton.setImage(UIImage(named: "jfz_video_ic_normalScreen"), for: .normal)
             }else{
-                screenButton.setImage(UIImage(named: "jfz_video_ic_fullscreen"), for: .normal)
+                screenButton.setImage(UIImage(named: "jfz_video_ic_fullScreen"), for: .normal)
             }
         }
     }
@@ -83,8 +85,6 @@ class JFZVideoControlPanelView: UIView {
         return lab
     }()
     
-    
-    
     /// 结尾播放时间指示label
     var endTimeLabel: UILabel = {
         let lab = UILabel()
@@ -97,13 +97,12 @@ class JFZVideoControlPanelView: UIView {
     /// 全屏按钮
     private var screenButton: JFZResponseExpandButtton = {
         let btn = JFZResponseExpandButtton()
-        btn.setImage(UIImage(named: "jfz_video_ic_fullscreen"), for: .normal)
+        btn.setImage(UIImage(named: "jfz_video_ic_fullScreen"), for: .normal)
         return btn
     }()
     
     //MARK: - 内部属性
     /// - Tag: 播放器进度条相关
-//    private var sliderChangedValue:Float? //滑块改变的值，用于作为滑块手指抬起的标志器
     private var isTouchingSliderTag:Bool = false //是否正在点击slider
     
     //MARK: - 工具属性

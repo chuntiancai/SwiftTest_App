@@ -7,20 +7,19 @@
 //
 
 // 双录音视频，展示VC
-///UI布局，一个tableView，两个section，一个放音频，一个放视频
+//MARK: - 笔记
+/**
+    UI布局，一个tableView，两个section，一个放音频，一个放视频。点击标题进行测试。
+ 
+ */
 
-import UIKit
 
 class JFZRecordAudioVedioController:UIViewController {
+    
     //MARK: - 对外属性
-    var contractCode:String = "" {  //设置合同编码，去请求音视频
-        didSet{
-//            requestVideoFilesAPI(forContractCode: contractCode)
-        }
-    }
-    /// 音视频播放列表
-    var playerModelArray: [JFZAudioVideoModel]
-        = [JFZAudioVideoModel]()
+    /// 音视频播放列表模型数组
+    /// tableview根据音视频列表进行加载。
+    var playerModelArray: [JFZAudioVideoModel] = [JFZAudioVideoModel]()
     {
         didSet{
             if videoModelArr == nil {
@@ -45,7 +44,6 @@ class JFZRecordAudioVedioController:UIViewController {
     
     
     //MARK: - 内部属性
-    //MARK: 工具属性
     private var isFullScreen:Bool = false { //隐藏状态栏
         didSet{
             setNeedsStatusBarAppearanceUpdate()
@@ -82,7 +80,6 @@ class JFZRecordAudioVedioController:UIViewController {
         self.title = "双录"
         self.view.backgroundColor = UIColor(red: 245/255.0, green: 245/255.0, blue: 245/255.0, alpha: 1.0)
         self.edgesForExtendedLayout = .bottom
-//        requestVideoFilesAPI(forContractCode: "HT2021070200001")
         initUI()
     }
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -95,21 +92,14 @@ class JFZRecordAudioVedioController:UIViewController {
     }
     override var prefersStatusBarHidden: Bool { //是否显示状态栏
         get{
-            if isFullScreen {
-                return true
-            }else{
-                return false
-            }
+            if isFullScreen {  return true }else{  return false }
         }
     }
     
-    override var shouldAutorotate: Bool {
+    override var shouldAutorotate: Bool {   ///VC的图层是否跟随旋转。
         return false
     }
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("JFZRecordAudioVedioController 的 touchesBegan方法")
-        super.touchesBegan(touches, with: event)
-    }
+ 
 }
 
 //MARK: - 设置UI
@@ -122,19 +112,12 @@ extension JFZRecordAudioVedioController{
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        tableView.mj_header = MJRefreshHeader.init(refreshingBlock: {[weak self] () -> Void in
-            print("mj_header 的更新方法:\(String(describing: self?.view.backgroundColor))")
-        })
-        
     }
-}
-
-//MARK: - 动作方法
-@objc extension JFZRecordAudioVedioController{
     
 }
 
-//MARK: - 遵循代理协议
+
+//MARK: - 遵循tableview的代理协议
 extension JFZRecordAudioVedioController:UITableViewDelegate,UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -143,11 +126,7 @@ extension JFZRecordAudioVedioController:UITableViewDelegate,UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if section == 0 {
-            return audioModelArr?.count ?? 0
-        }else{
-            return videoModelArr?.count ?? 0
-        }
+        if section == 0 { return audioModelArr?.count ?? 0  }else{  return videoModelArr?.count ?? 0 }
         
     }
     
@@ -155,67 +134,12 @@ extension JFZRecordAudioVedioController:UITableViewDelegate,UITableViewDataSourc
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         if section == 0 {//音频
-            let audioHView = UIView(frame: CGRect.init(x: 0, y: 0, width: 375, height: 49))
-            audioHView.backgroundColor = .white
-            
-            //左侧小方块
-            let yellowBlockView = UIView.init(frame: CGRect.init(x: 15, y: 17, width: 4, height: 14))
-            yellowBlockView.backgroundColor = UIColor.init(red: 194/255.0, green: 194/255.0, blue: 99/255.0, alpha: 1.0)
-            audioHView.addSubview(yellowBlockView)
-            
-            let label = UILabel()
-            label.text = "音频"
-            label.textColor = .black
-            audioHView.addSubview(label)
-            label.snp.makeConstraints { make in
-                make.left.equalTo(yellowBlockView.snp.right).offset(10)
-                make.centerY.equalToSuperview()
-            }
-            //下划线
-            let lineView = UIView()
-            lineView.backgroundColor = UIColor.init(red: 245/255.0, green: 245/255.0, blue: 245/255.0, alpha: 1.0)
-            audioHView.addSubview(lineView)
-            lineView.snp.makeConstraints { make in
-                make.bottom.equalToSuperview()
-                make.left.equalToSuperview()
-                make.height.equalTo(1)
-                make.width.equalToSuperview()
-            }
-            
-            //FIXME: 测试用
-            label.isUserInteractionEnabled = true
-            let tapGesture = UITapGestureRecognizer.init(target: self, action:  #selector(testAction))
-            label.addGestureRecognizer(tapGesture)
-            
+            let audioHView = getTableHeaderView("音频")
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(testAddMidea))
+            audioHView.addGestureRecognizer(tapGesture)
             return audioHView
         }else {//视频
-            let videoHView = UIView()
-            videoHView.backgroundColor = .white
-            
-            //左侧小方块
-            let yellowBlockView = UIView.init(frame: CGRect.init(x: 15, y: 17, width: 4, height: 14))
-            yellowBlockView.backgroundColor = UIColor.init(red: 194/255.0, green: 194/255.0, blue: 99/255.0, alpha: 1.0)
-            videoHView.addSubview(yellowBlockView)
-            
-            let label = UILabel()
-            label.text = "视频"
-            label.textColor = .black
-            videoHView.addSubview(label)
-            label.snp.makeConstraints { make in
-                make.left.equalTo(yellowBlockView.snp.right).offset(10)
-                make.centerY.equalToSuperview()
-            }
-            
-            //下划线
-            let lineView = UIView()
-            lineView.backgroundColor = UIColor.init(red: 245/255.0, green: 245/255.0, blue: 245/255.0, alpha: 1.0)
-            videoHView.addSubview(lineView)
-            lineView.snp.makeConstraints { make in
-                make.bottom.equalToSuperview()
-                make.left.equalToSuperview()
-                make.height.equalTo(1)
-                make.width.equalToSuperview()
-            }
+            let videoHView = getTableHeaderView("视频")
             return videoHView
         }
         
@@ -341,96 +265,97 @@ extension JFZRecordAudioVedioController:UITableViewDelegate,UITableViewDataSourc
 //MARK: - 请求网络
 extension JFZRecordAudioVedioController{
     
-    /**
-     /// 请求音视频文件
-     private func requestVideoFilesAPI(forContractCode code:String){
-         self.tableView.mj_header.endRefreshing()
-         if code.isEmpty {
-             print("请求的合同编码为空")
-             return
-         }
-         let api = JFZAudioVideoFilesAPI()
-         api.contractCode = code
-         api.start { (res, err) in
-             if err != nil {
-                 // 拉取失败则重新拉取
-                 print(" 拉取失败则重新拉取 JFZAudioVideoFilesAPI err:\(String(describing: err))")
-                 return
-             }
-             
-             if let res = res as? [String:Any] {
-                 if let data = res["data"] as? [Dictionary<String, Any>] {
-                     
-                     var modelArr = [JFZAudioVideoModel]()
-                     for curDict in data {
-                         print("curDict:\(curDict)")
-                         var vModel = JFZAudioVideoModel(fileName:"测试视频",
-                                                    fileUrl: "",
-                                                    imageUrlStr:"hahaha")
-                         vModel.fileName = curDict["fileName"] as? String
-                         vModel.fileUrl = curDict["url"] as? String ?? ""
-                         vModel.createrTime = curDict["createrTime"] as? String
-                         modelArr.append(vModel)
-                     }
-                     self.playerModelArray = modelArr
-                     print("JFZAudioVideoFilesAPI data:\(data)")
-                 }
-                 
-             }
-         }
-     }
-     */
+    func requestNetWork(){
+        /// 在这里填写请求网络的代码；
+            print("请求网络。")
+    }
     
 }
 
 //MARK: - 内部工具方法
 @objc extension JFZRecordAudioVedioController{
-    /// FIXME:测试用
-    func testAction(){
+    
+    /// FIXME:测试用加载音视频列表
+    func testAddMidea(){
         print("点击测试")
-         playerModelArray = [
-                 JFZAudioVideoModel(fileName:"网络视频0",
+        if !playerModelArray.isEmpty { print("已经测试填充列表了");return}
+        playerModelArray = [
+            JFZAudioVideoModel(fileName:"网络视频0",
                                fileUrl: "http://vfx.mtime.cn/Video/2019/02/04/mp4/190204084208765161.mp4",
                                imageUrlStr:"hahaha"),
-                 JFZAudioVideoModel(fileName:"网络音频0",
+            JFZAudioVideoModel(fileName:"网络音频0",
                                fileUrl: "http://music.163.com/song/media/outer/url?id=447925558.mp3",
                                imageUrlStr:"hahaha"),
-                 JFZAudioVideoModel(fileName:"网络音频2",
+            JFZAudioVideoModel(fileName:"网络音频2",
                                fileUrl: "http://music.163.com/song/media/outer/url?id=27845048.mp3",
                                imageUrlStr:"hahaha"),
-                 JFZAudioVideoModel(fileName:"网络视频1",
+            JFZAudioVideoModel(fileName:"网络视频1",
                                fileUrl: "http://vfx.mtime.cn/Video/2019/03/19/mp4/190319222227698228.mp4",
                                imageUrlStr:"hahaha"),
-                 JFZAudioVideoModel(fileName:"网络视频2",
+            JFZAudioVideoModel(fileName:"网络视频2",
                                fileUrl: "http://vjs.zencdn.net/v/oceans.mp4",
                                imageUrlStr:"hahaha"),
-             JFZAudioVideoModel(fileName:"网络视频3",
-                           fileUrl: "http://vjs.zencdn.net/v/oceans.mp4",
-                           imageUrlStr:"hahaha"),
-             JFZAudioVideoModel(fileName:"网络视频4",
-                           fileUrl: "http://vfx.mtime.cn/Video/2019/02/04/mp4/190204084208765161.mp4",
-                           imageUrlStr:"hahaha"),
-             JFZAudioVideoModel(fileName:"网络视频5",
-                           fileUrl: "http://vt1.doubanio.com/202001021917/01b91ce2e71fd7f671e226ffe8ea0cda/view/movie/M/301120229.mp4",
-                           imageUrlStr:"hahaha"),
-             JFZAudioVideoModel(fileName:"网络视频6",
-                           fileUrl: "http://vjs.zencdn.net/v/oceans.mp4",
-                           imageUrlStr:"hahaha"),
-             JFZAudioVideoModel(fileName:"网络视频7",
-                           fileUrl: "http://vt1.doubanio.com/202001022001/7264e07afc6d8347c15f61c247c36f0e/view/movie/M/302100358.mp4",
-                           imageUrlStr:"hahaha"),
-             JFZAudioVideoModel(fileName:"网络视频8",
-                           fileUrl: "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4",
-                           imageUrlStr:"hahaha"),
-             JFZAudioVideoModel(fileName:"网络视频9",
-                           fileUrl: "https://mvvideo5.meitudata.com/56ea0e90d6cb2653.mp4",
-                           imageUrlStr:"hahaha"),
-             JFZAudioVideoModel(fileName:"网络视频10",
-                           fileUrl: "http://vt1.doubanio.com/202001021947/7ae57141cc259bfb49e75bdf6b716caf/view/movie/M/301650578.mp4",
-                           imageUrlStr:"hahaha"),
-             ]
+            JFZAudioVideoModel(fileName:"网络视频3",
+                               fileUrl: "http://vjs.zencdn.net/v/oceans.mp4",
+                               imageUrlStr:"hahaha"),
+            JFZAudioVideoModel(fileName:"网络视频4",
+                               fileUrl: "http://vfx.mtime.cn/Video/2019/02/04/mp4/190204084208765161.mp4",
+                               imageUrlStr:"hahaha"),
+            JFZAudioVideoModel(fileName:"网络视频5",
+                               fileUrl: "http://vt1.doubanio.com/202001021917/01b91ce2e71fd7f671e226ffe8ea0cda/view/movie/M/301120229.mp4",
+                               imageUrlStr:"hahaha"),
+            JFZAudioVideoModel(fileName:"网络视频6",
+                               fileUrl: "http://vjs.zencdn.net/v/oceans.mp4",
+                               imageUrlStr:"hahaha"),
+            JFZAudioVideoModel(fileName:"网络视频7",
+                               fileUrl: "http://vt1.doubanio.com/202001022001/7264e07afc6d8347c15f61c247c36f0e/view/movie/M/302100358.mp4",
+                               imageUrlStr:"hahaha"),
+            JFZAudioVideoModel(fileName:"网络视频8",
+                               fileUrl: "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4",
+                               imageUrlStr:"hahaha"),
+            JFZAudioVideoModel(fileName:"网络视频9",
+                               fileUrl: "https://mvvideo5.meitudata.com/56ea0e90d6cb2653.mp4",
+                               imageUrlStr:"hahaha"),
+            JFZAudioVideoModel(fileName:"网络视频10",
+                               fileUrl: "http://vt1.doubanio.com/202001021947/7ae57141cc259bfb49e75bdf6b716caf/view/movie/M/301650578.mp4",
+                               imageUrlStr:"hahaha"),
+        ]
         
     }
+    
+    /// 获取tableview的section view
+    func getTableHeaderView(_ title:String) -> UIView{
+        let headerView = UIView()
+        headerView.backgroundColor = .white
+        
+        //左侧小方块
+        let yellowBlockView = UIView.init(frame: CGRect.init(x: 15, y: 17, width: 4, height: 14))
+        yellowBlockView.backgroundColor = UIColor.init(red: 194/255.0, green: 194/255.0, blue: 99/255.0, alpha: 1.0)
+        headerView.addSubview(yellowBlockView)
+        
+        let label = UILabel()
+        label.text = title
+        label.textColor = .black
+        headerView.addSubview(label)
+        label.snp.makeConstraints { make in
+            make.left.equalTo(yellowBlockView.snp.right).offset(10)
+            make.centerY.equalToSuperview()
+        }
+        
+        //下划线
+        let lineView = UIView()
+        lineView.backgroundColor = UIColor.init(red: 245/255.0, green: 245/255.0, blue: 245/255.0, alpha: 1.0)
+        headerView.addSubview(lineView)
+        lineView.snp.makeConstraints { make in
+            make.bottom.equalToSuperview()
+            make.left.equalToSuperview()
+            make.height.equalTo(1)
+            make.width.equalToSuperview()
+        }
+        return headerView
+    }
+    
+    
 }
 
 

@@ -6,6 +6,12 @@
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
 //视频播放的View，在这里封装AVPalyer处理视频源。一开始不播放，点击按钮后才播放。
+//MARK: - 笔记
+/**
+    1、可以全屏，全屏主要用了transform，添加到window上，然后transform当前的view。
+        目前还没兼容手机锁定方向时，全屏旋转的问题。
+    2、在playVideoModel(_:)方法传入视频源model即可。已经适配了snpkit，或者一开始就传入frame。
+ */
 
 import UIKit
 import AVFoundation
@@ -56,13 +62,17 @@ class JFZ_VideoPlayerView : UIView {
     /// 监听播放器的当前播放状态，The `NSKeyValueObservation` for the KVO on `\AVPlayer.timeControlStatus`.
     private var playerTimeControlStatusObserver: NSKeyValueObservation?
     
-    private var playerRateStatusObserver: NSKeyValueObservation?    //监听播放速度，rate==1时播放，rate==0时暂停
+    /// 监听播放速度，rate==1时播放，rate==0时暂停
+    private var playerRateStatusObserver: NSKeyValueObservation?
     
     ///监听播放器的时间进度，0.001秒，A token obtained from the player's `addPeriodicTimeObserverForInterval(_:queue:usingBlock:)` method.必须要销毁，不然会占用线程
     private var timeObserverToken: Any?
     
+    /// 监听AVPlayerItem的可播放状态， The `NSKeyValueObservation` for the KVO on `\AVPlayer.currentItem?.status`.
+    private var playerItemStatusObserver: NSKeyValueObservation?
     
-    /// - Tag: AVPlayerItem相关属性：
+    
+    /// AVPlayerItem相关属性：
     private var curPlayerItem: AVPlayerItem? {
         didSet {
             if oldValue != nil {        //移除原来对AVPlayerItem的监听
@@ -83,23 +93,18 @@ class JFZ_VideoPlayerView : UIView {
             }
         }
     }
-    /// 监听AVPlayerItem的可播放状态， The `NSKeyValueObservation` for the KVO on `\AVPlayer.currentItem?.status`.
-    private var playerItemStatusObserver: NSKeyValueObservation?
     
-    
-    /// - Tag: 显示的视频的layer：
+    ///  显示的视频的layer：
     private var videoLayer = AVPlayerLayer()
    
-    /// - Tag: UI属性
     //MARK: UI属性
     /// 播放控制面板的View
     private var ctrlPanelView = JFZVideoControlPanelView()
     private var preFatherView:UIView?   //前一个父View
     private let stratVideoFrameImgView:UIImageView = UIImageView()  //视频的开始帧图片
-    private let loadAVAssetFailedView:UIView=UIView()   //加载失败的View
+    private var loadAVAssetFailedView:UIView!   //加载失败的View
     private let loadingVideoView:UIView=UIView()   //正在加载视频，还没得播放的View
 
-    /// - Tag: 工具属性
     //MARK: 工具属性
     ///时间格式器
     private let timeRemainingFormatter: DateComponentsFormatter = {
@@ -154,9 +159,9 @@ class JFZ_VideoPlayerView : UIView {
         let isPointed = self.point(inside: point, with: event)
         //TODO: 为了回传当前view被点击，后期优化
         if isPointed,let isCtrl = hitView?.isKind(of: UIControl.self),isCtrl{
-                if clickPlayerPanelAction != nil{
-                    clickPlayerPanelAction!(self.indexPath)
-                }
+            if clickPlayerPanelAction != nil{
+                clickPlayerPanelAction!(self.indexPath)
+            }
         }
         
         return hitView
@@ -187,13 +192,7 @@ class JFZ_VideoPlayerView : UIView {
         
     }
     
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-    }
-    
-    
     deinit {
-        
         destoryPlayerTimerObserver()
     }
 }
@@ -215,89 +214,9 @@ extension JFZ_VideoPlayerView{
         ctrlPanelView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        ctrlPanelView.togglePlayAction = {
-            [weak self] in
-            guard let _ = self?.avPlayer else {
-                return
-            }
-            if #available(iOS 10.0, *) {
-                switch self?.avPlayer?.timeControlStatus {
-                case .playing:
-                    self?.pauseVideo()
-                case .paused:
-                    /// 如果是播放结束导致的暂停状态，则从头开始播放
-                    let currentItem = self?.avPlayer?.currentItem
-                    if currentItem?.currentTime() == currentItem?.duration {
-                        currentItem?.seek(to: .zero, completionHandler: nil)
-                    }
-                    self?.playVideo()
-                    
-                default:
-                    break
-                }
-            } else {
-                if let player = self?.avPlayer {
-                    if  (player.rate != 0) && (player.error == nil) { //正在播放
-                        self?.pauseVideo()
-                    }else { //正在暂停
-                        /// 如果是播放结束导致的暂停状态，则从头开始播放
-                        let currentItem = self?.avPlayer?.currentItem
-                        if currentItem?.currentTime() == currentItem?.duration {
-                            currentItem?.seek(to: .zero, completionHandler: nil)
-                        }
-                        self?.playVideo()
-                    }
-                }
-            }
-        }
-        ctrlPanelView.sliderValueChangingAction = {     //滑块值变化的回调
-            [weak self] sliderValue -> Void  in
-            guard let _ = self?.avPlayer else {
-                return
-            }
-            self?.pauseVideo() //暂停播放
-            /// 跳转到播放时间
-            let newTime = CMTime(seconds: Double(sliderValue), preferredTimescale: 600)
-            self?.avPlayer!.seek(to: newTime, toleranceBefore: .zero, toleranceAfter: .zero)
-            ///更新开始时间的值
-            self?.ctrlPanelView.startTimeLabel.text = self?.createTimeString(time: sliderValue)
-            ///print("滑块值变化的回调：\(sliderValue)")
-        }
-         ctrlPanelView.sliderValueDidChangedAction = {   //滑块已经抬起时的值
-             [weak self] sliderValue -> Void  in
-            self?.playVideo()  //开始播放
-         }
-        
-        ctrlPanelView.toggleFullScreenAction = {    //全屏播放按钮的回调
-            [weak self] in
-            guard let _ = self?.avPlayer else {
-                return
-            }
-            print("全屏播放按钮的回调～")
-            DispatchQueue.main.async {
-                if let isFull = self?.ctrlPanelView.isFullScreen {
-                    if isFull {
-                        self?.toggleNormalScreen()
-                    }else{
-                        self?.toggleFullScreen()
-                    }
-                }
-            }
-            
-        }
-        
+
         ///加载失败的View
-        loadAVAssetFailedView.backgroundColor = UIColor.white.withAlphaComponent(0.5)
-        loadAVAssetFailedView.isHidden = true
-        let gesture = UITapGestureRecognizer.init(target: self, action: #selector(tapLoadingFailedViewAction))
-        loadAVAssetFailedView.addGestureRecognizer(gesture)
-        let fLabel = UILabel()
-        fLabel.text = "加载视频源失败，请点击屏幕重试!"
-        fLabel.textColor = UIColor.white
-        loadAVAssetFailedView.addSubview(fLabel)
-        fLabel.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
+        loadAVAssetFailedView = getPlayFailedView()
         self.addSubview(loadAVAssetFailedView)
         loadAVAssetFailedView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -313,6 +232,92 @@ extension JFZ_VideoPlayerView{
         
     }
     
+    /// 设置控制面板的逻辑
+    private func setCtrlPanelViewLogic(){
+        
+        // 点击了播放按钮的回调
+        ctrlPanelView.togglePlayAction = {
+            [weak self] in
+            guard let _ = self?.avPlayer else {
+                return
+            }
+            if #available(iOS 10.0, *) {
+                switch self?.avPlayer?.timeControlStatus
+                {
+                case .playing:
+                    self?.pauseVideo()
+                case .paused:
+                    /// 如果是播放结束导致的暂停状态，则从头开始播放
+                    let currentItem = self?.avPlayer?.currentItem
+                    if currentItem?.currentTime() == currentItem?.duration {
+                        currentItem?.seek(to: .zero, completionHandler: nil)
+                    }
+                    self?.playVideo()
+                    
+                default:
+                    break
+                }
+            } else
+            {
+                if let player = self?.avPlayer
+                {
+                    if  (player.rate != 0) && (player.error == nil) { //正在播放
+                        self?.pauseVideo()
+                    }else { //正在暂停
+                        /// 如果是播放结束导致的暂停状态，则从头开始播放
+                        let currentItem = self?.avPlayer?.currentItem
+                        if currentItem?.currentTime() == currentItem?.duration
+                        {
+                            currentItem?.seek(to: .zero, completionHandler: nil)
+                        }
+                        self?.playVideo()
+                    }
+                }
+            }
+        }
+        
+        // 播放进度条的值发生改变。
+        ctrlPanelView.sliderValueChangingAction = {     //滑块值变化的回调
+            [weak self] sliderValue -> Void  in
+            guard let _ = self?.avPlayer else {
+                return
+            }
+            self?.pauseVideo() //暂停播放
+            /// 跳转到播放时间
+            let newTime = CMTime(seconds: Double(sliderValue), preferredTimescale: 600)
+            self?.avPlayer!.seek(to: newTime, toleranceBefore: .zero, toleranceAfter: .zero)
+            ///更新开始时间的值
+            self?.ctrlPanelView.startTimeLabel.text = self?.createTimeString(time: sliderValue)
+            ///print("滑块值变化的回调：\(sliderValue)")
+        }
+        
+        //滑块已经抬起时的值
+        ctrlPanelView.sliderValueDidChangedAction = {
+            [weak self] sliderValue -> Void  in
+            self?.playVideo()  //开始播放
+        }
+        
+        //全屏播放按钮的回调
+        ctrlPanelView.toggleFullScreenAction = {
+            [weak self] in
+            guard let _ = self?.avPlayer else {
+                return
+            }
+            print("全屏播放按钮的回调～")
+            DispatchQueue.main.async {
+                if let isFull = self?.ctrlPanelView.isFullScreen {
+                    if isFull
+                    {
+                        self?.toggleNormalScreen()
+                    }else{
+                        self?.toggleFullScreen()
+                    }
+                }
+            }
+            
+        }
+    }
+    
     /// 显示加载AVAsset失败的View
     private func showLoadingAVAssetView(){
         loadAVAssetFailedView.isHidden = false
@@ -326,13 +331,11 @@ extension JFZ_VideoPlayerView{
     /// 显示正在加载视频的View
     private func showLoadingVideoView(){
         loadingVideoView.isHidden = false
-//        loadingVideoView.jfzf_showLoadingView(afterDelay: 999)
     }
     
     /// 隐藏正在加载视频的View
     private func hideLoadingVideoView(){
         loadingVideoView.isHidden = true
-//        loadingVideoView.jfzf_hideLoadingView()
     }
     
 }
@@ -782,6 +785,23 @@ extension JFZ_VideoPlayerView{
         let components = NSDateComponents()
         components.second = Int(max(0.0, time))
         return timeRemainingFormatter.string(from: components as DateComponents)!
+    }
+    
+    /// 获取播放失败的View
+    private func getPlayFailedView() -> UIView {
+        let failView = UIView()
+        failView.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        failView.isHidden = true
+        let gesture = UITapGestureRecognizer.init(target: self, action: #selector(tapLoadingFailedViewAction))
+        failView.addGestureRecognizer(gesture)
+        let fLabel = UILabel()
+        fLabel.text = "加载视频源失败，请点击屏幕重试!"
+        fLabel.textColor = UIColor.white
+        failView.addSubview(fLabel)
+        fLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+        return failView
     }
     
     

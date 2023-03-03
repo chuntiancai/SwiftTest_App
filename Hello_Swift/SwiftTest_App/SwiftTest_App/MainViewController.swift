@@ -38,11 +38,11 @@ extension MainViewController: UICollectionViewDataSource {
         print("MainViewController 点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            pushNext(viewController: TestKVO_VC())
+            pushNext(viewController: TestVideoMerge_VC())
         case 1:
-            pushNext(viewController: FileTest_VC())
+            pushNext(viewController: TestAVFoundation_VC())
         case 2:
-            pushNext(viewController: TestImageView_VC())
+            pushNext(viewController: JFZRecordAudioVedioController())
         case 3:
             //TODO: 3、
             pushNext(viewController: TestSnapkit_VC())

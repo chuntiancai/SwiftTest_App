@@ -7,6 +7,8 @@
 //
 // 用于被模态压栈的VC
 
+import UIKit
+
 class Modal_SubVC: UIViewController {
     
     //MARK: 对外属性
@@ -28,7 +30,9 @@ class Modal_SubVC: UIViewController {
     //TODO: 2、已经加载完毕VC自身的view的时候调用，一般在这里创建自定义的view。
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(red: 199/255.0, green: 204/255.0, blue: 237/255.0, alpha: 1.0)
+        self.view.backgroundColor = UIColor(red: 199/255.0, green: 204/255.0, blue: 237/255.0, alpha: 0.5)
+        self.view.layer.borderWidth = 2.0
+        self.view.layer.borderColor = UIColor.brown.cgColor
         self.title = "模态VC"
         
         setNavigationBarUI()
@@ -177,7 +181,7 @@ extension Modal_SubVC {
         let layout = UICollectionViewFlowLayout.init()
         layout.itemSize = CGSize.init(width: 80, height: 40)
         
-        baseCollView = UICollectionView.init(frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width,height:200),
+        baseCollView = UICollectionView.init(frame: CGRect(x:0, y:100, width:UIScreen.main.bounds.size.width,height:200),
                                              collectionViewLayout: layout)
         
         baseCollView.backgroundColor = UIColor.cyan.withAlphaComponent(0.8)

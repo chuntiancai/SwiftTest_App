@@ -13,7 +13,7 @@ import AVFoundation
 class VideoToolSummary {
     
     
-    //MARK: 获取视频缩略图,获取视频帧截图
+    //MARK: 获取视频缩略图,获取视频截图
     func getThumbnailImage(videoUrl: URL,second: Float64) -> UIImage {
         let asset = AVURLAsset(url: videoUrl)
 
