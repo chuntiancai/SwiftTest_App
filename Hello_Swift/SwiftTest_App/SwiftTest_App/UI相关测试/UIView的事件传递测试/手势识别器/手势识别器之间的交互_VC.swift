@@ -16,8 +16,8 @@
     2、手势识别器之间的关系：
        require(toFail:)方法是建立两个识别器之间的关系，意思是 “调用者识别器 等 参数识别器 失败之后再起作用”。
  
-       shouldRequireFailure(of: )是用来被子类复写的，意思是： “调用者识别器的类 可以把 参数识别器的类 的状态置为 失败”。
-       shouldBeRequiredToFail(by: )是用来被子类复写的，意思是： ”调用者识别器的类 可以被 参数识别器的类 的状态置为 失败“。
+       shouldRequireFailure(of: )是用来被子类复写的，意思是： “互斥时，调用者识别器的类 可以被 参数识别器的类 的状态置为 失败”。
+       shouldBeRequiredToFail(by: )是用来被子类复写的，意思是： ”调用者识别器的类 可以把 参数识别器的类 的状态置为 失败“。
        这就是类级别的失败要求(a class-wide failure requirement)。
  
        代理协议(UIGestureRecognizerDelegate)管理手势识别器之间的关系：
@@ -30,7 +30,8 @@
             协议方法：gestureRecognizer(_:shouldRequireFailureOf:) 当前识别器是否应该被别的识别器置为失败状态。
                     该方法在当前识别器每次尝试识别手势的时候就被调用。
  
-    3、
+    3、UIGestureRecognizerDelegate的方法是用于处理 手势还没开始识别前，让哪个识别器生效。
+       如果是要识别了之后再让识别器失效，或者暂时失效，则可以通过判断gesture的translation来获取位移坐标，然后设置gesture的状态为failed来使当前识别器无效。
  
  */
 
@@ -44,13 +45,13 @@ class TestGestureInteract_VC: UIViewController {
     private let bgView = UIView()
     private var redScrollView = UIScrollView()  //红色的ScrollView，包含了绿色的ScrollView
     private var blueScrollView = UIScrollView()
-    let redView : UIView = {
-        let view = UIView()
+    let redView : TestGesture_View = {
+        let view = TestGesture_View()
         view.backgroundColor = .red.withAlphaComponent(0.7)
         return view
     }()
-    let blueView : UIView = {
-        let view = UIView()
+    let blueView : TestGesture_View = {
+        let view = TestGesture_View()
         view.backgroundColor = .blue.withAlphaComponent(0.7)
         return view
     }()
@@ -59,14 +60,19 @@ class TestGestureInteract_VC: UIViewController {
     //MARK: 测试组件
     var gesture1:UIPanGestureRecognizer = {
         let gesture = UIPanGestureRecognizer()
+        gesture.name = "gesture1"
         return gesture
     }()
     
     var gesture2:UIPanGestureRecognizer = {
         let gesture = UIPanGestureRecognizer()
+        gesture.name = "gesture2"
         return gesture
     }()
     var isRelation:Bool = false //识别器之间是否产生依赖关系
+    
+    var curTouch: UITouch?  //当前识别的touch事件。
+    var curEvent:UIEvent?   //当前的事件容器。
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +86,7 @@ class TestGestureInteract_VC: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("这是TestGestureInteract_VC的touchesBegan方法～")
+        
     }
     
     
@@ -107,7 +114,7 @@ extension TestGestureInteract_VC: UICollectionViewDataSource {
             
             //蓝色view
             blueView.isUserInteractionEnabled = true
-            blueView.frame = CGRect(x: 20, y: 20, width: 320, height: 200 + 300)
+            blueView.frame = CGRect(x: 20, y: 20, width: 320, height: 400)
             gesture2.addTarget(self, action: #selector(gesAction2(_:)))
             gesture2.delegate = self
             blueView.addGestureRecognizer(gesture2)
@@ -121,12 +128,13 @@ extension TestGestureInteract_VC: UICollectionViewDataSource {
             
             bgView.addSubview(blueView)
             blueView.addSubview(redView)
-            //gesture1依赖于gesture2的失败状态。
-            gesture1.require(toFail: gesture2)
+            
             
         case 1:
             //TODO: 1、控制依赖关系
             print("     (@@ 1、控制依赖关系：\(isRelation) ")
+            //gesture1依赖于gesture2的失败状态。
+            gesture1.require(toFail: gesture2)
             isRelation = !isRelation
             print("设置之后：\(isRelation)")
         case 2:
@@ -171,13 +179,20 @@ extension TestGestureInteract_VC: UICollectionViewDataSource {
 @objc extension TestGestureInteract_VC{
    
     //MARK: 0、gesture1的动作方法
-    func gesAction1(_ sender: UIGestureRecognizer){
+    func gesAction1(_ sender: UIPanGestureRecognizer){
         print("gesture1的动作方法：\(#function)")
+//        sender.ignore(curTouch!, for: <#T##UIEvent#>)
+        let point = sender.translation(in: sender.view)
+        print("gesture1 的 \(point) 移动点 --\(sender.state.rawValue)")
+        
     }
     
     //MARK: 1、gesture2的动作方法
-    func gesAction2(_ sender: UIGestureRecognizer){
+    func gesAction2(_ sender: UIPanGestureRecognizer){
         print("gesture2的动作方法：\(#function)")
+        let point = sender.translation(in: sender.view)
+        print("gesture2 的 \(point) 移动点 --\(sender.state.rawValue)")
+        sender.state = .failed
     }
     
 }
@@ -271,9 +286,27 @@ extension TestGestureInteract_VC{
 //MARK: - 遵循UIGestureRecognizerDelegate协议，手势识别。
 extension TestGestureInteract_VC:UIGestureRecognizerDelegate {
     
+    
+    // 是否允许手势识别器接收 触摸事件。控制Gesture是否接受touch
+    /**
+        1、如果允许，接下来才会调用gestureRecognizerShouldBegin方法，否则不识别。控制当前view接不接受touch的场合使用的。
+        2、所以你可以在这里控制gesture1返回true，gesture2返回false，从而控制控制器的识别。
+     */
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool{
+        print("TestGestureInteract_VC 的 \(#function) touch 方法 -- \(gestureRecognizer.name ?? "") -- \(gestureRecognizer.classForCoder)")
+        print("touch的类型：\(touch.type.rawValue) -- touch的当前坐标：\(touch.location(in: touch.view)) -- touch的上一个坐标：\(touch.previousLocation(in: touch.view))")
+        return true
+    }
+    
     // 当前识别器是否应该开始识别。如果返回false，则当前控制器的状态被置为false，刚好其他的识别器依赖于当前识别器失败状态的，就可以开始识别了。
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         print("TestGestureInteract_VC 的 \(#function) 方法")
+        if gestureRecognizer.isKind(of: UIPanGestureRecognizer.self) {
+            let pan = gestureRecognizer as! UIPanGestureRecognizer
+            let point = pan.translation(in: pan.view)
+            print("gestureRecognizerShouldBegin 的 \(point) 移动点 --\(pan.state)")
+        }
+        
         if  gestureRecognizer == gesture1 {
             print("当前识别器是gesture1")
         }
@@ -281,7 +314,7 @@ extension TestGestureInteract_VC:UIGestureRecognizerDelegate {
             print("当前识别器是gesture2")
             if isRelation {
                 print("gesture2 的 ShouldBegin 返回false，状态变为fail")
-                return false
+//                return false
             }
         }
         return true
@@ -289,37 +322,39 @@ extension TestGestureInteract_VC:UIGestureRecognizerDelegate {
     
     /// 是否支持多个手势识别器起作用。控制Gesture是否可以同时识别
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool{
-        print("TestGestureInteract_VC 的 \(#function) 方法")
+        print("TestGestureInteract_VC 的 \(#function) 方法--\(gestureRecognizer.name ?? "") --其他识别器：\(otherGestureRecognizer.name ?? "系统的识别器")\n")
         return true
     }
     
-    // 当view有多个识别器时，是否被别的手势识别器置失败状态。是否依赖于别人
+    // 当view有多个识别器时，互斥时。是否被别的手势识别器置失败状态。是否依赖于别人
+    /**
+     1、这个方法返回YES，第一个手势和第二个互斥时，第一个会失效。
+     */
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool{
-        print("TestGestureInteract_VC 的 \(#function) 方法 --\(gestureRecognizer)\n --别的识别器：\(otherGestureRecognizer)\n")
+        print("TestGestureInteract_VC 的 \(#function) 方法 --\(gestureRecognizer.name ?? "") --其他识别器：\(otherGestureRecognizer.name ?? "系统的识别器")\n")
         return false
     }
     
-    // 当view有多个识别器时，是否被别的手势识别器置失败状态。是否被别人依赖。
+    // 当view有多个识别器时，是否被把的手势识别器置失败状态。是否被别人依赖。
+    /**
+     1、这个方法返回YES，第一个和第二个互斥时，第二个会失效。
+     */
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool{
-        print("TestGestureInteract_VC 的 \(#function) 方法")
+        print("TestGestureInteract_VC 的 \(#function) 方法 --\(gestureRecognizer.name ?? "") --其他识别器：\(otherGestureRecognizer.name ?? "系统的识别器")\n")
         return false
     }
     
-    /// 是否允许手势识别器接收 触摸事件。控制Gesture是否接受touch
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool{
-        print("TestGestureInteract_VC 的 \(#function) touch 方法")
-        return true
-    }
+    
     
     // 控制Gesture是否接受press
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive press: UIPress) -> Bool{
-        print("TestGestureInteract_VC 的 \(#function) press 方法")
+        print("TestGestureInteract_VC 的 \(#function) press 方法 -- \(gestureRecognizer.classForCoder)\(String(format: "%p", gestureRecognizer))")
         return true
     }
     
     // 控制Gesture是否接受event
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive event: UIEvent) -> Bool{
-        print("TestGestureInteract_VC 的 \(#function) event 方法")
+        print("TestGestureInteract_VC 的 \(#function) event 方法 -- \(gestureRecognizer.classForCoder)\(String(format: "%p", gestureRecognizer))")
         return true
     }
     

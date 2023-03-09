@@ -29,7 +29,8 @@
     6、从上一步寻找到的目标视图开始，目标视图会首先被调用touches方法，接着是目标视图的父视图，再是父视图的父视图，如果某个视图是ViewController的.view属性， 还会调用ViewController的方法，直到UIWindow、UIApplication、UIApplicationDelegate（我们创建的AppDelegate）。
  
     (手势识别器：)
-    1、UIKit产生UITouch之后，回先寻找当前View的手势识别器，所以手势识别器优先于目标View接收事件。手势识别器是View的一个属性。当手势的touchesBegan:withEvent:处理完成之后，便会触发目标视图的touchesBegan方法。但是当手势识别成功之后，默认会cancel后续touch操作，也就是取消了View的touch方法。自己接受事件并消化掉了。
+    1、UIKit产生UITouch之后，回先寻找当前View的手势识别器，所以手势识别器优先于目标View接收事件。手势识别器是View的一个属性。当手势的touchesBegan:withEvent:处理完成之后，便会触发目标视图的touchesBegan方法。但是当手势识别成功之后，默认会cancel后续touch操作，也就是取消了View的touch方法，调用-touchesCancelled:withEvent:方法。自己接受事件并消化掉了。
+    2、UIGestureRecognizer手势识别器里也有 -touchesBegan:withEvent:等方法，你也可以复写。
  
     （总结）
     寻找目标视图：UIApplication->UIWindow->ViewController->View->targetView
@@ -66,13 +67,15 @@ class TouchDeliver_View: UIView {
     //MARK: 向下寻找目标视图
     /// 告知UIKit响应者是否在自己的子孙后代中
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-        print("TouchDeliver_View 的 \(#function) 方法")
-        return super.point(inside: point, with: event)
+        let isInside = super.point(inside: point, with: event)
+        print("TouchDeliver_View 的 \(#function) 方法 -- \(isInside)")
+        return isInside
     }
     
     /// 向下寻找点击的View，并且返回被点击的后代View（包括自身），该方法通过point(inside方法告知UIKit后代中是否包含了被点击的View， 有则返回被点击者，无则返回nil
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        print("TouchDeliver_View 的 \(#function) 方法")
+        let hitView = super.hitTest(point, with: event)
+        print("TouchDeliver_View 的 \(#function) 方法 -- \(hitView)")
         ///判断被点击的view是否在当前view内,参数传递进来的point是相对于自身坐标系的坐标点。
         /**
          //表示将当前视图的point 转换到目标视图（view）的point ，返回目标视图所对应的点
@@ -94,7 +97,7 @@ class TouchDeliver_View: UIView {
             let isContain = subView.layer.contains(cPoint)
             print("子view是否包含转换后的点：\(isContain)")
         }
-        return super.hitTest(point, with: event)
+        return hitView
     }
     
     //MARK: 事件向上传递
@@ -111,6 +114,10 @@ class TouchDeliver_View: UIView {
         super.touchesEnded(touches, with: event)
     }
     
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("TouchDeliver_View 的 \(#function)方法～")
+        super.touchesCancelled(touches, with: event)
+    }
 }
 
 //MARK: -

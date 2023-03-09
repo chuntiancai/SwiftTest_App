@@ -27,14 +27,19 @@ class TouchDeliver_SubView: UIView {
     //MARK: 向下寻找目标视图
     /// 告知UIKit响应者是否在自己的子孙后代中
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-        print("TouchDeliver_SubView 的 \(#function) 方法")
-        return super.point(inside: point, with: event)
+        let isInside = super.point(inside: point, with: event)
+        print("TouchDeliver_SubView 的 \(#function) 方法 -- \(isInside)")
+        return isInside
     }
     
     /// 向下寻找点击的View，并且返回被点击的后代View（包括自身），该方法通过point(inside方法告知UIKit后代中是否包含了被点击的View， 有则返回被点击者，无则返回nil
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        print("TouchDeliver_SubView 的 \(#function) 方法")
-        return super.hitTest(point, with: event)
+        let hitView = super.hitTest(point, with: event)
+        print("TouchDeliver_SubView 的 \(#function) 方法 -- \(String(describing: hitView ?? nil))")
+        if hitView == self {
+            print("TouchDeliver_SubView 自身就是响应者")
+        }
+        return hitView
     }
     
     //MARK: 事件向上传递
@@ -42,6 +47,11 @@ class TouchDeliver_SubView: UIView {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("TouchDeliver_SubView 的 \(#function) 方法")
         super.touchesBegan(touches, with: event)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("TouchDeliver_SubView 的 \(#function) 方法")
+        super.touchesEnded(touches, with: event)
     }
     
     

@@ -13,14 +13,13 @@
     2、在playVideoModel(_:)方法传入视频源model即可。已经适配了snpkit，或者一开始就传入frame。
  */
 
-import UIKit
 import AVFoundation
 
 class JFZ_VideoPlayerView : UIView {
     
     //MARK: - 对外属性
     /// 视频源
-    var isFullScreenAction:((_ isFull:Bool)->Void)?
+    var isFullScreenAction:((_ isFull:Bool)->Void)? //点击了全屏按钮的回调
     var isPlaying:Bool {    //是否正在播放
         get{
             var isBool = false
@@ -98,9 +97,8 @@ class JFZ_VideoPlayerView : UIView {
     private var videoLayer = AVPlayerLayer()
    
     //MARK: UI属性
-    /// 播放控制面板的View
-    private var ctrlPanelView = JFZVideoControlPanelView()
-    private var preFatherView:UIView?   //前一个父View
+    private var ctrlPanelView = JFZVideoControlPanelView()/// 播放控制面板的View
+    private var preFatherView:UIView?   /// 先前一个父View，就是当前view会被移来移去。
     private let stratVideoFrameImgView:UIImageView = UIImageView()  //视频的开始帧图片
     private var loadAVAssetFailedView:UIView!   //加载失败的View
     private let loadingVideoView:UIView=UIView()   //正在加载视频，还没得播放的View
@@ -172,6 +170,11 @@ class JFZ_VideoPlayerView : UIView {
         
     }
     
+    override func willMove(toWindow newWindow: UIWindow?) {
+        super.willMove(toWindow: newWindow)
+        print(" JFZ_VideoPlayerView\(#function)--\(newWindow)")
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -191,6 +194,8 @@ class JFZ_VideoPlayerView : UIView {
         }
         
     }
+    
+    
     
     deinit {
         destoryPlayerTimerObserver()
@@ -224,7 +229,7 @@ extension JFZ_VideoPlayerView{
         }
         
         ///正在加载视频的View
-        loadingVideoView.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
+        loadingVideoView.backgroundColor = UIColor.red.withAlphaComponent(0.5)
         loadingVideoView.isHidden = true
         self.addSubview(loadingVideoView)
         loadingVideoView.snp.makeConstraints { make in
@@ -287,7 +292,7 @@ extension JFZ_VideoPlayerView{
             /// 跳转到播放时间
             let newTime = CMTime(seconds: Double(sliderValue), preferredTimescale: 600)
             self?.avPlayer!.seek(to: newTime, toleranceBefore: .zero, toleranceAfter: .zero)
-            print("seek之后的curtime：\(self?.avPlayer!.currentTime())")
+            print("seek之后的curtime：\(String(describing: self?.avPlayer!.currentTime()))")
             ///更新开始时间的值
             self?.ctrlPanelView.startTimeLabel.text = self?.createTimeString(time: sliderValue)
             ///print("滑块值变化的回调：\(sliderValue)")
@@ -511,9 +516,10 @@ extension JFZ_VideoPlayerView{
         
         //MARK: swift监听KVO
         /// AVPlayerItem的status属性监听，当前视频资产可播放状态
-        playerItemStatusObserver = curPlayerItem?.observe(\AVPlayerItem.status, options: [.new, .initial]) { [weak self] playItem, changeDict in
+        playerItemStatusObserver = curPlayerItem?.observe(\AVPlayerItem.status, options: [.new, .initial]) {
+            [weak self] curPlayItem, changeDict in
             DispatchQueue.main.async {
-                print("当前监听的status的playItem是：\(playItem)")
+                print("当前监听的status的playItem是：\(curPlayItem)")
                 ///当资产可播放时，更新UI
                 self?.updateUIforPlayerItemStatus()
             }
@@ -716,10 +722,10 @@ extension JFZ_VideoPlayerView{
         print("销毁对播放器的监听～")
         
 //        self.jfzf_hideLoadingView()
+        avPlayer?.pause()
         playerTimeControlStatusObserver = nil
         playerRateStatusObserver = nil
         playerItemStatusObserver = nil
-        avPlayer?.pause()
         NotificationCenter.default.removeObserver(self)
         if let timeObserverToken = timeObserverToken {
             avPlayer?.removeTimeObserver(timeObserverToken)

@@ -7,7 +7,6 @@
 //
 // 测试UI的生命周期
 
-import UIKit
 
 class UILifeCycleVC_1: UIViewController {
     

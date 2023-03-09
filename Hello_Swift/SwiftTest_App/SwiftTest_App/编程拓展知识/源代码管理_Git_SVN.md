@@ -147,7 +147,7 @@ GIT
     ## #常用于处理合并冲突的命令
         $ git rm text1.txt  #用于从工作区和索引中删除文件。 
         $ git rm -r directory   # 删除文件夹。
-        $ git checkout text1.txt    #撤销对text1.txt的修改。
+        $ git checkout text1.txt    #撤销对text1.txt的修改。git checkout . 用小数点就是代表撤销对所有文件的修改。
         $ git reset  分支或提交   #用于复位或恢复更改,复位分支指针的位置。
         
         $ git reset [--hard|soft|mixed|merge|keep] [<commit>或HEAD]

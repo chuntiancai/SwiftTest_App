@@ -41,6 +41,7 @@ class JFZVideoControlPanelView: UIView {
             }else{
                 screenButton.setImage(UIImage(named: "jfz_video_ic_fullScreen"), for: .normal)
             }
+            panGesture.isEnabled = isFullScreen /// 播放手势控制。
         }
     }
     
@@ -102,12 +103,20 @@ class JFZVideoControlPanelView: UIView {
     }()
     
     //MARK: - 内部属性
-    /// - Tag: 播放器进度条相关
     private var isTouchingSliderTag:Bool = false //是否正在点击slider
+    private let bgGestureView = UIView()    /// 屏幕手势的背景view
+    private let leftGestureView = UIView()      /// 屏幕左边手势的view
+    private let rightGestureView = UIView()    /// 屏幕右边手势的view
+    private var panGesture = MediaPanGesture()  /// 滑动手势。
+    private var doubleTapGesture:UITapGestureRecognizer?  ///双击手势。
+    private var swipGesture:UISwipeGestureRecognizer?   /// 轻扫手势。
+
     
     //MARK: - 工具属性
     private var hideTimer:Timer?   //隐藏控制面板的定时器
     private var isFirstPlay:Bool = true //是否第一次播放
+    
+    //MARK: - 手势管理。
     
 
     //MARK: - 复写方法
@@ -132,6 +141,8 @@ class JFZVideoControlPanelView: UIView {
         }
         return super.hitTest(point, with: event)
     }
+    
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -199,8 +210,44 @@ extension JFZVideoControlPanelView{
             make.height.equalTo(16)
             make.centerY.equalTo(playButton.snp.centerY).offset(-1)
         }
+        
+        /// 设置手势的view
+        setGestureView()
     }
     
+    // 设置手势的view
+    private func setGestureView(){
+     
+        /// 屏幕手势背景Viwe
+        bgGestureView.addGestureRecognizer(panGesture)
+        panGesture.isEnabled = false
+        panGesture.addTarget(self, action: #selector(panGestureAction(_:)))
+        self.addSubview(bgGestureView)
+        bgGestureView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview()
+            make.bottom.equalTo(playButton.snp.top).offset(15)
+        }
+        
+        /// 左半屏手势view
+        bgGestureView.addSubview(leftGestureView)
+        leftGestureView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.left.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.5)
+            make.bottom.equalToSuperview()
+        }
+        /// 右半屏手势view
+        bgGestureView.addSubview(rightGestureView)
+        rightGestureView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.right.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.5)
+            make.bottom.equalToSuperview()
+        }
+        
+    }
     
 }
 
@@ -264,7 +311,11 @@ extension JFZVideoControlPanelView{
                 self?.alpha = 0
             }
         }
-        
+    }
+    
+    /// 滑动手势识别的动作方法。
+    func panGestureAction(_:UIPanGestureRecognizer){
+        print("JFZVideoControlPanelView 滑动手势的 \(#function) 动作方法")
     }
     
 }

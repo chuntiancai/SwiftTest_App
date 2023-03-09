@@ -6,8 +6,11 @@
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
 //测试屏幕旋转，设备方向的VC
-
-import UIKit
+//MARK: - 笔记
+/**
+    1、如果手机上已经设置了锁定按钮，那么代码这里将会监听不到设备方位的变化。
+ 
+ */
 
 class UITestScreenRotateVC: UIViewController {
     
@@ -45,7 +48,7 @@ class UITestScreenRotateVC: UIViewController {
         }
     }
 
-    /// 不支持旋转，在设备方向改变时，只会调用根VC，或者模态显示的VC，的这个方法，其他VC不会被调用该方法。
+    /// 不支持旋转，在设备方向改变时，只会调用根VC(导航VC) 或者模态显示的VC 的这个方法，其他VC不会被调用该方法。
     override var shouldAutorotate: Bool{
         get{
             print("@@UITestScreenRotateVC shouldAutorotate ")
@@ -171,7 +174,10 @@ extension UITestScreenRotateVC{
 //MARK: - 动作方法
 @objc extension UITestScreenRotateVC{
     
-    /// 监听到设备方向的变化
+    // 监听到设备方向的变化
+    /**
+        
+    */
     private func observeOrientationAction(){
         let device = UIDevice.current
         switch device.orientation{

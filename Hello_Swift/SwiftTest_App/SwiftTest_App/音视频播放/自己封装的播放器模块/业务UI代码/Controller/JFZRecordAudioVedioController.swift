@@ -96,9 +96,12 @@ class JFZRecordAudioVedioController:UIViewController {
         }
     }
     
-    override var shouldAutorotate: Bool {   ///VC的图层是否跟随旋转。
+    ///VC的图层是否跟随旋转。
+    override var shouldAutorotate: Bool {
         return false
     }
+    
+    
  
 }
 

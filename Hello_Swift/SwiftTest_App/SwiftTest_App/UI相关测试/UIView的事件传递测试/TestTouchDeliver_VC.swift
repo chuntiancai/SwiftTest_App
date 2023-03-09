@@ -8,8 +8,10 @@
 // 测试View的触摸事件传递的VC，点击事件的传递
 /**
     1、UIEvent是容器类，用于封装各种事件的容器，例如可能有touch事件、motion事件、remote-control事件、press事件等。
+        随着你手指的滑动，UITouch会不断地更新自身的属性信息，譬如坐标x，y的值等。
+        iOS中只有继承了UIResponder的类才能够接收并处理时间，其他类不可以。
  
-    2、iOS中只有继承了UIResponder的类才能够接收并处理时间，其他类不可以。
+    2、手势识别器接收事件的优先级高于view自身的手势识别。手势识别器会调用view自身的touchesCancelled方法，取消view来响应手势。
  
     3、有两条链：事件的寻找链 与 事件的响应链。
  
@@ -20,6 +22,13 @@
         UITouch的方法：location(in view: UIView?)当前触摸的点位置，previousLocation(in view: UIView?)上一个触摸的点的位置。
  
     5、默认情况下，UIView的touchesBegan、touchesMoved等方法中的touches参数只有一个元素，除非你设置了UIview的isMultipleTouchEnabled为true。
+ 
+    6、事件的拦截与转发：
+        1.view拦截事件在自身，则在hitTest方法和point(inside:_)方法中返回自身，如果不想处理事件，则返回nil。
+            拦截，不再往下分发事件，重写 touchesBegan 进行事件处理，不调用父类的 touchesBegan。
+            拦截，继续往下分发事件，重写 touchesBegan 进行事件处理，同时调用父类的 touchesBegan 将事件往下传递；
+        2.如果想把事件传递给别人，则调用别人的touchBegan方法。
+            在自己的touchesBegan方法中直接调用下一个响应者的self.next?.touchesBegan(touches, with: event)。不再调用super.touchesBegan方法。
  
  */
 

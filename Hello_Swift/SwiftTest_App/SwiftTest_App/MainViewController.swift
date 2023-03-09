@@ -45,13 +45,13 @@ extension MainViewController: UICollectionViewDataSource {
             pushNext(viewController: JFZRecordAudioVedioController())
         case 3:
             //TODO: 3、
-            pushNext(viewController: TestSnapkit_VC())
+            pushNext(viewController: TestGestureInteract_VC())
         case 4:
             //TODO: 4、UI相关测试
-            pushNext(viewController: TestUIButton_MainVC())
+            pushNext(viewController: TestTouchDeliver_VC())
         case 5:
             //TODO: 5、多线程测试
-            pushNext(viewController: TestNSOperation_VC())
+            pushNext(viewController: UITestScreenRotateVC())
         case 6:
             //TODO: 6、VC相关的测试
             pushNext(viewController: TestSubVC_MainVC())

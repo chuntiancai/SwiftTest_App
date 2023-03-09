@@ -394,6 +394,7 @@
 		AFBCA8C52872DC4500AD51D1 /* TestClassStruct_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBCA8C42872DC4500AD51D1 /* TestClassStruct_VC.swift */; };
 		AFBCA8C72874224800AD51D1 /* Point_HeapObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBCA8C62874224800AD51D1 /* Point_HeapObject.swift */; };
 		AFBCA8C92874228A00AD51D1 /* Point_MetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBCA8C82874228A00AD51D1 /* Point_MetaData.swift */; };
+		AFC01A2E29B82B89001CBB4E /* MediaPanGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC01A2D29B82B89001CBB4E /* MediaPanGesture.swift */; };
 		AFC1B36A2899120B0050FC8F /* MyNavigation_NaviVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC1B3692899120B0050FC8F /* MyNavigation_NaviVC.swift */; };
 		AFC1B36C2899168C0050FC8F /* MyNavigation_SubVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC1B36B2899168C0050FC8F /* MyNavigation_SubVC1.swift */; };
 		AFC1B36E289916A30050FC8F /* MyNavigation_SubVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC1B36D289916A30050FC8F /* MyNavigation_SubVC2.swift */; };
@@ -865,6 +866,7 @@
 		AFBCA8C62874224800AD51D1 /* Point_HeapObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point_HeapObject.swift; sourceTree = "<group>"; };
 		AFBCA8C82874228A00AD51D1 /* Point_MetaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point_MetaData.swift; sourceTree = "<group>"; };
 		AFBEBB502902468A00A9E7AF /* ctchStaticLib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ctchStaticLib.swift; sourceTree = "<group>"; };
+		AFC01A2D29B82B89001CBB4E /* MediaPanGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPanGesture.swift; sourceTree = "<group>"; };
 		AFC1B3692899120B0050FC8F /* MyNavigation_NaviVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyNavigation_NaviVC.swift; path = "SwiftTest_App/VC相关的测试/导航栏VC/MyNavigation_NaviVC.swift"; sourceTree = SOURCE_ROOT; };
 		AFC1B36B2899168C0050FC8F /* MyNavigation_SubVC1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNavigation_SubVC1.swift; sourceTree = "<group>"; };
 		AFC1B36D289916A30050FC8F /* MyNavigation_SubVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNavigation_SubVC2.swift; sourceTree = "<group>"; };
@@ -1225,6 +1227,7 @@
 			children = (
 				0421E5E926A9701600C6A922 /* JFZVideoControlPanelView.swift */,
 				0421E5EA26A9701600C6A922 /* JFZResponseExpandButtton.swift */,
+				AFC01A2D29B82B89001CBB4E /* MediaPanGesture.swift */,
 			);
 			path = componentView;
 			sourceTree = "<group>";
@@ -1400,7 +1403,7 @@
 				049EAFE226B7D53200903DA8 /* TouchDeliver_Btn.swift */,
 				049EAFE626B7DAE500903DA8 /* TouchDeliver_Btn2.swift */,
 				04587C8527B6435100824F69 /* 测试view的触摸的拖曳事件 */,
-				04587C8A27B65ED200824F69 /* UIView的手势识别器 */,
+				04587C8A27B65ED200824F69 /* 手势识别器 */,
 			);
 			path = "UIView的事件传递测试";
 			sourceTree = "<group>";
@@ -1549,14 +1552,14 @@
 			path = "测试view的触摸的拖曳事件";
 			sourceTree = "<group>";
 		};
-		04587C8A27B65ED200824F69 /* UIView的手势识别器 */ = {
+		04587C8A27B65ED200824F69 /* 手势识别器 */ = {
 			isa = PBXGroup;
 			children = (
 				04587C8B27B6654500824F69 /* TestGesture_VC.swift */,
 				04587C8D27B6691F00824F69 /* TestGesture_View.swift */,
 				04B76902280D3A730080102F /* 手势识别器之间的交互_VC.swift */,
 			);
-			path = "UIView的手势识别器";
+			path = "手势识别器";
 			sourceTree = "<group>";
 		};
 		04600033271190F70074DFA2 /* Swift语法测试 */ = {
@@ -2971,6 +2974,7 @@
 				0421E61126AAE7AD00C6A922 /* TestVCLifeCycle_VC.swift in Sources */,
 				0421E62A26B1571000C6A922 /* TouchDeliver_View.swift in Sources */,
 				04870E4026E9AD280030B1D2 /* AALang.swift in Sources */,
+				AFC01A2E29B82B89001CBB4E /* MediaPanGesture.swift in Sources */,
 				04A0CA4B26A0027800ECAE1B /* JFZMediaCacheManager.swift in Sources */,
 				0474C25127D0981200B95D7C /* 自定义tabar_View.swift in Sources */,
 				AFC1B384289B74330050FC8F /* XibFile_VC.swift in Sources */,
@@ -3479,7 +3483,7 @@
 					"$(PROJECT_DIR)/SwiftTest_App/音视频播放/录音功能测试",
 				);
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ctch.SwiftTest-App";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ctch.SwiftTest-App2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftTest_App/SwiftTest_App-Bridging-Header.h";
