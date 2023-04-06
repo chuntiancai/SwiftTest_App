@@ -1,5 +1,5 @@
 //
-//  VideoToolSummary.swift
+//  VideoTool.swift
 //  SwiftTest_App
 //
 //  Created by mathew on 2021/7/23.
@@ -10,11 +10,11 @@
 import UIKit
 import AVFoundation
 
-class VideoToolSummary {
+class VideoTool {
     
     
     //MARK: 获取视频缩略图,获取视频截图
-    func getThumbnailImage(videoUrl: URL,second: Float64) -> UIImage {
+    static func getThumbnailImage(videoUrl: URL,second: Float64) -> UIImage {
         let asset = AVURLAsset(url: videoUrl)
 
         let avImgGen = AVAssetImageGenerator(asset: asset)

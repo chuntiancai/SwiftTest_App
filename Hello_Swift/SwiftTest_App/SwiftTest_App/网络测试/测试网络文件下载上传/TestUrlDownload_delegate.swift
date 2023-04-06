@@ -6,6 +6,10 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 // 测试URLSession网络下载时的代理方法
+//MARK: - 笔记
+/**
+    1、
+ */
 
 //MARK: - 遵循URLSessionDelegate协议
 class TestUrlDownload_delegate:NSObject,URLSessionDelegate {

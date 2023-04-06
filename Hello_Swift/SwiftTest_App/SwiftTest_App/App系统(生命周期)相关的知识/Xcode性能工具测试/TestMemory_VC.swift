@@ -51,9 +51,62 @@
     2、内存分配：主要查看内存的分配情况和内存是否有释放。
         2.1、内存分配分析：点击 product --> profile --> 进入instrument --> Allocations--> 左上角选择真机 --> 点击红色录制按钮 --> 查看运行数据。
         2.2、内存泄漏： 进入instrument --> Leaks --> 左上角选择真机 --> 点击红色录制按钮 --> 查看运行数据。
+ 
+    3、iOS程序的内存布局
+        代码段：编译之后的代码
         
+        数据段（__DATA）：
+            字符串常量：比如NSString *str = @"123"
+            已初始化数据：已初始化的全局变量、静态变量等
+            未初始化数据：未初始化的全局变量、静态变量等
+        
+        栈：函数调用开销，比如局部变量。分配的内存空间地址越来越小。
+        
+        堆：通过alloc、malloc、calloc等动态分配的空间，分配的内存空间地址越来越大。
+ 
+    4、从64bit开始，iOS引入了Tagged Pointer技术，用于优化NSNumber、NSDate、NSString等小对象的存储
+        在没有使用Tagged Pointer之前， NSNumber等对象需要动态分配内存、维护引用计数等，NSNumber指针存储的是堆中NSNumber对象的地址值。
+        使用Tagged Pointer之后，NSNumber指针里面存储的数据变成了：Tag + Data，也就是将数据直接存储在了指针中，当指针不够存储数据时，才会使用动态分配内存的方式来存储数据。
+        
+        objc_msgSend能识别Tagged Pointer，比如NSNumber的intValue方法，直接从指针提取数据，节省了以前的调用开销
+        
+        如何判断一个指针是否为Tagged Pointer？
+            iOS平台，最高有效位是1（第64bit）
+            Mac平台，最低有效位是1
+ 
+    5、在iOS中，使用引用计数来管理OC对象的内存
+        一个新创建的OC对象引用计数默认是1，当引用计数减为0，OC对象就会销毁，释放其占用的内存空间。
+        调用retain会让OC对象的引用计数+1，调用release会让OC对象的引用计数-1。
+        内存管理的经验总结：
+            当调用alloc、new、copy、mutableCopy方法返回了一个对象，在不需要这个对象时，要调用release或者autorelease来释放它
+            想拥有某个对象，就让它的引用计数+1；不想再拥有某个对象，就让它的引用计数-1
+        
+        可以通过以下私有函数来查看自动释放池的情况：  extern void _objc_autoreleasePoolPrint(void);
+
+    6、iOS提供了2个拷贝方法
+        属性上的copy标签指的是，当赋值给这个属性的时候，是通过copy，还是strong，还是mutableCopy的方式把参数值赋给属性。
+        1.copy，不可变拷贝，产生不可变副本
+        2.mutableCopy，可变拷贝，产生可变副本。是根据类名字的前缀是否有mutable进行copy的，标签只有copy标签。
+        
+        深拷贝和浅拷贝
+        1.深拷贝：内容拷贝，产生新的对象
+        2.浅拷贝：指针拷贝，没有产生新的对象
+ 
+    7、weak指针原理：
+         __weak和__unsafe_unretained指针不会对对象的引用计数产生影响，但是__weak在对象销毁后自动置自己为nil，而__unsafe_unretained则还是保留了原来的地址(坏地址)。
+        weak指针会在对象的delloc方法中被置nil。
+        // ARC是LLVM编译器和Runtime系统相互协作的一个结果。
+            在ARC机制下，LLVM自动帮我们生产MRC下的释放代码，rumtime帮我们清楚weak指针。
+ 
+    8、iOS在主线程的Runloop中注册了2个Observer
+        第1个Observer监听了kCFRunLoopEntry事件，会调用objc_autoreleasePoolPush()
+        第2个Observer
+            监听了kCFRunLoopBeforeWaiting事件，会调用objc_autoreleasePoolPop()、objc_autoreleasePoolPush()
+            监听了kCFRunLoopBeforeExit事件，会调用objc_autoreleasePoolPop()
+        pop是把当前代码中未 来需要被释放的对象 放到 page栈中， push是把page栈中的对象释放。也就是过了这段代码之后，是下一段代码的push、pop了，之前的代码已经过去了。
+
+ 
  */
-import UIKit
 
 class TestMemory_VC: UIViewController {
     

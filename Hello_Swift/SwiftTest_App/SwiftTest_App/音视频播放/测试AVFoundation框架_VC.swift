@@ -22,7 +22,7 @@
     4、renderSize和naturalSize的区别是：
         naturalSize是视频的原来大小，renderSize是渲染视频时的画布大小，视频会根据画布进行分辨率的放大缩小调整。
         如果你的画布小，视频尺寸大，那么你的视频就会填满整个画布。
-        如果你的画布大，视频尺寸小，那么视频就会填充自己的分辨率来适配大的画布，就会变得很小。
+        如果你的画布大，视频尺寸小，那么视频就会填充自己的分辨率来适配大的画布，就会变得很小。(因为手机屏幕大小是不变的，画布是可以很大的，视频相对缩小)
         所以renderSize设置为视频大小的话，手机会自动为你调整。如果设置为过大的尺寸的话，就会把视频变得很小播放。
  
     5、视频的轨道的仿射矩阵是 以视频的左上角 为锚点进行缩放旋转的。
@@ -75,8 +75,16 @@ extension TestAVFoundation_VC: UICollectionViewDataSource {
             print("     (@@ 0、选择视频资源。")
             pickAVAsset()
         case 1:
-            //TODO: 1、测试修改视频的信息。
-            print("     (@@ 1、测试修改视频的信息。")
+            //TODO: 1、测试修改视频的方向和画布。
+            /**
+            1、renderSize和naturalSize的区别是：
+                naturalSize是视频的原来大小，renderSize是渲染视频时的画布大小，视频会根据画布进行分辨率的放大缩小调整。
+                如果你的画布小，视频尺寸大，那么你的视频就会填满整个画布。
+                如果你的画布大，视频尺寸小，那么视频就会填充自己的分辨率来适配大的画布，就会变得很小。(因为手机屏幕大小是不变的，画布是可以很大的，视频相对缩小)
+                所以renderSize设置为视频大小的话，手机会自动为你调整。如果设置为过大的尺寸的话，就会把视频变得很小播放。
+             2、视频的轨道的仿射矩阵是 以视频的左上角 为锚点进行缩放旋转的。
+             */
+            print("     (@@ 1、测试修改视频的方向和画布。")
             
             //1、 媒体资源的组合对象,用于组合AVAsset。
             let composition = AVMutableComposition()
@@ -139,7 +147,6 @@ extension TestAVFoundation_VC: UICollectionViewDataSource {
             videoCompositionInstruction.timeRange = CMTimeRangeMake(start: .zero, duration: firstAsset!.duration)
             videoCompositionInstruction.layerInstructions = [videoLayerInstruction]
             
-            
             //5、视频组合对象,用于组合视频的AVAsset。用于填充视频导出器。
             let videoComposition:AVMutableVideoComposition = AVMutableVideoComposition()
             videoComposition.instructions = [videoCompositionInstruction]   /// 填写视频编辑合成的指令对象。
@@ -168,8 +175,6 @@ extension TestAVFoundation_VC: UICollectionViewDataSource {
             exportSession.outputFileType = AVFileType.mp4
             exportSession.shouldOptimizeForNetworkUse = true
             exportSession.videoComposition = videoComposition
-            
-           
             
             /// 异步执行 导出资产 的动作。
             exportSession.exportAsynchronously {

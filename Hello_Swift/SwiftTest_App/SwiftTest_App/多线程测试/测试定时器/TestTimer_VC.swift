@@ -8,8 +8,12 @@
 // 测试定时器的VC
 // MARK: - 笔记
 /**
-    1、
+    1、CADisplayLink、NSTimer会对target产生强引用，如果target又对它们产生强引用，那么就会引发循环引用。
+        CADisplayLink定时器 保证调用频率和屏幕刷新的频率一致，大概60fps，现在应该不止这个帧率了。
  
+    2、解决VC和timer之间的强引用问题，可以在timer和VC之间插入一个中间者。VC强引用timer，timer强引用中间者，中间者弱引用VC。代理对象（NSProxy）作为中间者。
+        中间者拦截消息转发，转发给VC的方法，从而达到 timer --> 中间者 --> VC
+        代理对象（NSProxy）专门用于代理转发，它是没有init方法的，只有alloc。效率比NSObject更高一些，不用去父类搜索方法列表。所有方法都直接转发，例如iskindof也转发。
  */
 
 

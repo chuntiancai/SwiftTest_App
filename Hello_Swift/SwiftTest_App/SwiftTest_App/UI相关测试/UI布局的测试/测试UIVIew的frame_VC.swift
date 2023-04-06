@@ -95,6 +95,7 @@ extension TestUIViewFrame_VC: UICollectionViewDataSource {
             //TODO: 0、测试layer的position属性。
             /**
              1、layer的position属性是参考父view坐标系的，绑定了Layer里的某一个点。设置position属性，就是把layer的这个点，移动到父view中position的值的位置。
+                position 可以理解为在父view中的点。
              2、上面1说的position是Layer中的一个点，这个点就是由Layer的anchorPoint属性决定的，也是锚点，它的丈量是0～1，也就是按比例来计算定位Layer中的点。
                 anchorPoint是参考Layer自身坐标系的，但是是按照0～1的比例来丈量，不是精确到坐标系的每一点来丈量。anchorPoint默认值是(0.5,0.5)。
              

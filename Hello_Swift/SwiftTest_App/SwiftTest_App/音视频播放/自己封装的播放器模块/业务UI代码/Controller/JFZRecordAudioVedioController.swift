@@ -83,13 +83,9 @@ class JFZRecordAudioVedioController:UIViewController {
         initUI()
     }
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return [.portrait,.landscapeRight]
+        return [.all]
     }
-    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation{
-        get{
-            return .portrait
-        }
-    }
+    
     override var prefersStatusBarHidden: Bool { //是否显示状态栏
         get{
             if isFullScreen {  return true }else{  return false }
@@ -98,10 +94,8 @@ class JFZRecordAudioVedioController:UIViewController {
     
     ///VC的图层是否跟随旋转。
     override var shouldAutorotate: Bool {
-        return false
+        return true
     }
-    
-    
  
 }
 

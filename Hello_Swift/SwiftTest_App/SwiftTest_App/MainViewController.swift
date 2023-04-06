@@ -38,7 +38,7 @@ extension MainViewController: UICollectionViewDataSource {
         print("MainViewController 点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            pushNext(viewController: TestVideoMerge_VC())
+            pushNext(viewController: TestNaviVC_VC())
         case 1:
             pushNext(viewController: TestAVFoundation_VC())
         case 2:
@@ -48,7 +48,7 @@ extension MainViewController: UICollectionViewDataSource {
             pushNext(viewController: TestGestureInteract_VC())
         case 4:
             //TODO: 4、UI相关测试
-            pushNext(viewController: TestTouchDeliver_VC())
+            pushNext(viewController: TestModal_VC())
         case 5:
             //TODO: 5、多线程测试
             pushNext(viewController: UITestScreenRotateVC())

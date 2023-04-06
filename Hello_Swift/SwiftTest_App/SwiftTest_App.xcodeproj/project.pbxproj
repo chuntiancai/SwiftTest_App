@@ -306,6 +306,8 @@
 		651C71492609EB870066C13B /* FileTest_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651C71482609EB870066C13B /* FileTest_VC.swift */; };
 		651C714D2609ED600066C13B /* tempVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651C714C2609ED600066C13B /* tempVC.swift */; };
 		651C71502609EDFF0066C13B /* DataTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651C714F2609EDFF0066C13B /* DataTestVC.swift */; };
+		AF12115829DEB5FF002C2A87 /* TestGPU_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12115729DEB5FF002C2A87 /* TestGPU_VC.swift */; };
+		AF12115A29DECC5A002C2A87 /* 00-8086汇编.pptx in Resources */ = {isa = PBXBuildFile; fileRef = AF12115929DECC5A002C2A87 /* 00-8086汇编.pptx */; };
 		AF172C1A28FCFCE1005BD750 /* 测试App跳转_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF172C1928FCFCE1005BD750 /* 测试App跳转_VC.swift */; };
 		AF218579298903EC0033829F /* TestOCCategory_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = AF218578298903EC0033829F /* TestOCCategory_VC.m */; };
 		AF21857F2995E2FF0033829F /* 测试AVFoundation框架_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF21857E2995E2FF0033829F /* 测试AVFoundation框架_VC.swift */; };
@@ -412,6 +414,8 @@
 		AFD34EF62887DA9800C807A3 /* TestBounds_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD34EF52887DA9800C807A3 /* TestBounds_View.swift */; };
 		AFD34EF82887E2E100C807A3 /* TestPageControl_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD34EF72887E2E100C807A3 /* TestPageControl_View.swift */; };
 		AFD34EFA28937DC000C807A3 /* 轮播图Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD34EF928937DC000C807A3 /* 轮播图Layout.swift */; };
+		AFD77D4B29C95098002CC128 /* TestOCRunLoop_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = AFD77D4A29C95098002CC128 /* TestOCRunLoop_VC.m */; };
+		AFD77D4D29CC372D002CC128 /* 测试导航栏View全屏的VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD77D4C29CC372D002CC128 /* 测试导航栏View全屏的VC.swift */; };
 		AFD8A1BB286060290094554A /* Pods_SwiftTest_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4C06FA2172551275C4FCEE6 /* Pods_SwiftTest_App.framework */; };
 		AFDA1325287D0F1B0015BFC3 /* TestNaviVC_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDA1324287D0F1B0015BFC3 /* TestNaviVC_VC.swift */; };
 		AFDA1327287E6EE90015BFC3 /* 测试UIView的形变_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDA1326287E6EE90015BFC3 /* 测试UIView的形变_VC.swift */; };
@@ -758,6 +762,8 @@
 		651C71482609EB870066C13B /* FileTest_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTest_VC.swift; sourceTree = "<group>"; };
 		651C714C2609ED600066C13B /* tempVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempVC.swift; sourceTree = "<group>"; };
 		651C714F2609EDFF0066C13B /* DataTestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTestVC.swift; sourceTree = "<group>"; };
+		AF12115729DEB5FF002C2A87 /* TestGPU_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestGPU_VC.swift; sourceTree = "<group>"; };
+		AF12115929DECC5A002C2A87 /* 00-8086汇编.pptx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "00-8086汇编.pptx"; sourceTree = "<group>"; };
 		AF172C1928FCFCE1005BD750 /* 测试App跳转_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试App跳转_VC.swift"; sourceTree = "<group>"; };
 		AF218578298903EC0033829F /* TestOCCategory_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestOCCategory_VC.m; sourceTree = "<group>"; };
 		AF21857E2995E2FF0033829F /* 测试AVFoundation框架_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试AVFoundation框架_VC.swift"; sourceTree = "<group>"; };
@@ -885,6 +891,9 @@
 		AFD34EF52887DA9800C807A3 /* TestBounds_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBounds_View.swift; sourceTree = "<group>"; };
 		AFD34EF72887E2E100C807A3 /* TestPageControl_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPageControl_View.swift; sourceTree = "<group>"; };
 		AFD34EF928937DC000C807A3 /* 轮播图Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "轮播图Layout.swift"; sourceTree = "<group>"; };
+		AFD77D4929C95098002CC128 /* TestOCRunLoop_VC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestOCRunLoop_VC.h; sourceTree = "<group>"; };
+		AFD77D4A29C95098002CC128 /* TestOCRunLoop_VC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestOCRunLoop_VC.m; sourceTree = "<group>"; };
+		AFD77D4C29CC372D002CC128 /* 测试导航栏View全屏的VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试导航栏View全屏的VC.swift"; sourceTree = "<group>"; };
 		AFDA1322287C28C20015BFC3 /* My_OC_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = My_OC_Header.h; sourceTree = "<group>"; };
 		AFDA1324287D0F1B0015BFC3 /* TestNaviVC_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNaviVC_VC.swift; sourceTree = "<group>"; };
 		AFDA1326287E6EE90015BFC3 /* 测试UIView的形变_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试UIView的形变_VC.swift"; sourceTree = "<group>"; };
@@ -1292,12 +1301,12 @@
 			path = "UI布局的测试";
 			sourceTree = "<group>";
 		};
-		0421E5FE26AAAF6400C6A922 /* 音视频工具总结 */ = {
+		0421E5FE26AAAF6400C6A922 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
 				0421E5FF26AAAF9400C6A922 /* VideoToolSummary.swift */,
 			);
-			path = "音视频工具总结";
+			path = Tool;
 			sourceTree = "<group>";
 		};
 		0421E60126AAB23D00C6A922 /* UIView生命周期测试 */ = {
@@ -1465,6 +1474,7 @@
 			isa = PBXGroup;
 			children = (
 				0454A4902731097E00EFE31A /* 测试导航栏UI的VC.swift */,
+				AFD77D4C29CC372D002CC128 /* 测试导航栏View全屏的VC.swift */,
 			);
 			path = "导航栏的UI布局测试";
 			sourceTree = "<group>";
@@ -1967,11 +1977,11 @@
 				AF21857E2995E2FF0033829F /* 测试AVFoundation框架_VC.swift */,
 				049EAFF826C2630200903DA8 /* TestNetVideo_VC.swift */,
 				AF2CF88A290F737800C9388E /* TestLocalVideo_VC.swift */,
+				0421E5FE26AAAF6400C6A922 /* Tool */,
 				AF21858329A4C2540033829F /* 视频录制、合并 */,
 				AF2185802995E5A80033829F /* 测试AVFouddation框架 */,
 				AF2CF881290A853400C9388E /* 录音功能测试 */,
 				0465628E26D61F6F00D38F2D /* TestModuel测试模块 */,
-				0421E5FE26AAAF6400C6A922 /* 音视频工具总结 */,
 				04A0CA0326A0024600ECAE1B /* 自己封装的播放器模块 */,
 				0421E5F726A971E400C6A922 /* 参考的demo */,
 				AF2CF88C290F747F00C9388E /* 音视频资源 */,
@@ -2511,6 +2521,7 @@
 				AFE55AD82902762700EC52AC /* TestMemory_VC.swift */,
 				AF2CF86B29029DCE00C9388E /* TestMemory_Person.swift */,
 				AF2CF86D29029DDB00C9388E /* TestMemory_Dog.swift */,
+				AF12115729DEB5FF002C2A87 /* TestGPU_VC.swift */,
 			);
 			path = "Xcode性能工具测试";
 			sourceTree = "<group>";
@@ -2640,6 +2651,7 @@
 				AFE2C375296D09A200369228 /* OC的对象 */,
 				AFE2C374296D02D500369228 /* 测试OC的分类category */,
 				04C7EA2C2840AA3D00685624 /* 测试OC的Runtime */,
+				AFD77D4829C9504D002CC128 /* 测试OC的多线程 */,
 				AF21857A298A01E00033829F /* 测试OC的block */,
 			);
 			path = "OC的语法测试";
@@ -2730,6 +2742,15 @@
 			path = "UIPageControl的测试";
 			sourceTree = "<group>";
 		};
+		AFD77D4829C9504D002CC128 /* 测试OC的多线程 */ = {
+			isa = PBXGroup;
+			children = (
+				AFD77D4929C95098002CC128 /* TestOCRunLoop_VC.h */,
+				AFD77D4A29C95098002CC128 /* TestOCRunLoop_VC.m */,
+			);
+			path = "测试OC的多线程";
+			sourceTree = "<group>";
+		};
 		AFDA1323287D0DAA0015BFC3 /* 导航栏VC */ = {
 			isa = PBXGroup;
 			children = (
@@ -2746,6 +2767,7 @@
 		AFE2C365296527F300369228 /* 汇编开发 */ = {
 			isa = PBXGroup;
 			children = (
+				AF12115929DECC5A002C2A87 /* 00-8086汇编.pptx */,
 				AFE2C3662965281500369228 /* 测试汇编_VC.swift */,
 				AFE2C3682965523400369228 /* TestAssembly_OCVC.h */,
 				AFE2C3692965523400369228 /* TestAssembly_OCVC.m */,
@@ -2855,6 +2877,7 @@
 				04330AB2283F7E34007DF2D0 /* 8、多态.md in Resources */,
 				04330AB6283F7E34007DF2D0 /* 13、高级运算符.md in Resources */,
 				04330ABA283F7E34007DF2D0 /* 0、语言环境.md in Resources */,
+				AF12115A29DECC5A002C2A87 /* 00-8086汇编.pptx in Resources */,
 				AFC1B386289B74BA0050FC8F /* XibFile_VC.xib in Resources */,
 				049270102796CCC4000A61FC /* TestTableView.storyboard in Resources */,
 				AF549D83291BA6D6001311A1 /* htmlImg.jpg in Resources */,
@@ -3021,6 +3044,7 @@
 				04B7692F2817E9F70080102F /* TestUrlDownload_delegate.swift in Sources */,
 				042036BE2754B16F00424E05 /* 测试文字的渐变色_View.swift in Sources */,
 				AFBCA8C72874224800AD51D1 /* Point_HeapObject.swift in Sources */,
+				AFD77D4D29CC372D002CC128 /* 测试导航栏View全屏的VC.swift in Sources */,
 				04870E4326E9AD280030B1D2 /* AAMarker.swift in Sources */,
 				042648E327F312A60034FF51 /* TestSDWebImage_VC.swift in Sources */,
 				AF82427C2875369C002311AF /* OCRuntime_StatusModel.m in Sources */,
@@ -3216,6 +3240,8 @@
 				04A0CA4F26A0027800ECAE1B /* JFZMediaCacherDelegate.swift in Sources */,
 				0414F99427C35F2F0037EE70 /* Bugly_Error.swift in Sources */,
 				04927016279EA6E2000A61FC /* 测试消息机制的VC.swift in Sources */,
+				AF12115829DEB5FF002C2A87 /* TestGPU_VC.swift in Sources */,
+				AFD77D4B29C95098002CC128 /* TestOCRunLoop_VC.m in Sources */,
 				AF824284287C1B47002311AF /* TestOCGrama_VC.m in Sources */,
 				045505AB2803BCFF00785F02 /* CTCCalendarDayCell.swift in Sources */,
 				041CBC1E2787DB7600AF9B05 /* 测试帧动画的主VC.swift in Sources */,

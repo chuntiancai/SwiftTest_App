@@ -8,7 +8,8 @@
 // 测试用的，导航栏VC
 //MARK: - 笔记
 /**
-    1、自定义继承导航栏VC，你可以在这里复写管理push，pop放回按钮等
+    1、自定义继承导航栏VC，你可以在这里复写管理push，pop放回按钮等.
+    2、navigation controller不可以push容器VC，例如tab Bar VC ， navigation VC，但是可以present容器VC。
  */
 
 class MyNavigation_NaviVC: UINavigationController {
@@ -104,8 +105,13 @@ class MyNavigation_NaviVC: UINavigationController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
    
+    deinit{
+        print("navigation VC 销毁了～ \(#function)")
+    }
     
 }
 //MARK: - 复写栈管理方法

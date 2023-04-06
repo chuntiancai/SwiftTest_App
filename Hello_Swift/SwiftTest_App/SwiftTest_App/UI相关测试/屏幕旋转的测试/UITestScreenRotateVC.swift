@@ -9,7 +9,15 @@
 //MARK: - 笔记
 /**
     1、如果手机上已经设置了锁定按钮，那么代码这里将会监听不到设备方位的变化。
+        iPhone 默认竖屏展示, 当系统屏幕旋转开关未锁定时, 就可以自由的转动, 值得注意的是iPhone 不支持旋转到 Upside Down 方向，ipad支持。
  
+    2、设置项目支持的方位的方式：
+        方式一：项目 -> TARGET -> General -> Deployment Info。
+        方式二：实现Appdelegate 的supportedInterfaceOrientationsForWindow 方法。
+                优先级：Appdelegate方法 > TARGET 配置。
+ 
+    3、shouldAutorotate属性和supportedInterfaceOrientations属性控制VC的屏幕旋转。
+        代码可以在三个位置控制屏幕访方向，代码生效优先级依次是 AppDelegate>UITabBarController>UINavigationController>UIViewController
  */
 
 class UITestScreenRotateVC: UIViewController {
@@ -34,6 +42,8 @@ class UITestScreenRotateVC: UIViewController {
     }
     
     /// 偏好显示的设备方向(想要显示的方向)
+    /// 偏好的屏幕方向 - 只会在 presentViewController:animated:completion时被调用
+    /// preferredInterfaceOrientationForPresentation 需要返回 supportedInterfaceOrientations 中支持的方向，不然会发生'UIApplicationInvalidInterfaceOrientation'崩溃.
     override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation{
         get{
             return .portrait
@@ -49,6 +59,12 @@ class UITestScreenRotateVC: UIViewController {
     }
 
     /// 不支持旋转，在设备方向改变时，只会调用根VC(导航VC) 或者模态显示的VC 的这个方法，其他VC不会被调用该方法。
+    /** 是否自动旋转，shouldAutorotate返回 YES 表示跟随系统旋转。
+    - iOS16.0已过期, 不会再调用.
+    - iOS16.0 之前, 先调用supportedInterfaceOrientations 确定支持的屏幕方向, 再调用shouldAutorotate 是否自动旋转, 来确定控制器方向.
+    - iOS16.0 之前, preferredInterfaceOrientationForPresentation 并未调用.
+    - iOS16.0 之前, return NO 之后, 当前控制器都支持屏幕旋转了
+    */
     override var shouldAutorotate: Bool{
         get{
             print("@@UITestScreenRotateVC shouldAutorotate ")
@@ -80,6 +96,7 @@ class UITestScreenRotateVC: UIViewController {
         super.attemptRotationToDeviceOrientation()
     }
 
+    
     
 }
 
@@ -158,7 +175,7 @@ extension UITestScreenRotateVC: UICollectionViewDataSource {
 
 //MARK: - 测试辅助方法
 extension UITestScreenRotateVC{
-    /// 开启监听设备方向
+    //TODO: 开启监听设备方向
     private func observeDeviceOreintation(){
         //感知设备方向 - 开启监听设备方向
         UIDevice.current.beginGeneratingDeviceOrientationNotifications()

@@ -98,7 +98,10 @@ extension Modal_SubVC: UICollectionViewDataSource {
             break
         case 1:
             //TODO: 1、
-            print("     (@@ ")
+            print("     (@@ 测试在模态的情况下push")
+            self.dismiss(animated: true)
+            let modalVC = Modal_SubVC()
+            pushNext(viewController: modalVC)
         case 2:
             //TODO: 2、
             print("     (@@ ")

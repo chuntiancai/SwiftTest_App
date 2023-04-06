@@ -217,8 +217,8 @@ extension TestRunLoopVC: UICollectionViewDataSource {
                 Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { timer in
                     print("子线程中的timer")
                 }
-                curRunloop.run()    //运行runloop
-                curRunloop.run(mode: .tracking, before: Date.init(timeIntervalSinceNow: 20))//指定runloop的运行模式
+                curRunloop.run()    //运行runloop，run方法永远不会停止，会不断地循环执行。
+                curRunloop.run(mode: .tracking, before: Date.init(timeIntervalSinceNow: 20))//指定runloop的运行模式，执行一次任务，runloop就退出，thread的任务就可以结束，可以stop。
             }
             
         case 7:

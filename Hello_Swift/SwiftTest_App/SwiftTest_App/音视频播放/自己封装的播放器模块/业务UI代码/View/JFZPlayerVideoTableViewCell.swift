@@ -77,7 +77,7 @@ class JFZPlayerVideoTableViewCell: UITableViewCell {
     ///cell准备被复用的时候
     override func prepareForReuse() {
         super.prepareForReuse()
-        print("JFZPlayerVideoTableViewCell 准备被复用:\(self)")
+//        print("JFZPlayerVideoTableViewCell 准备被复用:\(self.classForCoder)")
         for subV in baseVideoView.subviews {
             subV.removeFromSuperview()
         }

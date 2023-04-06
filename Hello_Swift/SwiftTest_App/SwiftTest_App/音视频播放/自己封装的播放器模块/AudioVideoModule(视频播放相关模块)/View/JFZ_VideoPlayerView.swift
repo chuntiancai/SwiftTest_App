@@ -14,6 +14,7 @@
  */
 
 import AVFoundation
+import UIKit
 
 class JFZ_VideoPlayerView : UIView {
     
@@ -136,6 +137,13 @@ class JFZ_VideoPlayerView : UIView {
             ///let screenHeight = UIScreen.main.bounds.height
             self.frame = CGRect.init(x: 0, y: 0, width: 345, height: 194)
         }
+        
+        /// 感知设备方向 - 开启监听设备方向，无论是否在AppDelegate中禁用了旋转，都会发出该通知
+        UIDevice.current.beginGeneratingDeviceOrientationNotifications()
+        /// 添加通知，监听设备方向改变
+        NotificationCenter.default.addObserver(self, selector: #selector(self.observeDeviceOrientationAction),
+                                                 name: UIDevice.orientationDidChangeNotification, object: nil)
+        
         self.backgroundColor = .black
         self.isUserInteractionEnabled = true
         videoLayer.frame = self.frame
@@ -172,7 +180,7 @@ class JFZ_VideoPlayerView : UIView {
     
     override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
-        print(" JFZ_VideoPlayerView\(#function)--\(newWindow)")
+//        print(" JFZ_VideoPlayerView \(#function)--\(String(describing: newWindow))")
     }
     
     override func layoutSubviews() {
@@ -198,7 +206,10 @@ class JFZ_VideoPlayerView : UIView {
     
     
     deinit {
+        UIDevice.current.endGeneratingDeviceOrientationNotifications()///结束对屏幕旋转的监听。
+        NotificationCenter.default.removeObserver(self)
         destoryPlayerTimerObserver()
+        
     }
 }
 
@@ -537,7 +548,7 @@ extension JFZ_VideoPlayerView{
     }
 }
 
-//MARK: - KVO监听的动作方法
+//MARK: - KVO监听到的动作方法
 extension JFZ_VideoPlayerView{
     
     /// （监听到AVPlayer的状态发生变化）更新播放的UI
@@ -640,12 +651,6 @@ extension JFZ_VideoPlayerView{
              isFullScreenAction!(true)
          }
         
-        //感知设备方向 - 开启监听设备方向，无论是否在AppDelegate中禁用了旋转，都会发出该通知
-        UIDevice.current.beginGeneratingDeviceOrientationNotifications()
-        //添加通知，监听设备方向改变
-        NotificationCenter.default.addObserver(self, selector: #selector(self.observeDeviceOrientationAction),
-                                                 name: UIDevice.orientationDidChangeNotification, object: nil)
-        
         self.ctrlPanelView.isFullScreen = true
         self.preFatherView = fatherView
         
@@ -726,7 +731,6 @@ extension JFZ_VideoPlayerView{
         playerTimeControlStatusObserver = nil
         playerRateStatusObserver = nil
         playerItemStatusObserver = nil
-        NotificationCenter.default.removeObserver(self)
         if let timeObserverToken = timeObserverToken {
             avPlayer?.removeTimeObserver(timeObserverToken)
             self.timeObserverToken = nil
@@ -749,7 +753,7 @@ extension JFZ_VideoPlayerView{
     }
     
     /// 监听到设备方向变化的动作方法
-    func observeDeviceOrientationAction(){
+    func observeDeviceOrientationAction(_ noti:Notification){
         if self.ctrlPanelView.isFullScreen == false {
             print("不是全屏状态，不旋转")
             return
