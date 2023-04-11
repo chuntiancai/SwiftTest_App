@@ -307,7 +307,6 @@
 		651C714D2609ED600066C13B /* tempVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651C714C2609ED600066C13B /* tempVC.swift */; };
 		651C71502609EDFF0066C13B /* DataTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651C714F2609EDFF0066C13B /* DataTestVC.swift */; };
 		AF12115829DEB5FF002C2A87 /* TestGPU_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12115729DEB5FF002C2A87 /* TestGPU_VC.swift */; };
-		AF12115A29DECC5A002C2A87 /* 00-8086汇编.pptx in Resources */ = {isa = PBXBuildFile; fileRef = AF12115929DECC5A002C2A87 /* 00-8086汇编.pptx */; };
 		AF172C1A28FCFCE1005BD750 /* 测试App跳转_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF172C1928FCFCE1005BD750 /* 测试App跳转_VC.swift */; };
 		AF218579298903EC0033829F /* TestOCCategory_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = AF218578298903EC0033829F /* TestOCCategory_VC.m */; };
 		AF21857F2995E2FF0033829F /* 测试AVFoundation框架_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF21857E2995E2FF0033829F /* 测试AVFoundation框架_VC.swift */; };
@@ -2877,7 +2876,6 @@
 				04330AB2283F7E34007DF2D0 /* 8、多态.md in Resources */,
 				04330AB6283F7E34007DF2D0 /* 13、高级运算符.md in Resources */,
 				04330ABA283F7E34007DF2D0 /* 0、语言环境.md in Resources */,
-				AF12115A29DECC5A002C2A87 /* 00-8086汇编.pptx in Resources */,
 				AFC1B386289B74BA0050FC8F /* XibFile_VC.xib in Resources */,
 				049270102796CCC4000A61FC /* TestTableView.storyboard in Resources */,
 				AF549D83291BA6D6001311A1 /* htmlImg.jpg in Resources */,

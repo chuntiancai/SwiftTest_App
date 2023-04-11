@@ -102,8 +102,7 @@ class JFZVideoControlPanelView: UIView {
         return btn
     }()
     
-    //MARK: - 内部属性
-    private var isTouchingSliderTag:Bool = false //是否正在点击slider
+    //MARK: - UI属性
     private let bgGestureView = UIView()    /// 屏幕手势的背景view
     private let leftGestureView = UIView()      /// 屏幕左边手势的view
     private let rightGestureView = UIView()    /// 屏幕右边手势的view
@@ -113,8 +112,9 @@ class JFZVideoControlPanelView: UIView {
 
     
     //MARK: - 工具属性
-    private var hideTimer:Timer?   //隐藏控制面板的定时器
+    private weak var hideTimer:Timer?   //隐藏控制面板的定时器
     private var isFirstPlay:Bool = true //是否第一次播放
+    private var isTouchingSliderTag:Bool = false //是否正在点击slider
     
     //MARK: - 手势管理。
     
@@ -129,26 +129,38 @@ class JFZVideoControlPanelView: UIView {
     }
     
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        print("JFZVideoControlPanelView 的 hitTest(_ point:方法 ")
+//        print("JFZVideoControlPanelView 的 hitTest(_ point:方法 ")
         self.alpha = 1
         if !isFirstPlay {
-            if let timer = hideTimer { //定时器不为空
-                timer.invalidate()
-                hideTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(hideCtrlViewTimeAction), userInfo: nil, repeats: false)
-            }else{  //定时器为空
-                hideTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(hideCtrlViewTimeAction), userInfo: nil, repeats: false)
-            }
+            hideTimer?.fireDate = Date(timeIntervalSinceNow: 3)
         }
         return super.hitTest(point, with: event)
     }
     
-    
+    override func layoutSubviews() {
+        
+        if hideTimer == nil {
+            /// timer会强引用target，所以必须用block。或者用proxy代理来间接弱引用target。
+            hideTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true, block: { [weak self] curTimer in
+//                print("隐藏控制面板的定时器动作block方法~")
+                DispatchQueue.main.async {
+                    [weak self] in
+                    UIView.animate(withDuration: 1.0) {
+                        self?.alpha = 0
+                    }
+                }
+            })
+            hideTimer?.fireDate = .distantFuture
+        }
+        super.layoutSubviews()
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     deinit {
+        print("JFZVideoControlPanelView销毁了～")
         if let timer = hideTimer {
             timer.invalidate()
             hideTimer = nil
@@ -220,6 +232,7 @@ extension JFZVideoControlPanelView{
      
         /// 屏幕手势背景Viwe
         bgGestureView.addGestureRecognizer(panGesture)
+        bgGestureView.tag = 1001
         panGesture.isEnabled = false
         panGesture.addTarget(self, action: #selector(panGestureAction(_:)))
         self.addSubview(bgGestureView)
@@ -227,11 +240,12 @@ extension JFZVideoControlPanelView{
             make.top.equalToSuperview()
             make.centerX.equalToSuperview()
             make.width.equalToSuperview()
-            make.bottom.equalTo(playButton.snp.top).offset(15)
+            make.bottom.equalTo(playButton.snp.top).offset(-15)
         }
         
         /// 左半屏手势view
         bgGestureView.addSubview(leftGestureView)
+        leftGestureView.tag = 1002
         leftGestureView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.left.equalToSuperview()
@@ -240,6 +254,7 @@ extension JFZVideoControlPanelView{
         }
         /// 右半屏手势view
         bgGestureView.addSubview(rightGestureView)
+        rightGestureView.tag = 1003
         rightGestureView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.right.equalToSuperview()
@@ -257,7 +272,11 @@ extension JFZVideoControlPanelView{
     /// - Parameter sender: 播放按钮
     private func playBtnAction(_ sender: UIButton){
         print("点击了播放按钮")
-        isFirstPlay = false
+        /// 首次播放，则需要启动隐藏view的定时器。
+        if isFirstPlay {
+            isFirstPlay = false
+            hideTimer?.fireDate = Date(timeIntervalSinceNow: 3)
+        }
         if togglePlayAction != nil {
             togglePlayAction!()
         }
@@ -302,16 +321,6 @@ extension JFZVideoControlPanelView{
         print("手指按下的的值：\(slider.value)")
     }
     
-    /// 隐藏控制面板的定时器动作方法
-    func hideCtrlViewTimeAction(){
-        print("隐藏控制面板的定时器动作方法 hideCtrlViewTimeAction")
-        DispatchQueue.main.async {
-            [weak self] in
-            UIView.animate(withDuration: 1.0) {
-                self?.alpha = 0
-            }
-        }
-    }
     
     /// 滑动手势识别的动作方法。
     func panGestureAction(_:UIPanGestureRecognizer){

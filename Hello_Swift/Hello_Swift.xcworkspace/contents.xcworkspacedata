@@ -23,6 +23,9 @@
       location = "group:OC_syntax_CmdLine/OC_syntax_CmdLine.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:C_Syntac_CmdLine/C_Syntac_CmdLine.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:SwiftBluetooth_App/SwiftBluetooth_App.xcodeproj">
    </FileRef>
    <FileRef

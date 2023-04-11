@@ -20,7 +20,7 @@ class JFZ_VideoPlayerView : UIView {
     
     //MARK: - 对外属性
     /// 视频源
-    var isFullScreenAction:((_ isFull:Bool)->Void)? //点击了全屏按钮的回调
+    var isTapFullScreenBtnAction:((_ isFull:Bool)->Void)? //点击了全屏按钮的回调
     var isPlaying:Bool {    //是否正在播放
         get{
             var isBool = false
@@ -160,7 +160,7 @@ class JFZ_VideoPlayerView : UIView {
         return isPointed
     }
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        print("JFZ_VideoPlayerView 的 hitTest(_ point 方法")
+//        print("JFZ_VideoPlayerView 的 hitTest(_ point 方法")
         let hitView = super.hitTest(point, with: event)
         let isPointed = self.point(inside: point, with: event)
         //TODO: 为了回传当前view被点击，后期优化
@@ -193,7 +193,7 @@ class JFZ_VideoPlayerView : UIView {
          print("当前的superView是：\(self.superview)")
          print("当前的superView的frame是：\(self.superview?.frame)")
          */
-        
+        print("当前的superView是：\(self.superview)")
         if let superView = self.superview, superView.isKind(of: UIWindow.self){
             print("在window中，当前view的frame是：\(self.frame)")
             videoLayer.frame = CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.height, height: UIScreen.main.bounds.width)
@@ -206,11 +206,12 @@ class JFZ_VideoPlayerView : UIView {
     
     
     deinit {
+        print("JFZ_VideoPlayerView 的 \(#function) 方法～")
         UIDevice.current.endGeneratingDeviceOrientationNotifications()///结束对屏幕旋转的监听。
         NotificationCenter.default.removeObserver(self)
         destoryPlayerTimerObserver()
-        
     }
+    
 }
 
 //MARK: - 设置UI
@@ -220,6 +221,7 @@ extension JFZ_VideoPlayerView{
     func initUI(){
         ///当前视频帧的imgView
         stratVideoFrameImgView.contentMode = .scaleAspectFit
+        stratVideoFrameImgView.tag = 101
         self.addSubview(stratVideoFrameImgView)
         stratVideoFrameImgView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -227,6 +229,8 @@ extension JFZ_VideoPlayerView{
         
         ///控制面板View
         self.addSubview(ctrlPanelView)
+        ctrlPanelView.tag = 102
+        ctrlPanelView.layer.name = "ctrlPanelView"
         setCtrlPanelViewLogic()
         ctrlPanelView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -234,6 +238,8 @@ extension JFZ_VideoPlayerView{
 
         ///加载失败的View
         loadAVAssetFailedView = getPlayFailedView()
+        loadAVAssetFailedView.tag = 102
+        loadAVAssetFailedView.layer.name = "loadAVAssetFailedView"
         self.addSubview(loadAVAssetFailedView)
         loadAVAssetFailedView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -241,6 +247,11 @@ extension JFZ_VideoPlayerView{
         
         ///正在加载视频的View
         loadingVideoView.backgroundColor = UIColor.red.withAlphaComponent(0.5)
+        loadingVideoView.layer.name = "loadingVideoView"
+        let loadLabel = UILabel(frame: CGRect(x: 50, y: 100, width: 300, height: 80))
+        loadLabel.text = "正在加载中。。。"
+        loadLabel.textColor = UIColor.white
+        loadingVideoView.addSubview(loadLabel)
         loadingVideoView.isHidden = true
         self.addSubview(loadingVideoView)
         loadingVideoView.snp.makeConstraints { make in
@@ -332,6 +343,7 @@ extension JFZ_VideoPlayerView{
                         self?.toggleNormalScreen()
                     }else{
                         self?.toggleFullScreen()
+                        
                     }
                 }
             }
@@ -445,7 +457,7 @@ extension JFZ_VideoPlayerView{
             "playable", //当前视频资产是否可播放的key
             "hasProtectedContent"   //是否有受保护内容，有则不可以播放
         ]
-        self.showLoadingVideoView()
+        self.showLoadingVideoView() //显示正在加载中
         self.loadAVAssetFailedView.isHidden = true  //先隐藏加载失败
         /// 使用异步线程，避免加载AVURLAsset的key造成主线程堵塞
         newAsset.loadValuesAsynchronously(forKeys: assetKeysRequiredToPlay) {
@@ -647,12 +659,40 @@ extension JFZ_VideoPlayerView{
             print("没有父View")
             return
         }
-         if isFullScreenAction != nil {
-             isFullScreenAction!(true)
-         }
-        
         self.ctrlPanelView.isFullScreen = true
-        self.preFatherView = fatherView
+        if isTapFullScreenBtnAction != nil {
+            isTapFullScreenBtnAction!(true)
+        }
+        
+        /// 父view不是window才记录下来。
+        if !fatherView.isKind(of: UIWindow.self) {
+            self.preFatherView = fatherView
+        }
+        
+        let device = UIDevice.current
+        print("触发全屏动作 \(device.orientation.rawValue)～")
+        switch device.orientation{
+        case .portrait,.portraitUpsideDown:
+            print( "UITestScreenRotateVC 面向设备保持垂直")
+            rotateLockedVerticalToFitFullScreen()
+        case .landscapeLeft,.landscapeRight:
+            print( "UITestScreenRotateVC 面向设备保持水平，设备顶部在左侧，也就是Home在右侧")
+            print( "UITestScreenRotateVC 面向设备保持水平，设备顶部在右侧，也就是Home在左侧")
+            rotateHorizationToFitFullScreen()
+        case .faceUp,.faceDown,.unknown:
+            print( "UITestScreenRotateVC 设备平放，设备顶部在上")
+            print( "UITestScreenRotateVC 设备平放，设备顶部在下")
+            print( "UITestScreenRotateVC 方向未知")
+            rotateLockedVerticalToFitFullScreen()
+        default:
+            print( "UITestScreenRotateVC default")
+        }
+        
+    }
+    
+    /// 方向锁定垂直时 旋转到适配全屏的View
+    /// - Parameter to: 旋转的方向
+    func rotateLockedVerticalToFitFullScreen(_ duration: TimeInterval = 0.5){
         
         removeFromSuperview()
         print("添加到window之前self的frame是：\(self.frame)")
@@ -671,47 +711,64 @@ extension JFZ_VideoPlayerView{
             make.center.equalToSuperview()
         }
         
-        let deviceOreint = UIDevice.current.orientation
         let screenFrame = UIScreen.main.bounds
         let winCenterPoint = CGPoint(x:screenFrame.origin.x + ceil(screenFrame.size.width/2), y: screenFrame.origin.y + ceil(screenFrame.size.height/2))
         
         UIView.beginAnimations(nil, context: nil)
-        UIView.setAnimationDuration(0.5)
+        UIView.setAnimationDuration(duration)
         self.center = winCenterPoint
+        /// 锁定垂直方向时 适配旋转View到全屏
         self.transform = CGAffineTransform.identity
-        switch deviceOreint {
-        case .landscapeLeft:
-            self.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 2)
-        case.landscapeRight:
-            self.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
-        default:
-            self.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
-        }
+        self.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 2)
         UIView.commitAnimations()
         
         bringSubviewToFront(self)
         
+    }
+    
+    /// 已经是横屏状态了，旋转全屏适配。
+    func rotateHorizationToFitFullScreen(){
         
-//        UIApplication.shared.isStatusBarHidden = true
+        guard let fatherView = self.superview else {
+            print("横屏旋转时，没有父View ～")
+            return
+        }
+        print(" 已经是横屏状态了，旋转全屏适配~")
+        /// 父view不是window才记录下来。
+        if !fatherView.isKind(of: UIWindow.self) {
+            self.preFatherView = fatherView
+            self.removeFromSuperview()
+            if UIApplication.shared.keyWindow != nil {
+                UIApplication.shared.keyWindow!.addSubview(self)
+            }else{
+                UIApplication.shared.windows.first?.addSubview(self)
+            }
+        }
         
-        
+        self.snp.remakeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        UIView.beginAnimations(nil, context: nil)
+        UIView.setAnimationDuration(0.5)
+        self.transform = CGAffineTransform.identity
+        UIView.commitAnimations()
     }
     
     /// 触发回到小屏状态
     private func toggleNormalScreen(){
         self.ctrlPanelView.isFullScreen = false
+        if isTapFullScreenBtnAction != nil {
+            isTapFullScreenBtnAction!(true)
+        }
+        
         guard let fatherView = self.preFatherView else {
-            print("没有父View")
+            print("触发回到小屏状态,没有父View")
             return
         }
-        if isFullScreenAction != nil {
-            isFullScreenAction!(false)
-        }
-        UIDevice.current.endGeneratingDeviceOrientationNotifications()
         
         removeFromSuperview()
         fatherView.addSubview(self)
-        snp.makeConstraints { (make) in
+        snp.remakeConstraints { (make) in
             make.edges.equalToSuperview()
         }
         
@@ -726,7 +783,6 @@ extension JFZ_VideoPlayerView{
     func destoryPlayerTimerObserver(){
         print("销毁对播放器的监听～")
         
-//        self.jfzf_hideLoadingView()
         avPlayer?.pause()
         playerTimeControlStatusObserver = nil
         playerRateStatusObserver = nil
@@ -754,28 +810,39 @@ extension JFZ_VideoPlayerView{
     
     /// 监听到设备方向变化的动作方法
     func observeDeviceOrientationAction(_ noti:Notification){
+        
+        let orient = UIDevice.current.orientation
+        print("JFZ_VideoPlayerView 监听到设备方位\(orient.rawValue)的变化～")
+        /**
+         
+         case unknown = 0
+         case portrait = 1 // Device oriented vertically, home button on the bottom
+         case portraitUpsideDown = 2 // Device oriented vertically, home button on the top
+         case landscapeLeft = 3 // Device oriented horizontally, home button on the right
+         case landscapeRight = 4 // Device oriented horizontally, home button on the left
+         case faceUp = 5 // Device oriented flat, face up
+         case faceDown = 6 // Device oriented flat, face down
+         */
         if self.ctrlPanelView.isFullScreen == false {
             print("不是全屏状态，不旋转")
             return
         }
-        print("JFZ_VideoPlayerView 监听到设备的方向变化")
-        let orient = UIDevice.current.orientation
         
-        UIView.beginAnimations(nil, context: nil)
-        UIView.setAnimationDuration(0.5)
-        switch orient {
-        case .landscapeLeft:
-            self.transform = CGAffineTransform.identity
-            print( "JFZ_VideoPlayerView .landscapeLeft 面向设备保持水平，设备顶部在左侧")
-            self.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
-        case.landscapeRight:
-            self.transform = CGAffineTransform.identity
-            print( "JFZ_VideoPlayerView .landscapeRight 面向设备保持水平，设备顶部在右侧")
-            self.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 2)
+        switch orient{
+        case .portrait,.portraitUpsideDown:
+            print( "UITestScreenRotateVC 面向设备保持垂直")
+            toggleNormalScreen()
+        case .landscapeLeft,.landscapeRight:
+            print( "UITestScreenRotateVC 面向设备保持水平，设备顶部在左侧，也就是Home在右侧")
+            print( "UITestScreenRotateVC 面向设备保持水平，设备顶部在右侧，也就是Home在左侧")
+            rotateHorizationToFitFullScreen()
+        case .faceUp,.faceDown,.unknown:
+            print( "UITestScreenRotateVC 设备平放，设备顶部在上")
+            print( "UITestScreenRotateVC 设备平放，设备顶部在下")
+            print( "UITestScreenRotateVC 方向未知")
         default:
-            break
+            print( "UITestScreenRotateVC default")
         }
-        UIView.commitAnimations()
         
     }
     

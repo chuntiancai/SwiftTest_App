@@ -28,6 +28,7 @@
 		658D4711261EDFAF00AD6349 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 658D4708261EDFAF00AD6349 /* AFURLRequestSerialization.m */; };
 		658D4712261EDFAF00AD6349 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 658D470A261EDFAF00AD6349 /* AFNetworkReachabilityManager.m */; };
 		658D4713261EDFAF00AD6349 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 658D470B261EDFAF00AD6349 /* AFSecurityPolicy.m */; };
+		AFAE8B4B29E5590300CC5824 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = AFAE8B4A29E5590300CC5824 /* main.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,18 @@
 			remoteInfo = OC_Test_App;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AFAE8B4629E5590300CC5824 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		041A2E1227901AEA00F9CABF /* tempVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tempVC.h; sourceTree = "<group>"; };
@@ -89,6 +102,8 @@
 		658D470B261EDFAF00AD6349 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
 		658D470C261EDFAF00AD6349 /* AFCompatibilityMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFCompatibilityMacros.h; sourceTree = "<group>"; };
 		658D470D261EDFAF00AD6349 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		AFAE8B4829E5590300CC5824 /* 练习 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "练习"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFAE8B4A29E5590300CC5824 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +122,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		6576065E2602EAE70040DD24 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFAE8B4529E5590300CC5824 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -141,6 +163,7 @@
 				6576063D2602EAE50040DD24 /* OC_Test_App */,
 				657606592602EAE70040DD24 /* OC_Test_AppTests */,
 				657606642602EAE70040DD24 /* OC_Test_AppUITests */,
+				AFAE8B4929E5590300CC5824 /* 练习 */,
 				6576063C2602EAE50040DD24 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -151,6 +174,7 @@
 				6576063B2602EAE50040DD24 /* OC_Test_App.app */,
 				657606562602EAE70040DD24 /* OC_Test_AppTests.xctest */,
 				657606612602EAE70040DD24 /* OC_Test_AppUITests.xctest */,
+				AFAE8B4829E5590300CC5824 /* 练习 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -283,6 +307,14 @@
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
+		AFAE8B4929E5590300CC5824 /* 练习 */ = {
+			isa = PBXGroup;
+			children = (
+				AFAE8B4A29E5590300CC5824 /* main.c */,
+			);
+			path = "练习";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -339,6 +371,23 @@
 			productReference = 657606612602EAE70040DD24 /* OC_Test_AppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		AFAE8B4729E5590300CC5824 /* 练习 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFAE8B4E29E5590300CC5824 /* Build configuration list for PBXNativeTarget "练习" */;
+			buildPhases = (
+				AFAE8B4429E5590300CC5824 /* Sources */,
+				AFAE8B4529E5590300CC5824 /* Frameworks */,
+				AFAE8B4629E5590300CC5824 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "练习";
+			productName = "练习";
+			productReference = AFAE8B4829E5590300CC5824 /* 练习 */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -358,6 +407,9 @@
 						CreatedOnToolsVersion = 12.4;
 						TestTargetID = 6576063A2602EAE50040DD24;
 					};
+					AFAE8B4729E5590300CC5824 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
 				};
 			};
 			buildConfigurationList = 657606362602EAE50040DD24 /* Build configuration list for PBXProject "OC_Test_App" */;
@@ -376,6 +428,7 @@
 				6576063A2602EAE50040DD24 /* OC_Test_App */,
 				657606552602EAE70040DD24 /* OC_Test_AppTests */,
 				657606602602EAE70040DD24 /* OC_Test_AppUITests */,
+				AFAE8B4729E5590300CC5824 /* 练习 */,
 			);
 		};
 /* End PBXProject section */
@@ -444,6 +497,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				657606662602EAE70040DD24 /* OC_Test_AppUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFAE8B4429E5590300CC5824 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFAE8B4B29E5590300CC5824 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,6 +765,32 @@
 			};
 			name = Release;
 		};
+		AFAE8B4C29E5590300CC5824 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WGS3P7C8Z5;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		AFAE8B4D29E5590300CC5824 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WGS3P7C8Z5;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -739,6 +826,15 @@
 			buildConfigurations = (
 				657606712602EAE70040DD24 /* Debug */,
 				657606722602EAE70040DD24 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AFAE8B4E29E5590300CC5824 /* Build configuration list for PBXNativeTarget "练习" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFAE8B4C29E5590300CC5824 /* Debug */,
+				AFAE8B4D29E5590300CC5824 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

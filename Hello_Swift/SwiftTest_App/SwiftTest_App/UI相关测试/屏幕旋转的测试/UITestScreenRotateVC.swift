@@ -96,7 +96,12 @@ class UITestScreenRotateVC: UIViewController {
         super.attemptRotationToDeviceOrientation()
     }
 
-    
+    deinit {
+        print("UITestScreenRotateVC 的 \(#function) 方法～")
+        NotificationCenter.default.removeObserver(self)
+        //关闭设备监听
+        UIDevice.current.endGeneratingDeviceOrientationNotifications()
+    }
     
 }
 
@@ -175,6 +180,7 @@ extension UITestScreenRotateVC: UICollectionViewDataSource {
 
 //MARK: - 测试辅助方法
 extension UITestScreenRotateVC{
+    
     //TODO: 开启监听设备方向
     private func observeDeviceOreintation(){
         //感知设备方向 - 开启监听设备方向
