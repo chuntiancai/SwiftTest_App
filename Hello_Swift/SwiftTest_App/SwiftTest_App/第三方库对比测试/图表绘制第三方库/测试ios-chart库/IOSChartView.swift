@@ -193,7 +193,7 @@ extension IOSChartView{
                                              UIColor.init(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.5).cgColor] as CFArray,
                                             locations: [1,0])
         yValsSet.fillAlpha = 1.0
-        yValsSet.fill = Fill.init(linearGradient: gradient!,angle: 90.0)
+        yValsSet.fill = LinearGradientFill.init(gradient: gradient!,angle: 90.0)
         
         //MARK:  十字线
         yValsSet.highlightEnabled = true    //是否允许十字线
@@ -236,7 +236,7 @@ extension IOSChartView{
                                              UIColor.init(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.5).cgColor] as CFArray,
                                             locations: [1,0])
         yValsSet.fillAlpha = 1.0
-        yValsSet.fill = Fill.init(linearGradient: gradient!,angle: 90.0)
+        yValsSet.fill = LinearGradientFill.init(gradient: gradient!,angle: 90.0)
         
         //MARK:  十字线
         yValsSet.highlightEnabled = true    //是否允许十字线

@@ -1,28 +1,30 @@
 PODS:
-  - Alamofire (4.9.1)
-  - Bugly (2.5.91)
-  - Charts (3.6.0):
-    - Charts/Core (= 3.6.0)
-  - Charts/Core (3.6.0)
+  - Alamofire (5.6.4)
+  - Bugly (2.5.93)
+  - Charts (4.1.0):
+    - Charts/Core (= 4.1.0)
+  - Charts/Core (4.1.0):
+    - SwiftAlgorithms (~> 1.0)
   - CTC_LocalPod (0.1.0):
     - CTC_LocalPod/GrowingIO (= 0.1.0)
   - CTC_LocalPod/GrowingIO (0.1.0)
   - ctc_podspec (0.1.0)
   - FilesProvider (0.26.0)
-  - FLAnimatedImage (1.0.16)
+  - FLAnimatedImage (1.0.17)
   - FSCalendar (2.8.4)
   - MJRefresh (3.7.5)
   - Reachability (3.2)
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
   - SDWebImage/Core (5.11.1)
-  - SnapKit (4.2.0)
+  - SnapKit (5.6.0)
+  - SwiftAlgorithms (1.0.0)
   - SwiftyJSON (5.0.1)
 
 DEPENDENCIES:
   - Alamofire
   - Bugly
-  - Charts (~> 3.6.0)
+  - Charts
   - CTC_LocalPod (from `./CTC_LocalPodSpec/CTC_LocalPod`)
   - CTC_LocalPod/GrowingIO (from `./CTC_LocalPodSpec/CTC_LocalPod`)
   - ctc_podspec (from `https://github.com/chuntiancai/TestCocoapod.git`)
@@ -47,6 +49,7 @@ SPEC REPOS:
     - Reachability
     - SDWebImage
     - SnapKit
+    - SwiftAlgorithms
     - SwiftyJSON
 
 EXTERNAL SOURCES:
@@ -61,20 +64,21 @@ CHECKOUT OPTIONS:
     :git: https://github.com/chuntiancai/TestCocoapod.git
 
 SPEC CHECKSUMS:
-  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
-  Bugly: afe841bba2ea6de6d432a3c125240a5e75949c55
-  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
+  Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
+  Bugly: b8715e6ec4004b7f7fbffab0643ba80545aee3da
+  Charts: 354f86803d11d9c35de280587fef50d1af063978
   CTC_LocalPod: b2ec89ea313a07e52461f30dbe6c68c415b9e647
   ctc_podspec: 11515223988733579091ab1aed01beebe73de572
   FilesProvider: 2a8ae17d8b9c23a6feadb1308ee638fa31d21065
-  FLAnimatedImage: 8f3e854ebf9680b71f0b6e700939687fc4d82b4b
+  FLAnimatedImage: bbf914596368867157cc71b38a8ec834b3eeb32b
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
-  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: a7778ad073261cbf09773aa779b705f5f40c14c6
+PODFILE CHECKSUM: 477023f547f099aa64e591015805808c0b3f3694
 
 COCOAPODS: 1.11.3

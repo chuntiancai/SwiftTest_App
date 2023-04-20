@@ -49,7 +49,8 @@ extension TestAlamofire_VC: UICollectionViewDataSource {
             let urlStr = "http://baike.baidu.com/api/openapi/BaikeLemmaCardApi?scope=103&format=json&appid=379020&bk_key=\(keyWord)&bk_length=600"
             //let url = URL(string:urlStr)!
             /// 传入url和urlStr均可，默认是GET请求
-            Alamofire.request(urlStr).responseJSON(queue: DispatchQueue.global(), options: .allowFragments) { resp in
+            
+            AF.request(urlStr).responseJSON(queue: DispatchQueue.global(), options: .allowFragments) { resp in
                 print("默认GET请求,当前线程：\(Thread.current)")
                 switch resp.result {
                 /// 返回的是一个已经解析完json字符串的json字典
@@ -69,7 +70,7 @@ extension TestAlamofire_VC: UICollectionViewDataSource {
              fragmentsAllowed: 得到的对象为any
              */
             let urlStr2 = "http://baike.baidu.com/api/openapi/BaikeLemmaCardApi"
-            Alamofire.request(urlStr2, method: .post, parameters: ["scope":103,"format":"json","bk_key":keyWord,"bk_length":600],
+            AF.request(urlStr2, method: .post, parameters: ["scope":103,"format":"json","bk_key":keyWord,"bk_length":600],
                               encoding: JSONEncoding.default,
                               headers: nil).responseJSON(queue: DispatchQueue.global(),options: .allowFragments) { resp in
                                 print("POST请求请求,当前线程：\(Thread.current)")
@@ -88,59 +89,59 @@ extension TestAlamofire_VC: UICollectionViewDataSource {
             //TODO: 1、文件下载
             print("     (@@ 文件下载")
             let videoUrl = "http://onapp.yahibo.top/public/videos/video.mp4"
-            Alamofire.download(videoUrl) { (temporaryURL, response) -> (destinationURL: URL, options: DownloadRequest.DownloadOptions) in
+            AF.download(videoUrl, to:  { _,_ in
                 let timeStamp = Date().timeIntervalSinceNow
                 let targetFileUrl = URL(fileURLWithPath: "/Users/mac/Desktop/AlamofireVideo\(timeStamp).mp4")
                 return (targetFileUrl,[.removePreviousFile,.createIntermediateDirectories])
-            }.downloadProgress { progress in
+            }).downloadProgress { progress in
                 print("下载进度：\(progress)")
             }
         case 2:
             //TODO: 2、上传文件
             print("     (@@ 上传文件")
-            let videoUrlStr = "http://onapp.yahibo.top/public/videos/video.mp4"
-            let imgData1 = UIImage(named: "labi01")!.pngData()!
-            let imgData2 = UIImage(named: "labi02")!.pngData()!
-            /// 上传表单
-            Alamofire.upload(multipartFormData: { (formData) in
-                print("拼凑POST的表头信息")
-                /// 拼接请求头的信息
-                formData.append("小新".data(using: .utf8)!, withName: "name")
-                formData.append("123456".data(using: .utf8)!, withName: "password")
-                formData.append(imgData1, withName: "labi01", fileName: "labi01file", mimeType: "image/png")
-                formData.append(imgData2, withName: "labi02", fileName: "labi02file", mimeType: "image/png")
-            }, to: videoUrlStr) { (result) in
-                switch result {
-                case .success(let upReq, let isStreamingFromDisk, let streamFileURL):
-                    print("---upReq:\(upReq),\n ---isStreamingFromDisk:\(isStreamingFromDisk),\n---streamFileURL:\(String(describing: streamFileURL)),")
-                    upReq.uploadProgress { progress in
-                        print("上传进度：\(progress)")
-                    }
-                case .failure(let err):
-                    print("上传错误：\(err)")
-                    break
-                }
-            }
+//            let videoUrlStr = "http://onapp.yahibo.top/public/videos/video.mp4"
+//            let imgData1 = UIImage(named: "labi01")!.pngData()!
+//            let imgData2 = UIImage(named: "labi02")!.pngData()!
+//            
+//            /// 上传表单
+//            AF.upload(multipartFormData: { (formData) in
+//                print("拼凑POST的表头信息")
+//                /// 拼接请求头的信息
+//                formData.append("小新".data(using: .utf8)!, withName: "name")
+//                formData.append("123456".data(using: .utf8)!, withName: "password")
+//                formData.append(imgData1, withName: "labi01", fileName: "labi01file", mimeType: "image/png")
+//                formData.append(imgData2, withName: "labi02", fileName: "labi02file", mimeType: "image/png")
+//            }, to: videoUrlStr) { (result) in
+//                switch result {
+//                case .success(let upReq, let isStreamingFromDisk, let streamFileURL):
+//                    print("---upReq:\(upReq),\n ---isStreamingFromDisk:\(isStreamingFromDisk),\n---streamFileURL:\(String(describing: streamFileURL)),")
+//                    upReq.uploadProgress { progress in
+//                        print("上传进度：\(progress)")
+//                    }
+//                case .failure(let err):
+//                    print("上传错误：\(err)")
+//                    break
+//                }
+//            }
         case 3:
             //TODO: 3、监听网络状态的改变
             print("     (@@ 监听网络状态的改变")
             
             let manager = NetworkReachabilityManager()
-            let _ = manager!.startListening()
-            
-            switch manager!.networkReachabilityStatus {
-            case .notReachable:
-                print("不能访问网络")
-            case .reachable(let type):
-                switch type {
-                case .ethernetOrWiFi:
+           
+            let _ = manager!.startListening( onUpdatePerforming: { status in
+                switch status {
+                case .notReachable:
+                    print("暂时没有网络连接")
+                case .unknown:
+                    print("网络状态未知")
+                case .reachable(.ethernetOrWiFi):
                     print("以太网或者wifi")
-                case .wwan:
-                    print("蜂窝网络")
+                case .reachable(.cellular):
+                    print("蜂窝数据")
                 }
-            case .unknown:
-                print("不知道能不能访问网络")
-            }
+            })
+            
             
         case 4:
             print("     (@@")

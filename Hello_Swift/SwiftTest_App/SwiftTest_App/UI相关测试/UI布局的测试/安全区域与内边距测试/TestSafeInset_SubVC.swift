@@ -5,8 +5,14 @@
 //  Created by mathew on 2022/5/11.
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
-
 /// 测试安全内边距的子VC
+// MARK: - 笔记
+/**
+    1、
+ 
+ */
+
+
 class TestSafeInset_SubVC: UIViewController {
     
     //MARK: 对外属性
@@ -21,6 +27,7 @@ class TestSafeInset_SubVC: UIViewController {
         self.title = "测试安全内边距的子VC"
         initTestViewUI()
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -75,9 +82,3 @@ extension TestSafeInset_SubVC{
 
 
 
-
-// MARK: - 笔记
-/**
-    1、
- 
- */

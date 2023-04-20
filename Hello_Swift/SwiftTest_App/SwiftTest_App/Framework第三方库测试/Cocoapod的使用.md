@@ -81,6 +81,66 @@
     
 ### podspec的vendored_libraries属性，引入.a文件时，必须把.a文件重命名为lib开头，cocoapod才可以识别出这是.a文件。 
 
+##CocoaPods的post_install 和 pre_install
+
+
+    有时候我们想在pod install/update时做一些除了第三方库安装以外的事情，比如关闭所有target的Bitcode功能。(Bitcode是LLVM的中间代码，无用，但默认嵌入了二进制文件中)
+    这时就要用到CocoaPods中的钩子(Hooks),关于钩子(Hooks)的官方介绍在这里:https://guides.cocoapods.org/syntax/podfile.html#group_hooks
+   
+        post_install block接收一个"installer"参数，通过对"installer"修改来完成我们想要执行的特殊操作。
+        还有另一个Hooks叫做"pre_install"，它的作用是允许你在Pods被下载后但是还未安装前对Pods做一些改变。写法和post_install一样。
+
+    
+        # 实现post_install Hooks
+        post_install do |installer|
+        
+            # 1. 遍历项目中所有target
+            installer.pods_project.targets.each do |target|
+            
+                # 2. 遍历build_configurations
+                target.build_configurations.each do |config|
+                
+                    # 3. 修改build_settings中的ENABLE_BITCODE
+                    config.build_settings['ENABLE_BITCODE'] = 'NO'
+                end
+            end
+        end
+
+        在上面的Podfile使用了一个 "post_install" Hooks，这个Hooks允许你在生成的Xcode project写入硬盘或者其他你想执行的操作前做最后的改动。
+    
+    
+        CocoaPods是用Ruby开发的，其实Podfile就是一个Ruby代码文件，从Ruby的角度来看"post_install"这个Hooks，其实它就是一个Ruby中的Block。
+            再来一点Ruby简单知识：
+            每个Ruby对象都有"public_methods"方法，这个方法返回对象公开方法名列表；
+            每个Ruby对象都有"instance_variables"方法，这个方法返回对象的属性名列表；
+            每个Ruby对象都有"instance.instance_variable_get"方法，调用这个方法并传入属性名，就可以得到属性名称对应的对象；
+            Array类型类似OC中的NSArray；Hash类型类似OC中的NSDictionary；Array和Hash对象可以使用each方法来遍历；
+            puts 是ruby中的打印方法
+
+
+        post_install do |installer|
+            # puts 为在终端打印方法
+            puts "##### post_install start #####"
+        
+            # 为了打印的日志方便查看，使用╟符号修饰
+            puts "╟ installer"
+            # 获取属性名称列表，并遍历
+            installer.instance_variables.each do |variableName|
+                # 打印属性名称
+                puts "  ╟ #{variableName}"
+            end
+        
+            puts "  ╟ installer.public_methods"
+            # 获取方法名称列表，并遍历
+            installer.public_methods.each do |method|
+                # 打印方法名称
+                puts "    ┣ #{method}"
+            end
+            puts "##### post_install end #####"
+        end
+
+    
+
                  
                  
                  

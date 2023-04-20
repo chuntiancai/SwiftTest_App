@@ -6,7 +6,12 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 
-///  测试导航栏VC下，VC的安全内边距对ScrollView的影响。
+//  测试导航栏VC下，VC的安全内边距对ScrollView的影响。
+//MARK: - 笔记
+/**
+ 
+    
+ */
 class TestSafeInset_SubVC2: UIViewController {
     
     //MARK: 对外属性
@@ -257,9 +262,3 @@ extension TestSafeInset_SubVC2: UICollectionViewDelegate {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
-
-// MARK: - 笔记
-/**
-    1、
- 
- */
