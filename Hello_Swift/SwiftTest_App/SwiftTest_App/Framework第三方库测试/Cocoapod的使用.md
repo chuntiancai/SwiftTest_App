@@ -8,11 +8,15 @@
        
        3、描述信息：在yourLibName.podspec文件中，描述你的库的信息、xcode工程信息等。例如它们的github地址、编译文件、依赖关系等等。
        
-       4、上传文件：将yourLibName.podspe和xcode项目工程文件一同上传到yourLibName.podspe中描述的仓库地址上，并打上tag。
+       4、pod lib lint yourLibName.podspec   //本地验证你的podspec文件
+          pod spec lint  //网络校验你的podspec文件。
+
+       5、上传文件：将yourLibName.podspe和xcode项目工程文件一同上传到yourLibName.podspe中描述的仓库地址上，并打上tag。
                  （tag 和yourLibName.podspec中s.version 的保持一致）
                  
 ## pod命令
-    
+    pod update 库名 --verbose --no-repo-update    //只更新指定的库，其它库忽略
+    pod install --verbose --no-repo-update      //只想给项目添加新的第三方，不更新本地已经存在的第三方
                  
 ## podspec语法：
     1、podspec是cocoapod库的描述文件，cocoapod通过读取podspec文件里的信息，对路径中的文件进行加载，处理，包装成framework来使用。
@@ -47,6 +51,33 @@
     # s.vendored_libraries = 'test_sh/Classes/*.a'   #lpod库含有lib库时使用，即.a文件。
     # s.vendored_frameworks = 'test_sh/Classes/*.framework'  # pod库含有framework库时使用
     end
+    
+---- 
+官网语法：
+	Pod::Spec.new do |spec|
+	  spec.name          = 'Reachability'
+	  spec.version       = '3.1.0'
+	  spec.license       = { :type => 'BSD' }
+	  spec.homepage      = 'https://github.com/tonymillion/Reachability'
+	  spec.authors       = { 'Tony Million' => 'tonymillion@gmail.com' }
+	  spec.summary       = 'ARC and GCD Compatible Reachability Class for iOS and OS X.'
+	  spec.source        = { :git => 'https://github.com/tonymillion/Reachability.git', :tag => 'v3.1.0' }
+	  spec.module_name   = 'Rich'
+	  spec.swift_version = '4.0'
+	
+	  spec.ios.deployment_target  = '9.0'
+	  spec.osx.deployment_target  = '10.10'
+	
+	  spec.source_files       = 'Reachability/common/*.swift'
+	  spec.ios.source_files   = 'Reachability/ios/*.swift', 'Reachability/extensions/*.swift'
+	  spec.osx.source_files   = 'Reachability/osx/*.swift'
+	
+	  spec.framework      = 'SystemConfiguration'
+	  spec.ios.framework  = 'UIKit'
+	  spec.osx.framework  = 'AppKit'
+	
+	  spec.dependency 'SomeOtherPod'
+	end
     
 ### podspec的vendored_libraries属性，引入.a文件时，必须把.a文件重命名为lib开头，cocoapod才可以识别出这是.a文件。 
 

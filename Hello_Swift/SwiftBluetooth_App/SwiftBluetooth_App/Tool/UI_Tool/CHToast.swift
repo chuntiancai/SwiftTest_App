@@ -33,7 +33,7 @@ class CHToast: NSObject {
             toastIndicatiorView?.layer.cornerRadius = 5.0
             toastIndicatiorView?.alpha = 0
             
-            let indicatorView = UIActivityIndicatorView.init(style: .large)
+            let indicatorView = UIActivityIndicatorView.init()
             indicatorView.tag = 10
             indicatorView.hidesWhenStopped = true
             indicatorView.color = UIColor.white
@@ -84,7 +84,7 @@ class CHToast: NSObject {
             bgView.center = CGPoint(x: main_width/2, y: main_height/2)
             
             //菊花图
-            let indicatorView = UIActivityIndicatorView.init(style: .large)
+            let indicatorView = UIActivityIndicatorView.init()
             indicatorView.tag = 10
             indicatorView.hidesWhenStopped = true
             indicatorView.color = UIColor.white

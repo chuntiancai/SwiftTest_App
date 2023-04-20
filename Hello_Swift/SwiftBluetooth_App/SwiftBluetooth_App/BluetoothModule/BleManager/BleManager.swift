@@ -117,8 +117,11 @@ class BleManager: NSObject {
             设计1: 后面可以预设十个CBCentralManager，相当于维护线程池那样，就不会有延迟的状态，而且还提高性能
          */
         super.init()
-        let bleAuth = CBManager.authorization   //查询系统的蓝牙权限
-        print("查询系统的蓝牙权限:\(bleAuth.rawValue)")
+        if #available(iOS 13.1, *) {
+            let bleAuth = CBManager.authorization
+            print("查询系统的蓝牙权限:\(bleAuth.rawValue)")
+        }   //查询系统的蓝牙权限
+        
         ///创建中央设备时，请求系统允许访问蓝牙，是否保存当前CentralManager唯一
         curCentralManger?.delegate = self
         print("创建curCentralManger的初始化方法：\(curCentralManger?.state)")

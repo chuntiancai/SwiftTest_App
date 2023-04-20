@@ -4,6 +4,9 @@ PODS:
   - Charts (3.6.0):
     - Charts/Core (= 3.6.0)
   - Charts/Core (3.6.0)
+  - CTC_LocalPod (0.1.0):
+    - CTC_LocalPod/GrowingIO (= 0.1.0)
+  - CTC_LocalPod/GrowingIO (0.1.0)
   - ctc_podspec (0.1.0)
   - FilesProvider (0.26.0)
   - FLAnimatedImage (1.0.16)
@@ -20,6 +23,8 @@ DEPENDENCIES:
   - Alamofire
   - Bugly
   - Charts (~> 3.6.0)
+  - CTC_LocalPod (from `./CTC_LocalPodSpec/CTC_LocalPod`)
+  - CTC_LocalPod/GrowingIO (from `./CTC_LocalPodSpec/CTC_LocalPod`)
   - ctc_podspec (from `https://github.com/chuntiancai/TestCocoapod.git`)
   - FilesProvider
   - FLAnimatedImage
@@ -45,6 +50,8 @@ SPEC REPOS:
     - SwiftyJSON
 
 EXTERNAL SOURCES:
+  CTC_LocalPod:
+    :path: "./CTC_LocalPodSpec/CTC_LocalPod"
   ctc_podspec:
     :git: https://github.com/chuntiancai/TestCocoapod.git
 
@@ -57,6 +64,7 @@ SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Bugly: afe841bba2ea6de6d432a3c125240a5e75949c55
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
+  CTC_LocalPod: b2ec89ea313a07e52461f30dbe6c68c415b9e647
   ctc_podspec: 11515223988733579091ab1aed01beebe73de572
   FilesProvider: 2a8ae17d8b9c23a6feadb1308ee638fa31d21065
   FLAnimatedImage: 8f3e854ebf9680b71f0b6e700939687fc4d82b4b
@@ -67,6 +75,6 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: 0866502915288ee76d4c3920d1c5d40399025dc4
+PODFILE CHECKSUM: a7778ad073261cbf09773aa779b705f5f40c14c6
 
 COCOAPODS: 1.11.3

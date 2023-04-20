@@ -6,7 +6,7 @@
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
 
-import UIKit
+import GrowingCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,10 +20,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow.init(frame: UIScreen.main.bounds)
         self.window?.rootViewController = UINavigationController.init(rootViewController: MainViewController())
         self.window?.makeKeyAndVisible()    //设置为主键
+        Growing.start(withAccountId: "b8fb5c41cb38ae42")
+        Growing.setEnableLog(true)
         return true
     }
 
 
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        if (Growing.handle(url)) // 请务必确保该函数被调用
+         {
+             return true;
+         }
+        return false
+    }
 
 }
 

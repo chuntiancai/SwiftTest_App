@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		47C31F3F54D0ACC46EAC6D49 /* Pods_SwiftNote_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB5A63AB07C9A6DB53DE80B /* Pods_SwiftNote_App.framework */; };
 		AF2C737125539CFB000AD7A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2C737025539CFB000AD7A9 /* AppDelegate.swift */; };
 		AF2C737525539CFB000AD7A9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2C737425539CFB000AD7A9 /* MainViewController.swift */; };
 		AF2C737A25539D14000AD7A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF2C737925539D14000AD7A9 /* Assets.xcassets */; };
@@ -20,6 +19,7 @@
 		C9B631A22688D5B7008410EA /* JFZReadPDF_ImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B631A12688D5B7008410EA /* JFZReadPDF_ImageVC.swift */; };
 		C9B631A42688D5ED008410EA /* PDFTempVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B631A32688D5ED008410EA /* PDFTempVC.swift */; };
 		C9B631A72688D6E2008410EA /* PDFResourceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B631A62688D6E2008410EA /* PDFResourceModel.swift */; };
+		D16946649C29B13320350C27 /* Pods_SwiftNote_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA75AD12426DFB127996F15F /* Pods_SwiftNote_App.framework */; };
 		EB20780D268C11F20009C076 /* JFZReadImgTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB20780C268C11F20009C076 /* JFZReadImgTableCell.swift */; };
 		EB207811268C3D480009C076 /* 11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EB20780E268C3D480009C076 /* 11.jpg */; };
 		EB207813268C3D480009C076 /* 333.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EB207810268C3D480009C076 /* 333.jpg */; };
@@ -32,7 +32,6 @@
 
 /* Begin PBXFileReference section */
 		049EAFC826B2A2AA00903DA8 /* SwiftNote_App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftNote_App-Bridging-Header.h"; sourceTree = "<group>"; };
-		0FB5A63AB07C9A6DB53DE80B /* Pods_SwiftNote_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftNote_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90552439F7F4613F6D4827D3 /* Pods-SwiftNote_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNote_App.debug.xcconfig"; path = "Target Support Files/Pods-SwiftNote_App/Pods-SwiftNote_App.debug.xcconfig"; sourceTree = "<group>"; };
 		AF16148725932122008BBC64 /* Runtime理解.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Runtime理解.md"; sourceTree = "<group>"; };
 		AF16148825932168008BBC64 /* App的基础知识.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "App的基础知识.md"; sourceTree = "<group>"; };
@@ -45,6 +44,7 @@
 		AF2C737E25539D14000AD7A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF2C73902553A830000AD7A9 /* TempViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempViewController.swift; sourceTree = "<group>"; };
 		AF2C73922553A83B000AD7A9 /* TempView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempView.swift; sourceTree = "<group>"; };
+		BA75AD12426DFB127996F15F /* Pods_SwiftNote_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftNote_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDC375EAF3E5F7BE230DBBB8 /* Pods-SwiftNote_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNote_App.release.xcconfig"; path = "Target Support Files/Pods-SwiftNote_App/Pods-SwiftNote_App.release.xcconfig"; sourceTree = "<group>"; };
 		C9618EFC2687657000873A9F /* JFZBasicReadDocVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JFZBasicReadDocVC.swift; sourceTree = "<group>"; };
 		C9B6319C2688D4E8008410EA /* pdfBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = pdfBundle.bundle; sourceTree = "<group>"; };
@@ -67,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47C31F3F54D0ACC46EAC6D49 /* Pods_SwiftNote_App.framework in Frameworks */,
+				D16946649C29B13320350C27 /* Pods_SwiftNote_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,7 +87,7 @@
 		8E72D16C11A73490C430CAB1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0FB5A63AB07C9A6DB53DE80B /* Pods_SwiftNote_App.framework */,
+				BA75AD12426DFB127996F15F /* Pods_SwiftNote_App.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -125,9 +125,6 @@
 				C9B6319E2688D563008410EA /* 阿里巴巴java开发手册.pdf */,
 				EBC1312A2693083800FF247E /* 音视频开发 */,
 				C9618EFA268763DD00873A9F /* 测试浏览PDF、图片 */,
-				AF9E6E4A25B59B1F0088C05C /* 蓝牙相关 */,
-				AF6870822553AFA2007CC015 /* UI相关 */,
-				AF2C738C2553A79E000AD7A9 /* 文件相关测试 */,
 				AF2C738625539D50000AD7A9 /* Main */,
 				AF2C738425539D24000AD7A9 /* resource */,
 				AF2C737025539CFB000AD7A9 /* AppDelegate.swift */,
@@ -159,88 +156,11 @@
 		AF2C738625539D50000AD7A9 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				AF2C738D2553A7E1000AD7A9 /* TempModule */,
-				AF68707F2553AF07007CC015 /* HomeModule */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		AF2C738A25539EDF000AD7A9 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
+				AF2C73922553A83B000AD7A9 /* TempView.swift */,
+				AF2C73902553A830000AD7A9 /* TempViewController.swift */,
 				AF2C737425539CFB000AD7A9 /* MainViewController.swift */,
 			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		AF2C738B25539EE6000AD7A9 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		AF2C738C2553A79E000AD7A9 /* 文件相关测试 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "文件相关测试";
-			sourceTree = "<group>";
-		};
-		AF2C738D2553A7E1000AD7A9 /* TempModule */ = {
-			isa = PBXGroup;
-			children = (
-				AF2C738E2553A7FA000AD7A9 /* Controller */,
-				AF2C738F2553A80E000AD7A9 /* View */,
-			);
-			path = TempModule;
-			sourceTree = "<group>";
-		};
-		AF2C738E2553A7FA000AD7A9 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				AF2C73902553A830000AD7A9 /* TempViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		AF2C738F2553A80E000AD7A9 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				AF2C73922553A83B000AD7A9 /* TempView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		AF68707F2553AF07007CC015 /* HomeModule */ = {
-			isa = PBXGroup;
-			children = (
-				AF2C738A25539EDF000AD7A9 /* Controller */,
-				AF2C738B25539EE6000AD7A9 /* View */,
-			);
-			path = HomeModule;
-			sourceTree = "<group>";
-		};
-		AF6870802553AF6C007CC015 /* Controller相关 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Controller相关";
-			sourceTree = "<group>";
-		};
-		AF6870822553AFA2007CC015 /* UI相关 */ = {
-			isa = PBXGroup;
-			children = (
-				AF6870802553AF6C007CC015 /* Controller相关 */,
-			);
-			path = "UI相关";
-			sourceTree = "<group>";
-		};
-		AF9E6E4A25B59B1F0088C05C /* 蓝牙相关 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "蓝牙相关";
+			path = Main;
 			sourceTree = "<group>";
 		};
 		C9618EFA268763DD00873A9F /* 测试浏览PDF、图片 */ = {
@@ -586,11 +506,44 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WGS3P7C8Z5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SwiftNote_App/resource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"xml2\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"FLAnimatedImage\"",
+					"-framework",
+					"\"FilesProvider\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MJRefresh\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Reachability\"",
+					"-framework",
+					"\"SnapKit\"",
+					"-framework",
+					"\"SwiftyJSON\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ctch.SwiftNote-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -611,11 +564,44 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WGS3P7C8Z5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SwiftNote_App/resource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"xml2\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"FLAnimatedImage\"",
+					"-framework",
+					"\"FilesProvider\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MJRefresh\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Reachability\"",
+					"-framework",
+					"\"SnapKit\"",
+					"-framework",
+					"\"SwiftyJSON\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ctch.SwiftNote-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";

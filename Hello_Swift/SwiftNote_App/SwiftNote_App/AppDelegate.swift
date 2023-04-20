@@ -6,7 +6,7 @@
 //  Copyright © 2020 com.ctchTeamIOS. All rights reserved.
 //
 
-import UIKit
+import GrowingCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow.init(frame: UIScreen.main.bounds)
         self.window?.rootViewController = UINavigationController.init(rootViewController: MainViewController())
         self.window?.makeKeyAndVisible()    //设置为主键
-        
+//        Growing.start(withAccountId: "b8fb5c41cb38ae42")
+        Growing.start(withAccountId: "9907c51ef09823c8d5b98c511e30a866")
+        Growing.setEnableLog(true)
         return true
     }
     
@@ -45,6 +47,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("别的App申请跳转到当前App：\(#function) 方法")
         print("方法参数：url: \(url) -- options: \(options)")
         
+        
+        
+        if (Growing.handle(url)) // 请务必确保该函数被调用
+         {
+             return true;
+         }
         
         // 定义协议的过程
         // 就是穿什么值过来, 做不同的操作

@@ -25,6 +25,9 @@
 /* Begin PBXFileReference section */
 		AF12116429DFE919002C2A87 /* C_Syntac_CmdLine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = C_Syntac_CmdLine; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF12116729DFE919002C2A87 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		AF4A0CD429EE3E2300B41BCB /* mulitpleFile_Note.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mulitpleFile_Note.h; sourceTree = "<group>"; };
+		AF4A0CD729EE65D600B41BCB /* digitSystem_Note.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = digitSystem_Note.h; sourceTree = "<group>"; };
+		AF4A0CD829EE79BA00B41BCB /* memoryStore_Note.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = memoryStore_Note.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,17 +60,20 @@
 		AF12116629DFE919002C2A87 /* C_Syntac_CmdLine */ = {
 			isa = PBXGroup;
 			children = (
-				AFAE89FB29E5523C00CC5824 /* 教程的笔记 */,
 				AF12116729DFE919002C2A87 /* main.c */,
+				AFAE89FB29E5523C00CC5824 /* 笔记 */,
 			);
 			path = C_Syntac_CmdLine;
 			sourceTree = "<group>";
 		};
-		AFAE89FB29E5523C00CC5824 /* 教程的笔记 */ = {
+		AFAE89FB29E5523C00CC5824 /* 笔记 */ = {
 			isa = PBXGroup;
 			children = (
+				AF4A0CD429EE3E2300B41BCB /* mulitpleFile_Note.h */,
+				AF4A0CD729EE65D600B41BCB /* digitSystem_Note.h */,
+				AF4A0CD829EE79BA00B41BCB /* memoryStore_Note.h */,
 			);
-			path = "教程的笔记";
+			path = "笔记";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

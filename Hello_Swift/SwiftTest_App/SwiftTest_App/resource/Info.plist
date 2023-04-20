@@ -28,6 +28,16 @@
 				<string>SwiftTestApp</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>GrowingIO</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>growing.4645be9d78504924</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>

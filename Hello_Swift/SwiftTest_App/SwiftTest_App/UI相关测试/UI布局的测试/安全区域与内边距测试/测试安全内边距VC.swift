@@ -96,6 +96,30 @@ class TestSafeInset_VC: UIViewController {
         
         
     }
+    override func viewSafeAreaInsetsDidChange() {
+        super.viewSafeAreaInsetsDidChange()
+        print("\n安全区发生了变化：")
+        print("view的safeAreaLayoutGuide属性：\(self.view.safeAreaLayoutGuide)\n -- view的safeAreaInsets属性:\(self.view.safeAreaInsets)")
+        print("view的frame：\(self.view.frame) -- navi的view的frame：\(self.navigationController?.view.frame) \n")
+    }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        print("\nviewWillLayoutSubviews时的view： \(view.safeAreaLayoutGuide)\n -- view的safeAreaInsets属性:\(self.view.safeAreaInsets)")
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        print("\nviewDidLayoutSubviews时的view：\(view.safeAreaLayoutGuide)\n -- view的safeAreaInsets属性:\(self.view.safeAreaInsets)")
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("\n 在viewWillAppear中view的frame：\(self.view.frame) --view的safeAreaLayoutGuide属性：\(self.view.safeAreaLayoutGuide)")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("\n 在viewDidAppear中view的frame：\(self.view.frame) -- navi的view的frame：\(self.navigationController?.view.frame)")
+    }
     
     
     

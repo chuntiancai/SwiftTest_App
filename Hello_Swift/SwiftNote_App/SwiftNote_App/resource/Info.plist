@@ -26,6 +26,16 @@
 				<string>SwiftNoteApp</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>GrowingIO</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>growing.d8504660138c1247</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>

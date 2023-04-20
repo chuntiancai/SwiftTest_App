@@ -306,6 +306,7 @@
 		651C71492609EB870066C13B /* FileTest_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651C71482609EB870066C13B /* FileTest_VC.swift */; };
 		651C714D2609ED600066C13B /* tempVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651C714C2609ED600066C13B /* tempVC.swift */; };
 		651C71502609EDFF0066C13B /* DataTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651C714F2609EDFF0066C13B /* DataTestVC.swift */; };
+		AF03995529E7F1B100F5529D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF03995429E7F1B100F5529D /* Security.framework */; };
 		AF12115829DEB5FF002C2A87 /* TestGPU_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12115729DEB5FF002C2A87 /* TestGPU_VC.swift */; };
 		AF172C1A28FCFCE1005BD750 /* 测试App跳转_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF172C1928FCFCE1005BD750 /* 测试App跳转_VC.swift */; };
 		AF218579298903EC0033829F /* TestOCCategory_VC.m in Sources */ = {isa = PBXBuildFile; fileRef = AF218578298903EC0033829F /* TestOCCategory_VC.m */; };
@@ -347,6 +348,14 @@
 		AF3557BB286AF145009B291C /* Point_Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3557BA286AF145009B291C /* Point_Person.swift */; };
 		AF402FF228D1CC6A00407CEE /* TestMap_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF402FF128D1CC6A00407CEE /* TestMap_VC.swift */; };
 		AF402FF428D1D3B900407CEE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF402FF328D1D3B900407CEE /* MapKit.framework */; };
+		AF4A0C8529ED301F00B41BCB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4A0C8429ED301F00B41BCB /* Foundation.framework */; };
+		AF4A0C8729ED303000B41BCB /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4A0C8629ED303000B41BCB /* CoreTelephony.framework */; };
+		AF4A0C8929ED303800B41BCB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4A0C8829ED303800B41BCB /* SystemConfiguration.framework */; };
+		AF4A0C8B29ED306D00B41BCB /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4A0C8A29ED306D00B41BCB /* AdSupport.framework */; };
+		AF4A0C8D29ED308300B41BCB /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4A0C8C29ED307B00B41BCB /* libicucore.tbd */; };
+		AF4A0C8F29ED308D00B41BCB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4A0C8E29ED308D00B41BCB /* CoreLocation.framework */; };
+		AF4A0C9129ED309600B41BCB /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4A0C9029ED309600B41BCB /* JavaScriptCore.framework */; };
+		AF4A0C9329ED30A200B41BCB /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4A0C9229ED30A200B41BCB /* WebKit.framework */; };
 		AF549D762918EA54001311A1 /* TestSqlite_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF549D752918EA54001311A1 /* TestSqlite_VC.swift */; };
 		AF549D7929190073001311A1 /* Sqlite_Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF549D7829190073001311A1 /* Sqlite_Student.swift */; };
 		AF549D7B291900DA001311A1 /* SqliteTestTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF549D7A291900DA001311A1 /* SqliteTestTool.swift */; };
@@ -761,6 +770,7 @@
 		651C71482609EB870066C13B /* FileTest_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTest_VC.swift; sourceTree = "<group>"; };
 		651C714C2609ED600066C13B /* tempVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempVC.swift; sourceTree = "<group>"; };
 		651C714F2609EDFF0066C13B /* DataTestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTestVC.swift; sourceTree = "<group>"; };
+		AF03995429E7F1B100F5529D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		AF12115729DEB5FF002C2A87 /* TestGPU_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestGPU_VC.swift; sourceTree = "<group>"; };
 		AF12115929DECC5A002C2A87 /* 00-8086汇编.pptx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "00-8086汇编.pptx"; sourceTree = "<group>"; };
 		AF172C1928FCFCE1005BD750 /* 测试App跳转_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试App跳转_VC.swift"; sourceTree = "<group>"; };
@@ -808,6 +818,14 @@
 		AF3557BA286AF145009B291C /* Point_Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point_Person.swift; sourceTree = "<group>"; };
 		AF402FF128D1CC6A00407CEE /* TestMap_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMap_VC.swift; sourceTree = "<group>"; };
 		AF402FF328D1D3B900407CEE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		AF4A0C8429ED301F00B41BCB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AF4A0C8629ED303000B41BCB /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		AF4A0C8829ED303800B41BCB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		AF4A0C8A29ED306D00B41BCB /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		AF4A0C8C29ED307B00B41BCB /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		AF4A0C8E29ED308D00B41BCB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		AF4A0C9029ED309600B41BCB /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		AF4A0C9229ED30A200B41BCB /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		AF549D752918EA54001311A1 /* TestSqlite_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSqlite_VC.swift; sourceTree = "<group>"; };
 		AF549D772918FB63001311A1 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		AF549D7829190073001311A1 /* Sqlite_Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sqlite_Student.swift; sourceTree = "<group>"; };
@@ -929,8 +947,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFD8A1BB286060290094554A /* Pods_SwiftTest_App.framework in Frameworks */,
+				AF4A0C8F29ED308D00B41BCB /* CoreLocation.framework in Frameworks */,
+				AF4A0C8D29ED308300B41BCB /* libicucore.tbd in Frameworks */,
+				AF4A0C8529ED301F00B41BCB /* Foundation.framework in Frameworks */,
+				AF4A0C8B29ED306D00B41BCB /* AdSupport.framework in Frameworks */,
+				AF4A0C8729ED303000B41BCB /* CoreTelephony.framework in Frameworks */,
+				AF03995529E7F1B100F5529D /* Security.framework in Frameworks */,
 				AF2CF885290BBC1F00C9388E /* libmp3lame.a in Frameworks */,
+				AF4A0C9129ED309600B41BCB /* JavaScriptCore.framework in Frameworks */,
 				AF402FF428D1D3B900407CEE /* MapKit.framework in Frameworks */,
+				AF4A0C8929ED303800B41BCB /* SystemConfiguration.framework in Frameworks */,
+				AF4A0C9329ED30A200B41BCB /* WebKit.framework in Frameworks */,
 				04D9B53826DCDB4500289824 /* FrameworkMake_Test.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1829,7 +1856,6 @@
 			isa = PBXGroup;
 			children = (
 				AFE2C365296527F300369228 /* 汇编开发 */,
-				AF83C5D3292C9D0E0019FC4B /* Cocoapod的使用.md */,
 				048DFE98281BEC8D00F210E8 /* 源代码管理_Git_SVN.md */,
 				AF83C5D1292C9AE10019FC4B /* 测试分支删除的影响.swift */,
 				048DFE96281BC9BB00F210E8 /* 加密算法笔记.md */,
@@ -2291,6 +2317,7 @@
 		04D9B4FD26D76DD100289824 /* Framework第三方库测试 */ = {
 			isa = PBXGroup;
 			children = (
+				AF83C5D3292C9D0E0019FC4B /* Cocoapod的使用.md */,
 				04D9B4FE26D76DF400289824 /* FrameworkTest_MainVC.swift */,
 			);
 			path = "Framework第三方库测试";
@@ -2334,6 +2361,15 @@
 		7801BCFAA19C16690C210779 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AF4A0C9229ED30A200B41BCB /* WebKit.framework */,
+				AF4A0C9029ED309600B41BCB /* JavaScriptCore.framework */,
+				AF4A0C8E29ED308D00B41BCB /* CoreLocation.framework */,
+				AF4A0C8C29ED307B00B41BCB /* libicucore.tbd */,
+				AF4A0C8A29ED306D00B41BCB /* AdSupport.framework */,
+				AF4A0C8829ED303800B41BCB /* SystemConfiguration.framework */,
+				AF4A0C8629ED303000B41BCB /* CoreTelephony.framework */,
+				AF4A0C8429ED301F00B41BCB /* Foundation.framework */,
+				AF03995429E7F1B100F5529D /* Security.framework */,
 				AF549D772918FB63001311A1 /* libsqlite3.0.tbd */,
 				AF402FF328D1D3B900407CEE /* MapKit.framework */,
 				04D9B53726DCDB4500289824 /* FrameworkMake_Test.framework */,

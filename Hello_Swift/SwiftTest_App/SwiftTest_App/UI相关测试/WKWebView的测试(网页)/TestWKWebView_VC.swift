@@ -61,7 +61,8 @@ extension TestWKWebView_VC: UICollectionViewDataSource {
         case 0:
             //TODO: 0、加载网页请求
             print("     (@@ 加载网页请求 ")
-            let url = URL(string: "http://www.baidu.com")
+//            let url = URL(string: "http://www.baidu.com")
+            let url = URL(string: "https://jfz-simu-ziguan-hentong.oss-cn-hangzhou.aliyuncs.com/2023-04-17/15/fat/5062444339_15_20230417104427522_previrew.pdf?debug=1")
             let request = URLRequest(url: url!)
             wkView.load(request)
         case 1:
@@ -160,12 +161,41 @@ extension TestWKWebView_VC:WKNavigationDelegate{
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         print(" WKNavigationDelegate 网页开始加载 \(#function) 方法")
     }
+    
+    //TODO: 处理网页证书校验
+    ///访问是否下载证书，http请求不会回调该方法。
+    ///challenge:质询的意思,信息都在保护空间里challenge.protectionSpace
+    ///URLSession.AuthChallengeDisposition: 如何处理证书
+    ///URLCredential: 授权信息
+//    func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void){
+//        print(" WKNavigationDelegate 处理网页证书校验 \(#function) 方法")
+//        /**
+//         print("认证空间：\(challenge.protectionSpace)")
+//         print("认证方式：\(challenge.protectionSpace.authenticationMethod)")
+//
+//         public enum AuthChallengeDisposition : Int {
+//             case useCredential = 0     //使用该证书 安装该证书
+//             case performDefaultHandling = 1    //默认采用的方式,该证书被忽略
+//             case cancelAuthenticationChallenge = 2 //取消请求,证书忽略
+//             case rejectProtectionSpace = 3 //拒绝
+//         }
+//         */
+//
+//
+//        if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
+//            //通过服务器的证书来验证(信任)，也就是所谓的通过证书加密数据来进行传输。
+//            let card = URLCredential.init(trust: challenge.protectionSpace.serverTrust!)
+//            completionHandler(URLSession.AuthChallengeDisposition.useCredential,card)
+//        }
+//
+//    }
      
     //TODO: 处理网页加载失败
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         print(" WKNavigationDelegate 网页加载失败 \(#function) 方法")
     }
-     
+    
+    
     //TODO: 处理网页内容开始返回
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
         print(" WKNavigationDelegate 网页内容开始返回 \(#function) 方法")

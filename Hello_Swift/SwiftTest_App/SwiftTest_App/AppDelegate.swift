@@ -5,6 +5,7 @@
 //  Created by Mathew Cai on 2020/11/5.
 //  Copyright © 2020 com.ctchTeamIOS. All rights reserved.
 //
+import GrowingCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,6 +33,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // launchOptions: 如果app 不是通过正常启动(点击应用程序的图标启动), 都会把对应的一些信息参数, 放到这个字典里面。譬如本地通知的一些信息。
         if launchOptions != nil { showLaunchOptionsText(launchOptions) }
         
+        //FIXME: 测试GrowingIO
+        Growing.start(withAccountId: "b8fb5c41cb38ae42")
+//        Growing.start(withAccountId: "9907c51ef09823c8d5b98c511e30a866")
+//        Growing.setEnableLog(true)
+        
         /// 用于测试bugly
 //        Bugly.start(withAppId: "aff906cba5")
         return true
@@ -44,7 +50,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     
-
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    
+        if (Growing.handle(url)) // 请务必确保该函数被调用
+         {
+             return true;
+         }
+        return false
+    }
 }
 
 //MARK: 用于测试的方法

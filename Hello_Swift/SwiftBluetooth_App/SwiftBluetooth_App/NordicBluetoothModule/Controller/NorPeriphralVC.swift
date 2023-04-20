@@ -154,7 +154,7 @@ extension NorPeriphralVC: UICollectionViewDataSource {
             NordicCommon.sharedLogView.appendText = "@@ 调用curPeriphral?.readRSSI:\(String(describing: curPeriphral?.readRSSI()))"
             break
         case 6:
-            NordicCommon.sharedLogView.appendText = "@@ 调用curPeriphral?.ancsAuthorized:\(String(describing: curPeriphral?.ancsAuthorized))"
+//            NordicCommon.sharedLogView.appendText = "@@ 调用curPeriphral?.ancsAuthorized:\(String(describing: curPeriphral?.ancsAuthorized))"
             break
       
         default:
