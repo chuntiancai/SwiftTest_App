@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if launchOptions != nil { showLaunchOptionsText(launchOptions) }
         
         //FIXME: 测试GrowingIO
-        Growing.start(withAccountId: "b8fb5c41cb38ae42")
+//        Growing.start(withAccountId: "b8fb5c41cb38ae42")
 //        Growing.start(withAccountId: "9907c51ef09823c8d5b98c511e30a866")
 //        Growing.setEnableLog(true)
         

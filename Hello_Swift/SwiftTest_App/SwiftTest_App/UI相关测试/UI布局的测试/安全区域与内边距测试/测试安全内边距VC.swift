@@ -17,7 +17,7 @@
         
       例如safeAreaInsets是(top:25,letf:20,bottom:0,right:0)， 那么safeAreaLayoutGuide就是一个矩形(x:20,y:25,width:剩余宽度，height:剩余高度), 如果内边距大于View本身的bounds，那么safeAreaLayoutGuide的宽度不会是负数， 而是（20 - 超出的宽度），也就是边缘对齐。
  
-       影响链：vc.additionalSafeAreaInsets --> viewSafeAreaInsetsDidChange() --> view.safeAreaLayoutGuide --> view.safeAreaLayoutGuide
+       影响链：vc.additionalSafeAreaInsets --> viewSafeAreaInsetsDidChange() --> view.safeAreaInsets --> view.safeAreaLayoutGuide
     
     2、内边距的生命周期：viewWillAppear --> viewSafeAreaInsetsDidChange() --> viewWillLayoutSubviews() --> viewDidLayoutSubviews() --> viewDidAppear()。
       
@@ -241,7 +241,15 @@ extension TestSafeInset_VC: UICollectionViewDataSource {
             print("底部安全区的高度：\(MySafeInsetTool.safeDistanceBottom())")
             
         case 7:
-            print("     (@@")
+            //TODO: 7、测试模态下的VC的安全内边距
+            print("     (@@7、测试模态下的安全内边距")
+            let modalVC = TestSafeInset_ModalVC()
+            let naviVC = UINavigationController(rootViewController: modalVC)
+//            naviVC.view.backgroundColor = UIColor.red
+            naviVC.modalPresentationStyle = .overFullScreen
+//            naviVC.navigationBar.isTranslucent = false
+            self.present(naviVC, animated: true)
+            
         case 8:
             print("     (@@")
         case 9:

@@ -9,7 +9,8 @@
 //  测试导航栏VC下，VC的安全内边距对ScrollView的影响。
 //MARK: - 笔记
 /**
- 
+    1、因为Scrollview的contentInset又是参考safeAreaInsets属性的，所以修改了additionalSafeAreaInsets后 影响到了safeAreaInsets属性，
+       从而影响到了Scrollview的 contentInset属性，所以影响到了scrollView的内容布局。
     
  */
 class TestSafeInset_SubVC2: UIViewController {
@@ -113,8 +114,8 @@ extension TestSafeInset_SubVC2: UICollectionViewDataSource {
             pinkView.snp.makeConstraints { make in
                 make.top.equalToSuperview()
                 make.left.equalToSuperview()
-                make.height.equalTo(80)
-                make.width.equalTo(40)
+                make.height.equalTo(160)
+                make.width.equalTo(60)
             }
             
             let yellowView = UIView()
@@ -124,19 +125,56 @@ extension TestSafeInset_SubVC2: UICollectionViewDataSource {
             yellowView.snp.makeConstraints { make in
                 make.top.equalToSuperview()
                 make.left.equalToSuperview()
-                make.height.equalTo(80)
+                make.height.equalTo(120)
                 make.width.equalTo(40)
             }
             
         case 3:
-            //TODO: 3、
-            print("     (@@ ")
+            //TODO: 3、测试scrollEdgeAppearance对Scrollview的影响。
+            /**
+                1、scrollview.contentInsetAdjustmentBehavior属性的默认值是.automatic，这个是contentInset的调整行为的意思。
+                    在.automatic模式下，scrollview的contentInset会自动跟随navigationVC的safe area insets进行调整。
+             
+                2、当scrollview的content滑动到导航栏下方时，navigationBar就把scrollEdgeAppearance设置的样式应用到navigationBar上。
+                    如果你没有设置scrollEdgeAppearance的值，那么scrollEdgeAppearance默认套用standardAppearance的值。
+             */
+            print("     (@@ 测试scrollEdgeAppearance对Scrollview的影响。")
+            guard let naviBar = self.navigationController?.navigationBar else{ return}
+            if #available(iOS 13.0, *) {
+                let standAppearance = naviBar.standardAppearance
+                let scroAppearance = naviBar.scrollEdgeAppearance
+//                print("\(standAppearance) \n-- \(scroAppearance)")
+                scroAppearance?.configureWithOpaqueBackground()
+                scroAppearance?.backgroundColor = UIColor.red
+                scroAppearance?.backgroundEffect = UIBlurEffect(style: .regular)
+                
+            } else {
+                print("不是iOS 13.0版本")
+            }
         case 4:
-            print("     (@@")
+            //TODO: 4、复原standardAppearance，但是不是设置新对象，因为赋值需要等下一个页面才生效。
+            /**
+                1、standardAppearance.configureWithTransparentBackground()等系列函数是恢复naviBar的Appearance里的属性的默认值。
+                    注意，是恢复属性的值，而不是赋值新的Appearance对象。
+                2、
+             */
+            print("     (@@4、恢复standardAppearance")
+            guard let naviBar = self.navigationController?.navigationBar else{ return}
+            if #available(iOS 13.0, *) {
+                naviBar.standardAppearance.configureWithTransparentBackground()
+            } else {
+                print("不是iOS 13.0版本")
+            }
         case 5:
-            print("     (@@")
+            print("     (@@ 默认的standardAppearance")
+            if #available(iOS 13.0, *) {
+                self.navigationController?.navigationBar.standardAppearance.configureWithDefaultBackground()
+            }
         case 6:
-            print("     (@@")
+            print("     (@@ 不透明的standardAppearance")
+            if #available(iOS 13.0, *) {
+                self.navigationController?.navigationBar.standardAppearance.configureWithOpaqueBackground()
+            }
         case 7:
             print("     (@@")
         case 8:
@@ -207,7 +245,7 @@ extension TestSafeInset_SubVC2 {
         let layout = UICollectionViewFlowLayout.init()
         layout.itemSize = CGSize.init(width: 80, height: 40)
         
-        baseCollView = UICollectionView.init(frame: CGRect(x:0, y:UIScreen.main.bounds.size.height - 300 , width:UIScreen.main.bounds.size.width,height:200),
+        baseCollView = UICollectionView.init(frame: CGRect(x:0, y:300, width:UIScreen.main.bounds.size.width,height:200),
                                              collectionViewLayout: layout)
         
         baseCollView.backgroundColor = UIColor.cyan.withAlphaComponent(0.8)
@@ -222,7 +260,7 @@ extension TestSafeInset_SubVC2 {
         
         self.view.addSubview(baseCollView)
         baseCollView.snp.makeConstraints { make in
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-40)
             make.centerX.equalToSuperview()
             make.height.equalTo(200)
             make.width.equalToSuperview()
