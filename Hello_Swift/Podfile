@@ -35,9 +35,9 @@ target 'SwiftTest_App' do
   pod 'Alamofire', :inhibit_warnings => true #网络处理
   #测试自己制作的cocoapod库
   pod 'ctc_podspec', :git =>'https://github.com/chuntiancai/TestCocoapod.git'
-  pod 'CTC_LocalPod', :path => './CTC_LocalPodSpec/CTC_LocalPod', :subspecs => ["GrowingIO"]
+#  pod 'CTC_LocalPod', :path => './CTC_LocalPodSpec/CTC_LocalPod', :subspecs => ["GrowingIO"]
   # 测试GrowingIO
-#  pod 'GrowingAutoTrackKit'
+  pod 'GrowingAutoTrackKit'
   
   # 测试绘制图表第三方库
   pod 'Charts'

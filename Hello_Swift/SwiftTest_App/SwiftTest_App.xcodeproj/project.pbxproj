@@ -351,7 +351,6 @@
 		AF4A0C8529ED301F00B41BCB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4A0C8429ED301F00B41BCB /* Foundation.framework */; };
 		AF4A0C8729ED303000B41BCB /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4A0C8629ED303000B41BCB /* CoreTelephony.framework */; };
 		AF4A0C8929ED303800B41BCB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4A0C8829ED303800B41BCB /* SystemConfiguration.framework */; };
-		AF4A0C8B29ED306D00B41BCB /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4A0C8A29ED306D00B41BCB /* AdSupport.framework */; };
 		AF4A0C8D29ED308300B41BCB /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4A0C8C29ED307B00B41BCB /* libicucore.tbd */; };
 		AF4A0C8F29ED308D00B41BCB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4A0C8E29ED308D00B41BCB /* CoreLocation.framework */; };
 		AF4A0C9129ED309600B41BCB /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4A0C9029ED309600B41BCB /* JavaScriptCore.framework */; };
@@ -952,7 +951,6 @@
 				AF4A0C8F29ED308D00B41BCB /* CoreLocation.framework in Frameworks */,
 				AF4A0C8D29ED308300B41BCB /* libicucore.tbd in Frameworks */,
 				AF4A0C8529ED301F00B41BCB /* Foundation.framework in Frameworks */,
-				AF4A0C8B29ED306D00B41BCB /* AdSupport.framework in Frameworks */,
 				AF4A0C8729ED303000B41BCB /* CoreTelephony.framework in Frameworks */,
 				AF03995529E7F1B100F5529D /* Security.framework in Frameworks */,
 				AF2CF885290BBC1F00C9388E /* libmp3lame.a in Frameworks */,

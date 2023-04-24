@@ -12,6 +12,11 @@ PODS:
   - FilesProvider (0.26.0)
   - FLAnimatedImage (1.0.17)
   - FSCalendar (2.8.4)
+  - Growing (2.9.15)
+  - GrowingAutoTrackKit (2.9.15):
+    - GrowingCoreKit (= 2.9.15)
+  - GrowingCoreKit (2.9.15):
+    - Growing (= 2.9.15)
   - MJRefresh (3.7.5)
   - Reachability (3.2)
   - SDWebImage (5.11.1):
@@ -26,11 +31,11 @@ DEPENDENCIES:
   - Bugly
   - Charts
   - CTC_LocalPod (from `./CTC_LocalPodSpec/CTC_LocalPod`)
-  - CTC_LocalPod/GrowingIO (from `./CTC_LocalPodSpec/CTC_LocalPod`)
   - ctc_podspec (from `https://github.com/chuntiancai/TestCocoapod.git`)
   - FilesProvider
   - FLAnimatedImage
   - FSCalendar (~> 2.8.2)
+  - GrowingAutoTrackKit
   - MJRefresh
   - Reachability
   - SDWebImage (~> 5.11.1)
@@ -45,6 +50,9 @@ SPEC REPOS:
     - FilesProvider
     - FLAnimatedImage
     - FSCalendar
+    - Growing
+    - GrowingAutoTrackKit
+    - GrowingCoreKit
     - MJRefresh
     - Reachability
     - SDWebImage
@@ -72,6 +80,9 @@ SPEC CHECKSUMS:
   FilesProvider: 2a8ae17d8b9c23a6feadb1308ee638fa31d21065
   FLAnimatedImage: bbf914596368867157cc71b38a8ec834b3eeb32b
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
+  Growing: 2d980eb9cbc4491e25273255d1a14ccee02e2399
+  GrowingAutoTrackKit: 0a6fb866bec8ddbca4e5a5f31a1cc1b36bf66bb4
+  GrowingCoreKit: b069abf3d2a2734dc5fc40446108a1cc86f11b53
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
@@ -79,6 +90,6 @@ SPEC CHECKSUMS:
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: 477023f547f099aa64e591015805808c0b3f3694
+PODFILE CHECKSUM: 55030bf3914376b59998b4f5e8136ca43b973866
 
 COCOAPODS: 1.11.3

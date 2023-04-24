@@ -151,9 +151,9 @@ extension TestNavibarUI_VC: UICollectionViewDataSource {
         case 1:
             //TODO: 1、测试导航栏的navigationBar.standardAppearance属性，iOS13之后添加。
             /**
-             1、standardAppearance: 竖屏时导航栏外观。
+             1、standardAppearance: 竖屏时导航栏外观。 scrollView滑动时显示standardAppearance。
                 compactAppearance: 横屏时导航栏外观。
-                scrollEdgeAppearance: 描述当关联的UIScrollView到达与导航栏邻接的边缘时导航栏的外观。
+                scrollEdgeAppearance: 描述当关联的UIScrollView到达与导航栏邻接的边缘时导航栏的外观。 scrollView处于顶部时显示scrollEdgeAppearance。
 ​                还可以通过UINavigationBarAppearance对象中的属性设置自定义baritem的外观。
              ​   
                 UINavigationBarAppearance还可以设置标题的富文本模式，毛玻璃效果，阴影等效果。

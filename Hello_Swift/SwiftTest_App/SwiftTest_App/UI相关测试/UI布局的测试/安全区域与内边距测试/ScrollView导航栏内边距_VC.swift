@@ -11,6 +11,12 @@
 /**
     1、因为Scrollview的contentInset又是参考safeAreaInsets属性的，所以修改了additionalSafeAreaInsets后 影响到了safeAreaInsets属性，
        从而影响到了Scrollview的 contentInset属性，所以影响到了scrollView的内容布局。
+ 
+    2、导航栏的外观：
+            scrollView滑动时显示standardAppearance。
+            scrollView处于顶部时显示scrollEdgeAppearance。
+            默认是使用standardAppearance，没有scrollEdgeAppearance时，scrollEdgeAppearance使用standardAppearance的值。
+            有scrollEdgeAppearance时，默认使用scrollEdgeAppearance。(因为一般scrollView都处于顶部，没有scrollView也是使用scrollEdgeAppearance)
     
  */
 class TestSafeInset_SubVC2: UIViewController {
@@ -82,7 +88,7 @@ extension TestSafeInset_SubVC2: UICollectionViewDataSource {
             self.view.addSubview(myScrollView)
             myScrollView.snp.makeConstraints { make in
                 make.top.equalToSuperview()
-                make.height.equalTo(200)
+                make.height.equalTo(300)
                 make.width.equalTo(300)
                 make.centerX.equalToSuperview()
             }
@@ -95,7 +101,7 @@ extension TestSafeInset_SubVC2: UICollectionViewDataSource {
             redView.snp.makeConstraints { make in
                 make.top.equalToSuperview()
                 make.left.equalToSuperview()
-                make.height.equalTo(80)
+                make.height.equalTo(100)
                 make.width.equalTo(20)
             }
             
@@ -137,6 +143,7 @@ extension TestSafeInset_SubVC2: UICollectionViewDataSource {
              
                 2、当scrollview的content滑动到导航栏下方时，navigationBar就把scrollEdgeAppearance设置的样式应用到navigationBar上。
                     如果你没有设置scrollEdgeAppearance的值，那么scrollEdgeAppearance默认套用standardAppearance的值。
+                    注意：导航栏透明的情况下，显示的是window的背景，导航栈是直接先把底下的VC暂时先移除，把当前要显示的VC放到window上的。
              */
             print("     (@@ 测试scrollEdgeAppearance对Scrollview的影响。")
             guard let naviBar = self.navigationController?.navigationBar else{ return}
@@ -152,33 +159,55 @@ extension TestSafeInset_SubVC2: UICollectionViewDataSource {
                 print("不是iOS 13.0版本")
             }
         case 4:
-            //TODO: 4、复原standardAppearance，但是不是设置新对象，因为赋值需要等下一个页面才生效。
+            //TODO: 4、复原standardAppearance(透明)，但是不是设置新对象，因为赋值需要等下一个页面才生效。
             /**
                 1、standardAppearance.configureWithTransparentBackground()等系列函数是恢复naviBar的Appearance里的属性的默认值。
                     注意，是恢复属性的值，而不是赋值新的Appearance对象。
                 2、
              */
-            print("     (@@4、恢复standardAppearance")
+            print("     (@@4、恢复standardAppearance为透明")
             guard let naviBar = self.navigationController?.navigationBar else{ return}
             if #available(iOS 13.0, *) {
                 naviBar.standardAppearance.configureWithTransparentBackground()
+                naviBar.isTranslucent = false
+                print("透明的standardAppearance：\(naviBar.standardAppearance)")
+                let scrAppearence = UINavigationBarAppearance()
+                scrAppearence.backgroundColor = UIColor.yellow
+                naviBar.scrollEdgeAppearance = scrAppearence
+                naviBar.standardAppearance.backgroundColor = UIColor.blue
+                naviBar.scrollEdgeAppearance?.configureWithOpaqueBackground()
             } else {
                 print("不是iOS 13.0版本")
             }
         case 5:
-            print("     (@@ 默认的standardAppearance")
+            print("     (@@ 5、默认的standardAppearance")
             if #available(iOS 13.0, *) {
-                self.navigationController?.navigationBar.standardAppearance.configureWithDefaultBackground()
+                guard let naviBar = self.navigationController?.navigationBar else{ return}
+                naviBar.standardAppearance.configureWithDefaultBackground()
+                print("默认的standardAppearance：\(naviBar.standardAppearance)")
+                naviBar.scrollEdgeAppearance?.backgroundColor = UIColor.yellow
+                naviBar.standardAppearance.backgroundColor = UIColor.blue
             }
         case 6:
-            print("     (@@ 不透明的standardAppearance")
+            print("     (@@ 6、不透明的standardAppearance")
             if #available(iOS 13.0, *) {
+                guard let naviBar = self.navigationController?.navigationBar else{ return}
                 self.navigationController?.navigationBar.standardAppearance.configureWithOpaqueBackground()
+                print("不透明的standardAppearance：\(naviBar.standardAppearance)")
             }
         case 7:
             print("     (@@")
+            let VC = UIViewController()
+            VC.title = "测试"
+            VC.view.backgroundColor = .red
+            self.navigationController?.pushViewController(VC, animated: true)
         case 8:
-            print("     (@@")
+            print("     (@@打印standardAppearance")
+            if #available(iOS 13.0, *) {
+                guard let naviBar = self.navigationController?.navigationBar else{ return}
+                print("打印standardAppearance：\(naviBar.standardAppearance)\n\n")
+                print("打印scrollEdgeAppearance：\(naviBar.scrollEdgeAppearance)\n\n")
+            }
         case 9:
             print("     (@@")
         case 10:
