@@ -196,7 +196,8 @@ class JFZ_VideoPlayerView : UIView {
         print("当前的superView是：\(self.superview)")
         if let superView = self.superview, superView.isKind(of: UIWindow.self){
             print("在window中，当前view的frame是：\(self.frame)")
-            videoLayer.frame = CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.height, height: UIScreen.main.bounds.width)
+            videoLayer.frame = CGRect.init(x: 0, y: 0, width: superView.safeAreaLayoutGuide.layoutFrame.height, height:  superView.safeAreaLayoutGuide.layoutFrame.width)
+//            self.frame = CGRect(x: 0, y: 0, width: superView.bounds.height, height: superView.bounds.width)
         }else{
             videoLayer.frame = self.frame
         }
@@ -338,13 +339,7 @@ extension JFZ_VideoPlayerView{
             print("全屏播放按钮的回调～")
             DispatchQueue.main.async {
                 if let isFull = self?.ctrlPanelView.isFullScreen {
-                    if isFull
-                    {
-                        self?.toggleNormalScreen()
-                    }else{
-                        self?.toggleFullScreen()
-                        
-                    }
+                    isFull ? self?.toggleNormalScreen() : self?.toggleFullScreen()
                 }
             }
             
@@ -697,21 +692,28 @@ extension JFZ_VideoPlayerView{
         removeFromSuperview()
         print("添加到window之前self的frame是：\(self.frame)")
         self.frame = CGRect.init(x: 0, y: 0, width: 375, height: 194)
+        var superWindow:UIWindow!
         if UIApplication.shared.keyWindow != nil {
-            UIApplication.shared.keyWindow!.addSubview(self)
+            superWindow = UIApplication.shared.keyWindow!
+            superWindow.addSubview(self)
             print("UIApplication.shared.keyWindow!的frame是：\(UIApplication.shared.keyWindow!.frame)")
         }else{
-            UIApplication.shared.windows.first?.addSubview(self)
+            superWindow = UIApplication.shared.windows.first!
+            superWindow.addSubview(self)
+        }
+        guard superWindow != nil else{
+            print("没有window！")
+            return
         }
         
         print("添加到window之后self的frame是：\(self.frame)")
         self.snp.remakeConstraints { make in
-            make.width.equalTo(UIScreen.main.bounds.height)
-            make.height.equalTo(UIScreen.main.bounds.width)
+            make.width.equalTo(superWindow.safeAreaLayoutGuide.layoutFrame.height)
+            make.height.equalTo(superWindow.safeAreaLayoutGuide.layoutFrame.width)
             make.center.equalToSuperview()
         }
         
-        let screenFrame = UIScreen.main.bounds
+        let screenFrame = superWindow.safeAreaLayoutGuide.layoutFrame
         let winCenterPoint = CGPoint(x:screenFrame.origin.x + ceil(screenFrame.size.width/2), y: screenFrame.origin.y + ceil(screenFrame.size.height/2))
         
         UIView.beginAnimations(nil, context: nil)

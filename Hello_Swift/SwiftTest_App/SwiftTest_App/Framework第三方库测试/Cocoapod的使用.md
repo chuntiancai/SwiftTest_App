@@ -83,10 +83,9 @@
 
 ##CocoaPods的post_install 和 pre_install
 
-
     有时候我们想在pod install/update时做一些除了第三方库安装以外的事情，比如关闭所有target的Bitcode功能。(Bitcode是LLVM的中间代码，无用，但默认嵌入了二进制文件中)
     这时就要用到CocoaPods中的钩子(Hooks),关于钩子(Hooks)的官方介绍在这里:https://guides.cocoapods.org/syntax/podfile.html#group_hooks
-   
+       
         post_install block接收一个"installer"参数，通过对"installer"修改来完成我们想要执行的特殊操作。
         还有另一个Hooks叫做"pre_install"，它的作用是允许你在Pods被下载后但是还未安装前对Pods做一些改变。写法和post_install一样。
 

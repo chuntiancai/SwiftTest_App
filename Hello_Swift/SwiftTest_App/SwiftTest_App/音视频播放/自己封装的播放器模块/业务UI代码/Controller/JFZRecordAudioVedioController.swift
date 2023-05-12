@@ -278,7 +278,7 @@ extension JFZRecordAudioVedioController{
         if !playerModelArray.isEmpty { print("已经测试填充列表了");return}
         playerModelArray = [
 //            JFZAudioVideoModel(fileName:"网络视频0",
-//                               fileUrl: "http://vfx.mtime.cn/Video/2019/02/04/mp4/190204084208765161.mp4",
+//                               fileUrl: "http://vfx.mtime.cn/Video/2019/06/27/mp4/190627231412433967.mp4",
 //                               imageUrlStr:"hahaha"),
 //            JFZAudioVideoModel(fileName:"网络音频0",
 //                               fileUrl: "http://music.163.com/song/media/outer/url?id=447925558.mp3",
@@ -286,15 +286,15 @@ extension JFZRecordAudioVedioController{
 //            JFZAudioVideoModel(fileName:"网络音频2",
 //                               fileUrl: "http://music.163.com/song/media/outer/url?id=27845048.mp3",
 //                               imageUrlStr:"hahaha"),
-            JFZAudioVideoModel(fileName:"网络视频1",
-                               fileUrl: "http://vfx.mtime.cn/Video/2019/03/19/mp4/190319222227698228.mp4",
-                               imageUrlStr:"hahaha"),
+//            JFZAudioVideoModel(fileName:"网络视频1",
+//                               fileUrl: "http://vfx.mtime.cn/Video/2019/06/29/mp4/190629004821240734.mp4",
+//                               imageUrlStr:"hahaha"),
 //            JFZAudioVideoModel(fileName:"网络视频2",
 //                               fileUrl: "http://vjs.zencdn.net/v/oceans.mp4",
 //                               imageUrlStr:"hahaha"),
-//            JFZAudioVideoModel(fileName:"网络视频3",
-//                               fileUrl: "http://vjs.zencdn.net/v/oceans.mp4",
-//                               imageUrlStr:"hahaha"),
+            JFZAudioVideoModel(fileName:"网络视频3",
+                               fileUrl: "http://vjs.zencdn.net/v/oceans.mp4",
+                               imageUrlStr:"hahaha"),
 //            JFZAudioVideoModel(fileName:"网络视频4",
 //                               fileUrl: "http://vfx.mtime.cn/Video/2019/02/04/mp4/190204084208765161.mp4",
 //                               imageUrlStr:"hahaha"),
@@ -317,7 +317,14 @@ extension JFZRecordAudioVedioController{
 //                               fileUrl: "http://vt1.doubanio.com/202001021947/7ae57141cc259bfb49e75bdf6b716caf/view/movie/M/301650578.mp4",
 //                               imageUrlStr:"hahaha"),
         ]
-        
+        /**
+         URL(string: "http://vfx.mtime.cn/Video/2019/06/29/mp4/190629004821240734.mp4")!,
+         URL(string: "http://vfx.mtime.cn/Video/2019/06/27/mp4/190627231412433967.mp4")!,
+         URL(string: "http://vfx.mtime.cn/Video/2019/06/25/mp4/190625091024931282.mp4")!,
+         URL(string: "http://vfx.mtime.cn/Video/2019/06/16/mp4/190616155507259516.mp4")!,
+         URL(string: "http://vfx.mtime.cn/Video/2019/06/15/mp4/190615103827358781.mp4")!,
+         URL(string: "http://vfx.mtime.cn/Video/2019/06/05/mp4/190605101703931259.mp4")!,
+         */
     }
     
     /// 获取tableview的section view

@@ -18,6 +18,40 @@
  
     3、shouldAutorotate属性和supportedInterfaceOrientations属性控制VC的屏幕旋转。
         代码可以在三个位置控制屏幕访方向，代码生效优先级依次是 AppDelegate>UITabBarController>UINavigationController>UIViewController
+ 
+    4、横竖屏的坐标系
+        App开启横/竖屏切换：
+              开启横竖屏时，当屏幕为横屏时，系统window界面会以横屏的左上角为坐标系原点；当屏幕为竖屏时window界面会以竖屏的左上角为坐标系原点。
+              横竖屏切换，坐标系切换。
+                                           
+         App关闭横/竖屏切换：
+             关闭横竖屏时，当屏幕为横屏时，系统window界面会以横屏的左上角为坐标系原点；当屏幕为竖屏时window界面会以竖屏的左上角为坐标系原点。
+             横竖屏切换，坐标系不会切换，系统会以屏幕的初时坐标系为坐标原点。
+ 
+    5、 UIKit处理屏幕旋转的流程
+        UIKit的响应应屏幕旋转的流程如下：
+            1、设备旋转的时候，UIKit接收到旋转事件。
+            2、UIKit通过AppDelegate通知当前程序的window。
+            3、Window会知会它的rootViewController，判断该view controller所支持的旋转方向，完成旋转。
+            4、如果存在弹出的view controller的话，系统则会根据弹出的view controller，来判断是否要进行旋转。
+
+       UIViewController实现屏幕旋转如下：
+ 　　   在响应设备旋转时，我们可以通过UIViewController的方法实现更细粒度的控制，当view controller接收到window传来的方向变化的时候，流程如下：
+
+ 　　     1、首先判断当前viewController是否支持旋转到目标方向，如果支持的话进入流程2，否则此次旋转流程直接结束。
+ 　　     2、调用 willRotateToInterfaceOrientation:duration: 方法，通知view controller将要旋转到目标方向。
+ 　　        如果该viewController是一个container view controller的话，它会继续调用其content view controller的该方法。
+ 　　        这个时候我们也可以暂时将一些view隐藏掉，等旋转结束以后在现实出来。
+ 　　     3、window调整显示的view controller的bounds，由于view controller的bounds发生变化，将会触发 viewWillLayoutSubviews 方法。
+ 　　        这个时候self.interfaceOrientation和statusBarOrientation方向还是原来的方向。
+ 　　     4、接着当前view controller的 willAnimateRotationToInterfaceOrientation:duration: 方法将会被调用。
+ 　　        系统将会把该方法中执行的所有属性变化放到动animation block中。
+ 　　     5、执行方向旋转的动画。
+ 　　     6、最后调用 didRotateFromInterfaceOrientation: 方法，通知view controller旋转动画执行完毕。这个时候我们可以将第二步隐藏的view再显示出来。
+ 　　     
+ 　　 6、设备的变化方向和当前屏幕界面的方向定义是不一样的。
+ 　　    设备方向UIDevice.current.orientation强调的是手机设备方向的变化。
+ 　　    当前屏幕界面的方向preferredInterfaceOrientationForPresentation，是指当前屏幕的方向。
  */
 
 class UITestScreenRotateVC: UIViewController {
@@ -46,6 +80,18 @@ class UITestScreenRotateVC: UIViewController {
     /// preferredInterfaceOrientationForPresentation 需要返回 supportedInterfaceOrientations 中支持的方向，不然会发生'UIApplicationInvalidInterfaceOrientation'崩溃.
     override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation{
         get{
+            switch preferredInterfaceOrientationForPresentation {
+            case .unknown:
+                print("屏幕界面方向未知")
+            case .portrait:
+                print("屏幕界面方向正竖屏")
+            case .portraitUpsideDown:
+                print("屏幕界面方向反竖屏")
+            case .landscapeLeft:
+                print("屏幕界面方向左横屏，home键在左")
+            case .landscapeRight:
+                print("屏幕界面方向未右横屏，home键在右")
+            }
             return .portrait
         }
     }
@@ -208,9 +254,9 @@ extension UITestScreenRotateVC{
             print( "UITestScreenRotateVC 面向设备保持垂直，Home键位于下部")
         case .portraitUpsideDown:
             print( "UITestScreenRotateVC 面向设备保持垂直，Home键位于上部")
-        case .landscapeLeft:
+        case .landscapeLeft:    // 向左旋转
             print( "UITestScreenRotateVC 面向设备保持水平，设备顶部在左侧，也就是Home在右侧")
-        case .landscapeRight:
+        case .landscapeRight:    // 向右旋转
             print( "UITestScreenRotateVC 面向设备保持水平，设备顶部在右侧，也就是Home在左侧")
         case .faceUp:
             print( "UITestScreenRotateVC 设备平放，设备顶部在上")

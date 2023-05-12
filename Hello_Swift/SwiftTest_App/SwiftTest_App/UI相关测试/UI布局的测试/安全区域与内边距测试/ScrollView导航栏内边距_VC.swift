@@ -206,7 +206,7 @@ extension TestSafeInset_SubVC2: UICollectionViewDataSource {
             if #available(iOS 13.0, *) {
                 guard let naviBar = self.navigationController?.navigationBar else{ return}
                 print("打印standardAppearance：\(naviBar.standardAppearance)\n\n")
-                print("打印scrollEdgeAppearance：\(naviBar.scrollEdgeAppearance)\n\n")
+                print("打印scrollEdgeAppearance：\(String(describing: naviBar.scrollEdgeAppearance))\n\n")
             }
         case 9:
             print("     (@@")

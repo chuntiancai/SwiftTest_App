@@ -25,9 +25,11 @@
 /* Begin PBXFileReference section */
 		AF12116429DFE919002C2A87 /* C_Syntac_CmdLine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = C_Syntac_CmdLine; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF12116729DFE919002C2A87 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		AF4A0CD429EE3E2300B41BCB /* mulitpleFile_Note.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mulitpleFile_Note.h; sourceTree = "<group>"; };
-		AF4A0CD729EE65D600B41BCB /* digitSystem_Note.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = digitSystem_Note.h; sourceTree = "<group>"; };
-		AF4A0CD829EE79BA00B41BCB /* memoryStore_Note.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = memoryStore_Note.h; sourceTree = "<group>"; };
+		AF4A0CD429EE3E2300B41BCB /* 多文件_Note.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "多文件_Note.h"; sourceTree = "<group>"; };
+		AF4A0CD729EE65D600B41BCB /* 数值_Note.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "数值_Note.h"; sourceTree = "<group>"; };
+		AF4A0CD829EE79BA00B41BCB /* 内存管理_Note.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "内存管理_Note.h"; sourceTree = "<group>"; };
+		AFF8166D29F7C905009534C8 /* 计算机体系结构.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "计算机体系结构.md"; sourceTree = "<group>"; };
+		AFF816722A0A4B27009534C8 /* 类型_Note.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "类型_Note.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +46,7 @@
 		AF12115B29DFE919002C2A87 = {
 			isa = PBXGroup;
 			children = (
+				AFF8166B29F7C892009534C8 /* 计算机基础知识 */,
 				AF12116629DFE919002C2A87 /* C_Syntac_CmdLine */,
 				AF12116529DFE919002C2A87 /* Products */,
 			);
@@ -69,11 +72,20 @@
 		AFAE89FB29E5523C00CC5824 /* 笔记 */ = {
 			isa = PBXGroup;
 			children = (
-				AF4A0CD429EE3E2300B41BCB /* mulitpleFile_Note.h */,
-				AF4A0CD729EE65D600B41BCB /* digitSystem_Note.h */,
-				AF4A0CD829EE79BA00B41BCB /* memoryStore_Note.h */,
+				AF4A0CD429EE3E2300B41BCB /* 多文件_Note.h */,
+				AF4A0CD729EE65D600B41BCB /* 数值_Note.h */,
+				AF4A0CD829EE79BA00B41BCB /* 内存管理_Note.h */,
+				AFF816722A0A4B27009534C8 /* 类型_Note.h */,
 			);
 			path = "笔记";
+			sourceTree = "<group>";
+		};
+		AFF8166B29F7C892009534C8 /* 计算机基础知识 */ = {
+			isa = PBXGroup;
+			children = (
+				AFF8166D29F7C905009534C8 /* 计算机体系结构.md */,
+			);
+			path = "计算机基础知识";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
