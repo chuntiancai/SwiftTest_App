@@ -13,6 +13,9 @@ GIT
     $ git init --bare   # 建立空白代码库(专门用于团队开发) 
         在初始化远程仓库时最好使用 git –bare init   而不要使用：git init。这样在使用hooks的时候，会有用处。
     
+    // 绑定远程仓库    
+    $ git remote add 远程仓库分支名 git@github.com:xxxName/xxxGitName.git 
+    
     2>  配置用户名和邮箱
     $ git config user.name manager
     $ git config user.email manager@gmail.com
@@ -132,6 +135,7 @@ GIT
         切换分支：git checkout <name>或者git switch <name>
         创建+切换分支：git checkout -b <name>或者git switch -c <name>
         合并某分支到当前分支：git merge <name>
+        删除本地分支：git branch -d 分支名称
         
     ## #合并分支
         $ git pull  # 取回远程主机某个分支的更新，再与本地的指定分支合并. 是git fetch后跟git merge FETCH_HEAD的缩写。
@@ -160,7 +164,6 @@ GIT
         $ git commit -m "Commit files in index"     #(2) 把索引中的文件提交。
         
         
-
 
 
 ## 07、共享版本库、版本备份
