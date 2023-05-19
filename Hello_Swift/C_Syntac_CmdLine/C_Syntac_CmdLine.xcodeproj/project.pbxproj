@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF0479632A135C1D00E07BF9 /* TestC_Array.c in Sources */ = {isa = PBXBuildFile; fileRef = AF0479622A135C1D00E07BF9 /* TestC_Array.c */; };
+		AF0479662A14BAA700E07BF9 /* TestC_String.c in Sources */ = {isa = PBXBuildFile; fileRef = AF0479652A14BAA700E07BF9 /* TestC_String.c */; };
+		AF0479682A14BD1F00E07BF9 /* TestC_Pointer.c in Sources */ = {isa = PBXBuildFile; fileRef = AF0479672A14BD1F00E07BF9 /* TestC_Pointer.c */; };
+		AF04796B2A15C10700E07BF9 /* TestC_Struct.c in Sources */ = {isa = PBXBuildFile; fileRef = AF04796A2A15C10700E07BF9 /* TestC_Struct.c */; };
+		AF04796D2A1623F700E07BF9 /* TestC_Enum.c in Sources */ = {isa = PBXBuildFile; fileRef = AF04796C2A1623F700E07BF9 /* TestC_Enum.c */; };
 		AF12116829DFE919002C2A87 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = AF12116729DFE919002C2A87 /* main.c */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +28,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AF0479622A135C1D00E07BF9 /* TestC_Array.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = TestC_Array.c; sourceTree = "<group>"; };
+		AF0479642A13742700E07BF9 /* TestC_AllHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestC_AllHeader.h; sourceTree = "<group>"; };
+		AF0479652A14BAA700E07BF9 /* TestC_String.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = TestC_String.c; sourceTree = "<group>"; };
+		AF0479672A14BD1F00E07BF9 /* TestC_Pointer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = TestC_Pointer.c; sourceTree = "<group>"; };
+		AF0479692A14D74500E07BF9 /* 函数_Note.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "函数_Note.h"; sourceTree = "<group>"; };
+		AF04796A2A15C10700E07BF9 /* TestC_Struct.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = TestC_Struct.c; sourceTree = "<group>"; };
+		AF04796C2A1623F700E07BF9 /* TestC_Enum.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = TestC_Enum.c; sourceTree = "<group>"; };
+		AF04796E2A1626B000E07BF9 /* 语法_Note.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "语法_Note.h"; sourceTree = "<group>"; };
+		AF04796F2A162B5200E07BF9 /* 宏定义_Note.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "宏定义_Note.h"; sourceTree = "<group>"; };
 		AF12116429DFE919002C2A87 /* C_Syntac_CmdLine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = C_Syntac_CmdLine; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF12116729DFE919002C2A87 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		AF4A0CD429EE3E2300B41BCB /* 多文件_Note.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "多文件_Note.h"; sourceTree = "<group>"; };
@@ -64,6 +78,12 @@
 			isa = PBXGroup;
 			children = (
 				AF12116729DFE919002C2A87 /* main.c */,
+				AF0479642A13742700E07BF9 /* TestC_AllHeader.h */,
+				AF0479622A135C1D00E07BF9 /* TestC_Array.c */,
+				AF0479652A14BAA700E07BF9 /* TestC_String.c */,
+				AF0479672A14BD1F00E07BF9 /* TestC_Pointer.c */,
+				AF04796A2A15C10700E07BF9 /* TestC_Struct.c */,
+				AF04796C2A1623F700E07BF9 /* TestC_Enum.c */,
 				AFAE89FB29E5523C00CC5824 /* 笔记 */,
 			);
 			path = C_Syntac_CmdLine;
@@ -72,10 +92,13 @@
 		AFAE89FB29E5523C00CC5824 /* 笔记 */ = {
 			isa = PBXGroup;
 			children = (
+				AF04796E2A1626B000E07BF9 /* 语法_Note.h */,
 				AF4A0CD429EE3E2300B41BCB /* 多文件_Note.h */,
 				AF4A0CD729EE65D600B41BCB /* 数值_Note.h */,
 				AF4A0CD829EE79BA00B41BCB /* 内存管理_Note.h */,
 				AFF816722A0A4B27009534C8 /* 类型_Note.h */,
+				AF0479692A14D74500E07BF9 /* 函数_Note.h */,
+				AF04796F2A162B5200E07BF9 /* 宏定义_Note.h */,
 			);
 			path = "笔记";
 			sourceTree = "<group>";
@@ -145,7 +168,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF04796D2A1623F700E07BF9 /* TestC_Enum.c in Sources */,
 				AF12116829DFE919002C2A87 /* main.c in Sources */,
+				AF0479632A135C1D00E07BF9 /* TestC_Array.c in Sources */,
+				AF04796B2A15C10700E07BF9 /* TestC_Struct.c in Sources */,
+				AF0479662A14BAA700E07BF9 /* TestC_String.c in Sources */,
+				AF0479682A14BD1F00E07BF9 /* TestC_Pointer.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

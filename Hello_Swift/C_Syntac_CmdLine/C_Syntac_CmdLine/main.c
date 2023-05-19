@@ -40,9 +40,12 @@
 
 
 #include <stdio.h>
+#include "TestC_AllHeader.h"
 
 int main(int argc, const char * argv[]) {
     // insert code here...
     printf("Hello, World!\n");
+    int num1[] = {1,2};
+    iteratorArray(num1);
     return 0;
 }
