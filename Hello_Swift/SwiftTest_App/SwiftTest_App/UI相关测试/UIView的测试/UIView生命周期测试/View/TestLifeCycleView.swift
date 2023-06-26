@@ -50,6 +50,9 @@ class TestLifeCycleView: UIView {
     }
     
     //MARK: 添加顺序：6，子View的布局多次发生变化，这里就会多次被调用。这里已经计算完布局约束了。
+    /**
+        1、只有布局/布局约束发生变化时，才会调用这个方法，如果布局和布局约束没有发生变化，则不会调用该方法，所以不用担心在这里修改约束会被多次调用。
+     */
     override func layoutSubviews() {
         super.layoutSubviews()
         print(" TestLifeCycleView layoutSubviews")

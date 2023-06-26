@@ -27,8 +27,6 @@
  
  */
 
-import UIKit
-
 class TestUICollectionViewLayout_VC: UIViewController {
     
     //MARK: 对外属性
@@ -143,7 +141,7 @@ extension TestUICollectionViewLayout_VC: UICollectionViewDataSource {
             self.view.addSubview(flowCollView)
             
         case 2:
-            //TODO: 2、测试isPagingEnabled属性、sectionInset属性和scrollToItem方法，无限滑动。
+            //TODO: 2、测试无限滑动，isPagingEnabled属性、sectionInset属性和scrollToItem方法，无限滑动。
             /**
                 1、isPagingEnabled属性是根据scrollView的bounds进行滑动的，scrollToItem是滑动第几个item到可见范围。
                 2、sectionInset的内边距实在content里面插入空白边距的，并不是把整个坐标系下移，contentOffset不会发生偏移。

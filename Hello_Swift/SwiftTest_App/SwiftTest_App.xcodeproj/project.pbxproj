@@ -175,7 +175,7 @@
 		048608A327325C67000F816E /* TestDate_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048608A227325C67000F816E /* TestDate_VC.swift */; };
 		048608A52733BA40000F816E /* 测试给cell设置阴影.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048608A42733BA40000F816E /* 测试给cell设置阴影.swift */; };
 		048608A72733D25C000F816E /* 测试view的阴影.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048608A62733D25C000F816E /* 测试view的阴影.swift */; };
-		048608B1273527CA000F816E /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048608B0273527CA000F816E /* Animal.swift */; };
+		048608B1273527CA000F816E /* TestSelector_Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048608B0273527CA000F816E /* TestSelector_Animal.swift */; };
 		04870E3326E9AD280030B1D2 /* PackageBundlePathLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04870E0F26E9AD280030B1D2 /* PackageBundlePathLoader.swift */; };
 		04870E3426E9AD280030B1D2 /* AAChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04870E1126E9AD280030B1D2 /* AAChartView.swift */; };
 		04870E3526E9AD280030B1D2 /* AAChartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04870E1226E9AD280030B1D2 /* AAChartModel.swift */; };
@@ -440,6 +440,7 @@
 		AFEF469428B8B04700B3EA2D /* VerScroll_ScrollView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF469328B8B04700B3EA2D /* VerScroll_ScrollView3.swift */; };
 		AFEF469728BC519100B3EA2D /* 测试基本语法_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF469628BC519100B3EA2D /* 测试基本语法_VC.swift */; };
 		AFEF469928BC5F8000B3EA2D /* VerScroll_ScrollView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF469828BC5F8000B3EA2D /* VerScroll_ScrollView4.swift */; };
+		AFFC20042A32FC740058C751 /* TestClass_Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFC20032A32FC740058C751 /* TestClass_Animal.swift */; };
 		EB5C881427FC2EA200655119 /* 位移枚举的写法.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C881327FC2EA200655119 /* 位移枚举的写法.swift */; };
 		EB645E3F26A449AE00773A98 /* tempView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645E3E26A449AE00773A98 /* tempView.swift */; };
 /* End PBXBuildFile section */
@@ -632,7 +633,7 @@
 		048608A62733D25C000F816E /* 测试view的阴影.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试view的阴影.swift"; sourceTree = "<group>"; };
 		048608AD27350EC5000F816E /* App环境配置的知识.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "App环境配置的知识.md"; sourceTree = "<group>"; };
 		048608AE2735212B000F816E /* App的生命周期.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "App的生命周期.md"; sourceTree = "<group>"; };
-		048608B0273527CA000F816E /* Animal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animal.swift; sourceTree = "<group>"; };
+		048608B0273527CA000F816E /* TestSelector_Animal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSelector_Animal.swift; sourceTree = "<group>"; };
 		04870E0F26E9AD280030B1D2 /* PackageBundlePathLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageBundlePathLoader.swift; sourceTree = "<group>"; };
 		04870E1126E9AD280030B1D2 /* AAChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAChartView.swift; sourceTree = "<group>"; };
 		04870E1226E9AD280030B1D2 /* AAChartModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAChartModel.swift; sourceTree = "<group>"; };
@@ -830,7 +831,7 @@
 		AF549D772918FB63001311A1 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		AF549D7829190073001311A1 /* Sqlite_Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sqlite_Student.swift; sourceTree = "<group>"; };
 		AF549D7A291900DA001311A1 /* SqliteTestTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SqliteTestTool.swift; sourceTree = "<group>"; };
-		AF549D7F291B9D03001311A1 /* html5基础知识.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "html5基础知识.md"; sourceTree = "<group>"; };
+		AF549D7F291B9D03001311A1 /* html5、css基础知识.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "html5、css基础知识.md"; sourceTree = "<group>"; };
 		AF549D80291BA289001311A1 /* html的基本语法.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "html的基本语法.html"; sourceTree = "<group>"; };
 		AF549D82291BA6D6001311A1 /* htmlImg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = htmlImg.jpg; sourceTree = "<group>"; };
 		AF549D84291BAC4A001311A1 /* css基本语法.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "css基本语法.html"; sourceTree = "<group>"; };
@@ -935,6 +936,7 @@
 		AFEF469328B8B04700B3EA2D /* VerScroll_ScrollView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerScroll_ScrollView3.swift; sourceTree = "<group>"; };
 		AFEF469628BC519100B3EA2D /* 测试基本语法_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试基本语法_VC.swift"; sourceTree = "<group>"; };
 		AFEF469828BC5F8000B3EA2D /* VerScroll_ScrollView4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerScroll_ScrollView4.swift; sourceTree = "<group>"; };
+		AFFC20032A32FC740058C751 /* TestClass_Animal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestClass_Animal.swift; sourceTree = "<group>"; };
 		BB6AAD3455F9D2C8F661C07D /* Pods-SwiftTest_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTest_App.debug.xcconfig"; path = "Target Support Files/Pods-SwiftTest_App/Pods-SwiftTest_App.debug.xcconfig"; sourceTree = "<group>"; };
 		C4C06FA2172551275C4FCEE6 /* Pods_SwiftTest_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftTest_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB5C881327FC2EA200655119 /* 位移枚举的写法.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "位移枚举的写法.swift"; sourceTree = "<group>"; };
@@ -1743,7 +1745,7 @@
 			children = (
 				04C45C8C271D5BB100E1EA9B /* 测试selector的VC.swift */,
 				04C45C8A271D539100E1EA9B /* Selector和NSStringFromClass的自定义类.swift */,
-				048608B0273527CA000F816E /* Animal.swift */,
+				048608B0273527CA000F816E /* TestSelector_Animal.swift */,
 			);
 			path = "测试selector结构体";
 			sourceTree = "<group>";
@@ -2602,7 +2604,7 @@
 			isa = PBXGroup;
 			children = (
 				AF549DA7291E4926001311A1 /* TestHtml_VC.swift */,
-				AF549D7F291B9D03001311A1 /* html5基础知识.md */,
+				AF549D7F291B9D03001311A1 /* html5、css基础知识.md */,
 				AF549D80291BA289001311A1 /* html的基本语法.html */,
 				AF549D88291CFD4E001311A1 /* html的盒子模型.html */,
 				AF549DA3291E2AE7001311A1 /* 仿百度页面.html */,
@@ -2746,6 +2748,7 @@
 			isa = PBXGroup;
 			children = (
 				AFBCA8C42872DC4500AD51D1 /* TestClassStruct_VC.swift */,
+				AFFC20032A32FC740058C751 /* TestClass_Animal.swift */,
 			);
 			path = "测试类与结构体";
 			sourceTree = "<group>";
@@ -3078,7 +3081,7 @@
 				042036D8276052FF00424E05 /* AppSystemInfo.swift in Sources */,
 				AF2DDAEE28A3B70600E1CCF3 /* TestXcode_VC.swift in Sources */,
 				04870E4826E9AD280030B1D2 /* AALegend.swift in Sources */,
-				048608B1273527CA000F816E /* Animal.swift in Sources */,
+				048608B1273527CA000F816E /* TestSelector_Animal.swift in Sources */,
 				04A0CA4126A0027800ECAE1B /* JFZMoreFunctionSpeedCollectionViewCell.swift in Sources */,
 				0421E60026AAAF9400C6A922 /* VideoToolSummary.swift in Sources */,
 				04A0CA4326A0027800ECAE1B /* JFZPlayerControlPanelView.swift in Sources */,
@@ -3212,6 +3215,7 @@
 				04870E8726EB33B10030B1D2 /* SectionTableView_tableHeader.swift in Sources */,
 				04CBB62C26CA48FF00436C0E /* TestTableView_Cell.swift in Sources */,
 				0465629126D61FFD00D38F2D /* JFZ_AVAssetRes_LoaderDelegateObject.swift in Sources */,
+				AFFC20042A32FC740058C751 /* TestClass_Animal.swift in Sources */,
 				04CBB62926CA47AD00436C0E /* 测试TableView闭包循环引用_VC.swift in Sources */,
 				AF2CF889290BC58C00C9388E /* LameTool.m in Sources */,
 				0474C25927D8535200B95D7C /* TestEnum_VC.swift in Sources */,
@@ -3570,7 +3574,7 @@
 					"$(PROJECT_DIR)/SwiftTest_App/音视频播放/录音功能测试",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ctch.SwiftTest-App2";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ctch.SwiftTest-App3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftTest_App/SwiftTest_App-Bridging-Header.h";
@@ -3588,7 +3592,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WGS3P7C8Z5;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;

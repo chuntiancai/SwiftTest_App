@@ -8,7 +8,7 @@
 // CollectionView的无限滑动布局Layout对象
 // MARK: - 笔记
 /**
-    1、主要是在targetContentOffset模仿分页滑动的效果，设置只能滑动一页，然后再在scrolldelegta的停止加速方法中，调用scrollToItem方法，以肉眼不可见的速度滚动到指定的item中，实现无现轮滑的效果。数据源要复制三组，这样看起来才比较流畅。
+    1、主要是在targetContentOffset模仿分页滑动的效果，设置只能滑动一页，然后再在scrolldelegate的停止加速方法中，调用scrollToItem方法，以肉眼不可见的速度滚动到指定的item中，实现无现轮滑的效果。数据源要复制三组，这样看起来才比较流畅。
  */
 
 

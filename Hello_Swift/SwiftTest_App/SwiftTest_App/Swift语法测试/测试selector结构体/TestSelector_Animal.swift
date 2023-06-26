@@ -5,12 +5,13 @@
 //  Created by mathew on 2021/11/5.
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
+// 测试通过方法结构体来访问对象的方法
 
 
-class Animal {
+class TestSelector_Animal:NSObject {
     
-    static func load(){
-        
+    @objc func eat(){
+        print("动物吃饭")
     }
     
 }

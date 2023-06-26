@@ -8,6 +8,12 @@
 // 测试VC的导航栏对view布局的影响,测试edgesForExtendedLayout属性、automaticallyAdjustsScrollViewInsets属性
 // MARK: - 笔记
 /**
+ 
+    注意：在ios13之后navigationBar.setBackgroundImage这些属性已经无效了。
+ 
+        优先级：navigationBar.isTranslucent > navigationBar.scrollEdgeAppearance > navigationBar.setBackgroundImage
+        而且在设置isTranslucent时会有一些默认添加的背景图片影响。
+    
     1、edgesForExtendedLayout设置了vc的view的布局开始参考点，但是要结合安全区域的内边距来判断、要结合self.navigationController?.navigationBar.isTranslucent的透明度来判断，如果导航栏透明度是透明，则按照edgesForExtendedLayout有效，否则edgesForExtendedLayout无效，还是按照从导航栏下方开始布局。
  
     2、UIBarItem : NSObject
@@ -59,7 +65,6 @@ class TestNavibarUI_VC: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 199/255.0, green: 204/255.0, blue: 237/255.0, alpha: 1.0)
         self.title = "测试VC的导航栏"
-        
         setNavigationBarUI()
         setCollectionViewUI()
         initTestViewUI()
@@ -106,7 +111,6 @@ extension TestNavibarUI_VC: UICollectionViewDataSource {
                                      没有手动设置它的值时，当你设置的图片alpha透明值小于1.0时，自动变成true。
                                      当你手动设置为true时，设置bar图片非透明时，UIKit会自动为你添加一张有透明度的图片，即alpha值小于1的背景图片。
                                      当你手动设置为false时，设置bar图片alpha小于1.0 时，UIKit会自动为你添加一张不透明的图片，即alpha=1的背景图片。
-                                     
                                      所以，当你设置为true，而且提供透明度的图片时，才可以达到透明的效果。只有该值为true时，extendedLayoutIncludesOpaqueBars的值才有效。
              
                    extendedLayoutIncludesOpaqueBars属性：决定了在isTranslucent为true的情况下，edgesForExtendedLayout是否有效。
@@ -151,7 +155,7 @@ extension TestNavibarUI_VC: UICollectionViewDataSource {
         case 1:
             //TODO: 1、测试导航栏的navigationBar.standardAppearance属性，iOS13之后添加。
             /**
-             1、standardAppearance: 竖屏时导航栏外观。 scrollView滑动时显示standardAppearance。
+             1、standardAppearance: 竖屏时导航栏外观，没有scrollView时的外观。 scrollView滑动时显示standardAppearance。
                 compactAppearance: 横屏时导航栏外观。
                 scrollEdgeAppearance: 描述当关联的UIScrollView到达与导航栏邻接的边缘时导航栏的外观。 scrollView处于顶部时显示scrollEdgeAppearance。
 ​                还可以通过UINavigationBarAppearance对象中的属性设置自定义baritem的外观。
@@ -213,11 +217,29 @@ extension TestNavibarUI_VC: UICollectionViewDataSource {
                 print("iOS13之前还是直接用isTranslucent和shadowImage组合")
             }
         case 3:
-            //TODO: 3、
-            print("     (@@")
+            //TODO: 3、修改返回按钮的样式
+            print("     (@@3、修改返回按钮的样式")
+            //UIImage(named: "video_ic_back")
+//            self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "video_ic_back"), for: .default)
+//            self.navigationController?.navigationBar.isTranslucent = true
+            self.navigationController?.navigationBar.backgroundColor = .red
+            if #available(iOS 13.0, *) {
+                navigationController?.navigationBar.scrollEdgeAppearance?.backgroundImage = getColorImg(alpha: 1.0,UIColor.cyan)
+                navigationController?.navigationBar.scrollEdgeAppearance?.backgroundColor = UIColor.cyan
+                self.navigationController?.navigationBar.tintColor = .red
+                navigationController?.navigationBar.scrollEdgeAppearance?.setBackIndicatorImage(UIImage(named: "jfz_video_fastRewind"), transitionMaskImage: UIImage(named: "video_ic_back"))
+            }else{
+                self.navigationController?.navigationBar.setBackgroundImage(getColorImg(alpha: 1.0,UIColor.yellow), for: .default)
+                UINavigationBar.appearance().backIndicatorImage = UIImage(named: "jfz_video_fastRewind")
+                UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(named: "jfz_video_fastRewind")
+//                self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "jfz_video_fastRewind")
+//                self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "jfz_video_fastRewind")
+            }
+            
         case 4:
-            //TODO: 4、
-            print("     (@@")
+            //TODO: 4、获取当前VC下的导航栏。
+            print("     (@@4、获取当前VC下的导航栏。")
+            
         case 5:
             //TODO: 5、
             print("     (@@")
@@ -420,7 +442,13 @@ extension TestNavibarUI_VC {
     // MARK: 设置导航栏的UI
     private func setNavigationBarUI(){
         
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "video_ic_back"), for: .default)
+//        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "video_ic_back")
+//        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "video_ic_back")
         
+//        let curNavBar:UINavigationBar = UINavigationBar.appearance(whenContainedInInstancesOf: [TestNavibarUI_VC.self ]);
+        
+
     }
     
     //TODO: 根据颜色来生成图片，颜色图片

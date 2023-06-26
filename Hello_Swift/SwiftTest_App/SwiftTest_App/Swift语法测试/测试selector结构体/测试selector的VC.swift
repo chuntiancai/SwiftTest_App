@@ -6,8 +6,21 @@
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
 //测试swift的selector语法的VC
-
-import UIKit
+// MARK: - 笔记
+/**
+ 1、测试调用Selector执行带有参数的方法
+     1、测试带有参数的方法的selector时，需要用闭包类型声明selector。
+     2、方法的参数类型必须是对象。如果是Int这些基本类型，则会错乱。具体为什么错乱，我还没找到原因
+        let selector = #selector(testActionParam as (Int,String)->Void)
+        self.perform(selector, with: NSInteger(17), with: "haha1")
+ 
+        let selector2 = Selector.init("testActionParam::")
+        self.perform(selector2, with: 18, with: "haha2")
+ 
+        let selector3 = #selector(self.testActionParam(_:_:)) //也可以这样写
+        self.perform(selector3, with: 19, with: "haha3")
+ 
+ */
 
 class TestSelector_VC: UIViewController {
     
@@ -78,6 +91,11 @@ extension TestSelector_VC: UICollectionViewDataSource {
             
             let selector3 = #selector(self.testActionParam(_:_:)) //也可以这样写
             self.perform(selector3, with: 19, with: "haha3")
+            
+            let cat = TestSelector_Animal() //对象的方法必须是OC的
+            let selector4 = #selector(TestSelector_Animal.eat)
+            cat.perform(selector4)
+            
         case 3:
             //TODO: 3、
             print("     (@@ ")
@@ -208,19 +226,5 @@ extension TestSelector_VC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 笔记
-/**
- 1、测试调用Selector执行带有参数的方法
-     1、测试带有参数的方法的selector时，需要用闭包类型声明selector。
-     2、方法的参数类型必须是对象。如果是Int这些基本类型，则会错乱。具体为什么错乱，我还没找到原因
-        let selector = #selector(testActionParam as (Int,String)->Void)
-        self.perform(selector, with: NSInteger(17), with: "haha1")
- 
-        let selector2 = Selector.init("testActionParam::")
-        self.perform(selector2, with: 18, with: "haha2")
- 
-        let selector3 = #selector(self.testActionParam(_:_:)) //也可以这样写
-        self.perform(selector3, with: 19, with: "haha3")
- 
- */
+
 

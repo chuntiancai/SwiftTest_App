@@ -9,6 +9,19 @@
 // MARK: - 笔记
 /**
     1、
+        X 代表类,是X.self的简写。是实例对象的类型
+        x 代表类的实例对象。
+        X.self 代表类对象
+        X.Type 代表类对象的类型，代表 类X 的元类型(类信息)
+        AnyClass 是AnyObject.Type的别名，是类对象的类型
+        Self(大写) 代表只能源文件内部使用的类对象。
+ 
+    2、
+        X.classForCoder() 是获取类对象。
+        x.classForCoder  也是获取类对象。
+        class_getName(X.self)   通过类对象获取类对象的名字，返回的是C语言的字符串
+        object_getClassName(x)   通过实例获取类对象的名字，返回的是C语言的字符串
+ 
  
  */
 
@@ -45,8 +58,35 @@ extension TestClassStruct_VC: UICollectionViewDataSource {
         print("点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            //TODO: 0、
-            print("     (@@  ")
+            //TODO: 0、测试类对象初始化实例对象。
+            print("     (@@ 0、测试类对象初始化实例对象。 ")
+            let dog = TestClass_Dog.self.init()
+            var animalType:TestClass_Animal.Type?
+            animalType = TestClass_Cat.self
+            let animal = animalType!.init()
+            print("名字是：\(dog.name)")
+            print("动物是：\(animal.name)")
+            
+            print("实例的classForCoder是：\(dog.classForCoder)")
+            print("类的classForCoder()是：\(TestClass_Dog.classForCoder())")
+            let classForCoder: AnyClass = TestClass_Dog.classForCoder()
+            print("classForCoder是：\(classForCoder)")
+            
+        
+            let typeofx = type(of: dog)
+            let typeofX = type(of: TestClass_Dog.self)
+            print("typeofx是：\(typeofx)")
+            print("typeofX是：\(typeofX)")
+
+            //通过类对象获取类对象的名字，返回的是C语言的字符串
+            let class_getName = class_getName(TestClass_Dog.self)
+            let class_getNameStr:String = String(cString: class_getName)
+            print("class_getNameStr的名字是：\(class_getNameStr)")
+            
+            //通过实例获取类对象的名字，返回的是C语言的字符串
+            let object_getClassName = object_getClassName(dog)
+            let object_getClassNameStr:String = String(cString: object_getClassName)
+            print("object_getClassName的名字是：\(object_getClassNameStr)")
         case 1:
             //TODO: 1、
             print("     (@@ ")

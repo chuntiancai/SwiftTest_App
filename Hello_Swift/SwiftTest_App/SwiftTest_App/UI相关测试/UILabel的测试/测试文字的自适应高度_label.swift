@@ -20,6 +20,7 @@ class TestAdaptSize_Label: UILabel {
             print("改变label的文字，此时label还没有在屏幕上:\(self.intrinsicContentSize)")
             
             //TODO:计算文字自适应高度
+            /// 计算字体宽度，字体高度
             var nameHeight:CGFloat = 18.0
             let attrStr = NSAttributedString.init(string: name, attributes: [.font:UIFont.systemFont(ofSize: 20)])
             let nameSize = attrStr.boundingRect(with: CGSize(width: UIScreen.main.bounds.width * 250 / 375.0, height: 812), options: .usesLineFragmentOrigin, context: nil)
