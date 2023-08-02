@@ -12,7 +12,8 @@
         在ios15之后，.plain样式的tableView默认会给section增加一个留白sectionHeaderTopPadding，需要手动去掉。
         在ios15，.grouped样式下，会默认给tableHeaderView留一个20高度的空白，所以你要给一个高度0.01的view，来去掉这个空白，高度不能为0。
  
-        
+    2、reloadSections方法要慎用，它会导致tableview的更新有动画效果，如果跟reloadData有重叠的话，可能会有出现cell之间视觉不和谐的效果。
+ 
  */
 
 class TestSectionTableView_VC: UIViewController {

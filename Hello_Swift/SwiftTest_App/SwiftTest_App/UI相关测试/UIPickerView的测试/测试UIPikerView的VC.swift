@@ -6,6 +6,15 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 //  测试UIPikerView的VC
+// MARK: - 笔记
+/**
+ 问题：
+     1、在设置row的显示为自定义view时，为什么pickerView中间会有一个蒙版，然后显示不出来图片？
+         :是自定义view的赋值问题，但是我还没找到问题出现在哪里。我不知道为什么view一定要是在viewForRow代理方法中新建，而不能暂存在数组里面，暂存的话，会显示不出来。
+          所以一般的操作是，你在viewForRow代理方法中新建自定义view，但是你的自定义view的数据则用数组缓存起来。不可以暂存view。
+         :因为pickerView的设计之初就是为了有限的选择，如果是无限的选择，你应该用tableView，而不是pickerView。
+ */
+
 
 class TestUIPickerView_VC: UIViewController {
     
@@ -257,11 +266,3 @@ extension TestUIPickerView_VC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 笔记
-/**
- 问题：
-     1、在设置row的显示为自定义view时，为什么pickerView中间会有一个蒙版，然后显示不出来图片？
-         :是自定义view的赋值问题，但是我还没找到问题出现在哪里。我不知道为什么view一定要是在viewForRow代理方法中新建，而不能暂存在数组里面，暂存的话，会显示不出来。
-          所以一般的操作是，你在viewForRow代理方法中新建自定义view，但是你的自定义view的数据则用数组缓存起来。不可以暂存view。
-         :因为pickerView的设计之初就是为了有限的选择，如果是无限的选择，你应该用tableView，而不是pickerView。
- */

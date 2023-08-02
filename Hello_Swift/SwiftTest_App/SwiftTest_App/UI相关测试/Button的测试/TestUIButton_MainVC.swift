@@ -43,6 +43,7 @@ class TestUIButton_MainVC: UIViewController {
     private var baseCollView: UICollectionView!
     private let textBtn = TestButton()  //测试上图下文
     private let statusBtn = TestStatusButton()  //测试按钮状态的按钮
+    private let titleBtn = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,8 +74,9 @@ extension TestUIButton_MainVC: UICollectionViewDataSource {
             statusBtn.setImage(UIImage(named: "buttonStatus_focused"), for: .focused)
             statusBtn.setImage(UIImage(named: "buttonStatus_selected"), for: .selected)
         case 1:
-            //TODO: 1、
-            print("     (@@ ")
+            //TODO: 1、测试按钮标题的状态
+            print("     (@@ 1、测试按钮标题的状态")
+            titleBtn.isEnabled = !titleBtn.isEnabled
         case 2:
             //TODO: 2、
             print("     (@@ ")
@@ -135,6 +137,22 @@ extension TestUIButton_MainVC{
             make.width.equalTo(100)
             make.left.equalTo(textBtn.snp.right).offset(20)
         }
+        
+        titleBtn.setTitle("测试标题颜色", for: .normal)
+        titleBtn.setTitle("标题disabled", for: .disabled)
+        titleBtn.setTitleColor(UIColor.black, for: .normal)
+        titleBtn.setTitleColor(UIColor.red, for: .disabled)
+        self.view.addSubview(titleBtn)
+        titleBtn.layer.borderColor = UIColor.brown.cgColor
+        titleBtn.layer.borderWidth = 1.0
+        titleBtn.snp.makeConstraints { make in
+            make.top.equalTo(baseCollView.snp.bottom).offset(20)
+            make.height.equalTo(60)
+            make.width.equalTo(100)
+            make.left.equalTo(statusBtn.snp.right).offset(20)
+        }
+        
+        
     }
     
 }

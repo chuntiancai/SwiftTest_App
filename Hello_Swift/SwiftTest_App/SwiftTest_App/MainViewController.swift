@@ -7,6 +7,7 @@
 //
 
 let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
+let SCREEN_WIDTH = UIScreen.main.bounds.size.width
 
 class MainViewController: UIViewController {
 
@@ -38,9 +39,9 @@ extension MainViewController: UICollectionViewDataSource {
         print("MainViewController 点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            pushNext(viewController: TestUICollectionViewLayout_VC())
+            pushNext(viewController: TestUIButton_MainVC())
         case 1:
-            pushNext(viewController: TestSafeInset_SubVC2())
+            pushNext(viewController: TestUIScrollView_VC())
         case 2:
             pushNext(viewController: JFZRecordAudioVedioController())
         case 3:

@@ -6,8 +6,11 @@
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
 //测试日期的VC
+//MARK: - 笔记
+/**
+    1、
+ */
 
-import UIKit
 
 class TestDate_VC: UIViewController {
     
@@ -61,7 +64,6 @@ extension TestDate_VC: UICollectionViewDataSource {
             let zeroDate = Calendar.current.date(from: component)
             
             
-            
             print("   today的输出:\(today)\n --zeroDate的输出:\(String(describing: zeroDate))")
             
             
@@ -72,7 +74,7 @@ extension TestDate_VC: UICollectionViewDataSource {
             print("     @@ 月第一天：\(dayFormatter.string(from: monFirstDay))")
             
             print("     @@ 获取这个月最后一天的日期")
-            comp0.month! += 1   ///内部已经处理月=13天的情况，是下一年的一月
+            comp0.month! += 1   ///内部已经处理月=13的情况，是下一年的一月
             comp0.day = 0
             let monLastDay = Calendar.current.date(from: comp0)!
             print("     @@ 月最后一天：\(dayFormatter.string(from: monLastDay))")
@@ -80,7 +82,10 @@ extension TestDate_VC: UICollectionViewDataSource {
             break
         case 1:
             //TODO: 1、计算日期的加减
-            print("     (@@ ")
+            /**
+                
+             */
+            print("     (@@ 1、计算日期的加减")
             let calendar = Calendar.current
             var components = DateComponents()
             components.month = 0
@@ -102,8 +107,33 @@ extension TestDate_VC: UICollectionViewDataSource {
             let dayComp = Calendar.current.dateComponents([.year,.month,.day,.weekOfMonth,.weekday], from: Date())
             print("日期的星期几：\(String(describing: dayComp.weekday))")
         case 3:
-            //TODO: 3、
-            print("     (@@ ")
+            //TODO: 3、测试日期格式化器
+            /**
+                1、日期格式化器，默认地区是手机当前地区。
+                2、Date对象默认的输出是英国格林尼治时间。所以转换为中国时间的话，需要通过日期格式化器来输出。
+                3、无论是那个时区的时间，它们的时间戳都是一样的，只是显示不一样。
+                4、DateFormatter.dateFormat的格式必须要与转换的字符串一致，不能缺斤短两。
+                5、iOS的默认时间戳是秒，不是毫秒，毫秒需要乘以1000。
+             
+             */
+            print("     (@@  3、测试日期格式化")
+            
+            let now = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"   ///设置时间格式
+            
+            
+            //1.时间对象转字符串
+            let dateStr = dateFormatter.string(from: now)
+            print("时间对象转字符串：\(dateStr) --时间戳：\(now.timeIntervalSince1970)")
+            
+            //2.字符串转时间对象
+            let newDate = dateFormatter.date(from: "2023-07-20 00:00:00")
+            print("字符串转时间对象：\(String(describing: newDate))")
+            print("本地格式化 字符串转时间对象 后：\(dateFormatter.string(from: newDate ?? Date() ))")
+
+        case 4:
+            print("     (@@")
         case 5:
             print("     (@@")
         case 6:

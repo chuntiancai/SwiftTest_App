@@ -24,7 +24,7 @@ class ThirdPartyLibraryTest_MainVC: UIViewController {
     private var chartModel = AAChartModel()
     
     /// ios-chart
-    private var lineChartView = IOSChartView()
+    private var lineChartView = TestIOSChart_View()
     
     
     

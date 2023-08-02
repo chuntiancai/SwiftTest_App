@@ -1,5 +1,5 @@
 //
-//  IOSChartView.swift
+//  TestIOSChart_View.swift
 //  SwiftTest_App
 //
 //  Created by mathew on 2021/9/18.
@@ -10,7 +10,7 @@
 import UIKit
 import Charts
 
-class IOSChartView: UIView {
+class TestIOSChart_View: UIView {
     //MARK: - 对外属性
     
     
@@ -74,7 +74,7 @@ class IOSChartView: UIView {
 }
 
 //MARK: - 设置UI
-extension IOSChartView{
+extension TestIOSChart_View{
     //MARK: 设置UI
     // 对内方法
     func  initDefaultUI() {
@@ -103,6 +103,7 @@ extension IOSChartView{
         //TODO: 图表配置的设置
         lineChartView.scaleYEnabled = false     //取消y轴缩放
 //        lineChartView.setScaleMinima(2.0, scaleY: 1.5)  //设置最小的缩放倍数，也就是双指捏合后的图像，最小能是原来的多少倍
+        lineChartView.setExtraOffsets(left: 0, top: 10, right: 0, bottom: -10)  //设置图表的留白内边距
         
         lineChartView.gridBackgroundColor = .clear
         lineChartView.borderColor = .clear
@@ -121,6 +122,7 @@ extension IOSChartView{
         xAxis.labelPosition = .bottom //设置x坐标轴标签在下方
         xAxis.drawGridLinesEnabled = false    //设置不画x轴对应的网格线，也就是竖起来的直线
         xAxis.drawAxisLineEnabled = false
+        
         
         //X轴上面需要显示的数据,设置x轴的标签为字符串
         /// 设置x轴标签显示字符串
@@ -141,6 +143,8 @@ extension IOSChartView{
         leftAxis.gridLineDashLengths = [3.0,3.0]  //设置横虚线
         leftAxis.drawZeroLineEnabled = true //设置0的x轴线由左纵轴开始绘制
         
+        //自定义左纵轴
+        lineChartView.leftYAxisRenderer = IOSChart_LeftYAxisRenderer(viewPortHandler: lineChartView.leftYAxisRenderer.viewPortHandler, axis: leftAxis, transformer: lineChartView.leftYAxisRenderer.transformer)
         
         let rightAxis =  lineChartView.rightAxis //右侧纵轴
         rightAxis.drawGridLinesEnabled = false    //去掉右侧纵轴产生的横线
@@ -152,7 +156,7 @@ extension IOSChartView{
         var pointColorsArr = [UIColor]()    //每个点的颜色，买卖点就红绿色，普通就透明色
         ///对应Y轴上面需要显示的数据，设置数据的属性，决定折线的格式
         var entries = [ChartDataEntry]()
-        for i in 0...2000 {
+        for i in 0...1000 {
             var entry = ChartDataEntry(x: Double(i), y: Double(arc4random_uniform(50)))
             
             if i > 50 && i < 62{
@@ -160,9 +164,12 @@ extension IOSChartView{
                 entry = ChartDataEntry(x: Double(i), y: Double(arc4random_uniform(50)),icon: soldIcon)
                 pointColorsArr.append(UIColor(red: 0.12, green: 0.7, blue: 0.38, alpha: 1))
             }else if i > 100 && i < 123{
-                
+                var yVal = Double(arc4random_uniform(50))
+                if i % 2 == 0 {
+                    yVal = -yVal
+                }
                 /// 买点
-                entry = ChartDataEntry(x: Double(i), y: Double(arc4random_uniform(50)),icon: buyIcon)
+                entry = ChartDataEntry(x: Double(i), y: yVal,icon: buyIcon)
                 pointColorsArr.append(UIColor(red: 0.98, green: 0.23, blue: 0.02, alpha: 1))
             }else{
                 pointColorsArr.append(UIColor.clear)
@@ -210,7 +217,7 @@ extension IOSChartView{
 }
 
 //MARK: - 对外方法
-extension IOSChartView{
+extension TestIOSChart_View{
     
     /// 更新图表数据
     func updateChartData(entries:[ChartDataEntry]){
@@ -252,12 +259,12 @@ extension IOSChartView{
 }
 
 //MARK: -遵循ChartViewDelegate协议
-extension IOSChartView: ChartViewDelegate{
+extension TestIOSChart_View: ChartViewDelegate{
     
 }
 
 //MARK: -
-extension IOSChartView{
+extension TestIOSChart_View{
     
 }
 

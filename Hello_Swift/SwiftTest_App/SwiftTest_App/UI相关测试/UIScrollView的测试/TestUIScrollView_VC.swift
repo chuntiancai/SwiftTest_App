@@ -44,6 +44,8 @@ class TestUIScrollView_VC: UIViewController {
     var btnScroView = MultiBtns_ScrollView()    //横向滑动按钮
     var viewScroView = MultiViews_ScrollView()    //横向滑动View
     var curTestIndex:Int = 0    //用于测试的暂时索引
+    let roundScrView = Test_PageRoundScorllView()   //测试翻页轮播
+    let bgView = UIView()   //背景的view
     
     let pageIndicator = UIPageControl() // 显示页数小圆点
     
@@ -192,12 +194,26 @@ extension TestUIScrollView_VC: UICollectionViewDataSource {
             }
             viewScroView.curViewIndex = curTestIndex
         case 8:
-            //TODO: 8、测试同方向滚动的ScrollView
-            print("     (@@ 8、测试同方向滚动的ScrollView")
+            //TODO: 8、测试翻页轮播
+            print("     (@@ 8、测试翻页轮播")
+            let _ = bgView.subviews.map { $0.removeFromSuperview() }
+            let viewArr = [getColorView(color: .red),getColorView(color: .yellow),getColorView(color: .blue),getColorView(color: .brown)]
+            roundScrView.setupViewArr(arr: viewArr)
+            roundScrView.scrollToPageBlock = {
+                pageIndex in
+                print("滑动到\(pageIndex)")
+            }
+            bgView.addSubview(roundScrView)
+            roundScrView.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
+            
         case 9:
-            print("     (@@")
+            print("     (@@ 向右滚动")
+            roundScrView.goRight()
         case 10:
-            print("     (@@")
+            print("     (@@ 向左滚动")
+            roundScrView.goLeft()
         case 11:
             print("     (@@")
         case 12:
@@ -237,6 +253,16 @@ extension TestUIScrollView_VC{
     /// 初始化你要测试的view
     func initTestViewUI(){
         
+        /// 内容背景View，测试的子view这里
+        self.view.addSubview(bgView)
+        bgView.snp.makeConstraints { make in
+            make.top.equalTo(baseCollView.snp.bottom)
+            make.bottom.equalToSuperview()
+            make.width.equalToSuperview()
+            make.centerX.equalToSuperview()
+        }
+        
+        
         testScrollView.backgroundColor = .magenta
         testScrollView.showsVerticalScrollIndicator = true
         testScrollView.showsHorizontalScrollIndicator = true
@@ -244,7 +270,7 @@ extension TestUIScrollView_VC{
         testScrollView.contentSize = CGSize.init(width: 720, height: 320)
         
 
-        self.view.addSubview(testScrollView)
+        bgView.addSubview(testScrollView)
         testScrollView.snp.makeConstraints { make in
             make.top.equalTo(baseCollView.snp.bottom).offset(20)
             make.height.equalTo(200)
@@ -256,7 +282,7 @@ extension TestUIScrollView_VC{
         btnScroView.isHidden = true
         btnScroView.layer.borderWidth = 1.0
         btnScroView.layer.borderColor = UIColor.cyan.cgColor
-        self.view.addSubview(btnScroView)
+        bgView.addSubview(btnScroView)
         btnScroView.snp.makeConstraints { make in
             make.top.equalTo(baseCollView.snp.bottom).offset(20)
             make.height.equalTo(80)
@@ -268,7 +294,7 @@ extension TestUIScrollView_VC{
         viewScroView.isHidden = true
         viewScroView.layer.borderWidth = 1.0
         viewScroView.layer.borderColor = UIColor.cyan.cgColor
-        self.view.addSubview(viewScroView)
+        bgView.addSubview(viewScroView)
         viewScroView.snp.makeConstraints { make in
             make.top.equalTo(baseCollView.snp.bottom).offset(20)
             make.height.equalTo(400)
@@ -282,6 +308,13 @@ extension TestUIScrollView_VC{
 
 //MARK: - 设计UI
 extension TestUIScrollView_VC {
+    
+    private func getColorView(color:UIColor) -> UIView{
+        let view = UIView()
+        view.frame = UIScreen.main.bounds
+        view.backgroundColor = color
+        return view
+    }
     
     /// 设置导航栏的UI
     private func setNavigationBarUI(){

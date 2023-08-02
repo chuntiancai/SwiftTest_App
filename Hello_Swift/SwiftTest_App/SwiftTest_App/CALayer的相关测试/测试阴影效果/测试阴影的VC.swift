@@ -1,83 +1,60 @@
 //
-//  TestUIPageControl_VC.swift
+//  测试阴影的VC.swift
 //  SwiftTest_App
 //
-//  Created by mathew on 2022/7/20.
-//  Copyright © 2022 com.mathew. All rights reserved.
+//  Created by mathew on 2023/6/30.
+//  Copyright © 2023 com.mathew. All rights reserved.
 //
-// 测试滑动小圆点的VC
-// MARK: - 笔记
 
-import UIKit
+// MARK: - 笔记
 /**
-    1、
+    1、如果不设置layer.shadowPath，就会导致离屏渲染，消耗性能，所以可以再layoutSubviews方法中设置layer.shadowPath，因为此时view的bounds也已经计算出来了。
+        shadowOpacity：  阴影透明度，取值0-1，1是完全不透明。
+        shadowColor：  阴影颜色，CGColor类型，不赘述。
+        shadowRadius：   阴影宽度，也就是阴影的大小，单位是point。
+        shadowOffset：  阴影离view的距离（偏移量），CGSize类型，分x轴和y轴偏移，主要用来营造3D效果。
+        shadowPath：
+            阴影形状。如果不设这项，系统会自动根据view的大小和位置描绘view的阴影，这样需要消耗非常多的资源，所以一定要指定一下（一般是这个view的bounds）。
  
  */
 
-class TestUIPageControl_VC: UIViewController {
+class TestShadow_VC: UIViewController {
     
     //MARK: 对外属性
     public var collDataArr = ["0、","1、","2、","3、","4、","5、","6、","7、","8、","9、","10、","11、","12、"]
 
     ///UI组件
     private var baseCollView: UICollectionView!
-    /// 继承UIPageControl的pageCtrl
-    lazy var pageCtrl : UIPageControl = {
-        let ctrl = UIPageControl()
-        ctrl.layer.borderWidth = 1.0
-        ctrl.layer.borderColor = UIColor.brown.cgColor
-        ctrl.numberOfPages = 3
-        return ctrl
-    }()
-    
-    lazy var pageCtrvlView : TestPageControl_View = {
-        let ctrl = TestPageControl_View()
-        ctrl.layer.borderWidth = 1.0
-        ctrl.layer.borderColor = UIColor.brown.cgColor
-        ctrl.numberOfPages = 10
-        
-        return ctrl
-    }()
+    let bgView = UIView()   //测试的view可以放在这里面
     
     //MARK: 测试组件
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 199/255.0, green: 204/255.0, blue: 237/255.0, alpha: 1.0)
-        self.title = "测试UIPageControl_VC"
-        
+        self.title = "测试阴影的VC"
         setNavigationBarUI()
         setCollectionViewUI()
         initTestViewUI()
     }
-    
-    
-    
 }
 
 
 //MARK: - 遵循数据源协议,UICollectionViewDataSource
-extension TestUIPageControl_VC: UICollectionViewDataSource {
+extension TestShadow_VC: UICollectionViewDataSource {
     
     ///点击了cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("点击了第\(indexPath.row)个item")
+        print("TestShadow_VC 点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            //TODO: 0、测试自定义的pageCotrolView
-            print("     (@@ 0、测试自定义的pageCotrolView")
-            if pageCtrvlView.currentPage >= pageCtrvlView.numberOfPages - 1  {
-                pageCtrvlView.currentPage -= 1
-            }else if pageCtrvlView.currentPage <= 0 {
-                pageCtrvlView.currentPage += 1
-            }else{
-                pageCtrvlView.currentPage += 1
-            }
+            //TODO: 0、
+            print("     (@@ 0、")
+            let _ = self.bgView.subviews.map { $0.removeFromSuperview() }
             
         case 1:
             //TODO: 1、
-            print("     (@@ 1、测试pageCotrolView -1 ")
-            pageCtrvlView.currentPage = 0
+            print("     (@@ 1、")
         case 2:
             //TODO: 2、
             print("     (@@ 2、")
@@ -109,11 +86,10 @@ extension TestUIPageControl_VC: UICollectionViewDataSource {
     
 }
 //MARK: - 测试的方法
-extension TestUIPageControl_VC{
+extension TestShadow_VC{
    
     //MARK: 0、
     func test0(){
-        
         
     }
     
@@ -121,32 +97,26 @@ extension TestUIPageControl_VC{
 
 
 //MARK: - 设置测试的UI
-extension TestUIPageControl_VC{
+extension TestShadow_VC{
     
     /// 初始化你要测试的view
     func initTestViewUI(){
-//        self.view.addSubview(pageCtrl)
-//        pageCtrl.snp.makeConstraints { make in
-//            make.top.equalTo(baseCollView.snp_bottom).offset(40)
-//            make.centerX.equalToSuperview()
-//            make.height.equalTo(60)
-//            make.width.equalTo(200)
-//        }
-        
-        self.view.addSubview(pageCtrvlView)
-        pageCtrvlView.snp.makeConstraints { make in
-            make.top.equalTo(baseCollView.snp_bottom).offset(60)
+        /// 内容背景View，测试的子view这里面
+        self.view.addSubview(bgView)
+        bgView.snp.makeConstraints { make in
+            make.top.equalTo(baseCollView.snp.bottom)
+            make.bottom.equalToSuperview()
+            make.width.equalToSuperview()
             make.centerX.equalToSuperview()
-            make.height.equalTo(20)
-            make.width.equalTo(200)
         }
+        
     }
     
 }
 
 
 //MARK: - 设计UI
-extension TestUIPageControl_VC {
+extension TestShadow_VC {
     
     /// 设置导航栏的UI
     private func setNavigationBarUI(){
@@ -181,7 +151,7 @@ extension TestUIPageControl_VC {
 }
 
 //MARK: - 遵循委托协议,UICollectionViewDelegate
-extension TestUIPageControl_VC: UICollectionViewDelegate {
+extension TestShadow_VC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collDataArr.count
@@ -211,4 +181,5 @@ extension TestUIPageControl_VC: UICollectionViewDelegate {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
+
 
