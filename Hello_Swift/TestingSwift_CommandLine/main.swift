@@ -11,18 +11,26 @@ import Foundation
 var atemp = 10
 print("Hello, World!")
 
+let exitStr = "exit"
+var isLoop = true
+
+while isLoop {
+    print("请输入你的指令: ",terminator: "")
+    let inputStr = readLine() ?? "nil"
+    if let inputInt = Int(inputStr) {
+        if let algType = AlgorithmTestType.init(rawValue: inputInt) {
+            print("你输入的是：\(inputStr) ---",terminator: "")
+            algType.executeFunc()
+        }
+    }
+   
+    print(" ")
+    if inputStr == exitStr {
+        isLoop = false
+    }
+}
+
 //TestAlgorithm.mergeArrSortTest()
-
-
-
-
-
-
-
-
-
-
-
 
 
 /**
