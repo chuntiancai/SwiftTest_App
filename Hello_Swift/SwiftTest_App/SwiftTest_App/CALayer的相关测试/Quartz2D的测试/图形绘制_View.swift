@@ -6,7 +6,24 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 // 测试 Quartz 绘制图形的view，在draw方法里绘制图形
-
+// MARK: - 笔记
+/**
+    1、利用Quartz2D技术绘制图形到view上，也只能绘制到view上。
+        绘制view的步骤：
+         新建一个类，继承自UIView。
+         实现- (void)drawRect:(CGRect)rect方法，然后在这个方法中取得跟当前view相关联的图形上下文(CGContext)。
+         在CGContext的语境下，利用贝塞尔曲线等技术类 来绘制相应的图形内容。
+         利用CGContext 将绘制的所有内容渲染显示到view上面。
+    2、context?.fillPath() 和 context?.strokePath() 这两个方法执行完之后，都会清除掉context的路径。所以你要重新复制路径。
+    
+    3、如果draw(_ rect: CGRect) 方法是你手动调用的话，draw方法内部不会给你获取到view相关联的上下文，所以必须要系统自动调用才可以。
+       所以你可以调用view的setNeedsDisplay()方法，这个方法是在下一个周期更新UI内容，此时系统会自动调用draw(_ rect: CGRect) 方法。
+ 
+    4、UIBezierPath、CGContext、CGRect、UIColor都有fill的方法，只不过UIBezierPath这些的fill方法是封装了获取CGContext、通过CGContext渲染等等的这些步骤。
+    
+    5、图形上下文可以对它绘制的图形做形变，例如平移，旋转，缩放等等。
+ 
+ */
 
 class Quartz_View: UIView {
     
@@ -200,21 +217,4 @@ extension Quartz_View{
     
 }
 
-// MARK: - 笔记
-/**
-    1、利用Quartz2D技术绘制图形到view上，也只能绘制到view上。
-        绘制view的步骤：
-         新建一个类，继承自UIView。
-         实现- (void)drawRect:(CGRect)rect方法，然后在这个方法中取得跟当前view相关联的图形上下文(CGContext)。
-         在CGContext的语境下，利用贝塞尔曲线等技术类 来绘制相应的图形内容。
-         利用CGContext 将绘制的所有内容渲染显示到view上面。
-    2、context?.fillPath() 和 context?.strokePath() 这两个方法执行完之后，都会清除掉context的路径。所以你要重新复制路径。
-    
-    3、如果draw(_ rect: CGRect) 方法是你手动调用的话，draw方法内部不会给你获取到view相关联的上下文，所以必须要系统自动调用才可以。
-       所以你可以调用view的setNeedsDisplay()方法，这个方法是在下一个周期更新UI内容，此时系统会自动调用draw(_ rect: CGRect) 方法。
- 
-    4、UIBezierPath、CGContext、CGRect、UIColor都有fill的方法，只不过UIBezierPath这些的fill方法是封装了获取CGContext、通过CGContext渲染等等的这些步骤。
-    
-    5、图形上下文可以对它绘制的图形做形变，例如平移，旋转，缩放等等。
- 
- */
+

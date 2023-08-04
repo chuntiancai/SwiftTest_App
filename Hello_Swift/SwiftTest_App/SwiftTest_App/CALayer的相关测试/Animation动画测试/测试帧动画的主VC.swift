@@ -115,9 +115,10 @@ extension TestFrameAnimation_VC: UICollectionViewDataSource {
             scaleView.frame = preFrame
             /// snpkit的约束会和动画效果冲突，所以你在动画前需要移除snpkit的约束条件。
             scaleView.snp.removeConstraints()
-            UIView.animate(withDuration: 2.0, delay: 0, options: .curveEaseIn) {
+            UIView.animate(withDuration: 2.0, delay: 0, options: [.curveEaseIn,.repeat,.autoreverse]) {
                 [weak self] in
-                self?.scaleView.frame = CGRect.init(x: 24, y: preFrame.origin.y, width: 240, height: 80)
+//                self?.scaleView.frame = CGRect.init(x: 24, y: preFrame.origin.y, width: 240, height: 80)
+                self?.scaleView.transform = CGAffineTransform(scaleX: 3.0, y: 3.0)
             } completion: { isFinsh in
                 print("动画延迟两秒，执行两秒，缩放动画已完成：\(isFinsh)")
             }
@@ -217,7 +218,7 @@ extension TestFrameAnimation_VC{
         self.view.addSubview(blueView)
         blueView.snp.makeConstraints { make in
             make.top.equalTo(redView.snp.top)
-            make.left.equalTo(redView.snp_right).offset(5)
+            make.left.equalTo(redView.snp.right).offset(5)
             make.height.width.equalTo(30)
         }
         

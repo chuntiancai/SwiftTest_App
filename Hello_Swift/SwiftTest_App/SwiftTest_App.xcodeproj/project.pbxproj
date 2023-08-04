@@ -13,7 +13,7 @@
 		04133087281A8BAA00E8CA0A /* TestAlamofire_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04133086281A8BAA00E8CA0A /* TestAlamofire_VC.swift */; };
 		0414F97C27BA48C50037EE70 /* TableView的contentInset与刷新_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0414F97B27BA48C50037EE70 /* TableView的contentInset与刷新_VC.swift */; };
 		0414F98027BBB1010037EE70 /* TestQuartz2D绘图_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0414F97F27BBB1010037EE70 /* TestQuartz2D绘图_VC.swift */; };
-		0414F98227BC940A0037EE70 /* Quartz_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0414F98127BC940A0037EE70 /* Quartz_View.swift */; };
+		0414F98227BC940A0037EE70 /* 图形绘制_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0414F98127BC940A0037EE70 /* 图形绘制_View.swift */; };
 		0414F98427BDE8260037EE70 /* Quartz_Layer_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0414F98327BDE8260037EE70 /* Quartz_Layer_View.swift */; };
 		0414F98627BDF69C0037EE70 /* Quartz_Font_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0414F98527BDF69C0037EE70 /* Quartz_Font_View.swift */; };
 		0414F98827BE24730037EE70 /* Quartz_Img_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0414F98727BE24730037EE70 /* Quartz_Img_View.swift */; };
@@ -445,6 +445,7 @@
 		AFEF469728BC519100B3EA2D /* 测试基本语法_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF469628BC519100B3EA2D /* 测试基本语法_VC.swift */; };
 		AFEF469928BC5F8000B3EA2D /* VerScroll_ScrollView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF469828BC5F8000B3EA2D /* VerScroll_ScrollView4.swift */; };
 		AFFC20042A32FC740058C751 /* TestClass_Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFC20032A32FC740058C751 /* TestClass_Animal.swift */; };
+		AFFDBB8D2A7C887500FF793B /* 无限滚动条动画_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDBB8C2A7C887500FF793B /* 无限滚动条动画_View.swift */; };
 		EB5C881427FC2EA200655119 /* 位移枚举的写法.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C881327FC2EA200655119 /* 位移枚举的写法.swift */; };
 		EB645E3F26A449AE00773A98 /* tempView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645E3E26A449AE00773A98 /* tempView.swift */; };
 /* End PBXBuildFile section */
@@ -470,7 +471,7 @@
 		04133086281A8BAA00E8CA0A /* TestAlamofire_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAlamofire_VC.swift; sourceTree = "<group>"; };
 		0414F97B27BA48C50037EE70 /* TableView的contentInset与刷新_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView的contentInset与刷新_VC.swift"; sourceTree = "<group>"; };
 		0414F97F27BBB1010037EE70 /* TestQuartz2D绘图_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestQuartz2D绘图_VC.swift"; sourceTree = "<group>"; };
-		0414F98127BC940A0037EE70 /* Quartz_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quartz_View.swift; sourceTree = "<group>"; };
+		0414F98127BC940A0037EE70 /* 图形绘制_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "图形绘制_View.swift"; sourceTree = "<group>"; };
 		0414F98327BDE8260037EE70 /* Quartz_Layer_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quartz_Layer_View.swift; sourceTree = "<group>"; };
 		0414F98527BDF69C0037EE70 /* Quartz_Font_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quartz_Font_View.swift; sourceTree = "<group>"; };
 		0414F98727BE24730037EE70 /* Quartz_Img_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quartz_Img_View.swift; sourceTree = "<group>"; };
@@ -945,6 +946,7 @@
 		AFEF469628BC519100B3EA2D /* 测试基本语法_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "测试基本语法_VC.swift"; sourceTree = "<group>"; };
 		AFEF469828BC5F8000B3EA2D /* VerScroll_ScrollView4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerScroll_ScrollView4.swift; sourceTree = "<group>"; };
 		AFFC20032A32FC740058C751 /* TestClass_Animal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestClass_Animal.swift; sourceTree = "<group>"; };
+		AFFDBB8C2A7C887500FF793B /* 无限滚动条动画_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "无限滚动条动画_View.swift"; sourceTree = "<group>"; };
 		BB6AAD3455F9D2C8F661C07D /* Pods-SwiftTest_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTest_App.debug.xcconfig"; path = "Target Support Files/Pods-SwiftTest_App/Pods-SwiftTest_App.debug.xcconfig"; sourceTree = "<group>"; };
 		C4C06FA2172551275C4FCEE6 /* Pods_SwiftTest_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftTest_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB5C881327FC2EA200655119 /* 位移枚举的写法.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "位移枚举的写法.swift"; sourceTree = "<group>"; };
@@ -1010,7 +1012,7 @@
 			isa = PBXGroup;
 			children = (
 				0414F97F27BBB1010037EE70 /* TestQuartz2D绘图_VC.swift */,
-				0414F98127BC940A0037EE70 /* Quartz_View.swift */,
+				0414F98127BC940A0037EE70 /* 图形绘制_View.swift */,
 				0414F98527BDF69C0037EE70 /* Quartz_Font_View.swift */,
 				0414F98727BE24730037EE70 /* Quartz_Img_View.swift */,
 				0414F98327BDE8260037EE70 /* Quartz_Layer_View.swift */,
@@ -1092,6 +1094,7 @@
 				041CBC212787DC6100AF9B05 /* 测试图片存放的VC.swift */,
 				0474C24B27CE165900B95D7C /* 粒子效果_View.swift */,
 				0474C24D27CE220D00B95D7C /* 弹粘性效果_View.swift */,
+				AFFDBB8C2A7C887500FF793B /* 无限滚动条动画_View.swift */,
 			);
 			path = "Animation动画测试";
 			sourceTree = "<group>";
@@ -3076,7 +3079,7 @@
 				04870E3426E9AD280030B1D2 /* AAChartView.swift in Sources */,
 				AF82427F287587F3002311AF /* OCRuntime_SubPerson.m in Sources */,
 				044CBA7D27F6D6F000FA2CB8 /* MultiViews_ScrollView.swift in Sources */,
-				0414F98227BC940A0037EE70 /* Quartz_View.swift in Sources */,
+				0414F98227BC940A0037EE70 /* 图形绘制_View.swift in Sources */,
 				049EAFF726C25E9700903DA8 /* JFZ_AVAsset.swift in Sources */,
 				AF21858529A4C29D0033829F /* TestVideoMerge_VC.swift in Sources */,
 				0421E5F326A9701600C6A922 /* JFZVideoControlPanelView.swift in Sources */,
@@ -3269,6 +3272,7 @@
 				AF2CF88029091DAD00C9388E /* TestSpilt_SubVC2.swift in Sources */,
 				04587C7927B50B9E00824F69 /* Tabar_SubVC1.swift in Sources */,
 				04A0CA3F26A0027800ECAE1B /* JFZWithoutNetView.swift in Sources */,
+				AFFDBB8D2A7C887500FF793B /* 无限滚动条动画_View.swift in Sources */,
 				04B76922281154980080102F /* OC中枚举的写法.m in Sources */,
 				04927013279E8FBB000A61FC /* 测试UIView的VC.swift in Sources */,
 				AF2CF86E29029DDB00C9388E /* TestMemory_Dog.swift in Sources */,

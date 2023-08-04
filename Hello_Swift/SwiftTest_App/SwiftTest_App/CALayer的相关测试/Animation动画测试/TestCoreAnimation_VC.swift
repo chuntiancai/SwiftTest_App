@@ -208,7 +208,17 @@ extension TestCoreAnimation_VC: UICollectionViewDataSource {
             print("     (@@ 测试弹粘性效果")
             hideOtherView(curView: springView)
         case 9:
-            print("     (@@")
+            //TODO: 9、测试无限滚动动画
+            print("     (@@9、测试无限滚动动画")
+            let infinityView = InfinityLoop_View()
+            self.view.addSubview(infinityView)
+            infinityView.snp.makeConstraints { make in
+                make.center.equalToSuperview()
+                make.width.equalToSuperview().multipliedBy(0.65)
+                make.height.equalTo(10)
+            }
+            hideOtherView(curView: infinityView)
+            
         case 10:
             print("     (@@")
         case 11:

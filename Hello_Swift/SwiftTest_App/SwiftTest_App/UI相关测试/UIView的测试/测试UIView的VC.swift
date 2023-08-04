@@ -104,7 +104,7 @@ extension TestUIView_VC: UICollectionViewDataSource {
             //TODO: 3、测试mask属性。
             /**
              1、mask属性的使用是，定义了宿主对象的可显示的内容，mask属性就是宿主view的不透明通道，也就是mask view中的不透明颜色的内容就是 宿主对象的可显示的内容轮廓。
-              mask view 中的透明颜色就是遮挡宿主对象的显示内容，注意，mask view的布局是相对于宿主的坐标系，而不是mask view的父view，mask的父view是无效的。
+              作为mask的view 中的透明颜色就是遮挡宿主对象的显示内容，注意，mask view的布局是相对于宿主的坐标系，而不是mask view的父view，mask的父view是无效的。
               mask view不要使用snpkit，不然不知道具体尺寸在什么时候算出来，比较麻烦，虽然是在layoutsubview方法中算出来，但是取出来就比较麻烦。
              */
             print("     (@@ 3、测试mask属性。")
