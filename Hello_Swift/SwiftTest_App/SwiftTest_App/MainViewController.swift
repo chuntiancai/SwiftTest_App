@@ -39,7 +39,7 @@ extension MainViewController: UICollectionViewDataSource {
         print("MainViewController 点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            pushNext(viewController: TestCoreAnimation_VC())
+            pushNext(viewController: TestUILabel_VC())
         case 1:
             pushNext(viewController: TestUIScrollView_VC())
         case 2:

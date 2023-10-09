@@ -19,11 +19,14 @@ class TestUILabel_VC: UIViewController {
 
     ///UI组件
     private var baseCollView: UICollectionView!
+    let bgView = UIView()   //测试的view可以放在这里面
+    
     var gradientView = GradientTestLabelView()  //测试渐变色的文字
     var lineSpaceLabel = UILabel()  //测试行间距
     var lineSpaceNum:CGFloat = 20   //行间距的值。
     
     var adaptLabel = TestAdaptSize_Label()  //测试label的文字自适应高度，宽度。
+    var gradientLabel = GradientFontTestLabel() //测试渐变色字体的label
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,12 +52,22 @@ extension TestUILabel_VC: UICollectionViewDataSource {
         case 0:
             //TODO: 0、测试文字的渐变色
             print("     (@@  测试文字的渐变颜色")
+            let _ = self.bgView.subviews.map { $0.removeFromSuperview() }
+            self.bgView.addSubview(gradientView)
+            gradientView.backgroundColor = .gray
+            gradientView.snp.makeConstraints { make in
+                make.top.equalTo(baseCollView.snp.bottom).offset(20)
+                make.width.equalToSuperview()
+                make.height.equalTo(80)
+            }
             gradientView.name = "测试渐变颜色"
             break
         case 1:
             //TODO: 1、测试label的行距
+            lineSpaceLabel.isHidden = false
             lineSpaceNum += 1
             print("     (@@ 测试label的行间距+1:=\(lineSpaceNum)")
+            
             lineSpaceLabel.setValue(lineSpaceNum, forKey: "lineSpacing")
             lineSpaceLabel.layoutIfNeeded()
         case 2:
@@ -66,6 +79,8 @@ extension TestUILabel_VC: UICollectionViewDataSource {
         case 3:
             //TODO: 3、测试Label的自适应高度、宽度。
             print("     (@@ 测试Label的自适应高度、宽度")
+            let _ = self.bgView.subviews.map { $0.removeFromSuperview() }
+            self.bgView.addSubview(adaptLabel)
             adaptLabel.text = "label的自适应尺寸"
             adaptLabel.layer.borderWidth = 1.0
             
@@ -108,8 +123,21 @@ extension TestUILabel_VC: UICollectionViewDataSource {
             print("     (@@")
             adaptLabel.sizeToFit()
         case 7:
-            //TODO: 7、
-            print("     (@@")
+            //TODO: 7、测试渐变色label
+            print("     (@@测试渐变色label")
+            
+            let _ = self.bgView.subviews.map { $0.removeFromSuperview() }
+            gradientLabel.text = "开始-测试渐变色label测试渐变色label测试渐变色label测试渐变色label-结束"
+            gradientLabel.layer.borderColor = UIColor.red.cgColor
+            gradientLabel.layer.borderWidth = 1.0
+            gradientLabel.numberOfLines = 0
+            self.bgView.addSubview(gradientLabel)
+            gradientLabel.snp.makeConstraints { make in
+                make.center.equalToSuperview()
+                make.width.equalTo(100)
+            }
+            
+            
         case 8:
             print("     (@@")
         case 9:
@@ -150,14 +178,15 @@ extension TestUILabel_VC{
     
     /// 初始化你要测试的view
     func initTestViewUI(){
-        self.view.addSubview(gradientView)
-        gradientView.backgroundColor = .gray
-        gradientView.snp.makeConstraints { make in
-            make.top.equalTo(baseCollView.snp.bottom).offset(20)
+        
+        /// 内容背景View，测试的子view这里面
+        self.view.addSubview(bgView)
+        bgView.snp.makeConstraints { make in
+            make.top.equalTo(baseCollView.snp.bottom)
+            make.bottom.equalToSuperview()
             make.width.equalToSuperview()
-            make.height.equalTo(80)
+            make.centerX.equalToSuperview()
         }
-        gradientView.isHidden = true
         
         lineSpaceLabel.textColor = .blue
         lineSpaceLabel.numberOfLines = 0
@@ -173,6 +202,7 @@ extension TestUILabel_VC{
             make.width.equalTo(200)
             make.height.equalTo(80)
         }
+        lineSpaceLabel.isHidden = true
         
     }
     

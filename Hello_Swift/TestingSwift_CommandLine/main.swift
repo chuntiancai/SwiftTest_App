@@ -17,6 +17,42 @@ var isLoop = true
 TestODAlgorithm.findFrontThreeChampion()
 
 while isLoop {
+    
+    class Person:NSObject {
+        var name:String = ""
+        var age = 18
+        
+        init(name: String, age: Int = 18) {
+            super.init()
+            self.name = name
+            self.age = age
+        }
+        
+        override var description:String {
+            "name:(\(name),age:\(age) )\n"
+        }
+    }
+    
+    var preOne = Person(name: "张三",age: 18)
+    var personArr = [Person]()
+    for i in 0 ..< 5 {
+        var curOne = Person(name: "张\(i)",age: i + 1)
+        if i == 2 {
+            preOne = curOne
+            personArr.append(preOne)
+        }else{
+            personArr.append(curOne)
+        }
+        
+        
+    }
+    preOne.name = "张二"
+    print("当前数组：\(personArr)")
+    print("当前人：\(preOne)")
+
+    
+    
+    
     print("请输入你的指令: ",terminator: "")
     let inputStr = readLine() ?? "nil"
     if let inputInt = Int(inputStr) {
