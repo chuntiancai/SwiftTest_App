@@ -139,7 +139,7 @@ extension TestSafeInset_VC: UICollectionViewDataSource {
                 1、如果viewController是在navigationController中, 那么应该先修改NavigationController的additionalSafeAreaInsets,然后再改变viewController 的additionalSafeAreaInsets， 才会有效的修改VC下的布局设置。
                     否则只是影响了View的safeAreaInsets而已，同时也对view的safeAreaLayoutGuide影响，但是并不会对view的位置做出调整。
              */
-            print("     (@@  修改导航栈中的VC的内边距对布局的影响")
+            print("     (@@  0、修改导航栈中的VC的内边距对布局的影响")
             self.additionalSafeAreaInsets = UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 0)
             
         case 1:
@@ -147,7 +147,7 @@ extension TestSafeInset_VC: UICollectionViewDataSource {
             /**
                 1、内边距只是一个参考值，并没有对view的视图产生实际的影响，除非是在手动修改了frame的代码，或者约束条件之类的。
              */
-            print("     (@@ 修改常规VC的内边距对布局的影响")
+            print("     (@@ 1、修改常规VC的内边距对布局的影响")
             subVC.additionalSafeAreaInsets = UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 0)
         case 2:
             //TODO: 2、测试导航栏VC下，VC的安全内边距对ScrollView的影响。TestSafeInset_SubVC2

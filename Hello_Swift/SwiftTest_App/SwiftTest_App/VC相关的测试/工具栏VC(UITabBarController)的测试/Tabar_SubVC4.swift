@@ -28,6 +28,10 @@ class Tabar_SubVC4: UIViewController {
         initTestViewUI()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("Tabar_SubVC4的\(#function)方法～")
+    }
 
 }
 
@@ -40,8 +44,11 @@ extension Tabar_SubVC4: UICollectionViewDataSource {
         print("Tabar_SubVC4 点击了第\(indexPath.row)个item")
         switch indexPath.row {
         case 0:
-            //TODO: 0、
-            print("     (@@  ")
+            //TODO: 0、测试再push一个VC
+            print("     (@@  0、测试再push一个VC ")
+            let vc44 = Tabar_SubVC4()
+            vc44.title = "vc44"
+            self.navigationController?.pushViewController(vc44, animated: true)
             break
         case 1:
             //TODO: 1、
@@ -67,7 +74,9 @@ extension Tabar_SubVC4: UICollectionViewDataSource {
         case 11:
             print("     (@@")
         case 12:
-            print("     (@@")
+            //TODO: 12、测试pop一个VC
+            print("     (@@ 12、测试pop一个VC")
+            self.navigationController?.popViewController(animated: true)
         default:
             break
         }

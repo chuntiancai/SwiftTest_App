@@ -92,27 +92,36 @@ extension TestUITabBarController_VC: UICollectionViewDataSource {
             app.firstWindow.makeKeyAndVisible()
             
         case 1:
-            //TODO: 1、在第二window中添加UINavigationController、TabBarController
-            print("     (@@  在第二window中添加TabBarController")
+            //TODO: 1、在第二window中添加UINavigationController-> TabBarController
+            /**
+             1、这个会在TabBarController山显示UINavigationController的导航栏，也是TabVC是在NaviVC的视图下布局的。
+             2、如果再一层UINavigationController1-> TabBarController -> UINavigationController2那么，子VC的push操作是以UINavigationController2为根导航VC的
+                而且UINavigationController1的导航栏下显示UINavigationController2的导航栏，有两个导航栏。
+             
+             */
+            print("     (@@  1、在第二window中添加INavigationController-> TabBarController")
             let app = UIApplication.shared.delegate as! AppDelegate
             if app.firstWindow.rootViewController != nil {
                 app.firstWindow.makeKeyAndVisible()
                 return
             }
             let naviVC = UINavigationController(rootViewController: tabVC)
+            naviVC.navigationBar.isHidden = true
             let vc1 = Tabar_SubVC1() //第1个VC
             let vc2 = Tabar_SubVC2() //第2个VC
             let vc3 = Tabar_SubVC3() //第3个VC
+            
             let vc4 = Tabar_SubVC4() //第4个VC
+            let naviVC4 = UINavigationController(rootViewController: vc4)
             vc1.tabBarItem.title = "vc1"
             vc2.tabBarItem.title = "vc2"
             vc3.tabBarItem.title = "vc3"
-            vc4.tabBarItem.title = "vc4"
+            vc4.tabBarItem.title = "二级导航vc4"
             
             tabVC.addChild(vc1)  //第1个VC
             tabVC.addChild(vc2)  //第2个VC
             tabVC.addChild(vc3)  //第3个VC
-            tabVC.addChild(vc4)  //第4个VC
+            tabVC.addChild(naviVC4)  //第4个VC
             app.firstWindow.rootViewController = naviVC
             app.firstWindow.makeKeyAndVisible()
         case 2:

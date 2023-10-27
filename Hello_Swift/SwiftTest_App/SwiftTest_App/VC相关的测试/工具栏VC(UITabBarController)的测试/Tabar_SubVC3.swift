@@ -31,7 +31,10 @@ class Tabar_SubVC3: UIViewController {
         initTestViewUI()
     }
 
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("Tabar_SubVC3的\(#function)方法～")
+    }
 }
 
 

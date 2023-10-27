@@ -124,10 +124,6 @@ extension TestNavibarUI_VC: UICollectionViewDataSource {
                                     当isTranslucent为true时，该属性才有效。UIKit会根据isTranslucent的值提供默认的背景图。
                                     当你移除这个属性的某个边缘值时，UIKit同时也会在其他 系统条栏UI 的这个边缘上，不再按照着这个边缘来参考布局。
                                     
-                                    
-                
-                   
-                
                 2、可以通过navigationBar.isHidden属性直接隐藏导航栏，到时候又出来就可以了。
                     
              */
@@ -171,10 +167,10 @@ extension TestNavibarUI_VC: UICollectionViewDataSource {
              
                 优先级：appearence.backgroundImage > appearence.backgroundColor > navigationBar.setBackgroundImage
              
-             3、赋值新对象给navigationBar.standardAppearance是在下一个页面跳转时才会生效，所以要直接修改navigationBar.standardAppearance的属性。
+             3、修改navigationBar.standardAppearance里的属性是在下一个页面跳转时才会生效，所以要直接赋值navigationBar.standardAppearance。
                 第一次赋值新对象是马上生效，第二次之后都是下一个跳转页面才生效了。
              */
-            print("     (@@ 测试导航栏的standardAppearance属性")
+            print("     (@@1、测试赋值新对象给导航栏的standardAppearance属性")
             
             self.navigationController?.navigationBar.isTranslucent = true
             
@@ -200,17 +196,22 @@ extension TestNavibarUI_VC: UICollectionViewDataSource {
             
         case 2:
             //TODO: 2、测试UINavigationBarAppearance不会马上更新背景的问题
-            print("     (@@ 测试UINavigationBarAppearance不会马上更新背景的问题")
+            print("     (@@ 2、测试UINavigationBarAppearance不会马上更新背景的问题")
             /**
-                1、赋值新对象给navigationBar.standardAppearance是在下一个页面跳转时才会生效，所以要直接修改navigationBar.standardAppearance的属性。
-                    第一次赋值新对象是马上生效，第二次之后都是下一个跳转页面才生效了。
+            1、修改navigationBar.standardAppearance里的属性是在下一个页面跳转时才会生效，所以要直接赋值navigationBar.standardAppearance。
+                第一次赋值新对象是马上生效，第二次之后都是下一个跳转页面才生效了。
              */
             if #available(iOS 13.0, *) {
 //                let appearence = UINavigationBarAppearance()
                 let appearence = navigationController!.navigationBar.standardAppearance
-                appearence.configureWithTransparentBackground()  //在设置appearence的属性值前，必须先调用配置方法。
+                appearence.configureWithOpaqueBackground()  //在设置appearence的属性值前，必须先调用配置方法。
                 appearence.backgroundImage = getColorImg(alpha: 0.5,UIColor.green)    //只是为磨砂效果提供素材而已。
                 appearence.backgroundColor = UIColor.brown.withAlphaComponent(0.3)
+                
+                let scrAppearence = navigationController!.navigationBar.scrollEdgeAppearance
+                scrAppearence?.configureWithOpaqueBackground()  //在设置appearence的属性值前，必须先调用配置方法。
+                scrAppearence?.backgroundImage = getColorImg(alpha: 0.5,UIColor.green)    //只是为磨砂效果提供素材而已。
+                scrAppearence?.backgroundColor = UIColor.brown.withAlphaComponent(0.3)
                 
             } else {
                 // Fallback on earlier versions
@@ -317,7 +318,12 @@ extension TestNavibarUI_VC: UICollectionViewDataSource {
             let target = self.navigationController!.interactivePopGestureRecognizer!.delegate
             */
         case 8:
-            print("     (@@")
+            //TODO:8、push下一个VC
+            print("     (@@8、push下一个VC")
+            let vc = UIViewController()
+            vc.title = "测试导航栏push下一个VC"
+            vc.view.backgroundColor = .red
+            self.navigationController?.pushViewController(vc, animated: true)
         case 9:
             //TODO: 9、测试添加view之后的布局，查看内边距
             /**

@@ -91,7 +91,7 @@ class GradientFontTestLabel: UILabel {
 //            let attStr = NSAttributedString.init(string: self.text ?? "", attributes: [NSAttributedString.Key.font:self.font ?? UIFont.systemFont(ofSize: 18)])
 //            attStr.draw(with: self.bounds, options: .usesLineFragmentOrigin, context: nil)
 //            let fontRect = attStr.size()
-//            attStr.draw(in: CGRect(x: 0, y: 0, width: rect.width, height: rect.height))
+//w            attStr.draw(in: CGRect(x: 0, y: 0, width: rect.width, height: rect.height))
             // 坐标(只对设置后的画到 context 起作用, 之前画的文字不起作用),为什么坐标系要镜像反转？
             // 因为：Quartz中默认的坐标系统是：沿着x轴从左到右坐标值逐渐增大；沿着y轴从下到上坐标值逐渐增大。
 //            context.translateBy(x: 0.0, y: rect.size.height - (rect.size.height - fontRect.height) / 2);   //修改坐标原点
