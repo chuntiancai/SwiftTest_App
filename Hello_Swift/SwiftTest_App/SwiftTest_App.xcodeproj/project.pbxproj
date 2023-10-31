@@ -344,6 +344,7 @@
 		AF2DDAF928AA3E3800E1CCF3 /* TestStatusBar_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAF828AA3E3800E1CCF3 /* TestStatusBar_VC.swift */; };
 		AF2DDAFB28AB684900E1CCF3 /* Table_Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAFA28AB684900E1CCF3 /* Table_Header.swift */; };
 		AF2DDAFD28AB685700E1CCF3 /* Table_Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2DDAFC28AB685700E1CCF3 /* Table_Footer.swift */; };
+		AF2ED2C52AEFA781006898A9 /* Tabar_NaviContainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2ED2C42AEFA781006898A9 /* Tabar_NaviContainVC.swift */; };
 		AF3557B92865B5A5009B291C /* OCRuntime_Person+Property.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3557B82865B5A5009B291C /* OCRuntime_Person+Property.m */; };
 		AF3557BB286AF145009B291C /* Point_Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3557BA286AF145009B291C /* Point_Person.swift */; };
 		AF402FF228D1CC6A00407CEE /* TestMap_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF402FF128D1CC6A00407CEE /* TestMap_VC.swift */; };
@@ -819,6 +820,7 @@
 		AF2DDAF828AA3E3800E1CCF3 /* TestStatusBar_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStatusBar_VC.swift; sourceTree = "<group>"; };
 		AF2DDAFA28AB684900E1CCF3 /* Table_Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table_Header.swift; sourceTree = "<group>"; };
 		AF2DDAFC28AB685700E1CCF3 /* Table_Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table_Footer.swift; sourceTree = "<group>"; };
+		AF2ED2C42AEFA781006898A9 /* Tabar_NaviContainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabar_NaviContainVC.swift; sourceTree = "<group>"; };
 		AF3557B72865B5A5009B291C /* OCRuntime_Person+Property.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OCRuntime_Person+Property.h"; sourceTree = "<group>"; };
 		AF3557B82865B5A5009B291C /* OCRuntime_Person+Property.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "OCRuntime_Person+Property.m"; sourceTree = "<group>"; };
 		AF3557BA286AF145009B291C /* Point_Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point_Person.swift; sourceTree = "<group>"; };
@@ -1580,6 +1582,7 @@
 				04587C7A27B50BC500824F69 /* Tabar_SubVC2测试工具栏UI.swift */,
 				04587C7C27B50BCD00824F69 /* Tabar_SubVC3.swift */,
 				04587C7E27B50BD500824F69 /* Tabar_SubVC4.swift */,
+				AF2ED2C42AEFA781006898A9 /* Tabar_NaviContainVC.swift */,
 				0474C25027D0981200B95D7C /* 自定义tabar_View.swift */,
 				AF88EE782897C22500660C28 /* 子类tabBar.swift */,
 			);
@@ -3410,6 +3413,7 @@
 				04870E4426E9AD280030B1D2 /* AAAnimation.swift in Sources */,
 				0414F98427BDE8260037EE70 /* Quartz_Layer_View.swift in Sources */,
 				04870E3E26E9AD280030B1D2 /* AASubtitle.swift in Sources */,
+				AF2ED2C52AEFA781006898A9 /* Tabar_NaviContainVC.swift in Sources */,
 				042036AC27425A2C00424E05 /* TableSectionHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

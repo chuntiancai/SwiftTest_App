@@ -38,7 +38,7 @@ class SubTabBar:UITabBar{
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        print("SubTabBar 布局之前的子View：\(self.subviews)")
+//        print("SubTabBar 布局之前的子View：\(self.subviews)")
         /// 在中间添加一个按钮。
         
         /// 自定义的btn并不会加入到self.items里面

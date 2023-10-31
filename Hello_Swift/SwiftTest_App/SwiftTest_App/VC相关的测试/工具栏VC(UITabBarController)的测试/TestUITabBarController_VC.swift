@@ -35,6 +35,7 @@ class TestUITabBarController_VC: UIViewController {
     
     //MARK: 测试组件
     let tabVC = TabBar_VC.init()   ///工具栏VC
+    var myNaviVC:UINavigationController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -125,8 +126,35 @@ extension TestUITabBarController_VC: UICollectionViewDataSource {
             app.firstWindow.rootViewController = naviVC
             app.firstWindow.makeKeyAndVisible()
         case 2:
-            //TODO: 2、
-            print("     (@@ 2、")
+            //TODO: 2、测试在window上移除vc后，再次添加VC,会不会调用VC的viewWillAppear方法
+            print("     (@@ 2、测试在window上移除vc后，再次添加VC,会不会调用VC的viewWillAppear方法")
+            
+            if self.myNaviVC != nil {
+                print("已经初始化naviVC了，不再添加")
+                return
+            }
+            self.myNaviVC = UINavigationController(rootViewController: tabVC)
+            myNaviVC!.navigationBar.isHidden = true
+            let vc1 = Tabar_SubVC1() //第1个VC
+            let vc2 = Tabar_SubVC2() //第2个VC
+            let vc3 = Tabar_SubVC3() //第3个VC
+            
+            let vc4 = Tabar_SubVC4() //第4个VC
+//            let naviVC4 = UINavigationController(rootViewController: vc4)
+            vc1.tabBarItem.title = "vc1"
+            vc2.tabBarItem.title = "vc2"
+            vc3.tabBarItem.title = "vc3"
+            vc4.tabBarItem.title = "二级导航vc4"
+            
+            tabVC.addChild(Tabar_NaviContainVC(vc1))  //第1个VC
+            tabVC.addChild(Tabar_NaviContainVC(vc2))  //第2个VC
+            tabVC.addChild(Tabar_NaviContainVC(vc3))  //第3个VC
+            tabVC.addChild(Tabar_NaviContainVC(vc4))  //第4个VC
+            
+            /// 用第二window来展示
+            let app = UIApplication.shared.delegate as! AppDelegate
+            app.firstWindow.rootViewController = myNaviVC!
+            app.firstWindow.makeKeyAndVisible()
         case 3:
             //TODO: 3、
             print("     (@@ ")
@@ -143,9 +171,26 @@ extension TestUITabBarController_VC: UICollectionViewDataSource {
         case 10:
             print("     (@@")
         case 11:
-            print("     (@@")
+            //TODO: 11、显示第一window
+            print("     (@@ 11、显示第一window")
+            let app = UIApplication.shared.delegate as! AppDelegate
+            app.firstWindow.resignKey()
+            app.firstWindow.rootViewController = nil
+            for subView in app.firstWindow.subviews {
+                subView.removeFromSuperview()
+            }
+            app.window?.makeKeyAndVisible()
+         
         case 12:
-            print("     (@@")
+            //TODO: 12、显示第二window
+            print("     (@@ 12、显示第二window")
+            let app = UIApplication.shared.delegate as! AppDelegate
+            app.firstWindow.rootViewController = myNaviVC!
+            app.firstWindow.addSubview(myNaviVC!.view)
+            
+            if app.firstWindow.rootViewController != nil {
+                app.firstWindow.makeKeyAndVisible()
+            }
         default:
             break
         }
