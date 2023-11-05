@@ -14,7 +14,13 @@ print("Hello, World!")
 let exitStr = "exit"
 var isLoop = true
 
-TestODAlgorithm.findFrontThreeChampion()
+
+
+
+
+
+
+TestODAlgorithm.testTreeCount()
 
 while isLoop {
     print("请输入你的指令: ",terminator: "")
