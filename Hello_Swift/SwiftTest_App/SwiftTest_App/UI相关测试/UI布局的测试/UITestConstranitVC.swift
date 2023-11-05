@@ -31,6 +31,10 @@
        因为约束最终是反映在frame上，所以要在UIView的动画block里面调用父view的layoutIfNeeded()方法，这是不等下一个周期里面更新UI，也就是里面设置frame， 这和直接设置frame的效果是一样的，如果是调用setNeedsLayout()方法，则当前修改的约束还没应用到frame上， 也就是frame的值还是之前的， 要等到下一个UI周期才会应用到frame上， 所以在UIview的动画block里的frame值还是旧的值，所以就不会用动画效果，而是在下一个UI周期时，直接就修改了view的frame就直接渲染了，没有在动画效果。
  
     7、translatesAutoresizingMaskIntoConstraints 的本意是将 frame 布局 自动转化为 约束布局，转化的结果是为这个视图自动添加所有需要的约束， 如果我们这时给视图添加自己创建的约束就一定会约束冲突。为了避免上面说的约束冲突，我们在代码创建 约束布局 的控件时 直接指定这个视图不能用frame 布局 （即translatesAutoresizingMaskIntoConstraints=NO），可以放心的去使用约束了。
+ 
+    autoresizingMask是只当父视图的frame发生改变时，由于子视图设置了autoresizingMask属性，所以子视图会根据父视图frame的大小变化而变化。
+    因为autoresizingMask的意思是保持与父视图的间距一样，自动调整间距的意识，是一个枚举数组。子视图的布局也是一开始通过frame布局到父视图中的。
+    view.autoresizingMask = [.flexibleWidth, .flexibleHeight]   //自动调整高度和宽度，以适应间距的比例。
 
 
  

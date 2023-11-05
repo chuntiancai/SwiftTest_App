@@ -7,7 +7,14 @@
 //
 // 测试文字的渐变色的view，使用mask属性。字体渐变色
 
-import UIKit
+// MARK: - 笔记
+/**
+    1、mask属性的使用是，定义了宿主对象的可显示的内容，mask属性就是宿主view的不透明通道，也就是mask属性中的不透明颜色的内容就是宿主对象的可显示的内容轮廓。
+      mask属性中的透明颜色就是遮挡宿主对象的显示内容，注意，mask属性的布局是相对于宿主的坐标系，而不是mask属性的父view，mask的父view是无效的。
+      mask属性不要使用snpkik，不然不知道具体尺寸在什么时候算出来，比较麻烦，虽然是在layoutsubview方法中算出来，但是取出来就比较麻烦。
+    2、
+ */
+
 
 class GradientTestLabelView: UIView {
     //MARK: - 对外属性
@@ -87,27 +94,4 @@ extension GradientTestLabelView{
         
     }
 }
-
-//MARK: -
-extension GradientTestLabelView{
-    
-}
-
-//MARK: -
-extension GradientTestLabelView{
-    
-}
-
-//MARK: -
-extension GradientTestLabelView{
-    
-}
-
-// MARK: - 笔记
-/**
-    1、mask属性的使用是，定义了宿主对象的可显示的内容，mask属性就是宿主view的不透明通道，也就是mask属性中的不透明颜色的内容就是宿主对象的可显示的内容轮廓。
-      mask属性中的透明颜色就是遮挡宿主对象的显示内容，注意，mask属性的布局是相对于宿主的坐标系，而不是mask属性的父view，mask的父view是无效的。
-      mask属性不要使用snpkik，不然不知道具体尺寸在什么时候算出来，比较麻烦，虽然是在layoutsubview方法中算出来，但是取出来就比较麻烦。
-    2、
- */
 

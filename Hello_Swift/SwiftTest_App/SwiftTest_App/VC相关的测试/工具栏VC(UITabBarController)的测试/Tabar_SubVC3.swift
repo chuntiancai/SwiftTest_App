@@ -6,6 +6,11 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 //测试UITabBarController的子VC
+// MARK: - 笔记
+/**
+ 
+ */
+
 
 class Tabar_SubVC3: UIViewController {
     
@@ -31,7 +36,10 @@ class Tabar_SubVC3: UIViewController {
         initTestViewUI()
     }
 
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("Tabar_SubVC3的\(#function)方法～")
+    }
 }
 
 
@@ -182,7 +190,3 @@ extension Tabar_SubVC3: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 笔记
-/**
- 
- */

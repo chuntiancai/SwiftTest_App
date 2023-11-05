@@ -36,10 +36,12 @@ class Tabar_SubVC2: UIViewController {
         // 设置工具栏的UI
         self.tabBarItem.title = "SubVC2"
 
-        
-        
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("Tabar_SubVC2的\(#function)方法～")
+    }
 
 }
 

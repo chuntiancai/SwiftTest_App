@@ -24,14 +24,22 @@
  
             协议方法：gestureRecognizerShouldBegin(_: ) 返回false的话，把当前识别器的状态置为fail。
  
-            协议方法：gestureRecognizer(_:shouldRequireFailureOf:) 当前识别器是否应该把别的识别器置为失败状态。
-                    该方法在当前识别器每次尝试识别手势的时候就被调用。
+            协议方法：gestureRecognizer(_:shouldRequireFailureOf:) 是否等待别人失败后，自己才行动。
  
-            协议方法：gestureRecognizer(_:shouldRequireFailureOf:) 当前识别器是否应该被别的识别器置为失败状态。
-                    该方法在当前识别器每次尝试识别手势的时候就被调用。
+            协议方法：gestureRecognizer(_:shouldBeRequiredToFailBy:) 别人是否等我失败后，才可以行动。
  
     3、UIGestureRecognizerDelegate的方法是用于处理 手势还没开始识别前，让哪个识别器生效。
        如果是要识别了之后再让识别器失效，或者暂时失效，则可以通过判断gesture的translation来获取位移坐标，然后设置gesture的状态为failed来使当前识别器无效。
+ 
+    4、如果要实现侧滑退出和UIScrollView的滑动同时可以滑，那么需要自定义一个ScrollView，然后实现UIGestureRecognizerDelegate协议。
+        1.在shouldRequireFailureOf协议方法中，等待UIScreenEdgePanGestureRecognizer.self失败后才开始识别。
+            if otherGestureRecognizer.isKind(of: UIScreenEdgePanGestureRecognizer.self){
+                return true
+            }
+        2.在shouldRecognizeSimultaneouslyWith协议方法中，允许两个手势同时识别。
+            if otherGestureRecognizer.isKind(of: UIScreenEdgePanGestureRecognizer.self){
+                return true
+            }
  
  */
 

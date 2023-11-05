@@ -30,6 +30,8 @@
         2.如果想把事件传递给别人，则调用别人的touchBegan方法。
             在自己的touchesBegan方法中直接调用下一个响应者的self.next?.touchesBegan(touches, with: event)。不再调用super.touchesBegan方法。
  
+    7、如果你想在子VC之前拦截到寻找链的点击，那么你可以在父VC上定义一个手势识别器，然后遵循UIGestureRecognizerDelegate协议，
+       在协议的gestureRecognizerShouldBegin方法里，可以找到寻找链的坐标，然后如果你不拦截的话，也会经过这里，但是不拦截需要设置tapGesture.cancelsTouchesInView = false，这样别人也可以响应点击事件，你也可以蹭蹭。
  */
 
 class TestTouchDeliver_VC: UIViewController {
