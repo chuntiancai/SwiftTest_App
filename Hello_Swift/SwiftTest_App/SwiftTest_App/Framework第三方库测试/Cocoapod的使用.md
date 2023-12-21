@@ -15,8 +15,29 @@
                  （tag 和yourLibName.podspec中s.version 的保持一致）
                  
 ## pod命令
-    pod update 库名 --verbose --no-repo-update    //只更新指定的库，其它库忽略
-    pod install --verbose --no-repo-update      //只想给项目添加新的第三方，不更新本地已经存在的第三方
+    pod update ：这个命令会检查podfile.lock文件中的pod依赖库的版本，并进行更新，会重新生成一个podfile.lock文件。
+    pod update 库名 --verbose --no-repo-update:  只更新指定的库，其它库忽略
+    
+    pod install : 会根据podfile.lock文件中指定的pod依赖库的版本去拉去项目的pod依赖库。在首次执行pod install命令时，
+                  如果不存在podfile.lock文件会生成，podfile.lock文件，并且同时生成xcworkspace文件和pods文件夹。
+                  
+    pod install --verbose --no-repo-update : 只想给项目添加新的第三方，不更新本地已经存在的第三方，根据podfile.lock文件限制第三方库的版本。
+    
+    pod search ：用来搜索可以使用的pod依赖库，搜索结果中会向我们展示怎么在pod中使用该依赖库
+    pod repo add NAME URL[branch] : 使用自己的pod仓库，会有更快的pod依赖库的操作速度。
+    
+    pod list ：列出所有项目依赖仓库中的pod依赖库。
+    pod repo ：用来管理pod依赖仓库的地址。
+    pod spec ：管理pod规范。
+    pod init ：在当前目录下创建一个podfile文件，我们可以通过将需要的pod依赖库添加到podfile文件中，实现在项目中添加依赖。
+    pod env ：来打印出pod的环境，一般是podfile文件中的内容。
+    pod cache ：管理cocoapod的缓存：可以用来清空内存，也可以用来查看每个pod库的缓存。
+    pod outdate ：展示出可更新版本的pod依赖库。
+
+作者：pokerface_max
+链接：https://www.jianshu.com/p/fb533c4a6a5d
+来源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
                  
 ## podspec语法：
     1、podspec是cocoapod库的描述文件，cocoapod通过读取podspec文件里的信息，对路径中的文件进行加载，处理，包装成framework来使用。
