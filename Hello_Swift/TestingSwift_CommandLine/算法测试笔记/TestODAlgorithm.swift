@@ -7,7 +7,142 @@
 //
 // OD考试的刷题
 
+import Darwin
+
 struct TestODAlgorithm {
+    
+    //测试补种的课数
+    static func testTreeCount(){
+        
+        struct TreeAliveStruct{
+
+            var firstIndex:Int = 0  //第一课树的索引
+            var lastIndex:Int = 0   //最后一棵树的索引
+            var aliveCount:Int = 0  //存活的个数
+            var preTreeIndex:Int = 0    //前一树堆的最后一棵树的索引
+            var nextTreeIndex:Int = 0   //下一个树堆的第一个索引
+            var andNextAliveCount = 0 //和下一堆树之间的活树的个数
+            var andNextDieCount = 0  //和下一堆树之间死树的个数
+            var andNextTotalCount = 0   //和下一堆树之间总的死树和活树的数量
+        }
+        
+        // 1、找得到每一堆连续存活的树，记录下存活连续树的数组，找到最多的连续存活的树
+        // 2、找到相邻三堆树之间，死树的个数，总数的个数，类似归并排序。(递归)
+        //      找到相邻两堆活树之间，个数最多，间隔最短的。
+        // 3、
+        
+        let totalTreeCout = 100
+        let aliveTree = 50
+        let dieTreeArr = [12,23,34,45]
+        let applyTreeCount = 3
+        
+        //模拟已经死了的树
+        var totalTreeArr:[Int] = Array(repeating: 1, count: 100)
+        for dieIndex in dieTreeArr {
+            totalTreeArr[dieIndex] = 0
+        }
+        var allTreeStructArr = [TreeAliveStruct]()
+        var preStruct = &allTreeStructArr
+        var isCounting = false  //是否正在数活着的树
+        
+        for index in 0 ..< totalTreeArr.count {
+            let num = totalTreeArr[index]
+            if num == 1 {
+                if !isCounting {
+                    isCounting = true
+                    preStruct.nextTreeIndex = index //下一个树堆
+                    //新建树堆
+                    var curStruct = TreeAliveStruct()
+                    curStruct.firstIndex = index
+                    curStruct.aliveCount = 1
+                    curStruct.preTreeIndex = preStruct.lastIndex    //前一个树堆
+                    preStruct = curStruct
+                    allTreeStructArr.append(curStruct)
+                }else{
+                    preStruct.aliveCount += 1
+                }
+            }else{
+                //遇到的第一课死树
+                if isCounting {
+                    isCounting = false
+                    //处理前一堆树
+                    preStruct.lastIndex = index - 1
+                }
+            }
+        }
+        
+        print("打印的树：\(totalTreeArr)")
+        print("打印添加的树堆：\(allTreeStructArr)")
+
+        //
+        
+        
+    }
+    
+    
+    //            var isAlive = true //是否存活
+    //            var dieCount:Int = 0    //死掉的树
+    
+    
+    //        if totalTreeArr.first == 0 {
+    //            preStruct.isAlive = false
+    //            preStruct.dieCount = 1
+    //            isCounting = false
+    //        }
+    //        allTreeArr.append(preStruct)
+    
+    
+    //测试车的最近距离
+    static func testCarDistance(){
+        let myNumArr = [0,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,]
+        //1、找到数组中所有的0，记录0的个数,记录1前面有多少个0
+        //2、找到相邻两个1之间的最大差距
+        //  那其实还不如记录0的个数更加好一些，记录0最大的个数，第一个0的下标
+        //  用字典记录第一个0的下标和个数，对字典进行排序。
+        //  第一个1前面是0的情况
+        
+        var numDict:[Int:Int] = [Int:Int]()
+        var zeroCount = 0
+        
+        for index in 0 ..< myNumArr.count {
+            let curNum = myNumArr[index]
+            if curNum == 0 {
+                zeroCount += 1
+            }else if curNum == 1 {
+                numDict[index] = zeroCount
+                zeroCount = 0
+            }
+            if index == myNumArr.count - 1 && curNum == 0{
+                numDict[index] = zeroCount   //记录最后一排0
+            }
+        }
+       
+        
+        //处理两端情况
+        if let firstIndex = myNumArr.firstIndex(of: 1) {
+            numDict[firstIndex] = (numDict[firstIndex] ?? 0) * 2
+        }
+        if myNumArr.last == 0 {
+            numDict[myNumArr.count - 1] = (numDict[myNumArr.count - 1] ?? 0)  * 2
+        }
+        
+        print("当前的字典是：\(numDict)")
+        let newDict = numDict.sorted(by: {$0.1 > $1.1})
+//       let newDict = numDict.values.sorted()
+        print("之后的字典是：\(newDict) -- \(String(describing: newDict.first))")
+        let maxIndex = newDict.first?.key ?? 1
+        let maxCount = numDict[maxIndex] ?? 0
+        var curMaxIndex = maxIndex - Int(Float(maxCount) * 0.5)
+        if maxIndex == myNumArr.count - 1 {
+            curMaxIndex = myNumArr.count - 1
+        }
+        print("当前的车位是：\(curMaxIndex) -- \(myNumArr.count)")
+        
+        
+       
+        
+    }
+    
     
     //找出前三个冠军
     //其实直接排序，然后找出前三就可以了
