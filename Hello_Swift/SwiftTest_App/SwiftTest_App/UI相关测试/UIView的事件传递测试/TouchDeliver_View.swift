@@ -38,7 +38,7 @@
     响应链回调：targetView->View->ViewController->UIWindow->UIApplication
 
     （第一响应者：）
-    1、通过hitTest方法找到目标视图，此时的目标视图就是第一响应者。然后UIKit产生UITouch，传递给第一响应者在touchesBegan系列方法中消化处理事件。如果你不处理，则将UITouch事件传递给下一个响应者，下一个响应者在它的touchesBegan系列方法中处理消化事件，以此类推。会一直沿着响应链传递，一直出触发链上每一个响应者的touchesBegan系列方法，直到有一个响应者吧next responder置为nil，就会阻断事件的传递了。
+    1、通过hitTest方法找到目标视图，此时的目标视图就是第一响应者。然后UIKit产生UITouch，传递给第一响应者在touchesBegan系列方法中消化处理事件。如果你不处理，则将UITouch事件传递给下一个响应者，下一个响应者在它的touchesBegan系列方法中处理消化事件，以此类推。会一直沿着响应链传递，一直出触发链上每一个响应者的touchesBegan系列方法，直到有一个响应者把next responder置为nil，就会阻断事件的传递了。
  
     注意：
         1、很多笔记说的传递过程其实就是寻找目标视图的过程，只不过它也叫做传递罢了，然后后面的过程它就叫做响应过程，也就是响应链。所以容易造成歧议。

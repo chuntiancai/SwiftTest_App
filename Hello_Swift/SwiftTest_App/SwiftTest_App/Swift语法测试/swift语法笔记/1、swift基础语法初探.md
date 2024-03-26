@@ -256,7 +256,7 @@ inout参数只能传递能多次被赋值的
 
     var stu: Any = 10
     stu = "Jack"
-    stu = Student()
+    stu = Student() 
     
     // 创建1个能存放任意类型的数组
     // var data = Array<Any>()

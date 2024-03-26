@@ -9,12 +9,14 @@
 //MARK: - 笔记
 /**
     1、每一个线程维护一个runloop，如果不去获取，则没有runloop：
-        runloop是一个对象，里面的主要源码是do-while循环。因为runloop一直do-while，所以线程就没有被销毁，但是如果线程没有runloop， 那么该线程执行完它的任务就被销毁了。runloop是apple设计的一种数据结构而已，也可以理解为一种机制，一种模式，随便你怎么叫。
+        runloop是一个对象，是事件循环机制，里面的主要源码是do-while循环。
+        因为runloop一直do-while，所以线程就没有被销毁，但是如果线程没有runloop，那么该线程执行完它的任务就被销毁了。
+        runloop是apple设计的一种数据结构而已，也可以理解为一种机制，一种模式，随便你怎么叫。
         
-        除了主线程，其他线程的runloop在线程内第一次获取时创建，在线程结束时销毁Thread.exit()。runloop也可以在运行时设置一个存在时间，时间到了自动销毁。
+        除了主线程，其他线程的runloop在线程内第一次获取时创建，在线程结束时销毁Thread.exit()。 runloop也可以在运行时设置一个存在时间，时间到了自动销毁。
  
     2、runloop中所谓的运行模式(mode)：
-        其实就是内部的成员数据结构，runloop只能在特定一种mode(模式)下运行，其实就是只能异步处理一种内部数据结构，也就是某一时刻只能处理一种运行模式， 但是多个运行模式可以切换。然后mode这种数据结构内部又有三种子数据结构，也就是所谓的source、timer、observer，而mode可以同时拥有多个source，也就表现出了一个mode(运行模式)可以处理多个source(事件源).
+        其实就是内部的成员数据结构，runloop只能在特定一种mode(模式)下运行，其实就是只能异步处理一种内部数据结构， 也就是某一时刻只能处理一种运行模式，但是多个运行模式可以切换。然后mode这种数据结构内部又有三种子数据结构， 也就是所谓的source、timer、observer，而mode可以同时拥有多个source，也就表现出了一个mode(运行模式)可以处理多个source(事件源).
         
         (mode之间可以切换，也会自动切换，但是某一时刻只会在一种运行模式下执行)
             ：所以scrollView拖动的时候，由于runloop会切换在UITrackingRunLoopMode运行，而此时如果定时器本来是运行在kCFRynLoopDefaultMode模式的，那么定时器将会停止运行， 等到runloop切换(或自动)到kCFRynLoopDefaultMode时，定时器才会恢复运行。
@@ -34,15 +36,25 @@
 
  
     3、mode中的source0与source1:
-        官网说，其实不用太纠结，就是source1是内核调度(基于port)，source0是用户调度而已。但用户使用起来，不用太在意这两者的区别。直接用添加source事件就可以了。
+        官网说，其实不用太纠结，就是source1是内核调度(基于port)，source0是用户调度而已。
+        source0是处理触摸事件，source1主要用于线程间通信。
+        但用户使用起来，不用太在意这两者的区别。直接用添加source事件就可以了。
         例如点击按钮这些事件，都是通过source传递到runloop的。
+        RunLoop 需要处理的消息，包括 time 、observer对象、 source 消息，它们都属于 Mode item。
+        所有的 mode item 都可以被添加到 Mode 中，Mode 中包含可以包含多个 mode item，一个 item 可以被同时加入多个 mode。
+        但一个 item 被重复加入同一个 mode 时是不会有效果的。如果一个 mode 中一个 item 都没有，则 RunLoop 会直接退出，不进入循环。
+
     
-    4、CFRunLoopRef是用C语言写的Runloop，NSRunLoop是用OC语言写的runloop，而NSRunLoop是基于CFRunLoopRef的。NSRunLoop是foundation框架，CFRunLoopRef是Core Foundation框架里的(CF)。
+    4、CFRunLoopRef是用C语言写的Runloop，NSRunLoop是用OC语言写的runloop，而NSRunLoop是基于CFRunLoopRef的。
+       NSRunLoop是foundation框架，CFRunLoopRef是Core Foundation框架里的(CF)。
  
     5、runloop的定时器不够精准，但是GCD的定时器是绝对精准的。
  
-    6、runloop的自动释放池，池内其实就是timer，obsever，source这些对象的引用。在第一次启动runloop时，runloop就会创建一个释放池，当runloop最后一次销毁的时候，就会释放对象引用， 销毁释放池。
+    6、runloop的自动释放池，池内其实就是timer，obsever，source这些对象的引用。
+       在第一次启动runloop时，runloop就会创建一个释放池，当runloop最后一次销毁的时候，就会释放对象引用销毁，释放池。
         休眠和唤醒的时候也会销毁和创建 释放池。
+ 
+    7、
  
  */
 
@@ -178,7 +190,7 @@ extension TestRunLoopVC: UICollectionViewDataSource {
             }
             
         case 3:
-            //TODO:3、 往常驻线程中添加任务
+            //TODO: 3、往常驻线程中添加任务
             print("     (@@ 往常驻线程中添加任务：")
             if let _ = stayThread {
                 /// 所以该方法也可以用于线程间的通信啊，亲
@@ -186,7 +198,7 @@ extension TestRunLoopVC: UICollectionViewDataSource {
             }
             
         case 4:
-            //TODO:4、线程加锁
+            //TODO: 4、线程加锁
             print("     (@@ 线程加锁")
             let thread1 = Thread.init(target: self, selector: #selector(addLockNumAction), object: nil)
             thread1.name = "Thead1--甲"
@@ -196,7 +208,7 @@ extension TestRunLoopVC: UICollectionViewDataSource {
             thread1.start()
             thread2.start()
         case 5:
-            //TODO:5、测试runloop中的定时器
+            //TODO: 5、测试runloop中的定时器
             print("     (@@ 添加定时器到runloop中")
             let myTimer = Timer.init(timeInterval: 2.0, target: self, selector: #selector(testRunLoopTimerAction), userInfo: nil, repeats: true)
             /// 添加到runloop的默认运行模式中。你也可以(或同时)添加到UI追踪模式，或者抽象模式--那就均可以工作。

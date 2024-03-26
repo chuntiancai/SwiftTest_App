@@ -32,7 +32,7 @@
     1、UIWindow是一个特殊的view，但本质也是view，每个app至少要有一个UIwindow。
     2、app启动后，如果有Main.storyboard文件，那么UIKit默认就会创建一个UIwindow来承载Main.storyboard。
        其实没有Main.storyboard，也要你创建一个UIwindow来承载你在代码中指定的View。
-    3、所以没有指定Main.storyboard文件时，你要在UIApplicationDelegate的代理方法中，指定作为根VC的view，然后把该view添加到你创建的UIWindow上。
+    3、所以没有指定Main.storyboard文件时，你要在UIApplicationDelegate的代理方法中， 指定作为根VC的view，然后把该view添加到你创建的UIWindow上。
         调用window的[window makeKeyAndVisible];方法，使该window成为主window，然后启动完成后就显示该window
     4、键盘，状态栏其实都是UIWindow对象。ios9之后，如果添加了多个窗口，那么VC默认会把状态栏隐藏掉。你可以选择把状态栏交给info.plist来管理。
     5、可以设置UIWindow的等级来显示窗口。

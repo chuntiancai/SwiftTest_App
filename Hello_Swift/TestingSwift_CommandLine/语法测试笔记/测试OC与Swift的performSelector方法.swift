@@ -6,6 +6,17 @@
 //  Copyright © 2021 com.ctchTeamIOS. All rights reserved.
 //
 
+// MARK: - 笔记
+/**
+ 
+1、运行时绑定方法，必须是OC的方法，所以必须加上@objc关键字。
+2、let returnValue = person.perform(selector, with: nil).takeRetainedValue() 需要调用takeRetainedValue()对方法的返回值解包，否则返回的是Unmanaged<AnyObject>!类型。
+3、let workName = Bundle.main.infoDictionary?["CFBundleExecutable"] as! String 这个是ios的app的plist目录，mac app没有这个目录，通过字符串来获取类，必须传入类的完整类名，也就是必须带上plist目录名字的前缀，也就是：
+        let workName = Bundle.main.infoDictionary?["CFBundleExecutable"] as! String
+        let class_VC = NSClassFromString("\(workName).\(className)") as! BaseController.Type    //具体类信息
+        let vc = class_VC.init()
+ */
+
 import Foundation
 
 class Person:NSObject{
@@ -39,22 +50,10 @@ class Student: Person {
 
 
 
-// MARK: - 测试代码
-/**
- 
- */
 
 
 
 
 
-// MARK: - 笔记
-/**
- 
-1、运行时绑定方法，必须是OC的方法，所以必须加上@objc关键字。
-2、let returnValue = person.perform(selector, with: nil).takeRetainedValue() 需要调用takeRetainedValue()对方法的返回值解包，否则返回的是Unmanaged<AnyObject>!类型。
-3、let workName = Bundle.main.infoDictionary?["CFBundleExecutable"] as! String 这个是ios的app的plist目录，mac app没有这个目录，通过字符串来获取类，必须传入类的完整类名，也就是必须带上plist目录名字的前缀，也就是：
-        let workName = Bundle.main.infoDictionary?["CFBundleExecutable"] as! String
-        let class_VC = NSClassFromString("\(workName).\(className)") as! BaseController.Type    //具体类信息
-        let vc = class_VC.init()
- */
+
+

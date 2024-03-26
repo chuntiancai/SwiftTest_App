@@ -12,10 +12,49 @@
 		658D4722262575D200AD6349 /* TestAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658D4721262575D200AD6349 /* TestAlgorithm.swift */; };
 		AF2C72FC2553995D000AD7A9 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2C72FB2553995D000AD7A9 /* main.swift */; };
 		AFFDBB912A7CEC0800FF793B /* TestODAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDBB902A7CEC0800FF793B /* TestODAlgorithm.swift */; };
+		EB01B0202BA0126F00101D39 /* Class与Struct的区别.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB01B01F2BA0126F00101D39 /* Class与Struct的区别.swift */; };
+		EB01B0222BA0281200101D39 /* swift中的闭包.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB01B0212BA0281200101D39 /* swift中的闭包.swift */; };
+		EB197B022B99D96600A55BDE /* Swift二叉树遍历.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB197B012B99D96600A55BDE /* Swift二叉树遍历.swift */; };
+		EB395DCF2B9314880078F22B /* Swift窗口的使用.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB395DCE2B9314880078F22B /* Swift窗口的使用.swift */; };
+		EB3C91692BB2BDE6007B5500 /* 数组做标志器.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3C91682BB2BDE6007B5500 /* 数组做标志器.swift */; };
+		EB4517A42BA7DB0D0096041F /* 枚举与可选类型.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4517A32BA7DB0D0096041F /* 枚举与可选类型.swift */; };
+		EB765AB12B9067760083B658 /* BFS广度优先搜索.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB765AB02B9067760083B658 /* BFS广度优先搜索.swift */; };
+		EB765AB92B9077580083B658 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB765AB82B9077580083B658 /* main.swift */; };
+		EB765AC42B907E1B0083B658 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB765AC32B907E1B0083B658 /* main.swift */; };
+		EB9035D72B917A4100B49F76 /* Swift标准库的排序等算法.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9035D62B917A4100B49F76 /* Swift标准库的排序等算法.swift */; };
+		EB9035D92B917AB800B49F76 /* Swift高阶函数.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9035D82B917AB800B49F76 /* Swift高阶函数.swift */; };
+		EB9035DB2B91AC9700B49F76 /* Swift集合的算法.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9035DA2B91AC9700B49F76 /* Swift集合的算法.swift */; };
+		EB9D50CD2BA1B25700341EE5 /* OC与Swift的优缺点.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9D50CC2BA1B25700341EE5 /* OC与Swift的优缺点.swift */; };
+		EB9D50CF2BA1B4CB00341EE5 /* OC的runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = EB9D50CE2BA1B4CB00341EE5 /* OC的runtime.m */; };
+		EB9DCC062B9700BC00DE977B /* Swift逆向思维左右大小颠倒.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9DCC052B9700BB00DE977B /* Swift逆向思维左右大小颠倒.swift */; };
+		EB9DCC082B97204E00DE977B /* Swift递归算法.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9DCC072B97204E00DE977B /* Swift递归算法.swift */; };
+		EB9DCC0A2B9746B800DE977B /* DFS深度优先搜索.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9DCC092B9746B800DE977B /* DFS深度优先搜索.swift */; };
+		EBA23BBD2B92C60500D9D01C /* Swift单调栈的使用.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA23BBC2B92C60500D9D01C /* Swift单调栈的使用.swift */; };
+		EBC451E32BA45F6B002350E8 /* Swfit中的枚举.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC451E22BA45F6B002350E8 /* Swfit中的枚举.swift */; };
+		EBE3E1B42BA93AA600CDD6AC /* Runloop机制.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE3E1B32BA93AA600CDD6AC /* Runloop机制.swift */; };
+		EBFC906B2B996AC30065C19C /* Swift字符串操作.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFC906A2B996AC30065C19C /* Swift字符串操作.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		AF2C72F62553995D000AD7A9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		EB765AB42B9077580083B658 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		EB765ABF2B907E1A0083B658 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -34,10 +73,47 @@
 		AF2C72FB2553995D000AD7A9 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		AFFDBB8B2A7A31C700FF793B /* CommadLine笔记.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "CommadLine笔记.md"; sourceTree = "<group>"; };
 		AFFDBB902A7CEC0800FF793B /* TestODAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestODAlgorithm.swift; sourceTree = "<group>"; };
+		EB01B01F2BA0126F00101D39 /* Class与Struct的区别.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Class与Struct的区别.swift"; sourceTree = "<group>"; };
+		EB01B0212BA0281200101D39 /* swift中的闭包.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "swift中的闭包.swift"; sourceTree = "<group>"; };
+		EB197B012B99D96600A55BDE /* Swift二叉树遍历.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift二叉树遍历.swift"; sourceTree = "<group>"; };
+		EB395DCE2B9314880078F22B /* Swift窗口的使用.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift窗口的使用.swift"; sourceTree = "<group>"; };
+		EB3C91682BB2BDE6007B5500 /* 数组做标志器.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "数组做标志器.swift"; sourceTree = "<group>"; };
+		EB4517A32BA7DB0D0096041F /* 枚举与可选类型.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "枚举与可选类型.swift"; sourceTree = "<group>"; };
+		EB765AB02B9067760083B658 /* BFS广度优先搜索.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BFS广度优先搜索.swift"; sourceTree = "<group>"; };
+		EB765AB62B9077580083B658 /* TestBFS */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestBFS; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB765AB82B9077580083B658 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		EB765AC12B907E1A0083B658 /* TestMain */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestMain; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB765AC32B907E1B0083B658 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		EB9035D62B917A4100B49F76 /* Swift标准库的排序等算法.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift标准库的排序等算法.swift"; sourceTree = "<group>"; };
+		EB9035D82B917AB800B49F76 /* Swift高阶函数.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift高阶函数.swift"; sourceTree = "<group>"; };
+		EB9035DA2B91AC9700B49F76 /* Swift集合的算法.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift集合的算法.swift"; sourceTree = "<group>"; };
+		EB9D50CC2BA1B25700341EE5 /* OC与Swift的优缺点.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OC与Swift的优缺点.swift"; sourceTree = "<group>"; };
+		EB9D50CE2BA1B4CB00341EE5 /* OC的runtime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "OC的runtime.m"; sourceTree = "<group>"; };
+		EB9DCC052B9700BB00DE977B /* Swift逆向思维左右大小颠倒.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift逆向思维左右大小颠倒.swift"; sourceTree = "<group>"; };
+		EB9DCC072B97204E00DE977B /* Swift递归算法.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift递归算法.swift"; sourceTree = "<group>"; };
+		EB9DCC092B9746B800DE977B /* DFS深度优先搜索.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DFS深度优先搜索.swift"; sourceTree = "<group>"; };
+		EBA23BBC2B92C60500D9D01C /* Swift单调栈的使用.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift单调栈的使用.swift"; sourceTree = "<group>"; };
+		EBC451E22BA45F6B002350E8 /* Swfit中的枚举.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swfit中的枚举.swift"; sourceTree = "<group>"; };
+		EBE3E1B32BA93AA600CDD6AC /* Runloop机制.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Runloop机制.swift"; sourceTree = "<group>"; };
+		EBFC906A2B996AC30065C19C /* Swift字符串操作.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift字符串操作.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		AF2C72F52553995D000AD7A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB765AB32B9077580083B658 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB765ABE2B907E1A0083B658 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -52,6 +128,18 @@
 			children = (
 				658D4721262575D200AD6349 /* TestAlgorithm.swift */,
 				AFFDBB902A7CEC0800FF793B /* TestODAlgorithm.swift */,
+				EB765AB02B9067760083B658 /* BFS广度优先搜索.swift */,
+				EB9035D62B917A4100B49F76 /* Swift标准库的排序等算法.swift */,
+				EB9035D82B917AB800B49F76 /* Swift高阶函数.swift */,
+				EB9035DA2B91AC9700B49F76 /* Swift集合的算法.swift */,
+				EBA23BBC2B92C60500D9D01C /* Swift单调栈的使用.swift */,
+				EB395DCE2B9314880078F22B /* Swift窗口的使用.swift */,
+				EB9DCC052B9700BB00DE977B /* Swift逆向思维左右大小颠倒.swift */,
+				EB9DCC072B97204E00DE977B /* Swift递归算法.swift */,
+				EB9DCC092B9746B800DE977B /* DFS深度优先搜索.swift */,
+				EBFC906A2B996AC30065C19C /* Swift字符串操作.swift */,
+				EB197B012B99D96600A55BDE /* Swift二叉树遍历.swift */,
+				EB3C91682BB2BDE6007B5500 /* 数组做标志器.swift */,
 			);
 			path = "算法测试笔记";
 			sourceTree = "<group>";
@@ -63,6 +151,8 @@
 				AFFDBB8B2A7A31C700FF793B /* CommadLine笔记.md */,
 				658D47202625759600AD6349 /* 算法测试笔记 */,
 				AF98A8002574F148007DA3E9 /* 语法测试笔记 */,
+				EB765AB72B9077580083B658 /* TestBFS */,
+				EB765AC22B907E1B0083B658 /* TestMain */,
 				AF2C72F92553995D000AD7A9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,6 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				AF2C72F82553995D000AD7A9 /* SwiftTest_CommandLine */,
+				EB765AB62B9077580083B658 /* TestBFS */,
+				EB765AC12B907E1A0083B658 /* TestMain */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,10 +170,33 @@
 		AF98A8002574F148007DA3E9 /* 语法测试笔记 */ = {
 			isa = PBXGroup;
 			children = (
+				EB9D50CE2BA1B4CB00341EE5 /* OC的runtime.m */,
+				EBE3E1B32BA93AA600CDD6AC /* Runloop机制.swift */,
+				EB9D50CC2BA1B25700341EE5 /* OC与Swift的优缺点.swift */,
 				04600047271D13BD0074DFA2 /* 测试OC与Swift的performSelector方法.swift */,
 				04848072277C4A7400698106 /* 测试for-In循环是否顺序.swift */,
+				EB01B01F2BA0126F00101D39 /* Class与Struct的区别.swift */,
+				EB4517A32BA7DB0D0096041F /* 枚举与可选类型.swift */,
+				EB01B0212BA0281200101D39 /* swift中的闭包.swift */,
+				EBC451E22BA45F6B002350E8 /* Swfit中的枚举.swift */,
 			);
 			path = "语法测试笔记";
+			sourceTree = "<group>";
+		};
+		EB765AB72B9077580083B658 /* TestBFS */ = {
+			isa = PBXGroup;
+			children = (
+				EB765AB82B9077580083B658 /* main.swift */,
+			);
+			path = TestBFS;
+			sourceTree = "<group>";
+		};
+		EB765AC22B907E1B0083B658 /* TestMain */ = {
+			isa = PBXGroup;
+			children = (
+				EB765AC32B907E1B0083B658 /* main.swift */,
+			);
+			path = TestMain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -104,18 +219,59 @@
 			productReference = AF2C72F82553995D000AD7A9 /* SwiftTest_CommandLine */;
 			productType = "com.apple.product-type.tool";
 		};
+		EB765AB52B9077580083B658 /* TestBFS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB765ABA2B9077580083B658 /* Build configuration list for PBXNativeTarget "TestBFS" */;
+			buildPhases = (
+				EB765AB22B9077580083B658 /* Sources */,
+				EB765AB32B9077580083B658 /* Frameworks */,
+				EB765AB42B9077580083B658 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TestBFS;
+			productName = TestBFS;
+			productReference = EB765AB62B9077580083B658 /* TestBFS */;
+			productType = "com.apple.product-type.tool";
+		};
+		EB765AC02B907E1A0083B658 /* TestMain */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB765AC52B907E1B0083B658 /* Build configuration list for PBXNativeTarget "TestMain" */;
+			buildPhases = (
+				EB765ABD2B907E1A0083B658 /* Sources */,
+				EB765ABE2B907E1A0083B658 /* Frameworks */,
+				EB765ABF2B907E1A0083B658 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TestMain;
+			productName = TestMain;
+			productReference = EB765AC12B907E1A0083B658 /* TestMain */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		AF2C72F02553995C000AD7A9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1160;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1340;
 				ORGANIZATIONNAME = com.fendaTeamIOS;
 				TargetAttributes = {
 					AF2C72F72553995D000AD7A9 = {
 						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1330;
+					};
+					EB765AB52B9077580083B658 = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+					EB765AC02B907E1A0083B658 = {
+						CreatedOnToolsVersion = 13.3.1;
 					};
 				};
 			};
@@ -133,6 +289,8 @@
 			projectRoot = "";
 			targets = (
 				AF2C72F72553995D000AD7A9 /* SwiftTest_CommandLine */,
+				EB765AB52B9077580083B658 /* TestBFS */,
+				EB765AC02B907E1A0083B658 /* TestMain */,
 			);
 		};
 /* End PBXProject section */
@@ -142,11 +300,46 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB9DCC082B97204E00DE977B /* Swift递归算法.swift in Sources */,
+				EB9D50CF2BA1B4CB00341EE5 /* OC的runtime.m in Sources */,
+				EB197B022B99D96600A55BDE /* Swift二叉树遍历.swift in Sources */,
+				EB3C91692BB2BDE6007B5500 /* 数组做标志器.swift in Sources */,
+				EBA23BBD2B92C60500D9D01C /* Swift单调栈的使用.swift in Sources */,
+				EB9D50CD2BA1B25700341EE5 /* OC与Swift的优缺点.swift in Sources */,
+				EBE3E1B42BA93AA600CDD6AC /* Runloop机制.swift in Sources */,
+				EB9DCC0A2B9746B800DE977B /* DFS深度优先搜索.swift in Sources */,
+				EB01B0202BA0126F00101D39 /* Class与Struct的区别.swift in Sources */,
 				AF2C72FC2553995D000AD7A9 /* main.swift in Sources */,
+				EB4517A42BA7DB0D0096041F /* 枚举与可选类型.swift in Sources */,
+				EB9DCC062B9700BC00DE977B /* Swift逆向思维左右大小颠倒.swift in Sources */,
+				EBC451E32BA45F6B002350E8 /* Swfit中的枚举.swift in Sources */,
 				04848073277C4A7400698106 /* 测试for-In循环是否顺序.swift in Sources */,
+				EB395DCF2B9314880078F22B /* Swift窗口的使用.swift in Sources */,
+				EB9035D92B917AB800B49F76 /* Swift高阶函数.swift in Sources */,
+				EB765AB12B9067760083B658 /* BFS广度优先搜索.swift in Sources */,
 				04600048271D13BD0074DFA2 /* 测试OC与Swift的performSelector方法.swift in Sources */,
+				EB9035DB2B91AC9700B49F76 /* Swift集合的算法.swift in Sources */,
 				658D4722262575D200AD6349 /* TestAlgorithm.swift in Sources */,
+				EB01B0222BA0281200101D39 /* swift中的闭包.swift in Sources */,
+				EBFC906B2B996AC30065C19C /* Swift字符串操作.swift in Sources */,
+				EB9035D72B917A4100B49F76 /* Swift标准库的排序等算法.swift in Sources */,
 				AFFDBB912A7CEC0800FF793B /* TestODAlgorithm.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB765AB22B9077580083B658 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB765AB92B9077580083B658 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB765ABD2B907E1A0083B658 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB765AC42B907E1B0083B658 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,11 +464,18 @@
 		AF2C73002553995D000AD7A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WGS3P7C8Z5;
 				ENABLE_HARDENED_RUNTIME = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -283,10 +483,68 @@
 		AF2C73012553995D000AD7A9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WGS3P7C8Z5;
 				ENABLE_HARDENED_RUNTIME = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		EB765ABB2B9077580083B658 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WGS3P7C8Z5;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		EB765ABC2B9077580083B658 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WGS3P7C8Z5;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		EB765AC62B907E1B0083B658 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WGS3P7C8Z5;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		EB765AC72B907E1B0083B658 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WGS3P7C8Z5;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -309,6 +567,24 @@
 			buildConfigurations = (
 				AF2C73002553995D000AD7A9 /* Debug */,
 				AF2C73012553995D000AD7A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB765ABA2B9077580083B658 /* Build configuration list for PBXNativeTarget "TestBFS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB765ABB2B9077580083B658 /* Debug */,
+				EB765ABC2B9077580083B658 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB765AC52B907E1B0083B658 /* Build configuration list for PBXNativeTarget "TestMain" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB765AC62B907E1B0083B658 /* Debug */,
+				EB765AC72B907E1B0083B658 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

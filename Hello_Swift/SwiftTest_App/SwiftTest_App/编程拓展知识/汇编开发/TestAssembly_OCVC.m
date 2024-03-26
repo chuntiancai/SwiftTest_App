@@ -79,9 +79,9 @@ void assemblyHaha(void){
             //TODO: 0、
             NSLog(@"0、");
         {
-            testArmFunc();
-            int res = testArmAdd(6, 2);
-            NSLog(@"汇编加法的返回值:%d",res);
+//            testArmFunc();
+//            int res = testArmAdd(6, 2);
+//            NSLog(@"汇编加法的返回值:%d",res);
         }
             break;
         case 1:

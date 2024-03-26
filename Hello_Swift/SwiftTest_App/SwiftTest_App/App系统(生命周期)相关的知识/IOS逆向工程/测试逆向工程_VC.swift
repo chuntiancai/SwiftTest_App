@@ -76,7 +76,7 @@
          5.Mach-O文件的基本结构：
              (1)由四个部分组成：Header （头部）、LoadCommands （加载命令）、Data （数据段 segment）、Loader Info （链接信息）
                  Header （头部）：   该文件的CPU架构类型、文件类型等信息。
-                 LoadCommands （加载命令）：    该文件在虚拟内存中的逻辑架构、布局。用于告诉loader如何设置并加载二进制数据。
+                 LoadCommands （加载命令）： 该文件在虚拟内存中的逻辑架构、布局。用于告诉loader如何设置并加载二进制数据。
                  Data （数据段 segment）： 存放数据：代码、字符常量、类、方法等。
                                          可以拥有多个 LoadCommands 中定义的segment，每个segment可以有零到多个section。每个段都有一段虚拟地址映射到进程的地址空间。
              (2)通过linux的otool指令可以查看Mach-O文件的特定部分和段的内容。

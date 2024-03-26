@@ -951,6 +951,9 @@
 		AFFDBB8C2A7C887500FF793B /* 无限滚动条动画_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "无限滚动条动画_View.swift"; sourceTree = "<group>"; };
 		BB6AAD3455F9D2C8F661C07D /* Pods-SwiftTest_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTest_App.debug.xcconfig"; path = "Target Support Files/Pods-SwiftTest_App/Pods-SwiftTest_App.debug.xcconfig"; sourceTree = "<group>"; };
 		C4C06FA2172551275C4FCEE6 /* Pods_SwiftTest_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftTest_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB340F612B80AD63006BC26D /* OC面试考点大纲.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "OC面试考点大纲.md"; sourceTree = "<group>"; };
+		EB3EF0A62B9EDC45005C793D /* Swift面试考点大纲.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Swift面试考点大纲.md"; sourceTree = "<group>"; };
+		EB3EF0A72B9EDC92005C793D /* 线程面试考点大纲.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "线程面试考点大纲.md"; sourceTree = "<group>"; };
 		EB5C881327FC2EA200655119 /* 位移枚举的写法.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "位移枚举的写法.swift"; sourceTree = "<group>"; };
 		EB645E3E26A449AE00773A98 /* tempView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempView.swift; sourceTree = "<group>"; };
 		FFFA356333D985ADCDBF1FEB /* Pods-SwiftTest_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTest_App.release.xcconfig"; path = "Target Support Files/Pods-SwiftTest_App/Pods-SwiftTest_App.release.xcconfig"; sourceTree = "<group>"; };
@@ -1620,11 +1623,12 @@
 		04600033271190F70074DFA2 /* Swift语法测试 */ = {
 			isa = PBXGroup;
 			children = (
+				EB3EF0A62B9EDC45005C793D /* Swift面试考点大纲.md */,
 				AFEF469628BC519100B3EA2D /* 测试基本语法_VC.swift */,
 				AF2DDAE728A349DE00E1CCF3 /* 测试字典、集合 */,
 				AFD34EE82886875500C807A3 /* 测试Block */,
 				AFBCA8C32872C15A00AD51D1 /* 测试类与结构体 */,
-				04C7EA2B2840A9FF00685624 /* 语法笔记 */,
+				04C7EA2B2840A9FF00685624 /* swift语法笔记 */,
 				04330A9D283F66BF007DF2D0 /* 测试泛型 */,
 				04155832283DC5A1007FC2E8 /* 测试数组 */,
 				042648D627F2A9D40034FF51 /* 测试实例、单例 */,
@@ -1751,7 +1755,6 @@
 				048608AD27350EC5000F816E /* App环境配置的知识.md */,
 				041BCA3627EC153B00E3BEB8 /* Xcode的配置.md */,
 				048608AE2735212B000F816E /* App的生命周期.md */,
-				AF824280287BFD7B002311AF /* LLDB、LLVM编译器知识.md */,
 			);
 			path = "App系统(生命周期)相关的知识";
 			sourceTree = "<group>";
@@ -1875,6 +1878,8 @@
 		048DFE94281BC76000F210E8 /* 编程拓展知识 */ = {
 			isa = PBXGroup;
 			children = (
+				AF824280287BFD7B002311AF /* LLDB、LLVM编译器知识.md */,
+				04330AA8283F7E33007DF2D0 /* 面试总结.md */,
 				AFE2C365296527F300369228 /* 汇编开发 */,
 				048DFE98281BEC8D00F210E8 /* 源代码管理_Git_SVN.md */,
 				AF83C5D1292C9AE10019FC4B /* 测试分支删除的影响.swift */,
@@ -1930,6 +1935,7 @@
 		049EAFD726B3E18000903DA8 /* 多线程测试 */ = {
 			isa = PBXGroup;
 			children = (
+				EB3EF0A72B9EDC92005C793D /* 线程面试考点大纲.md */,
 				042648E427F3FB050034FF51 /* 测试Thread */,
 				049EAFDF26B4048E00903DA8 /* GCD测试 */,
 				049EAFF026C0CDAC00903DA8 /* 测试NSOperation */,
@@ -2241,7 +2247,7 @@
 			path = "网络测试";
 			sourceTree = "<group>";
 		};
-		04C7EA2B2840A9FF00685624 /* 语法笔记 */ = {
+		04C7EA2B2840A9FF00685624 /* swift语法笔记 */ = {
 			isa = PBXGroup;
 			children = (
 				0454A487272AA2FF00EFE31A /* Swift语法备忘录.md */,
@@ -2259,9 +2265,8 @@
 				04330AA4283F7E33007DF2D0 /* 11、Error,泛型,关联类型.md */,
 				04330AA9283F7E33007DF2D0 /* 12、String,Array底层.md */,
 				04330AA7283F7E33007DF2D0 /* 13、高级运算符.md */,
-				04330AA8283F7E33007DF2D0 /* 面试总结.md */,
 			);
-			path = "语法笔记";
+			path = "swift语法笔记";
 			sourceTree = "<group>";
 		};
 		04C7EA2C2840AA3D00685624 /* 测试OC的Runtime */ = {
@@ -2711,6 +2716,7 @@
 		AF824281287C0F4B002311AF /* OC的语法测试 */ = {
 			isa = PBXGroup;
 			children = (
+				EB340F612B80AD63006BC26D /* OC面试考点大纲.md */,
 				AF824282287C1B47002311AF /* TestOCGrama_VC.h */,
 				AF824283287C1B47002311AF /* TestOCGrama_VC.m */,
 				AFE2C375296D09A200369228 /* OC的对象 */,
