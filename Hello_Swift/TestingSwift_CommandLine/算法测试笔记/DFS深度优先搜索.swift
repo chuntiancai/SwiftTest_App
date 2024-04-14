@@ -72,7 +72,7 @@
 
 struct TestDFSStruct{
     
-    //MARK: 求解给点数组a，b，调整a的元素位置，使得a[i]>b[i]的个数尽可能多，然后有多种这种尽可能多的调整方式。
+    //MARK: 求解给定数组a，b，调整a的元素位置，使得a[i]>b[i]的个数尽可能多，然后有多种这种尽可能多的调整方式。
     // dfs求出a数组的全排列，然后比较b数组。
     func testDFSorder(){
         
@@ -115,7 +115,7 @@ struct TestDFSStruct{
          */
         /**
             1、numArr 是标志数组，也是原始数据数组。
-            2、拆解问题：我给递归器输入数组中的一个数，递归器返回这个数之后的所有排列。
+            2、拆解问题：我给递归器输入数组中的一个数(当前走到的位置)，递归器返回这个数之后的所有排列。
                         然后这些数是可解的有限范围的，也就是存在边界条件，只是每输入一个数，问题的规模就减少了1。
          */
         func dfsOrder(startIndex:Int,numArr:[Int]){
@@ -127,17 +127,17 @@ struct TestDFSStruct{
                 return
             }
             
-            //遍历当前层的每一种可能性，这里整一个for循环都是标志器的作用，作是否已经使用了的标志。
-            for i in 0 ..< numArr.count {
+            //遍历当前层的每一种可能性，这里整一个for循环都是标志器的作用，作为是否已经使用了的标志。
+            for i in 0 ..< numArr.count {   //这里也可以是从startIndex ..< numArr.count开始吗？不可以，因为是所有的可能性，不能是当前剩余的可能性。
                 
-                if visitedArr[i] == false { //还没有使用到这个数字
+                if visitedArr[i] == false { //还没有使用到这个数字，其实不用visited[i],直接用numArr[startIndex]也可以？不可以
                     
-                    visitedArr[i] = true    //标记已经使用了第i个数字，下一层就不能再用了。
+                    visitedArr[i] = true    //标记已经使用了第i个数字，下一层就不能再用了。避免回头路，这里是竖直方向
                     
                     ansArr[startIndex] = numArr[i]
                     dfsOrder(startIndex: startIndex + 1, numArr: numArr)    //处理下一步，使用下一个条件，问题规模减少1。
                     
-                    visitedArr[i] = false   //释放，告诉上一层我这个牌返回牌池了。
+                    visitedArr[i] = false   //释放，告诉上一层我这个牌返回牌池了。 这里是横向。
                 }
                 
             }

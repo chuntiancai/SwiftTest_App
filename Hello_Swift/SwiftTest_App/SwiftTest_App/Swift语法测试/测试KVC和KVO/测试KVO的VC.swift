@@ -6,9 +6,20 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 // 测试KVO的VC
-// MARK: - 笔记
+// MARK: - KVO的原理
+/**
+    1、KVO的原理就是使用装饰者模式，利用动态，生产一个派生类作为装饰者，改派生类继承原来的类。
+        装饰者内部有通过指针(superclass)指向原来的类对象，也对getter/setter方法进行了加强。
+        1.当属性第一次被观察时，系统利用RuntimAPI动态生成一个派生类(该类的子类)，
+        2.重写被观察属性的setter 方法。
+        3.将isa指针指向派生类(装饰者)。
+ 
+    2、所以KVO的核心就是对getter/setter方法进行了重写和加强。
+ 
+ 
+ */
 
-import Dispatch
+
 /**
     1、KVO用于监听对象的某个对象发生变化时，指定调用某个方法。(观察者模式)。也是通过keyPath进行操作。
        观察者自身要有定义接收主题消息的方法。
@@ -25,7 +36,7 @@ import Dispatch
     6、直接通过指针修改成员变量，不会出发KVO，因为这是直接修改地址上的值，不会调用set方法。
  */
 
-
+import Dispatch
 class TestKVO_VC: UIViewController {
     
     //MARK: 对外属性

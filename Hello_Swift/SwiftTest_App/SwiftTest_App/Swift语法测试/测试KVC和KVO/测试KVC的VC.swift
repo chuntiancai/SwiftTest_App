@@ -6,6 +6,38 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 //测试KVC的VC，keyPath的使用。
+//MARK: - KVC的底层原理
+/**
+    1、swift里没有KVC，因为KVC是动态赋值，就是通过key-value的形式去coding，去修改，所以swiff没有，只有oc有，
+        swift只能通过OC的接口去使用KVC。
+        KVC是NSObject提供的api。但是NSObject的get/set方法实现并没有开源。
+        getter/setter方法是存在在类对象的方法列表中(ro结构体里)。
+ 
+    2、所谓KVC就是通过字符串 去访问或修改 对象的对应的属性方法或成员变量。
+    
+    3、(设置值)调用setValue:forKey:方法的时候，底层调用或者说寻找的步骤：
+        1.先去寻找setKey系列方法，这里的Key就是你传入的字符串。
+        2.再去寻找_key的成员变量系列名字，从而去找对应的成员变量。
+            会经过accessInstanceVariablesDirectly类方法的判断，可以忽略，默认是直接搜索变量名字。
+        3.还找不到就调用跑出异常的方法，抛出找不到的异常，你可以重写该抛出异常的方法，来自行处理异常。
+ 
+    4、(寻找值)执行valueForKey：时，底层的寻找步骤：
+        就是一系列key的别名寻找，有无下划线的别名。
+        1.寻找getKey系列的getter方法，Key就是你传入的字符串。
+        2.寻找countOfKey的NSArray系列的方法。
+        3.寻找memberOfKey的NSset系列方法。
+        4.寻找_Key的成员变量名字系列的成员变量。
+        5.还找不到就抛出异常，找到了就方法对应的指针或者值。
+ 
+    5、KVC的valueForKeyPath:方法，可以对集合对象进行链式访问，即可以访问成员变量的成员变量。
+ 
+    6、如果成员变量是集合对象，那么此时直接调用集合的add/remove方法，不会触发kvo监听。
+        但是如果你是通过KVC来访问这个集合对象，进行add/remove操作，则会触发KVO。
+        因为当你通过key或keyPath获取集合对象时，实际上你是在访问一个与容器对象相关联的属性，当你对这个属性进行修改时(add/remove),则会触发KVO。
+        如果容器对象的某个属性是通过KVC访问的，并且这个属性与正在被修改的状态相关联，那么KVO就会认为这个属性发生了变化。
+        
+ 
+ */
 
 // MARK: - 笔记
 /**

@@ -5,10 +5,13 @@
 //  Created by mathew on 2021/7/23.
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
-
 // 测试VC的生命周期
+//MARK: - 笔记
+/**
+ 
+ 
+ */
 
-import UIKit
 
 class TestVCLifeCycle_VC: UIViewController {
     
@@ -21,12 +24,14 @@ class TestVCLifeCycle_VC: UIViewController {
     
     //MARK: 复写的方法
     //TODO: 1、在加载vc的view的时候调用
+    ///         会先去xib里面找，如果找到就用xib的，如果没找到，则创建一个空白的view绑定vc。当第一次访问vc的view的时候，就会回调该方法。
     override func loadView() {
         print("TestVCLifeCycle_VC的\(#function)方法")
         super.loadView()
     }
     
-    //TODO: 2、已经加载完毕VC自身的view的时候调用，一般在这里创建自定义的view。
+    //TODO: 2、已经加载完毕VC自身的view的时候调用，一般在这里创建自定义的子view。
+    ///         也就是loadview执行完之后，就执行该方法。
     override func viewDidLoad() {
         print("TestVCLifeCycle_VC的\(#function)方法")
         super.viewDidLoad()
@@ -45,6 +50,15 @@ class TestVCLifeCycle_VC: UIViewController {
     }
     
     //TODO: 4、当VC的view即将布局子view的时候调用(每动态添加一次子view就会调用一次，是动态)
+    /**
+     就是当自身的view，或者子view的位置或大小发生变化时，就会回调该方法。
+     
+     1.当视图控制器的根视图的frame或bounds发生变化时，比如旋转屏幕导致视图大小改变。
+     2.当添加或移除子视图时，尤其是在addSubview后，如果改变了子视图的大小或位置。
+     3.在滚动UIScrollView时，如果滚动导致了视图的重新布局。
+     4.直接调用setNeedsLayout或layoutIfNeeded方法后，如果这些方法导致了布局的更新。
+     
+     */
     override func viewWillLayoutSubviews() {
         print("TestVCLifeCycle_VC的\(#function)方法")
         super.viewWillLayoutSubviews()
@@ -72,6 +86,7 @@ class TestVCLifeCycle_VC: UIViewController {
         print("TestVCLifeCycle_VC的\(#function)方法")
         super.viewDidDisappear(animated)
     }
+    
     
     
 

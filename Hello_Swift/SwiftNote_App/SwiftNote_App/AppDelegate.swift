@@ -6,7 +6,7 @@
 //  Copyright © 2020 com.ctchTeamIOS. All rights reserved.
 //
 
-import GrowingCoreKit
+//import GrowingCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = UINavigationController.init(rootViewController: MainViewController())
         self.window?.makeKeyAndVisible()    //设置为主键
 //        Growing.start(withAccountId: "b8fb5c41cb38ae42")
-        Growing.start(withAccountId: "9907c51ef09823c8d5b98c511e30a866")
-        Growing.setEnableLog(true)
+//        Growing.start(withAccountId: "9907c51ef09823c8d5b98c511e30a866")
+//        Growing.setEnableLog(true)
         return true
     }
     

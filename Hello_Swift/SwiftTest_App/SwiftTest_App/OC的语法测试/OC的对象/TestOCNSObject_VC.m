@@ -88,7 +88,7 @@
             //TODO: 0、测试常用的C语言函数。
             /**
                 1、class_getInstanceSize 返回一个类的实例自身的大小(字节)。参数是类对象。(C语言的结构体内存对齐规则后的大小)。运行阶段。
-                2、malloc_size((__bridge const void *)(obj));获得指针所指向的动态分配内存的大小(字节)，参数是C语言指针，系统内存16字节对齐分配。
+                2、malloc_size((__bridge const void *)(obj)); 获得指针所指向的动态分配内存的大小(字节)， 参数是C语言指针，系统内存16字节对齐分配。
                 3、sizeof(expression-or-type)是计算数据类型自身大小的运算符，在编译阶段确认(C语言内存对齐规则)。iOS系统是小端模式读取内存的值。参数是类对象。
                 4、objc_getClass(const char * _Nonnull name)根据参数字符串返回对应的类对象。
                    object_getClass(id  _Nullable obj)方法返回类对象的元类对象，参数是类对象。实例对象-->类对象-->元类对象-->NSObject(基类)的元类对象。

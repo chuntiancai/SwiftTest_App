@@ -21,6 +21,7 @@
         在终端用clang -rewrite-objc main.m 命令，可以吧main.m文件编译成c++文件，也就是oc文件转换为c++文件。
         runtime的方法名都是有前缀的，谁的事情，谁开头，例如objc_ ,method_ , class_ 等前缀。
         关联属性并不是直接存储在类的实例变量中，而是存储在一个全局的、类似于字典的数据结构中，由运行时系统管理。
+        Objective-C 运行时系统维护了一个全局的 AssociationsManager 对象，它管理着所有的关联对象。
  
     2、OC调用方法的本质是，通过调用系统函数objc_msgSend，让 对象 向 方法映射表 发消息，让 方法映射表 寻找方法体并执行。
         

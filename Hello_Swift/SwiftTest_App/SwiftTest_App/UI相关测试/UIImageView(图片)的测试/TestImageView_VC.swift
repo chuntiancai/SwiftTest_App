@@ -6,7 +6,112 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 // 测试图片相关的功能VC
-// MARK: - 笔记
+
+// MARK: - 图片的渲染流程
+/**
+    1、图片从硬盘到屏幕的加载渲染流程：
+            读取文件->计算Frame->图片解码->解码后纹理图片位图数据通过数据总线交给GPU->GPU获取图片Frame->顶点变换计算->光栅化
+            ->根据纹理坐标获取每个像素点的颜色值(如果出现透明值需要将每个像素点的颜色*透明度值)->渲染到帧缓存区->渲染到屏幕
+ 
+        1.当我们+imageWithContentsOfFile: 方法从磁盘中加载一张图片，这个时候的图片并没有解压缩，此时图片是JPG、或者是PNG格式的数据，
+            这些格式是一种压缩格式，也就是完整的图片数据是需要包括每个像素点的位图数据的，而JPG这些格式则是对图片的所有数据进行了压缩。
+ 
+        2.创建一个 UlImage 实例只会加载 Data Buffer，将图像显示到屏幕上才会触发解码，也就是 Data Buffer 解码为 Image Buffer，
+            Image Buffer 也关联在 Ullmage 上，Ullmage 关联的图像是否已解码对外部是不透明的。(完整的图像数据信息)
+        
+            解码就是从 Data Buffer 生成 Image Buffer 的过程。 而Image Buffer 之后会上传到 GPU 成为 Frame Buffer。
+            所以CGImage是解码后的位图数据，而不是将要渲染的帧缓存数据。
+            当时你可以开线程单独对图片的压缩数据进行解压，然后使用解压后的数据来显示到屏幕上，这样就可以减少解压造成的性能消耗过大问题。
+ 
+        3.渲染流程是通过GPU来操作的：
+            GPU获得CPU的解压数据和frame坐标信息之后，就会对解压后的数据转换成硬件能过理解的数据信息，也就是frame Buffer，这个过程是在GPU中
+            完成的，GPU 以每秒 60 次的速度使用 Frame Buffer 更新屏幕。
+             1.GPU获取获取图片的坐标
+             2.将坐标交给顶点着色器(顶点计算) //就是计算图片的关键几个顶点位置信息。
+             3.将图片光栅化(获取图片对应屏幕上的像素点)    //是将矢量图形数据转换为由像素表示的栅格图像，三维图形数据转换为二维屏幕上的像素表示。
+             4.片元着色器计算(计算每个像素点的最终显示的颜色值)
+             5.从帧缓存区中渲染到屏幕上 //GPU处理完的位图数据，会先放在帧缓存里，然后通过帧缓存给到显示器进行显示。
+ 
+    2、屏幕卡顿的本质：
+        手机使用卡顿的直接原因，就是掉帧，屏幕刷新频率必须要足够高才能流畅。对于 iPhone 手机来说，屏幕最大的刷新频率是 60 FPS，一般只要保证 50 FPS 就已经是较好的体验了。但是如果掉帧过多，导致刷新频率过低，就会造成不流畅的使用体验。
+
+        屏幕卡顿的根本原因：CPU 和 GPU 渲染流水线耗时过长，导致掉帧。
+        也是就我已经要显示下一帧图片的了，但是下一帧的数据还没计算好，因为垂直同步锁定，导致现在还是显示上一帧的数据，所以造成了卡顿。
+ 
+        Vsync 与双缓冲的意义：强制同步屏幕刷新，以掉帧为代价解决屏幕撕裂问题。
+ 
+        三缓冲的意义：合理使用 CPU、GPU 渲染性能，减少掉帧次数。就是用三层帧缓存给显示器来渲染，不要显示器傻傻地等一个帧缓存数据。
+ 
+    3、与GPU相关的框架API：
+        GPU Driver(接近APP的抽象接口)--> OpenGL(接近硬件的接口) --> Core Graphics、Core Animation、Core Image(扩展硬件的三个框架)
+        上面的三个层次的框架是一种大概的封装关系(都是软件框架)，有可能相互调用，并不是严格的包裹封装，只是提供了不同的便利性。
+ 
+        也就是Core Graphics、Core Animation、Core Image是对OpenGL标准的整理组合分类的封装，以专一地实现不同的图形处理功能。
+        
+        GPU Driver：GPU Driver 是直接和 GPU 交流的代码块，直接与 GPU 连接，所有框架最终都会通过 OpenGL 连接到 GPU Driver。
+ 
+        OpenGL：是一个提供了 2D 和 3D 图形渲染的 API，也就是一套标准。OpenGL 之上扩展出很多东西，如 Core Graphics 等最终都依赖于 OpenGL。
+                OpenGL的高效实现（利用了图形加速硬件）一般由显示设备厂商提供，而且非常依赖于该厂商提供的硬件。
+ 
+        Core Graphics：Core Graphics 是一个强大的二维图像绘制引擎，是 iOS 的核心图形库，常用的比如 CGRect 就定义在这个框架下。
+
+        Core Animation：本质上可以理解为一个复合引擎，主要职责包含：渲染、构建和实现动画(不仅仅是动画)，几乎所有iOS的东西都是它绘制出来的。
+
+        Core Image：Core Image 是一个高性能的图像处理分析的框架，它拥有一系列现成的图像滤镜，能对已存在的图像进行高效的处理。
+        
+        Metal标注：Metal 类似于 OpenGL ES，也是一套第三方标准，具体实现由苹果实现。
+                  Core Animation、Core Image、SceneKit、SpriteKit 等等渲染框架都是构建于 Metal 之上的。
+ 
+ */
+
+//MARK: - CALayer的本质
+/**
+    1、CALayer 是显示的基础：存储 bitmap(位图)
+        CALayer 有这样一个属性 contents，contents 提供了 layer 的内容，是一个指针类型，在 iOS 中的类型就是 CGImageRef。
+        而CGImageRef就是位图数据的结构体，CGImage就是CGImageRef的别名。
+        drawRect: 方法就是使用了CALayer.contents 中的CGImage位图数据进行绘制渲染的。
+ 
+    2、CALayer 中的 contents 属性保存了由设备渲染流水线渲染好的位图 bitmap（通常也被称为 backing store），而当设备屏幕进行刷新时，
+        会从 CALayer 中读取生成好的 bitmap，进而呈现到屏幕上
+ 
+ */
+
+//MARK: - UIView 与 CALayer 的关系
+/**
+    1、UIView相当于CALayer的管理者，或者说代理者，UIView负责内容的渲染以及，处理交互事件。而CALayer 的主要职责是管理内部的可视内容。
+        UIiew主要负责，利用CALayer绘制与动画、负责自身布局与子 view 的管理、负责点击事件处理。
+ 
+    2、当我们创建一个 UIView 的时候，UIView 会自动创建一个 CALayer，为自身提供存储 bitmap 的地方（也就是前文说的 backing store），
+        并将自身固定设置为 CALayer 的代理。
+        UIView 只对 CALayer 的部分功能进行了封装，而另一部分如圆角、阴影、边框等特效都需要通过调用 layer 属性来设置。
+        CALayer 是 UIView 的属性之一，负责渲染和动画，提供可视内容的呈现。
+        CALayer 不负责点击事件，所以不响应点击事件，而 UIView 会响应。
+        CALayer 继承自 NSObject，UIView 由于要负责交互事件，所以继承自 UIResponder。
+        为什么要将 CALayer 独立出来？为了职责分离，拆分功能，方便代码的复用
+ */
+
+//MARK: - 离屏渲染
+/**
+    1、离屏渲染就是 有一个和帧缓存器一样作用的离屏缓存器，用来存储将要渲染的位图数据(硬件)，缓存器里可以存储多个图层的位图硬件数据信息。
+        然后在离屏渲染缓存器，对每个图层进行裁剪，叠加，加工之后，再把数据切换到帧缓存器中，让显示器进行显示。内容切换会需要更长的处理时间。
+    
+    2、为啥要用到离屏渲染？
+        1.需要保存 渲染的中间状态 的一些特殊效果，比如阴影、圆角、蒙版。
+            因为这些都是已经计算好渲染的数据之后，你还要进一步对原有的内容(每一层图层)进行加工，叠加处理。
+        2.为了效率，可以将内容提前渲染保存在 Offscreen Buffer 中，达到复用的目的。例如手动光栅化。
+            开启光栅化后，会触发离屏渲染，Render Server 会强制将 CALayer 的渲染位图结果 bitmap 保存下来，
+            这样下次再需要渲染时就可以直接复用，从而提高效率。所以仅仅是需要重复利用的图层才有意义。
+            离屏渲染缓存内容有时间限制，缓存内容 100ms 内如果没有被使用，那么就会被丢弃，无法进行复用
+ 
+    3、离屏渲染的常见场景：
+        使用了 mask 的 layer (layer.mask)
+        需要进行裁剪的 layer (layer.masksToBounds / view.clipsToBounds)
+        设置了组透明度为 YES，并且透明度不为 1 的 layer (layer.allowsGroupOpacity/layer.opacity)
+        添加了投影的 layer (layer.shadow*)
+        采用了光栅化的 layer (layer.shouldRasterize)
+        绘制了文字的 layer (UILabel, CATextLayer, Core Text 等)
+ */
+
 /**
     1、拉伸图片，但是保护某些区域不被拉伸，用image的resizableImage方法，一般就拉伸最中间的一个像素而已。这个应用于纯色的背景图片就可以。这一个像素用于均匀填充拉伸区域(默认平铺)。
         1、平铺是直接copy没有被保护的区域的像素，像铺砖一样平铺到拉伸的区域。

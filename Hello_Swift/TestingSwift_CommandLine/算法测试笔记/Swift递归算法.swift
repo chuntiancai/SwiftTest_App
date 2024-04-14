@@ -13,12 +13,12 @@
             具有递归性质的数据结构，比如链表、树、图。
             反向性问题，比如取反。
        递归程序应该包含2个属性：
-            基本情况（bottom cases），基本情况用于保证程序调用及时返回，不在继续递归，保证了程序可终止。
+            基本情况（bottom cases），基本情况用于保证程序调用及时返回，不再继续递归，保证了程序可终止。
             递推关系（recurrentce relation），可将所有其他情况拆分到基本案例。可掐头去尾，在外部处理了头尾。
  
        注意：记得前头去尾去掉问题的不可重复性。
  
-    2、递归最难理解的点是回溯，回溯最难理解的点是：已标记过的足迹和已执行过的足迹搞混。
+    2、递归最难理解的点是回溯(标志器的传递与复用)，回溯最难理解的点是：已标记过的足迹和已执行过的足迹搞混。
         已标记过的足迹：是指进行下一层递归之前，标记当前点已经浏览了。
         已执行过的足迹：是指当前层已经被上一层执行过了，但是当前层递归完下一层之后，又回溯当前层到未浏览状态，供上一层的右层引用，
                      但是已经不会再回退到上一层了，因为当前层就是上一层执行下来的。
@@ -40,13 +40,13 @@ import Foundation
 struct SwiftRecursionStruct{
     
     //MARK: 去掉头部特殊情况的递归，分月饼。
-    /**
-        1、问题规模为：人数，月饼个数。都可以减少，且都可以重复。
-            递推条件：上一个人拿了多少个月饼 导致 月饼减少了， 人数也减少了。
-            每一步是：有x个人，y个月饼，上一个人拿了z个，看是否可到达终点，记录能到达终点的个数即为求解。
-            边界条件为：到达终点时，即最后人也轮完了，月饼也分完了。
-     */
     static func testHeadTailRecursion(){
+        /**
+            1、问题规模为：人数，月饼个数。都可以减少，且都可以重复。
+                递推条件：上一个人拿了多少个月饼 导致 月饼减少了， 人数也减少了。
+                每一步是：有x个人，y个月饼，上一个人拿了z个，看是否可到达终点，记录能到达终点的个数即为求解。
+                边界条件为：到达终点时，即最后人也轮完了，月饼也分完了。
+         */
         var pNum = Int(readLine()!.trimmingCharacters(in: .whitespaces))!   //人数
         var cakeNum = Int(readLine()!.trimmingCharacters(in: .whitespaces))!    //月饼数
 
@@ -75,8 +75,8 @@ struct SwiftRecursionStruct{
                     getArr[pNum - curPNum] = nextGet
                 }
                 
-                let validCount = getCake(curPNum: nextPum, cakes: cakes - nextGet, firstGet: nextGet)   //是否能到终点
-                curCount += validCount
+                let curValidCount = getCake(curPNum: nextPum, cakes: cakes - nextGet, firstGet: nextGet)   //是否能到终点
+                curCount += curValidCount
                 
             }
             return curCount

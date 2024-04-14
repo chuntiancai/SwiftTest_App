@@ -11,6 +11,6 @@
 
 #import <CommonCrypto/CommonCrypto.h>
 //#import "Reachability.h"
-#import <GrowingCoreKit/GrowingCoreKit.h>
+
 
 #endif /* SwiftNote_App_Bridging_Header_h */

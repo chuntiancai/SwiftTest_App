@@ -9,9 +9,13 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    let btn = UIButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .white
+        
         // Do any additional setup after loading the view.
     }
 

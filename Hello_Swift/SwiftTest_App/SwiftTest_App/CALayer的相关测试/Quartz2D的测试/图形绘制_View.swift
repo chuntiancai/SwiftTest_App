@@ -7,6 +7,8 @@
 //
 // 测试 Quartz 绘制图形的view，在draw方法里绘制图形
 // MARK: - 笔记
+
+import UIKit
 /**
     1、利用Quartz2D技术绘制图形到view上，也只能绘制到view上。
         绘制view的步骤：
@@ -66,7 +68,7 @@ class Quartz_View: UIView {
     /// 该方法专门用来绘制图形，在图形将要显示的时候，被系统调用。
     /// - Parameter rect: 当前view的bounds
     override func draw(_ rect: CGRect) {
-        print("Quartz_View 的 \(#function)方法")
+        print("Quartz_View 的 \(#function)方法--\(drawShape)")
         // 画直线
         ///1、在draw(_ rect:)方法中，系统已经默认帮你创建了一个跟当前view相关联的上下文(layer的上下文)，所以你只需要获取该上下文即可。
         /// 绘制步骤：获取上下文 --> 绘制路径 --> 把绘制路径保存到上下文当中 --> 把上下文的内容显示到View上(渲染view的layer)。
@@ -98,7 +100,9 @@ class Quartz_View: UIView {
             context?.addPath(bPath.cgPath)
             
             /// 1.4、渲染上下文的内容到View的layer上。
-            context?.fillPath() //这个方法是填充路径所包围的面积，填充的方式也有多种，交叉填充，根据函数填充，全部填充等等。调用该方法时，context的路径也会被清除。
+            context?.fillPath()
+            //这个方法是填充路径所包围的面积，填充的方式也有多种，交叉填充，根据函数填充，全部填充等等。调用该方法时，context的路径也会被清除。
+            
             context?.addPath(bPath.cgPath)
             context?.strokePath()   //其实这个方法就是根据路径绘制线条。当调用该方法的时候，context的路径会被清除。
         
@@ -121,9 +125,12 @@ class Quartz_View: UIView {
             context?.addPath(bPath.cgPath)
             context?.setFillColor(UIColor.red.cgColor)
             context?.fillPath() //填充路径的包围面积
-            context?.addPath(bPath.cgPath)
+            
+            context?.addPath(bPath.cgPath)  //因为会清除path，所以需要再一次添加路径
             context?.strokePath()   //用线条绘制路径
+
             bPath = UIBezierPath.init(rect: CGRect.init(x: 100, y: 60, width: 60, height: 40))
+            context?.setStrokeColor(UIColor.cyan.cgColor)
             context?.addPath(bPath.cgPath)
             context?.setFillColor(UIColor.yellow.cgColor)
             

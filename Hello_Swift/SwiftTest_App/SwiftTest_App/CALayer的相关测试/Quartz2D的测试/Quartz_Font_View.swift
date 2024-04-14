@@ -6,6 +6,12 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 // 利用quartz技术绘制文字的View
+// MARK: - 笔记
+/**
+    1、NSString，NSAttributedString都有绘制文字的draw方法，String没有。
+    2、关于NSAttributedString.Key的类型，你要看注释文档，注释文档里有说这对应着什么类型。一般是NSNumber之类的。
+    3、NSShadow的shadowColor属性是UIColor，不是CGColor。
+ */
 
 class Quartz_Font_View: UIView {
     //MARK: - 对外属性
@@ -70,9 +76,4 @@ extension Quartz_Font_View{
     
 }
 
-// MARK: - 笔记
-/**
-    1、NSString，NSAttributedString都有绘制文字的draw方法，String没有。
-    2、关于NSAttributedString.Key的类型，你要看注释文档，注释文档里有说这对应着什么类型。一般是NSNumber之类的。
-    3、NSShadow的shadowColor属性是UIColor，不是CGColor。
- */
+

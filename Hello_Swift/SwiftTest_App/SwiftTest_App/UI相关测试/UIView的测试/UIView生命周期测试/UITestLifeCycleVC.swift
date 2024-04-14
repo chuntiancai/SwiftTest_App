@@ -6,7 +6,12 @@
 //  Copyright © 2021 com.mathew. All rights reserved.
 //
 // 测试UI的生命周期
+//MARK: - 笔记
 
+import CoreGraphics
+/**
+ 
+ */
 
 class UILifeCycleVC_1: UIViewController {
     
@@ -57,7 +62,7 @@ extension UILifeCycleVC_1: UICollectionViewDataSource {
             curView?.removeFromSuperview()
             
         case 2:
-            print("     (@@ 重新设置snpkit")
+            print("     (@@ 2、重新设置snpkit")
             let curView = self.view.viewWithTag(12345)
 //            if let consArr = curView?.constraints {
 //                for cons in consArr {
@@ -65,12 +70,16 @@ extension UILifeCycleVC_1: UICollectionViewDataSource {
 //                }
 //            }
 //
-            curView?.snp.remakeConstraints({ make in
-                make.left.equalToSuperview().offset(10)
-                make.centerY.equalToSuperview().offset(20)
-                make.width.equalTo(120)
-                make.height.equalTo(60)
-            })
+            curView?.backgroundColor = .red //改变颜色，会调用draw的方法。
+//            let subView = UIView(frame: CGRect(x: 10, y: 20, width: 40, height: 40))
+//            subView.backgroundColor = .red
+//            curView?.addSubview(subView)
+//            curView?.snp.remakeConstraints({ make in
+//                make.left.equalToSuperview().offset(10)
+//                make.centerY.equalToSuperview().offset(20)
+//                make.width.equalTo(120)
+//                make.height.equalTo(60)
+//            })
             
         case 3:
             print("     (@@旋转view")
@@ -109,30 +118,6 @@ extension UILifeCycleVC_1: UICollectionViewDataSource {
         case 11:
             print("     (@@")
         case 12:
-            print("     (@@")
-        case 13:
-            print("     (@@")
-        case 14:
-            print("     (@@")
-        case 15:
-            print("     (@@")
-        case 16:
-            print("     (@@")
-        case 17:
-            print("     (@@")
-        case 18:
-            print("     (@@")
-        case 19:
-            print("     (@@")
-        case 20:
-            print("     (@@")
-        case 21:
-            print("     (@@")
-        case 22:
-            print("     (@@")
-        case 23:
-            print("     (@@")
-        case 24:
             print("     (@@")
         default:
             break

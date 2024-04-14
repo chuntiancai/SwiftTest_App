@@ -5,8 +5,9 @@
 //  Created by ctch on 2024/3/1.
 //  Copyright © 2024 com.fendaTeamIOS. All rights reserved.
 //
-
-import Foundation
+/**
+    1、所谓高阶函数，就是参数是函数的函数，或者返回值是函数的函数。
+ */
 
 struct SwiftHighFunction{
     

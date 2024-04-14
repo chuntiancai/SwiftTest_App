@@ -8,7 +8,7 @@
 // 测试block的VC
 // MARK: - 笔记
 /**
-    1、
+    1、在Swift中，高阶函数（Higher-order function）是指那些可以接受函数作为参数，或者返回函数作为结果的函数。
     2、可以在model中存储block属性，然后就可以通过model统一管理tableview的cell了。
  
  */

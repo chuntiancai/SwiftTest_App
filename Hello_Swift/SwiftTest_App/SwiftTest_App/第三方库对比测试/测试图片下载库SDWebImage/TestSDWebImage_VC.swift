@@ -6,6 +6,59 @@
 //  Copyright © 2022 com.mathew. All rights reserved.
 //
 //测试的图片下载库 VC
+// MARK: - SDWebImage的底层原理(设计思想)
+/**
+    1、SDWebImage 提供了对UIImageView、UIButton的扩展，所以你是通过UIImageView、UIButton的分类方法来使用SDWebImage的功能的。
+        SDWebImage对外的所有方法都暴露在对UIview、UIImageView、UIImage、UIButton等系统UI类的分类中，而框架开始也是从这里开始的。
+     SDWebImagede 主要功能：
+ 
+     1.提供UIImageView的一个分类，以支持网络图片的加载与缓存管理
+        这里是对外部暴露的方法，也是通过这里来激活SDWebImageManager单例。
+ 
+     2.一个异步的图片下载器：
+        图片的下载是由SDWebImageDownloader类来完成的，这是一个单例，内部通过NSOperationQueue队列来管理异步下载的图片数据，
+        在下载的时候可以选择是否缓存图片数据，也可以选择不同的下载策略，例如先进先出、先进后出的策略等。
+        下载的状态也会通过 block 或 委托 的方式通知调用者。
+ 
+        封装了线程SDWebImageDownloaderOperation用来处理下载图片，下载后的图片会调用相关的SDImageCoder进行解码(解压缩)，
+        然后以图片URL为key，把图片数据根据缓存策略存进SDImageCache缓存中，是异步缓存。
+ 
+        下载的核心其实就是利用NSURLConnection对象来加载数据。每个图片的下载都由一个Operation操作来完成，并将这些操作放到一个操作队列中。
+        这样可以实现图片的并发下载。
+        
+     3.一个异步的内存+磁盘图片缓存
+        去设置一个图片的时候，会先去缓存里查找有没，有则从缓存里拿，没有则去下载（用户可以设置是否从缓存里拿）。
+        至于缓存的是压缩的图片还是解压缩后的图片数据，是根据缓存策略来的，一般在内存上是解压缩后的位图数据。可以减少解码耗时。
+        存在磁盘上的则是压缩格式的图片数据，存在内存上的是解压缩后的位图数据。
+        在内存上，使用NSMapTable来管理图片的缓存，这是一个键值对的集合，接受到内存警告后自己释放内存，直接removeAll。
+        在沙盒上，使用NSFileManager来管理图片缓存，文件名是对key值做MD5摘要后的串，存储在沙盒的Cache文件夹里。
+ 
+     4.支持GIF图片、支持WebP图片
+        GIF图片的本质是下载一组图片数据的信息（.gif文件格式），包括每一张图片的显示时长等等信息，从而进行动画效果显示。
+ 
+     6.后台图片解压缩处理
+        
+     7.确保同一个URL的图片不被下载多次
+     8.确保虚假的URL不会被反复加载
+     9.确保下载及缓存时，主线程不被阻塞
+     
+ 
+    2、SDWebImage的核心是SDWebImageManager类，是一个单例，确保所有的图片下载和缓存操作都通过一个统一的入口进行管理。
+ 
+        SDWebImage还使用了外观模式，也就是对外只暴露了用户感兴趣的高级接口，而接口背后内部各个组件交互，对用户来说是不可见的，
+        降低了系统与用户端的耦合度，例如只提供了UIImageView、UIButton的分类方法，内部的实现不可见。
+ 
+        SDWebImage大量使用了委托模式，例如遵循SDWebImageManagerDelegate协议，即可通过代理方法获取图片的下载进度与状态。
+        
+        
+ */
+
+
+/**
+    1、SDWebImage是一个OC写的库，但是swift仍然可以使用，因为还有人在维护，它暴露了桥接头文件。首先引入库的头文件 import SDWebImage.
+    2、SDWebImage的缓存处理是，自己创建一个bundle文件，把下载的图片放在该文件里面。
+ */
+
 
 import SDWebImage
 
@@ -309,9 +362,4 @@ extension TestSDWebImage_VC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - 笔记
-/**
-    1、SDWebImage是一个OC写的库，但是swift仍然可以使用，因为还有人在维护，它暴露了桥接头文件。首先引入库的头文件 import SDWebImage.
-    2、SDWebImage的缓存处理是，自己创建一个bundle文件，把下载的图片放在该文件里面。
- */
 
