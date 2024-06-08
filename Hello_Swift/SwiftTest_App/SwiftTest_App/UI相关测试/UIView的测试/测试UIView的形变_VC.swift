@@ -162,7 +162,7 @@ extension TestUIViewTransform_VC{
         self.view.addSubview(blueView)
         blueView.snp.makeConstraints { make in
             make.top.equalTo(redView.snp.top)
-            make.left.equalTo(redView.snp_right).offset(5)
+            make.left.equalTo(redView.snp.right).offset(5)
             make.height.width.equalTo(40)
         }
     }

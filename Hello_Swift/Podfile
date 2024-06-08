@@ -1,5 +1,6 @@
 # Uncomment the next line to define a global platform for your project
 source 'https://github.com/CocoaPods/Specs.git'
+#source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
 platform :ios, '12.0'
 workspace 'Hello_Swift.xcworkspace'
 
@@ -20,41 +21,41 @@ end
 
 def commonPods
          #UI library
-         pod 'SnapKit'
-         pod 'FilesProvider'
-         pod 'SwiftyJSON'
-         pod 'FLAnimatedImage'
-         pod 'MJRefresh'
+         pod 'SnapKit', :inhibit_warnings => true
+         pod 'FilesProvider', :inhibit_warnings => true
+         pod 'SwiftyJSON', :inhibit_warnings => true
+         pod 'FLAnimatedImage', :inhibit_warnings => true
+         pod 'MJRefresh', :inhibit_warnings => true
 end
 
 target 'SwiftTest_App' do
   project 'SwiftTest_App/SwiftTest_App.xcodeproj'
   
   # 网络检测
-  pod 'Reachability'
+  pod 'Reachability', :inhibit_warnings => true # :inhibit_warnings => true 忽略第三方库的警告
   pod 'Alamofire', :inhibit_warnings => true #网络处理
   #测试自己制作的cocoapod库
   pod 'ctc_podspec', :git =>'https://github.com/chuntiancai/TestCocoapod.git'
 #  pod 'CTC_LocalPod', :path => './CTC_LocalPodSpec/CTC_LocalPod', :subspecs => ["GrowingIO"]
   # 测试GrowingIO
-  pod 'GrowingAutoTrackKit'
+  pod 'GrowingAutoTrackKit', :inhibit_warnings => true
   
   # 测试绘制图表第三方库
-  pod 'Charts'
+  pod 'Charts', :inhibit_warnings => true
   
   # 集成bugly，上报bug
-  pod 'Bugly'
+  pod 'Bugly', :inhibit_warnings => true
   
   
   
   # 测试图片下载的第三方库
-  pod 'SDWebImage','~>5.11.1'
+  pod 'SDWebImage','~>5.11.1', :inhibit_warnings => true
   
   #测试日历显示的第三方库
-  pod 'FSCalendar','~>2.8.2'
+  pod 'FSCalendar','~>2.8.2', :inhibit_warnings => true
   
   #测试滑动标签页
-  pod 'JXPagingView/Paging'
+  pod 'JXPagingView/Paging', :inhibit_warnings => true
   
   commonPods
   
@@ -64,7 +65,7 @@ target 'SwiftNote_App' do
   project 'SwiftNote_App/SwiftNote_App.xcodeproj'
   # Comment the next line if you don't want to use dynamic frameworks
 #  use_frameworks!
-  pod 'CTC_LocalPod' , :path => './CTC_LocalPodSpec/CTC_LocalPod'
+#  pod 'CTC_LocalPod' , :path => './CTC_LocalPodSpec/CTC_LocalPod'
   commonPods
   
 end

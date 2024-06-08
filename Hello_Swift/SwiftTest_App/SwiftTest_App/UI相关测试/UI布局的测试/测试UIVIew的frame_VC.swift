@@ -209,7 +209,7 @@ extension TestUIViewFrame_VC{
         
         self.view.addSubview(superView)
         superView.snp.makeConstraints { make in
-            make.top.equalTo(baseCollView.snp_bottom).offset(30)
+            make.top.equalTo(baseCollView.snp.bottom).offset(30)
             make.width.equalTo(150)
             make.height.equalTo(200)
             make.centerX.equalToSuperview()

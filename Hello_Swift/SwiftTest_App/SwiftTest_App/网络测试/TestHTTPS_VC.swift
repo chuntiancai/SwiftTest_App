@@ -189,6 +189,7 @@ extension TestHTTPS_VC: UICollectionViewDataSource {
             //3.设置代理
             ///代理方法:默认是在主线程中调用的。是代理方法。
             ///该方法内部其实会将connect对象作为一个source添加到当前的runloop中,指定运行模式为默认
+            
             let connect = NSURLConnection.init(request: request, delegate: self)
             
             ///设置代理方法在哪个线程中调用

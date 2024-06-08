@@ -34,10 +34,6 @@
     pod cache ：管理cocoapod的缓存：可以用来清空内存，也可以用来查看每个pod库的缓存。
     pod outdate ：展示出可更新版本的pod依赖库。
 
-作者：pokerface_max
-链接：https://www.jianshu.com/p/fb533c4a6a5d
-来源：简书
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
                  
 ## podspec语法：
     1、podspec是cocoapod库的描述文件，cocoapod通过读取podspec文件里的信息，对路径中的文件进行加载，处理，包装成framework来使用。

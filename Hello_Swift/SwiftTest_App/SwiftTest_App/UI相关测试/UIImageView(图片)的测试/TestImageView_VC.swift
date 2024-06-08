@@ -404,7 +404,7 @@ extension TestImageView_VC: UICollectionViewDataSource {
             self.bgView.addSubview(turnImgV3)
             turnImgV3.snp.makeConstraints { make in
                 make.top.equalTo(turnImgV.snp.bottom).offset(10)
-                make.left.equalTo(turnImgV2.snp_right).offset(5)
+                make.left.equalTo(turnImgV2.snp.right).offset(5)
                 make.height.width.equalTo(160)
             }
             
